@@ -14,6 +14,9 @@ is omitted for now; AMD results establish AMD coverage. QEMU/WSL results remain
 separately labeled emulation and cannot establish native Mac coverage. Inspect
 the actual OS, CPU, compiler, sanitizer runtime and CPU/OS ISA support each time.
 Hardware availability does not establish that a particular revision has passed.
+Read the [validation status and reports](README.md) when resuming on either
+host. Add new results using the [shared report template](report-template.md),
+then update the index with the exact tested revision and actual outcome.
 
 ## Shared branch and integration
 
@@ -28,9 +31,11 @@ and tree on each host, rather than relying on branch names alone.
 On 2026-11-15 the maintainer approved fast-forwarding `neon-port` through the
 five `windows-native-validation` commits ending at
 `943923a4cce1b3990ee69b37ebdf1c37f0fc67b6`, documenting this workflow, and pushing
-the updated `neon-port` to `origin`. Native Mac confirmation of these fixes is
-still pending. The accompanying workflow/runner commit changes development
-assets; it does not change the library or regression cases. `master` is outside
+the updated `neon-port` to `origin`. Subsequent native Mac confirmation at
+`465436d` is recorded in the [Mac ARM report](mac-arm-2026-11-15.md), including
+its initial sleep-related timeouts and full-profile replay. The accompanying
+workflow/runner commit changes development assets; it does not change the
+library or regression cases. `master` is outside
 this integration. Future pushes and merges require the maintainer's approval;
 this approval applies to the current integration.
 
@@ -130,5 +135,9 @@ records and add a fresh record for newly executed native tests.
 
 The [initial AMD record](windows-amd-2026-11-15.md) and
 [AVX-512/ARM POSIX follow-up](windows-avx512-2026-11-15.md) cover earlier executed
-matrices. They remain historical evidence; this workflow adds no native Mac
-result. Native Mac validation is the next execution step on the updated branch.
+matrices. They remain historical evidence. The
+[native Mac report](mac-arm-2026-11-15.md) records the subsequently executed
+8,036-case matrix at `465436d`. The [status index](README.md) separates that
+result from the earlier Windows checkpoints; a Windows run at the same exact
+revision has not been recorded here. Add a fresh dated report for the next
+Windows execution rather than rewriting either historical Windows record.
