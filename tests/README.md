@@ -5,13 +5,15 @@ division, conversions, permutations, gather/scatter, protected-page memory
 boundaries, namespace/ABI contracts, 256/512 composition, FP environment and
 bounded numerical functions. Independent scalar/Decimal references provide
 expected values. No application-specific test or proprietary dependency is part
-of this suite. POSIX protected-page tests currently target macOS/Linux; other
-test toolchains remain unvalidated.
+of this suite. Protected-page tests use POSIX memory APIs on macOS/Linux and
+VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries.
 
 For testing on an Intel Windows machine, see the
 [Windows Intel agent handoff](../docs/validation/windows-intel-handoff.md).
-Native Windows testing is the priority; the handoff describes the required
-harness work before the full suite can run there.
+The handoff describes checkout verification, native toolchain/ISA detection,
+evidence capture and the execution matrix. Label physical CPU coverage accurately.
+See the [native Windows AMD results](../docs/validation/windows-amd-2026-11-15.md)
+for the executed matrix and outstanding gates.
 
 Run from the repository root with CMake 3.20+, Python 3.9+ and Clang/GCC:
 
@@ -32,6 +34,42 @@ ARM64 compiler target. For strict UBSan use a separate Debug directory with
 `-DVCL_SANITIZE=ON` and run with
 `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`. Sanitizer recovery is disabled.
 ASan hangs during startup on the current validation host and is not retried.
+
+## Native Windows
+
+Use an x64 Native Tools developer PowerShell with MSVC, CMake, Ninja and Python
+available. Choose fresh build directories and check each command's exit code:
+
+```powershell
+cmake -S . -B build/windows-msvc-release -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_BUILD_TYPE=Release -DVCL_BACKEND=1 -DVCL_BUILD_TESTS=ON -DVCL_BUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build/windows-msvc-release --parallel 3 --verbose
+ctest --test-dir build/windows-msvc-release --show-only=json-v1
+ctest --test-dir build/windows-msvc-release --output-on-failure --no-tests=error --timeout 60 --parallel 3 --output-junit results.xml
+```
+
+Repeat with a separate Debug directory and `-DCMAKE_BUILD_TYPE=Debug`. MSVC uses
+`/fp:strict` for ordinary regression targets: rounding-mode changes, NaNs and
+signed zero remain observable, and implicit contraction is disabled. Only
+`fp_classification` uses `/fp:fast`, a broader MSVC stress option than GNU
+`-ffinite-math-only`; it is not an exact flag equivalent. Clang's GNU driver uses
+`-ffp-contract=off` and selected tests use `-frounding-math`; clang-cl forwards
+these options with `/clang:`. Its classification target retains precisely
+`-ffinite-math-only`.
+
+Use a native x64 `clang++` or `clang-cl` executable, checking its default target
+before configuring. Syntax probes use temporary source files and each driver's
+options, and carry the configured global/ISA flags. Positive controls reject
+unsupported options before a negative contract can be counted as passing.
+
+MSVC does not provide UBSan. For GNU-style native Clang, first verify that an
+intentional-UB probe stops with the expected diagnostic. Then use
+`-DVCL_SANITIZE=ON` and `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`.
+The tested Visual Studio Clang 20.1.8 runtime requires the static release CRT:
+add `-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded` even in Debug. Debug compilation
+still uses `-O0` and debug information; this does not claim Debug CRT coverage.
+Other installed runtimes may have different constraints. Sanitizer compilation
+or link failure is an unavailable gate, never a pass. The sanitizer harness
+requires the GNU driver; clang-cl is covered without UBSan.
 
 ## Optional pinned upstream matrix
 
@@ -55,6 +93,14 @@ matrix is intentionally smaller than the entire upstream suite.
 The upstream matrix targets SSE4.2 for x86. Use a separately configured local
 SSE2 build for minimum-ISA coverage. Physical Intel/AMD, other ARM platforms,
 FP16 and unavailable x86 ISAs remain separate coverage gates.
+
+On Windows, fetch the same revision with Git as described in the handoff and
+pass its path with `-DVCL_TESTBENCH_DIR=build/_deps/testbench`. MSVC uses
+`/arch:SSE4.2` when supported; older MSVC retains default SSE2 compiler codegen
+with explicit `INSTRSET=6` intrinsics for the pinned targets. GNU-style Clang
+uses `-msse4.2`, and clang-cl uses `/clang:-msse4.2`. The ordinary local targets
+remain at the baseline unless global target flags explicitly select another ISA.
+Verify CPU and OS state support before executing these or higher-ISA binaries.
 
 ## Independent fixtures
 

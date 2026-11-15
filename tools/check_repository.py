@@ -26,7 +26,7 @@ NATIVE = ['vcl_config.h', 'instrset_neon.h', 'instrset_helpers.h',
 TEST_SYSTEM_HEADERS = {
     'algorithm', 'array', 'cfenv', 'climits', 'cmath', 'cstddef', 'cstdint',
     'cstdio', 'cstdlib', 'cstring', 'initializer_list', 'limits', 'sys/mman.h',
-    'type_traits', 'unistd.h', 'utility', 'vector',
+    'type_traits', 'unistd.h', 'utility', 'vector', 'windows.h',
 }
 
 

@@ -15,6 +15,7 @@
  */
 
 #include "vectorclass.h"
+#include "scalar_bits.h"
 #include <cfenv>
 #include <algorithm>
 #include <initializer_list>
@@ -55,8 +56,8 @@ template<class V,class T> void integer_edges() {
         }
       }
       auto m=x<y; uint64_t expected=0; for(int i=0;i<n;++i) expected|=uint64_t(a[i]<b[i])<<i;
-      CHECK(to_bits(m)==expected); CHECK(horizontal_count(m)==__builtin_popcountll(expected));
-      CHECK(horizontal_find_first(m)==(expected?__builtin_ctzll(expected):-1));
+      CHECK(to_bits(m)==expected); CHECK(horizontal_count(m)==vcl_test::scalar_popcount(expected));
+      CHECK(horizontal_find_first(m)==vcl_test::scalar_first_bit(expected));
       decltype(m) from_bits; from_bits.load_bits(expected); CHECK(to_bits(from_bits)==expected);
       select(m,x,y).store(out); for(int i=0;i<n;++i) CHECK(out[i]==(a[i]<b[i]?a[i]:b[i]));
       if constexpr(sizeof(T)<=2) {
@@ -93,7 +94,12 @@ template<class V,class T,class U> void fp_edges() {
     }
 #endif
 }
-__attribute__((noinline)) Vec4i current_round(Vec4f x) { return roundi(x); }
+#if defined(_MSC_VER)
+__declspec(noinline)
+#else
+__attribute__((noinline))
+#endif
+Vec4i current_round(Vec4f x) { return roundi(x); }
 int main() {
     std::fenv_t saved_env; std::fegetenv(&saved_env); reset_control_word();
     integer_edges<Vec16c,int8_t>(); integer_edges<Vec16uc,uint8_t>(); integer_edges<Vec8s,int16_t>(); integer_edges<Vec8us,uint16_t>();

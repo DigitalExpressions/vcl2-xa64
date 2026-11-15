@@ -6,6 +6,9 @@ than full-range scalar-libm replacements. Use the documented FP environment;
 validation uses nearest rounding and flush-to-zero disabled unless a test
 explicitly exercises another supported mode. Explicit FMA helpers remain fused;
 correctness/benchmark builds disable implicit contraction with `-ffp-contract=off`.
+Native MSVC regression targets use `/fp:strict` for the same contraction and
+FP-environment requirements. The separate classification stress target uses
+`/fp:fast` on MSVC; no broad fast-math option applies to the ordinary suite.
 
 | Surface | Scope |
 | --- | --- |

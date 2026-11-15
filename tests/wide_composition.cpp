@@ -15,6 +15,7 @@
  */
 
 #include "vectorclass.h"
+#include "scalar_bits.h"
 #include "vectormath_common.h"
 #include <algorithm>
 #include <array>
@@ -25,8 +26,7 @@
 #include <limits>
 #include <type_traits>
 #include <utility>
-#include <sys/mman.h>
-#include <unistd.h>
+#include "protected_memory.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif
@@ -97,17 +97,17 @@ template<class V,class M> void structure_and_memory() {
     for(int i=0;i<=n;++i) { V cut=a; cut.cutoff(i); for(int j=0;j<n;++j) CHECK(cut[j]==(j<i?input[j]:T(0))); }
     M alternating; alternating.load_bits(decltype(to_bits(M()))(0xaaaaaaaaaaaaaaaaull)); auto abi=wide_abi(V(T(1)),V(T(2)),alternating);
     for(int i=0;i<n;++i) CHECK(abi[i]==(i%2?T(3):T(1)));
-    const long page=sysconf(_SC_PAGESIZE); void* mem=mmap(nullptr,2*page,PROT_READ|PROT_WRITE,MAP_ANON|MAP_PRIVATE,-1,0);
-    CHECK(mem!=MAP_FAILED); if(mem==MAP_FAILED) return;
-    CHECK(mprotect(static_cast<char*>(mem)+page,page,PROT_NONE)==0);
+    const size_t page=vcl_test::page_size();
+    vcl_test::ProtectedMemory mem(2*page);
+    mem.writable(0,page);
     for(int count=0;count<=n;++count) {
-        T* p=reinterpret_cast<T*>(static_cast<char*>(mem)+page)-count;
+        T* p=reinterpret_cast<T*>(mem.data()+page)-count;
         for(int i=0;i<count;++i) p[i]=input[i];
         V loaded; loaded.load_partial(count,p);
         for(int i=0;i<n;++i) CHECK(loaded[i]==(i<count?input[i]:T(0)));
         a.store_partial(count,p); for(int i=0;i<count;++i) CHECK(p[i]==input[i]);
     }
-    CHECK(munmap(mem,2*page)==0);
+    CHECK(mem.release());
     alignas(64) T aligned[n]; a.store_a(aligned); V load; load.load_a(aligned); load.store_nt(aligned);
     for(int i=0;i<n;++i) CHECK(aligned[i]==input[i]);
 }
@@ -124,8 +124,8 @@ template<class M> void masks() {
     CHECK(horizontal_and(M(true))); CHECK(!horizontal_or(M(false)));
     for(unsigned i=0;i<65536;++i) {
         const uint64_t pattern=(uint64_t(i)|(uint64_t(i^0x5a5a)<<16)|(uint64_t(i^0xa5a5)<<32)|(uint64_t(i^0xffff)<<48))&all;
-        M a; a.load_bits(decltype(to_bits(M()))(pattern)); CHECK(to_bits(a)==pattern); CHECK(horizontal_count(a)==__builtin_popcountll(pattern));
-        CHECK(horizontal_find_first(a)==(pattern?__builtin_ctzll(pattern):-1)); CHECK(to_bits(!a)==(all^pattern));
+        M a; a.load_bits(decltype(to_bits(M()))(pattern)); CHECK(to_bits(a)==pattern); CHECK(horizontal_count(a)==vcl_test::scalar_popcount(pattern));
+        CHECK(horizontal_find_first(a)==vcl_test::scalar_first_bit(pattern)); CHECK(to_bits(!a)==(all^pattern));
         M combined(a.get_low(),a.get_high()); CHECK(to_bits(combined)==pattern); CHECK(horizontal_and(a==combined));
         a.insert(n/2,true); CHECK(to_bits(a)==(pattern|(uint64_t(1)<<(n/2))));
     }
@@ -186,15 +186,16 @@ template<class V,size_t... I> V repeated_gather(Scalar<V> const* p,std::index_se
 }
 template<int N,class V,class I> void table_boundary() {
     using T=Scalar<V>; using IT=Scalar<I>; constexpr int count=N>0?N:0;
-    const long page=sysconf(_SC_PAGESIZE); void* mem=mmap(nullptr,2*page,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANON,-1,0);
-    CHECK(mem!=MAP_FAILED); if(mem==MAP_FAILED) return; CHECK(mprotect(static_cast<char*>(mem)+page,page,PROT_NONE)==0);
-    T* table=reinterpret_cast<T*>(static_cast<char*>(mem)+page)-count;
+    const size_t page=vcl_test::page_size();
+    vcl_test::ProtectedMemory mem(2*page);
+    mem.writable(0,page);
+    T* table=reinterpret_cast<T*>(mem.data()+page)-count;
     for(int i=0;i<count;++i) table[i]=T(i+3);
     IT ix[I::size()]; for(int i=0;i<I::size();++i) { if constexpr(N>0) ix[i]=IT(i%N); else ix[i]=0; }
     I index; index.load(ix); V result=lookup<N>(index,table);
     for(int i=0;i<V::size();++i) CHECK(result[i]==(N>0?T(int(ix[i])+3):T(0)));
     if constexpr(N==1) CHECK(horizontal_and(repeated_gather<V>(table,std::make_index_sequence<V::size()>{})==V(3)));
-    munmap(mem,2*page);
+    CHECK(mem.release());
 }
 template<class V,class I> void tables() { table_boundary<-1,V,I>(); table_boundary<0,V,I>(); table_boundary<1,V,I>(); table_boundary<3,V,I>(); table_boundary<V::size()-1,V,I>(); table_boundary<V::size()+1,V,I>(); }
 template<unsigned B> void byte_shift() {
@@ -235,14 +236,15 @@ template<class V> void wide_fp() {
 }
 template<class V,class I> void scatter_bounds() {
     using T=Scalar<V>; using IT=Scalar<I>; constexpr int n=V::size();
-    const long page=sysconf(_SC_PAGESIZE); void* mem=mmap(nullptr,2*page,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANON,-1,0);
-    CHECK(mem!=MAP_FAILED); if(mem==MAP_FAILED) return; CHECK(mprotect(static_cast<char*>(mem)+page,page,PROT_NONE)==0);
-    T* out=reinterpret_cast<T*>(static_cast<char*>(mem)+page)-n; IT ix[n]; T data[n];
+    const size_t page=vcl_test::page_size();
+    vcl_test::ProtectedMemory mem(2*page);
+    mem.writable(0,page);
+    T* out=reinterpret_cast<T*>(mem.data()+page)-n; IT ix[n]; T data[n];
     for(int i=0;i<n;++i) { out[i]=T(0); ix[i]=IT(i); data[i]=T(i+1); }
     ix[0]=IT(-1); ix[n-1]=IT(n); I indexes; indexes.load(ix); V values; values.load(data);
     scatter(indexes,n,values,out);
     CHECK(out[0]==T(0) && out[n-1]==T(0)); for(int i=1;i<n-1;++i) CHECK(out[i]==data[i]);
-    munmap(mem,2*page);
+    CHECK(mem.release());
 }
 void conversions_and_fp() {
     Vec4f f(1,2,3,4); auto d=to_double(f); auto again=to_float(d); for(int i=0;i<4;++i) CHECK(d[i]==i+1 && again[i]==i+1);

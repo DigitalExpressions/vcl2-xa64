@@ -16,6 +16,7 @@
 
 #include "vectorclass.h"
 #include "vectormath_common.h"
+#include "scalar_bits.h"
 #include <array>
 #include <cfenv>
 #include <cmath>
@@ -164,12 +165,14 @@ template<class Mask,class IV> void masks() {
     using Expected=typename std::conditional<Mask::size()==16,uint16_t,uint8_t>::type;
     static_assert(std::is_same<decltype(to_bits(Mask())),Expected>::value);
     for(unsigned i=0;i<=all;++i) {
-        Mask m; m.load_bits(Expected(i)); CHECK(to_bits(m)==i); CHECK(horizontal_count(m)==__builtin_popcount(i));
-        CHECK(horizontal_find_first(m)==(i?__builtin_ctz(i):-1)); CHECK(horizontal_and(m)==(i==all)); CHECK(horizontal_or(m)==bool(i));
+        Mask m; m.load_bits(Expected(i)); CHECK(to_bits(m)==i); CHECK(horizontal_count(m)==vcl_test::scalar_popcount(i));
+        CHECK(horizontal_find_first(m)==vcl_test::scalar_first_bit(i)); CHECK(horizontal_and(m)==(i==all)); CHECK(horizontal_or(m)==bool(i));
         CHECK(to_bits(!m)==(all^i)); CHECK(horizontal_and(m==m)); CHECK(!horizontal_or(m!=m));
         IV broad(m);
 #if VCL_ARCH_ARM64 || INSTRSET < 10
-        Mask back(broad); CHECK(to_bits(back)==i);
+        if constexpr(std::is_same<Mask,Vec4fb>::value) { Mask back{Vec4ib(broad)}; CHECK(to_bits(back)==i); }
+        else if constexpr(std::is_same<Mask,Vec2db>::value) { Mask back{Vec2qb(broad)}; CHECK(to_bits(back)==i); }
+        else { Mask back(broad); CHECK(to_bits(back)==i); }
 #endif
         CHECK(horizontal_min(m)==(i==all)); CHECK(horizontal_max(m)==bool(i));
         for(int lane=0;lane<Mask::size();++lane) CHECK(broad[lane]==(i&(1u<<lane)?-1:0));
@@ -190,7 +193,7 @@ void conversions() {
     reset_control_word(); auto f=to_float(Vec2d(1.25,-2.5)); CHECK(f[0]==1.25f && f[1]==-2.5f && equal_bits(f[2],0.f) && equal_bits(f[3],0.f));
     Vec16c raw=Vec16c(-1); Vec4f rf= reinterpret_f(raw); Vec2d rd=reinterpret_d(raw); Vec4i back(reinterpret_i(rf)); Vec2q backd(reinterpret_i(rd));
     CHECK(horizontal_and(back==Vec4i(-1))); CHECK(horizontal_and(backd==Vec2q(-1)));
-    CHECK(equal_bits(reinterpret_f(rf)[0],rf[0])); CHECK(equal_bits(reinterpret_d(rd)[0],rd[0]));
+    CHECK(equal_bits(Vec4f(reinterpret_f(rf))[0],rf[0])); CHECK(equal_bits(Vec2d(reinterpret_d(rd))[0],rd[0]));
     auto perm=permute4<3,2,1,0>(Vec4i(Vec4fb(true,false,false,true))); Vec4i p(perm); CHECK(p[0]==-1 && p[1]==0 && p[2]==0 && p[3]==-1);
 }
 template<class V,class T> void rotations() {
@@ -206,7 +209,7 @@ void raw_helpers() {
     CHECK(!horizontal_or(andnot(a,a))); a^=a; CHECK(!horizontal_or(a)); a|=Vec4i(-1); CHECK(horizontal_and(a)); a&=zero; CHECK(!horizontal_or(a));
     Vec128b choice=selectb(Vec128b(Vec4i(-1)),Vec128b(Vec4i(7)),zero); Vec4i result(choice); CHECK(horizontal_and(result==Vec4i(7)));
     Vec16c lanes(-1); lanes.insert(3,0); CHECK(!horizontal_and(Vec128b(lanes))); CHECK(horizontal_or(Vec128b(lanes)));
-    Vec4f f(1); Vec2q words=reinterpret_i(f); Vec16c bytes=reinterpret_i(f); CHECK(equal_bits(reinterpret_f(words)[0],f[0])); CHECK(equal_bits(reinterpret_f(bytes)[0],f[0]));
+    Vec4f f(1); Vec2q words=reinterpret_i(f); Vec16c bytes=reinterpret_i(f); CHECK(equal_bits(Vec4f(reinterpret_f(words))[0],f[0])); CHECK(equal_bits(Vec4f(reinterpret_f(bytes))[0],f[0]));
     Vec4i ints=reinterpret_i(words); CHECK(horizontal_and(Vec4ui(ints)==Vec4ui(0x3f800000u)));
 #if VCL_BACKEND == VCL_BACKEND_NEON
     Vec4f via_native; via_native=f.native(); CHECK(via_native[0]==1.f);

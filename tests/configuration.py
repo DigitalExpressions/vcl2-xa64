@@ -14,12 +14,19 @@
 
 """Compile-time contracts for backend isolation, header order, and width guards."""
 import pathlib
+import re
 import subprocess
 import sys
+import tempfile
 
 compiler, root = sys.argv[1:3]
-base = [compiler, "-std=c++17", "-fsyntax-only", "-I" + root, "-x", "c++", "-"]
-base += sys.argv[4:]
+driver = sys.argv[4].split("=", 1)[1] if len(sys.argv) > 4 and sys.argv[4].startswith("--driver=") else "gnu"
+target_flags = sys.argv[5:] if len(sys.argv) > 4 and sys.argv[4].startswith("--driver=") else sys.argv[4:]
+if driver in ("msvc", "clang-cl"):
+    base = [compiler, "/nologo", "/std:c++17", "/Zs", "/TP", "/WX", "/I" + root]
+else:
+    base = [compiler, "-std=c++17", "-fsyntax-only", "-I" + root, "-x", "c++"]
+base += target_flags
 cases = [
     (True, [], '#include "vectorclass.h"\nstatic_assert(MAX_VECTOR_SIZE==512);\n'),
     (True, ["-DMAX_VECTOR_SIZE=128"], '#include "vectorclass.h"\nstatic_assert(MAX_VECTOR_SIZE==128);\n'),
@@ -133,9 +140,28 @@ if sys.argv[3] == "arm64":
             for typ in types:
                 source+=typ+' f('+typ+' x) { return sinh(x)+cosh(x)+tanh(x)+asinh(x)+acosh(x)+atanh(x); }\n'
             cases.append((True,flags+(["-DVCL_NAMESPACE=isolated", "-DSIGNED_ZERO=1"] if ns else []),source))
-for i, (success, flags, source) in enumerate(cases):
-    result = subprocess.run(base+flags, input=source, text=True, capture_output=True)
-    if (result.returncode == 0) != success:
-        sys.stderr.write(f"Configuration case {i} failed expectations:\n{result.stderr}")
-        sys.exit(1)
+with tempfile.TemporaryDirectory(prefix="vcl-configuration-") as directory:
+    path = pathlib.Path(directory) / "probe.cpp"
+    checked_flags = set()
+    for i, (success, flags, source) in enumerate(cases):
+        if driver in ("msvc", "clang-cl"):
+            flags = ["/D" + flag[2:] if flag.startswith("-D") else flag for flag in flags]
+        command = base + flags + [str(path)]
+        # A failure must come from the contract, never an unusable toolchain or
+        # unsupported target option. Check every distinct flag set positively.
+        key = tuple(flags)
+        if key not in checked_flags:
+            path.write_text("int vcl_configuration_positive_control;\n")
+            control = subprocess.run(command, text=True, capture_output=True, cwd=directory)
+            rejected_option = re.search(r"D9002|unknown (?:argument|option)|unsupported (?:argument|option)|argument unused", control.stdout + control.stderr, re.I)
+            if control.returncode or rejected_option:
+                sys.stderr.write(f"Configuration flags rejected: {command!r}\n{control.stdout}{control.stderr}")
+                sys.exit(1)
+            checked_flags.add(key)
+        path.write_text(source)
+        result = subprocess.run(command, text=True, capture_output=True, cwd=directory)
+        print(f"case {i}: expected_success={success} exit={result.returncode} command={command!r}")
+        if (result.returncode == 0) != success:
+            sys.stderr.write(f"Configuration case {i} failed expectations:\n{result.stdout}{result.stderr}")
+            sys.exit(1)
 print(f"{len(cases)} configuration contracts passed")

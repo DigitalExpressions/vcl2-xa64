@@ -25,8 +25,7 @@
 #include <cstring>
 #include <limits>
 #include <type_traits>
-#include <sys/mman.h>
-#include <unistd.h>
+#include "protected_memory.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif
@@ -59,18 +58,18 @@ template<class V,class T> void floats() {
     CHECK(horizontal_and(is_finite(x))); CHECK(!horizontal_or(is_finite(q)));
     min(q,x).store(out); for(int i=0;i<n;++i) CHECK(out[i]==a[i]);
     max(zero,negzero).store(out); for(T f:out) CHECK(std::signbit(f));
-    const long page=sysconf(_SC_PAGESIZE);
-    void* mem=mmap(nullptr,2*page,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANON,-1,0);
-    CHECK(mem!=MAP_FAILED); if(mem!=MAP_FAILED) {
-      CHECK(mprotect(static_cast<char*>(mem)+page,page,PROT_NONE)==0);
+    const size_t page=vcl_test::page_size();
+    vcl_test::ProtectedMemory mem(2*page);
+    mem.writable(0,page);
+    {
       for(int count=0;count<=n;++count) {
-        T* p=reinterpret_cast<T*>(static_cast<char*>(mem)+page)-count;
+        T* p=reinterpret_cast<T*>(mem.data()+page)-count;
         for(int i=0;i<count;++i) p[i]=T(i+1);
         V part; part.load_partial(count,p); part.store(out);
         for(int i=0;i<n;++i) CHECK(out[i]==(i<count?T(i+1):T(0)));
         x.store_partial(count,p); for(int i=0;i<count;++i) CHECK(p[i]==a[i]);
       }
-      munmap(mem,2*page);
+      CHECK(mem.release());
     }
 }
 int main() {

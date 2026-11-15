@@ -24,8 +24,7 @@
 #include <limits>
 #include <type_traits>
 #include <utility>
-#include <sys/mman.h>
-#include <unistd.h>
+#include "protected_memory.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif
@@ -195,11 +194,11 @@ template<int Registers,class V,class Index> void register_lookups() {
     }
 }
 struct Guarded {
-    size_t page=size_t(sysconf(_SC_PAGESIZE));
+    size_t page=vcl_test::page_size();
     size_t capacity;
+    vcl_test::ProtectedMemory allocation;
     void* memory;
-    Guarded(size_t minimum=16384):capacity(((std::max(page,minimum)+page-1)/page)*page),memory(mmap(nullptr,capacity+2*page,PROT_NONE,MAP_PRIVATE|MAP_ANON,-1,0)) { if(memory==MAP_FAILED) { std::perror("mmap"); std::abort(); } if(mprotect(static_cast<char*>(memory)+page,capacity,PROT_READ|PROT_WRITE)!=0) std::abort(); }
-    ~Guarded() { munmap(memory,capacity+2*page); }
+    Guarded(size_t minimum=16384):capacity(((std::max(page,minimum)+page-1)/page)*page),allocation(capacity+2*page),memory(allocation.data()) { allocation.writable(page,capacity); }
     template<class T> T* tail(size_t count) { CHECK(count*sizeof(T)<=capacity); return reinterpret_cast<T*>(static_cast<char*>(memory)+page+capacity)-count; }
 };
 template<int N,class V,class Index> void memory_lookups() {

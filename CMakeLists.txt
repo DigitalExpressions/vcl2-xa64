@@ -25,6 +25,10 @@ option(VCL_BUILD_EXAMPLES "Build standalone usage examples" OFF)
 option(VCL_BUILD_BENCHMARKS "Build standard vector/matrix benchmark programs" OFF)
 option(VCL_BUILD_GFXMATH_EXAMPLE "Build the optional external GfxMath example" OFF)
 option(VCL_SANITIZE "Use strict nonrecovering UBSan for tests and benchmarks" OFF)
+if(VCL_SANITIZE AND (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC" OR
+    CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC"))
+  message(FATAL_ERROR "Strict UBSan requires the GNU-style Clang/GCC driver and a working runtime; use clang++ on Windows and probe it first")
+endif()
 set(VCL_TESTBENCH_DIR "" CACHE PATH "Optional separately fetched pinned upstream testbench")
 set(VCL_GFXMATH_DIR "" CACHE PATH "Optional external GfxMath checkout, for its example only")
 

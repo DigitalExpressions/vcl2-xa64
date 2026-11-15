@@ -22,8 +22,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <type_traits>
-#include <sys/mman.h>
-#include <unistd.h>
+#include "protected_memory.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif
@@ -32,10 +31,10 @@ int failures; uint64_t checks;
 #define CHECK(x) do { ++checks; if(!(x)) { if(failures<16) std::fprintf(stderr,"line %d: %s\n",__LINE__,#x); ++failures; } } while(0)
 template<class V> using Scalar=decltype(V()[0]);
 struct Guarded {
-    size_t page=size_t(sysconf(_SC_PAGESIZE));
-    unsigned char* memory=static_cast<unsigned char*>(mmap(nullptr,3*page,PROT_NONE,MAP_ANON|MAP_PRIVATE,-1,0));
-    Guarded() { if(memory==MAP_FAILED || mprotect(memory+page,page,PROT_READ|PROT_WRITE)!=0) std::abort(); }
-    ~Guarded() { munmap(memory,3*page); }
+    size_t page=vcl_test::page_size();
+    vcl_test::ProtectedMemory allocation{3*page};
+    unsigned char* memory=allocation.data();
+    Guarded() { allocation.writable(page,page); }
     unsigned char* begin() { return memory+page; }
     unsigned char* end() { return memory+2*page; }
 };
