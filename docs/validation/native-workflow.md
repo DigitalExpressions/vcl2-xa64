@@ -1,9 +1,10 @@
 # Native validation and branch workflow
 
-The [integration plan](../integration-plan.md) tracks the transition from
-`neon-port` to the existing default `master`, with manual native validation, port review and developer
-documentation cleanup required before retiring branches. The default branch
-will not be renamed. See the [developer index](../README.md) for current
+The [integration plan](../integration-plan.md) records the approved merge of
+`neon-port` into the existing default `master` through PR #1. Port review and
+developer documentation cleanup are complete; the maintainer requested keeping
+both existing branches. The default branch will not be renamed.
+See the [developer index](../README.md) for current
 instructions and the [Windows runner guide](windows-runner.md) for manual checks.
 The maintainer selected manual test execution on the Mac M2 and AMD Windows
 hosts only; hosted GitHub Actions test workflows are removed.
@@ -28,19 +29,16 @@ then update the index with the exact tested revision and actual outcome.
 
 ## Shared branch and integration
 
-`neon-port` is the shared branch to fetch on both hosts. Topic branches such as
-`windows-native-validation` start from `neon-port` and hold focused changes.
-Integrate approved work into `neon-port` and push that branch to `origin` so
-both machines can test the same commit. Prefer a fast-forward when the branch
-relationship permits it. Inspect divergence before any integration; preserve
-unrelated work and use a fresh worktree when necessary. Record the tested HEAD
-and tree on each host, rather than relying on branch names alone.
+`master` is the shared branch to fetch on both hosts after the approved merge
+of PR #1 at `732f3e9`. Start short-lived topic branches from `master` for new
+work and upstream updates, then integrate approved changes through reviewed
+PRs. Keep `neon-port` and `windows-native-validation` as requested. Preserve the
+`upstream` remote for original VCL; retirement requires separate approval.
 
-This is the integration-preparation arrangement. After the approved PR is
-merged, `master` becomes the shared base; use short-lived topic branches for
-new work and upstream updates. Preserve the `upstream` remote for original VCL.
-Do not retire branches until documentation cleanup and integration are complete
-and the maintainer approves their retirement.
+Both machines should test the same commit when comparing results. Inspect
+divergence before any integration; preserve unrelated work and use a fresh
+worktree when necessary. Record the tested HEAD and tree on each host, rather
+than relying on branch names alone. A merge does not establish a new native pass.
 
 On 2026-11-15 the maintainer approved fast-forwarding `neon-port` through the
 five `windows-native-validation` commits ending at
@@ -49,17 +47,18 @@ the updated `neon-port` to `origin`. Subsequent native Mac confirmation at
 `465436d` is recorded in the [Mac ARM report](mac-arm-2026-11-15.md), including
 its initial sleep-related timeouts and full-profile replay. The accompanying
 workflow/runner commit changes development assets; it does not change the
-library or regression cases. `master` is outside
-this integration. Future pushes and merges require the maintainer's approval;
-this approval applies to the current integration.
+library or regression cases. That earlier approval excluded `master`. The
+maintainer subsequently approved merging PR #1 into `master` while keeping
+branches; the merge completed on 2026-11-15. Future pushes and merges require
+the maintainer's approval; this approval applies to that completed integration.
 
 From a clean existing Mac checkout:
 
 ```sh
 git status --short --branch
 git fetch origin
-git switch neon-port
-git pull --ff-only origin neon-port
+git switch master
+git pull --ff-only origin master
 git rev-parse HEAD
 git rev-parse 'HEAD^{tree}'
 ```
@@ -69,7 +68,7 @@ create a separate worktree instead of resetting or overwriting it:
 
 ```sh
 git fetch origin
-git worktree add --detach ../vcl2-xa64-native-validation origin/neon-port
+git worktree add --detach ../vcl2-xa64-native-validation origin/master
 ```
 
 Choose a fresh path and run subsequent commands from that worktree's root.
@@ -126,7 +125,7 @@ coverage gap or failure, never a sanitizer pass.
 
 The older offline packet is pinned to `943923a`; its bundled runner remains a
 reproduction of that exact checkpoint. Use the in-tree runner above for an
-updated `neon-port` checkout. Do not change the packet's checksums or pretend
+updated `master` checkout. Do not change the packet's checksums or pretend
 its older source revision is the current HEAD.
 
 ## Native AMD Windows run and evidence

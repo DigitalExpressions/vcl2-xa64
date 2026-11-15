@@ -2,8 +2,9 @@
 
 Start with the root [README](../README.md) for library usage and
 [CONTRIBUTING](../CONTRIBUTING.md) for development rules. The default branch
-remains `master`; the ARM port currently uses `neon-port` while its integration
-PR is prepared. Both the Mac M2 and AMD Windows checkouts use that shared source.
+remains `master` and now includes the ARM port merged through PR #1. Use it as
+the shared base for the Mac M2 and AMD Windows checkouts. The existing port and
+Windows validation branches are retained at the maintainer's request.
 
 | Need | Document |
 | --- | --- |
@@ -26,8 +27,8 @@ them to imply validation of a later commit. Validation applies only to its
 recorded source and profiles. Raw evidence stays under ignored `build/` and
 transfers separately.
 
-After approved integration, `master` becomes the common development base.
+`master` is the common development base.
 Use short-lived topic branches for features, fixes and upstream VCL updates,
 review pull requests, and tag releases for consumers. The original VCL remains
-available through the `upstream` remote. Complete the integration plan and
-obtain approval before retiring the port/topic branches.
+available through the `upstream` remote. Keep the existing branches; release
+publication and branch retirement require separate approval.

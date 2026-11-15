@@ -1,10 +1,12 @@
 # Port integration review
 
 Target: integrate `neon-port` into the existing default `master` after review
-and approval. The [integration plan](integration-plan.md) records progress and
-where to resume. The maintainer selected **manual native testing on Mac M2 and
-AMD Windows only**; hosted CI is removed. This review does not authorize a
-merge, branch rename or branch retirement.
+and approval. PR #1 was merged on explicit maintainer approval at `732f3e9`;
+both existing branches are retained as requested. The
+[integration plan](integration-plan.md) records completion and where to resume.
+The maintainer selected **manual native testing on Mac M2 and AMD Windows only**;
+hosted CI is removed. Release publication and branch retirement require
+separate approval; the default branch remains named `master`.
 
 ## Scope and method
 
@@ -87,8 +89,8 @@ The README and backend page previously described physical x86 as unvalidated
 despite native AMD evidence. Current pages now identify the validation index
 and distinguish exact tested revisions, native AMD/M2, emulation and historical
 hosted results. The Apple ASan hang is labeled precisely. The developer index
-links current commands, contracts and runner guidance. Preparation uses
-`neon-port`; approved integration makes `master` the common base. Dated reports
+links current commands, contracts and runner guidance. Preparation used
+`neon-port`; the approved integration makes `master` the common base. Dated reports
 and benchmark data remain unchanged.
 
 ## Evidence for the PR and remaining limits
@@ -114,7 +116,9 @@ toolchains/hosts and ASan remain outside the recorded scope; physical Intel
 is omitted and Direct Neon remains experimental.
 
 Final manual native/documentation preparation checks are recorded and
-[draft PR #1](https://github.com/DigitalExpressions/vcl2-xa64/pull/1) is open for
-the maintainer's decision. After approved integration, verify the `master`
-transition and obtain approval before retiring branches. Use release tags for
-reviewed consumer checkpoints and separate topic branches for upstream updates.
+[PR #1](https://github.com/DigitalExpressions/vcl2-xa64/pull/1) is merged at
+`732f3e9`. The merge tree equals reviewed head `abf7a82`; no native matrix was
+rerun for the merge or completion documentation. The Windows checkout is on
+`master`; the Mac checkout can now follow the native workflow to update.
+Keep both existing branches. Use separate topic branches for future work;
+reviewed releases require separate publication approval.

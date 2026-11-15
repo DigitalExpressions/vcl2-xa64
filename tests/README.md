@@ -9,8 +9,8 @@ of this suite. Protected-page tests use POSIX memory APIs on macOS/Linux and
 VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries.
 
 The maintainer's available native hosts are a Mac M2 (macOS ARM64) and an AMD
-Ryzen 9 7950X (Windows x86-64). During integration preparation, use `neon-port`
-on both hosts; after approved integration use the default `master` branch.
+Ryzen 9 7950X (Windows x86-64). Use the default `master` branch on both hosts
+following the approved merge of PR #1; keep the existing validation branches.
 See [the native validation workflow](../docs/validation/native-workflow.md) for
 branch synchronization, the in-tree Mac runner, evidence capture and coverage
 labels. Physical Intel testing is omitted for now.

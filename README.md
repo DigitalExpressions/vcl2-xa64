@@ -32,9 +32,9 @@ git clone https://github.com/DigitalExpressions/vcl2-xa64.git
 cd vcl2-xa64
 ```
 
-Until the port's integration into `master` is approved, switch to `neon-port`
-for these ARM-enabled sources. After integration, use the default `master`
-branch. See the [integration plan](docs/integration-plan.md) for current progress.
+The default `master` branch includes these ARM-enabled sources following the
+approved merge of PR #1. See the [integration plan](docs/integration-plan.md)
+for the completion record and retained branches.
 
 ### Direct VCL usage
 
@@ -236,7 +236,7 @@ native runner, backend, numerical and contribution instructions. Dated reports r
 their original tested revisions and are separate from current instructions.
 
 The [native validation workflow](docs/validation/native-workflow.md) documents
-the shared `neon-port` branch and the maintainer's Mac M2 ARM64 and AMD Windows
+the shared `master` branch and the maintainer's Mac M2 ARM64 and AMD Windows
 x86-64 test hosts. It includes the Mac runner and evidence handoff; physical
 Intel testing is omitted for now.
 

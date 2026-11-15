@@ -6,15 +6,16 @@ resume notes before continuing that work. The default branch stays `master`.
 
 Use [the native validation workflow](docs/validation/native-workflow.md) to keep
 the maintainer's Mac M2 ARM64 and AMD Windows x86-64 checkouts on the same
-`neon-port` revision during integration preparation. After approved integration,
-`master` becomes the shared base and short-lived topic branches feed it through
-reviewed pull requests. Record native results separately for each host.
+`master` revision following the approved merge of PR #1. Short-lived topic
+branches feed `master` through reviewed pull requests; keep the existing port
+and Windows validation branches. Record native results separately for each host.
 Physical Intel testing is omitted for now. Keep raw evidence under ignored
 `build/`.
 
 Use the [developer documentation index](docs/README.md) and
-[Windows runner guide](docs/validation/windows-runner.md) for current instructions. Before integration,
-review the complete port diff and native evidence from the two physical hosts.
+[Windows runner guide](docs/validation/windows-runner.md) for current instructions.
+The [integration review](docs/integration-review.md) records the port review and
+the native evidence from the two physical hosts.
 Hosted test workflows are disabled; configuration alone does not prove a pass.
 Preserve historical reports and benchmark results during documentation cleanup.
 Complete that cleanup before any branch retirement.
