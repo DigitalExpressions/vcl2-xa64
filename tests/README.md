@@ -9,12 +9,13 @@ of this suite. Protected-page tests use POSIX memory APIs on macOS/Linux and
 VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries.
 
 The maintainer's available native hosts are a Mac M2 (macOS ARM64) and an AMD
-Ryzen 9 7950X (Windows x86-64). Use the shared `neon-port` branch on both hosts.
+Ryzen 9 7950X (Windows x86-64). During integration preparation, use `neon-port`
+on both hosts; after approved integration use the default `master` branch.
 See [the native validation workflow](../docs/validation/native-workflow.md) for
 branch synchronization, the in-tree Mac runner, evidence capture and coverage
 labels. Physical Intel testing is omitted for now.
 
-For testing on an Intel Windows machine, see the
+For reusable native Windows toolchain steps, see the historically named
 [Windows Intel agent handoff](../docs/validation/windows-intel-handoff.md).
 The handoff describes checkout verification, native toolchain/ISA detection,
 evidence capture and the execution matrix. Label physical CPU coverage accurately.
@@ -22,6 +23,9 @@ See the [native Windows AMD results](../docs/validation/windows-amd-2026-11-15.m
 for the executed matrix and outstanding gates.
 The [AVX-512 follow-up](../docs/validation/windows-avx512-2026-11-15.md) records
 the subsequent fixes, native reruns and separately labeled ARM/POSIX emulation.
+The [shared-template Windows evidence review](../docs/validation/windows-amd-2026-11-15-823ca2a.md)
+reconciles the retained counts, source identifiers, retries and evidence checksums.
+Current manual runner instructions are in the [Windows guide](../docs/validation/windows-runner.md).
 
 Run from the repository root with CMake 3.20+, Python 3.9+ and Clang/GCC:
 
@@ -41,9 +45,15 @@ local builds exercise all configured widths. Explicit ARM backends require an
 ARM64 compiler target. For strict UBSan use a separate Debug directory with
 `-DVCL_SANITIZE=ON` and run with
 `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`. Sanitizer recovery is disabled.
-ASan hangs during startup on the current validation host and is not retried.
+The documented Apple-host ASan startup hang is not retried. Native Windows
+ASan is outside the recorded validation and current CI scope.
 
 ## Native Windows
+
+For automatic evidence capture and independent native/guard-page/UBSan
+controls, prefer `tools/run_windows_validation.py` as described in the
+[Windows runner guide](../docs/validation/windows-runner.md). The manual commands below remain useful
+for individual profiles and investigations.
 
 Use an x64 Native Tools developer PowerShell with MSVC, CMake, Ninja and Python
 available. Choose fresh build directories and check each command's exit code:

@@ -29,6 +29,6 @@ strict nonrecovering UBSan are independent safeguards; they do not establish
 ASan coverage on the host where ASan startup hangs.
 
 The implementation and executable tests are the precise contracts. See
-[tests](../tests/README.md) and [migration validation](validation/migration.md)
-for the selected matrix and its scope. No general emulation of ARM exception
-flags/masks or Intel SVML is provided.
+[tests](../tests/README.md) and the [validation index](validation/README.md)
+for current instructions and dated selected matrices. No general emulation
+of ARM exception flags/masks or Intel SVML is provided.

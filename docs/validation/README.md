@@ -35,6 +35,14 @@ archive checksum. Raw Mac archives were not available for this Windows review.
 
 ## Continuing on Windows or Mac
 
+Integration preparation now uses manual testing on the maintainer's Mac M2
+and AMD Windows machines only. Hosted test workflows are removed/disabled.
+The [new manual runner report](windows-amd-2026-11-15-08c3fe8-manual.md) records
+final 160/160 local cases plus the separately identified 2,776-case pinned
+preparation and discarded prototype attempts. It preserves its uncommitted
+snapshot identifiers rather than relabeling an earlier run as a later commit.
+See the [integration plan](../integration-plan.md) for current progress.
+
 1. Inspect the checkout and preserve unrelated work. Record the actual HEAD,
    tree, working-tree state and host before running tests.
 2. Read the report for that exact revision, including its failed attempts and
@@ -72,6 +80,7 @@ publication follow the maintainer's authorization for the current task.
 | --- | --- |
 | [Mac ARM, 2026-11-15](mac-arm-2026-11-15.md) | Native M2, full eight-profile selected matrix at `465436d`; first attempt and replay retained |
 | [Windows AMD evidence review, `823ca2a`](windows-amd-2026-11-15-823ca2a.md) | Shared-template retrospective review: final 5,627 native AMD passes, earlier failures/reruns, exact source comparisons and a checksummed evidence packet; no new native execution |
+| [Windows manual-runner preparation](windows-amd-2026-11-15-08c3fe8-manual.md) | Final manual-only snapshot 160/160, intermediate pinned 2,776/2,776, retained prototype failure and startup failures; exact dirty-source identifiers and checksummed packet |
 | [Windows AVX-512 and ARM/POSIX follow-up](windows-avx512-2026-11-15.md) | Earlier native AMD/MSVC/Clang results and separately labeled emulated ARM/Linux results |
 | [Initial Windows AMD validation](windows-amd-2026-11-15.md) | Earlier native Windows checkpoint, harness changes, initial failures and sanitizer-runtime limits |
 | [Migration validation](migration.md) | Dated migration checkpoint; native ARM and separately labeled translated x86 |

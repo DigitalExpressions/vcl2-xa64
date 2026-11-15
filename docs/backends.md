@@ -23,13 +23,17 @@ On ARM64, legacy x86 capability queries report no x86 hardware features and
 exception flags and masks are not emulated. The header does not change the
 caller's FP environment merely by being included.
 
-Validation currently uses Apple M2/Apple Clang, including translated x86_64
-execution. Physical x86, other ARM hosts, Linux/GCC, additional toolchains and
-unselected APIs remain separately unvalidated. CI is configured to collect
-additional evidence; unrun CI jobs are not claimed as passes.
+Recorded native validation includes Apple M2/Apple Clang and AMD Ryzen Windows
+MSVC/Clang. Earlier translated x86 and QEMU/Linux ARM results are separate
+evidence. Read the [validation index](validation/README.md) for exact tested
+revisions and coverage limits, and the [manual Windows runner](validation/windows-runner.md) for reproducible
+local checks. Other hosts/toolchains and unselected APIs remain separate
+gates; historical automated results do not imply later native passes. Maintainer physical Intel
+testing is omitted for now.
 
 Native x86 FP16 in upstream VCL 2.02.04 requires the standard-library
-`<stdfloat>` header, which is unavailable on the current validation host even
-in C++23 mode. Core instruction-level 12 syntax checks pass; native FP16 runtime
-coverage remains a separate toolchain/hardware gate. See
-[migration validation](validation/migration.md).
+`<stdfloat>` header. The retained migration and Windows probes lacked the
+required standard-library type, and the AMD host lacks AVX-512 FP16. Historical
+instruction-level 12 syntax checks do not establish native FP16 execution. See
+[migration validation](validation/migration.md) and the
+[Windows review](validation/windows-amd-2026-11-15-823ca2a.md).

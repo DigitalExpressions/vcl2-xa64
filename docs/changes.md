@@ -18,7 +18,9 @@ CMake integration, maintained application-independent tests, examples and
 benchmark sources, and excludes local development history and build evidence.
 The upstream [changelog](../changelog.txt) remains preserved. The original local
 experimental source snapshot remains historical and is not overwritten by this
-preparation. No source commit or public release is created by preparing this tree.
+preparation. Current integration progress and release decisions are tracked in
+the [integration plan](integration-plan.md); preparation alone does not establish
+a release or a new validation result.
 
 The VCL2 XA64 migration starts from official VCL 2.02.04 at
 `667577495efaa36a10cbb5d6cb8c942c23913848`. It preserves the newer upstream

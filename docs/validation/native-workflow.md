@@ -1,5 +1,13 @@
 # Native validation and branch workflow
 
+The [integration plan](../integration-plan.md) tracks the transition from
+`neon-port` to the existing default `master`, with manual native validation, port review and developer
+documentation cleanup required before retiring branches. The default branch
+will not be renamed. See the [developer index](../README.md) for current
+instructions and the [Windows runner guide](windows-runner.md) for manual checks.
+The maintainer selected manual test execution on the Mac M2 and AMD Windows
+hosts only; hosted GitHub Actions test workflows are removed.
+
 ## Available hardware
 
 The maintainer has two physical validation hosts:
@@ -27,6 +35,12 @@ both machines can test the same commit. Prefer a fast-forward when the branch
 relationship permits it. Inspect divergence before any integration; preserve
 unrelated work and use a fresh worktree when necessary. Record the tested HEAD
 and tree on each host, rather than relying on branch names alone.
+
+This is the integration-preparation arrangement. After the approved PR is
+merged, `master` becomes the shared base; use short-lived topic branches for
+new work and upstream updates. Preserve the `upstream` remote for original VCL.
+Do not retire branches until documentation cleanup and integration are complete
+and the maintainer approves their retirement.
 
 On 2026-11-15 the maintainer approved fast-forwarding `neon-port` through the
 five `windows-native-validation` commits ending at

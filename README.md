@@ -17,8 +17,9 @@ to compiler target flags.
 The tested native surface includes the portable integer/FP32/FP64 core, masks,
 movement, conversions and the documented in-tree numerical functions.
 [Backend support](docs/backends.md) and [numerical contracts](docs/numerical-contracts.md)
-define the limits. Direct Neon remains experimental; physical x86 and additional
-ARM hosts/toolchains are separate validation gates.
+define the limits. Direct Neon remains experimental. The
+[validation index](docs/validation/README.md) distinguishes native Mac M2 and
+AMD Windows evidence from emulation and untested platforms/toolchains.
 
 ## Use this fork
 
@@ -30,6 +31,10 @@ and add this repository to your compiler’s include path. Compile
 git clone https://github.com/DigitalExpressions/vcl2-xa64.git
 cd vcl2-xa64
 ```
+
+Until the port's integration into `master` is approved, switch to `neon-port`
+for these ARM-enabled sources. After integration, use the default `master`
+branch. See the [integration plan](docs/integration-plan.md) for current progress.
 
 ### Direct VCL usage
 
@@ -225,6 +230,10 @@ cmake --build build/gfx-example -j 3
 For Direct Neon, also select its backend/opt-in and maximum width 512.
 
 ## Validation and performance
+
+The [developer documentation index](docs/README.md) links current build/test,
+native runner, backend, numerical and contribution instructions. Dated reports retain
+their original tested revisions and are separate from current instructions.
 
 The [native validation workflow](docs/validation/native-workflow.md) documents
 the shared `neon-port` branch and the maintainer's Mac M2 ARM64 and AMD Windows
