@@ -446,11 +446,15 @@ static inline Vec16f sign_combine(Vec16f const a, Vec16f const b) {
 
 // Categorization functions
 
+// MSVC 19.44/19.50 can narrow a 512-bit FPCLASS memory broadcast to 128
+// bits. Use integer classification on MSVC to preserve every mask lane, even
+// under /fp:fast; other compilers retain the AVX512DQ FPCLASS path.
+
 // Function is_finite: gives true for elements that are normal, subnormal or zero,
 // false for INF and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec16fb is_finite(Vec16f const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     __mmask16 f = _mm512_fpclass_ps_mask(a, 0x99);
     return _mm512_knot(f);
 #else
@@ -465,7 +469,7 @@ static inline Vec16fb is_finite(Vec16f const a) {
 // false for finite numbers and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec16fb is_inf(Vec16f const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x18);
 #else
     Vec16i t1 = _mm512_castps_si512(a); // reinterpret as 32-bit integer
@@ -477,7 +481,12 @@ static inline Vec16fb is_inf(Vec16f const a) {
 // Function is_nan: gives true for elements that are +NAN or -NAN
 // false for finite numbers and +/-INF
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
-#if INSTRSET >= 10
+#if INSTRSET >= 10 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
+static inline Vec16fb is_nan(Vec16f const a) {
+    Vec16ui bits = _mm512_castps_si512(a);
+    return (bits << 1) > Vec16ui(0xFF000000u);
+}
+#elif INSTRSET >= 10
 static inline Vec16fb is_nan(Vec16f const a) {
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm512_fpclass_ps_mask(a, 0x81);
@@ -506,7 +515,7 @@ static inline Vec16fb is_nan(Vec16f const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec16fb is_subnormal(Vec16f const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x20);
 #else
     Vec16i t1 = _mm512_castps_si512(a);    // reinterpret as 32-bit integer
@@ -521,7 +530,7 @@ static inline Vec16fb is_subnormal(Vec16f const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec16fb is_zero_or_subnormal(Vec16f const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x26);
 #else
     Vec16i t = _mm512_castps_si512(a);            // reinterpret as 32-bit integer
@@ -1092,7 +1101,7 @@ static inline Vec8d sign_combine(Vec8d const a, Vec8d const b) {
 // Function is_finite: gives true for elements that are normal, subnormal or zero,
 // false for INF and NAN
 static inline Vec8db is_finite(Vec8d const a) {
-#if INSTRSET >= 10 // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER)) // __AVX512DQ__
     __mmask8 f = _mm512_fpclass_pd_mask(a, 0x99);
     return __mmask8(_mm512_knot(f));
 #else
@@ -1107,7 +1116,7 @@ static inline Vec8db is_finite(Vec8d const a) {
 // Function is_inf: gives true for elements that are +INF or -INF
 // false for finite numbers and NAN
 static inline Vec8db is_inf(Vec8d const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x18);
 #else
     Vec8q t1 = _mm512_castpd_si512(a);           // reinterpret as 64-bit integer
@@ -1119,7 +1128,12 @@ static inline Vec8db is_inf(Vec8d const a) {
 // Function is_nan: gives true for elements that are +NAN or -NAN
 // false for finite numbers and +/-INF
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
-#if INSTRSET >= 10
+#if INSTRSET >= 10 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
+static inline Vec8db is_nan(Vec8d const a) {
+    Vec8uq bits = _mm512_castpd_si512(a);
+    return (bits << 1) > Vec8uq(0xFFE0000000000000ull);
+}
+#elif INSTRSET >= 10
 static inline Vec8db is_nan(Vec8d const a) {
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm512_fpclass_pd_mask(a, 0x81);
@@ -1148,7 +1162,7 @@ static inline Vec8db is_nan(Vec8d const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec8db is_subnormal(Vec8d const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x20);
 #else
     Vec8q t1 = _mm512_castpd_si512(a); // reinterpret as 64-bit integer
@@ -1163,7 +1177,7 @@ static inline Vec8db is_subnormal(Vec8d const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec8db is_zero_or_subnormal(Vec8d const a) {
-#if INSTRSET >= 10  // __AVX512DQ__
+#if INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x26);
 #else
     Vec8q t = _mm512_castpd_si512(a);            // reinterpret as 32-bit integer
