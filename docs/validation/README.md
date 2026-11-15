@@ -5,6 +5,19 @@ applies to its recorded source and profiles; a branch name alone does not
 identify tested code. Use the [native workflow](native-workflow.md) to run tests
 and the [report template](report-template.md) to record a new result.
 
+## Reusable final verification prompts
+
+1. [Windows final verification prompt](windows-final-verification-prompt.md):
+   prepare/reuse the shared SIMD corpus, capture harness and comparator, freeze
+   the approved source commit, then run native MSVC and Clang validation.
+2. [Mac final verification prompt](mac-final-verification-prompt.md): use the
+   same commit, corpus and policies for native M2 validation and compare the
+   portable results with Windows.
+
+These are execution instructions, not test results. The shared comparison
+harness must be prepared before running both hosts. Portable result files are
+prepared for review and commit; full raw evidence stays under ignored `build/`.
+
 ## Historical shared checkpoint
 
 Source commit: `465436de204ebdd59e9b5071c353df372148b3df`
