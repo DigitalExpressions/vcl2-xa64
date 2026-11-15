@@ -14,6 +14,8 @@ The handoff describes checkout verification, native toolchain/ISA detection,
 evidence capture and the execution matrix. Label physical CPU coverage accurately.
 See the [native Windows AMD results](../docs/validation/windows-amd-2026-11-15.md)
 for the executed matrix and outstanding gates.
+The [AVX-512 follow-up](../docs/validation/windows-avx512-2026-11-15.md) records
+the subsequent fixes, native reruns and separately labeled ARM/POSIX emulation.
 
 Run from the repository root with CMake 3.20+, Python 3.9+ and Clang/GCC:
 
