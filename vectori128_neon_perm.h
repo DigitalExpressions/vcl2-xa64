@@ -21,6 +21,7 @@
 #define VECTORI128_NEON_PERM_H
 #include "vectori128_neon.h"
 #include <array>
+#include <climits>
 #include <cstddef>
 #ifdef VCL_NAMESPACE
 namespace VCL_NAMESPACE {

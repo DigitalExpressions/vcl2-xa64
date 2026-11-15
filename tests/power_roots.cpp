@@ -20,6 +20,7 @@
 #include <cfenv>
 #include <cmath>
 #include <cstdio>
+#include <cstdint>
 #include <cstring>
 #include <limits>
 #include <type_traits>
