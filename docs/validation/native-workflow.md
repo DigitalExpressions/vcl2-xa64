@@ -131,8 +131,8 @@ its older source revision is the current HEAD.
 ## Native AMD Windows run and evidence
 
 Prioritize MSVC on the AMD host. Follow [the regression instructions](../../tests/README.md)
-and the reusable platform/toolchain steps in the
-[Windows handoff](windows-intel-handoff.md), labeling execution as physical AMD.
+and the current platform/toolchain steps in the
+[Windows runner guide](windows-runner.md), labeling execution as physical AMD.
 Run baseline Release/Debug and the pinned upstream selection; probe CPU/OS
 support before selecting AVX2/AVX-512. Use native GNU-driver Clang for strict
 UBSan after an intentional-UB control proves the installed runtime. MSVC Debug

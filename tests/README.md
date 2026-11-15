@@ -15,17 +15,15 @@ See [the native validation workflow](../docs/validation/native-workflow.md) for
 branch synchronization, the in-tree Mac runner, evidence capture and coverage
 labels. Physical Intel testing is omitted for now.
 
-For reusable native Windows toolchain steps, see the historically named
-[Windows Intel agent handoff](../docs/validation/windows-intel-handoff.md).
-The handoff describes checkout verification, native toolchain/ISA detection,
-evidence capture and the execution matrix. Label physical CPU coverage accurately.
+For current native Windows toolchain steps, controls and evidence capture, use
+the [Windows runner guide](../docs/validation/windows-runner.md). Label physical
+CPU coverage accurately.
 See the [native Windows AMD results](../docs/validation/windows-amd-2026-11-15.md)
 for the executed matrix and outstanding gates.
 The [AVX-512 follow-up](../docs/validation/windows-avx512-2026-11-15.md) records
 the subsequent fixes, native reruns and separately labeled ARM/POSIX emulation.
 The [shared-template Windows evidence review](../docs/validation/windows-amd-2026-11-15-823ca2a.md)
 reconciles the retained counts, source identifiers, retries and evidence checksums.
-Current manual runner instructions are in the [Windows guide](../docs/validation/windows-runner.md).
 
 Run from the repository root with CMake 3.20+, Python 3.9+ and Clang/GCC:
 

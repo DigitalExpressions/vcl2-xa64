@@ -5,7 +5,7 @@ applies to its recorded source and profiles; a branch name alone does not
 identify tested code. Use the [native workflow](native-workflow.md) to run tests
 and the [report template](report-template.md) to record a new result.
 
-## Shared checkpoint
+## Historical shared checkpoint
 
 Source commit: `465436de204ebdd59e9b5071c353df372148b3df`
 
@@ -35,13 +35,25 @@ archive checksum. Raw Mac archives were not available for this Windows review.
 
 ## Continuing on Windows or Mac
 
-Integration preparation now uses manual testing on the maintainer's Mac M2
-and AMD Windows machines only. Hosted test workflows are removed/disabled.
+PR #1 merged into `master` at `732f3e9`; `master` is now the shared development
+base. Keep `neon-port` and `windows-native-validation` as requested. Validation
+uses manual testing on the maintainer's Mac M2 and AMD Windows machines only.
+Hosted test workflows are removed/disabled. The merge and subsequent cleanup
+do not establish a native pass at the current HEAD.
 The [new manual runner report](windows-amd-2026-11-15-08c3fe8-manual.md) records
 final 160/160 local cases plus the separately identified 2,776-case pinned
 preparation and discarded prototype attempts. It preserves its uncommitted
 snapshot identifiers rather than relabeling an earlier run as a later commit.
-See the [integration plan](../integration-plan.md) for current progress.
+See the [integration plan](../integration-plan.md) for the completed integration
+and next steps, and the [Windows runner guide](windows-runner.md) for current
+Windows commands. The superseded Intel handoff was removed; its original plan
+remains in Git history. Physical Intel testing remains omitted.
+
+The [post-merge shared-helper cleanup report](windows-amd-2026-11-15-df2df54-cleanup.md)
+records a separate 160/160 local native AMD selection at `df2df54` plus the
+identified cleanup patch and added evidence module. Guard-page and Clang strict
+UBSan controls passed. The new runner/helper combination has not run natively
+on the Mac; existing Mac results retain their original source identifiers.
 
 1. Inspect the checkout and preserve unrelated work. Record the actual HEAD,
    tree, working-tree state and host before running tests.
@@ -81,6 +93,7 @@ publication follow the maintainer's authorization for the current task.
 | [Mac ARM, 2026-11-15](mac-arm-2026-11-15.md) | Native M2, full eight-profile selected matrix at `465436d`; first attempt and replay retained |
 | [Windows AMD evidence review, `823ca2a`](windows-amd-2026-11-15-823ca2a.md) | Shared-template retrospective review: final 5,627 native AMD passes, earlier failures/reruns, exact source comparisons and a checksummed evidence packet; no new native execution |
 | [Windows manual-runner preparation](windows-amd-2026-11-15-08c3fe8-manual.md) | Final manual-only snapshot 160/160, intermediate pinned 2,776/2,776, retained prototype failure and startup failures; exact dirty-source identifiers and checksummed packet |
+| [Windows shared-helper cleanup](windows-amd-2026-11-15-df2df54-cleanup.md) | Post-merge dirty snapshot based on `df2df54`: 160/160 local native AMD cases, strict UBSan and guard controls; shared module extraction and matching runner plans; native Mac rerun remains |
 | [Windows AVX-512 and ARM/POSIX follow-up](windows-avx512-2026-11-15.md) | Earlier native AMD/MSVC/Clang results and separately labeled emulated ARM/Linux results |
 | [Initial Windows AMD validation](windows-amd-2026-11-15.md) | Earlier native Windows checkpoint, harness changes, initial failures and sanitizer-runtime limits |
 | [Migration validation](migration.md) | Dated migration checkpoint; native ARM and separately labeled translated x86 |

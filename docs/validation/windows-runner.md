@@ -78,6 +78,11 @@ controls, negative contracts and 60-second CTest deadline.
 
 ## Evidence and failed runs
 
+Both native runners import command logging, fixture inventory, hashing and
+archive packaging from [the shared evidence module](../../tools/validation_evidence.py).
+Use the repository checkout so that module is available alongside the runners.
+Native host checks, binary inspection and profile controls stay in each runner.
+
 Each Windows invocation creates `build/windows-native-<driver>-<mode>-<UTC>/`.
 It retains commands/exits, patches, manifests, configure/build/test logs,
 compile commands, CTest inventories, JUnit, control/binary hashes and results.

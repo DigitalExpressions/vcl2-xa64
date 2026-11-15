@@ -28,11 +28,7 @@ import struct
 import sys
 import xml.etree.ElementTree as ET
 
-from run_native_arm_validation import Run as EvidenceRun, FIXTURES, package_evidence
-
-
-def sha(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+from validation_evidence import EvidenceRun, FIXTURES, package_evidence, sha
 
 
 class WindowsRun(EvidenceRun):

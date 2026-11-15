@@ -1,132 +1,87 @@
-# Integrating the ARM port into master
+# ARM integration: completion and next steps
 
-This is the durable integration plan and completion record. Read it and the
-[validation index](validation/README.md) when resuming after a pause or context
-reset. Keep the checklist and resume notes current; preserve exact tested
-source identifiers rather than treating a branch name as validation evidence.
+PR #1 is merged. Use this record and the [validation index](validation/README.md)
+when resuming work. Exact tested source identifiers remain in the dated reports;
+a branch name or merge alone does not establish a native pass.
 
-## Decisions and scope
+## Standing decisions
 
-- Keep the default branch named `master`; do not rename it to `main`.
-- The maintainer approved merging PR #1 into `master` on 2026-11-15 and
-  explicitly requested keeping the branches. The merge is complete; retain
-  `neon-port` and `windows-native-validation`.
-- **Manual native validation only**, on the maintainer's Mac M2/macOS ARM64
-  and AMD Ryzen 9 7950X/Windows x86-64. On 2026-11-15 the maintainer replaced
-  the initial hosted-CI proposal with this preference. Remove hosted test
-  workflows; pushes/PRs must not start cloud test matrices.
-- Keep Direct Neon experimental and explicitly enabled. Preserve default ARM
-  compatibility, existing x86 selection, public API/ABI boundaries, attribution,
-  numerical gates, fixture checks, guard pages and 60-second deadlines.
+- Keep the default branch named `master`. Retain `neon-port` and
+  `windows-native-validation` as explicitly requested; automatic branch deletion
+  is disabled. Branch retirement and release publication require separate approval.
+- Use manual native validation on the Mac M2/macOS ARM64 and AMD Ryzen 9
+  7950X/Windows x86-64 only. Hosted test workflows are removed/disabled
+  (workflow `419159800`); do not start hosted test matrices.
 - Physical Intel testing is omitted. No benchmark timings are collected.
-  Raw evidence stays under ignored `build/` and transfers separately.
-- Complete developer documentation cleanup before considering branch retirement.
-  Preserve historical validation reports and benchmark results unchanged.
+  Keep raw evidence under ignored `build/` and transfer it separately.
+- Preserve default ARM compatibility, explicit experimental Direct Neon opt-in,
+  existing x86 selection, API/ABI boundaries, attribution, numerical gates,
+  fixture checks, guard pages and original 60-second deadlines.
+- Preserve historical validation reports and benchmark results unchanged.
+  Start future topic branches from `master`, review PRs and retain the `upstream`
+  remote for original VCL. Future pushes and merges need task-specific approval.
 
-## Checklist
+## Completed integration
 
-### 1. Repeatable manual native validation
+- [x] Add repeatable manual native runners with source/patch manifests,
+  runtime/binary checks, guard controls, strict UBSan controls and checksummed
+  evidence. Restore original serial configuration probes after discarding the
+  hosted/parallel prototype.
+- [x] Review the complete port, correct the GNU/Clang i386 CPUID regression,
+  and record findings and limits in the [integration review](integration-review.md).
+- [x] Complete developer documentation cleanup and current build/test guidance.
+- [x] Merge [PR #1](https://github.com/DigitalExpressions/vcl2-xa64/pull/1)
+  on explicit maintainer approval, preserve both branches and sync Windows `master`.
 
-- [x] Retain the native Mac runner and add Windows MSVC Release/Debug plus
-  GNU-driver Clang Release/strict UBSan Debug with matching runtime/CRT controls.
-- [x] Add source/patch manifests, native x64 PE checks, runtime consumers,
-  independent guard-page controls and checksummed evidence packets.
-- [x] Remove the hosted GitHub Actions workflow and the unpublished CI prototype.
-- [x] Restore original serial configuration probes after removing the hosted
-  timeout workaround; preserve all flag controls and contracts.
-- [x] Verify the final manual Windows entry points after the scope change and
-  record their actual source and results. Reuse the existing Mac report only
-  with its original identifiers and a precise source comparison.
+Preparation started at `08c3fe899ab9306c11eb58f101aece392c5d7374`.
+Commits `972f913`, `06e4573`, `2437bf3` and `abf7a82` contain the CPUID fix,
+manual runner/workflow changes, review/documentation and PR checkpoint.
 
-### 2. Complete port review and evidence
+The merge on 2026-11-15 is `732f3e9c430b5f1cf822fcf0dab44ad771646e34`.
+Its parents are original `master` `667577495efaa36a10cbb5d6cb8c942c23913848`
+and reviewed head `abf7a82bbb961a2a46b533158082e4ab0f796db9`. Its tree equals
+the reviewed head's tree, `9a1464bf795f001241b9c63110a53c1eac387210`.
+This comparison is not a new test result. Completion documentation was pushed
+at `df2df54446198294ed846eea2c965498ff7b1f26`.
 
-- [x] Review the entire port diff from `master`, including backend selection,
-  x86 changes, API/ABI boundaries, build exports, attribution and scalar oracles.
-- [x] Reproduce and fix the GNU/Clang i386 CPUID assembly-selection regression;
-  retain upstream/failing/fixed compilation probes and native Windows checks.
-- [x] Record review findings and limits in [the integration review](integration-review.md).
-- [x] Attach the native Mac report, historical Windows review, new manual runner
-  results and exact source comparisons to the draft integration PR.
+Retained `neon-port` is at `abf7a82`; local `windows-native-validation` is at
+`465436de204ebdd59e9b5071c353df372148b3df` and was not published just to retain it.
+Merge/API and checkout evidence stays under `build/master-integration-20261115/`.
+Detailed preparation chronology remains in Git history and the dated reports.
 
-### 3. Developer documentation cleanup
+## Evidence and follow-up cleanup
 
-- [x] Add a [developer documentation index](README.md) and
-  [manual Windows runner guide](validation/windows-runner.md).
-- [x] Correct stale AMD coverage, ASan host labels, current instructions and
-  branch-transition descriptions. `master` is now the common development base.
-- [x] Preserve dated reports, numerical fixtures and benchmark data.
-- [x] Run final repository/link/whitespace checks and review the documentation
-  diff. No branch may be retired before this cleanup is complete.
+- [Native Mac report](validation/mac-arm-2026-11-15.md): 8,036 selected cases
+  at `465436d`, passed after a sleep-related full-profile replay.
+- [Historical AMD review](validation/windows-amd-2026-11-15-823ca2a.md): final
+  5,627 cases at `823ca2a` plus identified documentation changes, with earlier
+  failures and reruns retained. This is a different whole tree from the Mac run.
+- [Manual runner preparation](validation/windows-amd-2026-11-15-08c3fe8-manual.md):
+  final 160/160 local cases, separately identified 2,776/2,776 pinned cases,
+  discarded prototype failure and startup failures. Exact snapshots and the
+  combined packet checksum remain in that report; raw evidence stays under
+  `build/master-integration-20261115/` and its original native run directories.
+- [Post-merge helper cleanup](validation/windows-amd-2026-11-15-df2df54-cleanup.md):
+  160/160 fresh local AMD cases, strict UBSan/guard controls, ten unchanged plans
+  and exact dirty-source identifiers based on `df2df54`. Both runners now import
+  `tools/validation_evidence.py`. Native M2 execution of this combination remains
+  outstanding. Evidence stays under `build/master-cleanup-20261115T222559Z/`.
+- The superseded Intel handoff was removed; current instructions use the
+  [Windows runner guide](validation/windows-runner.md). The empty, untracked
+  local `.github/workflows` and `.github` directories remain because automatic
+  approval review rejected their removal as "blocked by policy" without a
+  further reason. They do not affect the Git tree.
+  This follow-up changes documentation only. Historical reports, raw evidence,
+  benchmarks, source and retained branches are preserved. The maintainer has
+  approved committing and pushing the reviewed helper/documentation cleanup;
+  Git history and the host-local command logs record the publication checkpoint.
 
-### 4. Integration PR and approval
+## Next action
 
-- [x] Commit/push reviewed preparation changes on `neon-port` and create/update
-  a draft PR targeting `master`, with actual validation, limitations and this plan.
-- [x] Present the PR for the maintainer's merge decision. A draft PR does not
-  authorize merging or deleting branches.
-- [x] After explicit approval, merge PR #1 into `master`, preserve both branches
-  and fast-forward the local Windows `master` to the merge commit.
-- [x] Verify the merge tree equals the reviewed PR head tree; update current
-  developer instructions to use `master`. Documentation changes do not require
-  rerunning the native matrix or relabeling earlier results.
-- [ ] Update the Mac checkout to `master` without overwriting unrelated work.
-  Record any new native validation at its actual source checkpoint.
-- Keep both branches as requested. Branch retirement and release publication
-  require separate approval. Track original VCL via `upstream`; use short-lived
-  topic branches for future features, fixes and upstream imports.
-
-## Resume notes
-
-- Preparation started clean on `neon-port` at
-  `08c3fe899ab9306c11eb58f101aece392c5d7374`; the original `master` was
-  `667577495efaa36a10cbb5d6cb8c942c23913848`. No applicable `AGENTS.md` was found.
-- Existing evidence: native Mac 8,036 cases at `465436d`, passed after replay;
-  native AMD historical final 5,627 cases at `823ca2a` plus identified doc changes.
-  Preserve those reports; they are different whole Git trees.
-- New local preparation snapshots: first 160/160 cases; CPUID-corrected pinned
-  selection 2,776/2,776; parallel configuration prototype 159/160 due to a shared
-  MSVC PDB; isolated-directory prototype 160/160. All attempts are retained under
-  `build/windows-native-*-20261115T*/` and their checksummed combined packet under
-  `build/master-integration-20261115/`. The parallel prototype was then removed
-  when manual-only validation was selected; do not label it as final source.
-- Historical hosted ARM failures were configuration timeouts. An old compatibility
-  Debug job remained stuck in CTest for over 40 minutes; its state was retained
-  and obsolete run `43757884045` was cancelled. These are historical failures,
-  not a requirement to run hosted CI under the new manual-only policy.
-- GitHub device sign-in was completed by the maintainer. An existing authorized
-  account was selected explicitly because multiple local accounts exist. No
-  tokens are written to the repository or printed in logs.
-- Final manual-only source passed 160/160 local cases across all four Windows
-  profiles, with strict UBSan and native/guard controls. Four earlier startup
-  failures while capturing a deleted file are retained; the manifest now
-  explicitly records deleted paths. See the
-  [new preparation report](validation/windows-amd-2026-11-15-08c3fe8-manual.md)
-  for exact tested trees/patches, 3,416 total suite executions across snapshots
-  and the combined evidence checksum.
-- Repository/link checks and whitespace review pass. The checker reads UTF-8
-  explicitly on Windows. Historical reports and benchmark assets are unchanged;
-  the original serial configuration implementation is restored exactly.
-- GitHub workflow `419159800` is `disabled_manually`; its source file is removed.
-  The old stuck run is completed/cancelled. No hosted matrices will be started
-  by the preparation pushes or PR.
-- Merged integration PR: [#1 — ARM64 compatibility and experimental Direct Neon](https://github.com/DigitalExpressions/vcl2-xa64/pull/1),
-  head `neon-port`, base `master`. Review links and actual validation remain in
-  the PR description. No hosted test run is requested.
-- Preparation commits: `972f913` restores GNU i386 CPUID selection; `06e4573`
-  adds manual Windows runners and removes hosted tests; `2437bf3` records the
-  developer cleanup, review and native evidence. The following documentation
-  checkpoint records the PR link; no new matrix is needed for that update.
-- On explicit maintainer approval, PR #1 was merged with a merge commit on
-  2026-11-15: `732f3e9c430b5f1cf822fcf0dab44ad771646e34`. Its parents are the
-  original `master` and reviewed head `abf7a82bbb961a2a46b533158082e4ab0f796db9`;
-  its tree equals that head's tree, `9a1464bf795f001241b9c63110a53c1eac387210`.
-  This is a merge comparison, not a new native test result. Subsequent completion
-  documentation changes preserve the original tested source identifiers.
-- The Windows checkout is on `master`. Retained `neon-port` is at `abf7a82`;
-  local `windows-native-validation` is at `465436d` and was not published just
-  to retain it. Automatic branch deletion is disabled. Merge/API and checkout
-  evidence is under ignored `build/master-integration-20261115/`.
-- **Next action: update the Mac checkout to `master`** using the
-  [native workflow](validation/native-workflow.md). Use `master` as the base for
-  future topic branches. Keep both existing branches; the default branch remains
-  named `master`. No release or branch retirement is authorized by this merge.
+- [x] Review the cleanup and obtain explicit maintainer approval to commit/push.
+- [ ] Update the Mac checkout to `master` using the
+  [native workflow](validation/native-workflow.md), preserving unrelated work.
+  Use the whole checkout so the shared helper is present.
+- [ ] Run the in-tree Mac runner on the actual new source and record its HEAD/tree,
+  controls, counts and evidence checksum in a new dated report. Do not relabel
+  the older Mac result as validation of a later revision.
