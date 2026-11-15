@@ -43,7 +43,7 @@ def main():
         if path.suffix == '.py':
             ast.parse(path.read_bytes(), filename=str(path.relative_to(ROOT)))
         if path.suffix == '.md':
-            for link in re.findall(r'\]\(([^)]+)\)', path.read_text()):
+            for link in re.findall(r'\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
                 if link.startswith(('https:', 'http:', '#', 'mailto:')):
                     continue
                 target = link.split('#')[0]
@@ -55,7 +55,7 @@ def main():
             assert not re.search(rb'/(?:Users|private/var)/|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----', data), str(path)
             assert not re.search(rb'(?m)^(<<<<<<< |=======\r?$|>>>>>>> )', data), str(path)
     for name in NATIVE:
-        text = (ROOT / name).read_text()
+        text = (ROOT / name).read_text(encoding='utf-8')
         assert text.startswith('/*\n * Copyright 2026 DigitalExpressions Sweden')
         assert 'Licensed under the Apache License, Version 2.0' in text[:1000]
     for path in (ROOT / 'tests').iterdir():
@@ -64,7 +64,7 @@ def main():
             # listed standard/system headers. Inspect Python string literals
             # used for generated compile probes too, without naming external
             # applications/SDKs.
-            sources = [path.read_text()]
+            sources = [path.read_text(encoding='utf-8')]
             if path.suffix == '.py':
                 sources = [node.value for node in ast.walk(ast.parse(sources[0]))
                            if isinstance(node, ast.Constant) and isinstance(node.value, str)]
