@@ -947,7 +947,17 @@ static inline Vec4fb is_finite(Vec4f const a) {
 #if INSTRSET >= 10
     return __mmask8(_mm_fpclass_ps_mask(a, 0x99) ^ 0x0F);
 #else
-    Vec4i t1 = _mm_castps_si128(a);    // reinterpret as 32-bit integer
+    __m128i bits = _mm_castps_si128(a);
+#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
+    // Keep integer classification independent of finite-math assumptions,
+    // including when a wider emulated vector is split into 128-bit halves.
+#if VCL_ARCH_ARM64
+    __asm__ volatile("" : "+w"(bits));
+#else
+    __asm__ volatile("" : "+x"(bits));
+#endif
+#endif
+    Vec4i t1 = bits;                   // reinterpret as 32-bit integer
     Vec4i t2 = t1 << 1;                // shift out sign bit
     Vec4i t3 = Vec4i(t2 & 0xFF000000) != 0xFF000000; // exponent field is not all 1s
     return Vec4ib(t3);
@@ -1956,7 +1966,15 @@ static inline Vec2db is_finite(Vec2d const a) {
 #if INSTRSET >= 10
     return __mmask8(_mm_fpclass_pd_mask(a, 0x99) ^ 0x03);
 #else
-    Vec2q t1 = _mm_castpd_si128(a);    // reinterpret as integer
+    __m128i bits = _mm_castpd_si128(a);
+#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
+#if VCL_ARCH_ARM64
+    __asm__ volatile("" : "+w"(bits));
+#else
+    __asm__ volatile("" : "+x"(bits));
+#endif
+#endif
+    Vec2q t1 = bits;                   // reinterpret as integer
     Vec2q t2 = t1 << 1;                // shift out sign bit
     Vec2q t3 = 0xFFE0000000000000ll;   // exponent mask
     Vec2qb t4 = Vec2q(t2 & t3) != t3;  // exponent field is not all 1s
