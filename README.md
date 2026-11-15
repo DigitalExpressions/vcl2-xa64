@@ -226,6 +226,11 @@ For Direct Neon, also select its backend/opt-in and maximum width 512.
 
 ## Validation and performance
 
+The [native validation workflow](docs/validation/native-workflow.md) documents
+the shared `neon-port` branch and the maintainer's Mac M2 ARM64 and AMD Windows
+x86-64 test hosts. It includes the Mac runner and evidence handoff; physical
+Intel testing is omitted for now.
+
 The [migration validation record](docs/validation/migration.md) distinguishes
 fresh public-tree checks from retained earlier measurements. The public suite
 tests VCL arithmetic, masks, conversions, memory boundaries, permutations,

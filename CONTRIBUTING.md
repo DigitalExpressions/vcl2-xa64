@@ -1,5 +1,11 @@
 # Contributing
 
+Use [the native validation workflow](docs/validation/native-workflow.md) to keep
+the maintainer's Mac M2 ARM64 and AMD Windows x86-64 checkouts on the same
+`neon-port` revision. Topic branches feed that shared branch after approval;
+record native results separately for each host. Physical Intel testing is
+omitted for now. Keep raw evidence under ignored `build/`.
+
 Preserve VCL's public names, lane ordering, supported masks/conversions, root
 include layout and explicit Direct Neon opt-in. Keep x86 changes limited and
 reviewable. Preserve copyright and third-party notices. All source files added

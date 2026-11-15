@@ -8,6 +8,12 @@ expected values. No application-specific test or proprietary dependency is part
 of this suite. Protected-page tests use POSIX memory APIs on macOS/Linux and
 VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries.
 
+The maintainer's available native hosts are a Mac M2 (macOS ARM64) and an AMD
+Ryzen 9 7950X (Windows x86-64). Use the shared `neon-port` branch on both hosts.
+See [the native validation workflow](../docs/validation/native-workflow.md) for
+branch synchronization, the in-tree Mac runner, evidence capture and coverage
+labels. Physical Intel testing is omitted for now.
+
 For testing on an Intel Windows machine, see the
 [Windows Intel agent handoff](../docs/validation/windows-intel-handoff.md).
 The handoff describes checkout verification, native toolchain/ISA detection,
