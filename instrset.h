@@ -122,7 +122,7 @@
 #ifdef _MSC_VER                        // Microsoft compiler or compatible Intel compiler
 #include <intrin.h>
 #pragma warning(disable: 6323 4514 4710 4711) // Diasble annoying warnings
-#elif __x86_64__
+#elif defined(__x86_64__) || defined(__i386__)
 #include <x86intrin.h>                 // Gcc or Clang compiler
 #endif
 
@@ -234,7 +234,7 @@ constexpr int V_DC = -256;
 static inline void cpuid(int output[4], int functionnumber, int ecxleaf = 0) {
 #if defined(__x86_64__) || defined(_M_X64) || defined(__i386) || defined(_M_IX86)
     // Original x86/x86_64 implementation
-    #if (defined(__GNUC__) || defined(__clang__)) && defined(__x86_64__)
+    #if defined(__GNUC__) || defined(__clang__)
         int a, b, c, d;
         __asm("cpuid" : "=a"(a), "=b"(b), "=c"(c), "=d"(d) : "a"(functionnumber), "c"(ecxleaf) : );
         output[0] = a;
