@@ -26,6 +26,8 @@ any branch. Added files in this snapshot are `docs/README.md`,
 `docs/validation/windows-runner.md`, `tools/run_windows_validation.ps1` and
 `tools/run_windows_validation.py`. The existing GitHub Actions workflow is
 deleted. Later report/plan edits and a later commit are not the execution HEAD.
+Pre-commit cleanup also removed one extra EOF blank line in the Windows Python
+runner; its parsed syntax tree was verified unchanged.
 
 The earlier pinned preparation used the same base HEAD with source fingerprint
 `c9405df9ac16a563b1df0347dbb83871ef157772dca1fd54e576261eaeff1325`,

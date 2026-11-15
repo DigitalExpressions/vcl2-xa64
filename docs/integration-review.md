@@ -113,7 +113,8 @@ unchanged by the CPUID correction. Full higher-ISA matrices, FP16, other ARM
 toolchains/hosts and ASan remain outside the recorded scope; physical Intel
 is omitted and Direct Neon remains experimental.
 
-Complete the plan's final native/documentation checks and present the draft PR
-for approval. After approved integration, verify the `master` transition and
-obtain approval before retiring branches. Use release tags for reviewed
-consumer checkpoints and separate topic branches for upstream VCL updates.
+Final manual native/documentation preparation checks are recorded and
+[draft PR #1](https://github.com/DigitalExpressions/vcl2-xa64/pull/1) is open for
+the maintainer's decision. After approved integration, verify the `master`
+transition and obtain approval before retiring branches. Use release tags for
+reviewed consumer checkpoints and separate topic branches for upstream updates.

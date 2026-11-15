@@ -44,7 +44,7 @@ source identifiers rather than treating a branch name as validation evidence.
 - [x] Reproduce and fix the GNU/Clang i386 CPUID assembly-selection regression;
   retain upstream/failing/fixed compilation probes and native Windows checks.
 - [x] Record review findings and limits in [the integration review](integration-review.md).
-- [ ] Attach the native Mac report, historical Windows review, new manual runner
+- [x] Attach the native Mac report, historical Windows review, new manual runner
   results and exact source comparisons to the draft integration PR.
 
 ### 3. Developer documentation cleanup
@@ -60,9 +60,9 @@ source identifiers rather than treating a branch name as validation evidence.
 
 ### 4. Integration PR and approval
 
-- [ ] Commit/push reviewed preparation changes on `neon-port` and create/update
+- [x] Commit/push reviewed preparation changes on `neon-port` and create/update
   a draft PR targeting `master`, with actual validation, limitations and this plan.
-- [ ] Present the PR for the maintainer's merge decision. A draft PR does not
+- [x] Present the PR for the maintainer's merge decision. A draft PR does not
   authorize merging or deleting branches.
 - [ ] After explicit merge approval, verify the `master` transition on both
   native hosts as appropriate and tag reviewed releases for consumers.
@@ -104,6 +104,14 @@ source identifiers rather than treating a branch name as validation evidence.
 - GitHub workflow `419159800` is `disabled_manually`; its source file is removed.
   The old stuck run is completed/cancelled. No hosted matrices will be started
   by the preparation pushes or PR.
-- Next: commit/push reviewed preparation and create the draft PR into `master`.
-  Record its link here, then wait for the maintainer's merge decision. Keep all
-  branches and `master`'s name unchanged.
+- Draft integration PR: [#1 — ARM64 compatibility and experimental Direct Neon](https://github.com/DigitalExpressions/vcl2-xa64/pull/1),
+  head `neon-port`, base `master`. Review links and actual validation are in the
+  PR description. No hosted test run is requested.
+- Preparation commits: `972f913` restores GNU i386 CPUID selection; `06e4573`
+  adds manual Windows runners and removes hosted tests; `2437bf3` records the
+  developer cleanup, review and native evidence. The following documentation
+  checkpoint records the PR link; no new matrix is needed for that update.
+- **Next action: maintainer review and merge decision for PR #1.** Do not merge
+  or retire branches without that approval. After approved integration, verify
+  the `master` transition on both hosts as appropriate, then obtain approval
+  for retiring completed branches. The default branch remains `master`.
