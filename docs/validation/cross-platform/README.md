@@ -8,8 +8,13 @@ Use manual execution only, without timing benchmarks, hosted CI or emulation.
 
 ## Prepare, review and freeze
 
-The initial run ID is `simd-parity-20261116`. Use a new run ID for later source
-checkpoints and a new attempt ID for each attempt. Do not overwrite failures.
+The initial run ID is `simd-parity-20261116`, frozen at approved published commit
+`bd7807e91f5888bc2ad708ca46c9305d166d6c4b`. The
+[final Windows results](simd-parity-20261116/windows-amd/README.md) accompany the
+approved result publication; native M2 execution and cross-platform comparison
+are pending.
+Use a new run ID for later source checkpoints and a new attempt ID for each
+attempt. Do not overwrite failures.
 
 The [Windows prompt](../windows-final-verification-prompt.md) requires approval
 before committing/pushing this shared harness. Only after approval and publication

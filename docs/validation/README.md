@@ -18,11 +18,16 @@ These are execution instructions, not test results. The shared comparison
 harness must be prepared before running both hosts. Portable result files are
 prepared for review and commit; full raw evidence stays under ignored `build/`.
 
-The [shared comparison harness](cross-platform/README.md) is prepared locally.
-Its [preparation report](cross-platform/preparation-2026-11-16.md) records 5,376
-passing corpus cases after an oracle correction and retained earlier failures.
-Review/approval and a frozen shared commit are still required before final
-Windows/Mac runs; these preparation results do not establish cross-host parity.
+The [shared comparison harness](cross-platform/README.md) was approved and
+published at frozen commit `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`.
+Its [preparation report](cross-platform/preparation-2026-11-16.md) preserves
+the earlier oracle correction and failures. The
+[final Windows report](windows-amd-2026-11-16-bd7807e-final.md) records
+5,392/5,392 pinned CTest cases and separately 5,376/5,376 corpus vector cases,
+with verified controls and no failures/skips/timeouts/retries at that source.
+[Portable Windows output files](cross-platform/simd-parity-20261116/windows-amd/README.md)
+accompany the approved result publication. Native M2 execution and cross-host comparison
+remain pending; use the same frozen commit and run ID `simd-parity-20261116`.
 
 ## Historical shared checkpoint
 
@@ -109,6 +114,7 @@ publication follow the maintainer's authorization for the current task.
 
 | Record | Scope |
 | --- | --- |
+| [Final Windows AMD, `bd7807e`](windows-amd-2026-11-16-bd7807e-final.md) | Clean frozen-source MSVC/Clang: 5,392 pinned CTest passes; eight separate corpus profiles, 5,376 vector passes; zero unexpected Windows-only differences; native Mac comparison pending |
 | [Mac ARM, 2026-11-15](mac-arm-2026-11-15.md) | Native M2, full eight-profile selected matrix at `465436d`; first attempt and replay retained |
 | [Windows AMD evidence review, `823ca2a`](windows-amd-2026-11-15-823ca2a.md) | Shared-template retrospective review: final 5,627 native AMD passes, earlier failures/reruns, exact source comparisons and a checksummed evidence packet; no new native execution |
 | [Windows manual-runner preparation](windows-amd-2026-11-15-08c3fe8-manual.md) | Final manual-only snapshot 160/160, intermediate pinned 2,776/2,776, retained prototype failure and startup failures; exact dirty-source identifiers and checksummed packet |

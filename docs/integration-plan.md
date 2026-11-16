@@ -85,15 +85,27 @@ Detailed preparation chronology remains in Git history and the dated reports.
 - [x] Obtain the approval required by the Windows final-verification prompt
   to commit/push this new harness. Freeze the resulting published commit and
   record its full SHA in the final run manifests and Windows report.
-- [ ] Freeze the approved published commit, execute the final pinned Windows
-  MSVC/Clang matrix and corpus profiles, then prepare portable Windows results.
-  Reserved run ID: `simd-parity-20261116`. Raw preparation/audit evidence is under
+- [x] Freeze approved published commit `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`
+  (tree `2a0a5d3250201773cccb06ba0562df728f4e9387`) and complete the final Windows
+  MSVC/Clang run: 5,392/5,392 CTest cases and separately 5,376/5,376 corpus vector
+  cases. The [final report](validation/windows-amd-2026-11-16-bd7807e-final.md)
+  and [portable outputs](validation/cross-platform/simd-parity-20261116/windows-amd/README.md)
+  accompany this approved result publication. All 28 Windows-only pairings
+  have zero unexpected differences; this does not establish native Mac parity.
+  Run ID: `simd-parity-20261116`. Raw final evidence is under
+  `build/windows-final-simd-20261116T053510Z/`. Raw preparation/audit evidence is under
   `build/cross-platform-preparation-20261115T233331Z/`; original native attempts
   remain under their `build/simd-capture-<UTC>-<profile>/` directories.
+- [x] Obtain explicit approval to commit/push the portable Windows results so
+  the Mac can fetch the same manifests, output bits, hashes and case inventory.
+  This result publication changes documentation/data only; the tested source
+  remains frozen at `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`.
 - [x] Review the cleanup and obtain explicit maintainer approval to commit/push.
 - [ ] Update the Mac checkout to `master` using the
   [native workflow](validation/native-workflow.md), preserving unrelated work.
-  Use the whole checkout so the shared helper is present.
-- [ ] Run the in-tree Mac runner on the actual new source and record its HEAD/tree,
-  controls, counts and evidence checksum in a new dated report. Do not relabel
-  the older Mac result as validation of a later revision.
+  Fetch the reviewed portable reports, then use a clean worktree at frozen
+  `bd7807e91f5888bc2ad708ca46c9305d166d6c4b` for execution; use the whole checkout.
+- [ ] Run the full native Mac matrix and shared captures at that same frozen
+  commit/run ID; record HEAD/tree, controls, counts and checksums, then compare
+  the selected Windows/ARM profiles. Do not relabel the older Mac result or a
+  later report-only HEAD as the tested source.
