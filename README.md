@@ -231,26 +231,32 @@ For Direct Neon, also select its backend/opt-in and maximum width 512.
 
 ## Validation and performance
 
-The [developer documentation index](docs/README.md) links current build/test,
-native runner, backend, numerical and contribution instructions. Dated reports retain
-their original tested revisions and are separate from current instructions.
+The latest completed correctness checks ran on **16 November 2026**, using
+source revision `bd7807e`, on real Mac and Windows hardware:
 
-The [native validation workflow](docs/validation/native-workflow.md) documents
-the shared `master` branch and the maintainer's Mac M2 ARM64 and AMD Windows
-x86-64 test hosts. It includes the Mac runner and evidence handoff; physical
-Intel testing is omitted for now.
+| Platform and compilers | Regression cases passed | Additional numerical checks passed |
+| --- | ---: | ---: |
+| Apple M2 / macOS, Apple Clang | 8,036 / 8,036 | 3,996 / 3,996 |
+| AMD Ryzen / Windows, MSVC and Clang | 5,392 / 5,392 | 5,376 / 5,376 |
 
-The [native validation status and reports](docs/validation/README.md) identify
-the exact tested revisions on both hosts. Read this index when switching
-machines; it links the completed frozen-source Mac M2/Windows AMD checkpoint,
-all 32 successful cross-host comparisons, the reconciled source-byte audit,
-historical results and a shared template for new runs.
+- **Functionality:** selected integer and floating-point arithmetic, masks,
+  conversions, memory operations and math functions across 128/256/512-bit
+  logical vectors. Release and Debug builds covered both ARM implementations;
+  Windows also received additional AVX2/AVX-512 numerical checks.
+- **Runtime checks:** Clang Debug builds passed checks for undefined C++ behavior
+  (UBSan). Tests using protected memory checked buffer boundaries. Independent
+  numerical references, runnable examples and CPU-feature queries also passed.
+- **Cross-platform results:** all 32 selected Windows/ARM build comparisons met
+  the documented accuracy and backend rules, with no unexplained differences.
+  Small floating-point differences are expected. A file-by-file audit confirmed
+  the same source version on both hosts; differing file hashes came from line endings.
 
-The [migration validation record](docs/validation/migration.md) distinguishes
-fresh public-tree checks from retained earlier measurements. The public suite
-tests VCL arithmetic, masks, conversions, memory boundaries, permutations,
-wide composition, FP controls and bounded numerical functions. It requires no
-application, proprietary SDK, scene data or license service.
+These counts span the selected build configurations. Direct Neon remains
+experimental; other CPUs/toolchains, native FP16 and AddressSanitizer are outside
+this checkpoint's coverage. The [full reports](docs/validation/README.md) retain
+the exact scope, original failures and validator follow-up. See the
+[native workflow](docs/validation/native-workflow.md) to reproduce the checks and
+the [developer index](docs/README.md) for build and contribution instructions.
 
 [Colored standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS.md)
 compare genuine scalar FP32/FP64, sse2neon and Direct Neon. The published numbers
