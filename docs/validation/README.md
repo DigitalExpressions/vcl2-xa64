@@ -5,7 +5,7 @@ applies to its recorded source and profiles; a branch name alone does not
 identify tested code. Use the [native workflow](native-workflow.md) to run tests
 and the [report template](report-template.md) to record a new result.
 
-## Layout/optimization publication and M2 handoff
+## Layout/optimization publication and native M2 result
 
 The [new Windows report](windows-amd-2026-11-16-x86-layout.md) records 5,392/5,392
 baseline-ISA native passes at base `44f974a` plus exact patch `b954c289`, separate
@@ -16,12 +16,16 @@ both pre-change fork and original upstream with full portable tables.
 Additional paired AVX2/AVX-512 selections remain failing (130/320 candidate case
 instances, matching baseline failed names/counts), including existing Clang
 AVX2 UBSan conversion failure; these are not clean higher-ISA validation.
-Native M2 is pending: use the [source-approved handoff](mac-arm-x86-optimization-handoff.md).
-The maintainer authorized committing/pushing this prepared source and evidence
-for M2 handoff on 2026-11-16. Resolve the clean publication checkpoint from the
-handoff file history as instructed there. Vendor bytes must remain untouched,
-with integrity checked before/after the Mac matrix. Publication does not alter
-the completed shared checkpoint or transfer Windows passes to a later revision.
+The [native M2 follow-up](mac-arm-2026-11-17-a099098-x86-layout.md) passed
+8,036/8,036 cases across eight Release/strict UBSan profiles, plus eight examples,
+at approved commit `a0990984d97e5232e36db5316f421b983b155b1c`. No failures, skips,
+timeouts or retries occurred. All 28 pristine vendor files stayed byte-exact;
+before/after integrity checks and all eight generation controls passed.
+The [source-approved handoff](mac-arm-x86-optimization-handoff.md) retains its
+original instructions. This Mac pass does not resolve the Windows higher-ISA
+failures, transfer Windows passes to a later revision or extend the completed
+shared checkpoint below. The maintainer authorized publication of the new Mac
+report/status documentation on 2026-11-17.
 
 ## Completed shared checkpoint status
 

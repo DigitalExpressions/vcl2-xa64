@@ -80,7 +80,10 @@ Direct NEON checks at the new frozen source. Retain prior reports/archives and
 record new source identifiers. Publication requires separate authorization.
 
 The [execution plan](x86-backend-optimization-plan.md) and
-[M2 handoff](validation/mac-arm-x86-optimization-handoff.md) record the current
-candidate and pending native ARM work. Canonical separation reproduces all 35
-runtime products exactly from the optimized frozen bytes; it is not a claim
-that a later whole repository revision has acquired earlier test results.
+[M2 handoff](validation/mac-arm-x86-optimization-handoff.md) identify the approved
+source. The [native M2 result](validation/mac-arm-2026-11-17-a099098-x86-layout.md)
+records 8,036 passes and eight examples at `a099098`, with unchanged pristine
+vendor bytes and passing before/after generation checks. Canonical separation
+reproduces all 35 runtime products from the optimized frozen bytes, permitting
+the documented root-product CRLF/LF equivalence. Each host's earlier results
+retain their own source identifiers; Windows higher-ISA failures remain open.

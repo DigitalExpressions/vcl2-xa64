@@ -183,13 +183,14 @@ header-only usage. Original VCL2's 28 files stay untouched under
 the shipped headers. The [Windows follow-up](validation/windows-amd-2026-11-16-x86-layout.md)
 and [performance report](benchmarks/x86-optimization-2026-11-16.md) identify the
 uncommitted optimized source, native baseline passes, measured gains and retained
-higher-ISA failures. Native M2 remains pending via the prepared handoff. The
-maintainer authorized committing/pushing the prepared source, reports and
-strengthened handoff on 2026-11-16. The publication commit is the clean Mac
-checkpoint; existing Windows results keep their original tested identifiers.
-The M2 must keep `vendor/vectorclass/` untouched and retain before/after checks.
-Keep the candidate validation worktree and raw evidence; further publication
-or cleanup requires separate authorization.
+higher-ISA failures. The [native M2 follow-up](validation/mac-arm-2026-11-17-a099098-x86-layout.md)
+passed 8,036/8,036 cases and eight examples at clean approved commit `a099098`,
+without failures, skips, timeouts or retries. All 28 pristine vendor files
+remained untouched; before/after integrity checks and eight generation controls
+passed. Existing Windows results keep their original tested identifiers, and
+their higher-ISA failures still need focused triage. Publication of the new Mac
+report/status documentation was authorized on 2026-11-17. Keep the validation worktrees and raw
+evidence; further publication or cleanup requires separate authorization.
 
 The separate [Windows x86 performance investigation](benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
 compares frozen fork `ade9d9b` with original VCL `6675774` using MSVC and Clang,

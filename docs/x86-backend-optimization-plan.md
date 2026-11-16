@@ -5,7 +5,8 @@ x86 and ARM/NEON implementations. Optimize measured x86 paths without removing
 correctness fixes or changing ARM defaults. Initial implementation excluded
 publication; on 2026-11-16 the maintainer authorized committing and pushing the
 prepared work for the M2 handoff. Merge/PR/release/cleanup are not authorized.
-Native Intel remains omitted. Native M2 execution requires the Mac.
+Native Intel remains omitted. Native M2 execution completed at the approved
+publication checkpoint; see the dated result below.
 
 The maintainer clarified that the architectural target is a pristine upstream
 copy behind an explicit adaptation layer. The initial optimization-only scope
@@ -66,6 +67,10 @@ retain it and the integer-conversion sentinel policy.
 - [x] Review source/doc diffs, links, whitespace and unchanged existing index.
       The complete result was left uncommitted for review; the maintainer has
       now authorized its commit/push for M2 validation.
+- [x] Execute the approved `a099098` checkpoint natively on M2: 8,036/8,036
+      cases and eight examples passed on the first attempt. Preserve pristine
+      vendor bytes, generation controls and before/after integrity records.
+      Publication of the Mac report/status documentation was authorized on 2026-11-17.
 
 ## Acceptance
 
@@ -82,9 +87,11 @@ or extrapolate AMD results to Intel or ARM.
 
 ## Current restart point
 
-The scoped implementation and Windows confirmation are complete. Read the
-[layout guide](backend-layout.md), [native report](validation/windows-amd-2026-11-16-x86-layout.md)
-and [performance report](benchmarks/x86-optimization-2026-11-16.md).
+The scoped implementation, Windows confirmation and native M2 pass are complete.
+Read the [layout guide](backend-layout.md),
+[native report](validation/windows-amd-2026-11-16-x86-layout.md)
+and [performance report](benchmarks/x86-optimization-2026-11-16.md), plus the
+[M2 follow-up](validation/mac-arm-2026-11-17-a099098-x86-layout.md).
 
 - Pristine original VCL: 28 exact files under `vendor/vectorclass/`, pinned to
   `667577495efaa36a10cbb5d6cb8c942c23913848`; separate canonical patches/backend
@@ -116,9 +123,15 @@ documented in the handoff. Original Windows source identities remain unchanged.
 No merge, PR, branch retirement or evidence cleanup is authorized. Keep the
 detached candidate worktree and original evidence until cleanup is approved.
 
-Next work is explicit: fetch the publication and follow the
-[native M2 handoff](validation/mac-arm-x86-optimization-handoff.md). Keep
-`vendor/vectorclass/` untouched throughout, with before/after integrity records.
-Triage the retained higher-ISA failures, distinguishing library bugs from oracle
-ISA assumptions, before claiming broad higher-ISA readiness. Further source
+The M2 followed the [approved handoff](validation/mac-arm-x86-optimization-handoff.md)
+at commit `a0990984d97e5232e36db5316f421b983b155b1c`, tree
+`3a9815449ae8fd930821a2301a5d3744a99cc464`: all eight profiles passed without
+failures, skips, timeouts or retries. The 28 pristine vendor files and pin
+manifest retained their hashes and timestamps; all eight generation controls
+and before/after checks passed. Original Windows source identities and failures
+remain unchanged. The maintainer authorized publishing the Mac report/status
+documentation on 2026-11-17.
+
+Next, triage the retained Windows higher-ISA failures, distinguishing library
+bugs from oracle ISA assumptions, before claiming broad higher-ISA readiness. Further source
 changes need new candidate IDs, checks and evidence; do not reuse these passes.

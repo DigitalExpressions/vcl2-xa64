@@ -237,7 +237,7 @@ For Direct Neon, also select its backend/opt-in and maximum width 512.
 
 ## Validation and performance
 
-The latest completed correctness checks ran on **16 November 2026**, using
+The completed shared correctness checkpoint ran on **16 November 2026**, using
 source revision `bd7807e`, on real Mac and Windows hardware:
 
 | Platform and compilers | Regression cases passed | Additional numerical checks passed |
@@ -263,6 +263,13 @@ this checkpoint's coverage. The [full reports](docs/validation/README.md) retain
 the exact scope, original failures and validator follow-up. See the
 [native workflow](docs/validation/native-workflow.md) to reproduce the checks and
 the [developer index](docs/README.md) for build and contribution instructions.
+
+A later [native M2 check](docs/validation/mac-arm-2026-11-17-a099098-x86-layout.md)
+completed on **17 November 2026** at revision `a099098`: all 8,036 cases and
+eight examples passed, including Debug checks for undefined behavior. The
+original VCL2 vendor files stayed untouched. This validates the new source
+layout on M2; the separately recorded Windows AVX2/AVX-512 failures still need
+investigation.
 
 [Colored standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS.md)
 compare genuine scalar FP32/FP64, sse2neon and Direct Neon. The published numbers
