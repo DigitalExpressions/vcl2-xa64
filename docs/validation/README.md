@@ -39,10 +39,14 @@ pairings** now have successful comparisons, with zero unexpected differences;
 the eight reruns use a separately identified validator patch on unchanged captures.
 [Original Mac bundles and rejection records](cross-platform/simd-parity-20261116/mac-m2/README.md)
 remain unchanged; [new Debug comparison results](cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md)
-are retained separately. The differing whole-file Windows fingerprint remains an
-evidence gap; exact Git identifiers and shared corpus/policy/input hashes match.
-The [portable frozen Mac source inventory](cross-platform/simd-parity-20261116/source-manifests/README.md)
-is available for file-by-file reconciliation with the original Windows raw manifest.
+are retained separately. The
+[source-byte audit](source-byte-audit-2026-11-16-bd7807e.md) resolves the whole-file
+fingerprint difference using all four original Windows initial/final inventories:
+135 paths on each host, no missing/extra paths, 43 identical hashes and 92 exact
+LF-to-CRLF reconstructions. Both original fingerprints and all existing evidence
+remain unchanged. The [portable Windows inventory/provenance](cross-platform/simd-parity-20261116/source-manifests/windows-amd-bd7807e/summary.md)
+and original Mac inventory support file-by-file review; no native rerun or
+numerical-policy change was needed.
 
 ## Historical shared checkpoint
 

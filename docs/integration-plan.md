@@ -119,12 +119,20 @@ Detailed preparation chronology remains in Git history and the dated reports.
   pairings now have successful comparisons with zero unexpected differences.
   This uses the original captures and a separately hashed validator patch;
   original failed invocations, manifests and rejection records are unchanged.
-- [ ] Reconcile the Windows whole-file source fingerprint using its raw manifest.
-  Exact Git commit/tree and shared corpus/policy/input hashes match; all Mac bytes
-  match frozen blobs, but the recorded Windows byte fingerprint differs.
-  The [portable Mac source inventory](validation/cross-platform/simd-parity-20261116/source-manifests/README.md)
-  supplies all 135 frozen file hashes for review on Windows. The original Windows
-  raw manifest is unavailable on the Mac; this reconciliation remains outstanding.
+- [x] Reconcile the whole-file source fingerprint using all four original Windows
+  initial/final manifests and verified original archive checksums. The
+  [source-byte audit](validation/source-byte-audit-2026-11-16-bd7807e.md) confirms
+  135 paths on each host, no missing/extra paths, 43 identical hashes and 92
+  LF-to-CRLF transformations reproducing every recorded Windows hash. Original
+  fingerprints/manifests, historical reports and checksum inventories are preserved.
+  The [portable Windows inventory](validation/cross-platform/simd-parity-20261116/source-manifests/windows-amd-bd7807e/summary.md)
+  records per-file differences and original archive provenance. No source-byte
+  fingerprint gap remains; no native rerun, numerical-policy change or
+  harness/library modification was needed.
+- [ ] Publish the reviewed audit only after explicit push approval. The audit
+  commit is local on `audit/simd-parity-source-fingerprints-20261116`, based on
+  `99f4a3d`; existing branch tips and unrelated work remain preserved. Raw audit
+  work stays under ignored `build/source-byte-audit-20261116T182036Z/`.
 
 The [Mac final report](validation/mac-arm-2026-11-16-bd7807e-final.md) and
 [portable results](validation/cross-platform/simd-parity-20261116/mac-m2/README.md)
