@@ -89,8 +89,11 @@ archive checksum. Raw Mac archives were not available for this Windows review.
 ## Continuing on Windows or Mac
 
 PR #1 merged into `master` at `732f3e9`; `master` is now the shared development
-base. Keep `neon-port` and `windows-native-validation` as requested. Validation
-uses manual testing on the maintainer's Mac M2 and AMD Windows machines only.
+base. The merged port and audit branches have since been retired as recorded in
+the [integration status](../integration-plan.md#branch-retirement-and-current-base).
+Old branch names are not requirements for new tests. Follow the shared
+[agent instructions](../../AGENTS.md) and preserve any unrelated local branches.
+Validation uses manual testing on the maintainer's Mac M2 and AMD Windows machines only.
 Hosted test workflows are removed/disabled. The merge and subsequent cleanup
 do not establish a native pass at the current HEAD.
 The [new manual runner report](windows-amd-2026-11-15-08c3fe8-manual.md) records

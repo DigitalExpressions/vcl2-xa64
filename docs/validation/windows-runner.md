@@ -3,9 +3,10 @@
 Run tests manually on the maintainer's AMD Windows x86-64 machine. The Mac M2
 uses the separate [native Mac runner](../../tools/run_native_arm_validation.py)
 and [native workflow](native-workflow.md). Hosted CI is disabled by the
-maintainer's decision; pushes and pull requests do not launch test workflows.
+maintainer's decision; all native validation is run manually. Follow the shared
+[agent instructions](../../AGENTS.md), including the no-pull-request policy.
 Read [validation status](README.md) for actual executed results and the
-[integration plan](../integration-plan.md) for remaining review/approval work.
+[integration status](../integration-plan.md) for completed work and current policy.
 
 | Manual selection | Expected case instances |
 | --- | ---: |

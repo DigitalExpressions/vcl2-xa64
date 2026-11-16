@@ -11,9 +11,13 @@ later publication and documentation commits do not establish new native passes.
 
 ## Standing decisions
 
-- Keep the default branch named `master`. Retain `neon-port` and
-  `windows-native-validation` as explicitly requested; automatic branch deletion
-  is disabled. Branch retirement and release publication require separate approval.
+- Keep the default branch named `master`. The user retired the merged
+  `neon-port` and source-audit branches; do not recreate them for testing.
+  Inspect actual branches on each host. Further branch retirement and release
+  publication require separate explicit approval.
+- Follow the shared [agent instructions](../AGENTS.md). Do not create pull
+  requests or alter the fork relationship, remotes, default branch or published
+  history. Never push to original upstream; preserve its remote for reference.
 - Use manual native validation on the Mac M2/macOS ARM64 and AMD Ryzen 9
   7950X/Windows x86-64 only. Hosted test workflows are removed/disabled
   (workflow `419159800`); do not start hosted test matrices.
@@ -23,8 +27,8 @@ later publication and documentation commits do not establish new native passes.
   existing x86 selection, API/ABI boundaries, attribution, numerical gates,
   fixture checks, guard pages and original 60-second deadlines.
 - Preserve historical validation reports and benchmark results unchanged.
-  Start future topic branches from `master`, review PRs and retain the `upstream`
-  remote for original VCL. Future pushes and merges need task-specific approval.
+  Start future topic branches from `master` when useful and review changes locally.
+  Future commits, pushes and integrations need task-specific approval.
 
 ## Completed integration
 
@@ -55,6 +59,22 @@ At the integration checkpoint, retained `neon-port` was at `abf7a82` and
 to retain it. Inspect actual branch tips on each host before future work.
 Merge/API and checkout evidence stays under `build/master-integration-20261115/`.
 Detailed preparation chronology remains in Git history and the dated reports.
+
+## Branch retirement and current base
+
+On 2026-11-16, after explicit user approval and ancestry checks, the merged
+`audit/simd-parity-source-fingerprints-20261116` branch (tip `145c7f5`) and
+`neon-port` (tip `abf7a82`) were removed locally on the Mac and from origin.
+Their commits remain in `master`; the validation inputs and reports are intact.
+At this sweep, only `master` exists locally on this Mac and on origin.
+`upstream/master` is a remote-tracking reference to original VCL, not a retired
+fork development branch, and remains available for reference.
+
+`windows-native-validation` is absent from this Mac and origin. Another machine
+may still have a local copy; no removal there is claimed or authorized by this
+sweep. Check its actual state on Windows before any branch action. The retained
+detached worktree under ignored `build/final-mac-bd7807e/` identifies the frozen
+validation source and is preserved along with its raw evidence.
 
 ## Historical evidence and cleanup
 
@@ -134,8 +154,8 @@ Detailed preparation chronology remains in Git history and the dated reports.
   fingerprint gap remains; no native rerun, numerical-policy change or
   harness/library modification was needed.
 - [x] Publish the approved audit at `145c7f5`, based on `99f4a3d`. Both
-  `origin/master` and `origin/audit/simd-parity-source-fingerprints-20261116`
-  contain it. Raw audit work stays under ignored
+  `origin/master` contains it; the temporary audit branch was subsequently retired
+  as recorded above. Raw audit work stays under ignored
   `build/source-byte-audit-20261116T182036Z/` on the Windows host.
 
 The [Mac final report](validation/mac-arm-2026-11-16-bd7807e-final.md) and
@@ -154,8 +174,8 @@ and in Git history.
 ## Continuing development
 
 There is no remaining action for this selected validation checkpoint. Start new
-library work on a topic branch from current `master`, preserve the existing
-branches and raw evidence, and validate changes according to the native workflow.
+library work from current `master`, using a topic branch when useful. Preserve
+unrelated work and raw evidence, and validate changes according to the native workflow.
 Future source checkpoints require a new run ID and an approved frozen source shared
 by both hosts. Direct Neon remains experimental; physical Intel, ASan on the
 documented Mac host, FP16 and unselected hosts/APIs remain outside this checkpoint.

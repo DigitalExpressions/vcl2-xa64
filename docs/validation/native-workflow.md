@@ -2,8 +2,10 @@
 
 The [integration plan](../integration-plan.md) records the approved merge of
 `neon-port` into the existing default `master` through PR #1. Port review and
-developer documentation cleanup are complete; the maintainer requested keeping
-both existing branches. The default branch will not be renamed.
+developer documentation cleanup are complete. The completed port and audit
+branches were subsequently retired; they are not required to run tests.
+The default branch remains `master`. Follow the shared [agent instructions](../../AGENTS.md),
+including the no-pull-request and fork-protection rules.
 See the [developer index](../README.md) for current
 instructions and the [Windows runner guide](windows-runner.md) for manual checks.
 The maintainer selected manual test execution on the Mac M2 and AMD Windows
@@ -31,9 +33,12 @@ then update the index with the exact tested revision and actual outcome.
 
 `master` is the shared branch to fetch on both hosts after the approved merge
 of PR #1 at `732f3e9`. Start short-lived topic branches from `master` for new
-work and upstream updates, then integrate approved changes through reviewed
-PRs. Keep `neon-port` and `windows-native-validation` as requested. Preserve the
-`upstream` remote for original VCL; retirement requires separate approval.
+work when useful and review changes locally. Do not create pull requests, alter
+the fork relationship/remotes or rewrite published history. Commits, pushes,
+integrations, releases and further branch retirement need task-specific approval.
+Preserve the `upstream` remote for original VCL and never push to that repository.
+See [current branch status](../integration-plan.md#branch-retirement-and-current-base)
+for the completed removals; inspect actual local branches on each host.
 
 Both machines should test the same commit when comparing results. Inspect
 divergence before any integration; preserve unrelated work and use a fresh
@@ -68,10 +73,32 @@ create a separate worktree instead of resetting or overwriting it:
 
 ```sh
 git fetch origin
-git worktree add --detach ../vcl2-xa64-native-validation origin/master
+git worktree add --detach build/native-validation origin/master
 ```
 
 Choose a fresh path and run subsequent commands from that worktree's root.
+
+## Preserve future validation inputs
+
+The maintained runners, shared evidence module, tests, fixture generators,
+cross-platform corpus/policies and comparator remain in the repository. Old
+branch names are not dependencies. Existing raw logs, checksummed archives,
+tool installations, pristine testbench checkouts and detached worktrees under
+ignored `build/` must not be removed as routine cleanup. Use new output paths
+for new runs instead of overwriting a previous attempt.
+
+The native runners do not install build tools. Inspect available native Python,
+compiler, CMake/CTest and Ninja/make first, and put the selected installed tools
+on the current process's PATH. Shared corpus capture requires Ninja on both
+hosts. Keep machine-specific locations in local ignored notes, not shared
+instructions. Reuse a pristine pinned testbench with `--testbench-dir`, or fetch
+it explicitly into a new directory using the supplied script.
+
+Before an expensive run, inspect the Mac `--plan` and Windows driver/mode
+`--plan` outputs. These are registration checks, not executed test results.
+Check the shared corpus and comparator controls using the
+[cross-platform instructions](cross-platform/README.md#check-the-harness), which
+also create the ignored control-output directory for a fresh checkout.
 
 ## Native Mac ARM run
 

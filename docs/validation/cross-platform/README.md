@@ -90,10 +90,15 @@ Output words have the input element's bit width. `lt` stores integer 0/1,
 
 ## Check the harness
 
+Use `python3` on macOS and substitute `python` on native Windows. Create the
+ignored output directory first; comparator controls retain their temporary
+inputs there, including on a fresh checkout.
+
 ```sh
-python -B tools/simd_corpus.py
-python -B tools/check_simd_comparison.py
-python -B tools/check_repository.py
+python3 -c "from pathlib import Path; Path('build').mkdir(exist_ok=True)"
+python3 -B tools/simd_corpus.py
+python3 -B tools/check_simd_comparison.py
+python3 -B tools/check_repository.py
 ```
 
 Comparator controls cover positive references, corruption, duplicate/missing

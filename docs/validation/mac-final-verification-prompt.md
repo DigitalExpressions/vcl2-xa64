@@ -23,6 +23,10 @@ Read applicable AGENTS.md and:
 Inspect the machine and checkout first. Preserve unrelated changes and existing
 branches. Fetch origin without resetting or overwriting local work.
 
+Follow the shared AGENTS.md: do not create pull requests, alter the fork
+relationship/remotes or rewrite published history. Retired port/audit branches
+are not prerequisites; use the agreed frozen commit in a clean worktree.
+
 Use the EXACT validation source commit, harness, corpus and comparison policies
 recorded by Windows. Verify their hashes. If they are unavailable or incompatible,
 report the gap before running; do not create an independent replacement harness.

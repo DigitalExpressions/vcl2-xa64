@@ -21,8 +21,10 @@ Read applicable AGENTS.md and:
 - docs/integration-plan.md
 
 Inspect the machine, checkout, branches and working tree first. Preserve
-unrelated changes and both retained branches. Fetch origin without resetting
-or overwriting local work. Use master as the development base.
+unrelated changes and any existing local branches. Do not recreate retired
+branches; use master as the development base. Fetch origin without resetting
+or overwriting local work. Follow the shared AGENTS.md: do not create pull
+requests, alter the fork relationship/remotes or rewrite published history.
 
 ### First: prepare the shared comparison harness
 

@@ -2,13 +2,16 @@
 
 Start with the root [README](../README.md) for library usage and
 [CONTRIBUTING](../CONTRIBUTING.md) for development rules. The default branch
-remains `master` and now includes the ARM port merged through PR #1. Use it as
-the shared base for the Mac M2 and AMD Windows checkouts. The existing port and
-Windows validation branches are retained at the maintainer's request.
+remains `master` and includes the completed ARM port. Use it as the shared base
+for the Mac M2 and AMD Windows checkouts. The shared
+[agent instructions](../AGENTS.md) contain OS-agnostic rules and separate macOS
+and Windows sections. Completed port/audit branches are retired; tests use a
+chosen source commit rather than requiring an old branch name.
 
 | Need | Document |
 | --- | --- |
-| Integration progress and where to resume | [Integration plan](integration-plan.md) |
+| Shared agent instructions for both hosts | [Agent instructions](../AGENTS.md) |
+| Completed integration, branch status and future work | [Integration status](integration-plan.md) |
 | Backend selection, widths and unsupported APIs | [Backend support](backends.md) |
 | Floating-point and memory contracts | [Numerical contracts](numerical-contracts.md) |
 | Configure and run regressions | [Test instructions](../tests/README.md) |
@@ -16,7 +19,7 @@ Windows validation branches are retained at the maintainer's request.
 | Actual tested revisions and coverage gaps | [Validation index](validation/README.md) |
 | Manual Windows controls and evidence | [Windows runner](validation/windows-runner.md) |
 | Format a new native result | [Report template](validation/report-template.md) |
-| Port review and remaining integration findings | [Integration review](integration-review.md) |
+| Historical port review and findings | [Integration review](integration-review.md) |
 | Attribution and dependency boundaries | [Third-party notices](third-party.md) |
 | Correctness before optional benchmark measurements | [Benchmark protocol](../benchmarks/README.md) |
 
@@ -28,7 +31,9 @@ recorded source and profiles. Raw evidence stays under ignored `build/` and
 transfers separately.
 
 `master` is the common development base.
-Use short-lived topic branches for features, fixes and upstream VCL updates,
-review pull requests, and tag releases for consumers. The original VCL remains
-available through the `upstream` remote. Keep the existing branches; release
-publication and branch retirement require separate approval.
+Use topic branches when useful for features and fixes, review changes locally,
+and obtain task-specific approval before committing or publishing. Do not create
+pull requests, change the fork relationship/remotes or rewrite published history.
+The original VCL remains available through the preserved `upstream` remote.
+Integrating upstream changes, publishing releases/tags and retiring further
+branches each require specific authorization.

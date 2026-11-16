@@ -10,7 +10,9 @@ VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries
 
 The maintainer's available native hosts are a Mac M2 (macOS ARM64) and an AMD
 Ryzen 9 7950X (Windows x86-64). Use the default `master` branch on both hosts
-following the approved merge of PR #1; keep the existing validation branches.
+or a clean worktree at the approved validation commit. Completed port/audit
+branches were retired and are not test dependencies. Follow the shared
+[agent instructions](../AGENTS.md); preserve unrelated local work and branches.
 See [the native validation workflow](../docs/validation/native-workflow.md) for
 branch synchronization, the in-tree Mac runner, evidence capture and coverage
 labels. Physical Intel testing is omitted for now.
@@ -18,24 +20,22 @@ labels. Physical Intel testing is omitted for now.
 For current native Windows toolchain steps, controls and evidence capture, use
 the [Windows runner guide](../docs/validation/windows-runner.md). Label physical
 CPU coverage accurately.
-See the [native Windows AMD results](../docs/validation/windows-amd-2026-11-15.md)
-for the executed matrix and outstanding gates.
-The [AVX-512 follow-up](../docs/validation/windows-avx512-2026-11-15.md) records
-the subsequent fixes, native reruns and separately labeled ARM/POSIX emulation.
-The [shared-template Windows evidence review](../docs/validation/windows-amd-2026-11-15-823ca2a.md)
-reconciles the retained counts, source identifiers, retries and evidence checksums.
+The [validation index](../docs/validation/README.md) identifies the completed
+Mac/Windows checkpoint, comparator follow-up, source audit and coverage limits.
+It also preserves links to the earlier Windows attempts and separately labeled
+ARM/POSIX emulation. Use each dated report's exact source and profile scope.
 
 Run from the repository root with CMake 3.20+, Python 3.9+ and Clang/GCC:
 
 ```sh
 cmake -S . -B build/compat-release -DCMAKE_BUILD_TYPE=Release -DVCL_BUILD_TESTS=ON -DVCL_BACKEND=2
 cmake --build build/compat-release -j 3
-ctest --test-dir build/compat-release --output-on-failure --timeout 60 -j 6
+ctest --test-dir build/compat-release --output-on-failure --timeout 60 -j 3
 
 cmake -S . -B build/neon512-release -DCMAKE_BUILD_TYPE=Release -DVCL_BUILD_TESTS=ON \
   -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=ON -DVCL_NATIVE_MAX_VECTOR_SIZE=512
 cmake --build build/neon512-release -j 3
-ctest --test-dir build/neon512-release --output-on-failure --timeout 60 -j 6
+ctest --test-dir build/neon512-release --output-on-failure --timeout 60 -j 3
 ```
 
 Use separate Direct Neon builds for widths 128 and 256. Compatibility and x86
@@ -44,7 +44,7 @@ ARM64 compiler target. For strict UBSan use a separate Debug directory with
 `-DVCL_SANITIZE=ON` and run with
 `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`. Sanitizer recovery is disabled.
 The documented Apple-host ASan startup hang is not retried. Native Windows
-ASan is outside the recorded validation and current CI scope.
+ASan is outside the recorded native validation selection.
 
 ## Native Windows
 
@@ -95,7 +95,7 @@ cmake -S . -B build/upstream-neon512 -DCMAKE_BUILD_TYPE=Release -DVCL_BUILD_TEST
   -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=ON -DVCL_NATIVE_MAX_VECTOR_SIZE=512 \
   -DVCL_TESTBENCH_DIR="$PWD/build/_deps/testbench"
 cmake --build build/upstream-neon512 -j 3
-ctest --test-dir build/upstream-neon512 --output-on-failure --timeout 60 -j 6
+ctest --test-dir build/upstream-neon512 --output-on-failure --timeout 60 -j 3
 ```
 
 The revision is `a7293702385e5169a5f58b83177f2a43cd59139b`; CMake checks its Git
@@ -107,10 +107,11 @@ fragments in the adapter/configuration originate in that testbench. The selected
 matrix is intentionally smaller than the entire upstream suite.
 
 The upstream matrix targets SSE4.2 for x86. Use a separately configured local
-SSE2 build for minimum-ISA coverage. Physical Intel/AMD, other ARM platforms,
-FP16 and unavailable x86 ISAs remain separate coverage gates.
+SSE2 build for minimum-ISA coverage. Physical Intel, unselected AMD/ARM profiles,
+FP16 and unavailable x86 ISAs remain separate coverage gates; native AMD coverage
+is documented in the validation index.
 
-On Windows, fetch the same revision with Git as described in the handoff and
+On Windows, fetch the same revision with Git as described in the runner guide and
 pass its path with `-DVCL_TESTBENCH_DIR=build/_deps/testbench`. MSVC uses
 `/arch:SSE4.2` when supported; older MSVC retains default SSE2 compiler codegen
 with explicit `INSTRSET=6` intrinsics for the pinned targets. GNU-style Clang

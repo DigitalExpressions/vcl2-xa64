@@ -34,7 +34,8 @@ cd vcl2-xa64
 
 The default `master` branch includes these ARM-enabled sources following the
 approved merge of PR #1. See the [integration plan](docs/integration-plan.md)
-for the completion record and retained branches.
+for the completion record and current branch policy. Shared development and
+validation instructions for both operating systems are in [AGENTS.md](AGENTS.md).
 
 ### Direct VCL usage
 
@@ -209,7 +210,7 @@ target_link_libraries(my_application PRIVATE vcl::vcl)
 ```sh
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DVCL_BUILD_TESTS=ON
 cmake --build build -j 3
-ctest --test-dir build --output-on-failure --timeout 60 -j 6
+ctest --test-dir build --output-on-failure --timeout 60 -j 3
 ```
 
 For Direct Neon add `-DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=ON`

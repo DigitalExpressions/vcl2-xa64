@@ -1,14 +1,18 @@
 # Contributing
 
-The [master integration plan](docs/integration-plan.md) tracks manual native runners,
-port review, developer documentation cleanup and the integration PR. Read its
-resume notes before continuing that work. The default branch stays `master`.
+Read the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
+and [validation index](docs/validation/README.md) before continuing work.
+The ARM port and selected shared validation checkpoint are complete. The default
+branch stays `master`; later work needs its own relevant validation.
 
 Use [the native validation workflow](docs/validation/native-workflow.md) to keep
 the maintainer's Mac M2 ARM64 and AMD Windows x86-64 checkouts on the same
-`master` revision following the approved merge of PR #1. Short-lived topic
-branches feed `master` through reviewed pull requests; keep the existing port
-and Windows validation branches. Record native results separately for each host.
+approved source revision. Use topic branches when useful, review changes locally,
+and integrate or publish only with the maintainer's task-specific authorization.
+Do not create pull requests for this fork or against upstream. Preserve the fork
+relationship, remotes and published history. The completed port and audit branches
+were retired; they are not prerequisites for testing and should not be recreated.
+Record native results separately for each host.
 Physical Intel testing is omitted for now. Keep raw evidence under ignored
 `build/`.
 
@@ -17,8 +21,9 @@ Use the [developer documentation index](docs/README.md) and
 The [integration review](docs/integration-review.md) records the port review and
 the native evidence from the two physical hosts.
 Hosted test workflows are disabled; configuration alone does not prove a pass.
-Preserve historical reports and benchmark results during documentation cleanup.
-Complete that cleanup before any branch retirement.
+Preserve historical reports, benchmark results, raw evidence, dependency checkouts
+and validation worktrees during cleanup. Further branch retirement requires a
+specific user request; inspect actual local branches on each machine first.
 
 Preserve VCL's public names, lane ordering, supported masks/conversions, root
 include layout and explicit Direct Neon opt-in. Keep x86 changes limited and
