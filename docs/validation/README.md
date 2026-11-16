@@ -13,6 +13,12 @@ These results retain frozen source `bd7807e`, original failures and the separate
 identified validator reanalysis. Publication does not extend native coverage to
 later commits or unselected profiles.
 
+The [evidence-retention follow-up](evidence-retention-2026-11-16.md) records the
+approved removal of the completed Mac worktree and rebuildable outputs after
+all 9,000 build records were verified in compact archives. Original packet
+checksums, portable results, source commits and reusable test resources remain
+available; dated reports preserve their original execution-time paths.
+
 ## Reusable final verification prompts
 
 1. [Windows final verification prompt](windows-final-verification-prompt.md):

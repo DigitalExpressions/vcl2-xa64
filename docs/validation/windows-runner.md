@@ -88,7 +88,11 @@ Each Windows invocation creates `build/windows-native-<driver>-<mode>-<UTC>/`.
 It retains commands/exits, patches, manifests, configure/build/test logs,
 compile commands, CTest inventories, JUnit, control/binary hashes and results.
 The runner produces `return-evidence.zip` and its SHA256 on success or failure
-after evidence capture starts. Preserve full build directories locally.
+after evidence capture starts. Preserve full build directories until the
+retained records and failures have been verified against compact archives.
+With explicit cleanup approval, rebuildable outputs and completed temporary
+worktrees can then be removed according to the [retention policy](native-workflow.md#preserve-future-validation-inputs).
+Keep the pristine testbench, installed tools and original evidence archives.
 
 Transfer evidence packets separately and record their SHA256 in portable
 reports. Keep failed attempts and their original archives. A setup failure

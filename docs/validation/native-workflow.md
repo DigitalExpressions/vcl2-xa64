@@ -82,10 +82,19 @@ Choose a fresh path and run subsequent commands from that worktree's root.
 
 The maintained runners, shared evidence module, tests, fixture generators,
 cross-platform corpus/policies and comparator remain in the repository. Old
-branch names are not dependencies. Existing raw logs, checksummed archives,
-tool installations, pristine testbench checkouts and detached worktrees under
-ignored `build/` must not be removed as routine cleanup. Use new output paths
-for new runs instead of overwriting a previous attempt.
+branch names are not dependencies. Preserve original raw logs/results, source
+and compiler details, command/flag inventories, checksums, output bits and failed
+attempts in verified compact archives under ignored `build/`. Save any uncovered
+records or generated diagnostic/input sources in a checksummed supplement before
+cleanup. Keep tool installations and pristine testbench checkouts available.
+
+Once a run is complete and evidence coverage is verified, the user can authorize
+removal of rebuildable objects, test executables, debug symbols, generated build
+directories and temporary worktrees. Preserve source commits and original archive
+hashes; remove worktrees through Git. New passes use fresh builds rather than
+reusing retired outputs. See the [retention follow-up](evidence-retention-2026-11-16.md)
+for the approved cleanup of the frozen Mac worktree. Never discard unrelated
+work or evidence as part of broad cleanup, and never overwrite an earlier attempt.
 
 The native runners do not install build tools. Inspect available native Python,
 compiler, CMake/CTest and Ninja/make first, and put the selected installed tools
@@ -146,8 +155,9 @@ concurrency is three; timing benchmarks are outside this validation task.
 Every invocation creates an ignored `build/mac-m2-native-<UTC timestamp>/` with
 commands and exit codes, host/tool inventory, source and executable hashes,
 compile commands, raw configure/build/test logs, JUnit and per-profile results.
-Return `return-evidence.zip` and its checksum for review; retain the full build
-directory on the Mac. An unavailable compiler/runtime or failed control is a
+Return `return-evidence.zip` and its checksum for review. Keep the full build
+directory until archive coverage has been verified and cleanup authorized as
+described above. An unavailable compiler/runtime or failed control is a
 coverage gap or failure, never a sanitizer pass.
 
 The older offline packet is pinned to `943923a`; its bundled runner remains a

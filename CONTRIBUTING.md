@@ -21,9 +21,11 @@ Use the [developer documentation index](docs/README.md) and
 The [integration review](docs/integration-review.md) records the port review and
 the native evidence from the two physical hosts.
 Hosted test workflows are disabled; configuration alone does not prove a pass.
-Preserve historical reports, benchmark results, raw evidence, dependency checkouts
-and validation worktrees during cleanup. Further branch retirement requires a
-specific user request; inspect actual local branches on each machine first.
+Preserve historical reports, benchmark results, original evidence archives and
+dependency/tool installations during cleanup. After verifying that compact
+archives cover the raw records and failures, completed generated builds and
+temporary worktrees may be removed with explicit user authorization. Further
+branch retirement requires a specific request; inspect actual local branches first.
 
 Preserve VCL's public names, lane ordering, supported masks/conversions, root
 include layout and explicit Direct Neon opt-in. Keep x86 changes limited and

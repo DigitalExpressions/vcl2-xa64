@@ -72,9 +72,12 @@ fork development branch, and remains available for reference.
 
 `windows-native-validation` is absent from this Mac and origin. Another machine
 may still have a local copy; no removal there is claimed or authorized by this
-sweep. Check its actual state on Windows before any branch action. The retained
-detached worktree under ignored `build/final-mac-bd7807e/` identifies the frozen
-validation source and is preserved along with its raw evidence.
+sweep. Check its actual state on Windows before any branch action. The completed
+detached worktree under ignored `build/final-mac-bd7807e/` was subsequently
+retired with explicit user approval after its records were verified in compact
+archives. The [retention follow-up](validation/evidence-retention-2026-11-16.md)
+records the archive locations and checksums. Its frozen source remains in Git;
+new passes use fresh worktrees/builds. Only the main checkout remains registered.
 
 ## Historical evidence and cleanup
 

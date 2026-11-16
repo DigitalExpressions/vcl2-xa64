@@ -67,10 +67,20 @@ on a particular machine; its absence must not prevent a fresh setup.
   reports. Do not rewrite historical evidence or weaken its hash checkpoints.
   Put current status in the validation index and integration plan; add a dated
   follow-up for new findings. Original pending notes can remain in dated records.
-- All raw artifacts go under ignored `build/` in the active checkout. Keep the
-  full build directories, dependency/tool installations and frozen worktrees;
-  do not delete them as routine tidying. Publish only reviewed portable metadata,
-  summaries and raw-bit outputs, free of machine paths, credentials and binaries.
+- All raw artifacts go under ignored `build/` in the active checkout. Keep
+  original evidence archives, logs, results, source/compiler/flag inventories,
+  checksums, raw output bits and failed attempts. Before cleanup, verify that
+  compact archives cover these records and preserve any uncovered diagnostics,
+  inputs or generated reference/probe sources in a checksummed supplement.
+- After a completed run and explicit user authorization, rebuildable objects,
+  executables, debug symbols, generated build directories and temporary worktrees
+  may be removed once evidence coverage is verified. Retain recorded binary hashes
+  and the reachable source commit; new passes rebuild in fresh directories.
+  Preserve testbench/tool installations and unrelated work. Use Git's worktree
+  removal command rather than deleting its administrative metadata manually.
+- Publish only reviewed portable metadata, summaries and raw-bit outputs, free
+  of machine paths, credentials and binaries. Compact evidence is an audit record,
+  not a backup of the original compiled executables; never relabel old results.
 - Before comparator self-checks on a fresh checkout, create ignored `build/`:
   `python -c "from pathlib import Path; Path('build').mkdir(exist_ok=True)"`.
   Use `python3` on macOS. Follow `docs/validation/cross-platform/README.md` for
