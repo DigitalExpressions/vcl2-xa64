@@ -1,0 +1,1827 @@
+{
+  "examples": [
+    {
+      "driver": "msvc",
+      "executable_sha256": "dba2ba6235c501b5c2182bd9d54fa6605d726fe82ed723819083a34e50658fd2",
+      "output": "2 5 10 17",
+      "pass_": true,
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "06138ba149938801a24e86276f2ddd668c80e5a3ece682bb7639cd230e1256d4",
+      "output": "2 5 10 17",
+      "pass_": true,
+      "source": "fork"
+    }
+  ],
+  "note": "Untimed follow-up; exact existing kernel compile/link flags, independent IEEE and explicit rounding answers; exit 1 preserves failed lane checks.",
+  "observations": [
+    {
+      "driver": "msvc",
+      "executable_sha256": "ad8e49f8cabc052ff321fc87aec02fb8cdcf1b9cdcf8c33e794e90236165f4ce",
+      "isa": "sse2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 128,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 128,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 128,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 128,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 128,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 128,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 128,
+          "failed": 6,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 256,
+          "failed": 12,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 512,
+          "failed": 24,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 42,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "c846617f30b837f72dd172a283c1d428d6853c601c247452fc63a203deba3904",
+      "isa": "sse2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "7275f851d17fbdae8b25a1c8573e45085b5b0e04ac2441d310ebd1a3120b80a7",
+      "isa": "sse42",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "870afc0688d87d45cf2cfdd392e10f2184a5b8a209f74021006fae575d298779",
+      "isa": "sse42",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "c17fc16e4804f20053ba0b5103d098dca45d8208ffe0a5b0106ef7b2c97fa581",
+      "isa": "avx2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "c17fc16e4804f20053ba0b5103d098dca45d8208ffe0a5b0106ef7b2c97fa581",
+      "isa": "avx2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "86d53f5c492def52ae71daa5f239927dba9b9fac74858da6a317d66a35497e88",
+      "isa": "avx512",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "bbbb1b6bc0c95762db52927aaad9c1d97c4bab0db10cbb33c4a47d01269953f8",
+      "isa": "avx512",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "747a4f5159afcda29cb35a0f0677e8c5d2cde2e7ac8b25f6ca13b695c10abc3a",
+      "isa": "sse2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 128,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 128,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 128,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 128,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 128,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 128,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 128,
+          "failed": 6,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 256,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 256,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 256,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 256,
+          "failed": 12,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 4503599627370496,
+          "bits": 512,
+          "expected": 4503599627370497,
+          "input": 4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": -4503599627370496,
+          "bits": 512,
+          "expected": -4503599627370497,
+          "input": -4503599627370497,
+          "kind": "rounding_difference"
+        },
+        {
+          "actual": 9007199254740992,
+          "bits": 512,
+          "expected": 9007199254740991,
+          "input": 9007199254740991,
+          "kind": "rounding_difference"
+        },
+        {
+          "bits": 512,
+          "failed": 24,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 42,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "c98c14e18becb375cfe6fe891700bea5e5cc0a5129454fbe38705dffe38d600c",
+      "isa": "sse2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "5c83b33ef17d41e78f60a3b938c76b50d0fc34a80677b258fa60fa1e1fc39b49",
+      "isa": "sse42",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "6689647c386b514bd06a2b165ea56e112a363af7f7abf9f8250453c9385b36cc",
+      "isa": "sse42",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "fd7d3985c32da4528f3ec71310811e278e99b03be6ee04bce4b0545d461bac72",
+      "isa": "avx2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "58968138d1252148d7f78d4eb35458d299c8ad39425c2f157c19fef1e42cc860",
+      "isa": "avx2",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "494c48c1414e30058f738d979195291c8947ce849d76bc1d96868294a262480f",
+      "isa": "avx512",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "842d0d055103d7cc5056bbd47b277c238d020fd205aa50bbcb1d566005824891",
+      "isa": "avx512",
+      "records": [
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f32"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f32"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 640,
+          "type": "f32"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 80,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 160,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "classification",
+          "lane_checks": 320,
+          "type": "f64"
+        },
+        {
+          "bits": 128,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 16,
+          "type": "f64"
+        },
+        {
+          "bits": 256,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 32,
+          "type": "f64"
+        },
+        {
+          "bits": 512,
+          "failed": 0,
+          "kind": "rounding",
+          "lane_checks": 64,
+          "type": "f64"
+        },
+        {
+          "failed_lane_checks": 0,
+          "kind": "summary"
+        }
+      ],
+      "source": "fork"
+    }
+  ],
+  "original_run_id": "x86-upstream-20261116T200841757885Z",
+  "probe_sha256": "1114be94174e9b04d1ec6b7232831b6d81b8e3b239e201e37abb459cfc521955",
+  "runner_sha256": "e250e16a60c669be4abef8afc86fb3e9286166f84f9eb78f846d676edcf94a2f",
+  "shared_evidence_module_sha256": "96bc72f7ddbc840c89bce53846768b19a637edc7dc20fc80de9e4938b83f8a0a",
+  "sources": {
+    "fork": {
+      "archive_sha256": "6882385bdd4c7f884ceefb26492e81d755cbebfeb64c391b84a88a1d1dd70e24",
+      "commit": "ade9d9baf559ad480289277dd6ad8e6d1c5b15e3",
+      "fingerprint": "d4e62f8c2c08e219e9534c26f0122ffbcfbc65c579c771240dfb0b95f8eb78ea",
+      "tree": "85c2b81ce71bde49b5c697775531956cba27ff88"
+    },
+    "upstream": {
+      "archive_sha256": "32bdcdb190788d38e645f034b84a2c8563b9781c0fb1b337aa6603e006e26a78",
+      "commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+      "fingerprint": "b9fc80c216272c8e06431f9da7523c3ce03f1064a01f34cd9f7ff9216c46869a",
+      "tree": "36aee120c28c9c64e62903bfc81139003e37cedd"
+    }
+  }
+}

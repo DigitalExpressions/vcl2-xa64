@@ -18,6 +18,7 @@ import ast
 import json
 import os
 import re
+from regenerate_headers import render as render_headers, verify as verify_headers
 
 ROOT = Path(__file__).resolve().parents[1]
 NATIVE = ['vcl_config.h', 'instrset_neon.h', 'instrset_helpers.h',
@@ -76,7 +77,12 @@ def main():
                     candidates = [(ROOT / header).resolve(), (ROOT / 'tests' / header).resolve()]
                     assert any(candidate.parent in {ROOT, ROOT / 'tests'} and candidate.is_file()
                                for candidate in candidates), (str(path), header)
+    products, provenance = render_headers(ROOT)
+    _, stale = verify_headers(ROOT, products)
+    assert not stale, ('stale generated runtime headers', stale)
     print(json.dumps({'status': 'passed', 'public_files': len(files),
+                      'pristine_upstream_files': provenance['pristine_upstream_files'],
+                      'generated_runtime_products': len(products),
                       'local_documentation_links': links,
                       'native_headers_with_complete_notices': len(NATIVE)}, indent=2))
 

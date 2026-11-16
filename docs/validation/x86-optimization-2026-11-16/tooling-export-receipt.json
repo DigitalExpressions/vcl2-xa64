@@ -1,0 +1,6 @@
+{
+  "archive": "tooling-export-evidence.zip",
+  "sha256": "401d455cde376bf2230633fdd697355f4b4eddb821b9cabd6c0e3713087e93e7",
+  "verified_entries": 285,
+  "note": "Post-timing source-export tooling inputs, exact retained Git-export/patch records, source snapshots and validator sources; no benchmark timing rerun."
+}

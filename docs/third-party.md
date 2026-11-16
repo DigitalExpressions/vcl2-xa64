@@ -2,6 +2,9 @@
 
 - VCL2 originates with Agner Fog. Existing source copyright/license notices and
   the root [LICENSE](../LICENSE) and [changelog](../changelog.txt) are retained.
+  The [pristine upstream snapshot](../vendor/vectorclass/README.md) preserves all
+  28 original files at `6675774`, with a complete [blob/SHA inventory](../vendor/vectorclass.json).
+  Fork adaptations live outside that snapshot; see the [layout guide](backend-layout.md).
 - The added native port sources carry DigitalExpressions Sweden's full
   Apache-2.0 notice. Extracted/adapted helpers retain their original Agner Fog
   attribution; this notice identifies the port-specific contributions.

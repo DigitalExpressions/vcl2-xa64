@@ -42,6 +42,20 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Library and validation contracts
 
+- Maintain runtime behavior in the canonical `adaptation/` patches/include
+  sources and `backends/` implementations. Keep `vendor/vectorclass/` byte-exact
+  to its pinned upstream inventory; an upstream update requires explicit scope.
+  This is mandatory on every host, including Mac M2: never edit, format,
+  regenerate, normalize line endings or update this pristine directory to fix
+  validation failures. Verify it before and after native validation. On any
+  mismatch, retain evidence and stop; do not alter the pin/hash inventory to
+  accept changed vendor bytes. Only a separately authorized upstream-update
+  task may replace the pinned snapshot.
+  Root runtime headers are shipped generated products for direct header-only
+  use. Follow `docs/backend-layout.md`; regenerate after canonical changes and
+  run `tools/regenerate_headers.py --check` plus the repository check. Do not
+  leave hand-edited generated headers or require application users to generate.
+
 - Preserve public headers/API names, lane ordering, ABI settings, notices and
   upstream attribution. ARM defaults to sse2neon compatibility; Direct Neon
   requires its explicit experimental opt-in. Keep benchmark measurements intact.
@@ -108,6 +122,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   unselected APIs, native FP16 and ASan are outside this checkpoint's coverage.
 
 ## macOS
+
+- Keep `vendor/vectorclass/` untouched throughout M2 work. Run
+  `python3 -B tools/regenerate_headers.py --check` before and after tests; this
+  always verifies exact vendor bytes, regardless of generated-header line
+  endings. Put necessary ARM fixes in canonical `backends/arm64/` or explicit
+  adaptation patches, regenerate root products, and obtain a new approved
+  frozen source before claiming a fixed run. Never repair tests in the vendor
+  tree. Follow `docs/validation/mac-arm-x86-optimization-handoff.md` for the
+  published handoff checkpoint and evidence requirements.
 
 - Use native arm64 Python 3.9+, Apple Clang, CMake 3.20+ and CTest supporting
   `--output-junit`. The full runner can use Ninja or make; shared corpus capture

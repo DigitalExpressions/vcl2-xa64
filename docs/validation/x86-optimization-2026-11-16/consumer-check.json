@@ -1,0 +1,32 @@
+{
+  "namespace": "isolated",
+  "products": 35,
+  "profiles": [
+    {
+      "driver": "msvc",
+      "executable_sha256": "1492d28d19709f1106575fbff23e979da8c145b74cd333765fc50b2d49afc24b",
+      "isa": "sse2",
+      "passed": true
+    },
+    {
+      "driver": "msvc",
+      "executable_sha256": "f3551548c63d0a35809d82514bafef92479646658f0421ba9c9a593e0347221f",
+      "isa": "avx512",
+      "passed": true
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "c1792e163877267e6b19d6587636e3168757b4c2d074afebf502c86154c21bdc",
+      "isa": "sse2",
+      "passed": true
+    },
+    {
+      "driver": "clang",
+      "executable_sha256": "22144b660bfc9994494b856e36498215053072de63ac29e6cba64b476d1751fa",
+      "isa": "avx512",
+      "passed": true
+    }
+  ],
+  "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+  "vendor_or_generation_required_for_consumers": false
+}

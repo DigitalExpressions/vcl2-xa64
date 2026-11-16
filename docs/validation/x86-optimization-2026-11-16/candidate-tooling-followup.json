@@ -1,0 +1,13 @@
+{
+  "source_path_controls": 10,
+  "generation_check": {
+    "pristine_upstream_files": 28,
+    "generated_products": 35,
+    "exact_byte_matches": 35,
+    "success": true
+  },
+  "stale_candidate_rejected": true,
+  "pre_layout_patch_fingerprint": "1da758d8e17b4f50b60fca687a5dae2f52065b317aa71936f72466ae7375fc45",
+  "candidate_tool_sha256": "c87e6b2712760d6d2a734b68790ebfa49f74c11c61ac1e3fb11bae6f088bdcde",
+  "note": "Post-timing source-export tooling follow-up only; compiled benchmark C++ sources unchanged, original measured runner hashes retained."
+}

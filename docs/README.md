@@ -13,15 +13,19 @@ chosen source commit rather than requiring an old branch name.
 | Shared agent instructions for both hosts | [Agent instructions](../AGENTS.md) |
 | Completed integration, branch status and future work | [Integration status](integration-plan.md) |
 | Backend selection, widths and unsupported APIs | [Backend support](backends.md) |
+| Pristine upstream, adaptation patches and generated headers | [Source layout and updates](backend-layout.md) |
+| Current optimization/separation work and restart point | [Execution plan](x86-backend-optimization-plan.md) |
 | Floating-point and memory contracts | [Numerical contracts](numerical-contracts.md) |
 | Configure and run regressions | [Test instructions](../tests/README.md) |
 | Native Mac/AMD workflow and branch synchronization | [Native workflow](validation/native-workflow.md) |
+| Execute the published M2 checkpoint with immutable upstream | [M2 handoff](validation/mac-arm-x86-optimization-handoff.md) |
 | Actual tested revisions and coverage gaps | [Validation index](validation/README.md) |
 | Manual Windows controls and evidence | [Windows runner](validation/windows-runner.md) |
 | Format a new native result | [Report template](validation/report-template.md) |
 | Historical port review and findings | [Integration review](integration-review.md) |
 | Attribution and dependency boundaries | [Third-party notices](third-party.md) |
 | Correctness before optional benchmark measurements | [Benchmark protocol](../benchmarks/README.md) |
+| Compare fork/upstream x86 performance on Windows | [Repeatable x86 comparison](benchmarks/x86-upstream-comparison.md) |
 
 Current instructions describe the maintained developer workflow. Dated
 validation reports and benchmark results describe their recorded source

@@ -4,6 +4,11 @@ This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
 VCL C++ vector types and operators for application-independent SIMD code.
 
+Original VCL2 is retained untouched in `vendor/vectorclass/`. Explicit patches
+and separate backend sources reproduce the shipped root headers, so existing
+header-only usage requires no generation step. See the
+[source layout and maintenance workflow](docs/backend-layout.md).
+
 All credit for the original x86 Vector Class Library goes to **Agner Fog**.
 We gratefully acknowledge the many hours of extraordinary work he has devoted
 to its development. Without his work, this port would not exist.

@@ -1,0 +1,7 @@
+{
+  "archive": "compact-supplement.zip",
+  "bytes": 59725162,
+  "note": "Includes all new raw command/exit logs, failed attempts, source snapshots, compact native/benchmark/edge packets, generated probe/adaptor sources, layout integrity controls, canonical sources and scripts. Rebuildable objects/executables remain host-local with recorded hashes; no cleanup performed.",
+  "sha256": "10c4c5bd728594c0df46766f406df6f2516d403364c75ab598c01bf3371bb109",
+  "verified_entries": 2741
+}

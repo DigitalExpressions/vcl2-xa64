@@ -34,6 +34,8 @@
 #endif
 
 
+#include "x86_classification.h"
+
 #ifdef VCL_NAMESPACE
 namespace VCL_NAMESPACE {
 #endif
@@ -1014,9 +1016,12 @@ static inline Vec4fb is_nan(Vec4f const a) {
     __asm__ volatile("{cmpps $3, %0, %0|cmpps %0, %0, 3}" : "+x" (unordered));
     return Vec4fb(_mm_castsi128_ps(unordered));
 #elif defined(_MSC_VER)
-    // MSVC can fold a != a under /fp:fast. Inspect the integer encoding.
+#if !defined(__INTEL_COMPILER)
+    return Vec4fb(vcl_detail_x86::nan_mask(__m128(a)));
+#else
     Vec4ui bits = _mm_castps_si128(a);
     return (bits << 1) > Vec4ui(0xFF000000u);
+#endif
 #else
 return a != a; // This is not safe with -ffinite-math-only, -ffast-math, or /fp:fast compiler option
 #endif
@@ -2032,9 +2037,12 @@ static inline Vec2db is_nan(Vec2d const a) {
     __asm__ volatile("{cmppd $3, %0, %0|cmppd %0, %0, 3}" : "+x" (unordered));
     return Vec2db(_mm_castsi128_pd(unordered));
 #elif defined(_MSC_VER)
-    // Preserve classification with /fp:fast, independently of FP assumptions.
+#if !defined(__INTEL_COMPILER)
+    return Vec2db(vcl_detail_x86::nan_mask(__m128d(a)));
+#else
     Vec2uq bits = _mm_castpd_si128(a);
     return Vec2qb((bits << 1) > Vec2uq(0xFFE0000000000000ull));
+#endif
 #else
     return a != a; // This is not safe with -ffinite-math-only, -ffast-math, or /fp:fast compiler option
 #endif

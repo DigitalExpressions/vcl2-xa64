@@ -60,6 +60,37 @@ template<class V,class T,class U> int check(U const* patterns,unsigned count,U e
     return failures;
 }
 
+// Mixed lanes exercise broad/compact mask construction and the SSE2 double
+// integer-comparison fallback. Include every special pattern in every lane,
+// followed by deterministic random bit patterns. The oracle stays integer-only.
+template<class V,class T,class U> int check_mixed(U const* patterns,unsigned count,U exponent,U fraction,U sign) {
+    U state=U(0x9E3779B9u);
+    int failures=0;
+    for(unsigned batch=0;batch<256;++batch) {
+        T values[V::size()];
+        uint64_t expected[6]={};
+        for(int lane=0;lane<V::size();++lane) {
+            state=state*U(1664525u)+U(1013904223u);
+            U bits=batch<count?patterns[(batch+unsigned(lane))%count]:state;
+            std::memcpy(values+lane,&bits,sizeof(T));
+            const bool finite=(bits&exponent)!=exponent,zero_exp=(bits&exponent)==0;
+            const bool wanted[]={finite,(bits&~sign)==exponent,!finite && (bits&fraction)!=0,
+                zero_exp && (bits&fraction)!=0,zero_exp,bool(bits&sign)};
+            for(unsigned op=0;op<6;++op) if(wanted[op]) expected[op]|=uint64_t(1)<<lane;
+        }
+        V a; a.load(values);
+        const uint64_t actual[]={uint64_t(to_bits(is_finite(a))),uint64_t(to_bits(is_inf(a))),
+            uint64_t(to_bits(is_nan(a))),uint64_t(to_bits(is_subnormal(a))),
+            uint64_t(to_bits(is_zero_or_subnormal(a))),uint64_t(to_bits(sign_bit(a)))};
+        for(unsigned op=0;op<6;++op) if(actual[op]!=expected[op]) {
+            std::fprintf(stderr,"mixed classification lanes=%d scalar_bytes=%zu batch=%u op=%u mask=%llx expected=%llx\n",
+                V::size(),sizeof(U),batch,op,(unsigned long long)actual[op],(unsigned long long)expected[op]);
+            ++failures;
+        }
+    }
+    return failures;
+}
+
 #if MAX_VECTOR_SIZE >= 512 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
 // Keep this small, direct constant-broadcast reproducer separate from the
 // generic scalar oracle: materializing a vector across a call hides the bug.
@@ -79,11 +110,14 @@ int main() {
     const uint32_t f[]={0,0x80000000,1,0x80000001,0x007fffff,0x00800000,0x3f800000,0x7f800000,0xff800000,0x7fc12345,0xff800001};
     const uint64_t d[]={0,0x8000000000000000ull,1,0x8000000000000001ull,0x000fffffffffffffull,0x0010000000000000ull,0x3ff0000000000000ull,0x7ff0000000000000ull,0xfff0000000000000ull,0x7ff8123456789abcull,0xfff0000000000001ull};
     int failures=check<Vec4f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check<Vec2d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
+    failures+=check_mixed<Vec4f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check_mixed<Vec2d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
 #if MAX_VECTOR_SIZE >= 256
     failures+=check<Vec8f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check<Vec4d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
+    failures+=check_mixed<Vec8f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check_mixed<Vec4d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
 #endif
 #if MAX_VECTOR_SIZE >= 512
     failures+=check<Vec16f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check<Vec8d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
+    failures+=check_mixed<Vec16f,float,uint32_t>(f,11,0x7f800000,0x007fffff,0x80000000)+check_mixed<Vec8d,double,uint64_t>(d,11,0x7ff0000000000000ull,0x000fffffffffffffull,0x8000000000000000ull);
 #if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
     failures+=check_wide_broadcasts();
 #endif

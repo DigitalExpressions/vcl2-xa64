@@ -1,5 +1,29 @@
 # Backend support
 
+## Implementation boundaries
+
+The [source layout](backend-layout.md) keeps original VCL2 untouched under
+`vendor/vectorclass/`, with explicit adaptation patches and canonical backend
+sources elsewhere. Root headers are shipped generated products for the existing
+include layout; consumers do not need to generate them.
+
+Keep one public VCL API, numerical contract and independent test suite. Register
+operations, mask representation and compiler workarounds belong to the selected
+backend. Backend selection is compile-time; x86 execution does not route through
+NEON. Shared mathematical algorithms may retain narrowly guarded compiler
+inlining decisions, but must keep their coefficients, operation grouping and
+special-value policy consistent.
+
+The private `x86_classification.h` isolates native MSVC x86 integer-encoding
+classification. Its SSE2/SSE4.2 and AVX-512 primitives avoid portable vector
+composition while retaining `/fp:fast` behavior and the 512-bit FPCLASS
+workaround. Other compilers and both ARM backends keep their existing paths.
+The MSVC x86 FP32 exponential template is kept inline to avoid a measured
+out-of-line wide-vector cost. These changes are under validation; see the
+[optimization plan](x86-backend-optimization-plan.md) for source/evidence status.
+
+## Backend selection and coverage
+
 | Backend | Header selection | Status |
 | --- | --- | --- |
 | x86 | Automatic on x86, or `VCL_BACKEND=1` | Existing VCL implementation; ISA selected by compiler flags |

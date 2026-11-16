@@ -176,6 +176,33 @@ and in Git history.
 
 ## Continuing development
 
+The [current execution plan](x86-backend-optimization-plan.md) records the
+maintainer-approved pristine upstream/adaptation architecture with direct
+header-only usage. Original VCL2's 28 files stay untouched under
+`vendor/vectorclass/`; explicit patches and canonical backend sources reproduce
+the shipped headers. The [Windows follow-up](validation/windows-amd-2026-11-16-x86-layout.md)
+and [performance report](benchmarks/x86-optimization-2026-11-16.md) identify the
+uncommitted optimized source, native baseline passes, measured gains and retained
+higher-ISA failures. Native M2 remains pending via the prepared handoff. The
+maintainer authorized committing/pushing the prepared source, reports and
+strengthened handoff on 2026-11-16. The publication commit is the clean Mac
+checkpoint; existing Windows results keep their original tested identifiers.
+The M2 must keep `vendor/vectorclass/` untouched and retain before/after checks.
+Keep the candidate validation worktree and raw evidence; further publication
+or cleanup requires separate authorization.
+
+The separate [Windows x86 performance investigation](benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
+compares frozen fork `ade9d9b` with original VCL `6675774` using MSVC and Clang,
+all four selected ISA profiles, 816 comparisons and separate edge controls.
+Repeatable [instructions and tooling](benchmarks/x86-upstream-comparison.md)
+are prepared. It finds localized slowdowns, including costs associated with
+correctness fixes, and does not change the library. Candidate follow-up work
+is MSVC classification/wide exponential helper code, then baseline integer
+conversion and rounding costs, preserving all correctness controls. Reports,
+harness and portable results were prepared uncommitted for review, then included
+in the maintainer-authorized M2 handoff publication. Their original source IDs
+remain unchanged. This is separate from the completed SIMD-parity checkpoint below.
+
 There is no remaining action for this selected validation checkpoint. Start new
 library work from current `master`, using a topic branch when useful. Preserve
 unrelated work and raw evidence, and validate changes according to the native workflow.

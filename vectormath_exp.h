@@ -375,8 +375,15 @@ static inline Vec8d exp10(Vec8d const x) {
 // M1: 0 for exp, 1 for expm1
 // BA: 0 for exp, 1 for 0.5*exp, 2 for pow(2,x), 10 for pow(10,x)
 
+// Keep the MSVC x86 polynomial in the caller: outlining this helper passes
+// wide vectors through memory and prevents loop-invariant coefficient setup.
+#if VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
+template<typename VTYPE, int M1, int BA>
+static __forceinline VTYPE exp_f(VTYPE const initial_x) {
+#else
 template<typename VTYPE, int M1, int BA>
 static inline VTYPE exp_f(VTYPE const initial_x) {
+#endif
 
     // Taylor coefficients
     const float P0expf   =  1.f/2.f;

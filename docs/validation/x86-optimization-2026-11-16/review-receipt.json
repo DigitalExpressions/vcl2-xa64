@@ -1,0 +1,7 @@
+{
+  "archive": "final-review-addendum.zip",
+  "sha256": "50495d6df4e52b3a4a4c5b54e3efac70309fac4b072f621021e1d62eab10c3be",
+  "additional_executable_hashes": 123,
+  "verified_entries": 7,
+  "note": "Post-timing candidate exporter/canonical integrity controls and final review. Original compiled harness/source and measured runner hashes remain in the earlier immutable evidence archives."
+}

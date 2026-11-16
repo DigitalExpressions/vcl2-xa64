@@ -1,0 +1,175 @@
+{
+  "commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+  "files": [
+    {
+      "git_blob": "fd2deda369fba60174d44a356122e8ba1b1559ab",
+      "mode": "100644",
+      "path": "LICENSE",
+      "sha256": "6dac3cfa9f8ab6cd7c4b983bf8522a0f93c069b12f5df4d56d2223b1f760f37e"
+    },
+    {
+      "git_blob": "d59b92fed223e051e99397025bcb277f2c422dd3",
+      "mode": "100644",
+      "path": "README.md",
+      "sha256": "4345c083cfaed3f8855e45bc436b3130962576ebdf07e0e5a52e90c2a7ee7e5a"
+    },
+    {
+      "git_blob": "c0fe59ad93bfe5405fde8030022782b0e550533a",
+      "mode": "100644",
+      "path": "changelog.txt",
+      "sha256": "dce0ff2a39d93c9afeffe854d9b0ed86d1854437fc5ca8f21128439c24a49f02"
+    },
+    {
+      "git_blob": "a7c8b75b8158e708d4f3ba1ed6211ee3a279a892",
+      "mode": "100644",
+      "path": "dispatch_example1.cpp",
+      "sha256": "6a3548ac65a32eede74162843ce4c0a3ea0b8da3e8f1fe358c702f4cfb29901d"
+    },
+    {
+      "git_blob": "c8e860eab29027198910a8e9b27efec99f70ddff",
+      "mode": "100644",
+      "path": "dispatch_example2.cpp",
+      "sha256": "16ae3367d217a724c45b96b41925b6529287ac932cbf98d050b14ef529994238"
+    },
+    {
+      "git_blob": "2834d3560d14972a9694fe082fb0d5ea3c8a52ba",
+      "mode": "100644",
+      "path": "instrset.h",
+      "sha256": "17a8705db04f0284d396a7a67363312948efe5b84b83a7ce44facce2d6951419"
+    },
+    {
+      "git_blob": "a0974df85c5326269e891c098718dd2c3de79269",
+      "mode": "100644",
+      "path": "instrset_detect.cpp",
+      "sha256": "5c76668feaf226b02c970080c3fb67881f0c67aad22e66a4f91963880a8bfd0b"
+    },
+    {
+      "git_blob": "d6caf5b88aa8b43d122db00fb2eb59128629403f",
+      "mode": "100644",
+      "path": "vector_convert.h",
+      "sha256": "685365bec7ffb430af689214a6c748e8797d0ff0d8a229e55d677be6b9f74f86"
+    },
+    {
+      "git_blob": "6c6f175560d0e8a390eb3c88bd236e5c6fd606db",
+      "mode": "100644",
+      "path": "vectorclass.h",
+      "sha256": "96a6892c0d1a09f0f975071834204efb9ec115915d75385a530c3f68cbea0e09"
+    },
+    {
+      "git_blob": "4d8011b328ee44d0b212b59f7bb65dc04a1b6b03",
+      "mode": "100644",
+      "path": "vectorf128.h",
+      "sha256": "214ed1d1a9e3365e6e09b04807a52cd795f38218e0071872b99aec6927cb606f"
+    },
+    {
+      "git_blob": "b6d8e4592624d3047e4c793a585cefc7f6b6e96b",
+      "mode": "100644",
+      "path": "vectorf256.h",
+      "sha256": "86797f06fd25c5fe966abe45dedf5edb104e5566859ebebddae8a26a0b47531b"
+    },
+    {
+      "git_blob": "0d27b4d5266b9699449f4349fb250f31f1d1cc4e",
+      "mode": "100644",
+      "path": "vectorf256e.h",
+      "sha256": "8d030b4a17850ae345c90c4c0005b86cf4b587da78385bd41b4ec45d9b411201"
+    },
+    {
+      "git_blob": "1831f9bb64f36d1d67e2b7f660324d1a8b1ef411",
+      "mode": "100644",
+      "path": "vectorf512.h",
+      "sha256": "1bc479817795beb1c07af9cd5db75efc45e000e315d264f5b86754c79b71d51b"
+    },
+    {
+      "git_blob": "a9007785e570b84ac8485913053f4016d3e63f64",
+      "mode": "100644",
+      "path": "vectorf512e.h",
+      "sha256": "7db22f76a8cc2839ba948f061834cbd5ac22c297f3e508b551a2f1366a656856"
+    },
+    {
+      "git_blob": "a5eb8a3fa239b1f175a6b97a58c9cf1c7e84ae6b",
+      "mode": "100644",
+      "path": "vectorfp16.h",
+      "sha256": "cc13055cb17cfe56ce5978286570b41464d84e45ebd142e15d48489f3a914f81"
+    },
+    {
+      "git_blob": "2aab29d22904bfb29a796466858fc95734bc17c7",
+      "mode": "100644",
+      "path": "vectorfp16e.h",
+      "sha256": "79d0e16a891990bb3020160d3dd52bb2d33f620414a4b2ca77cd441e75f3361c"
+    },
+    {
+      "git_blob": "255a65b7a9e10d2855194ba79b53e30d245330a0",
+      "mode": "100644",
+      "path": "vectori128.h",
+      "sha256": "b0f1de0d8fcfcf9185c2f2ebddb60a786f9742e7cee0fe598880977efe716cdf"
+    },
+    {
+      "git_blob": "37c7417cb7f1222769dcecc514246082d80bb4c8",
+      "mode": "100644",
+      "path": "vectori256.h",
+      "sha256": "1881acef69e561693ee9cbd594333921bbc7b5603bb4c5f2a845f19bc959aa8d"
+    },
+    {
+      "git_blob": "4b9eff9be336155f0e2b1af805b02dc7b62bd8c5",
+      "mode": "100644",
+      "path": "vectori256e.h",
+      "sha256": "baff37c907c1bf2a9c5170483730d08ed08a27d47c36cdeef068bc43cdd5429a"
+    },
+    {
+      "git_blob": "97ec1441590ba78a33dc4e0b110bc98a1cd63407",
+      "mode": "100644",
+      "path": "vectori512.h",
+      "sha256": "560d09ae96a7ee9aa914521b791d26ead37d57cfa26985cf41a45231ad6c497f"
+    },
+    {
+      "git_blob": "1e04df14c43715262fe30c36aa2a6e531fc5fadb",
+      "mode": "100644",
+      "path": "vectori512e.h",
+      "sha256": "b2d55013dbb03444ea272f2ce9eb6ea05e6ba2f1ff42138561d61459da4aa8f8"
+    },
+    {
+      "git_blob": "261b3013ed31ebd7c3da325af4bd5f46a22d6c94",
+      "mode": "100644",
+      "path": "vectori512s.h",
+      "sha256": "82bd972f0650e61e3ace4c1e1c010c7249c6c6b76997047620f91cecef486fbc"
+    },
+    {
+      "git_blob": "ff49ce19996dfe1b744e27753d457d115873ad94",
+      "mode": "100644",
+      "path": "vectori512se.h",
+      "sha256": "a3e2ccd6f57e8a68079261589573a55b7fdab5b473866b0f0e6eaa6774151060"
+    },
+    {
+      "git_blob": "7a627dd61d2118651193ea9aabdc61f54dfd1c74",
+      "mode": "100644",
+      "path": "vectormath_common.h",
+      "sha256": "d5b751356ab4129189de60fe7747aeb26ada3a5c621f8694ee1764ff7e82af98"
+    },
+    {
+      "git_blob": "ea1d850aafa7652919de3ded347372f4da54fc53",
+      "mode": "100644",
+      "path": "vectormath_exp.h",
+      "sha256": "c83fda2a1e8965626c68ad2fdefea65660d8806e29c18215b22c95b6f2abd440"
+    },
+    {
+      "git_blob": "9f22f3f11ee168cd9b50bf27063781e591c5a313",
+      "mode": "100644",
+      "path": "vectormath_hyp.h",
+      "sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+    },
+    {
+      "git_blob": "faa2a24f9db3c18c3d151c17824248a571e8cf7f",
+      "mode": "100644",
+      "path": "vectormath_lib.h",
+      "sha256": "89015c4facc68c6db3dc28ceaebbe33b2c85bdc80b7410da58ec40b305db7587"
+    },
+    {
+      "git_blob": "c33e354d7890c65dd91d5b475bdae810ccec9b92",
+      "mode": "100644",
+      "path": "vectormath_trig.h",
+      "sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde"
+    }
+  ],
+  "repository": "https://github.com/vectorclass/version2.git",
+  "tree": "36aee120c28c9c64e62903bfc81139003e37cedd"
+}

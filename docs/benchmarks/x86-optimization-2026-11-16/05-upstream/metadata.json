@@ -1,0 +1,110 @@
+{
+  "build": "optimized O2, no LTO, no sanitizers, static release CRT",
+  "compiler_versions": {
+    "clang": "clang version 20.1.8\nTarget: x86_64-pc-windows-msvc\nThread model: posix",
+    "msvc": "Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35723 for x64",
+    "objdump": "  LLVM version 20.1.8"
+  },
+  "cpu": 2,
+  "cpu_probe": {
+    "avx2": true,
+    "avx512": true,
+    "cpuid1_ecx": 4275581451,
+    "cpuid7_ebx": 4055865257,
+    "sse2": true,
+    "sse42": true,
+    "vendor": "AuthenticAMD",
+    "xcr0": "0xe7"
+  },
+  "fp": "strict, no contraction, nearest-even, MXCSR=0x1f80 at startup",
+  "harness_sha256": {
+    "benchmarks/x86_upstream/common.h": "55e133691ad6ea25e80479d109c21f62a2b5fd732f50de43a6eb3ad943634b5d",
+    "benchmarks/x86_upstream/kernels.cpp": "3dd05b761c6fcce6a80974d466fd1b617b8258dc06c4ccb60d652dae43bdcb8b",
+    "benchmarks/x86_upstream/main.cpp": "202bc0ae1e894b000c74ca917340758e6b60aca17aedd4f8182c8814ecc988e3",
+    "tools/run_x86_candidate_comparison.py": "7ae21cfba190c03e6281bdcc9af97db34048349ee74975575f10069a35027a18",
+    "tools/run_x86_upstream_comparison.ps1": "c9d8eb6b859be77338d8fa31c157cacf0b3a80f20a10e6d88784a4774fd5c23b",
+    "tools/run_x86_upstream_comparison.py": "051166ac4fef97299db13c514984bebe4a2a245c015bcb3758c51f5483ffb41c"
+  },
+  "host": {
+    "available_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "native_machine": "0x8664",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "process_machine": "0x0",
+    "python": "3.11.9"
+  },
+  "isa_levels": {
+    "avx2": 8,
+    "avx512": 10,
+    "sse2": 2,
+    "sse42": 6
+  },
+  "order": "MSVC before Clang; ISA ascending; even pairs upstream/fork, odd pairs fork/upstream",
+  "pairs": 4,
+  "power_scheme": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+  "run_id": "05-upstream",
+  "sample_ms": 6.0,
+  "schema": 1,
+  "sources": {
+    "fork": {
+      "archive": "fork-candidate-source.tar",
+      "archive_sha256": "8fdd20e5272c5535e34ab6902a501f6186b91cee3a2af9182f7daaa3a6f91c70",
+      "base_archive_sha256": "d3a39b997a4d1f2f705583e3875afd6df44c23a2830fe19a186236f327a3ee12",
+      "base_commit": "44f974ac31e1448e0beb5157d2bd8d669f5c518e",
+      "base_tree": "77f68cb6590ed95d6a812d7dff3436aff8f73b66",
+      "commit": null,
+      "fingerprint": "1da758d8e17b4f50b60fca687a5dae2f52065b317aa71936f72466ae7375fc45",
+      "fingerprint_order": "relative POSIX paths sorted by Unicode code points",
+      "patch_paths": [
+        "tests/fp_classification.cpp",
+        "vectorf128.h",
+        "vectorf512.h",
+        "vectormath_exp.h",
+        "x86_classification.h"
+      ],
+      "patch_sha256": "b954c2894ecac21ad59b3ca3d9ff10401f01fb8ac5552e96eeb4dc300c5855e4",
+      "role": "uncommitted reviewed candidate"
+    },
+    "upstream": {
+      "archive_sha256": "32bdcdb190788d38e645f034b84a2c8563b9781c0fb1b337aa6603e006e26a78",
+      "commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+      "fingerprint": "b9fc80c216272c8e06431f9da7523c3ce03f1064a01f34cd9f7ff9216c46869a",
+      "role": "explicit unmodified reference",
+      "tree": "36aee120c28c9c64e62903bfc81139003e37cedd"
+    }
+  },
+  "started_utc": "20261116T213740555955Z",
+  "trials": 7
+}

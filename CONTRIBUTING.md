@@ -33,6 +33,13 @@ reviewable. Preserve copyright and third-party notices. All source files added
 for this port use the complete DigitalExpressions Sweden Apache-2.0 notice;
 derived files must retain their original attribution too.
 
+Maintain runtime changes in the [canonical adaptation/backend sources](docs/backend-layout.md),
+not by hand-editing generated root headers. Keep `vendor/vectorclass/` pristine.
+Run `python -B tools/regenerate_headers.py --write` after canonical edits,
+then `--check`, generation integrity controls and relevant native validation.
+The root products remain checked in for direct header-only use; Python/Git
+generation is a maintainer workflow, not a prerequisite for applications.
+
 Run [the regression suite](tests/README.md) for both ARM backends, native widths
 128/256/512, Release and strict UBSan where supported. Exercise selected x86
 targets separately. Add a regression that demonstrates a changed contract or

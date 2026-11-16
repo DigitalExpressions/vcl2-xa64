@@ -5,6 +5,26 @@ applies to its recorded source and profiles; a branch name alone does not
 identify tested code. Use the [native workflow](native-workflow.md) to run tests
 and the [report template](report-template.md) to record a new result.
 
+## Layout/optimization publication and M2 handoff
+
+The [new Windows report](windows-amd-2026-11-16-x86-layout.md) records 5,392/5,392
+baseline-ISA native passes at base `44f974a` plus exact patch `b954c289`, separate
+from the older checkpoint below. The [pristine-source layout](../backend-layout.md)
+reproduces the optimized runtime bytes without a consumer generation step.
+[Performance confirmation](../benchmarks/x86-optimization-2026-11-16.md) measures
+both pre-change fork and original upstream with full portable tables.
+Additional paired AVX2/AVX-512 selections remain failing (130/320 candidate case
+instances, matching baseline failed names/counts), including existing Clang
+AVX2 UBSan conversion failure; these are not clean higher-ISA validation.
+Native M2 is pending: use the [source-approved handoff](mac-arm-x86-optimization-handoff.md).
+The maintainer authorized committing/pushing this prepared source and evidence
+for M2 handoff on 2026-11-16. Resolve the clean publication checkpoint from the
+handoff file history as instructed there. Vendor bytes must remain untouched,
+with integrity checked before/after the Mac matrix. Publication does not alter
+the completed shared checkpoint or transfer Windows passes to a later revision.
+
+## Completed shared checkpoint status
+
 The selected `simd-parity-20261116` checkpoint is complete and published on
 `master`: Mac evidence/validator follow-up at `99f4a3d`, and source-byte audit
 at `145c7f5`. All 32 planned pairings passed their declared comparison policies,
@@ -20,6 +40,14 @@ checksums, portable results, source commits and reusable test resources remain
 available; dated reports preserve their original execution-time paths.
 
 ## Reusable final verification prompts
+
+The separate [Windows x86 upstream performance comparison](../benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
+records MSVC/Clang at fork `ade9d9b` versus original VCL `6675774`: 816 workload
+comparisons and 45,696 samples, with localized slowdowns and a separate edge
+probe demonstrating upstream SSE2 rounding failures avoided by the fork. See
+the [repeatable protocol](../benchmarks/x86-upstream-comparison.md). This is a
+performance investigation with its own limited correctness checks, not a new
+full native correctness matrix or an extension of the frozen parity checkpoint.
 
 1. [Windows final verification prompt](windows-final-verification-prompt.md):
    prepare/reuse the shared SIMD corpus, capture harness and comparator, freeze

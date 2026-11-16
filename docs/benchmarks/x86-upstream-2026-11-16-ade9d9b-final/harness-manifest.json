@@ -1,0 +1,7 @@
+{
+  "benchmarks/x86_upstream/common.h": "f0ad752cd8ff0c49ff9587844fff21e1d54193208129af231f34448081e48bfe",
+  "benchmarks/x86_upstream/kernels.cpp": "27a85a3d3382ddbf32b7d97f807956c5bd053382d885408c7aab71d5eef9d0b1",
+  "benchmarks/x86_upstream/main.cpp": "42ee27a4d7b4b751ed3bd73347ce10fb6987992043b29bc2b349c46791d654a9",
+  "tools/run_x86_upstream_comparison.ps1": "caa6a798f0be3ae7ee494476202c31c3799589e0674bae12dbe6c20837f87a92",
+  "tools/run_x86_upstream_comparison.py": "96bc72f7ddbc840c89bce53846768b19a637edc7dc20fc80de9e4938b83f8a0a"
+}

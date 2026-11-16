@@ -1,0 +1,128 @@
+{
+  "binaries": [
+    {
+      "driver": "msvc",
+      "isa": "sse2",
+      "machine": "0x8664",
+      "sha256": "43e360dce6ebf1b781eb7f5c7def44872abfd477a54a0b0e1d710c82f3c0c8b4",
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "isa": "sse2",
+      "machine": "0x8664",
+      "sha256": "25e3a07135880858bed3b759daa4c058e861a6ad7ef690869dc40b6e0634b214",
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "isa": "sse42",
+      "machine": "0x8664",
+      "sha256": "d048603e521d0b92c0700cf2889157f008d53bde9073238592d51fd0a7b94299",
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "isa": "sse42",
+      "machine": "0x8664",
+      "sha256": "3a8762a7967e907e89d213121f0da30fc2d1678974e7ed4519d2ee1ebe20eda6",
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "isa": "avx2",
+      "machine": "0x8664",
+      "sha256": "290f276f87f27878fd930d0e71749df43d4e3ca25b5f6fd155ca927137de0c5b",
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "isa": "avx2",
+      "machine": "0x8664",
+      "sha256": "5fbe4e9ed705431417dc6d6b3d2bea9dee36142db0e7c28a8c120b70a2c89e19",
+      "source": "fork"
+    },
+    {
+      "driver": "msvc",
+      "isa": "avx512",
+      "machine": "0x8664",
+      "sha256": "ad5c22e8a9ad28603ac5ff9c4f16572e90bf04474f7b5cb85061368660056b58",
+      "source": "upstream"
+    },
+    {
+      "driver": "msvc",
+      "isa": "avx512",
+      "machine": "0x8664",
+      "sha256": "8a46855f8f8eef02b75b1884a8af31d7eda5956891555dbed2172fd5bc06e540",
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "isa": "sse2",
+      "machine": "0x8664",
+      "sha256": "bad8be8d9f7ef80f79bbd134618c1db78c1a19db6ef4f42ebe4dc679ca00dc86",
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "isa": "sse2",
+      "machine": "0x8664",
+      "sha256": "5d346f4af905a6c8ca678ae38c7a3722d50058df971e52872ba072da36f41957",
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "isa": "sse42",
+      "machine": "0x8664",
+      "sha256": "9e5b43caa480588fe3597e987c61188d11a25e312763119fee69796af1cbff9d",
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "isa": "sse42",
+      "machine": "0x8664",
+      "sha256": "6d7e53d7455d98257f511b9ab5117ce82f540ae57c1db41dafa366e6d8b37667",
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "isa": "avx2",
+      "machine": "0x8664",
+      "sha256": "2f1993a081c4bdc20c28ca5640eda58f424814c45ba9d88b0f94459833bd690d",
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "isa": "avx2",
+      "machine": "0x8664",
+      "sha256": "afcee9a35eb0a47793976686fe730279edb0a5285ad12edac0f6bd29d08e00ab",
+      "source": "fork"
+    },
+    {
+      "driver": "clang",
+      "isa": "avx512",
+      "machine": "0x8664",
+      "sha256": "2bd764149595f497a18a12918cd41be25319fa244ebebc467be1e5a956a569bc",
+      "source": "upstream"
+    },
+    {
+      "driver": "clang",
+      "isa": "avx512",
+      "machine": "0x8664",
+      "sha256": "61e715eedea8c7554cd440ff7de6486a38a43c9a3626f0b9592bc0d833a0ebef",
+      "source": "fork"
+    }
+  ],
+  "comparisons": 816,
+  "correctness_cases": 1632,
+  "failed": 0,
+  "output_hash_disagreements": [],
+  "skipped": 0,
+  "statuses": {
+    "faster-consistent": 16,
+    "mixed-or-within-5pct": 725,
+    "slower-consistent": 75
+  },
+  "timed_out": 0,
+  "timing_samples": 45696
+}

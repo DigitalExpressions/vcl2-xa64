@@ -1,0 +1,179 @@
+{
+  "copy_products": [
+    {
+      "output": "instrset_neon.h",
+      "source": "backends/arm64/instrset_neon.h"
+    },
+    {
+      "output": "vectori128_neon.h",
+      "source": "backends/arm64/vectori128_neon.h"
+    },
+    {
+      "output": "vectori128_neon_div.h",
+      "source": "backends/arm64/vectori128_neon_div.h"
+    },
+    {
+      "output": "vectori128_neon_perm.h",
+      "source": "backends/arm64/vectori128_neon_perm.h"
+    },
+    {
+      "output": "vectorf128_neon.h",
+      "source": "backends/arm64/vectorf128_neon.h"
+    },
+    {
+      "output": "vectorf128_neon_helpers.h",
+      "source": "backends/arm64/vectorf128_neon_helpers.h"
+    },
+    {
+      "output": "vcl_config.h",
+      "source": "adaptation/include/vcl_config.h"
+    },
+    {
+      "output": "instrset_helpers.h",
+      "source": "adaptation/include/instrset_helpers.h"
+    },
+    {
+      "output": "x86_classification.h",
+      "source": "backends/x86/x86_classification.h"
+    },
+    {
+      "output": "sse2neon.h",
+      "source": "vendor/sse2neon/sse2neon.h"
+    }
+  ],
+  "note": "Canonical sources live in vendor/, adaptation/ and backends/. Root products are shipped for direct header-only use.",
+  "patches": [
+    "adaptation/patches/0001-portability-and-correctness.patch",
+    "adaptation/patches/0002-msvc-x86-performance.patch"
+  ],
+  "schema": 1,
+  "upstream_directory": "vendor/vectorclass",
+  "upstream_manifest": "vendor/vectorclass.json",
+  "upstream_products": [
+    {
+      "eol": "crlf",
+      "output": "dispatch_example1.cpp",
+      "upstream": "dispatch_example1.cpp"
+    },
+    {
+      "eol": "crlf",
+      "output": "dispatch_example2.cpp",
+      "upstream": "dispatch_example2.cpp"
+    },
+    {
+      "eol": "crlf",
+      "output": "instrset.h",
+      "upstream": "instrset.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "instrset_detect.cpp",
+      "upstream": "instrset_detect.cpp"
+    },
+    {
+      "eol": "crlf",
+      "output": "vector_convert.h",
+      "upstream": "vector_convert.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorclass.h",
+      "upstream": "vectorclass.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorf128.h",
+      "upstream": "vectorf128.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorf256.h",
+      "upstream": "vectorf256.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorf256e.h",
+      "upstream": "vectorf256e.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorf512.h",
+      "upstream": "vectorf512.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorf512e.h",
+      "upstream": "vectorf512e.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorfp16.h",
+      "upstream": "vectorfp16.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectorfp16e.h",
+      "upstream": "vectorfp16e.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori128.h",
+      "upstream": "vectori128.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori256.h",
+      "upstream": "vectori256.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori256e.h",
+      "upstream": "vectori256e.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori512.h",
+      "upstream": "vectori512.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori512e.h",
+      "upstream": "vectori512e.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori512s.h",
+      "upstream": "vectori512s.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectori512se.h",
+      "upstream": "vectori512se.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectormath_common.h",
+      "upstream": "vectormath_common.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectormath_exp.h",
+      "upstream": "vectormath_exp.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectormath_hyp.h",
+      "upstream": "vectormath_hyp.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectormath_lib.h",
+      "upstream": "vectormath_lib.h"
+    },
+    {
+      "eol": "crlf",
+      "output": "vectormath_trig.h",
+      "upstream": "vectormath_trig.h"
+    }
+  ]
+}

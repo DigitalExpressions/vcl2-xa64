@@ -1,0 +1,11 @@
+{
+  "files": [
+    {
+      "path": "sse2neon.h",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff"
+    }
+  ],
+  "fork_commit": "44f974ac31e1448e0beb5157d2bd8d669f5c518e",
+  "provenance": "Unchanged header retained from this fork; no external dependency update",
+  "repository": "https://github.com/DLTcollab/sse2neon"
+}
