@@ -5,6 +5,14 @@ applies to its recorded source and profiles; a branch name alone does not
 identify tested code. Use the [native workflow](native-workflow.md) to run tests
 and the [report template](report-template.md) to record a new result.
 
+The selected `simd-parity-20261116` checkpoint is complete and published on
+`master`: Mac evidence/validator follow-up at `99f4a3d`, and source-byte audit
+at `145c7f5`. All 32 planned pairings passed their declared comparison policies,
+with zero unexpected differences; the file-fingerprint discrepancy is resolved.
+These results retain frozen source `bd7807e`, original failures and the separately
+identified validator reanalysis. Publication does not extend native coverage to
+later commits or unselected profiles.
+
 ## Reusable final verification prompts
 
 1. [Windows final verification prompt](windows-final-verification-prompt.md):
@@ -17,6 +25,8 @@ and the [report template](report-template.md) to record a new result.
 These are execution instructions, not test results. The shared comparison
 harness must be prepared before running both hosts. Portable result files are
 prepared for review and commit; full raw evidence stays under ignored `build/`.
+
+## Completed shared checkpoint
 
 The [shared comparison harness](cross-platform/README.md) was approved and
 published at frozen commit `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`.
@@ -95,8 +105,9 @@ remains in Git history. Physical Intel testing remains omitted.
 The [post-merge shared-helper cleanup report](windows-amd-2026-11-15-df2df54-cleanup.md)
 records a separate 160/160 local native AMD selection at `df2df54` plus the
 identified cleanup patch and added evidence module. Guard-page and Clang strict
-UBSan controls passed. The new runner/helper combination has not run natively
-on the Mac; existing Mac results retain their original source identifiers.
+UBSan controls passed. Native Mac validation was pending at that historical
+checkpoint; the later frozen-source Mac report above records the updated runner's
+execution. Earlier results retain their original source identifiers.
 
 1. Inspect the checkout and preserve unrelated work. Record the actual HEAD,
    tree, working-tree state and host before running tests.

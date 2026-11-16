@@ -242,8 +242,9 @@ Intel testing is omitted for now.
 
 The [native validation status and reports](docs/validation/README.md) identify
 the exact tested revisions on both hosts. Read this index when switching
-machines; it links the native Mac ARM result, historical Windows AMD reports
-and a shared template for new runs.
+machines; it links the completed frozen-source Mac M2/Windows AMD checkpoint,
+all 32 successful cross-host comparisons, the reconciled source-byte audit,
+historical results and a shared template for new runs.
 
 The [migration validation record](docs/validation/migration.md) distinguishes
 fresh public-tree checks from retained earlier measurements. The public suite

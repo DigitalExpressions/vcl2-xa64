@@ -20,6 +20,10 @@ pairings because of the frozen loader's UBSan exit-code assumption. The
 reran all eight successfully with a separately identified host-specific fix.
 All 32 planned pairings now have successful comparisons, with zero unexpected
 differences. Original captures, manifests and rejection records are unchanged.
+The [published source-byte audit](../source-byte-audit-2026-11-16-bd7807e.md)
+at `145c7f5` reconciles all 135 source paths: 43 identical hashes and 92 verified
+LF-to-CRLF transformations, with no unexplained differences. The selected run
+is complete; its dated attempts preserve their original preparation status.
 Use a new run ID for later source checkpoints and a new attempt ID for each
 attempt. Do not overwrite failures.
 
@@ -183,17 +187,19 @@ comparison is not full cross-platform coverage. The comparator records excluded
 widths and classifies exact, numerical, documented FMA/rounding and unexpected differences.
 It refuses mismatched source commits/trees, corpus/policy/input hashes and run IDs.
 
-At this frozen checkpoint, Apple UBSan's intentional-overflow probe terminates
+At the frozen `bd7807e` checkpoint, Apple UBSan's intentional-overflow probe terminated
 with `SIGABRT` (`-6`) after its expected diagnostic and without continuation.
-The native runner accepts this strict termination, but `load_bundle` requires
-exit code `1` for strict UBSan captures. The four Mac Debug bundles therefore
-retain reference passes and workflow rejection together. Do not change their
-exit codes, loosen the frozen loader or label rejected comparisons as passes.
+The native runner accepted this strict termination, but that version of
+`load_bundle` required exit code `1` for strict UBSan captures. The four Mac
+Debug bundles retain reference passes and the original workflow rejection together.
+Do not change their exit codes, loosen the frozen loader or label rejected
+comparisons as passes.
 The maintainer subsequently authorized fixing the offline validator and rerunning
 these eight comparisons against the existing captures. The correction accepts
 Mac exit `1` or `SIGABRT` (`-6`) while retaining Windows exit `1`, positive
 controls, reference gates and all original data. Its exact code/test patch and
-new results are in the [follow-up](../mac-arm-2026-11-16-bd7807e-validator-followup.md).
+new results are in the [follow-up](../mac-arm-2026-11-16-bd7807e-validator-followup.md),
+published with the correction at `99f4a3d`.
 This is separately versioned reanalysis, not native execution at a new source.
 Future native captures continue to require an approved shared frozen checkpoint.
 

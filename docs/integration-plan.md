@@ -1,8 +1,13 @@
-# ARM integration: completion and next steps
+# ARM integration and validation status
 
-PR #1 is merged. Use this record and the [validation index](validation/README.md)
-when resuming work. Exact tested source identifiers remain in the dated reports;
-a branch name or merge alone does not establish a native pass.
+PR #1 and the selected `simd-parity-20261116` validation checkpoint are complete.
+The Mac evidence and validator correction were published at `99f4a3d`; the
+source-byte audit was published at `145c7f5` and is present on `origin/master`.
+All 32 planned Windows/Mac pairings have successful comparisons with zero
+unexpected differences, and the source-fingerprint discrepancy is reconciled.
+Use the [validation index](validation/README.md) for the exact executed profiles,
+attempts and coverage limits. The tested source remains frozen at `bd7807e`;
+later publication and documentation commits do not establish new native passes.
 
 ## Standing decisions
 
@@ -44,12 +49,14 @@ the reviewed head's tree, `9a1464bf795f001241b9c63110a53c1eac387210`.
 This comparison is not a new test result. Completion documentation was pushed
 at `df2df54446198294ed846eea2c965498ff7b1f26`.
 
-Retained `neon-port` is at `abf7a82`; local `windows-native-validation` is at
-`465436de204ebdd59e9b5071c353df372148b3df` and was not published just to retain it.
+At the integration checkpoint, retained `neon-port` was at `abf7a82` and
+`windows-native-validation` was recorded at
+`465436de204ebdd59e9b5071c353df372148b3df`; the latter was not published just
+to retain it. Inspect actual branch tips on each host before future work.
 Merge/API and checkout evidence stays under `build/master-integration-20261115/`.
 Detailed preparation chronology remains in Git history and the dated reports.
 
-## Evidence and follow-up cleanup
+## Historical evidence and cleanup
 
 - [Native Mac report](validation/mac-arm-2026-11-15.md): 8,036 selected cases
   at `465436d`, passed after a sleep-related full-profile replay.
@@ -64,19 +71,16 @@ Detailed preparation chronology remains in Git history and the dated reports.
 - [Post-merge helper cleanup](validation/windows-amd-2026-11-15-df2df54-cleanup.md):
   160/160 fresh local AMD cases, strict UBSan/guard controls, ten unchanged plans
   and exact dirty-source identifiers based on `df2df54`. Both runners now import
-  `tools/validation_evidence.py`. Native M2 execution of this combination remains
-  outstanding. Evidence stays under `build/master-cleanup-20261115T222559Z/`.
+  `tools/validation_evidence.py`. Native M2 execution was outstanding at that
+  checkpoint; the later frozen-source Mac report records the updated runner's
+  execution. Evidence stays under `build/master-cleanup-20261115T222559Z/`.
 - The superseded Intel handoff was removed; current instructions use the
-  [Windows runner guide](validation/windows-runner.md). The empty, untracked
-  local `.github/workflows` and `.github` directories remain because automatic
-  approval review rejected their removal as "blocked by policy" without a
-  further reason. They do not affect the Git tree.
-  This follow-up changes documentation only. Historical reports, raw evidence,
-  benchmarks, source and retained branches are preserved. The maintainer has
-  approved committing and pushing the reviewed helper/documentation cleanup;
-  Git history and the host-local command logs record the publication checkpoint.
+  [Windows runner guide](validation/windows-runner.md). Historical reports, raw
+  evidence and benchmark measurements retain their original checkpoints. Git
+  history and the host-local command logs record the earlier helper/documentation
+  cleanup and its publication.
 
-## Next action
+## Completed validation work
 
 - [x] Prepare the [shared SIMD comparison harness](validation/cross-platform/README.md)
   and [preparation evidence](validation/cross-platform/preparation-2026-11-16.md).
@@ -129,10 +133,10 @@ Detailed preparation chronology remains in Git history and the dated reports.
   records per-file differences and original archive provenance. No source-byte
   fingerprint gap remains; no native rerun, numerical-policy change or
   harness/library modification was needed.
-- [ ] Publish the reviewed audit only after explicit push approval. The audit
-  commit is local on `audit/simd-parity-source-fingerprints-20261116`, based on
-  `99f4a3d`; existing branch tips and unrelated work remain preserved. Raw audit
-  work stays under ignored `build/source-byte-audit-20261116T182036Z/`.
+- [x] Publish the approved audit at `145c7f5`, based on `99f4a3d`. Both
+  `origin/master` and `origin/audit/simd-parity-source-fingerprints-20261116`
+  contain it. Raw audit work stays under ignored
+  `build/source-byte-audit-20261116T182036Z/` on the Windows host.
 
 The [Mac final report](validation/mac-arm-2026-11-16-bd7807e-final.md) and
 [portable results](validation/cross-platform/simd-parity-20261116/mac-m2/README.md)
@@ -140,8 +144,18 @@ record the original partial comparison outcome and raw archive receipt.
 The [validator follow-up](validation/mac-arm-2026-11-16-bd7807e-validator-followup.md)
 records the authorized offline reanalysis and successful completion. The
 maintainer approved committing and pushing the reviewed validator fix,
-regression tests, Mac reports and portable evidence together. Git history
-identifies the publication commit; the captured source remains `bd7807e` and
+regression tests, Mac reports and portable evidence together at `99f4a3d`.
+The [published source-byte audit](validation/source-byte-audit-2026-11-16-bd7807e.md)
+closes the remaining evidence gap. The captured source remains `bd7807e` and
 raw archives stay under ignored `build/`. Dated attempts retain their original
-pre-publication status and all original hashes. Future native captures still
-require a shared approved frozen source checkpoint.
+pre-publication status and all original hashes; publication is recorded here
+and in Git history.
+
+## Continuing development
+
+There is no remaining action for this selected validation checkpoint. Start new
+library work on a topic branch from current `master`, preserve the existing
+branches and raw evidence, and validate changes according to the native workflow.
+Future source checkpoints require a new run ID and an approved frozen source shared
+by both hosts. Direct Neon remains experimental; physical Intel, ASan on the
+documented Mac host, FP16 and unselected hosts/APIs remain outside this checkpoint.
