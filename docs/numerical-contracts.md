@@ -4,8 +4,10 @@ Correctness tests retain the existing inputs, seeds, numerical gates and
 special-value policies. These functions are bounded vector-math APIs rather
 than full-range scalar-libm replacements. Use the documented FP environment;
 validation uses nearest rounding and flush-to-zero disabled unless a test
-explicitly exercises another supported mode. Explicit FMA helpers remain fused;
-correctness/benchmark builds disable implicit contraction with `-ffp-contract=off`.
+explicitly exercises another supported mode. Explicit FMA helpers follow the
+selected backend/ISA: Direct Neon and FMA-enabled x86 paths fuse, while legacy
+fallbacks may round the multiply and add separately. Correctness/benchmark
+builds disable implicit contraction with `-ffp-contract=off`.
 Native MSVC regression targets use `/fp:strict` for the same contraction and
 FP-environment requirements. The separate classification stress target uses
 `/fp:fast` on MSVC; no broad fast-math option applies to the ordinary suite.
@@ -29,6 +31,9 @@ strict nonrecovering UBSan are independent safeguards; they do not establish
 ASan coverage on the host where ASan startup hangs.
 
 The implementation and executable tests are the precise contracts. See
+the [shared comparison policies](validation/cross-platform/README.md) for
+source-derived FMA and non-default `roundi` behavior differences. These are
+reported explicitly rather than treated as universal bitwise equality. See
 [tests](../tests/README.md) and the [validation index](validation/README.md)
 for current instructions and dated selected matrices. No general emulation
 of ARM exception flags/masks or Intel SVML is provided.

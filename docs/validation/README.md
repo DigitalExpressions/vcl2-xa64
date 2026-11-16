@@ -18,6 +18,12 @@ These are execution instructions, not test results. The shared comparison
 harness must be prepared before running both hosts. Portable result files are
 prepared for review and commit; full raw evidence stays under ignored `build/`.
 
+The [shared comparison harness](cross-platform/README.md) is prepared locally.
+Its [preparation report](cross-platform/preparation-2026-11-16.md) records 5,376
+passing corpus cases after an oracle correction and retained earlier failures.
+Review/approval and a frozen shared commit are still required before final
+Windows/Mac runs; these preparation results do not establish cross-host parity.
+
 ## Historical shared checkpoint
 
 Source commit: `465436de204ebdd59e9b5071c353df372148b3df`

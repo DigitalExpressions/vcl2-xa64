@@ -1,0 +1,6 @@
+tests/cross_platform/** text eol=lf
+docs/validation/cross-platform/** text eol=lf
+tools/simd_corpus.py text eol=lf
+tools/compare_simd_results.py text eol=lf
+tools/run_simd_capture.py text eol=lf
+tools/check_simd_comparison.py text eol=lf

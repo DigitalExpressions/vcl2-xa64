@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "version": "simd-policies-2",
+  "seed": 1592594996,
+  "policies": {
+    "exact": "All output bits must match the independent expected value, including zero signs and movement of NaN payloads.",
+    "fma": "Exact rational references rounded once (fused) or twice (unfused). Select from compiled FMA metadata; only this declared contract difference is permitted.",
+    "roundi": "Exact references for the selected legacy implementation: FP64 uses fixed nearest for ARM backends and x86 AVX2, current direction for x86 SSE2/AVX-512; native x86 AVX-512 FP32 width 512 uses fixed nearest, other selected FP32 paths use current direction. Differences are explicitly reported as documented_rounding, never exact equality.",
+    "ulp": "Validate each result against the committed Decimal reference with the existing per-function ULP budget. Pairwise budget is the sum of both independent budgets.",
+    "trig": "Preserve tests/trig.cpp normalized-error floor and gates. Pairwise bound is the sum of independently applicable normalized bounds.",
+    "reciprocal": "Positive normal inputs away from underflow boundaries only; existing strict relative error less than 2^-11. Pairwise relative bound less than 2^-10. Boundary behavior stays in the existing full suite."
+  },
+  "exp_log_ulp": {"exp": 2, "expm1": 3, "exp2": 3, "exp10": 10, "log": 3, "log1p": 2, "log2": 2, "log10": 3},
+  "trig_normalized": {"sin": 3, "cos": 4, "tan": 4},
+  "legacy_f32_tan_normalized": 16,
+  "nan_policy": "Capture raw payloads; exact movement/bitwise cases retain them. No general cross-backend NaN propagation or exception-flag equivalence is asserted.",
+  "roundi_sources": ["vectorf128.h: roundi(Vec2d), roundi(Vec4f)", "vectorf256.h: roundi(Vec4d), roundi(Vec8f)", "vectorf512.h: roundi(Vec8d), roundi(Vec16f)", "vectorf128_neon.h: roundi(Vec2d), roundi(Vec4f)"]
+}

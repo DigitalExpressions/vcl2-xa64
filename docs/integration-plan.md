@@ -78,6 +78,18 @@ Detailed preparation chronology remains in Git history and the dated reports.
 
 ## Next action
 
+- [x] Prepare the [shared SIMD comparison harness](validation/cross-platform/README.md)
+  and [preparation evidence](validation/cross-platform/preparation-2026-11-16.md).
+  Eight candidate Windows profiles passed 5,376 corpus cases after correcting
+  a non-default `roundi` oracle assumption; all earlier failures remain in evidence.
+- [x] Obtain the approval required by the Windows final-verification prompt
+  to commit/push this new harness. Freeze the resulting published commit and
+  record its full SHA in the final run manifests and Windows report.
+- [ ] Freeze the approved published commit, execute the final pinned Windows
+  MSVC/Clang matrix and corpus profiles, then prepare portable Windows results.
+  Reserved run ID: `simd-parity-20261116`. Raw preparation/audit evidence is under
+  `build/cross-platform-preparation-20261115T233331Z/`; original native attempts
+  remain under their `build/simd-capture-<UTC>-<profile>/` directories.
 - [x] Review the cleanup and obtain explicit maintainer approval to commit/push.
 - [ ] Update the Mac checkout to `master` using the
   [native workflow](validation/native-workflow.md), preserving unrelated work.
