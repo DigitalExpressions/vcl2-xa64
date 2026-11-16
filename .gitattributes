@@ -4,3 +4,5 @@ tools/simd_corpus.py text eol=lf
 tools/compare_simd_results.py text eol=lf
 tools/run_simd_capture.py text eol=lf
 tools/check_simd_comparison.py text eol=lf
+# Unified diff context markers are part of this checksummed evidence file.
+docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol

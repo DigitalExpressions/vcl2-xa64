@@ -161,7 +161,10 @@ def load_bundle(directory, cases, policies, allow_preparation=False):
         raise ValueError('Missing/failed guard fault control')
     if controls.get('runtime-control' if host=='windows-amd' else 'runtime-run')!=0:
         raise ValueError('Missing/failed runtime consumer')
-    if manifest['sanitizer']=='strict UBSan' and (controls.get('ubsan-positive')!=0 or controls.get('ubsan-negative')!=1):
+    # Apple UBSan can abort with SIGABRT; the producer also verifies the overflow
+    # diagnostic and absence of continuation before writing these controls.
+    expected_ubsan_exits=(1,-6) if host=='mac-m2' else (1,)
+    if manifest['sanitizer']=='strict UBSan' and (controls.get('ubsan-positive')!=0 or controls.get('ubsan-negative') not in expected_ubsan_exits):
         raise ValueError('Missing/failed strict UBSan controls')
     source = manifest['source']
     if not re.fullmatch('[0-9a-f]{40}',source['head']) or not re.fullmatch('[0-9a-f]{40}',source['tree']):

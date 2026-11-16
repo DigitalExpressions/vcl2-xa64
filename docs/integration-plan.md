@@ -101,11 +101,39 @@ Detailed preparation chronology remains in Git history and the dated reports.
   This result publication changes documentation/data only; the tested source
   remains frozen at `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`.
 - [x] Review the cleanup and obtain explicit maintainer approval to commit/push.
-- [ ] Update the Mac checkout to `master` using the
+- [x] Update the Mac checkout to `master` using the
   [native workflow](validation/native-workflow.md), preserving unrelated work.
   Fetch the reviewed portable reports, then use a clean worktree at frozen
   `bd7807e91f5888bc2ad708ca46c9305d166d6c4b` for execution; use the whole checkout.
-- [ ] Run the full native Mac matrix and shared captures at that same frozen
-  commit/run ID; record HEAD/tree, controls, counts and checksums, then compare
-  the selected Windows/ARM profiles. Do not relabel the older Mac result or a
-  later report-only HEAD as the tested source.
+- [x] Run the full native Mac matrix at that frozen commit/run ID: 8,036/8,036
+  cases and eight examples passed with native binary, strict UBSan, runtime and
+  guard controls. All 135 tracked files matched frozen Git blobs; source stayed clean.
+- [x] Capture all eight Mac corpus profiles: 3,996/3,996 independent-reference
+  vector passes, 24,672 output lanes. Preserve four Debug invocation failures:
+  the frozen loader rejects Apple UBSan's intentional-overflow `SIGABRT` (`-6`)
+  because it requires exit code `1`. No capture or matrix was retried or relabeled.
+- [x] Complete the cross-host comparison. After the original 24 Release passes,
+  the maintainer explicitly authorized fixing the validator and rerunning the
+  eight rejected Debug pairings. The host-specific UBSan exit-code correction
+  passed ten regression controls; all eight offline reruns passed. All 32
+  pairings now have successful comparisons with zero unexpected differences.
+  This uses the original captures and a separately hashed validator patch;
+  original failed invocations, manifests and rejection records are unchanged.
+- [ ] Reconcile the Windows whole-file source fingerprint using its raw manifest.
+  Exact Git commit/tree and shared corpus/policy/input hashes match; all Mac bytes
+  match frozen blobs, but the recorded Windows byte fingerprint differs.
+  The [portable Mac source inventory](validation/cross-platform/simd-parity-20261116/source-manifests/README.md)
+  supplies all 135 frozen file hashes for review on Windows. The original Windows
+  raw manifest is unavailable on the Mac; this reconciliation remains outstanding.
+
+The [Mac final report](validation/mac-arm-2026-11-16-bd7807e-final.md) and
+[portable results](validation/cross-platform/simd-parity-20261116/mac-m2/README.md)
+record the original partial comparison outcome and raw archive receipt.
+The [validator follow-up](validation/mac-arm-2026-11-16-bd7807e-validator-followup.md)
+records the authorized offline reanalysis and successful completion. The
+maintainer approved committing and pushing the reviewed validator fix,
+regression tests, Mac reports and portable evidence together. Git history
+identifies the publication commit; the captured source remains `bd7807e` and
+raw archives stay under ignored `build/`. Dated attempts retain their original
+pre-publication status and all original hashes. Future native captures still
+require a shared approved frozen source checkpoint.

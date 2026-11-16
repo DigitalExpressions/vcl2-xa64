@@ -11,8 +11,15 @@ Use manual execution only, without timing benchmarks, hosted CI or emulation.
 The initial run ID is `simd-parity-20261116`, frozen at approved published commit
 `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`. The
 [final Windows results](simd-parity-20261116/windows-amd/README.md) accompany the
-approved result publication; native M2 execution and cross-platform comparison
-are pending.
+approved result publication. The
+[Mac final results](simd-parity-20261116/mac-m2/README.md) record a passing
+8,036-case native matrix and 3,996 independent corpus reference passes. The
+original comparison completed all 24 Release pairings and rejected eight Debug
+pairings because of the frozen loader's UBSan exit-code assumption. The
+[authorized validator follow-up](simd-parity-20261116/comparisons/mac-validator-02/README.md)
+reran all eight successfully with a separately identified host-specific fix.
+All 32 planned pairings now have successful comparisons, with zero unexpected
+differences. Original captures, manifests and rejection records are unchanged.
 Use a new run ID for later source checkpoints and a new attempt ID for each
 attempt. Do not overwrite failures.
 
@@ -175,6 +182,20 @@ the complete pairing inventory and any missing profiles; a narrow successful
 comparison is not full cross-platform coverage. The comparator records excluded
 widths and classifies exact, numerical, documented FMA/rounding and unexpected differences.
 It refuses mismatched source commits/trees, corpus/policy/input hashes and run IDs.
+
+At this frozen checkpoint, Apple UBSan's intentional-overflow probe terminates
+with `SIGABRT` (`-6`) after its expected diagnostic and without continuation.
+The native runner accepts this strict termination, but `load_bundle` requires
+exit code `1` for strict UBSan captures. The four Mac Debug bundles therefore
+retain reference passes and workflow rejection together. Do not change their
+exit codes, loosen the frozen loader or label rejected comparisons as passes.
+The maintainer subsequently authorized fixing the offline validator and rerunning
+these eight comparisons against the existing captures. The correction accepts
+Mac exit `1` or `SIGABRT` (`-6`) while retaining Windows exit `1`, positive
+controls, reference gates and all original data. Its exact code/test patch and
+new results are in the [follow-up](../mac-arm-2026-11-16-bd7807e-validator-followup.md).
+This is separately versioned reanalysis, not native execution at a new source.
+Future native captures continue to require an approved shared frozen checkpoint.
 
 Commit portable bundles, per-host summaries and reviewed comparison JSON only
 with approval. Preserve original tested source identifiers and all attempts.

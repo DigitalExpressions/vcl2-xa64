@@ -1,0 +1,27 @@
+{
+  "base_commit": "3c6d5617ceebf4e3a31b2b0fdc26a893af371dc8",
+  "working_tree_patch_sha256": "acf01c07a1e7ac508e4a3b381eef6d578a81c2222c840fa682cd73dcf3a28547",
+  "validator_sha256": "d1cb37b63bf56c49e75143ce192de3289381e219b4fc7a5505bde32cb719d119",
+  "regression_tests_sha256": "e97ee5c79ee8981524f5b2270314d7e8c8b5d09ef491a92b6aac9905a54085d2",
+  "oracle_sha256": "09bde39d96f1621b4f65e80489506ba4743d9f35e35514a72317e2af27005263",
+  "corpus_sha256": "0e18a9aecb2b15b31b1ff0aeaa61e1d8f91867df675900114c6ecbf3e385946c",
+  "policies_sha256": "610be76973950ba9eea1c3779ccdb4397e4c82fe4bf2e73f3226039edf152fd3",
+  "change": "Host-specific strict UBSan exit codes only; Apple Mac accepts 1 or SIGABRT (-6), Windows remains 1.",
+  "unchanged_functions": [
+    "unique_object",
+    "read_json",
+    "distance",
+    "bounds",
+    "rounding_contract",
+    "reference_values",
+    "reference_spacing",
+    "normalized_error",
+    "validate_rows",
+    "compare",
+    "main"
+  ],
+  "analysis_only": true,
+  "captured_source_commit": "bd7807e91f5888bc2ad708ca46c9305d166d6c4b",
+  "captured_source_tree": "2a0a5d3250201773cccb06ba0562df728f4e9387",
+  "captured_outputs_modified": false
+}

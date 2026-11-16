@@ -26,8 +26,23 @@ the earlier oracle correction and failures. The
 5,392/5,392 pinned CTest cases and separately 5,376/5,376 corpus vector cases,
 with verified controls and no failures/skips/timeouts/retries at that source.
 [Portable Windows output files](cross-platform/simd-parity-20261116/windows-amd/README.md)
-accompany the approved result publication. Native M2 execution and cross-host comparison
-remain pending; use the same frozen commit and run ID `simd-parity-20261116`.
+accompany the approved result publication. The
+[final Mac report](mac-arm-2026-11-16-bd7807e-final.md) records 8,036/8,036 native
+CTest passes and eight examples at that same frozen commit/run ID. Separately,
+3,996/3,996 corpus vector cases passed independent references. All 24 Release
+cross-host pairings completed with zero unexpected differences. The frozen
+loader initially rejected eight Debug pairings because it requires UBSan exit
+`1`, while Apple UBSan aborts with `SIGABRT` (`-6`). A maintainer-authorized
+[validator follow-up](mac-arm-2026-11-16-bd7807e-validator-followup.md) corrected
+that host-specific check and reran all eight successfully. All **32 planned
+pairings** now have successful comparisons, with zero unexpected differences;
+the eight reruns use a separately identified validator patch on unchanged captures.
+[Original Mac bundles and rejection records](cross-platform/simd-parity-20261116/mac-m2/README.md)
+remain unchanged; [new Debug comparison results](cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md)
+are retained separately. The differing whole-file Windows fingerprint remains an
+evidence gap; exact Git identifiers and shared corpus/policy/input hashes match.
+The [portable frozen Mac source inventory](cross-platform/simd-parity-20261116/source-manifests/README.md)
+is available for file-by-file reconciliation with the original Windows raw manifest.
 
 ## Historical shared checkpoint
 
@@ -114,7 +129,9 @@ publication follow the maintainer's authorization for the current task.
 
 | Record | Scope |
 | --- | --- |
-| [Final Windows AMD, `bd7807e`](windows-amd-2026-11-16-bd7807e-final.md) | Clean frozen-source MSVC/Clang: 5,392 pinned CTest passes; eight separate corpus profiles, 5,376 vector passes; zero unexpected Windows-only differences; native Mac comparison pending |
+| [Mac Debug validator follow-up, `bd7807e` captures](mac-arm-2026-11-16-bd7807e-validator-followup.md) | Authorized offline validator correction; all eight rejected Debug pairings passed; combined 32-pair coverage, zero unexpected differences; original captures and failures unchanged |
+| [Final Mac M2, `bd7807e`](mac-arm-2026-11-16-bd7807e-final.md) | 8,036 native CTest passes and eight examples; 3,996 separate corpus reference passes; 24 Release comparisons passed, eight Debug comparisons rejected by the frozen UBSan control assumption |
+| [Final Windows AMD, `bd7807e`](windows-amd-2026-11-16-bd7807e-final.md) | Clean frozen-source MSVC/Clang: 5,392 pinned CTest passes; eight separate corpus profiles, 5,376 vector passes; zero unexpected Windows-only differences; later Mac follow-up above |
 | [Mac ARM, 2026-11-15](mac-arm-2026-11-15.md) | Native M2, full eight-profile selected matrix at `465436d`; first attempt and replay retained |
 | [Windows AMD evidence review, `823ca2a`](windows-amd-2026-11-15-823ca2a.md) | Shared-template retrospective review: final 5,627 native AMD passes, earlier failures/reruns, exact source comparisons and a checksummed evidence packet; no new native execution |
 | [Windows manual-runner preparation](windows-amd-2026-11-15-08c3fe8-manual.md) | Final manual-only snapshot 160/160, intermediate pinned 2,776/2,776, retained prototype failure and startup failures; exact dirty-source identifiers and checksummed packet |

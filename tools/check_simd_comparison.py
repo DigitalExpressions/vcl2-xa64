@@ -148,6 +148,39 @@ class ComparisonControls(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_bundle(directory,self.cases,self.policies,True)
 
+    def test_strict_ubsan_host_exit_codes(self):
+        with retained_controls() as temporary:
+            for host,metadata,accepted in [
+                    ('windows-amd',self.meta,(1,)),
+                    ('mac-m2',dict(self.meta,backend=3,instrset=0,fma='fused'),(1,-6))]:
+                directory=self.bundle(temporary,host,metadata)
+                controls=dict([('guard-positive',0),('ubsan-positive',0),('ubsan-negative',1),
+                               ('runtime-control' if host=='windows-amd' else 'runtime-run',0)]+
+                              [('guard-negative-'+str(i),0xc0000005 if host=='windows-amd' else -10)
+                               for i in range(4)])
+                self.mutate_manifest(directory,lambda m:m.update(
+                    host=dict(label=host),sanitizer='strict UBSan',controls=controls))
+                for code in accepted:
+                    self.mutate_manifest(directory,lambda m:m['controls'].update({'ubsan-negative':code}))
+                    with self.subTest(host=host,accepted=code):
+                        load_bundle(directory,self.cases,self.policies,True)
+                for code in (0,2,124,-6,-9,-10,-11,0xc0000005):
+                    if code in accepted:
+                        continue
+                    self.mutate_manifest(directory,lambda m:m['controls'].update({'ubsan-negative':code}))
+                    with self.subTest(host=host,rejected=code),self.assertRaisesRegex(ValueError,'strict UBSan controls'):
+                        load_bundle(directory,self.cases,self.policies,True)
+                for missing in ('ubsan-positive','ubsan-negative'):
+                    self.mutate_manifest(directory,lambda m:m['controls'].update(
+                        {'ubsan-positive':0,'ubsan-negative':accepted[-1]}))
+                    self.mutate_manifest(directory,lambda m:m['controls'].pop(missing))
+                    with self.subTest(host=host,missing=missing),self.assertRaisesRegex(ValueError,'strict UBSan controls'):
+                        load_bundle(directory,self.cases,self.policies,True)
+                self.mutate_manifest(directory,lambda m:m['controls'].update(
+                    {'ubsan-positive':1,'ubsan-negative':accepted[-1]}))
+                with self.subTest(host=host,failed_positive=True),self.assertRaisesRegex(ValueError,'strict UBSan controls'):
+                    load_bundle(directory,self.cases,self.policies,True)
+
     def test_pairwise_categories_and_source_scope(self):
         with retained_controls() as temporary:
             left=self.bundle(temporary,'left')
