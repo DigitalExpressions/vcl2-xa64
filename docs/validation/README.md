@@ -27,6 +27,14 @@ failures, transfer Windows passes to a later revision or extend the completed
 shared checkpoint below. The maintainer authorized publication of the new Mac
 report/status documentation on 2026-11-17.
 
+The separately requested [2026-11-17 M2 benchmark](../benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
+records 18 measured processes and 160 three-way rows at `3abf7af`, with nine
+benchmark correctness checks passing. The pre-layout/current Release binaries
+match byte for byte. This performance report retains its own controls and
+evidence; it does not extend the native correctness matrix or cross-host
+parity checkpoint. The maintainer authorized publishing its report/data and
+reporting workflow on 2026-11-17.
+
 ## Completed shared checkpoint status
 
 The selected `simd-parity-20261116` checkpoint is complete and published on

@@ -85,7 +85,7 @@ outputs and binary checksums are retained with the local migration evidence.
 This identifies a dated validation checkpoint; it is not a hash-based test
 preventing future source changes.
 
-The [colored standard benchmark report](../benchmarks/STANDARD_MATH_RESULTS.md)
+The [colored standard benchmark report](../benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md)
 retains all 200 Markdown table lines and every measurement. CSV, JSON results,
 reading guide and historical code-generation data are byte-identical to the
 preceding published copies. Those measurements predate this newer upstream

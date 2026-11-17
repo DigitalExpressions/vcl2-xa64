@@ -1,0 +1,26 @@
+[
+  {
+    "profile": "pre-layout-release",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0
+  },
+  {
+    "profile": "current-release",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0
+  },
+  {
+    "profile": "current-ubsan",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0
+  }
+]

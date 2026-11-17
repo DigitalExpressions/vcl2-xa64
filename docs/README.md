@@ -25,6 +25,8 @@ chosen source commit rather than requiring an old branch name.
 | Historical port review and findings | [Integration review](integration-review.md) |
 | Attribution and dependency boundaries | [Third-party notices](third-party.md) |
 | Correctness before optional benchmark measurements | [Benchmark protocol](../benchmarks/README.md) |
+| Dated standard vector/matrix measurements on M2 | [2026-11-17 results](benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md), [2026-11-13 historical results](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md) |
+| Prepare the next standard benchmark report | [Report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) |
 | Compare fork/upstream x86 performance on Windows | [Repeatable x86 comparison](benchmarks/x86-upstream-comparison.md) |
 
 Current instructions describe the maintained developer workflow. Dated

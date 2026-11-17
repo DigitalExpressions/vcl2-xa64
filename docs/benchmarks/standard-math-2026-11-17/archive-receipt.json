@@ -1,0 +1,9 @@
+{
+  "archive": "benchmark-evidence.zip",
+  "sha256": "d59077e189b525252531dd95bcb770e6265a61940d040eef7ea578fb2bda149c",
+  "bytes": 97816045,
+  "verified_entries": 1312,
+  "raw_directory": "build/mac-m2-benchmark-20261117-235141Z",
+  "contents": "all 18 timing logs and 1200 output dumps, raw trials, source/compiler/flag and binary inventories, before/after vendor snapshots, generated-header checks, build/configure/correctness logs and JUnit, codegen text/disassembly, pre-layout source export, analysis and controller scripts; compiled executables/objects retained separately",
+  "no_cleanup_performed": true
+}

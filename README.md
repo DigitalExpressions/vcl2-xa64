@@ -271,10 +271,11 @@ original VCL2 vendor files stayed untouched. This validates the new source
 layout on M2; the separately recorded Windows AVX2/AVX-512 failures still need
 investigation.
 
-[Colored standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS.md)
-compare genuine scalar FP32/FP64, sse2neon and Direct Neon. The published numbers
-are retained measurements on Apple M2, not new timings or application-wide
-speedup claims. See [benchmark sources and protocol](benchmarks/README.md).
+The [2026-11-17 standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
+compare genuine scalar FP32/FP64, sse2neon and Direct Neon on Apple M2.
+The [2026-11-13 historical measurements](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md)
+remain available separately. These workload measurements do not establish
+application-wide speedups. See [benchmark sources and protocol](benchmarks/README.md).
 
 ## Repository and attribution
 

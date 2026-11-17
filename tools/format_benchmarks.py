@@ -14,9 +14,11 @@
 
 """Color benchmark numbers with inline spans in Markdown comparison tables.
 
-Run from any directory after publishing reports. Historical BEFORE comparisons retain their classifications; frozen evidence,
-measurement files and benchmark producers are preserved.
+Pass an explicit path to a completed dated report. This updates presentation,
+not measurements. Historical BEFORE comparisons retain their classifications;
+frozen evidence, measurement files and benchmark producers are preserved.
 """
+import argparse
 from collections import Counter
 from decimal import Decimal
 from html import unescape
@@ -292,8 +294,15 @@ def annotate_standard_math(text):
 
 
 def main():
-    path = BENCHMARKS / 'STANDARD_MATH_RESULTS.md'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('report', type=Path, help='Explicit path to the dated Markdown report to format')
+    args = parser.parse_args()
+    path = args.report
+    if not path.is_file():
+        parser.error('Report does not exist: ' + str(path))
     before = path.read_text()
+    if re.search(r'\{\{[A-Z0-9_]+\}\}', before):
+        parser.error('Report contains unfilled template placeholders; fill them before formatting')
     after, counts = annotate_standard_math(before)
     after = after.rstrip("\n") + "\n"
     if after != before:

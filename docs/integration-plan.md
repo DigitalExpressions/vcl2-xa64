@@ -21,8 +21,10 @@ later publication and documentation commits do not establish new native passes.
 - Use manual native validation on the Mac M2/macOS ARM64 and AMD Ryzen 9
   7950X/Windows x86-64 only. Hosted test workflows are removed/disabled
   (workflow `419159800`); do not start hosted test matrices.
-- Physical Intel testing is omitted. No benchmark timings are collected.
-  Keep raw evidence under ignored `build/` and transfer it separately.
+- Physical Intel testing is omitted. Native correctness runs do not collect
+  benchmark timings; separately requested performance runs have their own
+  source checkpoints, controls and reports. Keep raw evidence under ignored
+  `build/` and transfer it separately.
 - Preserve default ARM compatibility, explicit experimental Direct Neon opt-in,
   existing x86 selection, API/ABI boundaries, attribution, numerical gates,
   fixture checks, guard pages and original 60-second deadlines.
@@ -77,7 +79,10 @@ detached worktree under ignored `build/final-mac-bd7807e/` was subsequently
 retired with explicit user approval after its records were verified in compact
 archives. The [retention follow-up](validation/evidence-retention-2026-11-16.md)
 records the archive locations and checksums. Its frozen source remains in Git;
-new passes use fresh worktrees/builds. Only the main checkout remains registered.
+new passes use fresh worktrees/builds. The later `a099098` M2 validation worktree
+under ignored `build/mac-m2-handoff-a0990984d97e/` remains registered alongside
+the main checkout, with its evidence retained. Removing it requires separate
+cleanup authorization.
 
 ## Historical evidence and cleanup
 
@@ -188,21 +193,32 @@ passed 8,036/8,036 cases and eight examples at clean approved commit `a099098`,
 without failures, skips, timeouts or retries. All 28 pristine vendor files
 remained untouched; before/after integrity checks and eight generation controls
 passed. Existing Windows results keep their original tested identifiers, and
-their higher-ISA failures still need focused triage. Publication of the new Mac
-report/status documentation was authorized on 2026-11-17. Keep the validation worktrees and raw
-evidence; further publication or cleanup requires separate authorization.
+their higher-ISA failures still need focused triage. The Mac report/status
+documentation was published at `3abf7af` on 2026-11-17. Keep the validation
+worktrees and raw evidence; further publication or cleanup requires separate
+authorization.
+
+The separately requested [2026-11-17 M2 benchmark](benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
+measured `3abf7af`: 18 processes and 160 three-way rows, with all benchmark
+correctness checks passing. All three Release benchmark binaries match fresh
+pre-layout `44f974a` builds byte for byte. The dated report, portable data and
+[future report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) are
+approved for commit/push by the maintainer on 2026-11-17. Historical
+measurements remain in the [2026-11-13 report](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md).
 
 The separate [Windows x86 performance investigation](benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
 compares frozen fork `ade9d9b` with original VCL `6675774` using MSVC and Clang,
 all four selected ISA profiles, 816 comparisons and separate edge controls.
 Repeatable [instructions and tooling](benchmarks/x86-upstream-comparison.md)
 are prepared. It finds localized slowdowns, including costs associated with
-correctness fixes, and does not change the library. Candidate follow-up work
-is MSVC classification/wide exponential helper code, then baseline integer
-conversion and rounding costs, preserving all correctness controls. Reports,
+correctness fixes, and does not change the library. It identified candidate work
+in MSVC classification/wide exponential helpers, followed by baseline
+integer conversion and rounding costs. The subsequent implementation and Windows
+confirmation are recorded in the current execution plan above; retained
+higher-ISA failures remain the next correctness priority. Reports,
 harness and portable results were prepared uncommitted for review, then included
 in the maintainer-authorized M2 handoff publication. Their original source IDs
-remain unchanged. This is separate from the completed SIMD-parity checkpoint below.
+remain unchanged. This is separate from the completed SIMD-parity checkpoint.
 
 There is no remaining action for this selected validation checkpoint. Start new
 library work from current `master`, using a topic branch when useful. Preserve

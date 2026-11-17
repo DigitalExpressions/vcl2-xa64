@@ -85,7 +85,7 @@ validation checkpoint, rather than imposing a source-hash test on future changes
 The complete per-file manifest, exact commands, per-case outputs and binary
 checksums are retained locally with the preparation checkpoint.
 
-The [colored benchmark report](../benchmarks/STANDARD_MATH_RESULTS.md) retains
+The [colored benchmark report](../benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md) retains
 all 160 measurement rows and all 200 Markdown table lines from the earlier
 measurement. CSV data is byte-identical; JSON numeric data is unchanged and
 machine-specific metadata paths are redacted. Its historical source hashes
