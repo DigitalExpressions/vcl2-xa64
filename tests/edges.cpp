@@ -16,6 +16,8 @@
 
 #include "vectorclass.h"
 #include "scalar_bits.h"
+#include "truncate_i64_regression.h"
+#include "boundary_regression.h"
 #include <cfenv>
 #include <algorithm>
 #include <initializer_list>
@@ -102,6 +104,14 @@ __attribute__((noinline))
 Vec4i current_round(Vec4f x) { return roundi(x); }
 int main() {
     std::fenv_t saved_env; std::fegetenv(&saved_env); reset_control_word();
+    failures += vcl_test::boundary_regression();
+    failures += vcl_test::truncate_i64_regression<Vec2d>();
+#if MAX_VECTOR_SIZE >= 256
+    failures += vcl_test::truncate_i64_regression<Vec4d>();
+#endif
+#if MAX_VECTOR_SIZE >= 512
+    failures += vcl_test::truncate_i64_regression<Vec8d>();
+#endif
     integer_edges<Vec16c,int8_t>(); integer_edges<Vec16uc,uint8_t>(); integer_edges<Vec8s,int16_t>(); integer_edges<Vec8us,uint16_t>();
     integer_edges<Vec4i,int32_t>(); integer_edges<Vec4ui,uint32_t>(); integer_edges<Vec2q,int64_t>(); integer_edges<Vec2uq,uint64_t>();
     fp_edges<Vec4f,float,uint32_t>(); fp_edges<Vec2d,double,uint64_t>();

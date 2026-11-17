@@ -1,0 +1,209 @@
+[
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "frozen-source/build/windows-native-clang-debug-20261117T001206064262Z",
+    "strict_ubsan": {
+      "expected_diagnostic": true,
+      "negative_exit": 1,
+      "no_continuation": true,
+      "positive_exit": 0
+    }
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "frozen-source/build/windows-native-clang-release-20261117T000733169925Z",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "frozen-source/build/windows-native-msvc-debug-20261117T000201299334Z",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "frozen-source/build/windows-native-msvc-release-20261116T235646156675Z",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/clang-avx2-debug",
+    "strict_ubsan": {
+      "expected_diagnostic": true,
+      "negative_exit": 1,
+      "no_continuation": true,
+      "positive_exit": 0
+    }
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/clang-avx2-release",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/clang-avx512-debug",
+    "strict_ubsan": {
+      "expected_diagnostic": true,
+      "negative_exit": 1,
+      "no_continuation": true,
+      "positive_exit": 0
+    }
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/clang-avx512-release",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/msvc-avx2-debug",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/msvc-avx2-release",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/msvc-avx512-debug",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "higher/msvc-avx512-release",
+    "strict_ubsan": null
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "before03",
+    "strict_ubsan": {
+      "expected_diagnostic": true,
+      "negative_exit": 1,
+      "no_continuation": true,
+      "positive_exit": 0
+    }
+  },
+  {
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "guard_positive_exit": 0,
+    "native_runtime_exit": 0,
+    "page_size": 4096,
+    "profile": "after",
+    "strict_ubsan": {
+      "expected_diagnostic": true,
+      "negative_exit": 1,
+      "no_continuation": true,
+      "positive_exit": 0
+    }
+  }
+]

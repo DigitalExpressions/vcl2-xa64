@@ -189,7 +189,14 @@ template<class I,class F,class IV,class FV> void masks() {
         CHECK(to_bits(assigned)==bits); CHECK(to_bits(assigned_back)==bits);
         auto chosen=select(f,FV(1),FV(2)); auto int_chosen=select(back,IV(1),IV(2));
         for(int lane=0;lane<I::size();++lane) { CHECK(chosen[lane]==(bits&(1u<<lane)?1:2)); CHECK(int_chosen[lane]==(bits&(1u<<lane)?1:2)); }
-        IV broad(i); for(int lane=0;lane<I::size();++lane) CHECK(broad[lane]==(bits&(1u<<lane)?-1:0));
+#if VCL_ARCH_ARM64 || INSTRSET < 10
+        IV broad(i);
+#else
+        // Compact x86 masks convert to scalar bit fields. Expand through
+        // selection rather than broadcasting that scalar as an integer vector.
+        IV broad = select(i, IV(-1), IV(0));
+#endif
+        for(int lane=0;lane<I::size();++lane) CHECK(broad[lane]==(bits&(1u<<lane)?-1:0));
 #if VCL_BACKEND == VCL_BACKEND_NEON
         using U=typename std::conditional<sizeof(IV)==16 && IV::size()==4,uint32_t,uint64_t>::type;
         U lanes[I::size()]; neon_detail::traits<U>::store(lanes,f.native());

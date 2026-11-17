@@ -7,15 +7,51 @@ and the [report template](report-template.md) to record a new result.
 
 ## Layout/optimization publication and native M2 result
 
+The [Windows correctness completion](windows-amd-2026-11-17-correctness-completion.md)
+tracks the later uncommitted candidate at base `e27134b`, frozen fingerprint
+`af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528`.
+All eight higher-ISA local profiles pass **320/320**, resolving the 124 retained
+failures below. All four full baseline profiles pass **5,392/5,392**, for
+**5,712/5,712** selected CTest passes with zero failures/skips/timeouts or suite
+UBSan diagnostics. Twenty focused programs pass, including level-9 conversion;
+the two newly reproduced pre-fix defects remain retained. The
+[portable metadata](windows-correctness-2026-11-17/README.md) records exact
+source IDs, counts, controls, all attempts and verified archive receipts.
+The [restart plan](../windows-correctness-plan.md) and
+[new M2 handoff](mac-arm-correctness-handoff.md) preserve the next steps.
+Pristine vendor bytes remain unchanged. Native M2 validation and renewed
+performance comparison of this candidate remain pending; no later commit
+inherits its Windows passes.
+The maintainer approved cleanup, commit and push of the prepared fixes,
+portable evidence and current M2 handoff on 2026-11-17. Use that handoff's
+publication commit as the new M2 checkpoint, retaining original Windows IDs.
+
+The earlier [2026-11-17 Windows correctness follow-up](windows-amd-2026-11-17-isa-triage.md)
+prepared an uncommitted canonical adaptation fix for the inherited AVX2
+FP64-to-int64 undefined conversion, with independent boundary/mixed-lane
+regression coverage. At its captured base `3abf7af` plus exact changed source,
+all four full baseline profiles pass **5,392/5,392** cases. The eight higher-ISA
+profiles improve from 190/320 to **196/320 passes**, with **124 failures**, zero
+skips/timeouts, no new failed names and no suite UBSan diagnostics. Clang AVX2
+strict Debug resolves all six power/roots and inverse/pi variants. Remaining
+protected-memory, integer/mask and numerical failures keep higher-ISA validation
+failing; `INSTRSET=9` conversion is another unexecuted gap. The
+[portable audit](windows-isa-triage-2026-11-17/README.md) preserves source identities,
+all failed names, controls, byte comparisons and archive receipts. Vendor stays
+pristine. That earlier checkpoint had no new Mac pass or publication approval;
+the later combined publication is recorded above. Its historical report and
+checksums remain unchanged.
+
 The [new Windows report](windows-amd-2026-11-16-x86-layout.md) records 5,392/5,392
 baseline-ISA native passes at base `44f974a` plus exact patch `b954c289`, separate
 from the older checkpoint below. The [pristine-source layout](../backend-layout.md)
 reproduces the optimized runtime bytes without a consumer generation step.
 [Performance confirmation](../benchmarks/x86-optimization-2026-11-16.md) measures
 both pre-change fork and original upstream with full portable tables.
-Additional paired AVX2/AVX-512 selections remain failing (130/320 candidate case
-instances, matching baseline failed names/counts), including existing Clang
-AVX2 UBSan conversion failure; these are not clean higher-ISA validation.
+The earlier paired AVX2/AVX-512 selections failed 130/320 candidate case
+instances, matching baseline failed names/counts, including the Clang AVX2
+UBSan conversion failure addressed by the separate follow-up above. Those
+historical results are unchanged and are not clean higher-ISA validation.
 The [native M2 follow-up](mac-arm-2026-11-17-a099098-x86-layout.md) passed
 8,036/8,036 cases across eight Release/strict UBSan profiles, plus eight examples,
 at approved commit `a0990984d97e5232e36db5316f421b983b155b1c`. No failures, skips,

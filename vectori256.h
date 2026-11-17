@@ -378,6 +378,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec32c & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 32) return load(p);
+        alignas(64) uint8_t temporary[32] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(uint8_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_epi8(__mmask32(((uint64_t)1 << n) - 1), p);
 #else
@@ -395,6 +406,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -1339,6 +1351,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec16s & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 16) return load(p);
+        alignas(64) int16_t temporary[16] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int16_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_epi16(__mmask16((1u << n) - 1), p);
 #else
@@ -1356,6 +1379,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -2192,6 +2216,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec8i & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 8) return load(p);
+        alignas(64) int32_t temporary[8] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int32_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_epi32(__mmask8((1u << n) - 1), p);
 #else
@@ -2209,6 +2244,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -3048,6 +3084,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec4q & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 4) return load(p);
+        alignas(64) int64_t temporary[4] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int64_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_epi64(__mmask8((1u << n) - 1), p);
 #else
@@ -3065,6 +3112,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -4530,7 +4578,9 @@ template <int i0,  int i1,  int i2,  int i3,  int i4,  int i5,  int i6,  int i7,
         y = _mm256_mask_mov_epi16 (ya, mb, yb);
 #else  // AVX2
         if ((flags & blend_same_pattern) != 0) {           // same blend pattern in both 128-bit lanes
-            y = _mm256_blend_epi16(ya, yb, (uint8_t)mb);
+            // A zero/don't-care word in one lane must not hide a needed
+            // source-b bit in the other lane of this repeated blend mask.
+            y = _mm256_blend_epi16(ya, yb, uint8_t(mb | (mb >> 8)));
         }
         else {
             constexpr EList <int16_t, 16> bm = make_broad_mask<Vec16s>(mb);
@@ -4671,15 +4721,15 @@ static inline Vec32c lookup(Vec32uc const index, void const * table) {
     if constexpr (n <=  0) return 0;
     else {
     if constexpr (n <= 16) {
-        Vec16c tt = Vec16c().load(table);
+        Vec16c tt = Vec16c().load_partial(n < 16 ? n : 16, table);
         Vec16c r0 = lookup16(index.get_low(),  tt);
         Vec16c r1 = lookup16(index.get_high(), tt);
         return Vec32c(r0, r1);
     }
-    if constexpr (n <= 32) return lookup32(index, Vec32c().load(table));
+    if constexpr (n <= 32) return lookup32(index, Vec32c().load_partial(n < 32 ? n : 32, table));
     // n > 32. Limit index
     Vec32uc index1;
-    if constexpr (n == INT_MAX) {
+    if constexpr (n == INT_MAX || n > 256) {
         index1 = index;
     }
     else if constexpr ((n & (n-1)) == 0) {
@@ -4690,11 +4740,17 @@ static inline Vec32c lookup(Vec32uc const index, void const * table) {
         // n is not a power of 2, limit to n-1
         index1 = min(Vec32uc(index), uint8_t(n-1));
     }
+    Vec32uc previous = sub_saturated(index1, Vec32uc(3));
+    Vec32uc offsets = (index1 - previous) * 8;
     Vec8ui mask0 = Vec8ui(0x000000FF);  // mask 8 bits
-    Vec32c t0 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & Vec8ui(index1)),      1); // positions 0, 4, 8,  ...
-    Vec32c t1 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & _mm256_srli_epi32(index1, 8)), 1); // positions 1, 5, 9,  ...
-    Vec32c t2 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & _mm256_srli_epi32(index1,16)), 1); // positions 2, 6, 10, ...
-    Vec32c t3 = _mm256_i32gather_epi32((const int *)table, _mm256_srli_epi32(index1,24), 1); // positions 3, 7, 11, ...
+    Vec32c t0 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & Vec8ui(previous)),      1); // positions 0, 4, 8,  ...
+    Vec32c t1 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & _mm256_srli_epi32(previous, 8)), 1); // positions 1, 5, 9,  ...
+    Vec32c t2 = _mm256_i32gather_epi32((const int *)table, __m256i(mask0 & _mm256_srli_epi32(previous,16)), 1); // positions 2, 6, 10, ...
+    Vec32c t3 = _mm256_i32gather_epi32((const int *)table, _mm256_srli_epi32(previous,24), 1); // positions 3, 7, 11, ...
+    t0 = _mm256_srlv_epi32(t0, Vec8ui(offsets) & mask0);
+    t1 = _mm256_srlv_epi32(t1, Vec8ui(_mm256_srli_epi32(offsets, 8)) & mask0);
+    t2 = _mm256_srlv_epi32(t2, Vec8ui(_mm256_srli_epi32(offsets, 16)) & mask0);
+    t3 = _mm256_srlv_epi32(t3, _mm256_srli_epi32(offsets, 24));
     t0 = t0 & Vec32c(mask0);
     t1 = _mm256_slli_epi32(t1 & Vec32c(mask0),  8);
     t2 = _mm256_slli_epi32(t2 & Vec32c(mask0), 16);
@@ -4718,15 +4774,15 @@ static inline Vec16s lookup(Vec16s const index, void const * table) {
     if constexpr (n <=  0) return 0;
     else {
     if constexpr (n <=  8) {
-        Vec8s table1 = Vec8s().load(table);
+        Vec8s table1 = Vec8s().load_partial(n < 8 ? n : 8, table);
         return Vec16s(
             lookup8 (index.get_low(),  table1),
             lookup8 (index.get_high(), table1));
     }
-    if constexpr (n <= 16) return lookup16(index, Vec16s().load(table));
+    if constexpr (n <= 16) return lookup16(index, Vec16s().load_partial(n < 16 ? n : 16, table));
     // n > 16. Limit index
     Vec16us index1;
-    if constexpr (n == INT_MAX) {
+    if constexpr (n == INT_MAX || n > 65536) {
         index1 = index;
     }
     else if constexpr ((n & (n-1)) == 0) {
@@ -4737,9 +4793,12 @@ static inline Vec16s lookup(Vec16s const index, void const * table) {
         // n is not a power of 2, limit to n-1
         index1 = min(Vec16us(index), n-1);
     }
-    Vec16s t1 = _mm256_i32gather_epi32((const int *)table, __m256i(Vec8ui(index1) & 0x0000FFFF), 2);  // even positions
-    Vec16s t2 = _mm256_i32gather_epi32((const int *)table, _mm256_srli_epi32(index1, 16) , 2);        // odd  positions
-    return blend16<0,16,2,18,4,20,6,22,8,24,10,26,12,28,14,30>(t1, t2);
+    Vec16us previous = sub_saturated(index1, Vec16us(1));
+    Vec16s t1 = _mm256_i32gather_epi32((const int *)table, __m256i(Vec8ui(previous) & 0x0000FFFF), 2);  // even positions
+    Vec16s t2 = _mm256_i32gather_epi32((const int *)table, _mm256_srli_epi32(previous, 16) , 2);        // odd  positions
+    Vec16s low = blend16<0,16,2,18,4,20,6,22,8,24,10,26,12,28,14,30>(t1, t2);
+    Vec16s high = blend16<1,17,3,19,5,21,7,23,9,25,11,27,13,29,15,31>(t1, t2);
+    return select(index1 == Vec16us(0), low, high);
     } // n > 0
 }
 
@@ -4752,12 +4811,12 @@ static inline Vec8i lookup(Vec8i const index, void const * table) {
     if constexpr (n <= 0) return 0;
     else {
     if constexpr (n <= 8) {
-        Vec8i table1 = Vec8i().load(table);
+        Vec8i table1 = Vec8i().load_partial(n < 8 ? n : 8, table);
         return lookup8(index, table1);
     }
     if constexpr (n <= 16) {
-        Vec8i table1 = Vec8i().load(table);
-        Vec8i table2 = Vec8i().load((int32_t const*)table + 8);
+        Vec8i table1 = Vec8i().load_partial(n < 8 ? n : 8, table);
+        Vec8i table2 = Vec8i().load_partial(n - 8 < 8 ? n - 8 : 8, (int32_t const*)table + 8);
         Vec8i y1 = lookup8(index, table1);
         Vec8i y2 = lookup8(index, table2);
         Vec8ib s = index > 7;
@@ -4828,6 +4887,7 @@ static inline Vec4q lookup(Vec4q const index, int64_t const * table) {
 // Function shift_bytes_up: shift whole vector left by b bytes.
 template <unsigned int b>
 static inline Vec32c shift_bytes_up(Vec32c const a) {
+    if constexpr (b >= 32) return _mm256_setzero_si256();
     __m256i ahi, alo;
     if constexpr (b == 0) return a;
 #if INSTRSET >= 10  // AVX512VL
@@ -4853,6 +4913,7 @@ static inline Vec32c shift_bytes_up(Vec32c const a) {
 // Function shift_bytes_down: shift whole vector right by b bytes
 template <unsigned int b>
 static inline Vec32c shift_bytes_down(Vec32c const a) {
+    if constexpr (b >= 32) return _mm256_setzero_si256();
 #if INSTRSET >= 10  // AVX512VL
     if constexpr ((b & 3) == 0) {  // b is divisible by 4
         return _mm256_alignr_epi32(_mm256_setzero_si256(), a, (b >> 2) & 7);
@@ -4897,14 +4958,14 @@ static inline Vec8i gather8i(void const * a) {
             return permute8<i0-imax+7, i1-imax+7, i2-imax+7, i3-imax+7, i4-imax+7, i5-imax+7, i6-imax+7, i7-imax+7>(b);
         }
         else {
-            Vec8i b = Vec8i().load((int32_t const *)a + imin);
+            Vec8i b = Vec8i().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (int32_t const *)a + imin);
             return permute8<i0-imin, i1-imin, i2-imin, i3-imin, i4-imin, i5-imin, i6-imin, i7-imin>(b);
         }
     }
     if constexpr ((i0<imin+8 || i0>imax-8) && (i1<imin+8 || i1>imax-8) && (i2<imin+8 || i2>imax-8) && (i3<imin+8 || i3>imax-8)
     &&  (i4<imin+8 || i4>imax-8) && (i5<imin+8 || i5>imax-8) && (i6<imin+8 || i6>imax-8) && (i7<imin+8 || i7>imax-8)) {
         // load two contiguous blocks and blend
-        Vec8i b = Vec8i().load((int32_t const *)a + imin);
+        Vec8i b = Vec8i().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (int32_t const *)a + imin);
         Vec8i c = Vec8i().load((int32_t const *)a + imax-7);
         constexpr int j0 = i0<imin+8 ? i0-imin : 15-imax+i0;
         constexpr int j1 = i1<imin+8 ? i1-imin : 15-imax+i1;
@@ -4935,13 +4996,13 @@ static inline Vec4q gather4q(void const * a) {
             return permute4<i0-imax+3, i1-imax+3, i2-imax+3, i3-imax+3>(b);
         }
         else {
-            Vec4q b = Vec4q().load((int64_t const *)a + imin);
+            Vec4q b = Vec4q().load_partial(imax - imin + 1 < 4 ? imax - imin + 1 : 4, (int64_t const *)a + imin);
             return permute4<i0-imin, i1-imin, i2-imin, i3-imin>(b);
         }
     }
     if constexpr ((i0<imin+4 || i0>imax-4) && (i1<imin+4 || i1>imax-4) && (i2<imin+4 || i2>imax-4) && (i3<imin+4 || i3>imax-4)) {
         // load two contiguous blocks and blend
-        Vec4q b = Vec4q().load((int64_t const *)a + imin);
+        Vec4q b = Vec4q().load_partial(imax - imin + 1 < 4 ? imax - imin + 1 : 4, (int64_t const *)a + imin);
         Vec4q c = Vec4q().load((int64_t const *)a + imax-3);
         const int j0 = i0<imin+4 ? i0-imin : 7-imax+i0;
         const int j1 = i1<imin+4 ? i1-imin : 7-imax+i1;
@@ -5531,7 +5592,7 @@ static inline Vec8i divide_by_i(Vec8i const x) {
     static_assert(d != 0, "Integer division by zero");
     if constexpr (d ==  1) return  x;
     if constexpr (d == -1) return -x;
-    if constexpr (uint32_t(d) == 0x80000000u) return Vec8i(x == Vec8i(0x80000000)) & 1; // prevent overflow when changing sign
+    if constexpr (uint32_t(d) == 0x80000000u) return select(x == Vec8i(0x80000000), Vec8i(1), Vec8i(0)); // prevent overflow when changing sign
     constexpr uint32_t d1 = d > 0 ? uint32_t(d) : uint32_t(-d);// compile-time abs(d). (force GCC compiler to treat d as 32 bits, not 64 bits)
     if constexpr ((d1 & (d1-1)) == 0) {
         // d1 is a power of 2. use shift
@@ -5650,7 +5711,7 @@ static inline Vec16s divide_by_i(Vec16s const x) {
     static_assert(d0 != 0, "Integer division by zero");
     if constexpr (d0 ==  1) return  x;                     // divide by  1
     if constexpr (d0 == -1) return -x;                     // divide by -1
-    if constexpr (uint16_t(d0) == 0x8000u) return Vec16s(x == Vec16s(0x8000)) & 1;// prevent overflow when changing sign
+    if constexpr (uint16_t(d0) == 0x8000u) return select(x == Vec16s(0x8000), Vec16s(1), Vec16s(0));// prevent overflow when changing sign
     constexpr uint16_t d1 = d0 > 0 ? d0 : -d0;             // compile-time abs(d0)
     if constexpr ((d1 & (d1-1)) == 0) {
         // d is a power of 2. use shift

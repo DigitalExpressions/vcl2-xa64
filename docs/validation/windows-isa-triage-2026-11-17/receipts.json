@@ -1,0 +1,105 @@
+[
+  {
+    "kind": "full baseline",
+    "path": "frozen-source/build/windows-native-clang-debug-20261117T001206064262Z/return-evidence.zip",
+    "profile": "clang-debug",
+    "sha256": "0fa0c437f2849c818f811fe6b27c83c6fa877d45c2f60e0e021049e4ba9674ee"
+  },
+  {
+    "kind": "full baseline",
+    "path": "frozen-source/build/windows-native-clang-release-20261117T000733169925Z/return-evidence.zip",
+    "profile": "clang-release",
+    "sha256": "b5d7fadd47099895db74e1f8de4acc0199f926f085edb72a39b183aef4374454"
+  },
+  {
+    "kind": "full baseline",
+    "path": "frozen-source/build/windows-native-msvc-debug-20261117T000201299334Z/return-evidence.zip",
+    "profile": "msvc-debug",
+    "sha256": "634d979303e65c19c5e199fcf37542e3b0d5b5d6842a0b61f87649481886127d"
+  },
+  {
+    "kind": "full baseline",
+    "path": "frozen-source/build/windows-native-msvc-release-20261116T235646156675Z/return-evidence.zip",
+    "profile": "msvc-release",
+    "sha256": "9268c27fb53c9d8eb4963657aaee6b8e28851d989166ffefbb64cc6b82969710"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/msvc-avx2-release/return-evidence.zip",
+    "profile": "msvc-avx2-release",
+    "sha256": "95c412e833998bfd422969cca5163b05545a7424f44e755a27233c55acb67508"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/msvc-avx2-debug/return-evidence.zip",
+    "profile": "msvc-avx2-debug",
+    "sha256": "2466c2276681ad8de67e8887334d14aaf786a1f4a0119565b4b1133025005e6b"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/clang-avx2-release/return-evidence.zip",
+    "profile": "clang-avx2-release",
+    "sha256": "e301e051a6b3cb3dec64a10ac6941a3f9946b5442221294dbfd215a1cde2070b"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/clang-avx2-debug/return-evidence.zip",
+    "profile": "clang-avx2-debug",
+    "sha256": "ad0ed3d597e36e360fda60745e57ab4ca1c6a05286009838ebe0a6463e127f1e"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/msvc-avx512-release/return-evidence.zip",
+    "profile": "msvc-avx512-release",
+    "sha256": "4396211962b748f32205768c0876444b55ec2c2f782c636cec7fb6ff7fbd1798"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/msvc-avx512-debug/return-evidence.zip",
+    "profile": "msvc-avx512-debug",
+    "sha256": "8a6632ebfc67dceb4f89ff716c54d71c22d36b60f091323940c548fcdbfc2a80"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/clang-avx512-release/return-evidence.zip",
+    "profile": "clang-avx512-release",
+    "sha256": "c47209d5c1891b7131e0c9db75586e8d564d1fb6dae06152a95ec50769dcc8a9"
+  },
+  {
+    "kind": "higher ISA; failures retained",
+    "path": "higher/clang-avx512-debug/return-evidence.zip",
+    "profile": "clang-avx512-debug",
+    "sha256": "ec51e458a85b0169f1a8a2b914c88990082b577ccfd047a4fae82b58195dc4ec"
+  },
+  {
+    "kind": "before03",
+    "path": "before03/return-evidence.zip",
+    "sha256": "7c6b2a933b2083e1cfbfda6f305622d0c06542819bd1393fa36f48bbcb6b4155"
+  },
+  {
+    "kind": "after",
+    "path": "after/return-evidence.zip",
+    "sha256": "9734991cdd1577a9c6d6a17de1e6bab39824b946058e8bdb0d49a258582af258"
+  },
+  {
+    "kind": "diagnostics",
+    "path": "diagnostics/return-evidence.zip",
+    "sha256": "30cca01706af940d8379951913b771da2e424506b8846193fa35e6c399d2c222"
+  },
+  {
+    "kind": "diagnostics02",
+    "path": "diagnostics02/return-evidence.zip",
+    "sha256": "1ea843cbdd541289fd46785c5bd20886034a1417b9fd86e1e1e4dae0fbdcc1d2"
+  },
+  {
+    "kind": "raw sources and evidence supplement",
+    "path": "audit-supplement.zip",
+    "sha256": "dcf8439d8b830bbcd950fe85fcaa621daab9c490283cc62c520edfe8be27e156",
+    "verified_entries": 1454
+  },
+  {
+    "kind": "frozen source",
+    "path": "frozen-source.zip",
+    "sha256": "18bce2cdc81f8e74e3a5a2c8e4e1dee7f4ee1ea26a537b9303b610c100674f5a"
+  }
+]

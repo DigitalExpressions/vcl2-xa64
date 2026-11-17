@@ -140,23 +140,28 @@ template<class V> void integer_arithmetic() {
 #endif
     for(int trial=0;trial<300;++trial) {
         T x[n],y[n]; for(int i=0;i<n;++i) { x[i]=bits<T>(U(random_bits())); y[i]=bits<T>(U(random_bits())); }
+        // Materialize an independent scalar oracle before vector operations.
+        // MSVC can otherwise reuse an incorrectly transformed intrinsic input
+        // when scalar expectations are optimized together with the SIMD path.
+        volatile T reference_x[n],reference_y[n];
+        for(int i=0;i<n;++i) { reference_x[i]=x[i]; reference_y[i]=y[i]; }
         V a,b; a.load(x); b.load(y); auto sum=a+b,diff=a-b,prod=a*b,low=min(a,b),high=max(a,b);
         auto inverted=~a; auto masked=a & V(~b);
-        for(int i=0;i<n;++i) { CHECK(U(inverted[i])==U(~U(x[i]))); CHECK(U(masked[i])==U(U(x[i])&~U(y[i]))); }
-        U total=0; for(int i=0;i<n;++i) total=U(uint64_t(total)+uint64_t(U(x[i])));
+        for(int i=0;i<n;++i) { CHECK(U(inverted[i])==U(~U(T(reference_x[i])))); CHECK(U(masked[i])==U(U(T(reference_x[i]))&~U(T(reference_y[i])))); }
+        U total=0; for(int i=0;i<n;++i) total=U(uint64_t(total)+uint64_t(U(T(reference_x[i]))));
         // Some legacy small-integer reductions expose a signed or wider scalar.
         CHECK(U(horizontal_add(a))==total);
         if constexpr(sizeof(T)<8) {
             auto lo=extend_low(a),hi=extend_high(a); auto back=compress(lo,hi);
-            for(int i=0;i<n;++i) CHECK(back[i]==x[i]);
+            for(int i=0;i<n;++i) CHECK(back[i]==T(reference_x[i]));
             auto one=compress(extend(a.get_high()));
             for(int i=0;i<n/2;++i) CHECK(one[i]==x[i+n/2]);
         }
         for(int i=0;i<n;++i) {
-            CHECK(sum[i]==bits<T>(U(uint64_t(U(x[i]))+uint64_t(U(y[i])))));
-            CHECK(diff[i]==bits<T>(U(uint64_t(U(x[i]))-uint64_t(U(y[i])))));
-            CHECK(prod[i]==bits<T>(U(uint64_t(U(x[i]))*uint64_t(U(y[i])))));
-            CHECK(low[i]==std::min(x[i],y[i]) && high[i]==std::max(x[i],y[i]));
+            CHECK(sum[i]==bits<T>(U(uint64_t(U(T(reference_x[i])))+uint64_t(U(T(reference_y[i]))))));
+            CHECK(diff[i]==bits<T>(U(uint64_t(U(T(reference_x[i])))-uint64_t(U(T(reference_y[i]))))));
+            CHECK(prod[i]==bits<T>(U(uint64_t(U(T(reference_x[i])))*uint64_t(U(T(reference_y[i]))))));
+            CHECK(low[i]==std::min(T(reference_x[i]),T(reference_y[i])) && high[i]==std::max(T(reference_x[i]),T(reference_y[i])));
         }
     }
     if constexpr(sizeof(T)<8) {
@@ -229,6 +234,18 @@ template<class V> void wide_fp() {
         a.load(input);
         for(unsigned mode=0;mode<4;++mode) {
             set_control_word(0x1f80u|(mode<<13)); auto r=round_to_int32(a);
+#if VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9
+            if constexpr(wide_bits==512) {
+                // Original native Vec8d explicitly requests nearest + SAE.
+                // Keep all four environment modes, and separately check the
+                // current-direction int64 API where AVX-512DQ provides it.
+                for(int i=0;i<n;++i) CHECK(r[i]==expected[0][i%4]);
+#if INSTRSET >= 10
+                auto current=roundi(a);
+                for(int i=0;i<n;++i) CHECK(current[i]==expected[mode][i%4]);
+#endif
+            } else
+#endif
             for(int i=0;i<n;++i) CHECK(r[i]==expected[mode][i%4]);
         }
         reset_control_word();

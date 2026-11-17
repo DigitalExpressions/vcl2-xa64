@@ -129,8 +129,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   endings. Put necessary ARM fixes in canonical `backends/arm64/` or explicit
   adaptation patches, regenerate root products, and obtain a new approved
   frozen source before claiming a fixed run. Never repair tests in the vendor
-  tree. Follow `docs/validation/mac-arm-x86-optimization-handoff.md` for the
-  published handoff checkpoint and evidence requirements.
+  tree. Follow `docs/validation/mac-arm-correctness-handoff.md` for the current
+  approved correctness handoff and evidence requirements. The earlier
+  `docs/validation/mac-arm-x86-optimization-handoff.md` remains historical.
 
 - Use native arm64 Python 3.9+, Apple Clang, CMake 3.20+ and CTest supporting
   `--output-junit`. The full runner can use Ninja or make; shared corpus capture

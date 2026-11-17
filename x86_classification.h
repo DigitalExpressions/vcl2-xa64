@@ -44,6 +44,48 @@ static __forceinline __m128d nan_mask(__m128d a) {
 #endif
 }
 
+#if INSTRSET >= 10
+static __forceinline __m256i magnitude(__m256 a) {
+    return _mm256_and_si256(_mm256_castps_si256(a), _mm256_set1_epi32(0x7FFFFFFF));
+}
+static __forceinline __m256i magnitude(__m256d a) {
+    return _mm256_and_si256(_mm256_castpd_si256(a), _mm256_set1_epi64x(0x7FFFFFFFFFFFFFFFll));
+}
+
+static __forceinline __mmask8 finite_mask(__m256 a) {
+    return _mm256_cmp_epi32_mask(magnitude(a), _mm256_set1_epi32(0x7F800000), _MM_CMPINT_LT);
+}
+static __forceinline __mmask8 finite_mask(__m256d a) {
+    return _mm256_cmp_epi64_mask(magnitude(a), _mm256_set1_epi64x(0x7FF0000000000000ll), _MM_CMPINT_LT);
+}
+static __forceinline __mmask8 inf_mask(__m256 a) {
+    return _mm256_cmp_epi32_mask(magnitude(a), _mm256_set1_epi32(0x7F800000), _MM_CMPINT_EQ);
+}
+static __forceinline __mmask8 inf_mask(__m256d a) {
+    return _mm256_cmp_epi64_mask(magnitude(a), _mm256_set1_epi64x(0x7FF0000000000000ll), _MM_CMPINT_EQ);
+}
+static __forceinline __mmask8 nan_mask(__m256 a) {
+    return _mm256_cmp_epi32_mask(magnitude(a), _mm256_set1_epi32(0x7F800000), _MM_CMPINT_GT);
+}
+static __forceinline __mmask8 nan_mask(__m256d a) {
+    return _mm256_cmp_epi64_mask(magnitude(a), _mm256_set1_epi64x(0x7FF0000000000000ll), _MM_CMPINT_GT);
+}
+static __forceinline __mmask8 subnormal_mask(__m256 a) {
+    __m256i offset = _mm256_sub_epi32(magnitude(a), _mm256_set1_epi32(1));
+    return _mm256_cmp_epu32_mask(offset, _mm256_set1_epi32(0x007FFFFF), _MM_CMPINT_LT);
+}
+static __forceinline __mmask8 subnormal_mask(__m256d a) {
+    __m256i offset = _mm256_sub_epi64(magnitude(a), _mm256_set1_epi64x(1));
+    return _mm256_cmp_epu64_mask(offset, _mm256_set1_epi64x(0x000FFFFFFFFFFFFFll), _MM_CMPINT_LT);
+}
+static __forceinline __mmask8 zero_subnormal_mask(__m256 a) {
+    return _mm256_cmp_epi32_mask(magnitude(a), _mm256_set1_epi32(0x00800000), _MM_CMPINT_LT);
+}
+static __forceinline __mmask8 zero_subnormal_mask(__m256d a) {
+    return _mm256_cmp_epi64_mask(magnitude(a), _mm256_set1_epi64x(0x0010000000000000ll), _MM_CMPINT_LT);
+}
+#endif
+
 #if INSTRSET >= 9
 static __forceinline __m512i magnitude(__m512 a) {
     return _mm512_and_si512(_mm512_castps_si512(a), _mm512_set1_epi32(0x7FFFFFFF));

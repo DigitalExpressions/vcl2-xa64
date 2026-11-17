@@ -33,6 +33,19 @@ policies are unchanged. Correctness fixes remain necessary; the adapted build
 does not pretend to execute entirely unmodified upstream bytes. The pristine
 copy is the source baseline, and the adaptation layer describes every difference.
 
+The third patch fixes the native AVX2 FP64-to-int64 fallback by reusing the
+existing guarded 128-bit conversion. Invalid lanes retain the signed-minimum
+sentinel; the native AVX-512 instruction is unchanged. See the
+[Windows correctness follow-up](validation/windows-amd-2026-11-17-isa-triage.md)
+for the reproduced defect, focused regression and remaining higher-ISA gaps.
+
+The fourth patch addresses the retained higher-ISA memory, mask, conversion and
+numerical defects, with additional MSVC primitives in the canonical x86 backend.
+The [completion report](validation/windows-amd-2026-11-17-correctness-completion.md)
+records the new source and actual Windows checks. The
+[new M2 handoff](validation/mac-arm-correctness-handoff.md) covers this later
+candidate; the older approved M2 source/result below remains historical.
+
 ## Verify and regenerate
 
 From the root, using Python 3.9+ (`python3` on macOS):
@@ -86,4 +99,5 @@ records 8,036 passes and eight examples at `a099098`, with unchanged pristine
 vendor bytes and passing before/after generation checks. Canonical separation
 reproduces all 35 runtime products from the optimized frozen bytes, permitting
 the documented root-product CRLF/LF equivalence. Each host's earlier results
-retain their own source identifiers; Windows higher-ISA failures remain open.
+retain their own source identifiers. The newer correctness candidate is tracked
+separately in the completion report and must receive its own native M2 validation.

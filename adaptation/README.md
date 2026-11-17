@@ -11,6 +11,17 @@ The ordered patches adapt those bytes for this fork:
 2. `patches/0002-msvc-x86-performance.patch` contains the measured native MSVC
    classification call sites and FP32 exponential inlining decision. The
    corresponding private primitives are in `backends/x86/`.
+3. `patches/0003-defined-avx2-i64-conversion.patch` reuses the guarded 128-bit
+   conversion for the native AVX2 FP64-to-int64 fallback. It avoids undefined
+   casts for NaN, infinity and out-of-range lanes while retaining the existing
+   signed-minimum invalid-input sentinel. Native AVX-512 conversion is unchanged.
+4. `patches/0004-x86-correctness.patch` repairs retained higher-ISA boundary,
+   mask, conversion and numerical failures. It includes bounded lookup/gather
+   reads, compact-mask signed division, the AVX-512F-only conversion fallback,
+   special-value handling and native MSVC optimization workarounds. The private
+   MSVC classification helpers remain in `backends/x86/`. See the
+   [correctness completion plan](../docs/windows-correctness-plan.md) for the
+   exact tested source, result report and remaining native M2/performance gates.
 
 `include/` holds fork-owned/shared policy and extracted helpers. Original
 attribution remains in derived files. Direct NEON implementation sources are

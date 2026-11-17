@@ -1,0 +1,82 @@
+[
+  {
+    "driver": "clang",
+    "head": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+    "mode": "Debug",
+    "native_windows_x64": true,
+    "observed_crt": "static Release (libcmt)",
+    "results": {
+      "ctest_exit": 0,
+      "executed": 1348,
+      "failed": [],
+      "passed": 1348,
+      "registered": 1348,
+      "skipped": [],
+      "timed_out": []
+    },
+    "sanitizer": "strict UBSan",
+    "source_fingerprint": "af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528",
+    "success": true,
+    "tree": "9b3ea5a74898f34e3bdd94141788a87e8f019d3d"
+  },
+  {
+    "driver": "clang",
+    "head": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+    "mode": "Release",
+    "native_windows_x64": true,
+    "observed_crt": "dynamic Release (/MD or msvcrt)",
+    "results": {
+      "ctest_exit": 0,
+      "executed": 1348,
+      "failed": [],
+      "passed": 1348,
+      "registered": 1348,
+      "skipped": [],
+      "timed_out": []
+    },
+    "sanitizer": "not requested",
+    "source_fingerprint": "af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528",
+    "success": true,
+    "tree": "9b3ea5a74898f34e3bdd94141788a87e8f019d3d"
+  },
+  {
+    "driver": "msvc",
+    "head": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+    "mode": "Debug",
+    "native_windows_x64": true,
+    "observed_crt": "dynamic Debug (/MDd)",
+    "results": {
+      "ctest_exit": 0,
+      "executed": 1348,
+      "failed": [],
+      "passed": 1348,
+      "registered": 1348,
+      "skipped": [],
+      "timed_out": []
+    },
+    "sanitizer": "not requested",
+    "source_fingerprint": "af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528",
+    "success": true,
+    "tree": "9b3ea5a74898f34e3bdd94141788a87e8f019d3d"
+  },
+  {
+    "driver": "msvc",
+    "head": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+    "mode": "Release",
+    "native_windows_x64": true,
+    "observed_crt": "dynamic Release (/MD or msvcrt)",
+    "results": {
+      "ctest_exit": 0,
+      "executed": 1348,
+      "failed": [],
+      "passed": 1348,
+      "registered": 1348,
+      "skipped": [],
+      "timed_out": []
+    },
+    "sanitizer": "not requested",
+    "source_fingerprint": "af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528",
+    "success": true,
+    "tree": "9b3ea5a74898f34e3bdd94141788a87e8f019d3d"
+  }
+]

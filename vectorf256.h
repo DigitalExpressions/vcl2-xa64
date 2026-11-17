@@ -296,12 +296,12 @@ static inline Vec8fb andnot(Vec8fb const a, Vec8fb const b) {
 
 // horizontal_and. Returns true if all bits are 1
 static inline bool horizontal_and (Vec8fb const a) {
-    return _mm256_testc_ps(a,constant8f<0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu>()) != 0;
+    return _mm256_movemask_ps(a) == 0xFF;
 }
 
 // horizontal_or. Returns true if at least one bit is 1
 static inline bool horizontal_or (Vec8fb const a) {
-    return ! _mm256_testz_ps(a,a);
+    return _mm256_movemask_ps(a) != 0;
 }
 
 // to_bits: convert boolean vector to integer bitfield
@@ -540,20 +540,12 @@ static inline Vec4db andnot(Vec4db const a, Vec4db const b) {
 
 // horizontal_and. Returns true if all bits are 1
 static inline bool horizontal_and (Vec4db const a) {
-#if INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
-    return horizontal_and(Vec256b(_mm256_castpd_si256(a)));
-#else  // split into 128 bit vectors
-    return horizontal_and(a.get_low() & a.get_high());
-#endif
+    return _mm256_movemask_pd(a) == 0x0F;
 }
 
 // horizontal_or. Returns true if at least one bit is 1
 static inline bool horizontal_or (Vec4db const a) {
-#if INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
-    return horizontal_or(Vec256b(_mm256_castpd_si256(a)));
-#else  // split into 128 bit vectors
-    return horizontal_or(a.get_low() | a.get_high());
-#endif
+    return _mm256_movemask_pd(a) != 0;
 }
 
 // to_bits: convert boolean vector to integer bitfield
@@ -631,6 +623,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec8f & load_partial(int n, float const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 8) return load(p);
+        alignas(64) float temporary[8] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(float)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_ps(__mmask8((1u << n) - 1), p);
 #else
@@ -645,6 +648,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, float * p) const {
@@ -976,7 +980,11 @@ static inline Vec8f if_add (Vec8fb const f, Vec8f const a, Vec8f const b) {
 #if INSTRSET >= 10
     return _mm256_mask_add_ps (a, f, a, b);
 #else
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
+    return _mm256_fmadd_ps(a, Vec8f(1), Vec8f(f) & b);
+#else
     return a + (Vec8f(f) & b);
+#endif
 #endif
 }
 
@@ -1043,10 +1051,16 @@ static inline Vec8f sign_combine(Vec8f const a, Vec8f const b) {
 // false for INF and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec8fb is_finite(Vec8f const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::finite_mask(__m256(a));
+#elif INSTRSET >= 10
     return __mmask8(~ _mm256_fpclass_ps_mask (a, 0x99));
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
-    Vec8i t1 = _mm256_castps_si256(a);    // reinterpret as 32-bit integer
+    __m256i bits = _mm256_castps_si256(a);
+#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
+    __asm__ volatile("" : "+x"(bits));
+#endif
+    Vec8i t1 = bits;
     Vec8i t2 = t1 << 1;                   // shift out sign bit
     Vec8ib t3 = Vec8i(t2 & 0xFF000000) != 0xFF000000; // exponent field is not all 1s
     return t3;
@@ -1059,7 +1073,9 @@ static inline Vec8fb is_finite(Vec8f const a) {
 // false for finite numbers and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec8fb is_inf(Vec8f const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::inf_mask(__m256(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_ps_mask (a, 0x18);
 #elif INSTRSET >= 8  //  256 bit integer vectors are available, AVX2
     Vec8i t1 = _mm256_castps_si256(a); // reinterpret as 32-bit integer
@@ -1075,8 +1091,13 @@ static inline Vec8fb is_inf(Vec8f const a) {
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 #if INSTRSET >= 10
 static inline Vec8fb is_nan(Vec8f const a) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
+    return vcl_detail_x86::nan_mask(__m256(a));
+#else
+
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm256_fpclass_ps_mask (a, 0x81);
+#endif
 }
 //#elif defined(__GNUC__) && !defined(__INTEL_COMPILER) && !defined(__clang__)
 //__attribute__((optimize("-fno-unsafe-math-optimizations")))
@@ -1102,7 +1123,9 @@ static inline Vec8fb is_nan(Vec8f const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec8fb is_subnormal(Vec8f const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::subnormal_mask(__m256(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_ps_mask (a, 0x20);
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
     Vec8i t1 = _mm256_castps_si256(a);      // reinterpret as 32-bit integer
@@ -1119,7 +1142,9 @@ static inline Vec8fb is_subnormal(Vec8f const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec8fb is_zero_or_subnormal(Vec8f const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::zero_subnormal_mask(__m256(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_ps_mask (a, 0x26);
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2    Vec8i t = _mm256_castps_si256(a);            // reinterpret as 32-bit integer
     Vec8i t = _mm256_castps_si256(a);       // reinterpret as 32-bit integer
@@ -1161,12 +1186,9 @@ static inline Vec8f min(Vec8f const a, Vec8f const b) {
 
 // function abs: absolute value
 static inline Vec8f abs(Vec8f const a) {
-#if INSTRSET >= 10  // AVX512VL
-    return _mm256_range_ps(a, a, 8);
-#else
+    // Clear the sign without quieting or changing a NaN payload.
     __m256 mask = constant8f<0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu,0x7FFFFFFFu> ();
     return _mm256_and_ps(a,mask);
-#endif
 }
 
 // function sqrt: square root
@@ -1493,6 +1515,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec4d & load_partial(int n, double const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 4) return load(p);
+        alignas(64) double temporary[4] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(double)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         ymm = _mm256_maskz_loadu_pd(__mmask8((1u << n) - 1), p);
 #else
@@ -1507,6 +1540,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, double * p) const {
@@ -1826,7 +1860,11 @@ static inline Vec4d if_add (Vec4db const f, Vec4d const a, Vec4d const b) {
 #if INSTRSET >= 10
     return _mm256_mask_add_pd (a, f, a, b);
 #else
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
+    return _mm256_fmadd_pd(a, Vec4d(1), Vec4d(f) & b);
+#else
     return a + (Vec4d(f) & b);
+#endif
 #endif
 }
 
@@ -1873,10 +1911,16 @@ static inline Vec4d sign_combine(Vec4d const a, Vec4d const b) {
 // Function is_finite: gives true for elements that are normal, subnormal or zero,
 // false for INF and NAN
 static inline Vec4db is_finite(Vec4d const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::finite_mask(__m256d(a));
+#elif INSTRSET >= 10
     return __mmask8(~ _mm256_fpclass_pd_mask (a, 0x99));
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
-    Vec4q t1 = _mm256_castpd_si256(a); // reinterpret as 64-bit integer
+    __m256i bits = _mm256_castpd_si256(a);
+#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
+    __asm__ volatile("" : "+x"(bits));
+#endif
+    Vec4q t1 = bits;
     Vec4q t2 = t1 << 1;                // shift out sign bit
     Vec4q t3 = 0xFFE0000000000000;     // exponent mask
     Vec4qb t4 = Vec4q(t2 & t3) != t3;  // exponent field is not all 1s
@@ -1891,7 +1935,9 @@ static inline Vec4db is_finite(Vec4d const a) {
 // Function is_inf: gives true for elements that are +INF or -INF
 // false for finite numbers and NAN
 static inline Vec4db is_inf(Vec4d const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::inf_mask(__m256d(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_pd_mask (a, 0x18);
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
     Vec4q t1 = _mm256_castpd_si256(a); // reinterpret as 64-bit integer
@@ -1907,8 +1953,13 @@ static inline Vec4db is_inf(Vec4d const a) {
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 #if INSTRSET >= 10
 static inline Vec4db is_nan(Vec4d const a) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
+    return vcl_detail_x86::nan_mask(__m256d(a));
+#else
+
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm256_fpclass_pd_mask (a, 0x81);
+#endif
 }
 //#elif defined(__GNUC__) && !defined(__INTEL_COMPILER) && !defined(__clang__)
 //__attribute__((optimize("-fno-unsafe-math-optimizations")))
@@ -1934,7 +1985,9 @@ static inline Vec4db is_nan(Vec4d const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec4db is_subnormal(Vec4d const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::subnormal_mask(__m256d(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_pd_mask (a, 0x20);
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2
     Vec4q t1 = _mm256_castpd_si256(a); // reinterpret as 64-bit integer
@@ -1951,7 +2004,9 @@ static inline Vec4db is_subnormal(Vec4d const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec4db is_zero_or_subnormal(Vec4d const a) {
-#if INSTRSET >= 10  // compact boolean vectors
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 10
+    return vcl_detail_x86::zero_subnormal_mask(__m256d(a));
+#elif INSTRSET >= 10
     return _mm256_fpclass_pd_mask (a, 0x26);
 #elif INSTRSET >= 8  // 256 bit integer vectors are available, AVX2    Vec8i t = _mm256_castps_si256(a);            // reinterpret as 32-bit integer
     Vec4q t = _mm256_castpd_si256(a);     // reinterpret as 32-bit integer
@@ -1982,12 +2037,9 @@ static inline Vec4d min(Vec4d const a, Vec4d const b) {
 
 // function abs: absolute value
 static inline Vec4d abs(Vec4d const a) {
-#if INSTRSET >= 10  // AVX512VL
-    return _mm256_range_pd(a, a, 8);
-#else
+    // Clear the sign without quieting or changing a NaN payload.
     __m256d mask = _mm256_castps_pd(constant8f<0xFFFFFFFFu,0x7FFFFFFFu,0xFFFFFFFFu,0x7FFFFFFFu,0xFFFFFFFFu,0x7FFFFFFFu,0xFFFFFFFFu,0x7FFFFFFFu> ());
     return _mm256_and_pd(a,mask);
-#endif
 }
 
 // function sqrt: square root
@@ -2061,9 +2113,10 @@ static inline Vec4q truncatei(Vec4d const a) {
 #if INSTRSET >= 10 // __AVX512DQ__ __AVX512VL__
     return _mm256_cvttpd_epi64(a);
 #else
-    double aa[4];    // inefficient
-    a.store(aa);
-    return Vec4q(int64_t(aa[0]), int64_t(aa[1]), int64_t(aa[2]), int64_t(aa[3]));
+    // Reuse the guarded 128-bit conversion: scalar casts of NaN, infinity
+    // or values outside [-2^63, 2^63) are undefined. Invalid lanes retain
+    // the signed-minimum sentinel of the native AVX-512 conversion.
+    return Vec4q(truncatei(a.get_low()), truncatei(a.get_high()));
 #endif
 }
 
@@ -2832,14 +2885,14 @@ template <int n>
 static inline Vec8f lookup(Vec8i const index, float const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 4) {
-        Vec4f table1 = Vec4f().load(table);
+        Vec4f table1 = Vec4f().load_partial(n < 4 ? n : 4, table);
         return Vec8f(
             lookup4 (index.get_low(),  table1),
             lookup4 (index.get_high(), table1));
     }
 #if INSTRSET < 8  // not AVX2
     if constexpr (n <= 8) {
-        return lookup8(index, Vec8f().load(table));
+        return lookup8(index, Vec8f().load_partial(n < 8 ? n : 8, table));
     }
 #endif
     // Limit index
@@ -2899,14 +2952,14 @@ template <int n>
 static inline Vec4d lookup(Vec4q const index, double const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 2) {
-        Vec2d table1 = Vec2d().load(table);
+        Vec2d table1 = Vec2d().load_partial(n < 2 ? n : 2, table);
         return Vec4d(
             lookup2 (index.get_low(),  table1),
             lookup2 (index.get_high(), table1));
     }
 #if INSTRSET < 8  // not AVX2
     if constexpr (n <= 4) {
-        return lookup4(index, Vec4d().load(table));
+        return lookup4(index, Vec4d().load_partial(n < 4 ? n : 4, table));
     }
 #endif
     // Limit index

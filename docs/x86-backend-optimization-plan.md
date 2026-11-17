@@ -132,6 +132,42 @@ and before/after checks passed. Original Windows source identities and failures
 remain unchanged. The maintainer authorized publishing the Mac report/status
 documentation on 2026-11-17.
 
-Next, triage the retained Windows higher-ISA failures, distinguishing library
-bugs from oracle ISA assumptions, before claiming broad higher-ISA readiness. Further source
-changes need new candidate IDs, checks and evidence; do not reuse these passes.
+The [2026-11-17 Windows correctness follow-up](validation/windows-amd-2026-11-17-isa-triage.md)
+prepares an uncommitted third adaptation patch for the inherited AVX2 undefined
+FP64-to-int64 conversion and an independent shared edge regression. Its frozen
+base is `3abf7af` plus exact changes, fingerprint
+`ca073990eff3c19aa5dd4445628c0ebc6202d472d094dbf3e0bd43ff06b7c43c`.
+All four baseline profiles pass 5,392/5,392 cases; higher-ISA profiles have
+196 passes / 124 failures, with six Clang AVX2 Debug cases resolved, no new
+failed names and no suite UBSan diagnostics. Vendor stays byte-exact.
+
+That historical restart point called for review of the patch/regression/report,
+bounded lookup access and compact-mask division fixes, remaining
+special-value/accuracy triage and the then-unexecuted `INSTRSET=9` conversion path.
+Distinguish library bugs from oracle ISA assumptions; retain every original
+failure and gate. The newer source still needs native M2 validation after a
+source checkpoint is approved. Publication was pending at that checkpoint;
+the subsequent combined approval is recorded below. Do not reuse old native
+passes for new changes.
+
+## Later correctness candidate
+
+Follow the [Windows correctness completion plan](windows-correctness-plan.md)
+and its [dated report](validation/windows-amd-2026-11-17-correctness-completion.md).
+The canonical fourth patch now resolves the retained higher-ISA selection:
+320/320 local cases pass at fingerprint
+`af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528`,
+base `e27134b` plus captured changes. Four full baseline profiles pass
+5,392/5,392 and twenty focused programs pass, including level-9 conversion.
+The final selected CTest total is 5,712/5,712, without failures, skips, timeouts
+or suite UBSan diagnostics. Original vendor bytes remain
+untouched, and every intermediate failure is retained.
+
+The [new M2 handoff](validation/mac-arm-correctness-handoff.md) requires a new
+approved publication and actual native ARM execution. The maintainer approved
+cleanup, commit and push of the prepared fixes/evidence/handoff on 2026-11-17.
+Preserve the raw evidence and validation worktrees. After both hosts validate
+the same code, repeat the separately documented Windows upstream performance
+comparison at that final source. Earlier speedups do not establish the cost of
+these newer correctness fixes. Further changes/publication need their own
+authorization; this approval does not authorize PRs, merges or branch retirement.

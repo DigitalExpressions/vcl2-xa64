@@ -1,0 +1,114 @@
+[
+  {
+    "binary_sha256": "31973326edd385877412377ea15de0527cfe7641b6d362d9463225689ebca461",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-sse2-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "1ba52dfdc6931ffc24a910ffcf9aa68dedd4120c96b394301817caaac51dbc89",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-sse2-debug",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "0da17a220a7027d6a2cfa0f0a8355bf84373137d1f626c039dc65b1bfa640104",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-sse42-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "94e4c0b13444059d988da488fca95c352d2abee51c4d3df47f9152f8dc33afba",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-sse42-debug",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "dffff4df0594f622abada85e0d90f3769f2200fc9b47cc49d618401b3231df1d",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-avx2-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "7934209428cb5cf2b83a86c46d1cf520b63b3b1a2ae7727e0d41c995f4cf716a",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-avx2-debug",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "60ac90220873532924be97a614a367a78f46de3707fc6e896fc74b4ced526c26",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-avx512-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "427f374bf86248c4c7bebbb2f641c67f894591e7b726b8319fe183fc5204d050",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "msvc-avx512-debug",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "16229ee640815f48decf96e47249b08b90ce43056cb0a819f601c09254a5497b",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-sse2-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "e642b7fabb2ed6c0342540b0a578def719358ef19e6e89c9a6dd4481792c5852",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-sse2-debug",
+    "strict_ubsan": true
+  },
+  {
+    "binary_sha256": "7eecd2c739ddac254d2690d7f12a263ba606df692d98b7f998c5fcc15df325a7",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-sse42-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "066693352cde37018b94e549626ed47f4cff6347f168087aab29bca43141dec3",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-sse42-debug",
+    "strict_ubsan": true
+  },
+  {
+    "binary_sha256": "54748de3a681208357f64c905dbf48370472d8bcb1181801017c2502e92c7a29",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-avx2-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "33ecf3ea2521d0a687571b320eb47cdd930b25cf8e16e042f219a605191944c0",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-avx2-debug",
+    "strict_ubsan": true
+  },
+  {
+    "binary_sha256": "aad10f6118fa83e935d1fb2fd7bd535dd62be7478593fee107b271c33ee52b55",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-avx512-release",
+    "strict_ubsan": false
+  },
+  {
+    "binary_sha256": "a8bf3152c817b88b75ad5171e3de927baded6acc9d84c06f3350968a71c8797a",
+    "exit": 0,
+    "pe_machine": "0x8664",
+    "profile": "clang-avx512-debug",
+    "strict_ubsan": true
+  }
+]

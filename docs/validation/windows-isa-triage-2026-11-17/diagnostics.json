@@ -1,0 +1,310 @@
+[
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "4bb46759fafdfe1ccfe4841dc6f52f04b2594c88ad22d9d1c3237410cd1ca369",
+    "exit": 3221225477,
+    "last_lines": [
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0xffffffffffffffff,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x1,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x2,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x3,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x4,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x5,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x11,class Vec8s,class Vec8s>(void)"
+    ],
+    "profile": "movement_slice-avx2"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "9d3f2fc42c679931428ba5f0c5d425780b50b22be8ffe7dfffe8c4a219263f87",
+    "exit": 3221225477,
+    "last_lines": [
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32uc,class Vec32cb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16s,class Vec16sb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16us,class Vec16sb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8i,class Vec8ib>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8ui,class Vec8ib>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4q,class Vec4qb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4qb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8fb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4db>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec32c,class Vec32c>(void)"
+    ],
+    "profile": "wide_composition-avx2"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "0581495bcf62c90d0957be7be5dc566e067ddeac32da4757d21565ba7403438d",
+    "exit": 3221225477,
+    "last_lines": [
+      "line 94: blended[i]==(j<0?T(0):j<n?input[j]:T(99)) TYPE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32s,class Vec32sb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32us,class Vec32sb>(void)",
+      "line 94: blended[i]==(j<0?T(0):j<n?input[j]:T(99)) TYPE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32us,class Vec32sb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16i,class Vec16ib>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16ui,class Vec16ib>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8q,class Vec8qb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8qb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16fb>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8db>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec16i,class Vec16i>(void)"
+    ],
+    "profile": "composition512-avx2"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "ca52a88baae52da740cf60c5ea39adeaf081411ca5db99cb8036e0d1a565fee1",
+    "exit": 0,
+    "last_lines": [
+      "abs input=7f800001 result=7f800001 sign-cleared=7f800001",
+      "abs input=ff800001 result=7f800001 sign-cleared=7f800001",
+      "abs input=7fc12345 result=7fc12345 sign-cleared=7fc12345",
+      "mask bits=1 constructor lanes=-1,0,0,0",
+      "divide by INT32_MIN actual=1,0,0,0 expected=1,0,0,0",
+      "inactive if_add(-0,5) result=00000000",
+      "tiny x=0000000000000001 log=fff0000000000000 atan=0000000000000001",
+      "tiny x=8000000000000001 log=fff0000000000000 atan=8000000000000001",
+      "tiny x=0010000000000000 log=c086232bdd7abcd2 atan=0010000000000000"
+    ],
+    "profile": "specials-avx2"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "e6c361db2a8737d49b07c9c895b438d38986fdc11f1b314317913bd145a6ffc0",
+    "exit": 3221225477,
+    "last_lines": [
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0xffffffffffffffff,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x1,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x2,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x3,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x4,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x5,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::memory_lookups<0x11,class Vec8s,class Vec8s>(void)"
+    ],
+    "profile": "movement_slice-avx512"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "ff2637cc629cd75411186d2f0bd946469130d75dfe579275ffc159bc994a6a24",
+    "exit": 3221225477,
+    "last_lines": [
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32uc,class Vec32b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16s,class Vec16b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16us,class Vec16b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8i,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8ui,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4q,class Vec4b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec32c,class Vec32c>(void)"
+    ],
+    "profile": "wide_composition-avx512"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "ee1faa30e9fedaf5285e013771c3e36f8e9fd994717a009a6b3a8766dabb9ecf",
+    "exit": 3221225477,
+    "last_lines": [
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec64uc,class Vec64b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32s,class Vec32b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec32us,class Vec32b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16i,class Vec16b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16ui,class Vec16b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8q,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8b>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "TRACE void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec16i,class Vec16i>(void)"
+    ],
+    "profile": "composition512-avx512"
+  },
+  {
+    "attempt": "diagnostics",
+    "binary_sha256": "7a9665cba6a4e9483b382be4ca10b07937d55281c2d02e25077c31fb46a307db",
+    "exit": 0,
+    "last_lines": [
+      "abs input=7f800001 result=7fc00001 sign-cleared=7f800001",
+      "abs input=ff800001 result=ffc00001 sign-cleared=7f800001",
+      "abs input=7fc12345 result=7fc12345 sign-cleared=7fc12345",
+      "mask bits=1 constructor lanes=1,1,1,1",
+      "divide by INT32_MIN actual=1,1,1,1 expected=1,0,0,0",
+      "inactive if_add(-0,5) result=80000000",
+      "tiny x=0000000000000001 log=fff0000000000000 atan=0000000000000001",
+      "tiny x=8000000000000001 log=7ff8002020000000 atan=8000000000000001",
+      "tiny x=0010000000000000 log=c086232bdd7abcd2 atan=0010000000000000"
+    ],
+    "profile": "specials-avx512"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "9c2e9b923a5b2ece3583b2d8120c3d29d868e4ce71412b8942449704d889199d",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x5,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x11,class Vec8s,class Vec8s>(void)"
+    ],
+    "profile": "movement_slice-avx2"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "a5a90daa809320365f814ade4e7745e050c1d1c399468243200ed4be0128bb07",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4q,class Vec4qb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4qb>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4qb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8fb>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8fb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4db>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4db>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec32c,class Vec32c>(void)"
+    ],
+    "profile": "wide_composition-avx2"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "7a9d4d436dffc00c43cb60fb731cbfb5c46d4e1b5dbed1a7f5e848ab285a97c4",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8q,class Vec8qb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8qb>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8qb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16fb>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16fb>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8db>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8db>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec16i,class Vec16i>(void)"
+    ],
+    "profile": "composition512-avx2"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "7dde73fe5372543f492ee2a0904f4f02a7259febc37d603b22fcaa742038ebf4",
+    "exit": 0,
+    "last_lines": [
+      "abs input=7f800001 result=7f800001 sign-cleared=7f800001",
+      "abs input=ff800001 result=7f800001 sign-cleared=7f800001",
+      "abs input=7fc12345 result=7fc12345 sign-cleared=7fc12345",
+      "mask bits=1 constructor lanes=-1,0,0,0",
+      "divide by INT32_MIN actual=1,0,0,0 expected=1,0,0,0",
+      "inactive if_add(-0,5) result=00000000",
+      "tiny x=0000000000000001 log=fff0000000000000 atan=0000000000000001",
+      "tiny x=8000000000000001 log=fff0000000000000 atan=8000000000000001",
+      "tiny x=0010000000000000 log=c086232bdd7abcd2 atan=0010000000000000"
+    ],
+    "profile": "specials-avx2"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "64206bc01a916dedaeab488b0d37fc873a72bda64babab426caff5f000ddc02d",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x5,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x7,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x8,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x9,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0xf,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::memory_lookups<0x10,class Vec8s,class Vec8s>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::memory_lookups<0x11,class Vec8s,class Vec8s>(void)"
+    ],
+    "profile": "movement_slice-avx512"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "5b5bff430e5c89dd381a866b972989839b6cc996bf83276057a4dd6a7588313c",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4q,class Vec4b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4uq,class Vec4b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8f,class Vec8b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec4d,class Vec4b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec32c,class Vec32c>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec32c,class Vec32c>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec32c,class Vec32c>(void)"
+    ],
+    "profile": "wide_composition-avx512"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "791617a5bf068d5c0f35af35978ac08f9b9b0b8149a5436556c59d7eb64889c4",
+    "exit": 3221225477,
+    "last_lines": [
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8q,class Vec8b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8uq,class Vec8b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec16f,class Vec16b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8b>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::structure_and_memory<class Vec8d,class Vec8b>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0xffffffffffffffff,class Vec16i,class Vec16i>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "EXIT void __cdecl `anonymous-namespace'::table_boundary<0x0,class Vec16i,class Vec16i>(void)",
+      "ENTER void __cdecl `anonymous-namespace'::table_boundary<0x1,class Vec16i,class Vec16i>(void)"
+    ],
+    "profile": "composition512-avx512"
+  },
+  {
+    "attempt": "diagnostics02",
+    "binary_sha256": "b344ede5af993536eb5532f3dafe6b44adb03e2a2ad0516ef36e68f1efd3ce11",
+    "exit": 0,
+    "last_lines": [
+      "abs input=7f800001 result=7fc00001 sign-cleared=7f800001",
+      "abs input=ff800001 result=ffc00001 sign-cleared=7f800001",
+      "abs input=7fc12345 result=7fc12345 sign-cleared=7fc12345",
+      "mask bits=1 constructor lanes=1,1,1,1",
+      "divide by INT32_MIN actual=1,1,1,1 expected=1,0,0,0",
+      "inactive if_add(-0,5) result=80000000",
+      "tiny x=0000000000000001 log=fff0000000000000 atan=0000000000000001",
+      "tiny x=8000000000000001 log=7ff8002020000000 atan=8000000000000001",
+      "tiny x=0010000000000000 log=c086232bdd7abcd2 atan=0010000000000000"
+    ],
+    "profile": "specials-avx512"
+  }
+]

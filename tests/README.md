@@ -8,6 +8,12 @@ expected values. No application-specific test or proprietary dependency is part
 of this suite. Protected-page tests use POSIX memory APIs on macOS/Linux and
 VirtualAlloc/VirtualProtect on native Windows, retaining inaccessible boundaries.
 
+The `edges` case also calls `truncate_i64_regression.h`: independent literal
+IEEE-754 input bits and integer expectations for FP64 truncation at every
+available 128/256/512-bit width. Mixed lanes rotate zeros, subnormals, fractions,
+int64 boundaries, infinities and both NaN signs through all four rounding modes.
+The oracle never casts an invalid floating-point value to an integer.
+
 The maintainer's available native hosts are a Mac M2 (macOS ARM64) and an AMD
 Ryzen 9 7950X (Windows x86-64). Use the default `master` branch on both hosts
 or a clean worktree at the approved validation commit. Completed port/audit
@@ -120,6 +126,15 @@ remain at the baseline unless global target flags explicitly select another ISA.
 Verify CPU and OS state support before executing these or higher-ISA binaries.
 
 ## Independent fixtures
+
+The existing edge cases also run `boundary_regression.h` and
+`truncate_i64_regression.h`: protected-page table ends, compact-mask division,
+full-width shifts, composition literals and FP64 conversion boundaries under
+all four rounding modes. These assertions retain the original case inventory,
+deadlines and numerical gates. Compact x86 mask expansion and native AVX-512
+fixed-nearest conversion are checked according to their actual API contracts.
+See the [Windows completion plan](../docs/windows-correctness-plan.md) for the
+new candidate and subsequent native M2/performance gates.
 
 `generate_*_reference.py --check` regenerates the committed fixtures and checks
 agreement at two Decimal precisions. The extended x86 fixture generator uses

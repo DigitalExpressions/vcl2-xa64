@@ -168,7 +168,12 @@ template<class Mask,class IV> void masks() {
         Mask m; m.load_bits(Expected(i)); CHECK(to_bits(m)==i); CHECK(horizontal_count(m)==vcl_test::scalar_popcount(i));
         CHECK(horizontal_find_first(m)==vcl_test::scalar_first_bit(i)); CHECK(horizontal_and(m)==(i==all)); CHECK(horizontal_or(m)==bool(i));
         CHECK(to_bits(!m)==(all^i)); CHECK(horizontal_and(m==m)); CHECK(!horizontal_or(m!=m));
+#if VCL_ARCH_ARM64 || INSTRSET < 10
         IV broad(m);
+#else
+        // Compact masks require lane expansion, not a scalar-mask broadcast.
+        IV broad = select(m, IV(-1), IV(0));
+#endif
 #if VCL_ARCH_ARM64 || INSTRSET < 10
         if constexpr(std::is_same<Mask,Vec4fb>::value) { Mask back{Vec4ib(broad)}; CHECK(to_bits(back)==i); }
         else if constexpr(std::is_same<Mask,Vec2db>::value) { Mask back{Vec2qb(broad)}; CHECK(to_bits(back)==i); }
@@ -194,7 +199,12 @@ void conversions() {
     Vec16c raw=Vec16c(-1); Vec4f rf= reinterpret_f(raw); Vec2d rd=reinterpret_d(raw); Vec4i back(reinterpret_i(rf)); Vec2q backd(reinterpret_i(rd));
     CHECK(horizontal_and(back==Vec4i(-1))); CHECK(horizontal_and(backd==Vec2q(-1)));
     CHECK(equal_bits(Vec4f(reinterpret_f(rf))[0],rf[0])); CHECK(equal_bits(Vec2d(reinterpret_d(rd))[0],rd[0]));
-    auto perm=permute4<3,2,1,0>(Vec4i(Vec4fb(true,false,false,true))); Vec4i p(perm); CHECK(p[0]==-1 && p[1]==0 && p[2]==0 && p[3]==-1);
+#if VCL_ARCH_ARM64 || INSTRSET < 10
+    Vec4i broad(Vec4fb(true,false,false,true));
+#else
+    Vec4i broad = select(Vec4ib(Vec4fb(true,false,false,true)), Vec4i(-1), Vec4i(0));
+#endif
+    auto perm=permute4<3,2,1,0>(broad); Vec4i p(perm); CHECK(p[0]==-1 && p[1]==0 && p[2]==0 && p[3]==-1);
 }
 template<class V,class T> void rotations() {
     using U=typename std::make_unsigned<T>::type; constexpr int width=sizeof(T)*8;

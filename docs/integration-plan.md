@@ -193,7 +193,7 @@ passed 8,036/8,036 cases and eight examples at clean approved commit `a099098`,
 without failures, skips, timeouts or retries. All 28 pristine vendor files
 remained untouched; before/after integrity checks and eight generation controls
 passed. Existing Windows results keep their original tested identifiers, and
-their higher-ISA failures still need focused triage. The Mac report/status
+their higher-ISA failures remain recorded at that checkpoint. The Mac report/status
 documentation was published at `3abf7af` on 2026-11-17. Keep the validation
 worktrees and raw evidence; further publication or cleanup requires separate
 authorization.
@@ -205,6 +205,35 @@ pre-layout `44f974a` builds byte for byte. The dated report, portable data and
 [future report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) are
 approved for commit/push by the maintainer on 2026-11-17. Historical
 measurements remain in the [2026-11-13 report](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md).
+
+The earlier [2026-11-17 Windows correctness follow-up](validation/windows-amd-2026-11-17-isa-triage.md)
+prepared an uncommitted AVX2 conversion fix through a third canonical
+adaptation patch, preserving pristine vendor bytes. Its frozen source is
+`3abf7af` plus captured changes, not either earlier tested checkpoint. All 5,392
+full baseline cases pass; higher-ISA selection has 196 passes and 124 failures,
+no new failed names and no suite UBSan diagnostics. Six Clang AVX2 Debug cases
+are resolved. Retained guard-page faults, compact-mask integer division,
+special-value/accuracy failures and untested `INSTRSET=9` conversion remain
+explicit follow-up work. Review the patch/regression and portable receipts;
+At that checkpoint, publication and native M2 validation required further
+approval. The subsequent approval and combined handoff are recorded below.
+
+The later [correctness completion](validation/windows-amd-2026-11-17-correctness-completion.md)
+uses base `e27134b` plus captured canonical fixes, fingerprint
+`af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528`.
+All eight higher-ISA local profiles pass 320/320; four full baseline profiles
+pass 5,392/5,392. The final selected CTest total is 5,712/5,712, with zero
+failures, skips, timeouts or suite UBSan diagnostics. Twenty focused programs
+also pass, including level-9 conversion. All original failures and source IDs
+are retained in the [portable bundle](validation/windows-correctness-2026-11-17/README.md).
+The [durable plan](windows-correctness-plan.md) tracks completion and the
+[new M2 handoff](validation/mac-arm-correctness-handoff.md) identifies the approved
+publication for native ARM execution. All original reports, failed attempts and
+vendor bytes remain preserved; the index was unchanged during validation.
+New M2 correctness and subsequent Windows performance comparison remain gates;
+the maintainer approved cleanup, commit and push of the prepared source,
+portable evidence and M2 handoff on 2026-11-17. This publication preserves raw
+evidence and validation worktrees. No PR, merge or branch retirement is involved.
 
 The separate [Windows x86 performance investigation](benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
 compares frozen fork `ade9d9b` with original VCL `6675774` using MSVC and Clang,

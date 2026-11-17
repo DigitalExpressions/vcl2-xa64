@@ -543,6 +543,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec4f & load_partial(int n, float const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 4) return load(p);
+        alignas(64) float temporary[4] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(float)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         xmm = _mm_maskz_loadu_ps(__mmask8((1u << n) - 1), p);
 #else
@@ -562,6 +573,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, float * p) const {
@@ -882,7 +894,11 @@ static inline Vec4f if_add(Vec4fb const f, Vec4f const a, Vec4f const b) {
 #if INSTRSET >= 10
     return _mm_mask_add_ps (a, f, a, b);
 #else
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
+    return _mm_fmadd_ps(a, Vec4f(1), Vec4f(f) & b);
+#else
     return a + (Vec4f(f) & b);
+#endif
 #endif
 }
 
@@ -1096,12 +1112,9 @@ static inline Vec4f min(Vec4f const a, Vec4f const b) {
 
 // function abs: absolute value
 static inline Vec4f abs(Vec4f const a) {
-#if INSTRSET >= 10  // AVX512VL
-    return _mm_range_ps(a, a, 8);
-#else
+    // Clear the sign without quieting or changing a NaN payload.
     __m128 mask = _mm_castsi128_ps(_mm_set1_epi32(0x7FFFFFFF));
     return _mm_and_ps(a, mask);
-#endif
 }
 
 // function sqrt: square root
@@ -1574,6 +1587,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec2d & load_partial(int n, double const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 2) return load(p);
+        alignas(64) double temporary[2] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(double)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10   // AVX512VL
         xmm = _mm_maskz_loadu_pd(__mmask8((1u << n) - 1), p);
 #else
@@ -1588,6 +1612,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, double * p) const {
@@ -1897,7 +1922,11 @@ static inline Vec2d if_add(Vec2db const f, Vec2d const a, Vec2d const b) {
 #if INSTRSET >= 10
     return _mm_mask_add_pd (a, f, a, b);
 #else
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
+    return _mm_fmadd_pd(a, Vec2d(1), Vec2d(f) & b);
+#else
     return a + (Vec2d(f) & b);
+#endif
 #endif
 }
 
@@ -2116,12 +2145,9 @@ static inline Vec2d min(Vec2d const a, Vec2d const b) {
 
 // function abs: absolute value
 static inline Vec2d abs(Vec2d const a) {
-#if INSTRSET >= 10  // AVX512VL
-    return _mm_range_pd(a, a, 8);
-#else
+    // Clear the sign without quieting or changing a NaN payload.
     __m128d mask = _mm_castsi128_pd(_mm_setr_epi32(-1, 0x7FFFFFFF, -1, 0x7FFFFFFF));
     return _mm_and_pd(a, mask);
-#endif
 }
 
 // function sqrt: square root

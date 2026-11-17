@@ -18,7 +18,7 @@ chosen source commit rather than requiring an old branch name.
 | Floating-point and memory contracts | [Numerical contracts](numerical-contracts.md) |
 | Configure and run regressions | [Test instructions](../tests/README.md) |
 | Native Mac/AMD workflow and branch synchronization | [Native workflow](validation/native-workflow.md) |
-| Execute the published M2 checkpoint with immutable upstream | [M2 handoff](validation/mac-arm-x86-optimization-handoff.md) |
+| Execute the current approved M2 correctness checkpoint with immutable upstream | [M2 handoff](validation/mac-arm-correctness-handoff.md) |
 | Actual tested revisions and coverage gaps | [Validation index](validation/README.md) |
 | Manual Windows controls and evidence | [Windows runner](validation/windows-runner.md) |
 | Format a new native result | [Report template](validation/report-template.md) |

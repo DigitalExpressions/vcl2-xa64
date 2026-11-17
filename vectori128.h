@@ -965,6 +965,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec16c & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 16) return load(p);
+        alignas(64) uint8_t temporary[16] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(uint8_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL + AVX512BW
         xmm = _mm_maskz_loadu_epi8(__mmask16((1u << n) - 1), p);
 #else
@@ -984,6 +995,7 @@ public:
         cutoff(n);
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -1876,6 +1888,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec8s & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 8) return load(p);
+        alignas(64) int16_t temporary[8] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int16_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL + AVX512BW
         xmm = _mm_maskz_loadu_epi16(__mmask8((1u << n) - 1), p);
 #else
@@ -1894,6 +1917,7 @@ public:
         cutoff(n);
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -2822,6 +2846,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec4i & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 4) return load(p);
+        alignas(64) int32_t temporary[4] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int32_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         xmm = _mm_maskz_loadu_epi32(__mmask8((1u << n) - 1), p);
 #else
@@ -2841,6 +2876,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -3752,6 +3788,17 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec2q & load_partial(int n, void const * p) {
+#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
+        // Preserve masked-off page boundaries under MSVC optimization.
+        if (n >= 2) return load(p);
+        alignas(64) int64_t temporary[2] = {};
+        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
+        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
+        const int count = n > 0 ? n * int(sizeof(int64_t)) : 0;
+        for (int i = 0; i < count; ++i) destination[i] = source[i];
+        return load(temporary);
+#else
+
 #if INSTRSET >= 10  // AVX512VL
         xmm = _mm_maskz_loadu_epi64(__mmask8((1u << n) - 1), p);
 #else
@@ -3768,6 +3815,7 @@ public:
         }
 #endif
         return *this;
+    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -5621,9 +5669,13 @@ static inline Vec8s lookup(Vec8s const index, void const * table) {
         index1 = min(Vec8us(index), n - 1);
     }
 #if INSTRSET >= 8 // AVX2. Use VPERMD
-    Vec8s t1 = _mm_i32gather_epi32((const int *)table, __m128i((Vec4i(index1)) & (Vec4i(0x0000FFFF))), 2);  // even positions
-    Vec8s t2 = _mm_i32gather_epi32((const int *)table, _mm_srli_epi32(index1, 16), 2);  // odd  positions
-    return blend8<0, 8, 2, 10, 4, 12, 6, 14>(t1, t2);
+    // A dword gather at the last word would cross the table boundary.
+    Vec8us previous = sub_saturated(index1, Vec8us(1));
+    Vec8s t1 = _mm_i32gather_epi32((const int *)table, __m128i(Vec4i(previous) & Vec4i(0x0000FFFF)), 2);
+    Vec8s t2 = _mm_i32gather_epi32((const int *)table, _mm_srli_epi32(previous, 16), 2);
+    Vec8s low = blend8<0, 8, 2, 10, 4, 12, 6, 14>(t1, t2);
+    Vec8s high = blend8<1, 9, 3, 11, 5, 13, 7, 15>(t1, t2);
+    return select(index1 == Vec8us(0), low, high);
 #else
     uint16_t ii[8];  index1.store(ii);
     return Vec8s(((int16_t*)table)[ii[0]], ((int16_t*)table)[ii[1]], ((int16_t*)table)[ii[2]], ((int16_t*)table)[ii[3]],
@@ -6634,7 +6686,7 @@ static inline Vec4i divide_by_i(Vec4i const x) {
     static_assert(d != 0, "Integer division by zero");     // Error message if dividing by zero
     if constexpr (d == 1) return  x;
     if constexpr (d == -1) return -x;
-    if constexpr (uint32_t(d) == 0x80000000u) return Vec4i(x == Vec4i(0x80000000)) & 1; // prevent overflow when changing sign
+    if constexpr (uint32_t(d) == 0x80000000u) return select(x == Vec4i(0x80000000), Vec4i(1), Vec4i(0)); // prevent overflow when changing sign
     constexpr uint32_t d1 = d > 0 ? uint32_t(d) : uint32_t(0) - uint32_t(d);// compile-time abs(d). (force GCC compiler to treat d as 32 bits, not 64 bits)
     if constexpr ((d1 & (d1 - 1)) == 0) {
         // d1 is a power of 2. use shift
@@ -6759,7 +6811,7 @@ static inline Vec8s divide_by_i(Vec8s const x) {
     static_assert(d0 != 0, "Integer division by zero");    // Error message if dividing by zero
     if constexpr (d0 == 1) return  x;                      // divide by  1
     if constexpr (d0 == -1) return -x;                     // divide by -1
-    if constexpr (uint16_t(d0) == 0x8000u) return Vec8s(x == Vec8s(0x8000)) & 1;// prevent overflow when changing sign
+    if constexpr (uint16_t(d0) == 0x8000u) return select(x == Vec8s(0x8000), Vec8s(1), Vec8s(0));// prevent overflow when changing sign
     // if (d > 0x7FFF || d < -0x8000) return 0;            // not relevant when d truncated to 16 bits
     const uint32_t d1 = d0 > 0 ? uint32_t(d0) : uint32_t(0) - uint32_t(d0);// compile-time abs(d). (force GCC compiler to treat d as 32 bits, not 64 bits)
     if constexpr ((d1 & (d1 - 1)) == 0) {

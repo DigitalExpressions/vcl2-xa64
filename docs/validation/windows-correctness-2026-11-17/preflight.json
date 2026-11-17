@@ -1,0 +1,19 @@
+{
+  "driver": "msvc",
+  "head": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+  "mode": "Release",
+  "native_windows_x64": true,
+  "results": {
+    "ctest_exit": 0,
+    "executed": 40,
+    "failed": [],
+    "passed": 40,
+    "registered": 40,
+    "skipped": [],
+    "timed_out": []
+  },
+  "sanitizer": "not requested",
+  "source_fingerprint": "5ce3fdf8a028645c599283bd2dcf823d2abc60661efb89a33ffade9f77c481f9",
+  "success": true,
+  "tree": "9b3ea5a74898f34e3bdd94141788a87e8f019d3d"
+}

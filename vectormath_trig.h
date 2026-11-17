@@ -34,12 +34,12 @@ namespace VCL_NAMESPACE {
 #endif
 
 
-#if VCL_BACKEND == VCL_BACKEND_NEON
+#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
 // Reduce native radian inputs in FP64. Correct the rounded quadrant before
 // evaluating polynomials, which require a remainder in [-pi/4, pi/4].
 // FP32 callers widen only the reduction; their polynomial remains FP32.
 template<typename VTYPE>
-static inline VTYPE trig_reduce_native(VTYPE const xa, VTYPE & quadrant) {
+static inline VTYPE trig_reduce_precise(VTYPE const xa, VTYPE & quadrant) {
     constexpr double pio2_hi = 1.57079632679489655800;
     constexpr double pio2_lo = 6.12323399573676603587E-17;
     quadrant = round(xa * (2. / VM_PI));
@@ -124,8 +124,8 @@ static inline VTYPE sincos_d(VTYPE * cosret, VTYPE const xx) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON
-        x = trig_reduce_native(xa, y);
+#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
+        x = trig_reduce_precise(xa, y);
 #elif INSTRSET < 8
         x = ((xa - y * DP1) - y * DP2) - y * DP3;
 #else
@@ -305,10 +305,10 @@ static inline VTYPE sincos_f(VTYPE* cosret, VTYPE const xx) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON
+#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
         auto qlo = extend_low(xa), qhi = extend_high(xa);
-        auto rlo = trig_reduce_native(extend_low(xa), qlo);
-        auto rhi = trig_reduce_native(extend_high(xa), qhi);
+        auto rlo = trig_reduce_precise(extend_low(xa), qlo);
+        auto rhi = trig_reduce_precise(extend_high(xa), qhi);
         x = compress(rlo, rhi);
         y = compress(qlo, qhi);
 #elif INSTRSET < 8
@@ -515,8 +515,8 @@ static inline VTYPE tan_d(VTYPE const x) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON
-        z = trig_reduce_native(xa, y);
+#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
+        z = trig_reduce_precise(xa, y);
 #elif INSTRSET < 8
         z = ((xa - y * DP1) - y * DP2) - y * DP3;
 #else
@@ -893,10 +893,19 @@ static inline VTYPE atan_d(VTYPE const y, VTYPE const x) {
     // small:  z = t / 1.0;
     // medium: z = (t-1.0) / (t+1.0);
     // big:    z = -1.0 / t;
+#if VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 8
+    // Express the same small/medium/large rational argument without MSVC's
+    // masked conditional-add lowering. Small lanes retain a=t, b=1.
+    a = select(notbig, t, VTYPE(0.));
+    a = select(notsmal, a - VTYPE(1.), a);
+    b = select(notbig, VTYPE(1.), VTYPE(0.));
+    b = select(notsmal, b + t, b);
+#else
     a = notbig & t;                    // select(notbig, t, 0.);
     a = if_add(notsmal, a, -1.);
     b = notbig & VTYPE(1.);            //  select(notbig, 1., 0.);
     b = if_add(notsmal, b, t);
+#endif
     z = a / b;                         // division by 0 will not occur unless x and y are both 0
 
     zz = z * z;
@@ -916,7 +925,7 @@ static inline VTYPE atan_d(VTYPE const y, VTYPE const x) {
     // get sign bit
     re = sign_combine(re, y);
 
-    return re;
+        return re;
 }
 
 // instantiations of atan_d template:

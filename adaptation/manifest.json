@@ -44,7 +44,9 @@
   "note": "Canonical sources live in vendor/, adaptation/ and backends/. Root products are shipped for direct header-only use.",
   "patches": [
     "adaptation/patches/0001-portability-and-correctness.patch",
-    "adaptation/patches/0002-msvc-x86-performance.patch"
+    "adaptation/patches/0002-msvc-x86-performance.patch",
+    "adaptation/patches/0003-defined-avx2-i64-conversion.patch",
+    "adaptation/patches/0004-x86-correctness.patch"
   ],
   "schema": 1,
   "upstream_directory": "vendor/vectorclass",

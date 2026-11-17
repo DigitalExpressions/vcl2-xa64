@@ -101,7 +101,13 @@ int check_wide_broadcasts() {
     Vec8d di(std::numeric_limits<double>::infinity());
     const unsigned fn=to_bits(is_nan(f)),dn=to_bits(is_nan(d));
     const unsigned ff=to_bits(is_inf(fi)),df=to_bits(is_inf(di));
-    const int failures=int(fn!=0xffff)+int(dn!=0xff)+int(ff!=0xffff)+int(df!=0xff);
+    Vec8f f256(std::numeric_limits<float>::quiet_NaN());
+    Vec4d d256(std::numeric_limits<double>::quiet_NaN());
+    const unsigned fn256=to_bits(is_nan(f256)),dn256=to_bits(is_nan(d256));
+    const int failures=int(fn!=0xffff)+int(dn!=0xff)+int(ff!=0xffff)+int(df!=0xff)
+        +int(fn256!=0xff)+int(dn256!=0xf);
+    if(fn256!=0xff || dn256!=0xf)
+        std::fprintf(stderr,"256-bit broadcast NaN masks: %x/%x; expected ff/f\n",fn256,dn256);
     if(failures) std::fprintf(stderr,"512-bit broadcast masks: nan=%x/%x inf=%x/%x; expected ffff/ff\n",fn,dn,ff,df);
     return failures;
 }
