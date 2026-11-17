@@ -19,9 +19,17 @@ the two newly reproduced pre-fix defects remain retained. The
 source IDs, counts, controls, all attempts and verified archive receipts.
 The [restart plan](../windows-correctness-plan.md) and
 [new M2 handoff](mac-arm-correctness-handoff.md) preserve the next steps.
-Pristine vendor bytes remain unchanged. Native M2 validation and renewed
-performance comparison of this candidate remain pending; no later commit
-inherits its Windows passes.
+Pristine vendor bytes remain unchanged. The new [native M2 result](mac-arm-2026-11-17-ab5bb87-correctness.md)
+records the exact approved publication `ab5bb8754a33724e05a170fa2867475077efd023`.
+All eight profiles passed 8,036/8,036 cases and eight examples on the first
+Mac attempt, with no failures, skips, timeouts or retries.
+All 157 Windows-listed code paths reconciled before execution: 84 raw matches
+and 73 verified newline reconstructions. Original Windows IDs remain unchanged;
+no later commit inherits its Windows passes. Renewed final-source Windows
+performance comparison remains a separate gate.
+The [next Windows prompt](windows-final-source-performance-prompt.md) specifies
+the frozen final-source experiment. Mac reports and evidence-preserving cleanup
+were subsequently approved for publication; see the Mac report follow-up.
 The maintainer approved cleanup, commit and push of the prepared fixes,
 portable evidence and current M2 handoff on 2026-11-17. Use that handoff's
 publication commit as the new M2 checkpoint, retaining original Windows IDs.

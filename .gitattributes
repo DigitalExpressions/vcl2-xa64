@@ -23,6 +23,7 @@ docs/benchmarks/x86-optimization-2026-11-16/** -text
 docs/validation/x86-optimization-2026-11-16/** -text
 docs/validation/windows-isa-triage-2026-11-17/** -text
 docs/validation/windows-correctness-2026-11-17/** -text
+docs/validation/mac-arm-correctness-2026-11-17-ab5bb87/** -text
 docs/validation/x86-optimization-2026-11-16/candidate.patch whitespace=-blank-at-eol
 # Unified diff context markers are part of this checksummed evidence file.
 docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol

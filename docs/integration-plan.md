@@ -230,8 +230,16 @@ The [durable plan](windows-correctness-plan.md) tracks completion and the
 [new M2 handoff](validation/mac-arm-correctness-handoff.md) identifies the approved
 publication for native ARM execution. All original reports, failed attempts and
 vendor bytes remain preserved; the index was unchanged during validation.
-New M2 correctness and subsequent Windows performance comparison remain gates;
-the maintainer approved cleanup, commit and push of the prepared source,
+The new [M2 follow-up](validation/mac-arm-2026-11-17-ab5bb87-correctness.md) validates approved
+publication `ab5bb87` against all 157 Windows-listed code paths.
+All eight profiles passed 8,036/8,036 cases and eight examples on the first
+Mac attempt, with no failures, skips, timeouts or retries.
+Vendor hashes/timestamps stayed unchanged; post-run integrity checks passed.
+Renewed Windows performance comparison remains a separate gate; use the
+[next Windows prompt](validation/windows-final-source-performance-prompt.md)
+when requested. Mac report publication and evidence-preserving cleanup were
+subsequently approved; the dated report records retained packets. The maintainer
+approved cleanup, commit and push of the prepared Windows source,
 portable evidence and M2 handoff on 2026-11-17. This publication preserves raw
 evidence and validation worktrees. No PR, merge or branch retirement is involved.
 
@@ -243,8 +251,9 @@ are prepared. It finds localized slowdowns, including costs associated with
 correctness fixes, and does not change the library. It identified candidate work
 in MSVC classification/wide exponential helpers, followed by baseline
 integer conversion and rounding costs. The subsequent implementation and Windows
-confirmation are recorded in the current execution plan above; retained
-higher-ISA failures remain the next correctness priority. Reports,
+confirmation are recorded in the current execution plan above. The retained
+higher-ISA failures were subsequently resolved at the Windows correctness
+checkpoint; renewed final-source performance remains separate. Reports,
 harness and portable results were prepared uncommitted for review, then included
 in the maintainer-authorized M2 handoff publication. Their original source IDs
 remain unchanged. This is separate from the completed SIMD-parity checkpoint.

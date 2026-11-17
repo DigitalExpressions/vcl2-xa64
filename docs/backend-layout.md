@@ -100,4 +100,7 @@ vendor bytes and passing before/after generation checks. Canonical separation
 reproduces all 35 runtime products from the optimized frozen bytes, permitting
 the documented root-product CRLF/LF equivalence. Each host's earlier results
 retain their own source identifiers. The newer correctness candidate is tracked
-separately in the completion report and must receive its own native M2 validation.
+separately in the completion report. Its [new native M2 result](validation/mac-arm-2026-11-17-ab5bb87-correctness.md)
+records 8,036/8,036 executed cases passed, 0 failed, 0 skipped and 0 timed out; 8/8 examples passed
+at approved `ab5bb87`, with pristine vendor bytes retained. The older source
+and benchmark checkpoints do not acquire these newer results.

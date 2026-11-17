@@ -1,0 +1,15 @@
+{
+  "archive": "mac-m2-correctness-ab5bb875-evidence.zip",
+  "sha256": "33fad7ca351fdbf15124287c064690be8b0bd59d458b9cfa44d806a09ea9e1eb",
+  "bytes": 12443242,
+  "verified_entries": 1212,
+  "raw_directory": "build/mac-m2-correctness-ab5bb8754a33-20261117T161708Z",
+  "original_native_archive": {
+    "name": "return-evidence.zip",
+    "sha256": "00717d651a307ee417dd8be5218751f856059c73f4150568153bb91909da49b7",
+    "directory": "build/mac-m2-correctness-ab5bb8754a33/build/mac-m2-native-20261117T162048332095Z"
+  },
+  "includes": "original native packet/receipt; all controller/source/vendor records, complete tested source, generation integrity fixtures/results, generated C++/CMake probe/reference inputs, audit and scripts",
+  "all_original_directories_retained": true,
+  "cleanup_performed": false
+}

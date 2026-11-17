@@ -268,8 +268,12 @@ A later [native M2 check](docs/validation/mac-arm-2026-11-17-a099098-x86-layout.
 completed on **17 November 2026** at revision `a099098`: all 8,036 cases and
 eight examples passed, including Debug checks for undefined behavior. The
 original VCL2 vendor files stayed untouched. This validates the new source
-layout on M2; the separately recorded Windows AVX2/AVX-512 failures still need
-investigation.
+layout checkpoint. The later [Windows correctness completion](docs/validation/windows-amd-2026-11-17-correctness-completion.md)
+records the fixes and its own tested source. A new
+[M2 follow-up](docs/validation/mac-arm-2026-11-17-ab5bb87-correctness.md) records approved
+revision `ab5bb87`: 8,036/8,036 executed cases passed, 0 failed, 0 skipped and 0 timed out; 8/8 examples passed.
+Pristine vendor files stayed untouched. These are selected correctness results,
+not a new cross-host corpus parity or performance comparison.
 
 The [2026-11-17 standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
 compare genuine scalar FP32/FP64, sse2neon and Direct Neon on Apple M2.

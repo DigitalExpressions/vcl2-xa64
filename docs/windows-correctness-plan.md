@@ -32,10 +32,11 @@ it does not cover new fixes. Pristine `vendor/vectorclass/` must stay untouched.
   pristine-vendor checks and exact source/checkout-byte reconciliation.
 - [x] Obtain explicit cleanup/commit/push approval for the prepared shared
   publication (2026-11-17); retain original evidence and validation worktrees.
-- [ ] Run compatibility
-  512 and Direct Neon 128/256/512, each Release/strict UBSan, on the physical M2.
-  This Windows host cannot execute that native step. Use the exact publication
-  SHA supplied by Windows or resolved as instructed in the approved handoff.
+- [x] Run compatibility 512 and Direct Neon 128/256/512, each Release/strict
+  UBSan, on physical M2 at approved `ab5bb87`. See the
+  [dated Mac result](validation/mac-arm-2026-11-17-ab5bb87-correctness.md).
+  All eight profiles passed 8,036/8,036 cases and eight examples on the first
+  Mac attempt, with no failures, skips, timeouts or retries.
 - [ ] After both hosts validate the same final source, run the documented native
   Windows comparison against upstream at exact source IDs. Retain slower rows,
   variability, matched flags, edge correctness and source/assembly provenance.
@@ -60,7 +61,15 @@ products reproduce exactly. See the
 The [new M2 handoff](validation/mac-arm-correctness-handoff.md) is prepared;
 native execution uses this approved publication checkpoint.
 
-Restart here: use the published full SHA with the M2 handoff and retain this
-Windows frozen source and every original attempt. Before native execution,
-verify code hashes and pristine upstream bytes as instructed in the handoff.
-Native M2, then renewed Windows performance comparison, are the remaining gates.
+Restart here: retain the original Windows frozen source and every attempt,
+plus the checksummed Mac execution evidence. The maintainer subsequently
+authorized publication and cleanup of the temporary Mac worktrees; the tested
+commit and complete nonbinary evidence remain retained. The new Mac source comparison
+reconciles all 157 listed code paths, preserving original Windows fingerprints.
+Native M2 is complete at `ab5bb87`; renewed Windows performance comparison
+at the final source remains, under separate authorization.
+The Mac validation phase ran no benchmark and performed no publication or
+cleanup. The maintainer subsequently authorized publishing its reports and
+removing temporary worktrees/rebuildable output after verifying evidence
+coverage. Use the [Windows final-source performance prompt](validation/windows-final-source-performance-prompt.md)
+for the next separately requested native Windows step.

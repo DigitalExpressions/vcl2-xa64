@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "approved_commit": "ab5bb8754a33724e05a170fa2867475077efd023",
+  "approved_tree": "48376a53dfa5f5f2139651e3d44f5e1a9ed841b1",
+  "native_runner_exit": 0,
+  "source_unchanged": true,
+  "primary_head_preserved": "e27134bd69d061a78a9e4e0d4b5df260831690b9",
+  "vendor_primary_and_worktree_bytes_and_mtimes_unchanged": true,
+  "source_comparison": {
+    "code_count": 157,
+    "relationships": {
+      "verified-newline-difference": 73,
+      "raw-identical": 84
+    },
+    "transformations": {
+      "Mac LF to Windows tested CRLF": 72,
+      "none": 84,
+      "Mac CRLF to Windows tested LF": 1
+    },
+    "original_windows_source_fingerprint": "af489367c33d2bddb12ab16b53639f4744ad19434ad8dfd3b4ca5502914f1528",
+    "original_windows_runtime_fingerprint": "6a108894ee1dacea0199df9f25f6a8b79b5828e03616ea0c6a1c16c53ae66580",
+    "mac_full_tracked_fingerprint": "fb61c5bbe2f16eb94009aab6f906adee17635988c34bd14325aa00e88e135658",
+    "mac_selected_runtime_fingerprint": "e41e0283c0d368effcec80b367e71533c3bb17f775920e5a52dc8b2bcd7f743e"
+  },
+  "passed": 8036,
+  "registered": 8036,
+  "executed": 8036,
+  "examples_passed": 8,
+  "failed": 0,
+  "skipped": 0,
+  "timed_out": 0,
+  "controls": {
+    "ubsan-positive": 0,
+    "ubsan-negative": -6,
+    "guard-positive": 0,
+    "guard-negative-0": -10,
+    "guard-negative-1": -10,
+    "guard-negative-2": -10,
+    "guard-negative-3": -10,
+    "runtime-run": 0
+  },
+  "probe_binaries_rehashed": 3,
+  "guard_page_size": 16384,
+  "generator_before_after_equal": true,
+  "generated_exact_matches": 25,
+  "generated_lf_equivalent_matches": 10,
+  "original_native_archive": {
+    "name": "return-evidence.zip",
+    "sha256": "00717d651a307ee417dd8be5218751f856059c73f4150568153bb91909da49b7",
+    "directory": "build/mac-m2-correctness-ab5bb8754a33/build/mac-m2-native-20261117T162048332095Z"
+  },
+  "start_utc": "2026-11-17T16:20:48.332474+00:00",
+  "end_utc": "2026-11-17T17:16:35.061710+00:00",
+  "evidence_audit_passed": true,
+  "generation_controls": {
+    "controls": [
+      {
+        "control": "clean generation and pristine upstream",
+        "passed": true
+      },
+      {
+        "control": "mutated-upstream",
+        "diagnostic": "Changed or duplicated pristine upstream file: vectorclass.h",
+        "passed": true
+      },
+      {
+        "control": "extra-upstream-path",
+        "diagnostic": "Missing/extra pristine upstream paths",
+        "passed": true
+      },
+      {
+        "control": "patch-context-no-fuzz",
+        "diagnostic": "Patch context mismatch, no fuzz allowed: dispatch_example1.cpp",
+        "passed": true
+      },
+      {
+        "control": "output-path-escape",
+        "diagnostic": "Invalid or duplicate root product: ../escape.h",
+        "passed": true
+      },
+      {
+        "control": "stale or hand-edited product",
+        "passed": true
+      },
+      {
+        "control": "changed canonical backend requires regeneration",
+        "passed": true
+      },
+      {
+        "control": "LF-normalized comparison distinct from exact bytes",
+        "passed": true
+      }
+    ],
+    "failed": 0,
+    "passed": 8,
+    "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848"
+  },
+  "report_date": "2026-11-17",
+  "run_id": "windows-correctness-m2-20261117-ab5bb875",
+  "attempt": "01",
+  "benchmark_asan_or_emulated_tests_run": false
+}

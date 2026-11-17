@@ -1,0 +1,23 @@
+{
+  "common_test_options": [
+    "-std=gnu++17",
+    "-arch arm64",
+    "-mcpu=apple-m1",
+    "-ffp-contract=off"
+  ],
+  "selected_rounding_option": "-frounding-math",
+  "classification_only_stress": "-ffinite-math-only",
+  "release": "-O3 -DNDEBUG",
+  "strict_debug": [
+    "-g",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=undefined",
+    "-fno-omit-frame-pointer"
+  ],
+  "ubsan_runtime": "halt_on_error=1:print_stacktrace=1",
+  "build_and_test_concurrency": 3,
+  "per_case_timeout_seconds": 60,
+  "unexpected_fast_math_native_cpu_asan_options_found": false,
+  "full_compile_and_link_commands": "retained per profile in raw evidence; no portable machine paths",
+  "source_and_deadlines_unchanged": true
+}

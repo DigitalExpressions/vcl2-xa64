@@ -166,8 +166,14 @@ untouched, and every intermediate failure is retained.
 The [new M2 handoff](validation/mac-arm-correctness-handoff.md) requires a new
 approved publication and actual native ARM execution. The maintainer approved
 cleanup, commit and push of the prepared fixes/evidence/handoff on 2026-11-17.
-Preserve the raw evidence and validation worktrees. After both hosts validate
-the same code, repeat the separately documented Windows upstream performance
-comparison at that final source. Earlier speedups do not establish the cost of
+Preserve the raw evidence and validation worktrees. The new
+[M2 correctness result](validation/mac-arm-2026-11-17-ab5bb87-correctness.md) records approved `ab5bb87`.
+All eight profiles passed 8,036/8,036 cases and eight examples on the first
+Mac attempt, with no failures, skips, timeouts or retries.
+The code inventory reconciles all 157 Windows-listed paths without replacing
+original Windows source identifiers. Renewed Windows upstream performance
+comparison at the final correctness source remains separately authorized work.
+Use the [Windows prompt](validation/windows-final-source-performance-prompt.md)
+when requested. Earlier speedups do not establish the cost of
 these newer correctness fixes. Further changes/publication need their own
 authorization; this approval does not authorize PRs, merges or branch retirement.
