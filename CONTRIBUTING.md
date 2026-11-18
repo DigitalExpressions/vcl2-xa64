@@ -1,5 +1,14 @@
 # Contributing
 
+Current planning focuses on [Mac ARM/Neon lessons](docs/neon-arm-lessons.md).
+The [strategy reset](docs/integration-plan.md) retires the x86-fix campaign.
+Do not extend or revert existing x86 fixes, or change other source, as part of
+this cleanup. The maintainer has now approved the
+[architecture separation on Mac M2](docs/validation/mac-arch-separation-handoff.md).
+That handoff defines the migration exception to the current generated-root
+workflow below. Only the prepared documentation has commit/push approval;
+implementation/results remain uncommitted for review.
+
 Read the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
 and [validation index](docs/validation/README.md) before continuing work.
 The ARM port and selected shared validation checkpoint are complete. The default

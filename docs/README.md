@@ -1,45 +1,37 @@
 # Developer documentation
 
-Start with the root [README](../README.md) for library usage and
-[CONTRIBUTING](../CONTRIBUTING.md) for development rules. The default branch
-remains `master` and includes the completed ARM port. Use it as the shared base
-for the Mac M2 and AMD Windows checkouts. The shared
-[agent instructions](../AGENTS.md) contain OS-agnostic rules and separate macOS
-and Windows sections. Completed port/audit branches are retired; tests use a
-chosen source commit rather than requiring an old branch name.
+Start with [ARM64 / Neon lessons](neon-arm-lessons.md) and the
+[strategy reset](integration-plan.md). The maintainer requested a new direction
+on 18 November 2026. The separation plan records the intended layout and agreed
+public include; implementation has not started. This documentation work leaves
+all library, backend, vendor, test and tool source unchanged.
+
+The x86 repair/optimization campaign is retired. Its fixes are not requirements
+for the next ARM design. Historical reports remain provenance, not active work.
 
 | Need | Document |
 | --- | --- |
-| Shared agent instructions for both hosts | [Agent instructions](../AGENTS.md) |
-| Completed integration, branch status and future work | [Integration status](integration-plan.md) |
-| Backend selection, widths and unsupported APIs | [Backend support](backends.md) |
-| Pristine upstream, adaptation patches and generated headers | [Source layout and updates](backend-layout.md) |
-| Current optimization/separation work and restart point | [Execution plan](x86-backend-optimization-plan.md) |
-| Floating-point and memory contracts | [Numerical contracts](numerical-contracts.md) |
-| Configure and run regressions | [Test instructions](../tests/README.md) |
-| Native Mac/AMD workflow and branch synchronization | [Native workflow](validation/native-workflow.md) |
-| Execute the current approved M2 correctness checkpoint with immutable upstream | [M2 handoff](validation/mac-arm-correctness-handoff.md) |
-| Actual tested revisions and coverage gaps | [Validation index](validation/README.md) |
-| Manual Windows controls and evidence | [Windows runner](validation/windows-runner.md) |
-| Format a new native result | [Report template](validation/report-template.md) |
-| Historical port review and findings | [Integration review](integration-review.md) |
+| What to carry into the next Mac ARM approach | [ARM64 / Neon lessons](neon-arm-lessons.md) |
+| Current scope and restart point | [Strategy reset](integration-plan.md) |
+| Pristine-root / separate-Neon strategy and agreed public include | [Architecture separation plan](arch_separation_plan.md) |
+| Implement and validate the approved separation on Mac M2 | [Mac architecture separation handoff](validation/mac-arch-separation-handoff.md) |
+| Retained x86 discoveries, remedies and upstream discussion candidates | [x86 findings and fix candidates](x86_findings_and_fix_candidates.md) |
+| Shared working rules and source protection | [Agent instructions](../AGENTS.md) |
+| Existing backend selection and API limits | [Backend reference](backends.md) |
+| Current pristine source/adaptation layout | [Source layout reference](backend-layout.md) |
+| Floating-point, conversion and memory behavior | [Numerical contracts](numerical-contracts.md) |
+| Reusable independent tests and fixture generators | [Test guidance](../tests/README.md) |
+| Native M2 checkpoints and historical evidence | [Validation index](validation/README.md) |
+| Latest native M2 correctness result | [ab5bb87 report](validation/mac-arm-2026-11-17-ab5bb87-correctness.md) |
+| Reference native validation procedure | [Native workflow](validation/native-workflow.md) |
+| Format a newly executed result | [Report template](validation/report-template.md) |
+| M2 vector/matrix performance and interpretation | [17 November results](benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md), [reading guide](benchmarks/standard_math_reading_guide.md) |
+| Prior M2 measurements and reporting format | [13 November results](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md), [template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) |
 | Attribution and dependency boundaries | [Third-party notices](third-party.md) |
-| Correctness before optional benchmark measurements | [Benchmark protocol](../benchmarks/README.md) |
-| Dated standard vector/matrix measurements on M2 | [2026-11-17 results](benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md), [2026-11-13 historical results](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md) |
-| Prepare the next standard benchmark report | [Report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) |
-| Compare fork/upstream x86 performance on Windows | [Repeatable x86 comparison](benchmarks/x86-upstream-comparison.md) |
+| Local cleanup and retained archives | [18 November cleanup](validation/arm-strategy-cleanup-2026-11-18.md) |
 
-Current instructions describe the maintained developer workflow. Dated
-validation reports and benchmark results describe their recorded source
-checkpoints; preserve them, including failed attempts, rather than editing
-them to imply validation of a later commit. Validation applies only to its
-recorded source and profiles. Raw evidence stays under ignored `build/` and
-transfers separately.
-
-`master` is the common development base.
-Use topic branches when useful for features and fixes, review changes locally,
-and obtain task-specific approval before committing or publishing. Do not create
-pull requests, change the fork relationship/remotes or rewrite published history.
-The original VCL remains available through the preserved `upstream` remote.
-Integrating upstream changes, publishing releases/tags and retiring further
-branches each require specific authorization.
+Existing implementation references describe the code currently in the checkout;
+they do not choose the next architecture. Old execution handoffs/plans are
+retired. Choose a new agreed scope and frozen source before implementing or
+claiming a new native pass. Keep the default branch `master`, preserve the fork
+and upstream attribution, and obtain separate approval before commit/push.

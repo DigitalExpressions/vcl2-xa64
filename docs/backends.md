@@ -14,13 +14,10 @@ NEON. Shared mathematical algorithms may retain narrowly guarded compiler
 inlining decisions, but must keep their coefficients, operation grouping and
 special-value policy consistent.
 
-The private `x86_classification.h` isolates native MSVC x86 integer-encoding
-classification. Its SSE2/SSE4.2 and AVX-512 primitives avoid portable vector
-composition while retaining `/fp:fast` behavior and the 512-bit FPCLASS
-workaround. Other compilers and both ARM backends keep their existing paths.
-The MSVC x86 FP32 exponential template is kept inline to avoid a measured
-out-of-line wide-vector cost. These changes are under validation; see the
-[optimization plan](x86-backend-optimization-plan.md) for source/evidence status.
+The [ARM/Neon lessons](neon-arm-lessons.md) and [strategy reset](integration-plan.md)
+are the current planning entry points. This reference describes the existing
+implementation; it does not prescribe the next design. Prior x86-specific
+repair/optimization work is historical, and source is unchanged by cleanup.
 
 ## Backend selection and coverage
 

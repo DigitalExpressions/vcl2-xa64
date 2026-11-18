@@ -1,5 +1,15 @@
 # VCL2 XA64 — x86 and ARM64 Neon
 
+Development is entering an ARM/Neon strategy reset. Start with the
+[lessons to carry forward](docs/neon-arm-lessons.md) and
+[current plan](docs/integration-plan.md). The cleanup leaves runtime source
+unchanged. The [pristine-root / separate-Neon plan](docs/arch_separation_plan.md)
+records the agreed future `vcl2_xa64.h` entry point; implementation has not started.
+The [Mac M2 handoff](docs/validation/mac-arch-separation-handoff.md) defines the
+approved implementation and native-validation sequence.
+Previous [x86 findings and fix candidates](docs/x86_findings_and_fix_candidates.md)
+remain available for future investigation and upstream discussion.
+
 This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
 VCL C++ vector types and operators for application-independent SIMD code.

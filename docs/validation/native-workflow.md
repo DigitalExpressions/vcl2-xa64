@@ -11,6 +11,12 @@ instructions and the [Windows runner guide](windows-runner.md) for manual checks
 The maintainer selected manual test execution on the Mac M2 and AMD Windows
 hosts only; hosted GitHub Actions test workflows are removed.
 
+For the approved architecture migration, execute the
+[Mac separation handoff](mac-arch-separation-handoff.md). It supersedes the
+existing layout/clean-source assumptions below for that task only, requires a
+complete frozen uncommitted-source capture, and preserves the native controls.
+Implementation/results publication still needs separate approval.
+
 ## Available hardware
 
 The maintainer has two physical validation hosts:
@@ -37,8 +43,8 @@ work when useful and review changes locally. Do not create pull requests, alter
 the fork relationship/remotes or rewrite published history. Commits, pushes,
 integrations, releases and further branch retirement need task-specific approval.
 Preserve the `upstream` remote for original VCL and never push to that repository.
-See [current branch status](../integration-plan.md#branch-retirement-and-current-base)
-for the completed removals; inspect actual local branches on each host.
+See the [current restart point](../integration-plan.md#restart-point);
+inspect actual local branches and completed removals on each host.
 
 Both machines should test the same commit when comparing results. Inspect
 divergence before any integration; preserve unrelated work and use a fresh

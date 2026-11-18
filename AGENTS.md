@@ -6,6 +6,26 @@ inventories and raw execution evidence belong under ignored `build/`.
 An optional `build/local-validation/README.md` can record resources available
 on a particular machine; its absence must not prevent a fresh setup.
 
+## Current strategy reset
+
+- On 18 November 2026 the maintainer requested cleanup and retention of ARM/Neon
+  lessons before choosing a new implementation strategy. Start with
+  `docs/neon-arm-lessons.md` and `docs/integration-plan.md`.
+- The root/upstream and `_neon.h` separation is documented in
+  `docs/arch_separation_plan.md`. The maintainer approved implementation and
+  native validation on Mac M2 followed by native AMD Windows verification;
+  execute `docs/validation/mac-arch-separation-handoff.md` on the Mac. The
+  platform-neutral include name `vcl2_xa64.h` is agreed.
+  Preserve `docs/x86_findings_and_fix_candidates.md`
+  for future x86/upstream research without resuming the retired campaign.
+- The x86 correctness/optimization campaign and old execution handoffs are
+  retired. Do not automatically resume them or treat their fixes as requirements
+  for new ARM work. Existing source remains unchanged until new scope is agreed.
+- The maintainer approved commit/push of the prepared cleanup, plans and Mac
+  handoff documentation as sequence step 1. That approval does not cover Mac
+  implementation/results commits or pushes, merges, PRs, branch retirement or
+  further evidence cleanup. Preserve reusable resources and retained archives.
+
 ## OS-agnostic
 
 ### Repository and fork protection
@@ -41,6 +61,13 @@ on a particular machine; its absence must not prevent a fresh setup.
   or license integrations. Application-specific tests stay outside this library.
 
 ### Library and validation contracts
+
+- During the approved architecture migration, follow the Mac handoff's explicit
+  source-ownership transition instead of the existing generated-root workflow
+  below. Retire old writers before restoring the 28 original root paths; then
+  protect both root originals and vendor byte-exactly and edit ARM `_neon.h`
+  sources. Adapt integrity tools and documentation consistently. Outside this
+  migration, the existing layout instructions still describe the current code.
 
 - Maintain runtime behavior in the canonical `adaptation/` patches/include
   sources and `backends/` implementations. Keep `vendor/vectorclass/` byte-exact
@@ -129,9 +156,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   endings. Put necessary ARM fixes in canonical `backends/arm64/` or explicit
   adaptation patches, regenerate root products, and obtain a new approved
   frozen source before claiming a fixed run. Never repair tests in the vendor
-  tree. Follow `docs/validation/mac-arm-correctness-handoff.md` for the current
-  approved correctness handoff and evidence requirements. The earlier
-  `docs/validation/mac-arm-x86-optimization-handoff.md` remains historical.
+  tree. Start with `docs/neon-arm-lessons.md` for the current planning context.
+  Old handoffs are historical checkpoints, not an instruction to run or repair
+  source during the strategy reset.
 
 - Use native arm64 Python 3.9+, Apple Clang, CMake 3.20+ and CTest supporting
   `--output-junit`. The full runner can use Ninja or make; shared corpus capture
@@ -143,6 +170,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   For execution use a clean approved commit with `--expected-commit` and reuse
   the pinned dependency via `--testbench-dir` when it is already available.
   See `docs/validation/native-workflow.md` for the full commands.
+  Exception for the approved uncommitted architecture migration: follow the new
+  handoff's complete captured-source provenance requirements; preserve the
+  default clean-source guard and do not mislabel the base as the tested source.
 - Run compatibility 512 and Direct Neon maxima 128/256/512, each in Release and
   strict nonrecovering UBSan Debug. Inspect arm64 Mach-O binaries, runtime
   consumers, actual page-size guard controls and independent fixtures.
