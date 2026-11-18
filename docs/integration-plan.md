@@ -8,18 +8,19 @@ and the agreed compile-time-selected public include `vcl2_xa64.h`.
 The maintainer approved publishing the documentation, then implementing and
 validating on Mac M2, followed by same-source native AMD Windows verification.
 The [Mac implementation handoff](validation/mac-arch-separation-handoff.md)
-defines the initial scope. No source implementation has started here.
+defines the initial scope. The `arch-separation-m2` topic publication implements
+that separation. The [new M2 report](validation/mac-arm-2026-11-18-arm-header-cleanup.md) records actual
+frozen-candidate results after ARM header cleanup, retained attempts and the pending native Windows gate.
+No old native pass transfers to the candidate.
 
 The [retained x86 findings and fix candidates](x86_findings_and_fix_candidates.md)
 preserve prior discoveries, canonical repair references, source identifiers and
 evidence recovery steps for optional future x86 work or upstream discussion.
 This does not resume the retired campaign or permit changes to protected originals.
 
-Start with [ARM64 / Neon lessons](neon-arm-lessons.md). This publication contains
-documentation and workspace-cleanup records, with **no library, adaptation,
-backend, vendor, test, fixture, CMake or tool source changes**. Existing x86 fixes
-stay in the checkout for now; the Mac migration removes them from the x86 path
-by restoring originals, without resuming their repair/optimization campaign.
+Start with [ARM64 / Neon lessons](neon-arm-lessons.md). The original `1a52264` publication was documentation only. The Mac
+implementation restores all originals and separates ARM ownership without
+resuming the x86 repair/optimization campaign.
 
 ## Current decisions
 
@@ -32,15 +33,16 @@ by restoring originals, without resuming their repair/optimization campaign.
   guard-page controls and native evidence. Do not weaken expected results.
 - Retain factual dated reports and their checksum inventories. Old handoffs
   and execution plans are historical and do not authorize new runs or fixes.
-- Keep `master`, remotes, branches and published history intact. Step 1 has
-  commit/push approval for the prepared documentation only. Mac source/results
-  publication, merges, PRs and branch retirement are not authorized.
+- Publish the reviewed implementation, cleanup and M2 reports on
+  `arch-separation-m2`, as subsequently approved by the maintainer. Keep `master`,
+  remotes and published history intact. Merges, PRs, branch retirement and
+  additional source changes are outside this publication.
 - Remove completed local worktrees and rebuildable output only after verified
   evidence retention. Preserve the installed tools and primary pinned testbench.
 
 ## Evidence worth carrying forward
 
-The latest [native M2 report](validation/mac-arm-2026-11-17-ab5bb87-correctness.md)
+The earlier [native M2 report](validation/mac-arm-2026-11-17-ab5bb87-correctness.md)
 records 8,036 passes and eight examples at `ab5bb87`, across compatibility and
 all three Direct Neon maxima, Release/strict UBSan. Its
 [portable evidence](validation/mac-arm-correctness-2026-11-17-ab5bb87/README.md)
@@ -60,18 +62,22 @@ promoted into the new ARM documentation agenda.
 
 ## Restart point
 
-1. Publish the reviewed cleanup documentation, separation plan, retained x86
-   findings and Mac handoff on `master`; approval granted on 18 November 2026.
-2. On Mac, fetch the exact documentation publication and execute the handoff
-   on a new topic branch, preserving local work. Keep vendor/pin exact; restore
-   protected originals and separate ARM headers behind `vcl2_xa64.h`.
-3. Freeze the complete uncommitted implementation and run fresh native M2
-   correctness checks. Prepare portable results and the Windows return handoff.
-4. Review the concrete implementation/results before any source commit/push.
-   Then validate the same exact implementation on native AMD Windows, MSVC first
-   and Clang second. Preserve inherited upstream failures as actual findings.
-5. Measure target-specific performance only under separate explicit scope.
+The approved implementation/results publication is on `arch-separation-m2`;
+primary `master` remains at documentation publication `1a52264`. The
+[M2 cleanup result](validation/mac-arm-2026-11-18-arm-header-cleanup.md) records
+cleanup candidate 01: 8,036/8,036 native CTest instances and 8/8 examples across
+all eight Release/strict UBSan profiles. Candidate 04 is an earlier layout result.
 
-No implementation or new benchmark work has started under the strategy reset.
-The Windows source remains unchanged by this documentation publication. The
-cleanup receipt records its original pre-publication state and remains historical.
+The [publication inventory](validation/arch-separation-publication-2026-11-18/README.md)
+compares every captured path. Runtime, tests, tools, fixtures and build files
+match the M2 capture exactly; publication differences are documentation and
+metadata. The Mac did not execute the later publication commit itself.
+
+Use the [Windows return handoff](validation/windows-arch-separation-handoff.md)
+at the exact published commit supplied with the Windows prompt. It supports a
+fresh detached Git worktree and separate published-source capture; the original
+Mac source ZIP remains an alternative. Record actual Windows identity and every
+verified metadata/newline difference. Preserve inherited original-x86 failures;
+no repairs, relaxed gates or benchmark timings are part of this sequence.
+Raw evidence, failed attempts, worktrees and tools are retained. No merge, PR,
+branch retirement or evidence deletion is part of this publication.

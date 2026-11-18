@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "vectormath_trig.h"
+#include "vcl2_xa64.h"
 #include "trig_reference.h"
 #include <algorithm>
 #include <array>

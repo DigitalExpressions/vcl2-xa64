@@ -1,106 +1,88 @@
-# Pristine upstream and explicit adaptation
+# Source ownership and architecture selection
 
-The fork keeps a pristine pinned upstream copy and a separate adaptation layer.
-Applications retain `#include "vectorclass.h"` and the same include directory,
-public API, lane order and backend controls. No generation step is required to
-use the checked-in runtime headers.
+Applications include `vcl2_xa64.h`. It selects headers from compiler-target
+macros, without runtime dispatch or vector wrappers. ARM64EC and unsupported
+or contradictory target/backend selections fail explicitly.
 
-| Location | Maintenance role |
-| --- | --- |
-| `vendor/vectorclass/` | Original VCL2 bytes, including its own README/license; never edit for fork behavior |
-| `vendor/vectorclass.json` | Original commit/tree and per-file Git blob/SHA256 inventory |
-| `adaptation/patches/` | Ordered, explicit changes to original runtime headers |
-| `adaptation/include/` | Shared fork configuration and extracted helpers |
-| `backends/arm64/` | Canonical ARM/NEON implementation sources |
-| `backends/x86/` | Canonical native x86 compiler-specific primitives |
-| `vendor/sse2neon/` | Unchanged compatibility dependency already carried by this fork |
-| Root `.h` files and registered runtime `.cpp` examples | Shipped generated products; keep existing include/build usage |
-| `tests/` | Independent shared contracts, fixtures and backend regressions |
+## Protected originals
 
-The current original VCL pin is `667577495efaa36a10cbb5d6cb8c942c23913848`
-(VCL 2.02.04). All 28 original files are preserved byte-for-byte. The generator
-verifies SHA256, original Git blob IDs, path inventory and the reconstructed
-Git tree `36aee120c28c9c64e62903bfc81139003e37cedd`, without requiring network or
-Git. Metadata and fork instructions live outside the pristine directory.
-Original upstream whitespace is preserved as source evidence; its vendored
-files are exempt from fork whitespace cleanup. This does not exempt adapted
-code from correctness or numerical checks.
+All 28 paths recorded by `vendor/vectorclass.json` exist both at root and under
+`vendor/vectorclass/`, byte-for-byte identical to upstream
+`667577495efaa36a10cbb5d6cb8c942c23913848`, tree
+`36aee120c28c9c64e62903bfc81139003e37cedd`. This includes the root README,
+LICENSE, changelog, examples, runtime detector and headers. Checkout attributes
+protect their raw bytes. Vendor and its pin inventory are never rewritten.
+Only a separately authorized upstream update may replace these originals.
 
-The first adaptation patch makes the existing historical port/correctness
-differences explicit. The second isolates this pass's MSVC x86 call sites and
-inlining choice. The shared exponential polynomial/coefficients and numerical
-policies are unchanged. Correctness fixes remain necessary; the adapted build
-does not pretend to execute entirely unmodified upstream bytes. The pristine
-copy is the source baseline, and the adaptation layer describes every difference.
+The x86 facade path includes only the original vector and supported in-tree
+math headers. It does not include ARM, sse2neon, adapted x86 repairs or compiler
+workarounds. Restoring originals also restores their known limitations; see
+[retained x86 findings](x86_findings_and_fix_candidates.md). Inherited faults
+remain failures, not reasons to patch originals or weaken ARM gates.
 
-The third patch fixes the native AVX2 FP64-to-int64 fallback by reusing the
-existing guarded 128-bit conversion. Invalid lanes retain the signed-minimum
-sentinel; the native AVX-512 instruction is unchanged. See the
-[Windows correctness follow-up](validation/windows-amd-2026-11-17-isa-triage.md)
-for the reproduced defect, focused regression and remaining higher-ISA gaps.
+## ARM ownership
 
-The fourth patch addresses the retained higher-ISA memory, mask, conversion and
-numerical defects, with additional MSVC primitives in the canonical x86 backend.
-The [completion report](validation/windows-amd-2026-11-17-correctness-completion.md)
-records the new source and actual Windows checks. The
-[new M2 handoff](validation/mac-arm-correctness-handoff.md) covers this later
-candidate; the older approved M2 source/result below remains historical.
+Root `*_neon.h` files are authoritative editable ARM sources. The existing
+`vectori128_neon.h`, `vectorf128_neon.h` and `instrset_neon.h` remain Direct Neon.
+Distinct `vectori128_compat_neon.h`, `vectorf128_compat_neon.h` and
+`instrset_compat_neon.h` retain compatibility behavior. Common conversion,
+logical-wide composition and math have their own ARM headers/guards, including
+bodies originally shared with upstream. Their includes cannot reach root x86
+originals. The [file map](arch-separation-map.json) records all dispositions.
 
-## Verify and regenerate
+`vcl_config.h` retains default compatibility, explicit experimental Direct Neon,
+logical width and namespace contracts. Third-party sse2neon retains its own
+name/license and pristine dependency; ARM-private helpers use `_neon.h` suffixes.
+Consumers need only the checked-in headers, without Python or generation.
 
-From the root, using Python 3.9+ (`python3` on macOS):
+Optional runtime queries compile `instrset_detect_neon.cpp` on ARM and unchanged
+`instrset_detect.cpp` on x86. CMake `vcl::runtime` selects this automatically;
+`vcl_runtime.cpp` is the compile-time selector for a universal Apple target.
+ARM reports Neon separately and no native x86 instruction sets. All modules
+exchanging vector objects must use matching backend/width/namespace settings.
 
-```sh
-python -B tools/regenerate_headers.py --check
-python -B tools/check_header_generation.py
-python -B tools/check_repository.py
-```
+ARM headers also exclude obsolete x86-only code, including inactive branches.
+The [cleanup audit](validation/arm-header-cleanup-audit-2026-11-18.md) and
+[fresh M2 result](validation/mac-arm-2026-11-18-arm-header-cleanup.md) record the
+removal and preserved ARM behavior. SSE-shaped compatibility intrinsics remain
+required through sse2neon. Read-only integrity checks reject native x86 backend,
+AVX and old classification-helper references in ARM-owned source.
 
-The first command is read-only and reports stale/hand-edited products. The
-second exercises vendor-mutation, extra-path, no-fuzz patch, path-escape,
-stale-output, changed-backend and line-ending controls under ignored `build/`.
-The normal repository check also verifies pristine upstream and generated
-products, so native runners detect stale adapted headers before execution.
-
-After editing a canonical backend source or adaptation patch:
+## Read-only maintenance checks
 
 ```sh
-python -B tools/regenerate_headers.py --write
-python -B tools/regenerate_headers.py --check --strict-bytes
+python3 -B tools/regenerate_headers.py --check
+python3 -B tools/check_header_generation.py
+python3 -B tools/check_repository.py
 ```
 
-`--write` replaces only the 35 registered root products after all inputs have
-been checked. Review the canonical edits and generated diff together. Default
-checking permits only an explicitly checked CRLF/LF difference in products;
-`--strict-bytes` also requires exact declared product bytes. Pristine upstream
-verification always requires exact bytes. Optional `--json build/UNIQUE.json`
-saves a new checksum/provenance record without overwriting an earlier one.
+The historical generator name remains for existing automation, but generation
+is retired and `--write` always fails without writing. Exact vendor/root checks,
+ARM include graph checks and inactive-output validation replace reproduction.
+Integrity controls deliberately modify disposable copies under ignored `build/`,
+including a newline-only root mutation. Real originals remain untouched.
 
-Do not edit a root generated header and leave its canonical adaptation stale.
-Do not fix an integrity failure by changing numerical gates, vendor hashes or
-the upstream pin to match unexplained edits. Changes to canonical runtime code
-still require native correctness and relevant performance checks.
+The old canonical duplicates under `backends/arm64/` and `adaptation/include/`
+are retired. The ordered historical patches remain inactive research under
+`adaptation/patches/`; `backends/x86/` retains the isolated former MSVC helpers.
+No active manifest outputs or patches exist. Their old writers cannot target
+protected originals. Original source and generation workflow remain reachable
+in Git history and earlier dated reports.
 
-## Updating upstream
+## Validation and source identity
 
-Fetch/read upstream without altering branches, then deliberately choose a new
-full commit. Export all original files and rebuild its pin/blob/SHA inventory,
-preserving notices. Rebase the explicit patches against that snapshot without
-fuzz, resolve changes in the adaptation layer, and regenerate. Never silently
-replace the current baseline from a moving branch name. Review API/backend
-boundaries and run native Windows/MSVC/Clang plus native M2 compatibility and
-Direct NEON checks at the new frozen source. Retain prior reports/archives and
-record new source identifiers. Publication requires separate authorization.
+The migration is published on `arch-separation-m2`. Use the [Mac handoff](validation/mac-arch-separation-handoff.md)
+for its approval/scope and the [validation index](validation/README.md) for actual
+results. Capture the full implementation with exact per-path hashes, patch and
+added/deleted paths before native execution. Earlier 8,036-case results apply
+to their original sources. The new M2 cleanup result validates its recorded
+ARM implementation; pristine x86 still requires native Windows verification.
+Native Windows verification remains a separate same-source gate. No benchmark
+or x86 repair campaign is part of architecture separation.
 
-The [execution plan](x86-backend-optimization-plan.md) and
-[M2 handoff](validation/mac-arm-x86-optimization-handoff.md) identify the approved
-source. The [native M2 result](validation/mac-arm-2026-11-17-a099098-x86-layout.md)
-records 8,036 passes and eight examples at `a099098`, with unchanged pristine
-vendor bytes and passing before/after generation checks. Canonical separation
-reproduces all 35 runtime products from the optimized frozen bytes, permitting
-the documented root-product CRLF/LF equivalence. Each host's earlier results
-retain their own source identifiers. The newer correctness candidate is tracked
-separately in the completion report. Its [new native M2 result](validation/mac-arm-2026-11-17-ab5bb87-correctness.md)
-records 8,036/8,036 executed cases passed, 0 failed, 0 skipped and 0 timed out; 8/8 examples passed
-at approved `ab5bb87`, with pristine vendor bytes retained. The older source
-and benchmark checkpoints do not acquire these newer results.
+The [18 November M2 result](validation/mac-arm-2026-11-18-arm-header-cleanup.md)
+records the complete frozen candidate and retained failed setup/build attempts.
+Native Windows verification remains pending in the
+[return handoff](validation/windows-arch-separation-handoff.md). No old report
+acquires a new source identity. The [publication comparison](validation/arch-separation-publication-2026-11-18/README.md)
+records metadata differences without transferring a native pass to a later commit.

@@ -19,6 +19,7 @@ an upstream revision change fail visibly instead of silently changing coverage.
 """
 import argparse
 import hashlib
+import re
 from pathlib import Path
 
 INTEGER_CASES = {1, 2, 3, 8, 14, 15, 16, 100, 400}
@@ -112,6 +113,8 @@ def main():
     args = parser.parse_args()
     source = args.input.read_text()
     result, changes = adapt(source, args.kind, args.header.resolve())
+    # Only includes change; all existing scalar oracle adaptations remain intact.
+    result = re.sub(r'#\s*include\s*[<"](?:vectorclass|vectormath_common|vectormath_exp|vectormath_trig|vectormath_hyp)\.h[>"]', '#include "vcl2_xa64.h"', result)
     if not args.output.exists() or args.output.read_text() != result:
         args.output.write_text(result)
     print(f'{args.kind}: {len(changes)} scalar-only adaptations; sha256 {hashlib.sha256(result.encode()).hexdigest()}')

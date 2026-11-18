@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "vectormath_exp.h"
+#include "vcl2_xa64.h"
 #include "exp_log_reference.h"
 #include <algorithm>
 #include <array>

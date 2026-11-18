@@ -151,20 +151,8 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec16f & load_partial(int n, float const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 16) return load(p);
-        alignas(64) float temporary[16] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(float)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         zmm = _mm512_maskz_loadu_ps(__mmask16((1 << n) - 1), p);
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, float * p) const {
@@ -458,17 +446,11 @@ static inline Vec16f sign_combine(Vec16f const a, Vec16f const b) {
 
 // Categorization functions
 
-// MSVC 19.44/19.50 can narrow a 512-bit FPCLASS memory broadcast to 128
-// bits. Use integer classification on MSVC to preserve every mask lane, even
-// under /fp:fast; other compilers retain the AVX512DQ FPCLASS path.
-
 // Function is_finite: gives true for elements that are normal, subnormal or zero,
 // false for INF and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec16fb is_finite(Vec16f const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec16fb(vcl_detail_x86::finite_mask(__m512(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     __mmask16 f = _mm512_fpclass_ps_mask(a, 0x99);
     return _mm512_knot(f);
 #else
@@ -483,9 +465,7 @@ static inline Vec16fb is_finite(Vec16f const a) {
 // false for finite numbers and NAN
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
 static inline Vec16fb is_inf(Vec16f const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec16fb(vcl_detail_x86::inf_mask(__m512(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x18);
 #else
     Vec16i t1 = _mm512_castps_si512(a); // reinterpret as 32-bit integer
@@ -497,11 +477,7 @@ static inline Vec16fb is_inf(Vec16f const a) {
 // Function is_nan: gives true for elements that are +NAN or -NAN
 // false for finite numbers and +/-INF
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
-#if INSTRSET >= 10 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-static inline Vec16fb is_nan(Vec16f const a) {
-    return Vec16fb(vcl_detail_x86::nan_mask(__m512(a)));
-}
-#elif INSTRSET >= 10
+#if INSTRSET >= 10
 static inline Vec16fb is_nan(Vec16f const a) {
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm512_fpclass_ps_mask(a, 0x81);
@@ -530,9 +506,7 @@ static inline Vec16fb is_nan(Vec16f const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec16fb is_subnormal(Vec16f const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec16fb(vcl_detail_x86::subnormal_mask(__m512(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x20);
 #else
     Vec16i t1 = _mm512_castps_si512(a);    // reinterpret as 32-bit integer
@@ -547,9 +521,7 @@ static inline Vec16fb is_subnormal(Vec16f const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec16fb is_zero_or_subnormal(Vec16f const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec16fb(vcl_detail_x86::zero_subnormal_mask(__m512(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_ps_mask(a, 0x26);
 #else
     Vec16i t = _mm512_castps_si512(a);            // reinterpret as 32-bit integer
@@ -591,8 +563,11 @@ static inline Vec16f min(Vec16f const a, Vec16f const b) {
 
 // function abs: absolute value
 static inline Vec16f abs(Vec16f const a) {
-    // Clear the sign without quieting or changing a NaN payload.
+#if INSTRSET >= 10  // AVX512DQ
+    return _mm512_range_ps(a, a, 8);
+#else
     return a & Vec16f(_mm512_castsi512_ps(Vec16i(0x7FFFFFFF)));
+#endif
 }
 
 // function sqrt: square root
@@ -819,20 +794,8 @@ public:
     } 
     // Partial load. Load n elements and set the rest to 0
     Vec8d & load_partial(int n, double const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 8) return load(p);
-        alignas(64) double temporary[8] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(double)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         zmm = _mm512_maskz_loadu_pd(__mmask16((1<<n)-1), p);
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, double * p) const {
@@ -1129,9 +1092,7 @@ static inline Vec8d sign_combine(Vec8d const a, Vec8d const b) {
 // Function is_finite: gives true for elements that are normal, subnormal or zero,
 // false for INF and NAN
 static inline Vec8db is_finite(Vec8d const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec8db(vcl_detail_x86::finite_mask(__m512d(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER)) // __AVX512DQ__
+#if INSTRSET >= 10 // __AVX512DQ__
     __mmask8 f = _mm512_fpclass_pd_mask(a, 0x99);
     return __mmask8(_mm512_knot(f));
 #else
@@ -1146,9 +1107,7 @@ static inline Vec8db is_finite(Vec8d const a) {
 // Function is_inf: gives true for elements that are +INF or -INF
 // false for finite numbers and NAN
 static inline Vec8db is_inf(Vec8d const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec8db(vcl_detail_x86::inf_mask(__m512d(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x18);
 #else
     Vec8q t1 = _mm512_castpd_si512(a);           // reinterpret as 64-bit integer
@@ -1160,11 +1119,7 @@ static inline Vec8db is_inf(Vec8d const a) {
 // Function is_nan: gives true for elements that are +NAN or -NAN
 // false for finite numbers and +/-INF
 // (the underscore in the name avoids a conflict with a macro in Intel's mathimf.h)
-#if INSTRSET >= 10 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-static inline Vec8db is_nan(Vec8d const a) {
-    return Vec8db(vcl_detail_x86::nan_mask(__m512d(a)));
-}
-#elif INSTRSET >= 10
+#if INSTRSET >= 10
 static inline Vec8db is_nan(Vec8d const a) {
     // assume that compiler does not optimize this away with -ffinite-math-only:
     return _mm512_fpclass_pd_mask(a, 0x81);
@@ -1193,9 +1148,7 @@ static inline Vec8db is_nan(Vec8d const a) {
 // Function is_subnormal: gives true for elements that are subnormal
 // false for finite numbers, zero, NAN and INF
 static inline Vec8db is_subnormal(Vec8d const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec8db(vcl_detail_x86::subnormal_mask(__m512d(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x20);
 #else
     Vec8q t1 = _mm512_castpd_si512(a); // reinterpret as 64-bit integer
@@ -1210,9 +1163,7 @@ static inline Vec8db is_subnormal(Vec8d const a) {
 // Function is_zero_or_subnormal: gives true for elements that are zero or subnormal
 // false for finite numbers, NAN and INF
 static inline Vec8db is_zero_or_subnormal(Vec8d const a) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)
-    return Vec8db(vcl_detail_x86::zero_subnormal_mask(__m512d(a)));
-#elif INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__clang__) || defined(__INTEL_COMPILER))  // __AVX512DQ__
+#if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_fpclass_pd_mask(a, 0x26);
 #else
     Vec8q t = _mm512_castpd_si512(a);            // reinterpret as 32-bit integer
@@ -1260,8 +1211,11 @@ static inline Vec8d min(Vec8d const a, Vec8d const b) {
 
 // function abs: absolute value
 static inline Vec8d abs(Vec8d const a) {
-    // Clear the sign without quieting or changing a NaN payload.
+#if INSTRSET >= 10  // AVX512DQ
+    return _mm512_range_pd(a, a, 8);
+#else
     return a & Vec8d(_mm512_castsi512_pd(Vec8q(0x7FFFFFFFFFFFFFFF)));
+#endif
 }
 
 // function sqrt: square root
@@ -1338,8 +1292,9 @@ static inline Vec8q truncatei(Vec8d const a) {
 #if INSTRSET >= 10  // __AVX512DQ__
     return _mm512_cvttpd_epi64(a);
 #else
-    // Reuse the guarded halves for AVX-512F without AVX-512DQ.
-    return Vec8q(truncatei(a.get_low()), truncatei(a.get_high()));
+    double aa[8];            // inefficient
+    a.store(aa);
+    return Vec8q(int64_t(aa[0]), int64_t(aa[1]), int64_t(aa[2]), int64_t(aa[3]), int64_t(aa[4]), int64_t(aa[5]), int64_t(aa[6]), int64_t(aa[7]));
 #endif
 }
 //static inline Vec8q truncate_to_int64(Vec8d const a) {return truncatei(a);} // deprecated
@@ -1884,12 +1839,12 @@ template <int n>
 static inline Vec16f lookup(Vec16i const index, float const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 16) {
-        Vec16f table1 = Vec16f().load_partial(n < 16 ? n : 16, (float*)table);
+        Vec16f table1 = Vec16f().load((float*)table);
         return lookup16(index, table1);
     }
     if constexpr (n <= 32) {
-        Vec16f table1 = Vec16f().load_partial(n < 16 ? n : 16, (float*)table);
-        Vec16f table2 = Vec16f().load_partial(n - 16 < 16 ? n - 16 : 16, (float*)table + 16);
+        Vec16f table1 = Vec16f().load((float*)table);
+        Vec16f table2 = Vec16f().load((float*)table + 16);
         return _mm512_permutex2var_ps(table1, index, table2);
     }
     // n > 32. Limit index
@@ -1914,12 +1869,12 @@ template <int n>
 static inline Vec8d lookup(Vec8q const index, double const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 8) {
-        Vec8d table1 = Vec8d().load_partial(n < 8 ? n : 8, (double*)table);
+        Vec8d table1 = Vec8d().load((double*)table);
         return lookup8(index, table1);
     }
     if constexpr (n <= 16) {
-        Vec8d table1 = Vec8d().load_partial(n < 8 ? n : 8, (double*)table);
-        Vec8d table2 = Vec8d().load_partial(n - 8 < 8 ? n - 8 : 8, (double*)table + 8);
+        Vec8d table1 = Vec8d().load((double*)table);
+        Vec8d table2 = Vec8d().load((double*)table + 8);
         return _mm512_permutex2var_pd(table1, index, table2);
     }
     // n > 16. Limit index
@@ -1959,7 +1914,7 @@ static inline Vec16f gather16f(void const * a) {
                 i8-imax+15, i9-imax+15, i10-imax+15, i11-imax+15, i12-imax+15, i13-imax+15, i14-imax+15, i15-imax+15> (b);
         }
         else {
-            Vec16f b = Vec16f().load_partial(imax - imin + 1 < 16 ? imax - imin + 1 : 16, (float const *)a + imin);
+            Vec16f b = Vec16f().load((float const *)a + imin);
             return permute16<i0-imin, i1-imin, i2-imin, i3-imin, i4-imin, i5-imin, i6-imin, i7-imin,
                 i8-imin, i9-imin, i10-imin, i11-imin, i12-imin, i13-imin, i14-imin, i15-imin> (b);
         }
@@ -1969,7 +1924,7 @@ static inline Vec16f gather16f(void const * a) {
     &&  (i8<imin+16  || i8>imax-16)  && (i9<imin+16  || i9>imax-16)  && (i10<imin+16 || i10>imax-16) && (i11<imin+16 || i11>imax-16)
     &&  (i12<imin+16 || i12>imax-16) && (i13<imin+16 || i13>imax-16) && (i14<imin+16 || i14>imax-16) && (i15<imin+16 || i15>imax-16) ) {
         // load two contiguous blocks and blend
-        Vec16f b = Vec16f().load_partial(imax - imin + 1 < 16 ? imax - imin + 1 : 16, (float const *)a + imin);
+        Vec16f b = Vec16f().load((float const *)a + imin);
         Vec16f c = Vec16f().load((float const *)a + imax-15);
         const int j0  = i0 <imin+16 ? i0 -imin : 31-imax+i0;
         const int j1  = i1 <imin+16 ? i1 -imin : 31-imax+i1;
@@ -2009,14 +1964,14 @@ static inline Vec8d gather8d(void const * a) {
             return permute8<i0-imax+7, i1-imax+7, i2-imax+7, i3-imax+7, i4-imax+7, i5-imax+7, i6-imax+7, i7-imax+7> (b);
         }
         else {
-            Vec8d b = Vec8d().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (double const *)a + imin);
+            Vec8d b = Vec8d().load((double const *)a + imin);
             return permute8<i0-imin, i1-imin, i2-imin, i3-imin, i4-imin, i5-imin, i6-imin, i7-imin> (b);
         }
     }
     if constexpr ((i0<imin+8 || i0>imax-8) && (i1<imin+8 || i1>imax-8) && (i2<imin+8 || i2>imax-8) && (i3<imin+8 || i3>imax-8)
     &&  (i4<imin+8 || i4>imax-8) && (i5<imin+8 || i5>imax-8) && (i6<imin+8 || i6>imax-8) && (i7<imin+8 || i7>imax-8)) {
         // load two contiguous blocks and blend
-        Vec8d b = Vec8d().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (double const *)a + imin);
+        Vec8d b = Vec8d().load((double const *)a + imin);
         Vec8d c = Vec8d().load((double const *)a + imax-7);
         const int j0 = i0<imin+8 ? i0-imin : 15-imax+i0;
         const int j1 = i1<imin+8 ? i1-imin : 15-imax+i1;

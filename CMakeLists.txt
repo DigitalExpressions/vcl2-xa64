@@ -75,7 +75,16 @@ endif()
 
 # Ordinary vector operations are header-only. Compile this target only when a
 # consumer explicitly links runtime capability queries or requests the target.
-add_library(vcl_detect STATIC EXCLUDE_FROM_ALL instrset_detect.cpp)
+if(APPLE AND vcl_arch_count GREATER 1)
+  set(VCL_RUNTIME_SOURCE "${VCL_SOURCE_DIR}/vcl_runtime.cpp")
+  add_library(vcl_detect STATIC EXCLUDE_FROM_ALL vcl_runtime.cpp)
+elseif(VCL_TARGET_ARCH STREQUAL "arm64")
+  set(VCL_RUNTIME_SOURCE "${VCL_SOURCE_DIR}/instrset_detect_neon.cpp")
+  add_library(vcl_detect STATIC EXCLUDE_FROM_ALL instrset_detect_neon.cpp)
+else()
+  set(VCL_RUNTIME_SOURCE "${VCL_SOURCE_DIR}/instrset_detect.cpp")
+  add_library(vcl_detect STATIC EXCLUDE_FROM_ALL instrset_detect.cpp)
+endif()
 add_library(vcl::runtime ALIAS vcl_detect)
 target_link_libraries(vcl_detect PUBLIC vcl)
 if(VCL_SANITIZE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")

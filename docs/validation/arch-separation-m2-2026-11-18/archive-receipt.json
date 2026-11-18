@@ -1,0 +1,11 @@
+{
+  "archive": "arch-separation-m2-evidence.zip",
+  "sha256": "499636b722fd27e92f90856d005d39682c2ed9938d23dded2d6e335ec839cfa9",
+  "bytes": 58183326,
+  "verified_entries": 12607,
+  "raw_directory": "build/arch-separation-m2-20261118T194215Z",
+  "host": "native Mac M2",
+  "includes": "all four exact source captures and patches/receipts; original failed and final native packets; complete logs/JUnit/source/compiler/flag/binary inventories; generated C++/CMake/reference/probe inputs; isolated integrity/capture fixtures; session controls and scripts",
+  "all_original_directories_binaries_and_attempts_retained": true,
+  "cleanup_performed": false
+}

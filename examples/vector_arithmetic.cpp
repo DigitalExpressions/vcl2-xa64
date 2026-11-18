@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include <cstdio>
 
 int main() {

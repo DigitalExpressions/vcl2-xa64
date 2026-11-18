@@ -485,6 +485,6 @@ inline Vec4ui compress_saturated(Vec2uq low,Vec2uq high) { return Vec4ui(vcombin
 #ifdef VCL_NAMESPACE
 }
 #endif
-#include "vectori128_neon_div.h"
-#include "vectori128_neon_perm.h"
+#include "vectori128_div_neon.h"
+#include "vectori128_perm_neon.h"
 #endif

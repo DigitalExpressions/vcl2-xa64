@@ -363,5 +363,5 @@ template<int i0,int i1> inline Vec2d change_sign(Vec2d a) {
 #ifdef VCL_NAMESPACE
 }
 #endif
-#include "vectorf128_neon_helpers.h"
+#include "vectorf128_helpers_neon.h"
 #endif

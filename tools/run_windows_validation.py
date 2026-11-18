@@ -29,6 +29,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 from validation_evidence import EvidenceRun, FIXTURES, package_evidence, sha
+from capture_source import verify_capture
 
 
 class WindowsRun(EvidenceRun):
@@ -42,6 +43,11 @@ class WindowsRun(EvidenceRun):
 
 
 def source_manifest(run, label):
+    if getattr(run,'captured_source',None):
+        verified=verify_capture(run.checkout,run.capture_manifest)
+        if verified!=run.captured_source:raise RuntimeError('Captured source identity changed')
+        (run.output/(label+'.json')).write_text(json.dumps(verified,indent=2))
+        return verified['fingerprint']
     paths = run.git(label + '-files', 'ls-files', '--cached', '--others', '--exclude-standard', '-z').split('\0')
     rows = [dict(path=p, sha256=sha(run.checkout / p)) if (run.checkout / p).is_file()
             else dict(path=p, sha256=None, deleted=True) for p in sorted(set(paths)) if p]
@@ -77,7 +83,7 @@ def controls(run, compiler, args, generator):
         'if(VCL_SANITIZE)\nadd_executable(ubsan ubsan.cpp)\n'
         'target_compile_options(ubsan PRIVATE -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer)\n'
         'target_link_options(ubsan PRIVATE -fsanitize=undefined)\nendif()\n')
-    (source / 'runtime.cpp').write_text('#include "vectorclass.h"\n#include <cstdio>\n'
+    (source / 'runtime.cpp').write_text('#include "vcl2_xa64.h"\n#include <cstdio>\n'
         'int main(){int level=instrset_detect();std::printf("instrset_detect=%d required=%d pointer_bits=%zu long_bits=%zu arm64=%d\\n",'
         'level,VCL_REQUIRED_INSTRSET,sizeof(void*)*8,sizeof(long)*8,int(VCL_ARCH_ARM64));'
         'return VCL_ARCH_ARM64 || sizeof(void*)!=8 || level<VCL_REQUIRED_INSTRSET;}\n')
@@ -182,6 +188,7 @@ def main():
     parser.add_argument('--compiler',help='Explicit native x64 compiler executable')
     parser.add_argument('--sanitize',action='store_true',help='Strict UBSan; requires GNU-driver Clang Debug')
     parser.add_argument('--testbench-dir',type=Path,help='Existing pristine pinned upstream testbench checkout')
+    parser.add_argument('--capture-manifest',type=Path,help='Validate the same complete frozen uncommitted implementation without Git')
     parser.add_argument('--plan',action='store_true')
     args=parser.parse_args()
     if args.sanitize and (args.driver!='clang' or args.mode!='Debug'):
@@ -204,18 +211,24 @@ def main():
         for tool in ['cmake','ctest','git','ninja']:
             if not shutil.which(tool):
                 raise RuntimeError('Missing required tool: '+tool)
-        head=run.git('source-head','rev-parse','HEAD')
-        tree=run.git('source-tree','rev-parse','HEAD^{tree}')
-        status=run.git('source-status','status','--porcelain')
-        run.git('ignored-output','check-ignore',str(output))
-        run.command('working-patch',['git','diff','--binary','HEAD'])
-        added=run.git('added-files','ls-files','--others','--exclude-standard','-z').split('\0')
-        for index,path in enumerate(p for p in added if p):
-            code,_=run.command('added-file-patch-'+str(index),['git','diff','--no-index','--binary','--','/dev/null',path],required=False)
-            if code!=1:
-                raise RuntimeError('Could not capture added source file: '+path)
+        if args.capture_manifest:
+            run.capture_manifest=args.capture_manifest.resolve()
+            run.captured_source=verify_capture(root,run.capture_manifest)
+            head=tree=None
+            status='frozen-uncommitted-source'
+        else:
+            head=run.git('source-head','rev-parse','HEAD')
+            tree=run.git('source-tree','rev-parse','HEAD^{tree}')
+            status=run.git('source-status','status','--porcelain')
+            run.git('ignored-output','check-ignore',str(output))
+            run.command('working-patch',['git','diff','--binary','HEAD'])
+            added=run.git('added-files','ls-files','--others','--exclude-standard','-z').split('\0')
+            for index,path in enumerate(p for p in added if p):
+                code,_=run.command('added-file-patch-'+str(index),['git','diff','--no-index','--binary','--','/dev/null',path],required=False)
+                if code!=1:
+                    raise RuntimeError('Could not capture added source file: '+path)
         fingerprint=source_manifest(run,'source-manifest')
-        inventory=dict(host,head=head,tree=tree,working_tree_status=status,source_fingerprint=fingerprint,
+        inventory=dict(host,head=head,tree=tree,captured_source=getattr(run,'captured_source',None),working_tree_status=status,source_fingerprint=fingerprint,
             compiler=compiler,driver=args.driver,mode=args.mode,sanitize=args.sanitize,
             UBSAN_OPTIONS=run.env['UBSAN_OPTIONS'],testbench=str(args.testbench_dir) if args.testbench_dir else None)
         (output/'inventory.json').write_text(json.dumps(inventory,indent=2))
@@ -230,11 +243,11 @@ def main():
                 raise RuntimeError('Use the pristine pinned upstream testbench checkout')
         run.command('repository-check',[sys.executable,'-B','tools/check_repository.py'])
         result=validate(run,compiler,args,'Ninja')
-        final_head=run.git('source-final-head','rev-parse','HEAD')
+        final_head=None if args.capture_manifest else run.git('source-final-head','rev-parse','HEAD')
         final_fingerprint=source_manifest(run,'source-final-manifest')
         if final_head!=head or final_fingerprint!=fingerprint:
             raise RuntimeError('Source changed during validation')
-        (output/'summary.json').write_text(json.dumps(dict(success=True,head=head,tree=tree,
+        (output/'summary.json').write_text(json.dumps(dict(success=True,head=head,tree=tree,captured_source=getattr(run,'captured_source',None),
             source_fingerprint=fingerprint,native_windows_x64=True,driver=args.driver,mode=args.mode,
             sanitizer='strict UBSan' if args.sanitize else 'not requested',results=result),indent=2))
         package_evidence(run)

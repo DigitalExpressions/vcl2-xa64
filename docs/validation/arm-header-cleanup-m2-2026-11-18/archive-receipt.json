@@ -1,0 +1,11 @@
+{
+  "archive": "arm-header-cleanup-evidence.zip",
+  "sha256": "ffcefcd5b32984c94a4f5f68681b40bb3c87936a34460ed20cb67fa6414dfe55",
+  "bytes": 56760456,
+  "verified_entries": 12292,
+  "raw_directory": "build/arm-header-cleanup-20261118T213003Z",
+  "host": "native Mac M2",
+  "includes": "exact before-cleanup and tested captures with patches/receipts; unfrozen failed preparation and native packet; 18 before/after preprocessing inputs/outputs; cleanup diff/decision inventory; complete logs/JUnit/source/compiler/flag/binary inventories; generated C++/CMake/reference/probe inputs; isolated integrity/capture fixtures; session controls and scripts",
+  "all_original_directories_binaries_and_attempts_retained": true,
+  "cleanup_performed": false
+}

@@ -108,17 +108,6 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec64c & load_partial(int n, void const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 64) return load(p);
-        alignas(64) uint8_t temporary[64] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(uint8_t)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         if (n >= 64) {
             zmm = _mm512_loadu_si512(p);
         }
@@ -126,7 +115,6 @@ public:
             zmm = _mm512_maskz_loadu_epi8(__mmask64(((uint64_t)1 << n) - 1), p);
         }
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -902,20 +890,8 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec32s & load_partial(int n, void const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 32) return load(p);
-        alignas(64) int16_t temporary[32] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(int16_t)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         zmm = _mm512_maskz_loadu_epi16(__mmask32(((uint64_t)1 << n) - 1), p);
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -1840,18 +1816,18 @@ template <int n>
 static inline Vec32s lookup(Vec32s const index, void const * table) {
     if constexpr (n <=  0) return 0;
     if constexpr (n <= 32) {  // vector size table
-        return lookup32(index, Vec32s().load_partial(n < 32 ? n : 32, table));
+        return lookup32(index, Vec32s().load(table));
     }
     if constexpr (n <= 64) {  // 2 * vector size table
-        Vec32s t1 = Vec32s().load_partial(n < 32 ? n : 32, table);
-        Vec32s t2 = Vec32s().load_partial(n - 32 < 32 ? n - 32 : 32, (Vec32s*)table+1);
+        Vec32s t1 = Vec32s().load(table);
+        Vec32s t2 = Vec32s().load((Vec32s*)table+1);
         return lookup64(index, t1, t2);
     }
     if constexpr (n <= 128) {  // 4 * vector size table
-        Vec32s t1 = Vec32s().load_partial(n < 32 ? n : 32, table);
-        Vec32s t2 = Vec32s().load_partial(n - 32 < 32 ? n - 32 : 32, (Vec32s*)table+1);
-        Vec32s t3 = Vec32s().load_partial(n - 64 < 32 ? n - 64 : 32, (Vec32s*)table+2);
-        Vec32s t4 = Vec32s().load_partial(n - 96 < 32 ? n - 96 : 32, (Vec32s*)table+3);
+        Vec32s t1 = Vec32s().load(table);
+        Vec32s t2 = Vec32s().load((Vec32s*)table+1);
+        Vec32s t3 = Vec32s().load((Vec32s*)table+2);
+        Vec32s t4 = Vec32s().load((Vec32s*)table+3);
         return lookup128(index, t1, t2, t3, t4);
     }
     // n > 128. Limit index
@@ -1887,7 +1863,6 @@ static inline Vec32s lookup(Vec32s const index, void const * table) {
 // Function shift_bytes_up: shift whole vector left by b bytes.
 template <unsigned int b>
 static inline Vec64c shift_bytes_up(Vec64c const a) {
-    if constexpr (b >= 64) return _mm512_setzero_si512();
     __m512i ahi, alo;
     if constexpr (b == 0) return a;
     else if constexpr ((b & 3) == 0) {  // b is divisible by 4
@@ -1918,7 +1893,6 @@ static inline Vec64c shift_bytes_up(Vec64c const a) {
 // Function shift_bytes_down: shift whole vector right by b bytes
 template <unsigned int b>
 static inline Vec64c shift_bytes_down(Vec64c const a) {
-    if constexpr (b >= 64) return _mm512_setzero_si512();
     if constexpr ((b & 3) == 0) {  // b is divisible by 4
         return _mm512_alignr_epi32(_mm512_setzero_si512(), a, ((b >> 2) & 15));
     }

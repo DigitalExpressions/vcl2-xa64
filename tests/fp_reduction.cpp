@@ -15,7 +15,7 @@
  */
 
 // Native reduction differential checks. Copyright 2026. Apache-2.0.
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include <array>
 #include <cstdint>
 #include <cstdio>

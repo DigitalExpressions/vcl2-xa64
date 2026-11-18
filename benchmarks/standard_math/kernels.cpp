@@ -19,7 +19,7 @@
 #include <cmath>
 #include <type_traits>
 #if STANDARD_IMPL != 0
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #endif
 
 namespace standard_bench {

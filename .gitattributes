@@ -27,3 +27,73 @@ docs/validation/mac-arm-correctness-2026-11-17-ab5bb87/** -text
 docs/validation/x86-optimization-2026-11-16/candidate.patch whitespace=-blank-at-eol
 # Unified diff context markers are part of this checksummed evidence file.
 docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol
+
+# Protected root originals: exact pinned raw bytes on every host.
+/LICENSE -text -whitespace
+/README.md -text -whitespace
+/changelog.txt -text -whitespace
+/dispatch_example1.cpp -text -whitespace
+/dispatch_example2.cpp -text -whitespace
+/instrset.h -text -whitespace
+/instrset_detect.cpp -text -whitespace
+/vector_convert.h -text -whitespace
+/vectorclass.h -text -whitespace
+/vectorf128.h -text -whitespace
+/vectorf256.h -text -whitespace
+/vectorf256e.h -text -whitespace
+/vectorf512.h -text -whitespace
+/vectorf512e.h -text -whitespace
+/vectorfp16.h -text -whitespace
+/vectorfp16e.h -text -whitespace
+/vectori128.h -text -whitespace
+/vectori256.h -text -whitespace
+/vectori256e.h -text -whitespace
+/vectori512.h -text -whitespace
+/vectori512e.h -text -whitespace
+/vectori512s.h -text -whitespace
+/vectori512se.h -text -whitespace
+/vectormath_common.h -text -whitespace
+/vectormath_exp.h -text -whitespace
+/vectormath_hyp.h -text -whitespace
+/vectormath_lib.h -text -whitespace
+/vectormath_trig.h -text -whitespace
+/*_neon.h text eol=lf
+/instrset_detect_neon.cpp text eol=lf
+/vcl2_xa64.h text eol=lf
+
+# New ARM/owned source bytes are portable; protected root patterns above remain exact.
+/vcl_config.h text eol=lf
+/vcl_runtime.cpp text eol=lf
+/CMakeLists.txt text eol=lf
+/README-vcl2-xa64.md text eol=lf
+tools/** text eol=lf
+tests/** text eol=lf
+examples/** text eol=lf
+benchmarks/**/*.cpp text eol=lf
+benchmarks/**/*.h text eol=lf
+vendor/vectorclass.json -text
+
+# Portable architecture-separation evidence retains exact recorded bytes.
+docs/validation/arch-separation-m2-*/** -text
+
+# Shipped third-party alias retains exact vendor bytes too.
+/sse2neon.h -text -whitespace
+
+# Retained upstream-derived ARM bytes: inherited whitespace is intentional.
+/examples/dispatch1_neon.cpp whitespace=-blank-at-eol
+/examples/dispatch2_neon.cpp whitespace=-blank-at-eol
+/instrset_compat_neon.h whitespace=-blank-at-eol
+/vectorf128_compat_neon.h whitespace=-blank-at-eol
+/vectorf512e_neon.h whitespace=-blank-at-eol
+/vectori128_compat_neon.h whitespace=-blank-at-eol
+/vectori256e_neon.h whitespace=-blank-at-eol
+/vectori512e_neon.h whitespace=-blank-at-eol
+/vectori512se_neon.h whitespace=-blank-at-eol
+/vectormath_exp_neon.h whitespace=-blank-at-eol
+/vectormath_trig_neon.h whitespace=-blank-at-eol
+
+# Checksummed ARM header cleanup evidence retains its exact portable bytes.
+docs/validation/arm-header-cleanup-m2-*/** -text
+
+# Publication source comparison is checksummed portable metadata.
+docs/validation/arch-separation-publication-*/** -text

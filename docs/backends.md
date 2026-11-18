@@ -2,10 +2,9 @@
 
 ## Implementation boundaries
 
-The [source layout](backend-layout.md) keeps original VCL2 untouched under
-`vendor/vectorclass/`, with explicit adaptation patches and canonical backend
-sources elsewhere. Root headers are shipped generated products for the existing
-include layout; consumers do not need to generate them.
+The [source layout](backend-layout.md) protects all 28 original VCL paths at
+root and in vendor. The neutral facade `vcl2_xa64.h` selects original x86 headers
+or the separate authoritative ARM `*_neon.h` family. No generation is required.
 
 Keep one public VCL API, numerical contract and independent test suite. Register
 operations, mask representation and compiler workarounds belong to the selected
@@ -15,9 +14,9 @@ inlining decisions, but must keep their coefficients, operation grouping and
 special-value policy consistent.
 
 The [ARM/Neon lessons](neon-arm-lessons.md) and [strategy reset](integration-plan.md)
-are the current planning entry points. This reference describes the existing
-implementation; it does not prescribe the next design. Prior x86-specific
-repair/optimization work is historical, and source is unchanged by cleanup.
+are the current planning entry points. The architecture migration preserves the ARM backend behavior below while
+restoring pristine x86 behavior. Prior x86 repair/optimization work is inactive
+research and is not part of the x86 include graph.
 
 ## Backend selection and coverage
 

@@ -16,7 +16,7 @@
 
 #ifndef VCL_TEST_WIDE_TYPES_H
 #define VCL_TEST_WIDE_TYPES_H
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif

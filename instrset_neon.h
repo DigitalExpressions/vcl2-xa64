@@ -88,5 +88,5 @@ inline void reset_control_word() { set_control_word(0x1f80u); }
 #ifdef VCL_NAMESPACE
 }
 #endif
-#include "instrset_helpers.h"
+#include "instrset_helpers_neon.h"
 #endif

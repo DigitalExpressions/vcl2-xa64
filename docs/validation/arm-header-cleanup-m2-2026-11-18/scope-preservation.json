@@ -1,0 +1,20 @@
+{
+  "only_changed_paths": [
+    "vectori256e_neon.h",
+    "instrset_helpers_neon.h",
+    "vectormath_trig_neon.h",
+    "vectorf128_compat_neon.h",
+    "instrset_compat_neon.h",
+    "vectori128_compat_neon.h",
+    "vector_convert_neon.h",
+    "vectori512se_neon.h",
+    "vectormath_exp_neon.h",
+    "tools/regenerate_headers.py",
+    "tools/check_header_generation.py"
+  ],
+  "all_tests_fixtures_generators_flags_policies_runners_and_neutral_selection_unchanged": true,
+  "direct_core_headers_byte_identical": true,
+  "preprocessed_profiles": 18,
+  "preprocessed_cpp_tokens_identical": true,
+  "baseline_fingerprint": "4476e9ea2ee003c7689571b3211ca85a3ea5c3e254a097f8cd4bc6d93bd624dc"
+}

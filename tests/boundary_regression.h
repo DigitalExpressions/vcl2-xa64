@@ -15,7 +15,7 @@
  */
 #ifndef VCL_TEST_BOUNDARY_REGRESSION_H
 #define VCL_TEST_BOUNDARY_REGRESSION_H
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include "protected_memory.h"
 #include <cstdint>
 #include <cstdio>

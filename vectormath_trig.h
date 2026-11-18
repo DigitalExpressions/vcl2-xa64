@@ -34,23 +34,6 @@ namespace VCL_NAMESPACE {
 #endif
 
 
-#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
-// Reduce native radian inputs in FP64. Correct the rounded quadrant before
-// evaluating polynomials, which require a remainder in [-pi/4, pi/4].
-// FP32 callers widen only the reduction; their polynomial remains FP32.
-template<typename VTYPE>
-static inline VTYPE trig_reduce_precise(VTYPE const xa, VTYPE & quadrant) {
-    constexpr double pio2_hi = 1.57079632679489655800;
-    constexpr double pio2_lo = 6.12323399573676603587E-17;
-    quadrant = round(xa * (2. / VM_PI));
-    VTYPE r = nmul_add(quadrant, pio2_lo, nmul_add(quadrant, pio2_hi, xa));
-    VTYPE correction = select(r > VM_PI * 0.25, VTYPE(1.),
-        select(r < -VM_PI * 0.25, VTYPE(-1.), VTYPE(0.)));
-    quadrant += correction;
-    return nmul_add(quadrant, pio2_lo, nmul_add(quadrant, pio2_hi, xa));
-}
-#endif
-
 // *************************************************************
 //             sin/cos template, double precision
 // *************************************************************
@@ -91,7 +74,7 @@ static inline VTYPE sincos_d(VTYPE * cosret, VTYPE const xx) {
 
     BVTYPE swap;                                 // boolean vector
 
-#if VCL_BACKEND != VCL_BACKEND_NEON && INSTRSET < 8  // no native FMA range reduction
+#if INSTRSET < 8  // no FMA
     const double input_limit = 1.E13;            // lower overflow limit without FMA
 #else
     const double input_limit = 1.E15;
@@ -101,17 +84,13 @@ static inline VTYPE sincos_d(VTYPE * cosret, VTYPE const xx) {
 
     // Find quadrant
     if constexpr ((SC & 8) != 0) {
-#if VCL_BACKEND == VCL_BACKEND_NEON
-        // Reduce before doubling: every finite input, including the largest
-        // representable even integers, then has a safe quadrant conversion.
-        xa = nmul_add(round(xa * 0.5), 2.0, xa);
-#endif
         y = round(xa * 2.0);
     }
     else {
         xa = select(xa > VTYPE(input_limit), VTYPE(0.f), xa); // overflow limit
         y = round(xa * (double)(2. / VM_PI));    // quadrant, as float
     }
+    q = roundi(y);                               // quadrant, as integer
     // Quadrant:
     //      0 -   pi/4 => 0
     //   pi/4 - 3*pi/4 => 1
@@ -124,15 +103,12 @@ static inline VTYPE sincos_d(VTYPE * cosret, VTYPE const xx) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
-        x = trig_reduce_precise(xa, y);
-#elif INSTRSET < 8
+#if INSTRSET < 8  // no FMA
         x = ((xa - y * DP1) - y * DP2) - y * DP3;
 #else
         x = nmul_add(y, DP3, nmul_add(y, DP2 + DP1, xa));
 #endif
     }
-    q = roundi(y);                               // corrected quadrant
     // Expansion of sin and cos, valid for -pi/4 <= x <= pi/4
     x2 = x * x;
     s = polynomial_5(x2, P0sin, P1sin, P2sin, P3sin, P4sin, P5sin);
@@ -270,7 +246,7 @@ static inline VTYPE sincos_f(VTYPE* cosret, VTYPE const xx) {
     //typedef decltype(nan_code(xx)) UITYPE;       // unsigned integer vector type
     typedef decltype(xx < xx) BVTYPE;            // boolean vector type
     
-#if VCL_BACKEND != VCL_BACKEND_NEON && INSTRSET < 8  // no native FMA range reduction
+#if INSTRSET < 8  // no FMA
     const float input_limit = 1.E5f;             // lower overflow limit without FMA
 #else
     const float input_limit = 1.E7f;
@@ -284,15 +260,13 @@ static inline VTYPE sincos_f(VTYPE* cosret, VTYPE const xx) {
 
     // Find quadrant
     if constexpr ((SC & 8) != 0) {
-#if VCL_BACKEND == VCL_BACKEND_NEON
-        xa = nmul_add(round(xa * 0.5f), 2.0f, xa);
-#endif
         y = round(xa * 2.0f);
     }
     else {
         xa = select(xa > VTYPE(input_limit), VTYPE(0.f), xa); // overflow limit
         y = round(xa * (float)(2. / VM_PI));     // quadrant, as float
     }
+    q = roundi(y);                               // quadrant, as integer
     // Quadrant:
     //      0 -   pi/4 => 0
     //   pi/4 - 3*pi/4 => 1
@@ -305,19 +279,12 @@ static inline VTYPE sincos_f(VTYPE* cosret, VTYPE const xx) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
-        auto qlo = extend_low(xa), qhi = extend_high(xa);
-        auto rlo = trig_reduce_precise(extend_low(xa), qlo);
-        auto rhi = trig_reduce_precise(extend_high(xa), qhi);
-        x = compress(rlo, rhi);
-        y = compress(qlo, qhi);
-#elif INSTRSET < 8
+#if INSTRSET < 8  // no FMA
         x = ((xa - y * DP1F) - y * DP2F) - y * DP3F;
 #else
         x = nmul_add(y, DP3F, nmul_add(y, DP2F + DP1F, xa));
 #endif
     }
-    q = roundi(y);                               // corrected quadrant
     // Taylor expansion of sin and cos, valid for -pi/4 <= x <= pi/4
     x2 = x * x;
     s = polynomial_2(x2, P0sinf, P1sinf, P2sinf) * (x*x2) + x;
@@ -492,17 +459,13 @@ static inline VTYPE tan_d(VTYPE const x) {
 
     // Find quadrant
     if constexpr ((SC & 8) != 0) {
-#if VCL_BACKEND == VCL_BACKEND_NEON
-        // Reduce before doubling: every finite input, including the largest
-        // representable even integers, then has a safe quadrant conversion.
-        xa = nmul_add(round(xa * 0.5), 2.0, xa);
-#endif
         y = round(xa * 2.0);
     }
     else {
         xa = select(xa > VTYPE(1.E15), VTYPE(0.), xa); // overflow limit
         y = round(xa * (double)(2. / VM_PI));    // quadrant, as float
     }
+    auto q = roundi(y);                          // quadrant, as integer
     // Quadrant:
     //      0 -   pi/4 => 0
     //   pi/4 - 3*pi/4 => 1
@@ -515,15 +478,12 @@ static inline VTYPE tan_d(VTYPE const x) {
     }
     else {
         // Reduce by extended precision modular arithmetic
-#if VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)
-        z = trig_reduce_precise(xa, y);
-#elif INSTRSET < 8
+#if INSTRSET < 8  // no FMA
         z = ((xa - y * DP1) - y * DP2) - y * DP3;
 #else
         z = nmul_add(y, DP3, nmul_add(y, DP2 + DP1, xa));
 #endif
     }
-    auto q = roundi(y);                          // corrected quadrant
     // Pade approximation of tan, valid for -pi/4 <= x <= pi/4
     zz = z * z;
     px = polynomial_2(zz, P0tan, P1tan, P2tan);
@@ -624,10 +584,7 @@ static inline VTYPE asin_d(VTYPE const x) {
     const double Q1asin = 1.395105614657485689735E2;
     const double Q0asin = -4.918853881490881290097E1;
 
-    VTYPE  xa, xb, x1, x2, x3, x4, x5, vx, wx, y1, z, z2;
-    // Select evaluates both operands even when an entire vector takes only
-    // one branch. Keep the inactive polynomial/root operands defined.
-    VTYPE  px(0.), qx(1.), rx(0.), sx(1.), z1(0.);
+    VTYPE  xa, xb, x1, x2, x3, x4, x5, px, qx, rx, sx, vx, wx, y1, z, z1, z2;
     bool   dobig, dosmall;
 
     xa = abs(x);
@@ -783,8 +740,7 @@ static inline VTYPE asin_f(VTYPE const x) {
         z = select(big, z1, z2);
     }
     else {     // asin
-        // Compensate the rounded FP32 pi/2 constant after cancellation.
-        z1 = (float(VM_PI_2) - z1) - 4.37113900018624283E-8f;
+        z1 = float(VM_PI_2) - z1;
         z = select(big, z1, z);
         z = sign_combine(z, x);
     }
@@ -893,19 +849,10 @@ static inline VTYPE atan_d(VTYPE const y, VTYPE const x) {
     // small:  z = t / 1.0;
     // medium: z = (t-1.0) / (t+1.0);
     // big:    z = -1.0 / t;
-#if VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 8
-    // Express the same small/medium/large rational argument without MSVC's
-    // masked conditional-add lowering. Small lanes retain a=t, b=1.
-    a = select(notbig, t, VTYPE(0.));
-    a = select(notsmal, a - VTYPE(1.), a);
-    b = select(notbig, VTYPE(1.), VTYPE(0.));
-    b = select(notsmal, b + t, b);
-#else
     a = notbig & t;                    // select(notbig, t, 0.);
     a = if_add(notsmal, a, -1.);
     b = notbig & VTYPE(1.);            //  select(notbig, 1., 0.);
     b = if_add(notsmal, b, t);
-#endif
     z = a / b;                         // division by 0 will not occur unless x and y are both 0
 
     zz = z * z;
@@ -925,7 +872,7 @@ static inline VTYPE atan_d(VTYPE const y, VTYPE const x) {
     // get sign bit
     re = sign_combine(re, y);
 
-        return re;
+    return re;
 }
 
 // instantiations of atan_d template:

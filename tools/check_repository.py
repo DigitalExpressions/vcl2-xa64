@@ -21,9 +21,9 @@ import re
 from regenerate_headers import render as render_headers, verify as verify_headers
 
 ROOT = Path(__file__).resolve().parents[1]
-NATIVE = ['vcl_config.h', 'instrset_neon.h', 'instrset_helpers.h',
-          'vectori128_neon.h', 'vectori128_neon_div.h', 'vectori128_neon_perm.h',
-          'vectorf128_neon.h', 'vectorf128_neon_helpers.h']
+NATIVE = ['vcl2_xa64.h', 'vcl_config.h', 'instrset_neon.h', 'instrset_helpers_neon.h',
+          'vectori128_neon.h', 'vectori128_div_neon.h', 'vectori128_perm_neon.h',
+          'vectorf128_neon.h', 'vectorf128_helpers_neon.h']
 TEST_SYSTEM_HEADERS = {
     'algorithm', 'array', 'cfenv', 'climits', 'cmath', 'cstddef', 'cstdint',
     'cstdio', 'cstdlib', 'cstring', 'initializer_list', 'limits', 'sys/mman.h',
@@ -83,6 +83,7 @@ def main():
     print(json.dumps({'status': 'passed', 'public_files': len(files),
                       'pristine_upstream_files': provenance['pristine_upstream_files'],
                       'generated_runtime_products': len(products),
+                      'protected_root_originals': provenance['protected_root_files'],
                       'local_documentation_links': links,
                       'native_headers_with_complete_notices': len(NATIVE)}, indent=2))
 

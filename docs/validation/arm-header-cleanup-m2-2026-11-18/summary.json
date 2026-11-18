@@ -1,0 +1,50 @@
+{
+  "evidence_audit_passed": true,
+  "success": true,
+  "base_commit": "1a5226446f14e1f4d26216ae688b40ccc9b0fa03",
+  "base_tree": "e5b8579b6292cce2ea6a67b8cdf8027ec228d7bc",
+  "source_fingerprint": "5a6f9ad8fe448d19e05917ef2eee95f4482eb7136c67488ad3bf2b3d6eef542d",
+  "source_files": 474,
+  "patch_sha256": "f83b4c2cbb527be2c043c86f65ff7c84c7dc91b892f3ba754236bf3ea9548a3a",
+  "source_archive_sha256": "3f20dbd2655a4fca5795359281e36267403b6e038cc08cb4f4e5d05519263310",
+  "start_utc": "2026-11-18T21:37:21.576212+00:00",
+  "end_utc": "2026-11-18T22:40:56.050236+00:00",
+  "registered": 8036,
+  "executed": 8036,
+  "passed": 8036,
+  "failed": 0,
+  "skipped": 0,
+  "timed_out": 0,
+  "examples_passed": 8,
+  "controls": {
+    "ubsan-positive": 0,
+    "ubsan-negative": -6,
+    "guard-positive": 0,
+    "guard-negative-0": -10,
+    "guard-negative-1": -10,
+    "guard-negative-2": -10,
+    "guard-negative-3": -10,
+    "runtime-run": 0
+  },
+  "guard_page_size": 16384,
+  "binary_records_rehashed": 7999,
+  "registered_case_names_and_deadlines_reconciled": true,
+  "protected_before_after_equal": true,
+  "complete_source_capture_verified_before_after": true,
+  "tested_commit": null,
+  "tested_tree": null,
+  "source_kind": "frozen-uncommitted-source",
+  "candidate": "cleanup-01",
+  "run_id": "arm-header-cleanup-20261118T213003Z-candidate01",
+  "source_capture_archive": {
+    "path": "build/arm-header-cleanup-20261118T213003Z/candidate-01/captured-source.zip",
+    "sha256": "3f20dbd2655a4fca5795359281e36267403b6e038cc08cb4f4e5d05519263310"
+  },
+  "original_native_packet": {
+    "path": "build/arm-header-cleanup-20261118T213003Z/candidate-01/source/build/mac-m2-native-20261118T213729896840Z/return-evidence.zip",
+    "sha256": "2b80990e09d55230eaa160e97a31de8541b8ff824739ce52d84de19ab38211fc"
+  },
+  "Windows_native_verification": "pending",
+  "removed_header_lines_net": 3456,
+  "preprocessing_profiles_identical": 18
+}

@@ -2,13 +2,50 @@
 
 Current planning starts with [ARM64 / Neon lessons](../neon-arm-lessons.md) and
 the [strategy reset](../integration-plan.md), requested on 18 November 2026.
-The old x86 repair/optimization campaign is retired. No source was changed by
-the cleanup, and no previous pass establishes a future design's correctness.
+The old x86 repair/optimization campaign is retired. The original strategy
+cleanup was documentation only; the later architecture implementation and ARM
+header cleanup below have their own frozen-source results.
 The approved next implementation and native-check sequence is in the
 [Mac architecture separation handoff](mac-arch-separation-handoff.md).
-M2 execution and subsequent same-source Windows verification are pending.
+The [new M2 report](mac-arm-2026-11-18-arm-header-cleanup.md) records actual
+uncommitted-source validation; native Windows verification remains pending.
 
-## Latest native M2 checkpoint
+## ARM header cleanup — 18 November 2026
+
+The [follow-up M2 report](mac-arm-2026-11-18-arm-header-cleanup.md) records **8,036/8,036** native CTest passes
+and **8/8** examples after removing obsolete x86 workarounds/branches from nine
+ARM headers. All eight Release/strict UBSan profiles passed with zero failures,
+skips or timeouts. The [audit](arm-header-cleanup-audit-2026-11-18.md) distinguishes
+removed x86 fixes from the SSE-shaped sse2neon interface and ARM fixes retained.
+All 18 preprocessing comparisons are byte-identical before/after; originals,
+vendor and pin inventory stayed exact. New frozen fingerprint:
+`5a6f9ad8fe448d19e05917ef2eee95f4482eb7136c67488ad3bf2b3d6eef542d`. [Portable evidence/checksums](arm-header-cleanup-m2-2026-11-18/README.md) identify its own run.
+The implementation/reports are published on `arch-separation-m2`; Windows is pending via the updated
+[return handoff](windows-arch-separation-handoff.md). Earlier candidate 04 and
+all its evidence remain historical, without transferring its result.
+
+## Architecture-separated M2 candidate — 18 November 2026
+
+Candidate 04 passed 8,036/8,036 native CTest instances and
+8/8 examples across all eight Release/strict UBSan profiles.
+The [dated report](mac-arm-2026-11-18-arch-separation.md) and
+[portable inventory/checksums](arch-separation-m2-2026-11-18/README.md) identify
+base `1a52264` separately from the 454-file frozen implementation fingerprint
+`cef817d707baa6033fe70c223538c17daea4152ca85cd16a274e12ea490633a2`.
+All 28 restored root originals, vendor bytes and pin inventory stayed exact;
+ARM traces/installed-header consumers and guard/strict UBSan controls passed.
+The pre-run rejection and two interrupted build-failed captures remain retained.
+No earlier pass was transferred or numerical gate relaxed. See the report for
+all actual attempts; this is not a pristine first-attempt migration.
+
+Candidate 04 was uncommitted when tested; it is retained as historical evidence.
+The later cleanup implementation is published on the topic branch; master is unchanged.
+The [Windows return handoff](windows-arch-separation-handoff.md) requires the same
+reviewed source, original-byte/include isolation and honest inherited-failure
+reporting. The [publication source comparison](arch-separation-publication-2026-11-18/README.md)
+records the later documentation differences. No benchmark or evidence cleanup was performed.
+
+## Earlier native M2 checkpoint — 17 November
 
 The [17 November correctness report](mac-arm-2026-11-17-ab5bb87-correctness.md)
 tested `ab5bb8754a33724e05a170fa2867475077efd023`, tree

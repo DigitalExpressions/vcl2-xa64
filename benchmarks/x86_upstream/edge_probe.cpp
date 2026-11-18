@@ -13,7 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+#if __has_include("vcl2_xa64.h")
+#include "vcl2_xa64.h"
+#else
 #include "vectorclass.h"
+#endif
+
 #include <immintrin.h>
 #include <cstdint>
 #include <cstdio>

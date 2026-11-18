@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif

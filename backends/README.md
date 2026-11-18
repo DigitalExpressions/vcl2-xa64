@@ -1,14 +1,12 @@
-# Canonical backend implementation sources
+# Retained backend research
 
-- `arm64/`: fork-owned Direct NEON and ARM compatibility/control primitives.
-- `x86/`: native MSVC integer-classification workarounds and optimized primitives.
+The authoritative ARM sources are now root `*_neon.h` files. The former
+`arm64/` duplicates were removed during the architecture separation; they remain
+in Git history. Do not recreate a generation/copy pipeline or edit protected
+root/vendor originals for Neon work.
 
-These are canonical maintenance sources. The generator copies them into the
-existing root include layout, preserving public names and direct header-only
-usage. Applications include root `vectorclass.h`; they do not need to switch
-include directories or run generation.
-
-Shared selection/extracted helpers are under `adaptation/include/`. Original
-VCL2 bytes are under `vendor/vectorclass/`, with explicit adaptation patches
-outside that pristine directory. Read the [layout guide](../docs/backend-layout.md)
-before editing or updating a backend.
+`x86/` retains the old private MSVC classification implementation as inactive
+research, with no include path from either active architecture. Historical
+patches, tests and findings remain available without resuming that campaign.
+See the [layout guide](../docs/backend-layout.md) and
+[retained x86 findings](../docs/x86_findings_and_fix_candidates.md).

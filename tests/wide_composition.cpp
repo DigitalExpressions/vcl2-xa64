@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include "scalar_bits.h"
-#include "vectormath_common.h"
+#include "vcl2_xa64.h"
 #include <algorithm>
 #include <array>
 #include <cfenv>

@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "vectormath_trig.h"
-#include "vectormath_exp.h"
+#include "vcl2_xa64.h"
+#include "vcl2_xa64.h"
 #include <cstdint>
 #include <cstdio>
 #include <cstring>

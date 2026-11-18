@@ -15,7 +15,32 @@ For the approved architecture migration, execute the
 [Mac separation handoff](mac-arch-separation-handoff.md). It supersedes the
 existing layout/clean-source assumptions below for that task only, requires a
 complete frozen uncommitted-source capture, and preserves the native controls.
-Implementation/results publication still needs separate approval.
+The maintainer subsequently approved topic-branch publication. The
+[Windows return handoff](windows-arch-separation-handoff.md) describes validation
+from its exact published Git commit; old captured-source IDs remain unchanged.
+
+## Frozen uncommitted architecture candidates
+
+The [current source ownership](../backend-layout.md) uses `vcl2_xa64.h`, protected
+originals at root and separate authoritative ARM headers. Source publication is
+not required to validate the approved migration. From the implementation root,
+choose a fresh ignored capture path and existing pristine `$PINNED_TESTBENCH`:
+
+```sh
+python3 -B tools/capture_source.py --output build/UNIQUE-CANDIDATE
+python3 -B build/UNIQUE-CANDIDATE/source/tools/run_native_arm_validation.py \
+  --checkout build/UNIQUE-CANDIDATE/source \
+  --capture-manifest build/UNIQUE-CANDIDATE/capture.json \
+  --testbench-dir "$PINNED_TESTBENCH"
+```
+
+Keep the Mac awake, verify all source/archive hashes, and retain the complete
+capture and any failures. The explicit mode sets tested commit/tree to null and
+records the base separately; default clean-checkout behavior remains guarded.
+Never edit the capture, weaken gates or use `--expected-commit` to mislabel it.
+A source change needs a new capture and fresh relevant/full baseline checks.
+See the [actual M2 report](mac-arm-2026-11-18-arm-header-cleanup.md) and
+[Windows return handoff](windows-arch-separation-handoff.md) for exact source IDs.
 
 ## Available hardware
 

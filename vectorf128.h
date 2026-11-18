@@ -34,8 +34,6 @@
 #endif
 
 
-#include "x86_classification.h"
-
 #ifdef VCL_NAMESPACE
 namespace VCL_NAMESPACE {
 #endif
@@ -543,17 +541,6 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec4f & load_partial(int n, float const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 4) return load(p);
-        alignas(64) float temporary[4] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(float)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
 #if INSTRSET >= 10  // AVX512VL
         xmm = _mm_maskz_loadu_ps(__mmask8((1u << n) - 1), p);
 #else
@@ -573,7 +560,6 @@ public:
         }
 #endif
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, float * p) const {
@@ -894,11 +880,7 @@ static inline Vec4f if_add(Vec4fb const f, Vec4f const a, Vec4f const b) {
 #if INSTRSET >= 10
     return _mm_mask_add_ps (a, f, a, b);
 #else
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
-    return _mm_fmadd_ps(a, Vec4f(1), Vec4f(f) & b);
-#else
     return a + (Vec4f(f) & b);
-#endif
 #endif
 }
 
@@ -965,17 +947,7 @@ static inline Vec4fb is_finite(Vec4f const a) {
 #if INSTRSET >= 10
     return __mmask8(_mm_fpclass_ps_mask(a, 0x99) ^ 0x0F);
 #else
-    __m128i bits = _mm_castps_si128(a);
-#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
-    // Keep integer classification independent of finite-math assumptions,
-    // including when a wider emulated vector is split into 128-bit halves.
-#if VCL_ARCH_ARM64
-    __asm__ volatile("" : "+w"(bits));
-#else
-    __asm__ volatile("" : "+x"(bits));
-#endif
-#endif
-    Vec4i t1 = bits;                   // reinterpret as 32-bit integer
+    Vec4i t1 = _mm_castps_si128(a);    // reinterpret as 32-bit integer
     Vec4i t2 = t1 << 1;                // shift out sign bit
     Vec4i t3 = Vec4i(t2 & 0xFF000000) != 0xFF000000; // exponent field is not all 1s
     return Vec4ib(t3);
@@ -1019,24 +991,6 @@ static inline Vec4fb is_nan(Vec4f const a) {
     return Vec4fb(unordered);
 #else
     return _mm_cmp_ps(a, a, 3); // compare unordered
-#endif
-#elif VCL_ARCH_ARM64
-    __m128i bits = _mm_castps_si128(a);
-#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__
-    __asm__ volatile("" : "+w"(bits)); // retain integer classification
-#endif
-    return Vec4ib((Vec4ui(bits) << 1) > Vec4ui(0xFF000000u));
-#elif (defined(__GNUC__) || defined(__clang__)) && !defined(__INTEL_COMPILER)
-    // Like the AVX path, retain unordered comparison under finite-math flags.
-    __m128i unordered = _mm_castps_si128(a);
-    __asm__ volatile("{cmpps $3, %0, %0|cmpps %0, %0, 3}" : "+x" (unordered));
-    return Vec4fb(_mm_castsi128_ps(unordered));
-#elif defined(_MSC_VER)
-#if !defined(__INTEL_COMPILER)
-    return Vec4fb(vcl_detail_x86::nan_mask(__m128(a)));
-#else
-    Vec4ui bits = _mm_castps_si128(a);
-    return (bits << 1) > Vec4ui(0xFF000000u);
 #endif
 #else
 return a != a; // This is not safe with -ffinite-math-only, -ffast-math, or /fp:fast compiler option
@@ -1112,9 +1066,12 @@ static inline Vec4f min(Vec4f const a, Vec4f const b) {
 
 // function abs: absolute value
 static inline Vec4f abs(Vec4f const a) {
-    // Clear the sign without quieting or changing a NaN payload.
+#if INSTRSET >= 10  // AVX512VL
+    return _mm_range_ps(a, a, 8);
+#else
     __m128 mask = _mm_castsi128_ps(_mm_set1_epi32(0x7FFFFFFF));
     return _mm_and_ps(a, mask);
+#endif
 }
 
 // function sqrt: square root
@@ -1170,8 +1127,7 @@ inline Vec4f pow<uint32_t>(Vec4f const x0, uint32_t const n) {
 // to do: test on Intel compiler
 template <typename V, int n>
 static inline V pow_n(V const a) {
-    if constexpr (n == INT32_MIN) return nan_vec<V>();
-    else {    // discard negation of INT32_MIN in the remaining template
+    if (n == 0x80000000) return nan_vec<V>();    // integer overflow
     if (n < 0)    return V(1.0f) / pow_n<V, -n>(a);
     if (n == 0)   return V(1.0f);
     if (n >= 256) return pow(a, n);
@@ -1215,7 +1171,6 @@ static inline V pow_n(V const a) {
         if (lowest == 128) y = x; else y *= x;
     }
     return y;
-    } // n != INT32_MIN
 }
 
 // implement as function pow(vector, const_int)
@@ -1289,14 +1244,7 @@ static inline Vec4f ceil(Vec4f const a) {
 // function roundi: round to nearest integer (even). (result as integer vector)
 static inline Vec4i roundi(Vec4f const a) {
     // Note: assume MXCSR control register is set to rounding
-#if defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)
-    // Clang can reuse this intrinsic across MXCSR changes, even with -frounding-math.
-    __m128i result;
-    __asm__ volatile("{cvtps2dq %1, %0|cvtps2dq %0, %1}" : "=x" (result) : "x" (__m128(a)));
-    return result;
-#else
     return _mm_cvtps_epi32(a);
-#endif
 }
 //static inline Vec4i round_to_int(Vec4f const a) { return roundi(a); } // deprecated
 
@@ -1587,17 +1535,6 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec2d & load_partial(int n, double const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 2) return load(p);
-        alignas(64) double temporary[2] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(double)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
 #if INSTRSET >= 10   // AVX512VL
         xmm = _mm_maskz_loadu_pd(__mmask8((1u << n) - 1), p);
 #else
@@ -1612,7 +1549,6 @@ public:
         }
 #endif
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, double * p) const {
@@ -1922,11 +1858,7 @@ static inline Vec2d if_add(Vec2db const f, Vec2d const a, Vec2d const b) {
 #if INSTRSET >= 10
     return _mm_mask_add_pd (a, f, a, b);
 #else
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)
-    return _mm_fmadd_pd(a, Vec2d(1), Vec2d(f) & b);
-#else
     return a + (Vec2d(f) & b);
-#endif
 #endif
 }
 
@@ -2000,15 +1932,7 @@ static inline Vec2db is_finite(Vec2d const a) {
 #if INSTRSET >= 10
     return __mmask8(_mm_fpclass_pd_mask(a, 0x99) ^ 0x03);
 #else
-    __m128i bits = _mm_castpd_si128(a);
-#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__ && (defined(__GNUC__) || defined(__clang__))
-#if VCL_ARCH_ARM64
-    __asm__ volatile("" : "+w"(bits));
-#else
-    __asm__ volatile("" : "+x"(bits));
-#endif
-#endif
-    Vec2q t1 = bits;                   // reinterpret as integer
+    Vec2q t1 = _mm_castpd_si128(a);    // reinterpret as integer
     Vec2q t2 = t1 << 1;                // shift out sign bit
     Vec2q t3 = 0xFFE0000000000000ll;   // exponent mask
     Vec2qb t4 = Vec2q(t2 & t3) != t3;  // exponent field is not all 1s
@@ -2053,24 +1977,6 @@ static inline Vec2db is_nan(Vec2d const a) {
     return Vec2db(unordered);
 #else
     return _mm_cmp_pd(a, a, 3); // compare unordered
-#endif
-#elif VCL_ARCH_ARM64
-    __m128i bits = _mm_castpd_si128(a);
-#if defined(__FINITE_MATH_ONLY__) && __FINITE_MATH_ONLY__
-    __asm__ volatile("" : "+w"(bits)); // retain integer classification
-#endif
-    return Vec2qb((Vec2uq(bits) << 1) > Vec2uq(0xFFE0000000000000ull));
-#elif (defined(__GNUC__) || defined(__clang__)) && !defined(__INTEL_COMPILER)
-    // Like the AVX path, retain unordered comparison under finite-math flags.
-    __m128i unordered = _mm_castpd_si128(a);
-    __asm__ volatile("{cmppd $3, %0, %0|cmppd %0, %0, 3}" : "+x" (unordered));
-    return Vec2db(_mm_castsi128_pd(unordered));
-#elif defined(_MSC_VER)
-#if !defined(__INTEL_COMPILER)
-    return Vec2db(vcl_detail_x86::nan_mask(__m128d(a)));
-#else
-    Vec2uq bits = _mm_castpd_si128(a);
-    return Vec2qb((bits << 1) > Vec2uq(0xFFE0000000000000ull));
 #endif
 #else
     return a != a; // This is not safe with -ffinite-math-only, -ffast-math, or /fp:fast compiler option
@@ -2145,9 +2051,12 @@ static inline Vec2d min(Vec2d const a, Vec2d const b) {
 
 // function abs: absolute value
 static inline Vec2d abs(Vec2d const a) {
-    // Clear the sign without quieting or changing a NaN payload.
+#if INSTRSET >= 10  // AVX512VL
+    return _mm_range_pd(a, a, 8);
+#else
     __m128d mask = _mm_castsi128_pd(_mm_setr_epi32(-1, 0x7FFFFFFF, -1, 0x7FFFFFFF));
     return _mm_and_pd(a, mask);
+#endif
 }
 
 // function sqrt: square root
@@ -2207,12 +2116,6 @@ static inline Vec2d round(Vec2d const a) {
     Vec2d magic = _mm_castsi128_pd(constant4ui<0, 0x43300000, 0, 0x43300000>());    // magic number = 2^52
     Vec2d sign = _mm_and_pd(a, signmask);        // signbit of a
     Vec2d signedmagic = _mm_or_pd(magic, sign);  // magic number with sign of a
-    // Values with |a| >= 2^52 are already integral. Adding magic there can
-    // change odd integers or overflow; add zero instead. Compare exponent/
-    // magnitude bits so quiet NaNs do not signal invalid just for this mask.
-    __m128i magnitude = _mm_and_si128(_mm_castpd_si128(a), constant4ui<0, 0x7FFFFFFF, 0, 0x7FFFFFFF>());
-    __m128i small = _mm_cmpgt_epi32(constant4ui<0, 0x43300000, 0, 0x43300000>(), magnitude);
-    signedmagic = _mm_and_pd(signedmagic, _mm_castsi128_pd(_mm_shuffle_epi32(small, 0xF5)));
     Vec2d y = a + signedmagic - signedmagic;     // round by adding magic number
 #ifdef SIGNED_ZERO
     y |= (a & Vec2d(-0.0));                      // sign of zero
@@ -2289,13 +2192,7 @@ static inline Vec2q truncatei(Vec2d const a) {
 #else
     double aa[2];
     a.store(aa);
-    // Avoid undefined scalar casts for NaN, infinity and out-of-range input.
-    // Match the signed-minimum sentinel used by the hardware conversion.
-    auto convert = [](double x) -> int64_t {
-        return x >= -9223372036854775808.0 && x < 9223372036854775808.0
-            ? int64_t(x) : INT64_MIN;
-    };
-    return Vec2q(convert(aa[0]), convert(aa[1]));
+    return Vec2q(int64_t(aa[0]), int64_t(aa[1]));
 #endif
 }
 //static inline Vec2q truncate_to_int64(Vec2d const a) { return truncatei(a); } // deprecated
@@ -2304,15 +2201,8 @@ static inline Vec2q truncatei(Vec2d const a) {
 // result as 32-bit integer vector
 static inline Vec4i round_to_int32(Vec2d const a, Vec2d const b) {
     // Note: assume MXCSR control register is set to rounding
-#if defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)
-    // Execute each MXCSR-dependent conversion at the call site.
-    __m128i t1, t2;
-    __asm__ volatile("{cvtpd2dq %1, %0|cvtpd2dq %0, %1}" : "=x" (t1) : "x" (__m128d(a)));
-    __asm__ volatile("{cvtpd2dq %1, %0|cvtpd2dq %0, %1}" : "=x" (t2) : "x" (__m128d(b)));
-#else
     Vec4i t1 = _mm_cvtpd_epi32(a);
     Vec4i t2 = _mm_cvtpd_epi32(b);
-#endif
     return _mm_unpacklo_epi64(t1,t2);
 }
 //static inline Vec4i round_to_int(Vec2d const a, Vec2d const b) {  // deprecated
@@ -2321,15 +2211,8 @@ static inline Vec4i round_to_int32(Vec2d const a, Vec2d const b) {
 // function round_to_int: round to nearest integer (even).
 // result as 32-bit integer vector. Upper two values of result are 0
 static inline Vec4i round_to_int32(Vec2d const a) {
-#if defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)
-    // Execute the MXCSR-dependent conversion at the call site.
-    __m128i result;
-    __asm__ volatile("{cvtpd2dq %1, %0|cvtpd2dq %0, %1}" : "=x" (result) : "x" (__m128d(a)));
-    return result;
-#else
     Vec4i t1 = _mm_cvtpd_epi32(a);
     return t1;
-#endif
 }
 //static inline Vec4i round_to_int(Vec2d const a) { return round_to_int32(a); }  // deprecated
 
@@ -2907,15 +2790,14 @@ static inline Vec4f lookup8(Vec4i const index, Vec4f const table0, Vec4f const t
 template <int n>
 static inline Vec4f lookup(Vec4i const index, float const * table) {
     if constexpr (n <= 0) return 0.0f;
-    else {
-    if constexpr (n <= 4) return lookup4(index, Vec4f().load_partial(n < 4 ? n : 4, table));
+    if constexpr (n <= 4) return lookup4(index, Vec4f().load(table));
     if constexpr (n <= 8) {
 #if INSTRSET >= 8  // AVX2
-        __m256 tt = _mm256_insertf128_ps(_mm256_castps128_ps256(Vec4f().load(table)), Vec4f().load_partial(n - 4, table + 4), 1);
+        __m256 tt = _mm256_loadu_ps(table);
         __m128 r  = _mm256_castps256_ps128(_mm256_permutevar8x32_ps(tt, _mm256_castsi128_si256(index)));
         return r;
 #else   // not AVX2
-        return lookup8(index, Vec4f().load_partial(n < 4 ? n : 4, table), Vec4f().load_partial(n - 4, table + 4));
+        return lookup8(index, Vec4f().load(table), Vec4f().load(table + 4));
 #endif
     }
     // n > 8. Limit index
@@ -2937,7 +2819,6 @@ static inline Vec4f lookup(Vec4i const index, float const * table) {
     uint32_t ii[4];  index1.store(ii);
     return Vec4f(table[ii[0]], table[ii[1]], table[ii[2]], table[ii[3]]);
 #endif
-    } // n > 0
 }
 
 static inline Vec2d lookup2(Vec2q const index, Vec2d const table) {
@@ -2970,10 +2851,9 @@ static inline Vec2d lookup4(Vec2q const index, Vec2d const table0, Vec2d const t
 template <int n>
 static inline Vec2d lookup(Vec2q const index, double const * table) {
     if constexpr (n <= 0) return 0.0;
-    else {
-    if constexpr (n <= 2) return lookup2(index, Vec2d().load_partial(n < 2 ? n : 2, table));
+    if constexpr (n <= 2) return lookup2(index, Vec2d().load(table));
 #if INSTRSET < 8  // not AVX2
-    if constexpr (n <= 4) return lookup4(index, Vec2d().load_partial(n < 2 ? n : 2, table), Vec2d().load_partial(n - 2, table + 2));
+    if constexpr (n <= 4) return lookup4(index, Vec2d().load(table), Vec2d().load(table + 2));
 #endif
     // Limit index
     Vec2uq index1;
@@ -2994,7 +2874,6 @@ static inline Vec2d lookup(Vec2q const index, double const * table) {
     uint32_t ii[4];  index1.store(ii);
     return Vec2d(table[ii[0]], table[ii[2]]);
 #endif
-    } // n > 0
 }
 
 
@@ -3033,12 +2912,12 @@ static inline Vec2d gather2d(void const * a) {
 template <int i0, int i1, int i2, int i3>
 static inline void scatter(Vec4f const data, float * destination) {
 #if INSTRSET >= 10 //  __AVX512VL__
-    __m128i indx = constant4ui<uint32_t(i0), uint32_t(i1), uint32_t(i2), uint32_t(i3)>();
+    __m128i indx = constant4ui<i0, i1, i2, i3>();
     __mmask8 mask = uint8_t((i0 >= 0) | ((i1 >= 0) << 1) | ((i2 >= 0) << 2) | ((i3 >= 0) << 3));
     _mm_mask_i32scatter_ps(destination, mask, indx, data, 4);
 
 #elif INSTRSET >= 9  //  __AVX512F__
-    __m512i indx = _mm512_castsi128_si512(constant4ui<uint32_t(i0), uint32_t(i1), uint32_t(i2), uint32_t(i3)>());
+    __m512i indx = _mm512_castsi128_si512(constant4ui<i0, i1, i2, i3>());
     __mmask16 mask = uint16_t((i0 >= 0) | ((i1 >= 0) << 1) | ((i2 >= 0) << 2) | ((i3 >= 0) << 3));
     _mm512_mask_i32scatter_ps(destination, mask, indx, _mm512_castps128_ps512(data), 4);
 

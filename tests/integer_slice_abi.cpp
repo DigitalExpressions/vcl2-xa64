@@ -15,7 +15,7 @@
  */
 
 // Separate translation unit to exercise by-value vector/divisor calls.
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #ifdef VCL_NAMESPACE
 using namespace VCL_NAMESPACE;
 #endif

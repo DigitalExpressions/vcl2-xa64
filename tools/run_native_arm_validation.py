@@ -28,6 +28,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 from validation_evidence import EvidenceRun, FIXTURES, package_evidence, sha
+from capture_source import verify_capture
 
 BASELINE = "943923a4cce1b3990ee69b37ebdf1c37f0fc67b6"
 TESTBENCH = "a7293702385e5169a5f58b83177f2a43cd59139b"
@@ -92,7 +93,14 @@ def preflight(args):
     run = Run(checkout, output)
     args.evidence_run = run
     print(f"Evidence directory: {output}", flush=True)
-    branch = verify_source(run, args.expected_commit)
+    if args.capture_manifest:
+        captured = verify_capture(checkout,args.capture_manifest.resolve())
+        run.head = run.tree = None
+        run.captured_source = captured
+        branch = 'frozen-uncommitted-source'
+        (output/'captured-source.json').write_text(json.dumps(captured,indent=2))
+    else:
+        branch = verify_source(run, args.expected_commit)
     _, compiler = run.command("compiler-path", ["xcrun", "--find", "clang++"])
     compiler = compiler.strip()
     for label, command in [("os", ["sw_vers"]), ("hardware", ["sysctl", "-n", "machdep.cpu.brand_string"]),
@@ -118,7 +126,7 @@ def preflight(args):
                      page_size=os.sysconf("SC_PAGE_SIZE"), environment={key: os.environ.get(key) for key in
                      ["CXXFLAGS", "CFLAGS", "CPPFLAGS", "LDFLAGS", "CC", "CXX", "SDKROOT", "MACOSX_DEPLOYMENT_TARGET"]})
     (output / "inventory.json").write_text(json.dumps(inventory, indent=2))
-    paths = run.git("tracked-files", "ls-files", "-z").split("\0")
+    paths = ([r["path"] for r in run.captured_source["files"]] if args.capture_manifest else run.git("tracked-files", "ls-files", "-z").split("\0"))
     sources = [dict(path=p, sha256=sha(checkout / p)) for p in sorted(paths) if p and not p.endswith(".md")]
     (output / "source-manifest.json").write_text(json.dumps(sources, indent=2))
     return run, compiler, generator
@@ -183,7 +191,7 @@ def probes(run, compiler, generator):
     (consumer / "CMakeLists.txt").write_text('cmake_minimum_required(VERSION 3.20)\nproject(runtime_check LANGUAGES CXX)\n'
         'set(VCL_BACKEND 2 CACHE STRING "" FORCE)\nadd_subdirectory("${VCL_CHECKOUT}" library)\n'
         'add_executable(runtime_check main.cpp)\ntarget_link_libraries(runtime_check PRIVATE vcl::runtime)\n')
-    (consumer / "main.cpp").write_text('#include "vectorclass.h"\n#include <cstdio>\nint main(){\n'
+    (consumer / "main.cpp").write_text('#include "vcl2_xa64.h"\n#include <cstdio>\nint main(){\n'
         'std::printf("arm64=%d neon=%d instrset_detect=%d pointer_bits=%zu long_bits=%zu\\n",'
         'int(VCL_ARCH_ARM64),int(has_neon()),instrset_detect(),sizeof(void*)*8,sizeof(long)*8);\n'
         'return !VCL_ARCH_ARM64 || !has_neon() || instrset_detect()!=0 || sizeof(void*)!=8; }\n')
@@ -208,6 +216,10 @@ def profile(run, compiler, generator, bench, item):
             "-DVCL_ENABLE_EXPERIMENTAL_NEON=ON", "-DVCL_NATIVE_MAX_VECTOR_SIZE=" + str(item["width"]),
             "-DVCL_SANITIZE=" + ("ON" if item["sanitize"] else "OFF"), "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
             "-DVCL_TESTBENCH_DIR=" + (str(bench) if bench else "")])
+        if bench:
+            for command in json.loads((directory / "compile_commands.json").read_text()):
+                if Path(command["file"]).resolve().is_relative_to(bench.resolve()):
+                    raise RuntimeError("Compile only include-adapted build copies of the pinned testbench: "+command["file"])
         run.command(name + "-build", ["cmake", "--build", directory, "--parallel", "3", "--verbose"])
         _, text = run.command(name + "-inventory", ["ctest", "--test-dir", directory, "--show-only=json-v1"])
         tests = json.loads(text)["tests"]
@@ -261,15 +273,18 @@ def profile(run, compiler, generator, bench, item):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkout", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--capture-manifest",type=Path,help="Explicit frozen-uncommitted-source manifest; validate actual captured bytes, without Git status spoofing")
     parser.add_argument("--expected-commit", help="Require this Git revision; otherwise capture the current clean HEAD")
     parser.add_argument("--testbench-bundle", type=Path, help="Restore the prepared pinned-testbench Git bundle offline")
     parser.add_argument("--testbench-dir", type=Path, help="Reuse an existing clean checkout at the pinned revision")
     parser.add_argument("--local-only", action="store_true", help="Run the 336 local cases instead of the 8036-case pinned matrix")
     parser.add_argument("--plan", action="store_true", help="Print the plan without running tools or requiring a Mac")
     args = parser.parse_args()
+    if args.capture_manifest and args.expected_commit:
+        parser.error("--capture-manifest and --expected-commit identify different provenance modes")
     items = matrix(args.local_only)
     if args.plan:
-        print(json.dumps(dict(expected_commit=args.expected_commit, source_selection="current clean checkout", minimum_ancestor=BASELINE, testbench=None if args.local_only else TESTBENCH,
+        print(json.dumps(dict(expected_commit=args.expected_commit, source_selection="frozen uncommitted capture" if args.capture_manifest else "current clean checkout", minimum_ancestor=BASELINE, testbench=None if args.local_only else TESTBENCH,
                               case_instances=sum(p["expected"] for p in items), timeout_seconds=60, profiles=items), indent=2))
         return 0
     run = None
@@ -277,16 +292,21 @@ def main():
         run, compiler, generator = preflight(args)
         bench = testbench(run, args)
         run.command("repository-check", [sys.executable, "-B", "tools/check_repository.py"])
+        run.command("integrity-before", [sys.executable, "-B", "tools/regenerate_headers.py", "--check", "--json", str(run.output/"integrity-before.json")])
         probes(run, compiler, generator)
         records = []
         for item in items:
             records.append(profile(run, compiler, generator, bench, item))
             (run.output / "profiles.json").write_text(json.dumps(records, indent=2))
-        final_head = run.git("source-final-head", "rev-parse", "HEAD")
-        final_tree = run.git("source-final-tree", "rev-parse", "HEAD^{tree}")
-        final_status = run.git("source-final-status", "status", "--porcelain")
-        unchanged = final_head == run.head and final_tree == run.tree and not final_status
-        summary = dict(head=run.head, tree=run.tree, native_arm64=True, profiles=records, source_unchanged=unchanged,
+        run.command("integrity-after", [sys.executable,"-B","tools/regenerate_headers.py","--check","--json",str(run.output/"integrity-after.json")])
+        if args.capture_manifest:
+            unchanged = verify_capture(run.checkout,args.capture_manifest.resolve()) == run.captured_source
+        else:
+            final_head = run.git("source-final-head", "rev-parse", "HEAD")
+            final_tree = run.git("source-final-tree", "rev-parse", "HEAD^{tree}")
+            final_status = run.git("source-final-status", "status", "--porcelain")
+            unchanged = final_head == run.head and final_tree == run.tree and not final_status
+        summary = dict(head=run.head, tree=run.tree, native_arm64=True, captured_source=getattr(run,"captured_source",None), profiles=records, source_unchanged=unchanged,
                        passed=sum(r.get("passed", 0) for r in records), expected=sum(p["expected"] for p in items),
                        success=unchanged and all(r["status"] == "passed" for r in records), evidence=str(run.output))
         (run.output / "summary.json").write_text(json.dumps(summary, indent=2))

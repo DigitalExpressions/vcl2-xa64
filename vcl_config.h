@@ -17,6 +17,9 @@
 // Backend selection. All translation units exchanging VCL objects must agree.
 #ifndef VCL_CONFIG_H
 #define VCL_CONFIG_H
+#if defined(_M_ARM64EC)
+#error ARM64EC is not supported by VCL2 XA64
+#endif
 #define VCL_BACKEND_X86 1
 #define VCL_BACKEND_SSE2NEON 2
 #define VCL_BACKEND_NEON 3
@@ -24,6 +27,9 @@
 #define VCL_ARCH_ARM64 1
 #else
 #define VCL_ARCH_ARM64 0
+#endif
+#if !VCL_ARCH_ARM64 && !defined(__x86_64__) && !defined(__i386__) && !defined(_M_X64) && !defined(_M_AMD64) && !defined(_M_IX86)
+#error Unsupported compiler target for VCL2 XA64
 #endif
 #ifndef VCL_BACKEND
 #if VCL_ARCH_ARM64

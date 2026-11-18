@@ -15,7 +15,7 @@
  */
 
 // Classification must inspect bits even with -ffinite-math-only.
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include <cstdio>
 #include <cstring>
 #include <limits>

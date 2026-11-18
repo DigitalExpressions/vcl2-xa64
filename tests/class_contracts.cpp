@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "vectorclass.h"
-#include "vectormath_common.h"
+#include "vcl2_xa64.h"
+#include "vcl2_xa64.h"
 #include <array>
 #include <cstdio>
 #include <cstring>

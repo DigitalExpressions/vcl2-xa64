@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Verify pristine upstream and reproduce shipped headers without a build step.
+"""Verify protected upstream originals and the separated ARM include graph.
 
-Default/--check is read-only. --write replaces only registered root products.
+All modes are read-only. The old adapted-root writer is permanently retired.
 No downloads, Git mutations, patch fuzz, external patch program or compiler.
 """
 import argparse
@@ -81,102 +81,83 @@ def pristine(root,manifest,directory):
     return files,metadata
 
 
-def apply_patch(files,data):
-    """Apply exact unified text hunks to LF-normalized upstream files."""
-    lines=data.decode('utf-8').splitlines(keepends=True)
-    i=0;changed=[]
-    while i<len(lines):
-        if not lines[i].startswith('--- a/') or i+1>=len(lines) or not lines[i+1].startswith('+++ b/'):
-            raise ValueError('Expected ordinary unified file header')
-        name=lines[i][6:].rstrip('\n');new_name=lines[i+1][6:].rstrip('\n');i+=2
-        if name!=new_name or name not in files or name in changed:
-            raise ValueError('Unexpected or repeated patch path: '+name)
-        original=files[name].decode('utf-8').splitlines(keepends=True)
-        output=[];position=0;hunks=0
-        while i<len(lines) and lines[i].startswith('@@ '):
-            header=re.fullmatch(r'@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@[^\n]*\n',lines[i])
-            if not header: raise ValueError('Malformed patch hunk: '+name)
-            start=int(header[1]);old_count=int(header[2] or '1');new_count=int(header[4] or '1')
-            start=start-1 if old_count else start
-            if start<position or start>len(original): raise ValueError('Overlapping/out-of-range hunk: '+name)
-            output.extend(original[position:start]);position=start;i+=1;old_used=new_used=0
-            while old_used<old_count or new_used<new_count:
-                if i>=len(lines) or not lines[i] or lines[i][0] not in ' +-':
-                    raise ValueError('Incomplete patch hunk: '+name)
-                kind=lines[i][0];text=lines[i][1:];i+=1
-                if kind in ' -':
-                    if position>=len(original) or original[position]!=text:
-                        raise ValueError('Patch context mismatch, no fuzz allowed: '+name)
-                    position+=1;old_used+=1
-                if kind in ' +': output.append(text);new_used+=1
-                if old_used>old_count or new_used>new_count: raise ValueError('Patch count mismatch: '+name)
-            hunks+=1
-        if not hunks: raise ValueError('Patch file has no hunks: '+name)
-        output.extend(original[position:]);files[name]=''.join(output).encode();changed.append(name)
-    return changed
 
+def check_arm_source(path):
+    # Preserve quoted literals while removing comments. Check inactive branches
+    # too: ARM-owned sources must not accumulate old x86 repairs again.
+    token = re.compile(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*.*?\*/|//[^\n]*', re.S)
+    code = token.sub(lambda m: ' ' if m[0].startswith(('/', '/*')) else m[0], path.read_text())
+    forbidden = [r'\bVCL_BACKEND_X86\b', r'\bvcl_detail_x86\b',
+        r'\b__(?:AVX|FMA|XOP)\w*', r'\b(?:__x86_64__|__i386__?|__amd64__?|_M_X64|_M_AMD64|_M_IX86)\b',
+        r'\b_mm(?:256|512)_\w*', r'\b__m(?:256|512)\w*', r'\b__mmask\d*',
+        r'\bINSTRSET\s*(?:>=|==)\s*(?:[7-9]|1[0-2])\b',
+        r'\bINSTRSET\s*>\s*(?:[6-9]|1[0-2])\b',
+        r'#\s*include\s*[<"](?:x86intrin|immintrin)[.h>"/]*']
+    for pattern in forbidden:
+        match = re.search(pattern, code)
+        if match:
+            raise ValueError('x86-only code in ARM source: '+path.name+' -> '+match[0])
 
 def render(root):
-    config=json.loads(path_in(root,'adaptation/manifest.json').read_text(encoding='utf-8'))
-    if config['schema']!=1: raise ValueError('Unsupported adaptation schema')
-    original,upstream=pristine(root,config['upstream_manifest'],config['upstream_directory'])
-    files={name:lf(data) for name,data in original.items()}
-    patches=[]
-    for name in config['patches']:
-        data=path_in(root,name).read_bytes()
-        patches.append(dict(path=name,sha256=digest(data),changed_paths=apply_patch(files,data)))
-    products={};sources=[]
-    def product(name,data):
-        if len(PurePosixPath(name).parts)!=1 or Path(name).suffix not in {'.h','.cpp'} or name in products:
-            raise ValueError('Invalid or duplicate root product: '+name)
-        path_in(root,name);products[name]=data
-    for row in config['upstream_products']:
-        data=files[row['upstream']]
-        if row['eol']=='crlf': data=data.replace(b'\n',b'\r\n')
-        elif row['eol']!='lf': raise ValueError('Unsupported product line ending')
-        product(row['output'],data)
-    for row in config['copy_products']:
-        data=path_in(root,row['source']).read_bytes()
-        sources.append(dict(path=row['source'],sha256=digest(data)))
-        product(row['output'],data)
-    return products,dict(upstream_commit=upstream['commit'],upstream_tree=upstream['tree'],
-        pristine_upstream_files=len(original),patches=patches,backend_sources=sources)
+    original, upstream = pristine(root, 'vendor/vectorclass.json', 'vendor/vectorclass')
+    rows = []
+    for name, expected in sorted(original.items()):
+        actual = path_in(root, name).read_bytes()
+        if actual != expected:
+            raise ValueError('Changed protected root original (exact bytes required): ' + name)
+        rows.append(dict(path=name, sha256=digest(actual), exact_bytes=True))
+    if (root/'sse2neon.h').read_bytes() != (root/'vendor/sse2neon/sse2neon.h').read_bytes():
+        raise ValueError('sse2neon dependency copy differs from retained vendor dependency')
+    family = sorted(root.glob('*_neon.h'))
+    if not family or not (root/'vcl2_xa64.h').is_file():
+        raise ValueError('Missing separated ARM family or facade')
+    protected_headers = {n for n in original if n.endswith('.h')}
+    for path in family:
+        check_arm_source(path)
+        for header in re.findall(r'^\s*#\s*include\s*"([^"\n]+)"', path.read_text(), re.M):
+            if header in protected_headers:
+                raise ValueError('ARM include reaches protected x86 original: '+path.name+' -> '+header)
+            path_in(root, header)
+            if not (root/header).is_file():
+                raise ValueError('Missing ARM dependency: '+header)
+    config = json.loads((root/'adaptation/manifest.json').read_text())
+    if config.get('schema') != 2 or config.get('patches') or config.get('copy_products') or config.get('upstream_products'):
+        raise ValueError('Retired adaptation writer must have no active outputs or patches')
+    return {}, dict(upstream_commit=upstream['commit'], upstream_tree=upstream['tree'],
+        pristine_upstream_files=len(original), protected_root_files=len(rows),
+        root_originals=rows, arm_sources=[dict(path=p.name,sha256=digest(p.read_bytes())) for p in family],
+        generation_retired=True, arm_x86_code_rejected=True)
 
 
-def verify(root,products,strict=False):
-    rows=[];failures=[]
-    for name,expected in sorted(products.items()):
-        path=path_in(root,name);actual=path.read_bytes() if path.is_file() else None
-        match=actual==expected
-        normalized=actual is not None and lf(actual)==lf(expected)
-        if not normalized or (strict and not match): failures.append(name)
-        rows.append(dict(path=name,expected_sha256=digest(expected),actual_sha256=digest(actual) if actual is not None else None,
-            exact_bytes=match,lf_normalized_equal=normalized))
-    return rows,failures
+def verify(root, products, strict=False):
+    if products:
+        raise ValueError('Generation is retired; no root write products are allowed')
+    return [], []
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    mode=parser.add_mutually_exclusive_group();mode.add_argument('--check',action='store_true');mode.add_argument('--write',action='store_true')
-    parser.add_argument('--strict-bytes',action='store_true',help='Require exact generated bytes, including declared line endings')
-    parser.add_argument('--json',type=Path,help='Save a new verification record; existing records are never overwritten')
+    mode=parser.add_mutually_exclusive_group()
+    mode.add_argument('--check',action='store_true')
+    mode.add_argument('--write',action='store_true',help='Retired: always rejected without writing')
+    parser.add_argument('--strict-bytes',action='store_true',help='All original checks always require exact bytes')
+    parser.add_argument('--json',type=Path)
     args=parser.parse_args()
-    if args.json and args.json.exists(): parser.error('Verification record exists; use a new path')
+    if args.write:
+        parser.error('Header generation is retired; protected root originals cannot be written')
+    if args.json and args.json.exists():
+        parser.error('Verification record exists; use a new path')
     try:
-        products,record=render(ROOT)
-        if args.write:
-            for name,data in products.items(): path_in(ROOT,name).write_bytes(data)
-        rows,failures=verify(ROOT,products,args.strict_bytes)
-        record.update(schema=1,mode='write' if args.write else 'check',products=rows,
-            generated_products=len(products),strict_bytes=args.strict_bytes,failures=failures,success=not failures)
+        _,record=render(ROOT)
+        record.update(success=True,mode='check',generated_products=0,failures=[])
         if args.json:
             args.json.parent.mkdir(parents=True,exist_ok=True)
-            args.json.write_bytes((json.dumps(record,indent=2,sort_keys=True)+'\n').encode())
-        print(json.dumps(dict(success=not failures,pristine_upstream_files=record['pristine_upstream_files'],
-            generated_products=len(products),exact_byte_matches=sum(r['exact_bytes'] for r in rows),failures=failures),indent=2))
-        return int(bool(failures))
+            args.json.write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
+        print(json.dumps({k:record[k] for k in ['success','pristine_upstream_files','protected_root_files','generated_products','generation_retired']},indent=2))
+        return 0
     except (OSError,ValueError,KeyError) as error:
-        print('Header generation failed: '+str(error),file=sys.stderr);return 1
+        print('Source integrity failed: '+str(error),file=sys.stderr)
+        return 1
 
 
 if __name__=='__main__': sys.exit(main())

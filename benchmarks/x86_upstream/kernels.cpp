@@ -13,10 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "common.h"
+
+#if __has_include("vcl2_xa64.h")
+#include "vcl2_xa64.h"
+#else
 #include "vectorclass.h"
 #include "vectormath_exp.h"
 #include "vectormath_trig.h"
+#endif
+#include "common.h"
+
+
+
 #include <type_traits>
 
 template<class V> auto input(Inputs const* p) {

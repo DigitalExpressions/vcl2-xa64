@@ -248,20 +248,8 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec16i & load_partial(int n, void const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 16) return load(p);
-        alignas(64) int32_t temporary[16] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(int32_t)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         zmm = _mm512_maskz_loadu_epi32(__mmask16((1u << n) - 1), p);
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -801,20 +789,8 @@ public:
     }
     // Partial load. Load n elements and set the rest to 0
     Vec8q & load_partial(int n, void const * p) {
-#if defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9
-        // Preserve masked-off page boundaries under MSVC optimization.
-        if (n >= 8) return load(p);
-        alignas(64) int64_t temporary[8] = {};
-        unsigned char* destination = reinterpret_cast<unsigned char*>(temporary);
-        volatile unsigned char const* source = reinterpret_cast<volatile unsigned char const*>(p);
-        const int count = n > 0 ? n * int(sizeof(int64_t)) : 0;
-        for (int i = 0; i < count; ++i) destination[i] = source[i];
-        return load(temporary);
-#else
-
         zmm = _mm512_maskz_loadu_epi64(__mmask16((1 << n) - 1), p);
         return *this;
-    #endif
     }
     // Partial store. Store n elements
     void store_partial(int n, void * p) const {
@@ -1690,12 +1666,12 @@ template <int n>
 static inline Vec16i lookup(Vec16i const index, void const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 16) {
-        Vec16i table1 = Vec16i().load_partial(n < 16 ? n : 16, table);
+        Vec16i table1 = Vec16i().load(table);
         return lookup16(index, table1);
     }
     if constexpr (n <= 32) {
-        Vec16i table1 = Vec16i().load_partial(n < 16 ? n : 16, table);
-        Vec16i table2 = Vec16i().load_partial(n - 16 < 16 ? n - 16 : 16, (int8_t*)table + 64);
+        Vec16i table1 = Vec16i().load(table);
+        Vec16i table2 = Vec16i().load((int8_t*)table + 64);
         return _mm512_permutex2var_epi32(table1, index, table2);
     }
     // n > 32. Limit index
@@ -1724,12 +1700,12 @@ template <int n>
 static inline Vec8q lookup(Vec8q const index, void const * table) {
     if constexpr (n <= 0) return 0;
     if constexpr (n <= 8) {
-        Vec8q table1 = Vec8q().load_partial(n < 8 ? n : 8, table);
+        Vec8q table1 = Vec8q().load(table);
         return lookup8(index, table1);
     }
     if constexpr (n <= 16) {
-        Vec8q table1 = Vec8q().load_partial(n < 8 ? n : 8, table);
-        Vec8q table2 = Vec8q().load_partial(n - 8 < 8 ? n - 8 : 8, (int8_t*)table + 64);
+        Vec8q table1 = Vec8q().load(table);
+        Vec8q table2 = Vec8q().load((int8_t*)table + 64);
         return _mm512_permutex2var_epi64(table1, index, table2);
     }
     // n > 16. Limit index
@@ -1772,7 +1748,7 @@ static inline Vec16i gather16i(void const * a) {
                 i8-imax+15, i9-imax+15, i10-imax+15, i11-imax+15, i12-imax+15, i13-imax+15, i14-imax+15, i15-imax+15> (b);
         }
         else {
-            Vec16i b = Vec16i().load_partial(imax - imin + 1 < 16 ? imax - imin + 1 : 16, (int32_t const *)a + imin);
+            Vec16i b = Vec16i().load((int32_t const *)a + imin);
             return permute16<i0-imin, i1-imin, i2-imin, i3-imin, i4-imin, i5-imin, i6-imin, i7-imin,
                 i8-imin, i9-imin, i10-imin, i11-imin, i12-imin, i13-imin, i14-imin, i15-imin> (b);
         }
@@ -1782,7 +1758,7 @@ static inline Vec16i gather16i(void const * a) {
     &&  (i8<imin+16  || i8>imax-16)  && (i9<imin+16  || i9>imax-16)  && (i10<imin+16 || i10>imax-16) && (i11<imin+16 || i11>imax-16)
     &&  (i12<imin+16 || i12>imax-16) && (i13<imin+16 || i13>imax-16) && (i14<imin+16 || i14>imax-16) && (i15<imin+16 || i15>imax-16) ) {
         // load two contiguous blocks and blend
-        Vec16i b = Vec16i().load_partial(imax - imin + 1 < 16 ? imax - imin + 1 : 16, (int32_t const *)a + imin);
+        Vec16i b = Vec16i().load((int32_t const *)a + imin);
         Vec16i c = Vec16i().load((int32_t const *)a + imax-15);
         const int j0  = i0 <imin+16 ? i0 -imin : 31-imax+i0;
         const int j1  = i1 <imin+16 ? i1 -imin : 31-imax+i1;
@@ -1822,14 +1798,14 @@ static inline Vec8q gather8q(void const * a) {
             return permute8<i0-imax+7, i1-imax+7, i2-imax+7, i3-imax+7, i4-imax+7, i5-imax+7, i6-imax+7, i7-imax+7> (b);
         }
         else {
-            Vec8q b = Vec8q().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (int64_t const *)a + imin);
+            Vec8q b = Vec8q().load((int64_t const *)a + imin);
             return permute8<i0-imin, i1-imin, i2-imin, i3-imin, i4-imin, i5-imin, i6-imin, i7-imin> (b);
         }
     }
     if constexpr ((i0<imin+8 || i0>imax-8) && (i1<imin+8 || i1>imax-8) && (i2<imin+8 || i2>imax-8) && (i3<imin+8 || i3>imax-8)
     &&  (i4<imin+8 || i4>imax-8) && (i5<imin+8 || i5>imax-8) && (i6<imin+8 || i6>imax-8) && (i7<imin+8 || i7>imax-8)) {
         // load two contiguous blocks and blend
-        Vec8q b = Vec8q().load_partial(imax - imin + 1 < 8 ? imax - imin + 1 : 8, (int64_t const *)a + imin);
+        Vec8q b = Vec8q().load((int64_t const *)a + imin);
         Vec8q c = Vec8q().load((int64_t const *)a + imax-7);
         const int j0 = i0<imin+8 ? i0-imin : 15-imax+i0;
         const int j1 = i1<imin+8 ? i1-imin : 15-imax+i1;

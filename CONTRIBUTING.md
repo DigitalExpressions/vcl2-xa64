@@ -5,11 +5,13 @@ The [strategy reset](docs/integration-plan.md) retires the x86-fix campaign.
 Do not extend or revert existing x86 fixes, or change other source, as part of
 this cleanup. The maintainer has now approved the
 [architecture separation on Mac M2](docs/validation/mac-arch-separation-handoff.md).
-That handoff defines the migration exception to the current generated-root
-workflow below. Only the prepared documentation has commit/push approval;
-implementation/results remain uncommitted for review.
+The migration and native M2 ARM cleanup are complete. The maintainer approved
+committing/pushing the implementation and reports on `arch-separation-m2`;
+`master` remains unchanged pending separate integration approval. Follow the
+[Windows return handoff](docs/validation/windows-arch-separation-handoff.md) for
+the next native gate. Generation is retired; the ownership rules below apply.
 
-Read the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
+Read the [fork usage guide](README-vcl2-xa64.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
 and [validation index](docs/validation/README.md) before continuing work.
 The ARM port and selected shared validation checkpoint are complete. The default
 branch stays `master`; later work needs its own relevant validation.
@@ -42,12 +44,14 @@ reviewable. Preserve copyright and third-party notices. All source files added
 for this port use the complete DigitalExpressions Sweden Apache-2.0 notice;
 derived files must retain their original attribution too.
 
-Maintain runtime changes in the [canonical adaptation/backend sources](docs/backend-layout.md),
-not by hand-editing generated root headers. Keep `vendor/vectorclass/` pristine.
-Run `python -B tools/regenerate_headers.py --write` after canonical edits,
-then `--check`, generation integrity controls and relevant native validation.
-The root products remain checked in for direct header-only use; Python/Git
-generation is a maintainer workflow, not a prerequisite for applications.
+Maintain ARM runtime changes in root `*_neon.h` and optional
+`instrset_detect_neon.cpp`. Applications include `vcl2_xa64.h`. All 28 original
+root files and `vendor/vectorclass/` must remain exact pinned bytes; root README
+is upstream, while fork guidance lives in `README-vcl2-xa64.md`.
+The old adapted-root generation pipeline is retired. Use read-only
+`tools/regenerate_headers.py --check`, integrity controls and the repository
+check, then relevant fresh native validation. Never run an old writer against
+protected originals. See the [source ownership guide](docs/backend-layout.md).
 
 Run [the regression suite](tests/README.md) for both ARM backends, native widths
 128/256/512, Release and strict UBSan where supported. Exercise selected x86

@@ -1,0 +1,29 @@
+{
+  "frozen_attempts": [
+    {
+      "candidate": "cleanup-01",
+      "source_fingerprint": "5a6f9ad8fe448d19e05917ef2eee95f4482eb7136c67488ad3bf2b3d6eef542d",
+      "source_files": 474,
+      "status": "passed",
+      "ctest_executed": 8036,
+      "ctest_passed": 8036,
+      "examples_passed": 8
+    }
+  ],
+  "unfrozen_preparation": [
+    {
+      "attempt": "preparation-01",
+      "status": "preprocessing mismatch; stopped and retained",
+      "reason": "Temporary reducer interpreted a directive inside a C++ block comment; corrected comment-aware parsing before freezing. No native matrix used this draft."
+    },
+    {
+      "attempt": "preprocessing-02",
+      "status": "18/18 identical before/after C++ token streams"
+    }
+  ],
+  "historical_candidate04": {
+    "report": "../mac-arm-2026-11-18-arch-separation.md",
+    "fingerprint": "cef817d707baa6033fe70c223538c17daea4152ca85cd16a274e12ea490633a2",
+    "not_relabelled": true
+  }
+}

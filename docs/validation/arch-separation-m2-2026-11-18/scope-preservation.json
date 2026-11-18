@@ -1,0 +1,100 @@
+{
+  "cpp_regression_changes_are_include_only": [
+    "tests/boundary_regression.h",
+    "tests/class_contracts.cpp",
+    "tests/class_contracts_abi.cpp",
+    "tests/core.cpp",
+    "tests/cross_platform/capture.cpp",
+    "tests/edges.cpp",
+    "tests/exp_log.cpp",
+    "tests/fp_classification.cpp",
+    "tests/fp_helpers.cpp",
+    "tests/fp_helpers_abi.cpp",
+    "tests/fp_partial.cpp",
+    "tests/fp_reduction.cpp",
+    "tests/hyperbolic.cpp",
+    "tests/integer_slice.cpp",
+    "tests/integer_slice_abi.cpp",
+    "tests/inverse_pi.cpp",
+    "tests/movement_slice.cpp",
+    "tests/power_roots.cpp",
+    "tests/trig.cpp",
+    "tests/truncate_i64_regression.h",
+    "tests/wide_composition.cpp",
+    "tests/wide_composition_abi.cpp",
+    "tests/wide_types.h"
+  ],
+  "independent_inputs_unchanged": [
+    {
+      "path": "tests/cross_platform/corpus.jsonl",
+      "sha256": "0e18a9aecb2b15b31b1ff0aeaa61e1d8f91867df675900114c6ecbf3e385946c"
+    },
+    {
+      "path": "tests/cross_platform/policies.json",
+      "sha256": "610be76973950ba9eea1c3779ccdb4397e4c82fe4bf2e73f3226039edf152fd3"
+    },
+    {
+      "path": "tests/exp_log_reference.h",
+      "sha256": "fc5eec6a8423915f693e3be925a9a73ecddf8464dbfc37984b6ef4eb914b6b06"
+    },
+    {
+      "path": "tests/generate_exp_log_reference.py",
+      "sha256": "f21381e867c56404e9906ad1482ced533a5d950dc6f3a194759e89afe6c2ded8"
+    },
+    {
+      "path": "tests/generate_hyperbolic_reference.py",
+      "sha256": "fffe434e9f825616be0319e88397d0764074e58597a35af30a828bbd6dd52011"
+    },
+    {
+      "path": "tests/generate_inverse_pi_reference.py",
+      "sha256": "ae03f0df1ef648777fa041538d11507eff47297bf043c0c8b4ec2e366cf849d8"
+    },
+    {
+      "path": "tests/generate_power_roots_reference.py",
+      "sha256": "bfd013d4662aef0f76a8296725ea88897cc6daa848df4ab368e7f6504d26cd83"
+    },
+    {
+      "path": "tests/generate_trig_reference.py",
+      "sha256": "9c3cb66f3813235ad73303787f10f00ba8fcaa5f0ed578a6404d3276991108ed"
+    },
+    {
+      "path": "tests/generate_upstream_x86_reference.py",
+      "sha256": "ee957c68be6ece90a74ed6f2c935665a101903b3e485edc473754c8924647a7f"
+    },
+    {
+      "path": "tests/hyperbolic_reference.h",
+      "sha256": "1e636d8f3e72c460ffe7926b12f7f5449d54e34027bb7a6b5b6c5a8b1580c0e1"
+    },
+    {
+      "path": "tests/inverse_pi_reference.h",
+      "sha256": "e65f3e6a919d3c78a8e9cddfeed95989c97146245132b8906cccf06b52401954"
+    },
+    {
+      "path": "tests/power_roots_reference.h",
+      "sha256": "2717e907603e536a23a133cb8ca7f3c4b874f78bfa7ad038ea2f5861677579c3"
+    },
+    {
+      "path": "tests/protected_memory.h",
+      "sha256": "7675a08368457a76b4b199f084ec85ce0eb9d2dbd2f57bdabc6fa64484e2512a"
+    },
+    {
+      "path": "tests/trig_reference.h",
+      "sha256": "05f9a22557d0256a147f3c7540b9f43fac23f5d12ff3951ba4fbe0d6b5c030e0"
+    },
+    {
+      "path": "tests/upstream_x86_reference.h",
+      "sha256": "91f4f72be3c1511fa476f878802de990ea7d3edf3ba8b50ab34dc63575deb432"
+    },
+    {
+      "path": "tests/upstream_x86_reference_data.h",
+      "sha256": "7121747abc9fcf1011862e0888d5cf749ba767c735403b7fb309c801c9bfb9bb"
+    }
+  ],
+  "original_scalar_oracle_adapt_function_unchanged": true,
+  "numerical_gates_seeds_fp_flags_and_controls_preserved": true,
+  "backend_default": "sse2neon compatibility",
+  "direct_neon": "explicit experimental opt-in",
+  "new_common_include": "vcl2_xa64.h",
+  "old_x86_repairs_inactive": true,
+  "benchmarks_asan_or_emulation_run": false
+}

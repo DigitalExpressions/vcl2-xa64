@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "vectormath_hyp.h"
+#include "vcl2_xa64.h"
 #include "hyperbolic_reference.h"
 #include <algorithm>
 #include <cfenv>

@@ -5,9 +5,15 @@ applications will use `#include "vcl2_xa64.h"` as the platform-neutral entry poi
 Publish the reviewed documentation first, implement and validate on native
 Mac M2, then verify the same frozen implementation on native AMD Windows.
 The [Mac handoff](validation/mac-arch-separation-handoff.md) defines execution
-scope and preservation controls. Only documentation publication has commit/push
-approval; implementation/results must remain uncommitted for review. Source
-migration has not started in this documentation publication.
+scope and preservation controls. The initial `1a52264` publication contained
+only documentation. The maintainer subsequently approved implementation/results
+publication on `arch-separation-m2`, after native M2 validation and ARM cleanup.
+
+The Mac implementation is now prepared for topic-branch publication. See the
+[actual M2 report](validation/mac-arm-2026-11-18-arm-header-cleanup.md) and
+[Windows return handoff](validation/windows-arch-separation-handoff.md) for its
+exact captured source, retained attempts and pending cross-host verification.
+The documentation-only publication described above remains the base checkpoint.
 
 ## Intended result
 

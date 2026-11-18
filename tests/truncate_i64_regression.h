@@ -17,7 +17,7 @@
 #ifndef VCL_TEST_TRUNCATE_I64_REGRESSION_H
 #define VCL_TEST_TRUNCATE_I64_REGRESSION_H
 
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #include <cstdint>
 #include <cstdio>
 #include <cstring>

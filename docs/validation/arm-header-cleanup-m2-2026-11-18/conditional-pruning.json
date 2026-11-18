@@ -1,0 +1,2952 @@
+{
+  "files": [
+    {
+      "path": "instrset_compat_neon.h",
+      "before_lines": 492,
+      "after_lines": 383,
+      "changed": true
+    },
+    {
+      "path": "instrset_helpers_neon.h",
+      "before_lines": 1045,
+      "after_lines": 1024,
+      "changed": true
+    },
+    {
+      "path": "instrset_neon.h",
+      "before_lines": 92,
+      "after_lines": 92,
+      "changed": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "before_lines": 830,
+      "after_lines": 608,
+      "changed": true
+    },
+    {
+      "path": "vectorclass_neon.h",
+      "before_lines": 41,
+      "after_lines": 41,
+      "changed": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "before_lines": 3102,
+      "after_lines": 2410,
+      "changed": true
+    },
+    {
+      "path": "vectorf128_helpers_neon.h",
+      "before_lines": 145,
+      "after_lines": 145,
+      "changed": false
+    },
+    {
+      "path": "vectorf128_neon.h",
+      "before_lines": 367,
+      "after_lines": 367,
+      "changed": false
+    },
+    {
+      "path": "vectorf256e_neon.h",
+      "before_lines": 1940,
+      "after_lines": 1940,
+      "changed": false
+    },
+    {
+      "path": "vectorf512e_neon.h",
+      "before_lines": 1876,
+      "after_lines": 1876,
+      "changed": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "before_lines": 7047,
+      "after_lines": 5084,
+      "changed": true
+    },
+    {
+      "path": "vectori128_div_neon.h",
+      "before_lines": 217,
+      "after_lines": 217,
+      "changed": false
+    },
+    {
+      "path": "vectori128_neon.h",
+      "before_lines": 490,
+      "after_lines": 490,
+      "changed": false
+    },
+    {
+      "path": "vectori128_perm_neon.h",
+      "before_lines": 224,
+      "after_lines": 224,
+      "changed": false
+    },
+    {
+      "path": "vectori256e_neon.h",
+      "before_lines": 3878,
+      "after_lines": 3872,
+      "changed": true
+    },
+    {
+      "path": "vectori512e_neon.h",
+      "before_lines": 2263,
+      "after_lines": 2263,
+      "changed": false
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "before_lines": 2125,
+      "after_lines": 2073,
+      "changed": true
+    },
+    {
+      "path": "vectormath_common_neon.h",
+      "before_lines": 327,
+      "after_lines": 327,
+      "changed": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "before_lines": 2200,
+      "after_lines": 1896,
+      "changed": true
+    },
+    {
+      "path": "vectormath_hyp_neon.h",
+      "before_lines": 727,
+      "after_lines": 727,
+      "changed": false
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "before_lines": 1093,
+      "after_lines": 1078,
+      "changed": true
+    }
+  ],
+  "decisions": [
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 53,
+      "condition": "(defined(_M_AMD64) || defined(_M_X64) || defined(__amd64) ) && ! defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX512VBMI__ ) && defined ( __AVX512VBMI2__ ) && defined ( __AVX512FP16__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX512VBMI__ ) && defined ( __AVX512VBMI2__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX512VL__ ) && defined ( __AVX512BW__ ) && defined ( __AVX512DQ__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX512F__ ) || defined ( __AVX512__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX2__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __AVX__ )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( __SSE2__ ) || defined ( __x86_64__ )",
+      "reduced": "defined ( __SSE2__ )"
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 74,
+      "condition": "defined ( _M_IX86_FP )",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 106,
+      "condition": "INSTRSET >= 8 && !defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 119,
+      "condition": "defined(__x86_64__) || defined(__i386__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 179,
+      "condition": "INSTRSET == 9",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 182,
+      "condition": "_MSC_VER < 1920 && INSTRSET > 8",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 232,
+      "condition": "defined(__x86_64__) || defined(_M_X64) || defined(__i386) || defined(_M_IX86)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 266,
+      "condition": "INSTRSET >= 6",
+      "selected": true
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 272,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 305,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 328,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 356,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "line": 373,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "instrset_helpers_neon.h",
+      "line": 380,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 38,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 105,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 138,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 255,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 317,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 399,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 465,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 699,
+      "condition": "defined(__FMA__) || VCL_BACKEND == VCL_BACKEND_NEON",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 727,
+      "condition": "defined(__FMA__) || VCL_BACKEND == VCL_BACKEND_NEON",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 767,
+      "condition": "defined(__FMA__) || VCL_BACKEND == VCL_BACKEND_NEON",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "line": 795,
+      "condition": "defined(__FMA__) || VCL_BACKEND == VCL_BACKEND_NEON",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 57,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 75,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 91,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 204,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 294,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 394,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 546,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 557,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 580,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 594,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 608,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 608,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 631,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 771,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 780,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 789,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 798,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 807,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 816,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 838,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 885,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 894,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 897,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 907,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 916,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 925,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 941,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 951,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 965,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 972,
+      "condition": "VCL_ARCH_ARM64",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 989,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1002,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1002,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1002,
+      "condition": "VCL_ARCH_ARM64",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1050,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1065,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1088,
+      "condition": "INSTRSET >= 3 && false",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1235,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1249,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1263,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1277,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1292,
+      "condition": "defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1316,
+      "condition": "INSTRSET >= 10 && (!defined(_MSC_VER) || defined(__INTEL_COMPILER))",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1316,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1332,
+      "condition": "defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1332,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1332,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1347,
+      "condition": "defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1347,
+      "condition": "INSTRSET >= 10 && !defined(_MSC_VER)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1347,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1363,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1363,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1374,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1374,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1385,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1385,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1399,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1399,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1435,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1590,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1601,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1619,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1632,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1642,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1657,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1797,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1806,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1815,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1824,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1833,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1842,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1864,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1913,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1922,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1925,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1935,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1944,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1953,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1977,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 1987,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2000,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2005,
+      "condition": "VCL_ARCH_ARM64",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2022,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2036,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2036,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2036,
+      "condition": "VCL_ARCH_ARM64",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2084,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2099,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2113,
+      "condition": "false &&  INSTRSET >= 3",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2113,
+      "condition": "true",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2187,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2229,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2242,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2256,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2286,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2307,
+      "condition": "defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2324,
+      "condition": "defined(__clang__) && !VCL_ARCH_ARM64 && INSTRSET < 7 && !defined(_MSC_VER)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2338,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2348,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2358,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2398,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2398,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2409,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2409,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2420,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2420,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2435,
+      "condition": "defined(__FMA__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2435,
+      "condition": "defined (__FMA4__)",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2471,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2598,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2634,
+      "condition": "INSTRSET >= 4 && INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2655,
+      "condition": "INSTRSET >= 3",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2669,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2707,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2707,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2737,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2745,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2745,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2754,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2810,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2819,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2832,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2832,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2846,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2869,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2882,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2882,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2882,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2913,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2934,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2944,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2955,
+      "condition": "INSTRSET >= 7",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2975,
+      "condition": "INSTRSET < 8",
+      "selected": true
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 2991,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 3035,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 3035,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 3067,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "line": 3083,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 69,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 279,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 390,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 475,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 581,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 872,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 887,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 906,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 968,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 979,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1002,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1016,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1028,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1046,
+      "condition": "INSTRSET >= 10 && defined (__AVX512VBMI2__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1074,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1110,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1156,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1226,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1299,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1333,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1349,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1358,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1367,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1376,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1385,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1394,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1444,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1457,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1466,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1475,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1499,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1510,
+      "condition": "INSTRSET >= 4 && false",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1537,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1550,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1563,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1574,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1585,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1697,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1706,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1715,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1724,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1777,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1786,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1795,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1891,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1902,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1924,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1937,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1946,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 1972,
+      "condition": "INSTRSET >= 10 && defined (__AVX512VBMI2__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2015,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2081,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2151,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2251,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2260,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2269,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2278,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2287,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2296,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2349,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2358,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2367,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2376,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2385,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2385,
+      "condition": "INSTRSET >= 4 && false",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2413,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2423,
+      "condition": "INSTRSET >= 4 && false",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2460,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2470,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2482,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2598,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2598,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2598,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2613,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2622,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2622,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2633,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2671,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2680,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2689,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2698,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2708,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2708,
+      "condition": "INSTRSET >= 4 && false",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2736,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2753,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2781,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2794,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2849,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2860,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2883,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2896,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2905,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2917,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 2945,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3014,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3084,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3149,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3192,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3201,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3210,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3219,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3228,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3237,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3287,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3301,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3310,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3319,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3328,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3337,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3337,
+      "condition": "INSTRSET >= 4 & false",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3358,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3374,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3416,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3426,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3436,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3447,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3459,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3459,
+      "condition": "defined __XOP__",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3572,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3572,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3586,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3595,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3598,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3598,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3611,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3649,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3658,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3667,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3676,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3691,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3708,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3720,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3731,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3740,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3791,
+      "condition": "defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3802,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3822,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3837,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3847,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3847,
+      "condition": "INSTRSET >= 5 && defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3857,
+      "condition": "defined(__x86_64__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3879,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3908,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 3978,
+      "condition": "INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4048,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4115,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4115,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4156,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4171,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4188,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4188,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4205,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4205,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4216,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4216,
+      "condition": "INSTRSET >= 6",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4237,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4246,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4246,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4257,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4315,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4324,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4333,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4342,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4368,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4368,
+      "condition": "INSTRSET >= 6",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4384,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4384,
+      "condition": "INSTRSET >= 6",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4401,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4401,
+      "condition": "defined __XOP__",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4515,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4515,
+      "condition": "defined ( __XOP__ )",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4515,
+      "condition": "INSTRSET >= 6",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4541,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4550,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4550,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4561,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4599,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4608,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4617,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4626,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4719,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4767,
+      "condition": "INSTRSET >= 4 && INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4781,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4792,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4851,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4864,
+      "condition": "INSTRSET >= 4 && INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4877,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4882,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4895,
+      "condition": "INSTRSET >= 10 && defined (__AVX512VBMI2__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4905,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4914,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 4999,
+      "condition": "INSTRSET >= 4 && INSTRSET < 10",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5012,
+      "condition": "INSTRSET >= 10 && defined (__AVX512VBMI2__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5022,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5027,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5111,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5178,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5178,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5200,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5218,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5226,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5226,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5236,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5291,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5308,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5321,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5321,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5331,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5385,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5396,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5402,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5420,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5428,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5464,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5493,
+      "condition": "INSTRSET >= 10 && defined ( __AVX512VBMI__ )",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5500,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5520,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5526,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5571,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5583,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5583,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5627,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5638,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5638,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5671,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5689,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5698,
+      "condition": "defined(__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5698,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5698,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5717,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5717,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5717,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5766,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5777,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5821,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5842,
+      "condition": "INSTRSET >= 4",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5916,
+      "condition": "INSTRSET >= 8",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5973,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 5973,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6007,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6007,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6132,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6157,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6188,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6550,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6591,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6753,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6768,
+      "condition": "INSTRSET >= 5",
+      "selected": true
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 6990,
+      "condition": "INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "line": 7004,
+      "condition": "INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectori256e_neon.h",
+      "line": 3299,
+      "condition": "defined (__XOP__)",
+      "selected": false
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "line": 91,
+      "condition": "defined(VECTORI512_H)",
+      "selected": false
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "line": 671,
+      "condition": "defined(VECTORI512_H)",
+      "selected": false
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "line": 884,
+      "condition": "defined(VECTORI512_H)",
+      "selected": false
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "line": 1417,
+      "condition": "defined(VECTORI512_H)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 104,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 118,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 142,
+      "condition": "true",
+      "selected": true
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 380,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 471,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 480,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 492,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 500,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 510,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 522,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 530,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__) && MAX_VECTOR_SIZE >= 512",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 542,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 570,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 578,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(__AVX512ER__)",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 632,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined (VECTORI256_H) && VECTORI256_H > 2",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 642,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && VECTORI256_H > 1",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 656,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 665,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 690,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 707,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 729,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 748,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 770,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 780,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 794,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 820,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 849,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 875,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 903,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 929,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 10",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 1452,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 1463,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 9",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 1969,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET == 8",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 1979,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET == 8",
+      "selected": false
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "line": 1989,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET == 8",
+      "selected": false
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 37,
+      "condition": "VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 94,
+      "condition": "VCL_BACKEND != VCL_BACKEND_NEON && INSTRSET < 8",
+      "reduced": "VCL_BACKEND != VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 127,
+      "condition": "VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 127,
+      "condition": "INSTRSET < 8",
+      "selected": true
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 273,
+      "condition": "VCL_BACKEND != VCL_BACKEND_NEON && INSTRSET < 8",
+      "reduced": "VCL_BACKEND != VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 308,
+      "condition": "VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 308,
+      "condition": "INSTRSET < 8",
+      "selected": true
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 518,
+      "condition": "VCL_BACKEND == VCL_BACKEND_NEON || (VCL_BACKEND == VCL_BACKEND_X86 && INSTRSET >= 8)",
+      "reduced": "VCL_BACKEND == VCL_BACKEND_NEON"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 518,
+      "condition": "INSTRSET < 8",
+      "selected": true
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "line": 896,
+      "condition": "VCL_BACKEND == VCL_BACKEND_X86 && defined(_MSC_VER) && !defined(__clang__) && !defined(__INTEL_COMPILER) && INSTRSET >= 8",
+      "selected": false
+    }
+  ]
+}

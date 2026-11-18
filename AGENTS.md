@@ -21,16 +21,18 @@ on a particular machine; its absence must not prevent a fresh setup.
 - The x86 correctness/optimization campaign and old execution handoffs are
   retired. Do not automatically resume them or treat their fixes as requirements
   for new ARM work. Existing source remains unchanged until new scope is agreed.
-- The maintainer approved commit/push of the prepared cleanup, plans and Mac
-  handoff documentation as sequence step 1. That approval does not cover Mac
-  implementation/results commits or pushes, merges, PRs, branch retirement or
-  further evidence cleanup. Preserve reusable resources and retained archives.
+- The maintainer subsequently approved committing and pushing the completed
+  architecture implementation, ARM cleanup and M2 reports on `arch-separation-m2`.
+  This publication leaves `master` unchanged; merging, PRs, branch retirement,
+  further source changes and evidence deletion need separate scope. The next
+  gate is native AMD Windows using `docs/validation/windows-arch-separation-handoff.md`.
+  Preserve reusable resources and retained archives.
 
 ## OS-agnostic
 
 ### Repository and fork protection
 
-- Read `README.md`, `CONTRIBUTING.md`, `docs/integration-plan.md` and
+- Read `README-vcl2-xa64.md`, protected `README.md`, `CONTRIBUTING.md`, `docs/integration-plan.md` and
   `docs/validation/README.md` before making changes or validation claims.
 - Do not create pull requests for this fork or against the original VCL project.
   Preserve the fork relationship, default branch `master` and published history.
@@ -62,73 +64,61 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Library and validation contracts
 
-- During the approved architecture migration, follow the Mac handoff's explicit
-  source-ownership transition instead of the existing generated-root workflow
-  below. Retire old writers before restoring the 28 original root paths; then
-  protect both root originals and vendor byte-exactly and edit ARM `_neon.h`
-  sources. Adapt integrity tools and documentation consistently. Outside this
-  migration, the existing layout instructions still describe the current code.
-
-- Maintain runtime behavior in the canonical `adaptation/` patches/include
-  sources and `backends/` implementations. Keep `vendor/vectorclass/` byte-exact
-  to its pinned upstream inventory; an upstream update requires explicit scope.
-  This is mandatory on every host, including Mac M2: never edit, format,
-  regenerate, normalize line endings or update this pristine directory to fix
-  validation failures. Verify it before and after native validation. On any
-  mismatch, retain evidence and stop; do not alter the pin/hash inventory to
-  accept changed vendor bytes. Only a separately authorized upstream-update
-  task may replace the pinned snapshot.
-  Root runtime headers are shipped generated products for direct header-only
-  use. Follow `docs/backend-layout.md`; regenerate after canonical changes and
-  run `tools/regenerate_headers.py --check` plus the repository check. Do not
-  leave hand-edited generated headers or require application users to generate.
-
-- Preserve public headers/API names, lane ordering, ABI settings, notices and
-  upstream attribution. ARM defaults to sse2neon compatibility; Direct Neon
-  requires its explicit experimental opt-in. Keep benchmark measurements intact.
-- Validation is manual on native Mac M2 and AMD Windows hardware. Do not start
-  hosted test workflows, WSL/QEMU/Rosetta execution or benchmark timings as part
-  of native correctness validation. Physical Intel testing remains omitted.
-- Keep independent references, fixtures/generators, seeds, numerical gates,
-  rounding/FP flags, protected-page controls, canaries, strict UBSan checks,
-  original 60-second deadlines and runner concurrency of three intact.
-  Do not relax acceptance criteria after observing differences.
-- Preserve `tests/`, `tools/`, CMake files, fixture generators, the shared corpus,
-  policies, comparator and native runners. Reuse the pristine optional testbench
-  pinned at `a7293702385e5169a5f58b83177f2a43cd59139b`; verify its revision,
-  cleanliness and source hashes. Never overwrite an existing dependency checkout.
-- Both hosts must capture the same approved frozen source for a comparison run.
-  Use a new run ID for a new source checkpoint and a unique attempt ID for each
-  invocation. Preserve input/output bits and the complete registered inventory;
-  do not compare only the intersection or claim universal bitwise identity.
-- Exact tested commit/tree, source fingerprints and validator revision matter.
-  Later documentation or publication commits do not acquire earlier native passes.
-  Offline reanalysis must identify its validator separately and preserve captures.
-- Retain failed attempts, original logs, archives, manifests, checksums and dated
-  reports. Do not rewrite historical evidence or weaken its hash checkpoints.
-  Put current status in the validation index and integration plan; add a dated
-  follow-up for new findings. Original pending notes can remain in dated records.
-- All raw artifacts go under ignored `build/` in the active checkout. Keep
-  original evidence archives, logs, results, source/compiler/flag inventories,
-  checksums, raw output bits and failed attempts. Before cleanup, verify that
-  compact archives cover these records and preserve any uncovered diagnostics,
-  inputs or generated reference/probe sources in a checksummed supplement.
-- After a completed run and explicit user authorization, rebuildable objects,
-  executables, debug symbols, generated build directories and temporary worktrees
-  may be removed once evidence coverage is verified. Retain recorded binary hashes
-  and the reachable source commit; new passes rebuild in fresh directories.
-  Preserve testbench/tool installations and unrelated work. Use Git's worktree
-  removal command rather than deleting its administrative metadata manually.
-- Publish only reviewed portable metadata, summaries and raw-bit outputs, free
-  of machine paths, credentials and binaries. Compact evidence is an audit record,
-  not a backup of the original compiled executables; never relabel old results.
-- Before comparator self-checks on a fresh checkout, create ignored `build/`:
-  `python -c "from pathlib import Path; Path('build').mkdir(exist_ok=True)"`.
-  Use `python3` on macOS. Follow `docs/validation/cross-platform/README.md` for
-  corpus checks/capture and `docs/validation/report-template.md` for reports.
-- Run checks appropriate to the change. Documentation changes need link/repo
-  and whitespace checks, not a new native matrix. Runtime, test, fixture or
-  runner changes need fresh relevant validation. Do not label plans as results.
+- The separated layout is implemented on `arch-separation-m2` for native Windows verification.
+  Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
+  report for its actual result/source identity. `README.md` is protected upstream.
+- All 28 original paths at root and under `vendor/vectorclass/`, plus
+  `vendor/vectorclass.json`, are protected exact raw bytes. Never edit, normalize,
+  format or regenerate them for ARM work or to make tests pass. Verify before and
+  after validation. An upstream pin update requires separate explicit scope.
+- Authoritative ARM implementations are root `*_neon.h` files and
+  `instrset_detect_neon.cpp`. `vcl_config.h` is neutral selection policy;
+  `vcl2_xa64.h` selects the complete supported vector/math family at compile time.
+  Compatibility remains default; Direct Neon requires explicit experimental opt-in.
+  Native FP16, SVML and ARM64EC are outside this common surface.
+- ARM header cleanup removed inactive x86 implementations and old MSVC x86
+  workarounds. Preserve that boundary: read-only integrity checks also reject
+  native x86 helpers, ISA macros and wide intrinsics in inactive ARM branches.
+  Keep required SSE-shaped sse2neon APIs, ARM correctness fixes and generic
+  compiler portability. Use the dated cleanup report for the latest frozen
+  source; earlier candidate 04 results remain historical and are not transferred.
+- The old adapted-root generator is retired. `tools/regenerate_headers.py --check`
+  is read-only; `--write` always rejects. Historical adaptation patches and
+  `backends/x86/` are inactive research assets and must not enter either active
+  include graph. Keep one editable ARM implementation; do not recreate copies in
+  `backends/arm64/` or `adaptation/include/`.
+- Preserve public VCL type/API names, ABI/namespace/width settings, attribution,
+  licenses, independent fixtures, seeds, numerical gates, FP/rounding flags,
+  classification-only finite-math stress, strict UBSan and protected-page/canary
+  controls. Keep 60-second correctness deadlines and concurrency three.
+- Use native M2 and native AMD Windows validation, no hosted CI, WSL/QEMU/Rosetta,
+  ASan retries or timings during correctness work. Physical Intel remains omitted.
+  Do not implicitly change external consumers or application/SDK integrations.
+- Preserve tests, CMake, independent reference generators, shared corpus/policies,
+  comparator and runners. Reuse pristine testbench
+  `a7293702385e5169a5f58b83177f2a43cd59139b`; verify revision, cleanliness and
+  all pinned hashes. Never overwrite an existing dependency checkout.
+- Clean-source validation remains the default. The explicit captured-source
+  mode is only for a complete frozen uncommitted implementation: capture all
+  tracked and nonignored added files, exact raw hashes, added/deleted inventory,
+  base commit/tree and patch. Build only the immutable capture; verify every
+  source path and its fingerprint before/after. Never label the clean base as
+  the tested implementation or make a source commit just to satisfy a guard.
+- Retain every failed attempt, raw command/exit journal, logs, inventories,
+  source archive, patch, compiler/flag/binary hashes, generated probe/reference
+  inputs, JUnit, checksums and dated reports under ignored `build/`. Portable
+  reports contain relative paths and no credentials or binaries. Preserve
+  historical identifiers/checksums; publication does not inherit native passes.
+- New runtime/test/runner changes require fresh relevant checks and the full
+  baseline matrix at a new frozen source. Documentation-only changes need
+  repository/link/whitespace checks. Do not weaken gates after observing failures.
+- Cleanup, commit, push, merge, release and branch retirement need task-specific
+  approval. Before authorized removal, verify compact archive coverage and retain
+  supplements for uncovered diagnostics/generated inputs. Keep tools/testbench,
+  unrelated work and all original failed evidence; remove worktrees through Git.
+- For future shared corpus checks, create ignored `build/` first and follow
+  `docs/validation/cross-platform/README.md`. Do not claim cross-host parity from
+  separate native correctness passes or compare only an inventory intersection.
 
 ### Completed checkpoint and preserved evidence
 
@@ -150,37 +140,19 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ## macOS
 
-- Keep `vendor/vectorclass/` untouched throughout M2 work. Run
-  `python3 -B tools/regenerate_headers.py --check` before and after tests; this
-  always verifies exact vendor bytes, regardless of generated-header line
-  endings. Put necessary ARM fixes in canonical `backends/arm64/` or explicit
-  adaptation patches, regenerate root products, and obtain a new approved
-  frozen source before claiming a fixed run. Never repair tests in the vendor
-  tree. Start with `docs/neon-arm-lessons.md` for the current planning context.
-  Old handoffs are historical checkpoints, not an instruction to run or repair
-  source during the strategy reset.
-
-- Use native arm64 Python 3.9+, Apple Clang, CMake 3.20+ and CTest supporting
-  `--output-junit`. The full runner can use Ninja or make; shared corpus capture
-  requires Ninja. Inspect existing tool installations before installing anything.
-  Keep machine-specific tool paths out of this shared file.
-- Verify CPU/OS, compiler target and Rosetta state. Use `python3` and
-  `xcrun --find clang++`. Do not execute translated x86 binaries as native proof.
-- Start with `python3 -B tools/run_native_arm_validation.py --plan`.
-  For execution use a clean approved commit with `--expected-commit` and reuse
-  the pinned dependency via `--testbench-dir` when it is already available.
-  See `docs/validation/native-workflow.md` for the full commands.
-  Exception for the approved uncommitted architecture migration: follow the new
-  handoff's complete captured-source provenance requirements; preserve the
-  default clean-source guard and do not mislabel the base as the tested source.
-- Run compatibility 512 and Direct Neon maxima 128/256/512, each in Release and
-  strict nonrecovering UBSan Debug. Inspect arm64 Mach-O binaries, runtime
-  consumers, actual page-size guard controls and independent fixtures.
-- Apple UBSan's intentional-overflow control may abort with SIGABRT (`-6`) or
-  exit `1`; require the expected diagnostic, no continuation, and a passing
-  positive control. Never edit recorded exit codes to satisfy a validator.
-- Do not retry the documented Mac ASan startup hang. ARM exception flags/masks
-  are not emulated; preserve the documented numerical and FP-environment limits.
+- Use native arm64 Python 3.9+, Apple Clang, CMake 3.20+, CTest JUnit and Ninja
+  or make. Inspect installed tools first. Verify CPU/OS, target and Rosetta state.
+- Run `python3 -B tools/regenerate_headers.py --check` and the repository check;
+  exercise isolated integrity controls with `tools/check_header_generation.py`.
+  ARM include traces must contain no protected original x86 header.
+- Run compatibility maximum 512 and Direct Neon maxima 128/256/512, each Release
+  and strict nonrecovering UBSan Debug, preserving the complete registered list.
+  Apple UBSan's deliberate overflow may exit 1 or SIGABRT (-6); require its
+  diagnostic, no continuation and a passing positive control. Keep actual exits.
+- Follow the architecture handoff for this approved migration. Use a fresh
+  capture after source changes; `tools/capture_source.py --help` and
+  `tools/run_native_arm_validation.py --help` document explicit capture mode.
+  Keep the default clean-checkout guard. Never retry the documented ASan hang.
 
 ## Windows
 

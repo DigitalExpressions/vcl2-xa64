@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#include "vectorclass.h"
+#include "vcl2_xa64.h"
 #if VCL_BACKEND != VCL_BACKEND_NEON
-#include "vectormath_exp.h"
-#include "vectormath_trig.h"
-#include "vectormath_hyp.h"
+#include "vcl2_xa64.h"
+#include "vcl2_xa64.h"
+#include "vcl2_xa64.h"
 #endif
 #include <cmath>
 #include <cstdio>
