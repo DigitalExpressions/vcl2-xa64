@@ -1,0 +1,8 @@
+{
+  "archive": "integration-cleanup-evidence.zip",
+  "sha256": "38dafa9ce41dc727370acd20770bc2ed45b8e4acc69a53c1217ce8c4d29592da",
+  "bytes": 6773320,
+  "recorded_files": 194,
+  "crc_and_all_entry_hashes_verified": true,
+  "scope": "Integration, preservation of inherited checkout bytes, complete cleanup candidate hashes and coverage map, removal receipts, final integrity proof, operation scripts and diagnostic preparation records. Original validation/triage archives remain separate and unchanged."
+}

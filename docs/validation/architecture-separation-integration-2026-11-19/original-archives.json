@@ -1,0 +1,32 @@
+[
+  {
+    "path": "build/ws18-01/windows-arch-separation-evidence.zip",
+    "sha256": "e7999de002dd09191fd3c2a3d12b6a3f819a3a71bfb89cc660f9ad041f572876",
+    "entries": 6217,
+    "crc_and_all_entry_hashes_verified": true
+  },
+  {
+    "path": "build/ws18-01/post-review-evidence-supplement.zip",
+    "sha256": "823ced8f40623153f0c7c94a0a0d8a573cb00c3b24af0bf7b104e9f03a74123b",
+    "entries": 7,
+    "crc_and_all_entry_hashes_verified": true
+  },
+  {
+    "path": "build/wt19-triage-01/windows-arch-separation-triage-evidence.zip",
+    "sha256": "68c1cf4a62bf133dc0e2a846312b5dfa2ce45bbfa630319490a9e332d96f9e6a",
+    "entries": 385,
+    "crc_and_all_entry_hashes_verified": true
+  },
+  {
+    "path": "build/wt19-triage-01/portable-review-supplement.zip",
+    "sha256": "eb8f9462a2b27ad6f98a62d6395d6953e92f98d1aded67d0e63d52b9e1471f11",
+    "entries": 8,
+    "crc_and_all_entry_hashes_verified": true
+  },
+  {
+    "path": "build/ws18-01/cap/captured-source.zip",
+    "sha256": "6b2f943cea502830c7c0929e61b15e63a335e8f2453edc51ed44c3119b7127f4",
+    "entries": 499,
+    "crc_and_all_entry_hashes_verified": true
+  }
+]

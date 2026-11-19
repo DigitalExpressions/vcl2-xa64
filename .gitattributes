@@ -104,3 +104,7 @@ docs/validation/windows-arch-separation-2026-11-19/** -text whitespace=cr-at-eol
 docs/validation/windows-arch-separation-triage-2026-11-19/** -text whitespace=cr-at-eol
 docs/validation/windows-amd-2026-11-19-arch-separation.md -text whitespace=cr-at-eol
 docs/validation/windows-amd-2026-11-19-arch-separation-triage.md -text whitespace=cr-at-eol
+
+# Checksummed local integration/cleanup receipts keep their exact portable bytes.
+docs/validation/architecture-separation-integration-2026-11-19/** -text
+docs/validation/architecture-separation-integration-completed-2026-11-19.md -text

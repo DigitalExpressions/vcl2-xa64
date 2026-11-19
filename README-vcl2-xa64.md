@@ -10,7 +10,7 @@ x86 branches from the ARM headers. The [publication source comparison](docs/vali
 relates the published files to that exact frozen capture. The [Mac handoff](docs/validation/mac-arch-separation-handoff.md)
 and [ARM lessons](docs/neon-arm-lessons.md) define scope. The
 [19 November integration decision](docs/validation/architecture-separation-integration-2026-11-19.md)
-accepts the separation for local `master` while retaining the failed/incomplete
+accepts the separation now integrated into local `master`, retaining the failed/incomplete
 Windows gate and the pinned original x86 behavior. No new timings were collected.
 
 This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
@@ -50,8 +50,9 @@ git clone https://github.com/DigitalExpressions/vcl2-xa64.git
 cd vcl2-xa64
 ```
 
-The separated architecture is accepted for local integration into the default
-`master` branch under the dated decision above. See the [integration plan](docs/integration-plan.md)
+The separated architecture is integrated into the local default `master` branch;
+[completion and cleanup](docs/validation/architecture-separation-integration-completed-2026-11-19.md)
+record the retained evidence and remaining limits. See the [integration plan](docs/integration-plan.md)
 for the completion record and current branch policy. Shared development and
 validation instructions for both operating systems are in [AGENTS.md](AGENTS.md).
 

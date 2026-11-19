@@ -67,8 +67,9 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Library and validation contracts
 
-- The separated layout is accepted for local integration into `master` under
-  the dated 19 November decision; the original Windows correctness gate stays failed.
+- The separated layout is integrated into local `master`; verified local cleanup
+  is complete. See `docs/validation/architecture-separation-integration-completed-2026-11-19.md`.
+  The original Windows correctness gate stays failed/incomplete.
   Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
   report for its actual result/source identity. `README.md` is protected upstream.
 - All 28 original paths at root and under `vendor/vectorclass/`, plus

@@ -1,5 +1,13 @@
 # ARM / Neon strategy reset
 
+## Integration and cleanup completed — 19 November 2026
+
+The [completion report](validation/architecture-separation-integration-completed-2026-11-19.md) records local master
+integration, exact protected-source checks and verified cleanup of about 15 GiB.
+The Windows gate remains failed/incomplete; its reports and source identities
+are unchanged. Original archives, frozen source, tools, pinned testbench, branches
+and unrelated work remain. Next: choose a bounded ARM/Neon task from this base.
+
 ## Approved integration — 19 November 2026
 
 The maintainer approved local integration and evidence-backed cleanup under the
