@@ -4,6 +4,6 @@
   "patches": [],
   "copy_products": [],
   "upstream_products": [],
-  "upstream_directory": "vendor/vectorclass",
-  "upstream_manifest": "vendor/vectorclass.json"
+  "upstream_directory": ".",
+  "upstream_manifest": "audit/vectorclass-2.02.04.json"
 }

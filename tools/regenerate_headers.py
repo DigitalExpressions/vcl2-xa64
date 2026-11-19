@@ -26,6 +26,8 @@ import re
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
+UPSTREAM_MANIFEST='audit/vectorclass-2.02.04.json'
+SSE2NEON_AUDIT='audit/sse2neon-2272251.json'
 
 
 def digest(data): return hashlib.sha256(data).hexdigest()
@@ -63,7 +65,7 @@ def git_tree(entries):
     return encode(tree)
 
 
-def pristine(root,manifest,directory):
+def pristine(root,manifest,directory,*,exact_inventory=True):
     metadata=json.loads(path_in(root,manifest).read_text(encoding='utf-8'))
     vendor=path_in(root,directory)
     files={};entries=[]
@@ -75,10 +77,39 @@ def pristine(root,manifest,directory):
         if blob!=row['git_blob'] or row['mode'] not in {'100644','100755'}:
             raise ValueError('Upstream Git blob/mode mismatch: '+name)
         files[name]=data;entries.append((name,row['mode'],blob))
-    actual={p.relative_to(vendor).as_posix() for p in vendor.rglob('*') if p.is_file()}
-    if actual!=set(files): raise ValueError('Missing/extra pristine upstream paths')
+    if exact_inventory:
+        actual={p.relative_to(vendor).as_posix() for p in vendor.rglob('*') if p.is_file()}
+        if actual!=set(files): raise ValueError('Missing/extra pristine upstream paths')
     if git_tree(entries)!=metadata['tree']: raise ValueError('Pinned upstream Git tree mismatch')
     return files,metadata
+
+
+def original_manifest(root):
+    # Keep read-only inspection of historical frozen sources possible.
+    return UPSTREAM_MANIFEST if (root/UPSTREAM_MANIFEST).is_file() else 'vendor/vectorclass.json'
+
+
+def verify_sse2neon(root):
+    pin=json.loads(path_in(root,'vendor/sse2neon.json').read_text(encoding='utf-8'))
+    actual={p.relative_to(root/'vendor/sse2neon').as_posix() for p in (root/'vendor/sse2neon').rglob('*') if p.is_file()}
+    if actual!={r['path'] for r in pin['files']}:
+        raise ValueError('Missing/extra retained sse2neon dependency paths')
+    for row in pin['files']:
+        vendor=path_in(root,'vendor/sse2neon/'+row['path']).read_bytes()
+        alias=path_in(root,row['path']).read_bytes()
+        if digest(vendor)!=row['sha256'] or alias!=vendor:
+            raise ValueError('sse2neon dependency differs from its retained SHA256 pin')
+    audit_path=root/SSE2NEON_AUDIT
+    if audit_path.is_file():
+        audit=json.loads(audit_path.read_text(encoding='utf-8'))
+        data=path_in(root,'sse2neon.h').read_bytes()
+        retained=audit['retained']
+        if digest(data)!=retained['sha256'] or git_object('blob',data)!=retained['git_blob']:
+            raise ValueError('sse2neon retained representation differs from upstream audit')
+        # Analysis only: never write or normalize either protected header.
+        upstream=(data.decode('cp1252').replace('\r\n','\n')+'\n').encode('utf-8')
+        if digest(upstream)!=audit['upstream']['sha256'] or git_object('blob',upstream)!=audit['upstream']['git_blob']:
+            raise ValueError('sse2neon upstream representation proof differs')
 
 
 
@@ -99,15 +130,20 @@ def check_arm_source(path):
             raise ValueError('x86-only code in ARM source: '+path.name+' -> '+match[0])
 
 def render(root):
-    original, upstream = pristine(root, 'vendor/vectorclass.json', 'vendor/vectorclass')
+    manifest=original_manifest(root)
+    original, upstream = pristine(root, manifest, '.', exact_inventory=False)
+    if manifest==UPSTREAM_MANIFEST:
+        if (root/'vendor/vectorclass').exists() or (root/'vendor/vectorclass.json').exists():
+            raise ValueError('Retired duplicate VCL vendor snapshot/pin must not be reintroduced')
+    else:
+        pristine(root,manifest,'vendor/vectorclass')
     rows = []
     for name, expected in sorted(original.items()):
         actual = path_in(root, name).read_bytes()
         if actual != expected:
             raise ValueError('Changed protected root original (exact bytes required): ' + name)
         rows.append(dict(path=name, sha256=digest(actual), exact_bytes=True))
-    if (root/'sse2neon.h').read_bytes() != (root/'vendor/sse2neon/sse2neon.h').read_bytes():
-        raise ValueError('sse2neon dependency copy differs from retained vendor dependency')
+    verify_sse2neon(root)
     family = sorted(root.glob('*_neon.h'))
     if not family or not (root/'vcl2_xa64.h').is_file():
         raise ValueError('Missing separated ARM family or facade')

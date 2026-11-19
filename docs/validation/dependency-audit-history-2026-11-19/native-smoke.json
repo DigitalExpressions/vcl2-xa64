@@ -1,0 +1,94 @@
+{
+  "profiles": [
+    {
+      "profile": "msvc-release",
+      "passed": 2,
+      "failed": 0,
+      "output_bits_match": true,
+      "include_graph_no_ARM": true,
+      "strict_ubsan": false,
+      "registered_in_imported_project": 42,
+      "canonical_matrix_not_executed": true,
+      "binaries": [
+        {
+          "name": "audit_facade.exe",
+          "sha256": "1e30eb997684c6d88e295c3f9b19bb67074b4e2cc6b38e4b5447a10ed240c3ea",
+          "pe_machine": "0x8664"
+        },
+        {
+          "name": "audit_originals.exe",
+          "sha256": "1e30eb997684c6d88e295c3f9b19bb67074b4e2cc6b38e4b5447a10ed240c3ea",
+          "pe_machine": "0x8664"
+        }
+      ]
+    },
+    {
+      "profile": "msvc-debug",
+      "passed": 2,
+      "failed": 0,
+      "output_bits_match": true,
+      "include_graph_no_ARM": true,
+      "strict_ubsan": false,
+      "registered_in_imported_project": 42,
+      "canonical_matrix_not_executed": true,
+      "binaries": [
+        {
+          "name": "audit_facade.exe",
+          "sha256": "3d143bd1db644fae5c2f563fed0a8cfa82873107524979bcf6d980271bcad8cf",
+          "pe_machine": "0x8664"
+        },
+        {
+          "name": "audit_originals.exe",
+          "sha256": "3fcef8fc93f2fc78ee9bb57fd6f27925a0d87242b02fbc3ced1edd544e22798e",
+          "pe_machine": "0x8664"
+        }
+      ]
+    },
+    {
+      "profile": "clang-release",
+      "passed": 2,
+      "failed": 0,
+      "output_bits_match": true,
+      "include_graph_no_ARM": true,
+      "strict_ubsan": false,
+      "registered_in_imported_project": 42,
+      "canonical_matrix_not_executed": true,
+      "binaries": [
+        {
+          "name": "audit_facade.exe",
+          "sha256": "271d6a3b7f0ae5322f2745b222e697142d86393bab718c7b2a94a5f6c6d9e37c",
+          "pe_machine": "0x8664"
+        },
+        {
+          "name": "audit_originals.exe",
+          "sha256": "271d6a3b7f0ae5322f2745b222e697142d86393bab718c7b2a94a5f6c6d9e37c",
+          "pe_machine": "0x8664"
+        }
+      ]
+    },
+    {
+      "profile": "clang-debug",
+      "passed": 2,
+      "failed": 0,
+      "output_bits_match": true,
+      "include_graph_no_ARM": true,
+      "strict_ubsan": true,
+      "registered_in_imported_project": 42,
+      "canonical_matrix_not_executed": true,
+      "binaries": [
+        {
+          "name": "audit_facade.exe",
+          "sha256": "49349a25bdb59972a5004afb59d50642092b5b7e8cd6dcf86df3f7809a47806b",
+          "pe_machine": "0x8664"
+        },
+        {
+          "name": "audit_originals.exe",
+          "sha256": "1162cff58b368d63c703c1ca91c0063699e26a65469bf25bdc0bd58ec004399f",
+          "pe_machine": "0x8664"
+        }
+      ]
+    }
+  ],
+  "controls_per_profile": "runtime positive and page guard positive/four intentional faults; strict UBSan positive/terminating overflow where selected",
+  "no_new_full_matrix": true
+}

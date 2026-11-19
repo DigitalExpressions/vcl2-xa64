@@ -6,12 +6,18 @@ or contradictory target/backend selections fail explicitly.
 
 ## Protected originals
 
-All 28 paths recorded by `vendor/vectorclass.json` exist both at root and under
-`vendor/vectorclass/`, byte-for-byte identical to upstream
+All 28 paths recorded by [the audited manifest](../audit/vectorclass-2.02.04.json)
+exist at root, byte-for-byte identical to upstream
 `667577495efaa36a10cbb5d6cb8c942c23913848`, tree
 `36aee120c28c9c64e62903bfc81139003e37cedd`. This includes the root README,
 LICENSE, changelog, examples, runtime detector and headers. Checkout attributes
-protect their raw bytes. Vendor and its pin inventory are never rewritten.
+protect their raw bytes. The duplicate vendor snapshot was retired with maintainer
+authorization; its pin moved byte-exact into `audit/`. The
+[x86 revision history](../audit_x86_history.md) identifies the current version.
+Read-only integrity checks verify root SHA-256, Git blobs and the upstream tree.
+`python -B tools/restore_upstream_vcl.py` reconstructs the exact comparison copy
+under ignored `build/upstream/vectorclass-6675774/`; existing copies are verified,
+never overwritten. No network or generation is required by library consumers.
 Only a separately authorized upstream update may replace these originals.
 
 The x86 facade path includes only the original vector and supported in-tree
@@ -33,6 +39,8 @@ originals. The [file map](arch-separation-map.json) records all dispositions.
 `vcl_config.h` retains default compatibility, explicit experimental Direct Neon,
 logical width and namespace contracts. Third-party sse2neon retains its own
 name/license and pristine dependency; ARM-private helpers use `_neon.h` suffixes.
+The [ARM64 dependency history](../audit_arm64_history.md) records its upstream
+snapshot and exact retained representation without changing the shipped bytes.
 Consumers need only the checked-in headers, without Python or generation.
 
 Optional runtime queries compile `instrset_detect_neon.cpp` on ARM and unchanged
@@ -57,7 +65,7 @@ python3 -B tools/check_repository.py
 ```
 
 The historical generator name remains for existing automation, but generation
-is retired and `--write` always fails without writing. Exact vendor/root checks,
+is retired and `--write` always fails without writing. Exact root/manifest and sse2neon checks,
 ARM include graph checks and inactive-output validation replace reproduction.
 Integrity controls deliberately modify disposable copies under ignored `build/`,
 including a newline-only root mutation. Real originals remain untouched.

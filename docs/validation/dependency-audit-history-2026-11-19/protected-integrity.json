@@ -1,0 +1,748 @@
+{
+  "retained": [
+    {
+      "path": "LICENSE",
+      "sha256": "6dac3cfa9f8ab6cd7c4b983bf8522a0f93c069b12f5df4d56d2223b1f760f37e",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "4345c083cfaed3f8855e45bc436b3130962576ebdf07e0e5a52e90c2a7ee7e5a",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "changelog.txt",
+      "sha256": "dce0ff2a39d93c9afeffe854d9b0ed86d1854437fc5ca8f21128439c24a49f02",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "dispatch_example1.cpp",
+      "sha256": "6a3548ac65a32eede74162843ce4c0a3ea0b8da3e8f1fe358c702f4cfb29901d",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "dispatch_example2.cpp",
+      "sha256": "16ae3367d217a724c45b96b41925b6529287ac932cbf98d050b14ef529994238",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "instrset.h",
+      "sha256": "17a8705db04f0284d396a7a67363312948efe5b84b83a7ce44facce2d6951419",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "instrset_detect.cpp",
+      "sha256": "5c76668feaf226b02c970080c3fb67881f0c67aad22e66a4f91963880a8bfd0b",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vector_convert.h",
+      "sha256": "685365bec7ffb430af689214a6c748e8797d0ff0d8a229e55d677be6b9f74f86",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorclass.h",
+      "sha256": "96a6892c0d1a09f0f975071834204efb9ec115915d75385a530c3f68cbea0e09",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorf128.h",
+      "sha256": "214ed1d1a9e3365e6e09b04807a52cd795f38218e0071872b99aec6927cb606f",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorf256.h",
+      "sha256": "86797f06fd25c5fe966abe45dedf5edb104e5566859ebebddae8a26a0b47531b",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorf256e.h",
+      "sha256": "8d030b4a17850ae345c90c4c0005b86cf4b587da78385bd41b4ec45d9b411201",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorf512.h",
+      "sha256": "1bc479817795beb1c07af9cd5db75efc45e000e315d264f5b86754c79b71d51b",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorf512e.h",
+      "sha256": "7db22f76a8cc2839ba948f061834cbd5ac22c297f3e508b551a2f1366a656856",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorfp16.h",
+      "sha256": "cc13055cb17cfe56ce5978286570b41464d84e45ebd142e15d48489f3a914f81",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectorfp16e.h",
+      "sha256": "79d0e16a891990bb3020160d3dd52bb2d33f620414a4b2ca77cd441e75f3361c",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori128.h",
+      "sha256": "b0f1de0d8fcfcf9185c2f2ebddb60a786f9742e7cee0fe598880977efe716cdf",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori256.h",
+      "sha256": "1881acef69e561693ee9cbd594333921bbc7b5603bb4c5f2a845f19bc959aa8d",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori256e.h",
+      "sha256": "baff37c907c1bf2a9c5170483730d08ed08a27d47c36cdeef068bc43cdd5429a",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori512.h",
+      "sha256": "560d09ae96a7ee9aa914521b791d26ead37d57cfa26985cf41a45231ad6c497f",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori512e.h",
+      "sha256": "b2d55013dbb03444ea272f2ce9eb6ea05e6ba2f1ff42138561d61459da4aa8f8",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori512s.h",
+      "sha256": "82bd972f0650e61e3ace4c1e1c010c7249c6c6b76997047620f91cecef486fbc",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectori512se.h",
+      "sha256": "a3e2ccd6f57e8a68079261589573a55b7fdab5b473866b0f0e6eaa6774151060",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectormath_common.h",
+      "sha256": "d5b751356ab4129189de60fe7747aeb26ada3a5c621f8694ee1764ff7e82af98",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectormath_exp.h",
+      "sha256": "c83fda2a1e8965626c68ad2fdefea65660d8806e29c18215b22c95b6f2abd440",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectormath_hyp.h",
+      "sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectormath_lib.h",
+      "sha256": "89015c4facc68c6db3dc28ceaebbe33b2c85bdc80b7410da58ec40b305db7587",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vectormath_trig.h",
+      "sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "sse2neon.h",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vendor/sse2neon/sse2neon.h",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+      "bytes_and_mtime_unchanged": true
+    },
+    {
+      "path": "vendor/sse2neon.json",
+      "sha256": "827fafed9e980f4b050e0f92ac22a34c4cf80fbd5159d57c17d80508539b59d6",
+      "bytes_and_mtime_unchanged": true
+    }
+  ],
+  "relocated_vcl_manifest_sha256": "9c3a9a777426ffac4daf8dce53673629e5b5ff5a16716089a6d2b51cb3b8212e",
+  "removed_duplicate_files": 28,
+  "unchanged_execution_inputs": [
+    {
+      "path": "CMakeLists.txt",
+      "blob": "5358e3860fa2abad626ef99b07220dd301445490",
+      "sha256": "a549d885e2d7aff4608f9dd3558e4803ae55e74f96f340f8f3e96fd6d2e99048"
+    },
+    {
+      "path": "benchmarks/CMakeLists.txt",
+      "blob": "97c382859c0746ebb4740a2c14c624c5c15b1bba",
+      "sha256": "54ef3f660338776d35350e92885f87f2622ee23a488a27148f9ffca8be01b71e"
+    },
+    {
+      "path": "benchmarks/README.md",
+      "blob": "d9c2ac451ee45553935aa94241d1e4102df304aa",
+      "sha256": "14f4fcb6dcf7a294279173e9cb1f85ecd7e462b8e152bb8c4e85f82ee4ecf36c"
+    },
+    {
+      "path": "benchmarks/standard_math/common.h",
+      "blob": "c6aa19106f01b308b1e169d4ab690d5b92de78fd",
+      "sha256": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4"
+    },
+    {
+      "path": "benchmarks/standard_math/kernels.cpp",
+      "blob": "1d7d29bfbb92290f8239e3ca4750e1b873f9fb0b",
+      "sha256": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2"
+    },
+    {
+      "path": "benchmarks/standard_math/main.cpp",
+      "blob": "20d2ea975e9496e2cdc2a00b7f29f34704c7f04f",
+      "sha256": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c"
+    },
+    {
+      "path": "benchmarks/standard_math/reference.h",
+      "blob": "86ad8a38e321b8e139c50905655557f3494dfcf3",
+      "sha256": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3"
+    },
+    {
+      "path": "benchmarks/x86_upstream/common.h",
+      "blob": "0ea14cebe3486286561e72f5da314ae349a5b5bd",
+      "sha256": "f0ad752cd8ff0c49ff9587844fff21e1d54193208129af231f34448081e48bfe"
+    },
+    {
+      "path": "benchmarks/x86_upstream/edge_probe.cpp",
+      "blob": "df4df2c08fdc8a4139864198d7f02acdef96184c",
+      "sha256": "fe1f0ff2210cd26b3db17dfe7d44385f5bb9b184f199185abe6fb785b475ef25"
+    },
+    {
+      "path": "benchmarks/x86_upstream/kernels.cpp",
+      "blob": "427f19743d74b9f47bc72db074d197cfcbe8a0b1",
+      "sha256": "b3ef5bcf375b5d66101d3561a87cadef259f85795b7a71d760178923f95f0d5f"
+    },
+    {
+      "path": "benchmarks/x86_upstream/main.cpp",
+      "blob": "7be372b7d430c25e725007da603368bf13fe8167",
+      "sha256": "42ee27a4d7b4b751ed3bd73347ce10fb6987992043b29bc2b349c46791d654a9"
+    },
+    {
+      "path": "dispatch_example1.cpp",
+      "blob": "a7c8b75b8158e708d4f3ba1ed6211ee3a279a892",
+      "sha256": "6a3548ac65a32eede74162843ce4c0a3ea0b8da3e8f1fe358c702f4cfb29901d"
+    },
+    {
+      "path": "dispatch_example2.cpp",
+      "blob": "c8e860eab29027198910a8e9b27efec99f70ddff",
+      "sha256": "16ae3367d217a724c45b96b41925b6529287ac932cbf98d050b14ef529994238"
+    },
+    {
+      "path": "examples/CMakeLists.txt",
+      "blob": "b9bd7d934e27c61ae43a85d5765d8dbcd356718b",
+      "sha256": "4add2f9a6593cfab13de2982be194bc461d1b56430e0594b238e5d8aa746cb36"
+    },
+    {
+      "path": "examples/dispatch1_neon.cpp",
+      "blob": "7afef2b38f42cd42a2c675043d62677839c28990",
+      "sha256": "41658e4505793b99ffa23ddb33355a9ae387070ab3024154fa3a95d006808012"
+    },
+    {
+      "path": "examples/dispatch2_neon.cpp",
+      "blob": "b8b1c61289cad53739cb4345da38a0b19877af4c",
+      "sha256": "3cc19068a1c756b75ae2b2d63ebbf1f6d984a025c79d42eb3af8086f9ec4eb19"
+    },
+    {
+      "path": "examples/gfxmath_vectors.cpp",
+      "blob": "f549bd5bf0ef461a26a310d10f592049d1eecd44",
+      "sha256": "b42296739f21d9850c845f7a5ec609e262d4829232081d111daa244fd8e038de"
+    },
+    {
+      "path": "examples/vector_arithmetic.cpp",
+      "blob": "5e4a908a28ad1821c162a39edad056fd509f03f1",
+      "sha256": "fcd4b0bb8e3ef6aaa96e0d8015b40049523168114e5d9260a9c7f79b12e1ad82"
+    },
+    {
+      "path": "instrset.h",
+      "blob": "2834d3560d14972a9694fe082fb0d5ea3c8a52ba",
+      "sha256": "17a8705db04f0284d396a7a67363312948efe5b84b83a7ce44facce2d6951419"
+    },
+    {
+      "path": "instrset_compat_neon.h",
+      "blob": "18d1983667fdad3124a63cfb594934c0f7bf80df",
+      "sha256": "ac371d10c3a0d5f2bd503a917af2a644ec5b9975bf48f91d496d79ccfa932c8b"
+    },
+    {
+      "path": "instrset_detect.cpp",
+      "blob": "a0974df85c5326269e891c098718dd2c3de79269",
+      "sha256": "5c76668feaf226b02c970080c3fb67881f0c67aad22e66a4f91963880a8bfd0b"
+    },
+    {
+      "path": "instrset_detect_neon.cpp",
+      "blob": "4754808348b867c9848e32915714f10dd049e7a9",
+      "sha256": "7ece0ea59a15c0af45ce55677282d323371223a6f8d9495324c9274fac199c99"
+    },
+    {
+      "path": "instrset_helpers_neon.h",
+      "blob": "8321ca52fba1f51818cc4e16a67ce0461c3c466f",
+      "sha256": "02761f9447f2e99ebfa8efec8906fc19262b9f4e8578cbef610cec4a4a0d68d7"
+    },
+    {
+      "path": "instrset_neon.h",
+      "blob": "704778f0cc4b06d6e027db41c49a99b01c7c4174",
+      "sha256": "fcc9f30912fb3f51fe48fee7627e953a141f10cf9c91a74fea49a8f6848bcda8"
+    },
+    {
+      "path": "sse2neon.h",
+      "blob": "6e8b1fb79bc948de9775f800f5084ed8219683ac",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff"
+    },
+    {
+      "path": "tests/CMakeLists.txt",
+      "blob": "f90a789aba509ba6f58311d4d2615665a113c970",
+      "sha256": "41723e0e88fa9d7499b379704094cf8adb8c53df20033c2144b9a0f5042256ab"
+    },
+    {
+      "path": "tests/README.md",
+      "blob": "01d0448566a026028fd1ccd1c89e6aa2d45fc720",
+      "sha256": "4c319c39128a5b5c918ac786f03c3d7418fc4f08fbaf6e0b5005ec96d7c9e567"
+    },
+    {
+      "path": "tests/adapt_upstream_oracles.py",
+      "blob": "e13590ffc160586da7a4239be36026e4d39ce9af",
+      "sha256": "a6ad82da6dbf82575cecf881c2def6747bb25f798cb7d73e56b0a77f2f27f065"
+    },
+    {
+      "path": "tests/boundary_regression.h",
+      "blob": "d94727d018991e297d9e12020c61b6bcf9e64ed1",
+      "sha256": "a887a711408fc4425149602b082e696c826e1a18b0874738da997d9046a26b43"
+    },
+    {
+      "path": "tests/class_contracts.cpp",
+      "blob": "cc7bd3a6d3d01af25da8f05bf31bfa8fd9bc0c6a",
+      "sha256": "6a34022005522eabd540c0668a26877776f96c862f1c27c3213b231cd7e7e83b"
+    },
+    {
+      "path": "tests/class_contracts_abi.cpp",
+      "blob": "1222dc51c34b9edf20fc48b1823f06dc4f2fa4db",
+      "sha256": "b53ecf8aff578d81d733ee231c2a58edf63de741f06acbef87b0bbfa913d1778"
+    },
+    {
+      "path": "tests/configuration.py",
+      "blob": "47f7aea29c8625d6912f82828d94072edb37731d",
+      "sha256": "ec97feb315b7fdb163c709c8e6ea264c5b5399d5a9298a7413f962e9a6f01c13"
+    },
+    {
+      "path": "tests/core.cpp",
+      "blob": "8566aa5a8edaa9c4d268056c8268a527f06d5b4b",
+      "sha256": "814426c33e290a4ffcea5966235783da929f5ad31378f7b8c9440783a28c6ff4"
+    },
+    {
+      "path": "tests/cross_platform/CMakeLists.txt",
+      "blob": "6141c13f9f36e5f23a3536d03c4d1366d0489a2f",
+      "sha256": "eadfcbc3882f58616330493ab18857dfe532dac8ce13f0d32dd787b5ddbd7b2e"
+    },
+    {
+      "path": "tests/cross_platform/capture.cpp",
+      "blob": "f37a6de3b72af2954e33e7ad9418ba2e016af866",
+      "sha256": "1134e3f2eb6d73a1b3b9e584e64cbb0446723344545a5c18fea25525b4374352"
+    },
+    {
+      "path": "tests/cross_platform/corpus.jsonl",
+      "blob": "0b39e0d7cced5996244b4506be0fc643da009397",
+      "sha256": "0e18a9aecb2b15b31b1ff0aeaa61e1d8f91867df675900114c6ecbf3e385946c"
+    },
+    {
+      "path": "tests/cross_platform/policies.json",
+      "blob": "b68ab3f1842762a1dc051510278eaef4faaaca4c",
+      "sha256": "610be76973950ba9eea1c3779ccdb4397e4c82fe4bf2e73f3226039edf152fd3"
+    },
+    {
+      "path": "tests/edges.cpp",
+      "blob": "9f9c7687d594a97536ea8d2721ecdf6e26a4d72b",
+      "sha256": "28d65148962c6130eaa3253d2657e3d412bc55e612160e383817ec59e47481e0"
+    },
+    {
+      "path": "tests/exp_log.cpp",
+      "blob": "36661e680149e47e56e8a78a19706ed84777cbad",
+      "sha256": "394dd41eb1d9d05c0efd6f6bb6d1269ac1609916a46faf2c3054ce81ff9a7bd8"
+    },
+    {
+      "path": "tests/exp_log_reference.h",
+      "blob": "7815ba0aa4423c4edf0fcfee852a5a2a02a930ed",
+      "sha256": "fc5eec6a8423915f693e3be925a9a73ecddf8464dbfc37984b6ef4eb914b6b06"
+    },
+    {
+      "path": "tests/fp_classification.cpp",
+      "blob": "b3166b6d6f56bcc0d7263c2e5d037d28b4d9c8ea",
+      "sha256": "2a12b122f9dc000dec9286d3380a64929c6f1d12362037c7303ffb0d34a18910"
+    },
+    {
+      "path": "tests/fp_helpers.cpp",
+      "blob": "6e670c7f21667e9a0b8ddaef6c21ac822ca828fe",
+      "sha256": "97d4ca5daaa113ed2cf9dee5c76dc878b3b2ac49c4d106f4a9e52a4dc968b3cc"
+    },
+    {
+      "path": "tests/fp_helpers_abi.cpp",
+      "blob": "dc165ea29714e4614cc3065a4061f5f628ece900",
+      "sha256": "32943773d285bc59c4c059b713649abddfe54d3ab9ba17914fc1a5de795ed2bb"
+    },
+    {
+      "path": "tests/fp_partial.cpp",
+      "blob": "dddefdba52b133b49820e77682d3181cc8286a68",
+      "sha256": "f9c493f572120215dd6731c97c645f04be52e8b5d00e339c7ff3fef49a9c4cdd"
+    },
+    {
+      "path": "tests/fp_reduction.cpp",
+      "blob": "d3d9de3cc49d61ae69ac1def60f5eb5372ec4645",
+      "sha256": "f5377e004de20cc6b3ff939af77caa76a09f7dd2d5cfd7c795ab84f30d64a15b"
+    },
+    {
+      "path": "tests/generate_exp_log_reference.py",
+      "blob": "75532f47786edacbf48e10733f0275634039ba08",
+      "sha256": "f21381e867c56404e9906ad1482ced533a5d950dc6f3a194759e89afe6c2ded8"
+    },
+    {
+      "path": "tests/generate_hyperbolic_reference.py",
+      "blob": "0c3d11c3574133ec0b2bf33448896d32aa95abbb",
+      "sha256": "fffe434e9f825616be0319e88397d0764074e58597a35af30a828bbd6dd52011"
+    },
+    {
+      "path": "tests/generate_inverse_pi_reference.py",
+      "blob": "b6dad5cb354864a01593c913d0752baf3327d598",
+      "sha256": "ae03f0df1ef648777fa041538d11507eff47297bf043c0c8b4ec2e366cf849d8"
+    },
+    {
+      "path": "tests/generate_power_roots_reference.py",
+      "blob": "6cd200cf0bf0e0da71d4fe154214a68fc10f5975",
+      "sha256": "bfd013d4662aef0f76a8296725ea88897cc6daa848df4ab368e7f6504d26cd83"
+    },
+    {
+      "path": "tests/generate_trig_reference.py",
+      "blob": "a7ee13714d63f49507056a9b6d3affe24c7d7a7e",
+      "sha256": "9c3cb66f3813235ad73303787f10f00ba8fcaa5f0ed578a6404d3276991108ed"
+    },
+    {
+      "path": "tests/generate_upstream_x86_reference.py",
+      "blob": "0b0d277c0e9c81353e0b23cfd18ccd60dc20aa33",
+      "sha256": "ee957c68be6ece90a74ed6f2c935665a101903b3e485edc473754c8924647a7f"
+    },
+    {
+      "path": "tests/hyperbolic.cpp",
+      "blob": "97e6138dd13bda2a85802a4b3a78e1d314619ece",
+      "sha256": "05caf43b9cff48a2d455b96442126367d72d354c5a32fbd58b08c67df7c2d0bb"
+    },
+    {
+      "path": "tests/hyperbolic_reference.h",
+      "blob": "4ca573e0277994d6c6967e696485028353395116",
+      "sha256": "1e636d8f3e72c460ffe7926b12f7f5449d54e34027bb7a6b5b6c5a8b1580c0e1"
+    },
+    {
+      "path": "tests/integer_slice.cpp",
+      "blob": "2db546894cce63e430d9d543627414e2d665c216",
+      "sha256": "4676096e2239c9d54debc948c674c7116490a0c15e74b2217003a78902c35034"
+    },
+    {
+      "path": "tests/integer_slice_abi.cpp",
+      "blob": "15375aad097c41918a5e4ca82e226c59540a3480",
+      "sha256": "fc6067fb708b31936fafe8507e647161eb8c968669e985539a7e75c7e25e620d"
+    },
+    {
+      "path": "tests/inverse_pi.cpp",
+      "blob": "bf54bc6f5beb7df4c15b61b665099d9e84660a82",
+      "sha256": "6d78d4e42cb4469350dc0acb08804f2b4aacbf9a26dbe895f048a8f9a06c66cc"
+    },
+    {
+      "path": "tests/inverse_pi_reference.h",
+      "blob": "9ef87f0d241f66706b34370aff86100504da77d5",
+      "sha256": "e65f3e6a919d3c78a8e9cddfeed95989c97146245132b8906cccf06b52401954"
+    },
+    {
+      "path": "tests/movement_slice.cpp",
+      "blob": "350f6cb16e90d563d42e0d4d12fc5c6c34816219",
+      "sha256": "7ee48af6fa40cd0b52c5a5be979bdaed0632833ab8500128be69ce1162373f25"
+    },
+    {
+      "path": "tests/power_roots.cpp",
+      "blob": "204da6ee262ea685e8bfa4e2b00f61d6387d0061",
+      "sha256": "8713dfaf6cfbad26675c31b77d29d193b833c438104f0b7dca75e516e43bdf82"
+    },
+    {
+      "path": "tests/power_roots_reference.h",
+      "blob": "26de42150d94a2aaec5a9144f17efcb359a9e3be",
+      "sha256": "2717e907603e536a23a133cb8ca7f3c4b874f78bfa7ad038ea2f5861677579c3"
+    },
+    {
+      "path": "tests/protected_memory.h",
+      "blob": "dcc41c7e2a2475dc284c0e1d5a0f176d1a8b014f",
+      "sha256": "7675a08368457a76b4b199f084ec85ce0eb9d2dbd2f57bdabc6fa64484e2512a"
+    },
+    {
+      "path": "tests/scalar_bits.h",
+      "blob": "ac0456f3a16f2db744bae48cc747c26f562d6bf1",
+      "sha256": "3345d979fe7bf5d752d0270c69fb8f924d2fc2c432af933056965cc992cc1ad5"
+    },
+    {
+      "path": "tests/trig.cpp",
+      "blob": "405a03da2c0354fe812faac4ccd0f292c705f168",
+      "sha256": "7175d60c9b3b08cbbb605a20c881ca5119be053a2392ff05bc48be815249e7b5"
+    },
+    {
+      "path": "tests/trig_reference.h",
+      "blob": "9e8dc0fc01ad4c062abbfddb90564c4377a18e66",
+      "sha256": "05f9a22557d0256a147f3c7540b9f43fac23f5d12ff3951ba4fbe0d6b5c030e0"
+    },
+    {
+      "path": "tests/truncate_i64_regression.h",
+      "blob": "f30ea4e234b667f22b29e968af0960cadf633458",
+      "sha256": "a21a7ced4554c0433a5c89f4a83626136e76c78f1fd55cd91b24fdac098455b5"
+    },
+    {
+      "path": "tests/upstream_scalar_oracle.h",
+      "blob": "14c4055f222f813f792530ea8bf9d16d19f7945c",
+      "sha256": "ce093b9eaa894f5e7bfe57bb27a8efea55e9d6a4efe4a5535b9ca50298157df1"
+    },
+    {
+      "path": "tests/upstream_x86_reference.h",
+      "blob": "395bb54d7f7639fa2439f926e97a4c8af98b3a19",
+      "sha256": "91f4f72be3c1511fa476f878802de990ea7d3edf3ba8b50ab34dc63575deb432"
+    },
+    {
+      "path": "tests/upstream_x86_reference_data.h",
+      "blob": "2748b7b1ef31eba3a4d400c6a7de50d9ed5a74b4",
+      "sha256": "7121747abc9fcf1011862e0888d5cf749ba767c735403b7fb309c801c9bfb9bb"
+    },
+    {
+      "path": "tests/wide_composition.cpp",
+      "blob": "7ad33b9a74d403295cca624fe84fdf9fdd7edfef",
+      "sha256": "492e54752d9fcc3dd4e41d0c678b854da31a0c4e1a4166a127905339e086a023"
+    },
+    {
+      "path": "tests/wide_composition_abi.cpp",
+      "blob": "18c57b1f8e2ab94816f9241bd1632950416c1beb",
+      "sha256": "162abbb8b49a5645dd04e41f413ddfa9b373136eea851d0283486ff5e731e221"
+    },
+    {
+      "path": "tests/wide_types.h",
+      "blob": "3dfd374af25b26e6347bbf9d354e500f07e37797",
+      "sha256": "ef04b071b5fdb9554988d3a5bc1641a4f9d2616cf98c2fc72767ba7caedcb946"
+    },
+    {
+      "path": "tools/run_native_arm_validation.py",
+      "blob": "c8b15fe2c394c13396ddb8def9a45b5c968ba194",
+      "sha256": "b4c70ef4dd05a109952ae4ae8fd8beb4d28d5a439d529719aa75de6c5bb82b3e"
+    },
+    {
+      "path": "tools/run_windows_validation.ps1",
+      "blob": "1bb3b586737ff77da42b6d06a3c057cfb8742104",
+      "sha256": "d9ef6ca72576f60e97e120f003575d2c305da6e4f1b6a13bdb3495fab7c2d98b"
+    },
+    {
+      "path": "tools/run_windows_validation.py",
+      "blob": "a915e43f9ca9ae0bbbb63baefe505c235f69fb00",
+      "sha256": "6c80bd12782063a7106206194564f402c9bc787b3d0126d1ba64a746a26c0e8c"
+    },
+    {
+      "path": "tools/validation_evidence.py",
+      "blob": "8f6632aa97cdd35f5033b83d5995809aef9818f9",
+      "sha256": "0d0fc8b8f70a42da3d2f038513dfbe2b35c9dd52c1fbbe2aa23797fd5181df30"
+    },
+    {
+      "path": "vcl2_xa64.h",
+      "blob": "7d1b0993030dfcd0d783a98fd4d7b90324092d35",
+      "sha256": "58535038d774be569b1397ecc869f608ccaeaafe0ba009c287ea724f43ed5d3d"
+    },
+    {
+      "path": "vcl_config.h",
+      "blob": "103fb6d6996ee9101f713d59fe95f9ebba930519",
+      "sha256": "695bd90a42cb0df78c6b9e0588992253cc54a4bc10cac69f547ab2975e399c70"
+    },
+    {
+      "path": "vcl_runtime.cpp",
+      "blob": "b2d0a3efd0998d870cbb13e907249823d1b203b0",
+      "sha256": "d5614942dc2891c02ce3b056b85d25fd4745d4c5a0c5133a4b70b2bc53dfb496"
+    },
+    {
+      "path": "vector_convert.h",
+      "blob": "d6caf5b88aa8b43d122db00fb2eb59128629403f",
+      "sha256": "685365bec7ffb430af689214a6c748e8797d0ff0d8a229e55d677be6b9f74f86"
+    },
+    {
+      "path": "vector_convert_neon.h",
+      "blob": "de3bee277ec9f47770efce9a8eeb32add660b6a7",
+      "sha256": "4e107582e14ecd7570b185a838a987839ac85b4dc5d56b796c9bebbf05463261"
+    },
+    {
+      "path": "vectorclass.h",
+      "blob": "6c6f175560d0e8a390eb3c88bd236e5c6fd606db",
+      "sha256": "96a6892c0d1a09f0f975071834204efb9ec115915d75385a530c3f68cbea0e09"
+    },
+    {
+      "path": "vectorclass_neon.h",
+      "blob": "2fd04c8b2212ab49e785ec672655bbe8785ae0fa",
+      "sha256": "47681a4f3dbbe110580cc82cc492f076c9d3de796e660322e0087ba98e9c7db0"
+    },
+    {
+      "path": "vectorf128.h",
+      "blob": "4d8011b328ee44d0b212b59f7bb65dc04a1b6b03",
+      "sha256": "214ed1d1a9e3365e6e09b04807a52cd795f38218e0071872b99aec6927cb606f"
+    },
+    {
+      "path": "vectorf128_compat_neon.h",
+      "blob": "19fc0cc9baaf636fdbd5598bf3618560230c1e47",
+      "sha256": "8cf1afed968eb263eabfa8aa6aa2c542c62e81306a32321e6cf96d4535891117"
+    },
+    {
+      "path": "vectorf128_helpers_neon.h",
+      "blob": "1ed4c29181502b8e8caaf1639d7c2fba8a29073c",
+      "sha256": "49450709a1ef77abd5075a853454d747ee2ec6eb13939a0f470b2eaac61fe79b"
+    },
+    {
+      "path": "vectorf128_neon.h",
+      "blob": "c769cc1e651fec1529242effcf38bb75333b32ad",
+      "sha256": "97dd6499a6d9b95c63b7c31e367903e83b62ef909a14a863237c5d575a8cf743"
+    },
+    {
+      "path": "vectorf256.h",
+      "blob": "b6d8e4592624d3047e4c793a585cefc7f6b6e96b",
+      "sha256": "86797f06fd25c5fe966abe45dedf5edb104e5566859ebebddae8a26a0b47531b"
+    },
+    {
+      "path": "vectorf256e.h",
+      "blob": "0d27b4d5266b9699449f4349fb250f31f1d1cc4e",
+      "sha256": "8d030b4a17850ae345c90c4c0005b86cf4b587da78385bd41b4ec45d9b411201"
+    },
+    {
+      "path": "vectorf256e_neon.h",
+      "blob": "a0ee270affd76c5acddf8f9c6928dcde5c38658e",
+      "sha256": "c6e62f07b59b31596d6bd74942e522baa0352b678904fcfd8c4fdb5a2643a924"
+    },
+    {
+      "path": "vectorf512.h",
+      "blob": "1831f9bb64f36d1d67e2b7f660324d1a8b1ef411",
+      "sha256": "1bc479817795beb1c07af9cd5db75efc45e000e315d264f5b86754c79b71d51b"
+    },
+    {
+      "path": "vectorf512e.h",
+      "blob": "a9007785e570b84ac8485913053f4016d3e63f64",
+      "sha256": "7db22f76a8cc2839ba948f061834cbd5ac22c297f3e508b551a2f1366a656856"
+    },
+    {
+      "path": "vectorf512e_neon.h",
+      "blob": "7c1d0c0466d2a9dfeeaa2ee8938660ee15b35abb",
+      "sha256": "107c5b7b58c3ffa9eaee1fc222fe00c8fd1d2b2658ced4799e17588bbca0f684"
+    },
+    {
+      "path": "vectorfp16.h",
+      "blob": "a5eb8a3fa239b1f175a6b97a58c9cf1c7e84ae6b",
+      "sha256": "cc13055cb17cfe56ce5978286570b41464d84e45ebd142e15d48489f3a914f81"
+    },
+    {
+      "path": "vectorfp16e.h",
+      "blob": "2aab29d22904bfb29a796466858fc95734bc17c7",
+      "sha256": "79d0e16a891990bb3020160d3dd52bb2d33f620414a4b2ca77cd441e75f3361c"
+    },
+    {
+      "path": "vectori128.h",
+      "blob": "255a65b7a9e10d2855194ba79b53e30d245330a0",
+      "sha256": "b0f1de0d8fcfcf9185c2f2ebddb60a786f9742e7cee0fe598880977efe716cdf"
+    },
+    {
+      "path": "vectori128_compat_neon.h",
+      "blob": "3b02aa739c9882a874c0feb0b85701a52652b201",
+      "sha256": "86d2c09eefbd2999004456e6ca11fff998c8bf32c3bd6999d2208b0d48324522"
+    },
+    {
+      "path": "vectori128_div_neon.h",
+      "blob": "211f188c73f52d413793d48802903d68775cf6c8",
+      "sha256": "63935c773314b3493edbedaff66d4f7aafe65ad254881c0997e4f6d8149653a4"
+    },
+    {
+      "path": "vectori128_neon.h",
+      "blob": "01a52701e1f50f17ec3a7234c631dcc2342ba03b",
+      "sha256": "12fdbe3778ab084bf0bc929ba93557502e340d1636ae8d08cd1c136ee336ec91"
+    },
+    {
+      "path": "vectori128_perm_neon.h",
+      "blob": "5079a0a8d5b1c7ee1711aead20264336cc78ff88",
+      "sha256": "53ebf9d29ba2f8c1e0b848d22662804f09fdd3a4e180a9a0f638be1328389190"
+    },
+    {
+      "path": "vectori256.h",
+      "blob": "37c7417cb7f1222769dcecc514246082d80bb4c8",
+      "sha256": "1881acef69e561693ee9cbd594333921bbc7b5603bb4c5f2a845f19bc959aa8d"
+    },
+    {
+      "path": "vectori256e.h",
+      "blob": "4b9eff9be336155f0e2b1af805b02dc7b62bd8c5",
+      "sha256": "baff37c907c1bf2a9c5170483730d08ed08a27d47c36cdeef068bc43cdd5429a"
+    },
+    {
+      "path": "vectori256e_neon.h",
+      "blob": "d5483ea927401beed61bb8d70623c824f9c4186a",
+      "sha256": "40eecd4f5c6d30513e6052f5749a1d145462138aa8506c50882e2bbe4a2eb714"
+    },
+    {
+      "path": "vectori512.h",
+      "blob": "97ec1441590ba78a33dc4e0b110bc98a1cd63407",
+      "sha256": "560d09ae96a7ee9aa914521b791d26ead37d57cfa26985cf41a45231ad6c497f"
+    },
+    {
+      "path": "vectori512e.h",
+      "blob": "1e04df14c43715262fe30c36aa2a6e531fc5fadb",
+      "sha256": "b2d55013dbb03444ea272f2ce9eb6ea05e6ba2f1ff42138561d61459da4aa8f8"
+    },
+    {
+      "path": "vectori512e_neon.h",
+      "blob": "4874824071c2ebdc66ec9e37072da6f833f69b6e",
+      "sha256": "4bcf13f283241cd640aad6f21a2ede9f2ee1e505547f0753a2eb43872a1cb1bb"
+    },
+    {
+      "path": "vectori512s.h",
+      "blob": "261b3013ed31ebd7c3da325af4bd5f46a22d6c94",
+      "sha256": "82bd972f0650e61e3ace4c1e1c010c7249c6c6b76997047620f91cecef486fbc"
+    },
+    {
+      "path": "vectori512se.h",
+      "blob": "ff49ce19996dfe1b744e27753d457d115873ad94",
+      "sha256": "a3e2ccd6f57e8a68079261589573a55b7fdab5b473866b0f0e6eaa6774151060"
+    },
+    {
+      "path": "vectori512se_neon.h",
+      "blob": "05eac1ab9c82dd54bb6aa1eb235c355d3e76a3d8",
+      "sha256": "67ebbeaf7f5490a36b29c3119a6fe7732030713a36973fadd7692a28ec22ce46"
+    },
+    {
+      "path": "vectormath_common.h",
+      "blob": "7a627dd61d2118651193ea9aabdc61f54dfd1c74",
+      "sha256": "d5b751356ab4129189de60fe7747aeb26ada3a5c621f8694ee1764ff7e82af98"
+    },
+    {
+      "path": "vectormath_common_neon.h",
+      "blob": "ac8b223456183a47bb25da86749c68d0dd42fbcd",
+      "sha256": "efe3f29ae10e812c8dca8dbcfdd75908ebe6c8ab50c4ef1056430622d353cbd8"
+    },
+    {
+      "path": "vectormath_exp.h",
+      "blob": "ea1d850aafa7652919de3ded347372f4da54fc53",
+      "sha256": "c83fda2a1e8965626c68ad2fdefea65660d8806e29c18215b22c95b6f2abd440"
+    },
+    {
+      "path": "vectormath_exp_neon.h",
+      "blob": "1145d48eb3144a01b395f1b36b7ca9f0b2794489",
+      "sha256": "b10baea6a7dea73070ff60b06a15cca32a9c7ab4fa2e055569b8266eb0461669"
+    },
+    {
+      "path": "vectormath_hyp.h",
+      "blob": "9f22f3f11ee168cd9b50bf27063781e591c5a313",
+      "sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+    },
+    {
+      "path": "vectormath_hyp_neon.h",
+      "blob": "c8943df8a088c7d2ec5e795a1703150cacebcae5",
+      "sha256": "fbf24fc7b2d47a78a4c6eb63fc2ca2b19a02ae8ab176b40ce552ff171ecd47da"
+    },
+    {
+      "path": "vectormath_lib.h",
+      "blob": "faa2a24f9db3c18c3d151c17824248a571e8cf7f",
+      "sha256": "89015c4facc68c6db3dc28ceaebbe33b2c85bdc80b7410da58ec40b305db7587"
+    },
+    {
+      "path": "vectormath_trig.h",
+      "blob": "c33e354d7890c65dd91d5b475bdae810ccec9b92",
+      "sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde"
+    },
+    {
+      "path": "vectormath_trig_neon.h",
+      "blob": "dd247b29eaeac4f7e174d4a51ff5c23ed25e6ec9",
+      "sha256": "bcb09d063afbf36b04213e1234e71ded30901516dcaa00aa175486cdfb443af8"
+    }
+  ]
+}

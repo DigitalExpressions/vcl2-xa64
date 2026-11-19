@@ -1,5 +1,17 @@
 # ARM / Neon strategy reset
 
+## Dependency revision ledgers and VCL deduplication — 19 November 2026
+
+The maintainer approved separate [x86](../audit_x86_history.md) and
+[ARM64 compatibility](../audit_arm64_history.md) revision ledgers. The duplicate
+VCL vendor snapshot is replaced by its byte-exact relocated manifest and a
+verified comparison cache under ignored build; all shipped originals remain
+unchanged. The retained sse2neon content is identified as upstream `2272251`,
+with encoding/newline differences recorded without changing either header.
+The [dated migration record](validation/dependency-audit-history-2026-11-19.md)
+documents checks and limits. Existing frozen results and M2 follow-up bases
+retain their earlier layout; this change does not inherit a native matrix pass.
+
 ## Four-blend integration and next M2 task — 19 November 2026
 
 The maintainer approved retaining and publishing the four-blend implementation

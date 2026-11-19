@@ -23,7 +23,11 @@ This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
 VCL C++ vector types and operators for application-independent SIMD code.
 
-Original VCL2 is retained untouched at root and in `vendor/vectorclass/`.
+Original VCL2 is retained untouched at root. The
+[x86 revision ledger](audit_x86_history.md) records the exact upstream revision
+and hash manifest; the duplicate vendor snapshot is replaced by a verified
+comparison cache under ignored build. The separate
+[ARM64 dependency ledger](audit_arm64_history.md) records the retained sse2neon revision.
 Separate authoritative ARM headers preserve header-only usage without generation. See the
 [source layout and maintenance workflow](docs/backend-layout.md).
 

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "repository": "https://github.com/DLTcollab/sse2neon",
+  "commit": "2272251cc3ad9cba8b8c47c4065811cfb396b802",
+  "tree": "09647ade30f10df942613660636f17bfe1372cea",
+  "commit_date": "2026-10-18",
+  "version_description": "v1.9.1-27-g2272251",
+  "release_tag": null,
+  "source_path": "sse2neon.h",
+  "upstream": {
+    "git_blob": "fbfc9da84fe249f5f1d7be559e87c6a94640a6c2",
+    "sha256": "932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3",
+    "bytes": 507039,
+    "encoding": "UTF-8",
+    "line_endings": "LF",
+    "final_newline": true
+  },
+  "retained": {
+    "paths": [
+      "sse2neon.h",
+      "vendor/sse2neon/sse2neon.h"
+    ],
+    "git_blob": "6e8b1fb79bc948de9775f800f5084ed8219683ac",
+    "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+    "bytes": 518891,
+    "encoding": "Windows-1252",
+    "line_endings": "CRLF",
+    "final_newline": false
+  },
+  "representation_proof": {
+    "verified_date": "2026-11-19",
+    "forward_transform": [
+      "Decode upstream UTF-8 and encode Windows-1252",
+      "Replace LF with CRLF",
+      "Remove the single final CRLF"
+    ],
+    "matches_retained_bytes_exactly": true,
+    "semantic_source_edits": false
+  },
+  "legacy_fork_provenance": "vendor/sse2neon.json",
+  "note": "Development snapshot after v1.9.1, not a tagged v1.9.1 release. Existing retained header bytes are unchanged; this audit identifies provenance without updating the dependency."
+}

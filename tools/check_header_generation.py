@@ -20,17 +20,18 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-from regenerate_headers import ROOT, render
+from regenerate_headers import ROOT, UPSTREAM_MANIFEST, render
 
 
 def main():
     output=ROOT/'build'/('header-generation-check-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
     output.mkdir(parents=True)
     _,metadata=render(ROOT)
-    results=[dict(control='clean vendor, protected originals and ARM graph',passed=True)]
+    results=[dict(control='clean audited originals, sse2neon and ARM graph',passed=True)]
     def fresh(name):
         target=output/name;target.mkdir()
         shutil.copytree(ROOT/'vendor',target/'vendor')
+        shutil.copytree(ROOT/'audit',target/'audit')
         (target/'adaptation').mkdir()
         shutil.copy2(ROOT/'adaptation/manifest.json',target/'adaptation/manifest.json')
         for path in [*(ROOT.glob('*.h')), ROOT/'README.md', ROOT/'LICENSE', ROOT/'changelog.txt', *ROOT.glob('*.cpp')]:
@@ -42,8 +43,25 @@ def main():
         except (ValueError,OSError) as error:
             results.append(dict(control=name,passed=True,diagnostic=str(error)));return
         raise AssertionError('Integrity control accepted invalid input: '+name)
-    rejected('changed-vendor',lambda r:(r/'vendor/vectorclass/vectorclass.h').write_bytes(b'changed\n'))
-    rejected('extra-vendor-path',lambda r:(r/'vendor/vectorclass/extra.h').write_bytes(b'extra\n'))
+    def manifest_change(root,change):
+        path=root/UPSTREAM_MANIFEST;data=json.loads(path.read_text());change(data);path.write_text(json.dumps(data))
+    rejected('changed-recorded-sha256',lambda r:manifest_change(r,lambda d:d['files'][0].update(sha256='0'*64)))
+    rejected('missing-original-inventory-entry',lambda r:manifest_change(r,lambda d:d['files'].pop()))
+    def duplicate_vendor(root):
+        path=root/'vendor/vectorclass';path.mkdir();(path/'extra.h').write_bytes(b'extra\n')
+    rejected('reintroduced-vendor-snapshot',duplicate_vendor)
+    rejected('changed-sse2neon-vendor',lambda r:(r/'vendor/sse2neon/sse2neon.h').write_bytes(b'changed\n'))
+    def coherent_sse_change(root):
+        for p in ['sse2neon.h','vendor/sse2neon/sse2neon.h']:(root/p).write_bytes(b'changed\n')
+    rejected('changed-sse2neon-both-copies',coherent_sse_change)
+    legacy=fresh('historical-vendor-layout')
+    shutil.copy2(legacy/UPSTREAM_MANIFEST,legacy/'vendor/vectorclass.json')
+    pin=json.loads((legacy/UPSTREAM_MANIFEST).read_text())
+    (legacy/'vendor/vectorclass').mkdir()
+    for row in pin['files']:shutil.copy2(legacy/row['path'],legacy/'vendor/vectorclass'/row['path'])
+    (legacy/'audit').rename(legacy/'retained-audit-for-control')
+    render(legacy)
+    results.append(dict(control='historical frozen vendor layout remains verifiable',passed=True))
     rejected('changed-protected-root',lambda r:(r/'vectorclass.h').write_bytes(b'changed\n'))
     def newline(root):
         path=root/'vectorclass.h';data=path.read_bytes();assert b'\r\n' in data

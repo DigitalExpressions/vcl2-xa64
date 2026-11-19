@@ -6,7 +6,10 @@ tools/run_simd_capture.py text eol=lf
 tools/check_simd_comparison.py text eol=lf
 
 # Canonical vendor/backend bytes are audited independently of checkout settings.
-vendor/vectorclass/** -text -whitespace
+audit/** -text whitespace=cr-at-eol
+/audit_x86_history.md text eol=lf
+/audit_arm64_history.md text eol=lf
+docs/validation/dependency-audit-history-*/** -text
 vendor/sse2neon/** -text
 backends/arm64/** -text
 backends/x86/** -text
@@ -71,7 +74,6 @@ tests/** text eol=lf
 examples/** text eol=lf
 benchmarks/**/*.cpp text eol=lf
 benchmarks/**/*.h text eol=lf
-vendor/vectorclass.json -text
 
 # Portable architecture-separation evidence retains exact recorded bytes.
 docs/validation/arch-separation-m2-*/** -text

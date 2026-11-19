@@ -2,9 +2,11 @@
 
 - VCL2 originates with Agner Fog. Existing source copyright/license notices and
   the root [LICENSE](../LICENSE) and [changelog](../changelog.txt) are retained.
-  The [pristine upstream snapshot](../vendor/vectorclass/README.md) preserves all
-  28 original files at `6675774`, with a complete [blob/SHA inventory](../vendor/vectorclass.json).
-  Fork adaptations live outside that snapshot; see the [layout guide](backend-layout.md).
+  All 28 original files at `6675774` remain exact at root, with a complete
+  [blob/SHA inventory](../audit/vectorclass-2.02.04.json) and
+  [x86 revision history](../audit_x86_history.md). The duplicate vendor snapshot
+  is retired; an audited comparison copy can be restored under ignored build.
+  Fork adaptations remain separate; see the [layout guide](backend-layout.md).
 - The added native port sources carry DigitalExpressions Sweden's full
   Apache-2.0 notice. Extracted/adapted helpers retain their original Agner Fog
   attribution; this notice identifies the port-specific contributions.
@@ -13,7 +15,9 @@
   carries that compatibility work and the Direct Neon port onto official VCL
   2.02.04 while retaining the original source notices.
 - The bundled [sse2neon.h](../sse2neon.h) retains its existing MIT notice. This
-  preparation does not replace or silently update that dependency.
+  preparation does not replace or silently update that dependency. The
+  [ARM64 dependency history](../audit_arm64_history.md) identifies its upstream
+  snapshot and documents representation differences with both raw hashes.
 - The optional upstream testbench is a separate GPL-3.0 checkout at the pinned
   revision documented in [tests](../tests/README.md). Its generated copies and
   embedded matching fragments in the adapter/test configuration retain that

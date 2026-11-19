@@ -86,10 +86,18 @@ on a particular machine; its absence must not prevent a fresh setup.
   The original Windows correctness gate stays failed/incomplete.
   Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
   report for its actual result/source identity. `README.md` is protected upstream.
-- All 28 original paths at root and under `vendor/vectorclass/`, plus
-  `vendor/vectorclass.json`, are protected exact raw bytes. Never edit, normalize,
-  format or regenerate them for ARM work or to make tests pass. Verify before and
-  after validation. An upstream pin update requires separate explicit scope.
+- The maintainer approved replacing the duplicate VCL vendor snapshot with
+  `audit_x86_history.md`, `audit_arm64_history.md` and retained audit manifests.
+  `vendor/vectorclass/` is retired; its pin moved byte-exact to
+  `audit/vectorclass-2.02.04.json`. All 28 original root paths remain protected
+  exact bytes. Never edit, normalize, format or regenerate them for ARM work or
+  to make tests pass. Read-only checks verify SHA-256, Git blobs and the upstream
+  tree directly; `tools/restore_upstream_vcl.py` reconstructs a comparison copy
+  under ignored build without overwriting existing files. Keep sse2neon root,
+  vendor header and its existing pin exact; its upstream representation audit
+  records differences without normalizing. Verify before/after validation.
+  An upstream dependency update requires separate explicit scope. Historical
+  captures retain their old vendor layout and must not be rewritten.
 - Authoritative ARM implementations are root `*_neon.h` files and
   `instrset_detect_neon.cpp`. `vcl_config.h` is neutral selection policy;
   `vcl2_xa64.h` selects the complete supported vector/math family at compile time.

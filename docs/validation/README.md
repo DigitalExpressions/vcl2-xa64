@@ -1,5 +1,15 @@
 # Native ARM validation and retained evidence
 
+## Dependency revision ledgers and VCL deduplication — 19 November 2026
+
+The [new layout/provenance record](dependency-audit-history-2026-11-19.md) covers
+the root [x86](../../audit_x86_history.md) and [ARM64 compatibility](../../audit_arm64_history.md)
+ledgers, relocation of the unchanged VCL hash manifest, removal of duplicate
+vendor originals and verified offline reconstruction of a comparison snapshot.
+The sse2neon dependency bytes are unchanged; its actual upstream snapshot and
+retained representation differences are now recorded. This is not a new native
+matrix or benchmark pass, and historical source inventories remain unchanged.
+
 ## Four-blend integration and next M2 task — 19 November 2026
 
 The maintainer approved the [four-blend integration](blend4-integration-2026-11-19.md)

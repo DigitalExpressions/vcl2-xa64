@@ -47,7 +47,8 @@ derived files must retain their original attribution too.
 
 Maintain ARM runtime changes in root `*_neon.h` and optional
 `instrset_detect_neon.cpp`. Applications include `vcl2_xa64.h`. All 28 original
-root files and `vendor/vectorclass/` must remain exact pinned bytes; root README
+root files must remain exact pinned bytes under the manifest linked from
+`audit_x86_history.md`; the duplicate vendor snapshot is retired. Root README
 is upstream, while fork guidance lives in `README-vcl2-xa64.md`.
 The old adapted-root generation pipeline is retired. Use read-only
 `tools/regenerate_headers.py --check`, integrity controls and the repository

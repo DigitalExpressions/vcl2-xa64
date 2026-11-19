@@ -118,7 +118,7 @@ baseline passes, and those passes do not imply a clean higher-ISA matrix.
 
 ## Integrity and portable evidence
 
-The [pristine upstream inventory](../../vendor/vectorclass.json) verifies all
+The [pristine upstream inventory](https://github.com/DigitalExpressions/vcl2-xa64/blob/9a11b6a1fd1c1882c95af958fd43dc56c235d82a/vendor/vectorclass.json) verifies all
 28 original files and reconstructs upstream tree
 `36aee120c28c9c64e62903bfc81139003e37cedd`. Generation applies explicit patches
 without fuzz, then copies canonical backend sources to the existing root include

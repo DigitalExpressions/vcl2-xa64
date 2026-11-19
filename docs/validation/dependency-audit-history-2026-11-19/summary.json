@@ -1,0 +1,37 @@
+{
+  "base_commit": "9a11b6a1fd1c1882c95af958fd43dc56c235d82a",
+  "tested_commit": null,
+  "tested_tree": null,
+  "tested_source_files": 641,
+  "tested_source_fingerprint": "f5077bb8018aa2c9e0aa726cdedd3c76fc640fd1df17292ba7d97360b6f4745e",
+  "upstream_vcl_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+  "sse2neon_upstream_commit": "2272251cc3ad9cba8b8c47c4065811cfb396b802",
+  "controls": [
+    {
+      "group": "header",
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "group": "restore",
+      "passed": 9,
+      "failed": 0
+    },
+    {
+      "group": "capture",
+      "passed": 8,
+      "failed": 0
+    }
+  ],
+  "native_selected_passed": 8,
+  "native_failed": 0,
+  "full_matrix_executed": false,
+  "unchanged_execution_inputs": 117,
+  "remaining_protected_paths": 31,
+  "protected_bytes_and_mtimes_unchanged": true,
+  "old_portable_manifests_verified": 45,
+  "old_portable_entries_verified": 489,
+  "historical_windows_gate": "failed/incomplete: 5387 passed, 249 failed, 76 not run / 5712; twelve examples",
+  "commits_pushes_merges_cleanup": false,
+  "git_head_refs_index_worktrees_remotes_and_configuration_unchanged": true
+}
