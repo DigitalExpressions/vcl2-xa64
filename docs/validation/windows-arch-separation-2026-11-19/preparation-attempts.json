@@ -1,0 +1,60 @@
+{
+  "run_id": "windows-arch-separation-20261119-ws18-01",
+  "initial_date_context": "2026-11-18 Europe/Stockholm; execution crossed midnight to 2026-11-19",
+  "attempts": [
+    {
+      "id": "shell-inspection-01",
+      "status": "worktree created successfully; subsequent optional absent-path lookup returned shell exit 1",
+      "source_changed": false
+    },
+    {
+      "id": "script-launch-01",
+      "status": "launch.ps1 rejected by existing PowerShell execution policy before it executed",
+      "resolution": "Initialized the installed Visual Studio developer module using inline shell commands. No execution-policy change or bypass.",
+      "source_changed": false
+    },
+    {
+      "id": "preflight-01",
+      "status": "controller incorrectly resolved the existing testbench path; git returned 128",
+      "logs": "controller-commands.jsonl, testbench-head.log",
+      "resolution": "Corrected the external controller path; retained original failure. Frozen source untouched."
+    },
+    {
+      "id": "preflight-02",
+      "status": "testbench revision and cleanliness checks passed; controller then referenced the earlier log filename and stopped",
+      "logs": "controller-commands.jsonl, preflight02-testbench-head.log, preflight02-testbench-status.log",
+      "resolution": "Corrected external controller log lookup and continued with gates phase. Frozen source untouched."
+    },
+    {
+      "id": "preflight-gates-01",
+      "status": "all four frozen integrity/repository/source-capture check programs passed; all three pinned testbench hashes passed"
+    },
+    {
+      "id": "continuation01-collector",
+      "status": "MSVC Release CTest completed; external collector stopped on missing command field for an unavailable executable",
+      "resolution": "Collector corrected to account for missing inventory commands; original JUnit reanalyzed without rerunning tests; independent remaining profiles resumed",
+      "source_changed": false
+    },
+    {
+      "id": "facade01-raw-symbol-comparison",
+      "status": "MSVC Debug SSE2 stopped on raw COFF label-name mismatch; original objects, outputs, false comparison result and disassembly retained",
+      "resolution": "Continued the remaining independent pairs without rerunning completed consumers. Separate offline analysis resolves defined relocation targets to section/offset and retains original raw-name outcomes. Numerical gates and native source unchanged."
+    },
+    {
+      "id": "coff-offline-analysis-01",
+      "status": "External offline analyzer stopped on duplicate Python dictionary keyword before emitting results",
+      "resolution": "Corrected dictionary field naming and reran only offline object analysis, not native tests."
+    },
+    {
+      "id": "portable-analysis-01",
+      "status": "Offline dependency extraction could not locate Ninja outside the initialized developer environment",
+      "resolution": "Used the exact installed Ninja path captured during execution. Empty failed-launch log retained; no tests rerun."
+    },
+    {
+      "id": "portable-analysis-02",
+      "status": "Offline parser initially interpreted MSVC relative Ninja dependency paths from the controller directory",
+      "resolution": "Resolved recorded relative dependencies against each actual build directory and reused the original logs. No native source, test or recorded dependency was changed."
+    }
+  ],
+  "note": "cl /Bv reports its version then exits 2 for missing input; this was an informational version query, not a failed compilation. No native test was run during the failed preparation attempts."
+}

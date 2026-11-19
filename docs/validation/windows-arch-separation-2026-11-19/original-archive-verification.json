@@ -1,0 +1,32 @@
+[
+  {
+    "path": "cap/captured-source.zip",
+    "sha256": "6b2f943cea502830c7c0929e61b15e63a335e8f2453edc51ed44c3119b7127f4",
+    "entries": 499,
+    "crc_verified": true
+  },
+  {
+    "path": "cap/source/build/windows-native-clang-debug-20261118T230209540575Z/return-evidence.zip",
+    "sha256": "bef168dda1e158695fb0e91cf5f8b2619cea99eed481dfa795321583b9d4f379",
+    "entries": 31,
+    "crc_verified": true
+  },
+  {
+    "path": "cap/source/build/windows-native-clang-release-20261118T230158812749Z/return-evidence.zip",
+    "sha256": "8e94dad2c5886fa8d844399d5e286877f8982eee0f94f547ccb1a041ca992e44",
+    "entries": 29,
+    "crc_verified": true
+  },
+  {
+    "path": "cap/source/build/windows-native-msvc-debug-20261118T230141600097Z/return-evidence.zip",
+    "sha256": "cc0d5e2d28a14ff8f7c91fb57e44693106fd30ee1369edbef291d56d2649feb1",
+    "entries": 29,
+    "crc_verified": true
+  },
+  {
+    "path": "cap/source/build/windows-native-msvc-release-20261118T230119679199Z/return-evidence.zip",
+    "sha256": "33121dcc3cf842ae6f0ce21b300af7ef53c8b39547fb90892aa7644b8059c435",
+    "entries": 29,
+    "crc_verified": true
+  }
+]

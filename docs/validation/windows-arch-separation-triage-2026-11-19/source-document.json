@@ -1,0 +1,21 @@
+{
+  "url": "https://www.agner.org/optimize/vcl_manual.pdf",
+  "manual_date": "2022-08-07",
+  "sha256": "72ccc177016a16d265e4683af9b2e41c981ec5fdc903f46aab91373097c64aa1",
+  "relationship": "Author manual retrieved for API contract review; not part of pinned library capture.",
+  "pages_consulted": [
+    23,
+    28,
+    37,
+    48,
+    58,
+    59,
+    60,
+    62,
+    64,
+    65,
+    89,
+    90,
+    91
+  ]
+}

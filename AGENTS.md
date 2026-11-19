@@ -23,10 +23,13 @@ on a particular machine; its absence must not prevent a fresh setup.
   for new ARM work. Existing source remains unchanged until new scope is agreed.
 - The maintainer subsequently approved committing and pushing the completed
   architecture implementation, ARM cleanup and M2 reports on `arch-separation-m2`.
-  This publication leaves `master` unchanged; merging, PRs, branch retirement,
-  further source changes and evidence deletion need separate scope. The next
-  gate is native AMD Windows using `docs/validation/windows-arch-separation-handoff.md`.
-  Preserve reusable resources and retained archives.
+  Native AMD Windows validation and targeted triage are complete with their
+  original failed/incomplete correctness gate retained. On 19 November the
+  maintainer approved local integration into `master` and evidence-backed cleanup;
+  see `docs/validation/architecture-separation-integration-2026-11-19.md` for the
+  explicit x86 preservation/equivalence acceptance and remaining limits. No remote
+  publication, PR, branch retirement or further runtime change is authorized.
+  Preserve reusable resources, source captures and retained archives.
 
 ## OS-agnostic
 
@@ -64,7 +67,8 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Library and validation contracts
 
-- The separated layout is implemented on `arch-separation-m2` for native Windows verification.
+- The separated layout is accepted for local integration into `master` under
+  the dated 19 November decision; the original Windows correctness gate stays failed.
   Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
   report for its actual result/source identity. `README.md` is protected upstream.
 - All 28 original paths at root and under `vendor/vectorclass/`, plus

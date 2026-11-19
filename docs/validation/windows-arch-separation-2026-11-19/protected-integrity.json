@@ -1,0 +1,366 @@
+{
+  "protected_files": [
+    {
+      "path": "LICENSE",
+      "sha256": "6dac3cfa9f8ab6cd7c4b983bf8522a0f93c069b12f5df4d56d2223b1f760f37e",
+      "mtime_ns": 1795042718142672900
+    },
+    {
+      "path": "vendor/vectorclass/LICENSE",
+      "sha256": "6dac3cfa9f8ab6cd7c4b983bf8522a0f93c069b12f5df4d56d2223b1f760f37e",
+      "mtime_ns": 1795042718263792100
+    },
+    {
+      "path": "README.md",
+      "sha256": "4345c083cfaed3f8855e45bc436b3130962576ebdf07e0e5a52e90c2a7ee7e5a",
+      "mtime_ns": 1795042718142672900
+    },
+    {
+      "path": "vendor/vectorclass/README.md",
+      "sha256": "4345c083cfaed3f8855e45bc436b3130962576ebdf07e0e5a52e90c2a7ee7e5a",
+      "mtime_ns": 1795042718264292400
+    },
+    {
+      "path": "changelog.txt",
+      "sha256": "dce0ff2a39d93c9afeffe854d9b0ed86d1854437fc5ca8f21128439c24a49f02",
+      "mtime_ns": 1795042718146673600
+    },
+    {
+      "path": "vendor/vectorclass/changelog.txt",
+      "sha256": "dce0ff2a39d93c9afeffe854d9b0ed86d1854437fc5ca8f21128439c24a49f02",
+      "mtime_ns": 1795042718264292400
+    },
+    {
+      "path": "dispatch_example1.cpp",
+      "sha256": "6a3548ac65a32eede74162843ce4c0a3ea0b8da3e8f1fe358c702f4cfb29901d",
+      "mtime_ns": 1795042718146673600
+    },
+    {
+      "path": "vendor/vectorclass/dispatch_example1.cpp",
+      "sha256": "6a3548ac65a32eede74162843ce4c0a3ea0b8da3e8f1fe358c702f4cfb29901d",
+      "mtime_ns": 1795042718264292400
+    },
+    {
+      "path": "dispatch_example2.cpp",
+      "sha256": "16ae3367d217a724c45b96b41925b6529287ac932cbf98d050b14ef529994238",
+      "mtime_ns": 1795042718147173500
+    },
+    {
+      "path": "vendor/vectorclass/dispatch_example2.cpp",
+      "sha256": "16ae3367d217a724c45b96b41925b6529287ac932cbf98d050b14ef529994238",
+      "mtime_ns": 1795042718264292400
+    },
+    {
+      "path": "instrset.h",
+      "sha256": "17a8705db04f0284d396a7a67363312948efe5b84b83a7ce44facce2d6951419",
+      "mtime_ns": 1795042718231760600
+    },
+    {
+      "path": "vendor/vectorclass/instrset.h",
+      "sha256": "17a8705db04f0284d396a7a67363312948efe5b84b83a7ce44facce2d6951419",
+      "mtime_ns": 1795042718264793600
+    },
+    {
+      "path": "instrset_detect.cpp",
+      "sha256": "5c76668feaf226b02c970080c3fb67881f0c67aad22e66a4f91963880a8bfd0b",
+      "mtime_ns": 1795042718231760600
+    },
+    {
+      "path": "vendor/vectorclass/instrset_detect.cpp",
+      "sha256": "5c76668feaf226b02c970080c3fb67881f0c67aad22e66a4f91963880a8bfd0b",
+      "mtime_ns": 1795042718264793600
+    },
+    {
+      "path": "vector_convert.h",
+      "sha256": "685365bec7ffb430af689214a6c748e8797d0ff0d8a229e55d677be6b9f74f86",
+      "mtime_ns": 1795042718251779400
+    },
+    {
+      "path": "vendor/vectorclass/vector_convert.h",
+      "sha256": "685365bec7ffb430af689214a6c748e8797d0ff0d8a229e55d677be6b9f74f86",
+      "mtime_ns": 1795042718265295800
+    },
+    {
+      "path": "vectorclass.h",
+      "sha256": "96a6892c0d1a09f0f975071834204efb9ec115915d75385a530c3f68cbea0e09",
+      "mtime_ns": 1795042718251779400
+    },
+    {
+      "path": "vendor/vectorclass/vectorclass.h",
+      "sha256": "96a6892c0d1a09f0f975071834204efb9ec115915d75385a530c3f68cbea0e09",
+      "mtime_ns": 1795042718265295800
+    },
+    {
+      "path": "vectorf128.h",
+      "sha256": "214ed1d1a9e3365e6e09b04807a52cd795f38218e0071872b99aec6927cb606f",
+      "mtime_ns": 1795042718252782900
+    },
+    {
+      "path": "vendor/vectorclass/vectorf128.h",
+      "sha256": "214ed1d1a9e3365e6e09b04807a52cd795f38218e0071872b99aec6927cb606f",
+      "mtime_ns": 1795042718265295800
+    },
+    {
+      "path": "vectorf256.h",
+      "sha256": "86797f06fd25c5fe966abe45dedf5edb104e5566859ebebddae8a26a0b47531b",
+      "mtime_ns": 1795042718254283400
+    },
+    {
+      "path": "vendor/vectorclass/vectorf256.h",
+      "sha256": "86797f06fd25c5fe966abe45dedf5edb104e5566859ebebddae8a26a0b47531b",
+      "mtime_ns": 1795042718265795800
+    },
+    {
+      "path": "vectorf256e.h",
+      "sha256": "8d030b4a17850ae345c90c4c0005b86cf4b587da78385bd41b4ec45d9b411201",
+      "mtime_ns": 1795042718254283400
+    },
+    {
+      "path": "vendor/vectorclass/vectorf256e.h",
+      "sha256": "8d030b4a17850ae345c90c4c0005b86cf4b587da78385bd41b4ec45d9b411201",
+      "mtime_ns": 1795042718265795800
+    },
+    {
+      "path": "vectorf512.h",
+      "sha256": "1bc479817795beb1c07af9cd5db75efc45e000e315d264f5b86754c79b71d51b",
+      "mtime_ns": 1795042718255284600
+    },
+    {
+      "path": "vendor/vectorclass/vectorf512.h",
+      "sha256": "1bc479817795beb1c07af9cd5db75efc45e000e315d264f5b86754c79b71d51b",
+      "mtime_ns": 1795042718265795800
+    },
+    {
+      "path": "vectorf512e.h",
+      "sha256": "7db22f76a8cc2839ba948f061834cbd5ac22c297f3e508b551a2f1366a656856",
+      "mtime_ns": 1795042718255284600
+    },
+    {
+      "path": "vendor/vectorclass/vectorf512e.h",
+      "sha256": "7db22f76a8cc2839ba948f061834cbd5ac22c297f3e508b551a2f1366a656856",
+      "mtime_ns": 1795042718266294000
+    },
+    {
+      "path": "vectorfp16.h",
+      "sha256": "cc13055cb17cfe56ce5978286570b41464d84e45ebd142e15d48489f3a914f81",
+      "mtime_ns": 1795042718255784700
+    },
+    {
+      "path": "vendor/vectorclass/vectorfp16.h",
+      "sha256": "cc13055cb17cfe56ce5978286570b41464d84e45ebd142e15d48489f3a914f81",
+      "mtime_ns": 1795042718266294000
+    },
+    {
+      "path": "vectorfp16e.h",
+      "sha256": "79d0e16a891990bb3020160d3dd52bb2d33f620414a4b2ca77cd441e75f3361c",
+      "mtime_ns": 1795042718256283600
+    },
+    {
+      "path": "vendor/vectorclass/vectorfp16e.h",
+      "sha256": "79d0e16a891990bb3020160d3dd52bb2d33f620414a4b2ca77cd441e75f3361c",
+      "mtime_ns": 1795042718266294000
+    },
+    {
+      "path": "vectori128.h",
+      "sha256": "b0f1de0d8fcfcf9185c2f2ebddb60a786f9742e7cee0fe598880977efe716cdf",
+      "mtime_ns": 1795042718256283600
+    },
+    {
+      "path": "vendor/vectorclass/vectori128.h",
+      "sha256": "b0f1de0d8fcfcf9185c2f2ebddb60a786f9742e7cee0fe598880977efe716cdf",
+      "mtime_ns": 1795042718266795200
+    },
+    {
+      "path": "vectori256.h",
+      "sha256": "1881acef69e561693ee9cbd594333921bbc7b5603bb4c5f2a845f19bc959aa8d",
+      "mtime_ns": 1795042718257783200
+    },
+    {
+      "path": "vendor/vectorclass/vectori256.h",
+      "sha256": "1881acef69e561693ee9cbd594333921bbc7b5603bb4c5f2a845f19bc959aa8d",
+      "mtime_ns": 1795042718267293100
+    },
+    {
+      "path": "vectori256e.h",
+      "sha256": "baff37c907c1bf2a9c5170483730d08ed08a27d47c36cdeef068bc43cdd5429a",
+      "mtime_ns": 1795042718258283700
+    },
+    {
+      "path": "vendor/vectorclass/vectori256e.h",
+      "sha256": "baff37c907c1bf2a9c5170483730d08ed08a27d47c36cdeef068bc43cdd5429a",
+      "mtime_ns": 1795042718267293100
+    },
+    {
+      "path": "vectori512.h",
+      "sha256": "560d09ae96a7ee9aa914521b791d26ead37d57cfa26985cf41a45231ad6c497f",
+      "mtime_ns": 1795042718258783500
+    },
+    {
+      "path": "vendor/vectorclass/vectori512.h",
+      "sha256": "560d09ae96a7ee9aa914521b791d26ead37d57cfa26985cf41a45231ad6c497f",
+      "mtime_ns": 1795042718267793600
+    },
+    {
+      "path": "vectori512e.h",
+      "sha256": "b2d55013dbb03444ea272f2ce9eb6ea05e6ba2f1ff42138561d61459da4aa8f8",
+      "mtime_ns": 1795042718259284600
+    },
+    {
+      "path": "vendor/vectorclass/vectori512e.h",
+      "sha256": "b2d55013dbb03444ea272f2ce9eb6ea05e6ba2f1ff42138561d61459da4aa8f8",
+      "mtime_ns": 1795042718267793600
+    },
+    {
+      "path": "vectori512s.h",
+      "sha256": "82bd972f0650e61e3ace4c1e1c010c7249c6c6b76997047620f91cecef486fbc",
+      "mtime_ns": 1795042718259784800
+    },
+    {
+      "path": "vendor/vectorclass/vectori512s.h",
+      "sha256": "82bd972f0650e61e3ace4c1e1c010c7249c6c6b76997047620f91cecef486fbc",
+      "mtime_ns": 1795042718267793600
+    },
+    {
+      "path": "vectori512se.h",
+      "sha256": "a3e2ccd6f57e8a68079261589573a55b7fdab5b473866b0f0e6eaa6774151060",
+      "mtime_ns": 1795042718259784800
+    },
+    {
+      "path": "vendor/vectorclass/vectori512se.h",
+      "sha256": "a3e2ccd6f57e8a68079261589573a55b7fdab5b473866b0f0e6eaa6774151060",
+      "mtime_ns": 1795042718268293500
+    },
+    {
+      "path": "vectormath_common.h",
+      "sha256": "d5b751356ab4129189de60fe7747aeb26ada3a5c621f8694ee1764ff7e82af98",
+      "mtime_ns": 1795042718260283900
+    },
+    {
+      "path": "vendor/vectorclass/vectormath_common.h",
+      "sha256": "d5b751356ab4129189de60fe7747aeb26ada3a5c621f8694ee1764ff7e82af98",
+      "mtime_ns": 1795042718268293500
+    },
+    {
+      "path": "vectormath_exp.h",
+      "sha256": "c83fda2a1e8965626c68ad2fdefea65660d8806e29c18215b22c95b6f2abd440",
+      "mtime_ns": 1795042718260785400
+    },
+    {
+      "path": "vendor/vectorclass/vectormath_exp.h",
+      "sha256": "c83fda2a1e8965626c68ad2fdefea65660d8806e29c18215b22c95b6f2abd440",
+      "mtime_ns": 1795042718268793500
+    },
+    {
+      "path": "vectormath_hyp.h",
+      "sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db",
+      "mtime_ns": 1795042718260785400
+    },
+    {
+      "path": "vendor/vectorclass/vectormath_hyp.h",
+      "sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db",
+      "mtime_ns": 1795042718268793500
+    },
+    {
+      "path": "vectormath_lib.h",
+      "sha256": "89015c4facc68c6db3dc28ceaebbe33b2c85bdc80b7410da58ec40b305db7587",
+      "mtime_ns": 1795042718260785400
+    },
+    {
+      "path": "vendor/vectorclass/vectormath_lib.h",
+      "sha256": "89015c4facc68c6db3dc28ceaebbe33b2c85bdc80b7410da58ec40b305db7587",
+      "mtime_ns": 1795042718268793500
+    },
+    {
+      "path": "vectormath_trig.h",
+      "sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde",
+      "mtime_ns": 1795042718261789300
+    },
+    {
+      "path": "vendor/vectorclass/vectormath_trig.h",
+      "sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde",
+      "mtime_ns": 1795042718269294600
+    },
+    {
+      "path": "vendor/vectorclass.json",
+      "sha256": "9c3a9a777426ffac4daf8dce53673629e5b5ff5a16716089a6d2b51cb3b8212e",
+      "mtime_ns": 1795042718263792100
+    },
+    {
+      "path": "sse2neon.h",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+      "mtime_ns": 1795042718233767400
+    },
+    {
+      "path": "vendor/sse2neon.json",
+      "sha256": "827fafed9e980f4b050e0f92ac22a34c4cf80fbd5159d57c17d80508539b59d6",
+      "mtime_ns": 1795042718262295100
+    },
+    {
+      "path": "vendor/sse2neon/sse2neon.h",
+      "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+      "mtime_ns": 1795042718263792100
+    }
+  ],
+  "checkpoints": [
+    "protected-after-preflight.json",
+    "protected-baseline-clang-debug-after.json",
+    "protected-baseline-clang-debug-before.json",
+    "protected-baseline-clang-release-after.json",
+    "protected-baseline-clang-release-before.json",
+    "protected-baseline-msvc-debug-after.json",
+    "protected-baseline-msvc-debug-before.json",
+    "protected-baseline-msvc-release-after.json",
+    "protected-baseline-msvc-release-before.json",
+    "protected-continuation01-clang-debug-after.json",
+    "protected-continuation01-clang-debug-before.json",
+    "protected-continuation01-clang-release-after.json",
+    "protected-continuation01-clang-release-before.json",
+    "protected-continuation01-msvc-debug-after.json",
+    "protected-continuation01-msvc-debug-before.json",
+    "protected-continuation01-msvc-release-after.json",
+    "protected-continuation01-msvc-release-before.json",
+    "protected-facade01-clang-debug-avx2-after.json",
+    "protected-facade01-clang-debug-avx2-before.json",
+    "protected-facade01-clang-debug-avx512-after.json",
+    "protected-facade01-clang-debug-avx512-before.json",
+    "protected-facade01-clang-debug-sse2-after.json",
+    "protected-facade01-clang-debug-sse2-before.json",
+    "protected-facade01-clang-release-avx2-after.json",
+    "protected-facade01-clang-release-avx2-before.json",
+    "protected-facade01-clang-release-avx512-after.json",
+    "protected-facade01-clang-release-avx512-before.json",
+    "protected-facade01-clang-release-sse2-after.json",
+    "protected-facade01-clang-release-sse2-before.json",
+    "protected-facade01-msvc-debug-avx2-after.json",
+    "protected-facade01-msvc-debug-avx2-before.json",
+    "protected-facade01-msvc-debug-avx512-after.json",
+    "protected-facade01-msvc-debug-avx512-before.json",
+    "protected-facade01-msvc-debug-sse2-before.json",
+    "protected-facade01-msvc-release-avx2-after.json",
+    "protected-facade01-msvc-release-avx2-before.json",
+    "protected-facade01-msvc-release-avx512-after.json",
+    "protected-facade01-msvc-release-avx512-before.json",
+    "protected-facade01-msvc-release-sse2-after.json",
+    "protected-facade01-msvc-release-sse2-before.json",
+    "protected-final.json",
+    "protected-higher01-clang-debug-avx2-after.json",
+    "protected-higher01-clang-debug-avx2-before.json",
+    "protected-higher01-clang-debug-avx512-after.json",
+    "protected-higher01-clang-debug-avx512-before.json",
+    "protected-higher01-clang-release-avx2-after.json",
+    "protected-higher01-clang-release-avx2-before.json",
+    "protected-higher01-clang-release-avx512-after.json",
+    "protected-higher01-clang-release-avx512-before.json",
+    "protected-higher01-msvc-debug-avx2-after.json",
+    "protected-higher01-msvc-debug-avx2-before.json",
+    "protected-higher01-msvc-debug-avx512-after.json",
+    "protected-higher01-msvc-debug-avx512-before.json",
+    "protected-higher01-msvc-release-avx2-after.json",
+    "protected-higher01-msvc-release-avx2-before.json",
+    "protected-higher01-msvc-release-avx512-after.json",
+    "protected-higher01-msvc-release-avx512-before.json",
+    "protected-initial.json",
+    "protected-post-execution.json"
+  ],
+  "all_bytes_and_mtimes_unchanged": true
+}

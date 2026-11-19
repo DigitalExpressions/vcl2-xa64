@@ -1,0 +1,72 @@
+{
+  "frozen": [
+    {
+      "path": "tools/run_windows_validation.py",
+      "sha256": "6c80bd12782063a7106206194564f402c9bc787b3d0126d1ba64a746a26c0e8c"
+    },
+    {
+      "path": "tools/validation_evidence.py",
+      "sha256": "0d0fc8b8f70a42da3d2f038513dfbe2b35c9dd52c1fbbe2aa23797fd5181df30"
+    },
+    {
+      "path": "tools/capture_source.py",
+      "sha256": "3b67062546a7f673bb9083b3a41c5ff5a1a07145be9b45c9464604ec0aff61b0"
+    },
+    {
+      "path": "tools/check_repository.py",
+      "sha256": "c663837aae962a93b9c605a0d9d4c1e898f2326115a32e3a4e320d935d506859"
+    },
+    {
+      "path": "tools/check_header_generation.py",
+      "sha256": "fb38057b93c17eb7a8d52e5951607f8dbf40086f2d9e88f93ce9506d2565c3c1"
+    },
+    {
+      "path": "tools/check_source_capture.py",
+      "sha256": "132e3428bb119ffd7121e634d190e10e84d68fb5d520bfdc4cfaaad2f4924a94"
+    }
+  ],
+  "external": [
+    {
+      "path": "coff_audit.py",
+      "sha256": "8ed223b6c2b81a2234250ac18bc917b088e1ff9c5eae0cb8875e8572d38fa7cb"
+    },
+    {
+      "path": "extra.py",
+      "sha256": "e92d080c33cbf6ce9269f3d7ffad85dc57c9feba7fd4e5270dd163f6835d330d"
+    },
+    {
+      "path": "finish.py",
+      "sha256": "e58a851da356cb736ed3f9dd7037a272f175c2ec6b07476c61d3575ed0e60eaa"
+    },
+    {
+      "path": "package.py",
+      "sha256": "420da5e3053d978467823955680aae87dba67d1cf630d786491a1a953149748b"
+    },
+    {
+      "path": "prepare.py",
+      "sha256": "6b08516bc9303fdd12410c74eca77ab1f8bf3d9a9a8b7f03e1f7d5e5cf40f224"
+    },
+    {
+      "path": "report.py",
+      "sha256": "e451df9e66a35864a934d87f56b3ad9e59e71f28edd5557601f8484c91db3bb6"
+    },
+    {
+      "path": "summarize.py",
+      "sha256": "82f38c87ab315bb5439b32bd25221dce53a2e532c33bec5e7a466c7ac24c4182"
+    },
+    {
+      "path": "validate.py",
+      "sha256": "ac13ad81abcb1736b80c3ebaa42701e7209371d1e7039aa601daf866d5d979bb"
+    }
+  ],
+  "external_cpp": [
+    {
+      "path": "cpu-probe.cpp",
+      "sha256": "530bf743e929143513f02cf678c95ad189c32a132dc419f583396dbe84debf25"
+    },
+    {
+      "path": "facade-consumer.cpp",
+      "sha256": "b8b89177fe6a55a0c6d7a77c1acc2cc3bc95748d6be2885d4c7b5e1c6aa2d3cd"
+    }
+  ]
+}

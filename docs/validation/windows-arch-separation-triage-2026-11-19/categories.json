@@ -1,0 +1,97 @@
+[
+  {
+    "id": "compile_lookup_nonpositive",
+    "description": "Nonpositive lookup size used by retained fork tests; original documentation requires a positive size.",
+    "original_instances": 20
+  },
+  {
+    "id": "compile_pow_const_intmin",
+    "description": "Original pow_const(INT_MIN) instantiates a negated exponent outside int range.",
+    "original_instances": 18
+  },
+  {
+    "id": "compile_signed_minimum_division",
+    "description": "Original constant-divisor template evaluates -INT_MIN in a constant expression.",
+    "original_instances": 18
+  },
+  {
+    "id": "compile_unsigned_complement_expression",
+    "description": "Original unsigned a & ~b is ambiguous for composed Vec8uq.",
+    "original_instances": 4
+  },
+  {
+    "id": "compile_unsigned_complement_type",
+    "description": "Retained assertion expects unsigned complement result; original inherited result is signed.",
+    "original_instances": 16
+  },
+  {
+    "id": "runtime_exp_log_special_values",
+    "description": "NaN/subnormal/domain results differ in AVX-512 special handling.",
+    "original_instances": 12
+  },
+  {
+    "id": "runtime_finite_math_classification",
+    "description": "Retained classification stress requires behavior under flags excluded by the original manual.",
+    "original_instances": 4
+  },
+  {
+    "id": "runtime_fp_conversion_ub",
+    "description": "Strict UBSan reports an invalid floating-to-integer cast in original fallback code.",
+    "original_instances": 58
+  },
+  {
+    "id": "runtime_fp_helper_bits",
+    "description": "Bit-exact NaN/zero helper expectations differ; includes signaling-NaN behavior and conditional signed zero.",
+    "original_instances": 7
+  },
+  {
+    "id": "runtime_hyperbolic_special_values",
+    "description": "Original hyperbolic special-input outputs differ from retained reference expectations.",
+    "original_instances": 9
+  },
+  {
+    "id": "runtime_integer_arithmetic_ub",
+    "description": "Strict UBSan reports original signed multiply/negation overflow.",
+    "original_instances": 4
+  },
+  {
+    "id": "runtime_inverse_pi_accuracy",
+    "description": "Finite pi-scaled range reduction differs from the independent fixtures.",
+    "original_instances": 9
+  },
+  {
+    "id": "runtime_lookup_boundary",
+    "description": "Protected-page table access fails through both routes; exact bounded reads exceed the documented read-ahead allowance.",
+    "original_instances": 40
+  },
+  {
+    "id": "runtime_min_divisor_mask",
+    "description": "Compact-mask signed-minimum division gives wrong valid-input lane results.",
+    "original_instances": 4
+  },
+  {
+    "id": "runtime_msvc_debug_branch",
+    "description": "MSVC Debug reports uninitialized branch temporaries; debugger/minimal probes establish representative mechanisms.",
+    "original_instances": 59
+  },
+  {
+    "id": "runtime_narrow_divisor_policy",
+    "description": "Test expects narrowed interpretation of 65539 for smaller signed lanes.",
+    "original_instances": 8
+  },
+  {
+    "id": "runtime_power_special_values",
+    "description": "Power/root special-value and sign checks differ; ordinary fixture accuracy is separate.",
+    "original_instances": 12
+  },
+  {
+    "id": "runtime_strict_classification",
+    "description": "Ordinary /fp:strict AVX-512 quiet-NaN/Inf classification fails in the original/MSVC combination.",
+    "original_instances": 2
+  },
+  {
+    "id": "runtime_trig_accuracy",
+    "description": "Finite trigonometric fixtures exceed retained numerical gates.",
+    "original_instances": 21
+  }
+]

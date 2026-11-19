@@ -1,0 +1,34 @@
+{
+  "receipt": {
+    "archive": "post-review-evidence-supplement.zip",
+    "sha256": "823ced8f40623153f0c7c94a0a0d8a573cb00c3b24af0bf7b104e9f03a74123b",
+    "bytes": 18983,
+    "entries": 7,
+    "crc_and_all_recorded_hashes_verified": true,
+    "scope": "Post-execution Python bytecode incident, its retained artifact, final integrity proof, earlier review draft/checksums, and external final-review validator. Original raw archive unchanged."
+  },
+  "proof": {
+    "capture_verified": true,
+    "files": 497,
+    "fingerprint": "d51cba48722ec8e6c46395ab8a4447503f13c8d2ba2de5b9873991ff31d003c2",
+    "protected_and_dependency_paths": 60,
+    "protected_bytes_equal_capture_and_worktree": true,
+    "primary_clean": true,
+    "primary_head": "1a5226446f14e1f4d26216ae688b40ccc9b0fa03",
+    "configuration_unchanged": true,
+    "native_tests_rerun": false,
+    "incident": {
+      "protected_bytes_unchanged": true,
+      "retained_path": "cap/source/build/post-review-incident/capture_source.cpython-311.pyc",
+      "incident": "Final read-only inspection omitted Python -B and created bytecode after all native execution",
+      "native_reexecution": false,
+      "original_path": "cap/source/tools/__pycache__/capture_source.cpython-311.pyc",
+      "created_utc": "2026-11-18T23:45:59.1892128Z",
+      "last_write_utc": "2026-11-18T23:45:59.1897130Z",
+      "sha256": "01d6cf61065646aca1dcc34088da74f45a4d0e57002fb171c5b3d6d1b7ce36f8",
+      "bytes": 14136
+    },
+    "review_preparation_note": "An initial report-preparation shell command used the wrong current directory; it wrote no report or source. Corrected invocation and documentation checks passed."
+  },
+  "validator_sha256": "9698dc88a88ec5a3e00eca9195bbbe7faa9134ef15fa5ecf11a49713bc3b884c"
+}

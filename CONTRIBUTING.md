@@ -7,9 +7,10 @@ this cleanup. The maintainer has now approved the
 [architecture separation on Mac M2](docs/validation/mac-arch-separation-handoff.md).
 The migration and native M2 ARM cleanup are complete. The maintainer approved
 committing/pushing the implementation and reports on `arch-separation-m2`;
-`master` remains unchanged pending separate integration approval. Follow the
-[Windows return handoff](docs/validation/windows-arch-separation-handoff.md) for
-the next native gate. Generation is retired; the ownership rules below apply.
+local integration into `master` and evidence-backed cleanup were subsequently
+approved on 19 November. The [acceptance decision](docs/validation/architecture-separation-integration-2026-11-19.md)
+preserves original x86 bytes and limitations; the Windows correctness gate stays
+failed/incomplete. Generation is retired; the ownership rules below apply.
 
 Read the [fork usage guide](README-vcl2-xa64.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
 and [validation index](docs/validation/README.md) before continuing work.

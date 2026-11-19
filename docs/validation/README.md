@@ -1,5 +1,40 @@
 # Native ARM validation and retained evidence
 
+## Approved integration — 19 November 2026
+
+The maintainer approved local integration and evidence-backed cleanup under the
+[dated acceptance decision](architecture-separation-integration-2026-11-19.md). X86 acceptance preserves
+the pinned original implementation and verifies the selected facade boundary.
+The Windows gate remains failed/incomplete: 5,387 passed, 249 failed and 76 not
+run out of 5,712 instances, plus twelve passing examples. Historical results and
+source identities remain unchanged. Further development starts with a bounded
+ARM/Neon task; no x86 repair or new runtime change is included.
+
+## Native Windows failure triage — 19 November 2026
+
+The [dated triage](windows-amd-2026-11-19-arch-separation-triage.md)
+classifies all 249 failed and 76 unavailable original instances. All 76 missing
+targets reproduce compile failures through pristine originals; 20 runtime pairs
+reproduce matching failure statuses. No selected facade-specific regression was
+found. The MSVC Debug timeout was traced to a modal RTC report for original
+uninitialized branch temporaries. Documented lookup read-ahead and other contract
+differences are separated from inherited valid-input issues. The original gate
+remains failed; acceptance scope must be reviewed before integration. Protected
+source and old evidence remain exact. No source fix or publication occurred.
+
+## Native AMD Windows follow-up — 19 November 2026
+
+The [new Windows report](windows-amd-2026-11-19-arch-separation.md)
+records approved publication `2d251bc` on unchanged frozen source:
+baseline 5231/5,392 passed, 133 failed,
+28 not run; higher ISA 156/320 passed,
+116 failed, 48 not run.
+The correctness gate is failed/incomplete. Protected originals/vendor/pins stayed
+exact, and 12 facade/direct-original code/output/include pairs passed.
+Mac/publication source identities remain separate. This dated follow-up supersedes
+earlier pending Windows status; historical text and evidence remain unchanged.
+No source fix or publication action was performed.
+
 Current planning starts with [ARM64 / Neon lessons](../neon-arm-lessons.md) and
 the [strategy reset](../integration-plan.md), requested on 18 November 2026.
 The old x86 repair/optimization campaign is retired. The original strategy

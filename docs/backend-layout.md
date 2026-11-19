@@ -71,18 +71,18 @@ in Git history and earlier dated reports.
 
 ## Validation and source identity
 
-The migration is published on `arch-separation-m2`. Use the [Mac handoff](validation/mac-arch-separation-handoff.md)
-for its approval/scope and the [validation index](validation/README.md) for actual
-results. Capture the full implementation with exact per-path hashes, patch and
-added/deleted paths before native execution. Earlier 8,036-case results apply
-to their original sources. The new M2 cleanup result validates its recorded
-ARM implementation; pristine x86 still requires native Windows verification.
-Native Windows verification remains a separate same-source gate. No benchmark
-or x86 repair campaign is part of architecture separation.
+The migration was published on `arch-separation-m2` and accepted for local
+integration into `master` on 19 November. The [integration decision](validation/architecture-separation-integration-2026-11-19.md)
+defines x86 preservation/equivalence acceptance despite the failed/incomplete
+[Windows matrix](validation/windows-amd-2026-11-19-arch-separation.md). The
+[targeted triage](validation/windows-amd-2026-11-19-arch-separation-triage.md)
+retains inherited limitations and distinguishes documented contract differences.
+No original file or test gate was changed. Native results remain tied to their
+separate exact captures, and no benchmark or x86 repair is part of integration.
 
 The [18 November M2 result](validation/mac-arm-2026-11-18-arm-header-cleanup.md)
 records the complete frozen candidate and retained failed setup/build attempts.
-Native Windows verification remains pending in the
-[return handoff](validation/windows-arch-separation-handoff.md). No old report
+The [return handoff](validation/windows-arch-separation-handoff.md) records the
+Windows execution procedure; the dated matrix and triage above record its outcome. No old report
 acquires a new source identity. The [publication comparison](validation/arch-separation-publication-2026-11-18/README.md)
 records metadata differences without transferring a native pass to a later commit.

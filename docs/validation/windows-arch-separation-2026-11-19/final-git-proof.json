@@ -1,0 +1,11 @@
+{
+  "primary_head": "1a5226446f14e1f4d26216ae688b40ccc9b0fa03",
+  "primary_branch": "master",
+  "primary_clean": true,
+  "worktree_head": "2d251bc72bcc861edad371499fa732e8eb45a5f7",
+  "worktree_clean_before_review_documents": true,
+  "all_497_worktree_bytes_unchanged": true,
+  "all_497_capture_bytes_unchanged": true,
+  "configuration_unchanged": true,
+  "worktrees": "worktree <host-path>/vcl2-xa64\nHEAD 1a5226446f14e1f4d26216ae688b40ccc9b0fa03\nbranch refs/heads/master\n\nworktree <run>/wt\nHEAD 2d251bc72bcc861edad371499fa732e8eb45a5f7\ndetached"
+}

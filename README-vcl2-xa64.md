@@ -8,8 +8,10 @@ The [new native M2 report](docs/validation/mac-arm-2026-11-18-arm-header-cleanup
 records 8,036 native CTest passes and eight examples after removing obsolete
 x86 branches from the ARM headers. The [publication source comparison](docs/validation/arch-separation-publication-2026-11-18/README.md)
 relates the published files to that exact frozen capture. The [Mac handoff](docs/validation/mac-arch-separation-handoff.md)
-and [ARM lessons](docs/neon-arm-lessons.md) define scope. Native Windows validation
-is the next separate gate; no new timings were collected.
+and [ARM lessons](docs/neon-arm-lessons.md) define scope. The
+[19 November integration decision](docs/validation/architecture-separation-integration-2026-11-19.md)
+accepts the separation for local `master` while retaining the failed/incomplete
+Windows gate and the pinned original x86 behavior. No new timings were collected.
 
 This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
@@ -48,8 +50,8 @@ git clone https://github.com/DigitalExpressions/vcl2-xa64.git
 cd vcl2-xa64
 ```
 
-The default `master` branch includes these ARM-enabled sources following the
-approved merge of PR #1. See the [integration plan](docs/integration-plan.md)
+The separated architecture is accepted for local integration into the default
+`master` branch under the dated decision above. See the [integration plan](docs/integration-plan.md)
 for the completion record and current branch policy. Shared development and
 validation instructions for both operating systems are in [AGENTS.md](AGENTS.md).
 

@@ -97,3 +97,10 @@ docs/validation/arm-header-cleanup-m2-*/** -text
 
 # Publication source comparison is checksummed portable metadata.
 docs/validation/arch-separation-publication-*/** -text
+
+# Checksummed Windows reports and portable results preserve their recorded bytes.
+# Their retained CRLF endings are intentional.
+docs/validation/windows-arch-separation-2026-11-19/** -text whitespace=cr-at-eol
+docs/validation/windows-arch-separation-triage-2026-11-19/** -text whitespace=cr-at-eol
+docs/validation/windows-amd-2026-11-19-arch-separation.md -text whitespace=cr-at-eol
+docs/validation/windows-amd-2026-11-19-arch-separation-triage.md -text whitespace=cr-at-eol

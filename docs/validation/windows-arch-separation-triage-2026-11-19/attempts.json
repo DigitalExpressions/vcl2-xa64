@@ -1,0 +1,22 @@
+[
+  {
+    "id": "unavailable01-msvc-static-crt",
+    "status": "Four MSVC higher-ISA compiler replays misparsed -MT as a GNU dependency option and also removed /fp:strict; their diagnostics are retained but excluded as matching-flags evidence.",
+    "followup": "unavailable02 recompiled those four with the original -MT and /fp:strict; same original type assertions fail."
+  },
+  {
+    "id": "representative01-link-launch",
+    "status": "Twenty link launches failed because a cmd wrapper was nested around the already wrapped Ninja command. No native case executed from these links.",
+    "followup": "representative02 invokes the extracted original linker argument list directly; all twenty link, reusing retained objects."
+  },
+  {
+    "id": "debugger01-option",
+    "status": "Five debugger launches rejected an unsupported option before launching targets.",
+    "followup": "debugger02 uses an explicit local symbol directory and empty symbol-server environment; five diagnostic sessions succeed. Later debugger03/04 are additional unresolved family diagnostics."
+  },
+  {
+    "id": "analysis01-category",
+    "status": "Offline classification stopped on an unassigned hyperbolic-special-value family.",
+    "followup": "Added an explicit category without dropping any case or changing native results; all 325 original nonpassing entries are accounted for."
+  }
+]
