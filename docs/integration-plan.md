@@ -1,5 +1,19 @@
 # ARM / Neon strategy reset
 
+## Four-blend integration and next M2 task — 19 November 2026
+
+The maintainer approved retaining and publishing the four-blend implementation
+with its reviewed Windows report. Local master fast-forwarded to
+`ccde9e43674b77975d1f375d1ecff02aa761aef3`; the
+[integration decision](validation/blend4-integration-2026-11-19.md) keeps the full
+Windows gate failed/incomplete and the bounded preservation result separate.
+The measured 2.2% / 2.7% TRS-inverse elapsed costs are accepted for now.
+The [new M2 handoff](validation/m2-trs-inverse-follow-up-2026-11-19.md) assigns
+native reproduction and an ARM-only optimization, preserving transpose gains,
+all correctness gates and Agner's exact original x86 files. Publication and
+evidence-backed cleanup are authorized; actual completion is recorded separately.
+Earlier planning/validation entries below retain their dated scope.
+
 ## Native Windows four-blend follow-up — 19 November 2026
 
 The [new Windows report](validation/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md) records the exact frozen Git candidate:

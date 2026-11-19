@@ -1,5 +1,18 @@
 # Native ARM validation and retained evidence
 
+## Four-blend integration and next M2 task — 19 November 2026
+
+The maintainer approved the [four-blend integration](blend4-integration-2026-11-19.md)
+and publication of its [Windows results](windows-blend4-handoff-2026-11-19/results/README.md).
+The full gate remains failed/incomplete: 5,387 passed, 249 failed, 76 not run of
+5,712, plus twelve passing examples. The selected preservation checks passed;
+Agner's original x86 files remain exact. The
+[M2 performance follow-up](m2-trs-inverse-follow-up-2026-11-19.md) starts from
+integrated implementation/report commit `ccde9e43674b77975d1f375d1ecff02aa761aef3`
+to investigate and recover the measured 2.2% / 2.7% TRS-inverse costs while
+preserving transpose gains. Those costs remain unresolved. Actual publication
+and cleanup completion will be recorded separately; earlier entries are historical.
+
 ## Native Windows four-blend follow-up — 19 November 2026
 
 The [new Windows report](windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md) records the exact frozen Git candidate:

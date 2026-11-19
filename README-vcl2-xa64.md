@@ -1,5 +1,11 @@
 # VCL2 XA64 — x86 and ARM64 Neon
 
+The [four-blend integration](docs/validation/blend4-integration-2026-11-19.md)
+retains the validated ARM specializations and pristine original x86 source.
+Its known 2–3% TRS-inverse cost is assigned to the
+[next native M2 task](docs/validation/m2-trs-inverse-follow-up-2026-11-19.md);
+the Windows full correctness gate remains failed/incomplete.
+
 The `arch-separation-m2` publication implements
 [pristine originals at root and separate ARM headers](docs/backend-layout.md).
 Use `#include "vcl2_xa64.h"` on either platform. All 28 original VCL paths,

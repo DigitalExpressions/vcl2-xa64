@@ -32,10 +32,17 @@ on a particular machine; its absence must not prevent a fresh setup.
   `5e039b01b49abc00548123763be85898932e3ad8`. That completed approval does not
   authorize later publication, PRs, branch retirement or runtime changes.
   Preserve reusable resources, source captures and retained archives.
-- The next M2 return is preflight and planning under
-  `docs/validation/m2-arm-planning-handoff-2026-11-19.md`: use its exact published
-  base in a fresh worktree, preserve originals/evidence and prepare a bounded ARM
-  proposal. Do not automatically execute the older migration or native matrix.
+- The maintainer subsequently approved retaining/integrating the four-blend
+  candidate, publishing the Windows report and evidence-backed local cleanup.
+  See `docs/validation/blend4-integration-2026-11-19.md`; the full Windows gate
+  remains failed/incomplete. The measured 2.2% / 2.7% TRS-inverse elapsed costs
+  are accepted for this integration and remain unresolved.
+- The next M2 return follows
+  `docs/validation/m2-trs-inverse-follow-up-2026-11-19.md`: reproduce and investigate
+  those costs, prepare a narrow ARM optimization, and validate it on new frozen
+  source while preserving transpose gains and exact original x86 bytes. Use its
+  pinned integrated base and retained measurements. Earlier planning/migration
+  handoffs are historical; later publication/cleanup requires separate scope.
 
 ## OS-agnostic
 
