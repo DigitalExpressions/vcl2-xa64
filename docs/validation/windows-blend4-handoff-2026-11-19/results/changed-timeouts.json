@@ -1,0 +1,381 @@
+{
+  "attribution": {
+    "changed_cases": 7,
+    "current_control_failed": 7,
+    "current_control_timeouts": 0,
+    "paired_diagnostic_sessions": 14,
+    "rtc_breakpoint_events": 14,
+    "access_violation_events": 0,
+    "pairs": [
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "inverse_pi",
+        "candidate": {
+          "name": "diagnostic01_00_candidate_inverse_pi",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "asin_d<Vec2d,0>",
+          "header": "vectormath_trig.h",
+          "line": 641
+        },
+        "control": {
+          "name": "diagnostic01_00_control_inverse_pi",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "asin_d<Vec2d,0>",
+          "header": "vectormath_trig.h",
+          "line": 641
+        },
+        "same_original_header_site": true,
+        "header_sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "hyperbolic_Vec2d_303",
+        "candidate": {
+          "name": "diagnostic01_01_candidate_hyperbolic_Vec2d_303",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "asinh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 392
+        },
+        "control": {
+          "name": "diagnostic01_01_control_hyperbolic_Vec2d_303",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "asinh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 392
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "hyperbolic_Vec2d_304",
+        "candidate": {
+          "name": "diagnostic01_02_candidate_hyperbolic_Vec2d_304",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "acosh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 515
+        },
+        "control": {
+          "name": "diagnostic01_02_control_hyperbolic_Vec2d_304",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "acosh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 515
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "hyperbolic_Vec16f_300",
+        "candidate": {
+          "name": "diagnostic01_03_candidate_hyperbolic_Vec16f_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 135
+        },
+        "control": {
+          "name": "diagnostic01_03_control_hyperbolic_Vec16f_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 135
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "hyperbolic_Vec16f_302",
+        "candidate": {
+          "name": "diagnostic01_04_candidate_hyperbolic_Vec16f_302",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "tanh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 320
+        },
+        "control": {
+          "name": "diagnostic01_04_control_hyperbolic_Vec16f_302",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "tanh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 320
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "math_Vec2d_300",
+        "candidate": {
+          "name": "diagnostic01_05_candidate_math_Vec2d_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 80
+        },
+        "control": {
+          "name": "diagnostic01_05_control_math_Vec2d_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_d<Vec2d>",
+          "header": "vectormath_hyp.h",
+          "line": 80
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      },
+      {
+        "profile": "continuation01-msvc-debug",
+        "case": "math_Vec16f_300",
+        "candidate": {
+          "name": "diagnostic01_06_candidate_math_Vec16f_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 135
+        },
+        "control": {
+          "name": "diagnostic01_06_control_math_Vec16f_300",
+          "breakpoint_event": true,
+          "rtc_uninitialized_use": true,
+          "first_library_function": "sinh_f<Vec16f>",
+          "header": "vectormath_hyp.h",
+          "line": 135
+        },
+        "same_original_header_site": true,
+        "header_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db"
+      }
+    ],
+    "assessment": "The seven changed timeout outcomes remain failures on the current unchanged control. Both variants stop at identical uninitialized-use RTC sites in byte-identical original headers. This is inherited Debug runtime-check behavior, not a four-blend/x86 runtime input change. Current full-run timeout wait stacks were not captured; no claim that every current timeout was individually observed waiting in a modal dialog.",
+    "debugger_exit_is_not_a_native_test_pass": true,
+    "parser_note": "Initial diagnostic-summary marker fields counted raw substrings, including echoed debugger commands. This separate offline attribution counts only whole-line event markers and preserves the original summary/logs; no native replay or result change."
+  },
+  "native_control_results": [
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "inverse_pi",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"inverse_pi\" classname=\"inverse_pi\" time=\"10.8994\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "inverse_pi",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\inverse_pi.exe",
+        "sha256": "f72c001f2fd5f510dc420b9c33877d07876574eecd2daa15d9839bca0d4fd2d7",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "hyperbolic_Vec2d_303",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"hyperbolic_Vec2d_303\" classname=\"hyperbolic_Vec2d_303\" time=\"5.4705\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "hyperbolic_Vec2d_303",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\hyperbolic_Vec2d_303.exe",
+        "sha256": "2e49bfcf78458a5a6a2eacc111e16c3b701dd1120ef409fb06c8cb69b970c85c",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "hyperbolic_Vec2d_304",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"hyperbolic_Vec2d_304\" classname=\"hyperbolic_Vec2d_304\" time=\"4.72042\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "hyperbolic_Vec2d_304",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\hyperbolic_Vec2d_304.exe",
+        "sha256": "042cb262c4ff88820f4e6fe1c9a6ce2db1414128934640cd9195357914d5d5bc",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "hyperbolic_Vec16f_300",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"hyperbolic_Vec16f_300\" classname=\"hyperbolic_Vec16f_300\" time=\"1.76084\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "hyperbolic_Vec16f_300",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\hyperbolic_Vec16f_300.exe",
+        "sha256": "7e099f41a38800a0e23c5ebf04bbf1caac66a639b189ee8f8b1f7746055bad4d",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "hyperbolic_Vec16f_302",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"hyperbolic_Vec16f_302\" classname=\"hyperbolic_Vec16f_302\" time=\"1.61212\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "hyperbolic_Vec16f_302",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\hyperbolic_Vec16f_302.exe",
+        "sha256": "993ce8c192c4146bfd65d4b38630d17be04631a85bc528eb63d390a26214c5c9",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "math_Vec2d_300",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"math_Vec2d_300\" classname=\"math_Vec2d_300\" time=\"1.0829\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n\t",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "math_Vec2d_300",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\math_Vec2d_300.exe",
+        "sha256": "727cd9cf54e240d071599e3ac0bb8debd2d2dea55e387736915a5e9be10bdc04",
+        "pe_machine": "0x8664"
+      }
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "math_Vec16f_300",
+      "old_status": "failed",
+      "new_status": "failed",
+      "old_timeout": false,
+      "new_timeout": true,
+      "status_equal": true,
+      "timeout_equal": false,
+      "raw_output_equal": true,
+      "source_path_normalized_output_equal": true,
+      "first_diagnostic_old": null,
+      "first_diagnostic_new": null,
+      "first_diagnostic_equal": true,
+      "old_category": "runtime_msvc_debug_branch",
+      "old_output": "",
+      "new_output": "",
+      "control_status": "failed",
+      "control_timeout": false,
+      "control_output": "",
+      "control_details": "<testcase name=\"math_Vec16f_300\" classname=\"math_Vec16f_300\" time=\"0.996713\" status=\"fail\">\n\t\t<failure message=\"Failed\" />\n\t\t<properties />\n\t\t<system-out />\n\t</testcase>\n",
+      "control_build": "<session>\\control01-continuation01-msvc-debug\\suite",
+      "control_case": "math_Vec16f_300",
+      "controls_reference": "probe01-msvc-debug-sse2-control",
+      "control_binary": {
+        "path": "<session>\\control01-continuation01-msvc-debug\\suite\\tests\\math_Vec16f_300.exe",
+        "sha256": "bc8797fca07b46fb14b6d1609391db45600b4981766ae42e42031b9dc2d62c4d",
+        "pe_machine": "0x8664"
+      }
+    }
+  ]
+}

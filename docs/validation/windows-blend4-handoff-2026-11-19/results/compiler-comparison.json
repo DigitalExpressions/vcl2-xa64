@@ -1,0 +1,92 @@
+{
+  "profiles": [
+    {
+      "profile": "continuation01-clang-debug",
+      "compile_entries": 1356,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "compile_entries": 1356,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "compile_entries": 1356,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "compile_entries": 1356,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "compile_entries": 48,
+      "complete_compile_inventory_equal": true,
+      "all_nonpath_arguments_equal": true,
+      "argument_differences": 0
+    }
+  ],
+  "total_compile_entries": 5808,
+  "all_nonpath_arguments_equal": true,
+  "differences": [],
+  "method": "Compare complete profile/target/source-basename inventories and ordered compiler arguments with historical records. Exclude only compiler path, include/source/output/dependency path operands; retain FP, rounding, optimization, ISA, namespace, fixture/testcase/seed, CRT and sanitizer flags. Original raw commands remain retained."
+}

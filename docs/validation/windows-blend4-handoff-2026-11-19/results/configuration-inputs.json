@@ -1,0 +1,447 @@
+{
+  "generator_path": "tests/configuration.py",
+  "generator_sha256": "ec97feb315b7fdb163c709c8e6ea264c5b5399d5a9298a7413f962e9a6f01c13",
+  "method": "Offline AST literal extraction of the frozen x86-only case list; Windows ASCII Path.write_text newline translation reproduced as CRLF. No native compilation/replay and no fixture edit.",
+  "original_temporary_files": "The unchanged fixture removes its TemporaryDirectory itself; these are reconstructed input copies, not original filesystem artifacts. The exact generator remains in the frozen source ZIP.",
+  "inputs": [
+    {
+      "case": 0,
+      "expected_success": true,
+      "gnu_macro_arguments": [],
+      "msvc_macro_arguments": [],
+      "path": "configuration-inputs-offline/case-0.cpp",
+      "sha256": "c81b8168499d339fef6b4c5ee3302a99bcbabf1f7042b1021f992d2634d435b6",
+      "source_text": "#include \"vcl2_xa64.h\"\nstatic_assert(MAX_VECTOR_SIZE==512);\n"
+    },
+    {
+      "case": 1,
+      "expected_success": true,
+      "gnu_macro_arguments": [
+        "-DMAX_VECTOR_SIZE=128"
+      ],
+      "msvc_macro_arguments": [
+        "/DMAX_VECTOR_SIZE=128"
+      ],
+      "path": "configuration-inputs-offline/case-1.cpp",
+      "sha256": "bcd4a42c7f0e1474e9cfeedf670069efd05c2d8d35ac3d6691e96d88df140bec",
+      "source_text": "#include \"vcl2_xa64.h\"\nstatic_assert(MAX_VECTOR_SIZE==128);\n"
+    },
+    {
+      "case": 2,
+      "expected_success": false,
+      "gnu_macro_arguments": [
+        "-DMAX_VECTOR_SIZE=192"
+      ],
+      "msvc_macro_arguments": [
+        "/DMAX_VECTOR_SIZE=192"
+      ],
+      "path": "configuration-inputs-offline/case-2.cpp",
+      "sha256": "0c736e200fdd633af688f1b4837c422865e224a950052a2e96e25d6e9730916c",
+      "source_text": "#include \"vcl2_xa64.h\"\n"
+    },
+    {
+      "case": 3,
+      "expected_success": false,
+      "gnu_macro_arguments": [
+        "-DVCL_BACKEND=99"
+      ],
+      "msvc_macro_arguments": [
+        "/DVCL_BACKEND=99"
+      ],
+      "path": "configuration-inputs-offline/case-3.cpp",
+      "sha256": "0c736e200fdd633af688f1b4837c422865e224a950052a2e96e25d6e9730916c",
+      "source_text": "#include \"vcl2_xa64.h\"\n"
+    },
+    {
+      "case": 4,
+      "expected_success": false,
+      "gnu_macro_arguments": [
+        "-D_M_ARM64EC=1"
+      ],
+      "msvc_macro_arguments": [
+        "/D_M_ARM64EC=1"
+      ],
+      "path": "configuration-inputs-offline/case-4.cpp",
+      "sha256": "0c736e200fdd633af688f1b4837c422865e224a950052a2e96e25d6e9730916c",
+      "source_text": "#include \"vcl2_xa64.h\"\n"
+    }
+  ],
+  "positive_control": {
+    "path": "configuration-inputs-offline/positive-control.cpp",
+    "sha256": "836932810d8edf9d54ef18f53cfa1f8b63a9499c1081b1f2e3556f14dade42aa"
+  },
+  "actual_profiles": [
+    {
+      "profile": "continuation01-clang-debug",
+      "log": "c/source/build/windows-native-clang-debug-20261119T134227110427Z/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "log": "c/source/build/windows-native-clang-release-20261119T133640695192Z/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "log": "c/source/build/windows-native-msvc-debug-20261119T132412691859Z/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "log": "c/source/build/windows-native-msvc-release-20261119T131639385735Z/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "log": "c/source/build/higher01-clang-debug-avx2/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "log": "c/source/build/higher01-clang-debug-avx512/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "log": "c/source/build/higher01-clang-release-avx2/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "log": "c/source/build/higher01-clang-release-avx512/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 1
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 1
+        }
+      ]
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "log": "c/source/build/higher01-msvc-debug-avx2/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "log": "c/source/build/higher01-msvc-debug-avx512/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "log": "c/source/build/higher01-msvc-release-avx2/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "log": "c/source/build/higher01-msvc-release-avx512/suite/Testing/Temporary/LastTest.log",
+      "actual_outcomes": [
+        {
+          "case": 0,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 1,
+          "expected_success": true,
+          "actual_exit": 0
+        },
+        {
+          "case": 2,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 3,
+          "expected_success": false,
+          "actual_exit": 2
+        },
+        {
+          "case": 4,
+          "expected_success": false,
+          "actual_exit": 2
+        }
+      ]
+    }
+  ]
+}

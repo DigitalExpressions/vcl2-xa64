@@ -1,5 +1,16 @@
 # Native ARM validation and retained evidence
 
+## Native Windows four-blend follow-up — 19 November 2026
+
+The [new Windows report](windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md) records the exact frozen Git candidate:
+5,387 passed, 249 failed, 76 not run of 5,712, plus twelve examples. The full gate
+remains failed/incomplete. All case statuses match history; seven additional
+Debug timeout outcomes were checked against current control failures and paired
+RTC diagnostics. The bounded assessment passed: 96 isolated cases and 96 selected
+code comparisons, with protected originals/flags/controls intact. The M2
+small-transpose gain versus TRS-inverse elapsed cost remains a retain/reject
+decision for the maintainer. No source fix, timing, cleanup or publication occurred.
+
 ## Published master and M2 return preparation — 19 November 2026
 
 The maintainer separately approved pushing the integrated master. The push

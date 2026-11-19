@@ -1,0 +1,1370 @@
+[
+  {
+    "profile": "probe01-msvc-release-sse2-candidate",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "sse2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "e45e853ef2fcd2dd4a19f109a0203e29310ef9eccf8599746cb80317abd645d7",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "e45e853ef2fcd2dd4a19f109a0203e29310ef9eccf8599746cb80317abd645d7",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "5e17e45ba2259ca5156bd10497b76b57d35f4a639041bede9dc5da139c7f70ee",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "5e17e45ba2259ca5156bd10497b76b57d35f4a639041bede9dc5da139c7f70ee",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-release-sse2-control",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "sse2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "fe430c4775ecf7bdae26849539e7833ca264cfb009b4d4b19ddf54874cb9ab49",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "fe430c4775ecf7bdae26849539e7833ca264cfb009b4d4b19ddf54874cb9ab49",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "35652b61c7f3862601da98b7f873b4e8c6503bcbe8fff9f26305fe79c773b082",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-sse2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "35652b61c7f3862601da98b7f873b4e8c6503bcbe8fff9f26305fe79c773b082",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-release-avx2-candidate",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "avx2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "a749417ba9f4275906556b6f5353ef615f9b70b8a496bb6084c856ecdbf3c8ee",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "a749417ba9f4275906556b6f5353ef615f9b70b8a496bb6084c856ecdbf3c8ee",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "d26f3b7adc52f4611ee75196daa8b7784fc048daae4871464e03a47eeffb108b",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "c4074ec63046ae6f5a588453bfe5a09208b42a05a8f0a794398364e529fc4d99",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-release-avx2-control",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "avx2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "e4a4145d7041e131aac079dbacc083d8fd74d7f7e45ff395fd9d0240b0784632",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "e4a4145d7041e131aac079dbacc083d8fd74d7f7e45ff395fd9d0240b0784632",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "b6ef511d56272edae9ccd9cefa5e5c3df12832435a74afb5a9eb0ba29a43fca4",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "b6ef511d56272edae9ccd9cefa5e5c3df12832435a74afb5a9eb0ba29a43fca4",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-release-avx512-candidate",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "avx512",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "0135a002e5ca3a64331e13731bded948f8a3638568f5bc570fb878c8c747521f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "0135a002e5ca3a64331e13731bded948f8a3638568f5bc570fb878c8c747521f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "2551f9089bd0bc308f74fef8f3093b14a2c67f6e585ddbd65ce783251e2a896c",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "64e9c0fcb0941914a73df3f97637c5c71604397889eb617fb422cbb5a2042ba0",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-release-avx512-control",
+    "driver": "msvc",
+    "mode": "Release",
+    "isa": "avx512",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "7448b02770df772a7b04a81c42886a3f41808a41078c27ebe4e3c599e8554396",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "7448b02770df772a7b04a81c42886a3f41808a41078c27ebe4e3c599e8554396",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "dadcb163d28682b575026e92189622f5a41eaf0253d0966b7cd2e675c5a76b79",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-release-avx512-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "dadcb163d28682b575026e92189622f5a41eaf0253d0966b7cd2e675c5a76b79",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-sse2-candidate",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "sse2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "f3a244bb663ea7b6570482864f6708c67ca1a33869a02b26c774885a6f71bd53",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "6cea7aa8bb678666fc5605dc9194580318c9a9c0af49d30e32f7cdef5126429b",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "9da4c559b5e75f952c4b01fc0f866aecf8cd7c179cde0bbde937f02480f3f31d",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "55ed5f6d8c9f2d281942881f4c9c4465538431f77db7fe8cf83543ae164a2be8",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-sse2-control",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "sse2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "7e247d77a32c587e1bd68fd6f809f145d35d149b41c7700de33d683f2468636d",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "a0990a330ee17b522dc6005a3b665818f0b4dbb61ef1d6f63e6857b9d1b29946",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "8296177d62554dc6cfcf0b7e3cd25e07114b84d81217509a1beb23afdc191e9f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-sse2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "50694ecebadf4284731466a4c98e557eabfb5cfe50b309888c10f4faf0a7677e",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-avx2-candidate",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "avx2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "d54a6960929af0503bba7135f08755e4ff5a62fa9e9ee7e2c9b59fbc7dee1eaf",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "796f44228c3dc36815ea811126c612f060253b8edb7c777e965245d991363ccf",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "b522b1c209cb7ddb1cb6a1edd7cad76b3ec9dd6573177ddd8ac3a93690eb4948",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "d710ed1ee0e0111c59dd2e79243b92823968797e3ccb02a09b959a2e835ef488",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-avx2-control",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "avx2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "e565e36650158524de64ec2e13e656f8a152a7905135a89b5ce5b0a7403aead2",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "11f6093a7ad56f5eaa32233781deb2d9bf5a583134f9f6363c1ea6501ff9731e",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "4fda5552148d2f5711ff9803fde0318441f56f116338cc1060e266a346daec78",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "9fe16bc33bcf1f78943f6589c7a2897c1af52b09b4872b0d2d7a45ada84fbabb",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-avx512-candidate",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "avx512",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "03533704453779075492dc3018d699db7043ca0a087153bf0df042d0e45b5f53",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "d27e5d3cd0a75a4d594aaaee7b56578a50bb2419685bc02b69ad61aa3524913c",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "6063be16120d03c48260025c6d982c817e11cbad069f71b9f72947d24f2bd3d4",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "7d2693234420c177e2f854869dbc580d4584eca192dfaf07d8c0a27b00d69d2f",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-msvc-debug-avx512-control",
+    "driver": "msvc",
+    "mode": "Debug",
+    "isa": "avx512",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "d7ba3862e76a0b6782ff2ebbe72e7e9b0d987d0f147e738e99baf5d324b0980c",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "954352cd7e3bcb1aa843438e5fe45da8e279b6d7c54c1bec649dac6baa2206d8",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "6c5264ef29842bac4b2833ae091bcb7f968752367872f84abdcb7c229c007ddc",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-msvc-debug-avx512-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "007bc268023be63b0be9f6e3077515a21128aa3e22ca5b10a11396dea30d4d73",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-sse2-candidate",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "sse2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-sse2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "88e38ab1fa35f358d03780250ff24e387110fbfdb2eb6fe852ad17fa29520f54",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-sse2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "88e38ab1fa35f358d03780250ff24e387110fbfdb2eb6fe852ad17fa29520f54",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-sse2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "31aa3621804b8c1c8639e0bcb97a096ce44f8dfd9e69761d33d1b3c32635ae57",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-sse2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "31aa3621804b8c1c8639e0bcb97a096ce44f8dfd9e69761d33d1b3c32635ae57",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-sse2-control",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "sse2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-sse2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "0024a8359d937bd6ca594d40a8ac435b3dc7d10cb7a0d6501f831de7ccd9d1d7",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-sse2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "0024a8359d937bd6ca594d40a8ac435b3dc7d10cb7a0d6501f831de7ccd9d1d7",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-sse2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "33652962a6eb7a316247e037dcaaa6042167ce2069478a8e03b15491de3e6cef",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-sse2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "33652962a6eb7a316247e037dcaaa6042167ce2069478a8e03b15491de3e6cef",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-avx2-candidate",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "avx2",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-avx2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "ec724d4c7425b924473806c2759ec997c0e8c27bff4fb68793667daff51425e4",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "ec724d4c7425b924473806c2759ec997c0e8c27bff4fb68793667daff51425e4",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-avx2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "4ee9061f7d976213d29c62945473412318670bcb0b37eba40d0ae54dc6e1448f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "4ee9061f7d976213d29c62945473412318670bcb0b37eba40d0ae54dc6e1448f",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-avx2-control",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "avx2",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-avx2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "33180a1714cb2eb3b53893b2dfedaa3f356e6f5a158b774668c69d5087939643",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "33180a1714cb2eb3b53893b2dfedaa3f356e6f5a158b774668c69d5087939643",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-avx2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "fd293092a77cb57562c0c76a98f5be9608394a98663f46d024e1bbe968371e6b",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "d265f3f38128ca140f6406551c4731bcef347fc2236a0d2262a832ca8e9ee377",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-avx512-candidate",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "avx512",
+    "identity": "candidate",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-avx512-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "c9285b1836f3adb5cdfa4cb9c314a4ead4223daa44edc2318a137201172de9df",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx512-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "6b1c08a16242d605292a1fb90ea970fbf8a5a5a42d291f03774464702e3e716b",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-avx512-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "2381dc78958c97f3011cc0988fb66e5962e3231bf2a8bba6ee817cbe5fe680a5",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx512-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "2381dc78958c97f3011cc0988fb66e5962e3231bf2a8bba6ee817cbe5fe680a5",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-release-avx512-control",
+    "driver": "clang",
+    "mode": "Release",
+    "isa": "avx512",
+    "identity": "control",
+    "sanitize": false,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-release-avx512-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "e18dab653f47ebed0f791de4e95bbac737477bd4e66b1d852084f0e31596ad4a",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx512-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "e18dab653f47ebed0f791de4e95bbac737477bd4e66b1d852084f0e31596ad4a",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-release-avx512-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "d3939f8fee910f8bdb04b071aa4889f92f3de161c1a5f14f1d9222eb92f2dfe9",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-release-avx512-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "d3939f8fee910f8bdb04b071aa4889f92f3de161c1a5f14f1d9222eb92f2dfe9",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-sse2-candidate",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "sse2",
+    "identity": "candidate",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "b271e6a0523b7d981b10a9772530f5f7abe3aacf347f40aeb4f788ee0a8cb425",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "8ad9d18285236d3fe10f845d6f7a7f0ee40badfd2274d7b387c552f73b3cd594",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "6118f89d3dba2b6d20238fcf6dce47f3286f3d73d65cd24301e0cc8cae661d8d",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "c200cb75608ec14ab4ed3e7899d1dcc8904eeb7a2c9c39bf1d9a3a63c81ebbab",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-sse2-control",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "sse2",
+    "identity": "control",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "5b67bde51a3ffa7fcac1f675d794bdcab096a575871b4a6b97e4829f2377e83c",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "b425be26183a327aab84395633e51e5f2847e51d37a982ddfb0853011a27b5a0",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "06637a3147b2bc76f40d73852629dd48ef6289ea502ab81f78a23ce6f3cd65db",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-sse2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "8919dd8b0bf6be50061c263fb3c8fecc26221629eb32c2d7ae6b8a56d64332cf",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-avx2-candidate",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "avx2",
+    "identity": "candidate",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "91af7ebab414e22fa5a63b6827bff39de3c354c8f5c8e9adff95e6be3081b480",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "e5fb43084e607e64ff59dc01e49e1a6df5174cac1edcb829dd69bc29c6ca27d1",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "e2f31e534cfa88c5b1274018e79ed237d6acefb5a356e8f9d1b1882ed3a3bdbc",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "a9f4022d0232e49cec82658b82359eabae39ccbfdc9d8041ab21556f53593453",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-avx2-control",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "avx2",
+    "identity": "control",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "e618f474b73da74d33217d2d8562acbc892a45f003926d0863bde2a66fbb95ca",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "1318db766590718ba3687ae51c635f553429e144c3f84128823fe2514a9655a8",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "d8e1fda753c5a100ecc254e30563a55a603dcd33279d573a46f12ddf40163711",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx2-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "d90d5222b89417d0387b8d81db9ced655d10a2e3c9313208e7c5bfd5b02bcbff",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-avx512-candidate",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "avx512",
+    "identity": "candidate",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-candidate\\suite\\probe_movement_facade_default.exe",
+        "sha256": "7614a7e51dea646120c333bcaa04775ee1d7f02ee2ac089e9067df2daf09628a",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-candidate\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "63d62f9bdf7656c41cd1bde1dcb8185bef0e21fb61f9ecad0d86b44a591b225e",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-candidate\\suite\\probe_movement_originals_default.exe",
+        "sha256": "9ebe2a9889317e6e40915541b5b8fb30f8a7a9d100de462d7747795c33558ec5",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-candidate\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "73a797009c6958e7ba9737f1ffc17f460769c7725ff468977255b97bf86ba8d4",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  },
+  {
+    "profile": "probe01-clang-debug-avx512-control",
+    "driver": "clang",
+    "mode": "Debug",
+    "isa": "avx512",
+    "identity": "control",
+    "sanitize": true,
+    "cases": [
+      {
+        "name": "probe_movement_facade_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_facade_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_default",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      },
+      {
+        "name": "probe_movement_originals_namespace",
+        "status": "passed",
+        "output": "0 isolated transpose blend failures\n"
+      }
+    ],
+    "binaries": [
+      {
+        "test": "probe_movement_facade_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-control\\suite\\probe_movement_facade_default.exe",
+        "sha256": "2ce053ddae34239781636e119a29d7532d446d920f2bfd2fdb0d122a61ba8271",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_facade_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-control\\suite\\probe_movement_facade_namespace.exe",
+        "sha256": "380253540da634e83fea4778ffd5d95e58ab934d633020afb927f28f2837c6f4",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_default",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-control\\suite\\probe_movement_originals_default.exe",
+        "sha256": "e4f256177e9b71bbf169483541382654ec92f20b6a8b822a1d92f054bd7c1c63",
+        "pe_machine": "0x8664"
+      },
+      {
+        "test": "probe_movement_originals_namespace",
+        "path": "<publication-worktree>robe01-clang-debug-avx512-control\\suite\\probe_movement_originals_namespace.exe",
+        "sha256": "1287154803e5e6304b148102dae39ce148fae025428c5dc54dcb7e6383021f47",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "selected_count": 4
+  }
+]

@@ -1,0 +1,426 @@
+{
+  "examples": [
+    {
+      "profile": "continuation01-clang-debug",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "output": "2 5 10 17\n",
+      "passed": true
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "output": "2 5 10 17\n",
+      "passed": true
+    }
+  ],
+  "fixtures": [
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-debug",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-clang-release",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-debug",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "continuation01-msvc-release",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx2",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-debug-avx512",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx2",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-clang-release-avx512",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx2",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-debug-avx512",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx2",
+      "name": "exp_log_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "configuration",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "hyperbolic_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "inverse_pi_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "trig_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "power_roots_reference",
+      "status": "passed"
+    },
+    {
+      "profile": "higher01-msvc-release-avx512",
+      "name": "exp_log_reference",
+      "status": "passed"
+    }
+  ]
+}

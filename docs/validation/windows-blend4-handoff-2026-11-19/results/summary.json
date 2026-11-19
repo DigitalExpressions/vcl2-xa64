@@ -1,0 +1,98 @@
+{
+  "run_id": "windows-blend4-20261119-b4w19-01",
+  "reviewed_utc": "2026-11-19T14:05:30.062121+00:00",
+  "source": {
+    "approved_commit": "0c69b9992d0fac09f71482a0db403276cdd8f1a1",
+    "publication_tree": "fd580a67ad4707116dbc7bf7b230050d635f8704",
+    "publication_files": 625,
+    "publication_fingerprint": "735caf6d2ad31792c7fc215f2240187b55e768e272be7d0218df8a6c22ceeafb",
+    "original_m2_files": 571,
+    "original_m2_fingerprint": "3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36",
+    "metadata_changes": [
+      ".gitattributes",
+      "AGENTS.md",
+      "README-vcl2-xa64.md",
+      "docs/integration-plan.md",
+      "docs/validation/README.md"
+    ],
+    "added_publication_paths": 54,
+    "all_other_m2_paths_exact": true,
+    "control_commit": "5e039b01b49abc00548123763be85898932e3ad8",
+    "control_tree": "ea90c1b40fc50936db7c3509aaa11ab51c02d890",
+    "control_files": 564,
+    "control_fingerprint": "fa9efdded211c6cbec2ede4fb0f12f334350c17b5c27c10149829a481a29ac06",
+    "tested_commit_tree_null": true,
+    "source_capture_schema": "frozen-uncommitted-source",
+    "protected_paths": 60
+  },
+  "actual_full_gate": {
+    "status": "failed/incomplete",
+    "registered": 5712,
+    "executed": 5636,
+    "counts": {
+      "passed": 5387,
+      "failed": 249,
+      "skipped": 0,
+      "notrun": 76
+    },
+    "timeouts": 8,
+    "examples_passed": 12,
+    "baseline": {
+      "registered": 5392,
+      "counts": {
+        "passed": 5231,
+        "failed": 133,
+        "skipped": 0,
+        "notrun": 28
+      }
+    },
+    "higher": {
+      "registered": 320,
+      "counts": {
+        "passed": 156,
+        "failed": 116,
+        "skipped": 0,
+        "notrun": 48
+      }
+    }
+  },
+  "historical_gate": {
+    "registered": 5712,
+    "passed": 5387,
+    "failed": 249,
+    "not_run": 76,
+    "examples_passed": 12,
+    "status": "failed/incomplete; unchanged historical result"
+  },
+  "historical_timeouts": 1,
+  "case_status_changes": 0,
+  "timeout_mode_changes": 7,
+  "bounded_preservation": {
+    "status": "passed within the selected x86/source/regression checks",
+    "supplemental_registered": 96,
+    "supplemental_passed": 96,
+    "supplemental_failed": 0,
+    "supplemental_not_run": 0,
+    "matched_code_comparisons": 96,
+    "matched_selected_function_pairs": 1728,
+    "whole_object_identity_claimed": false,
+    "control_profiles_passed": 24,
+    "strict_ubsan_control_profiles": 6,
+    "all_5808_compile_argument_records_match_history": true,
+    "changed_failures_attributed_to_original_rtc_sites": true,
+    "no_unexplained_candidate_specific_regression_observed": true,
+    "scope": "Pristine x86 route and the exact added bit-movement regression under selected AMD/compiler/ISA/namespace profiles. Does not turn the full gate green or establish universal correctness, whole-object identity, cross-host parity or Windows performance."
+  },
+  "protected_paths": 60,
+  "protected_hashes_and_mtimes_unchanged_in_all_five_roots": true,
+  "testbench_and_recorded_installed_tools_unchanged": true,
+  "primary_head": "a04eb834c0e6707256009d007c77f4ccaf66beca",
+  "primary_clean_before_report": true,
+  "configuration_and_refs_unchanged": true,
+  "worktrees": "worktree <repo>\nHEAD a04eb834c0e6707256009d007c77f4ccaf66beca\nbranch refs/heads/master\n\nworktree <control-worktree>\nHEAD 5e039b01b49abc00548123763be85898932e3ad8\ndetached\n\nworktree <publication-worktree>\nHEAD 0c69b9992d0fac09f71482a0db403276cdd8f1a1\ndetached",
+  "source_fixes": false,
+  "benchmarks_run": false,
+  "cleanup_performed": false,
+  "commits_pushes_merges": false,
+  "retain_review": "Windows bounded preservation checks provide no new x86 correctness reason to reject. Retention is a maintainer decision weighing the M2 6.0% small-transpose throughput gain, 0.5% large-transpose gain with overlapping ranges, and 2.2%/2.7% TRS-inverse elapsed costs. No universal performance win or automatic integration is recommended."
+}
