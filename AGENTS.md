@@ -27,9 +27,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   original failed/incomplete correctness gate retained. On 19 November the
   maintainer approved local integration into `master` and evidence-backed cleanup;
   see `docs/validation/architecture-separation-integration-2026-11-19.md` for the
-  explicit x86 preservation/equivalence acceptance and remaining limits. No remote
-  publication, PR, branch retirement or further runtime change is authorized.
+  explicit x86 preservation/equivalence acceptance and remaining limits. The
+  maintainer then separately approved pushing `master`; origin was verified at
+  `5e039b01b49abc00548123763be85898932e3ad8`. That completed approval does not
+  authorize later publication, PRs, branch retirement or runtime changes.
   Preserve reusable resources, source captures and retained archives.
+- The next M2 return is preflight and planning under
+  `docs/validation/m2-arm-planning-handoff-2026-11-19.md`: use its exact published
+  base in a fresh worktree, preserve originals/evidence and prepare a bounded ARM
+  proposal. Do not automatically execute the older migration or native matrix.
 
 ## OS-agnostic
 

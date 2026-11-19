@@ -1,5 +1,16 @@
 # ARM / Neon strategy reset
 
+## Published master and M2 return preparation — 19 November 2026
+
+The maintainer separately approved pushing the integrated master. The push
+completed and `origin/master` was verified at
+`5e039b01b49abc00548123763be85898932e3ad8`. The
+[new M2 handoff](validation/m2-arm-planning-handoff-2026-11-19.md) prepares a fresh
+worktree at that exact base, source/dependency/tool preflight and a bounded ARM
+proposal using retained evidence. Its initial scope is planning, with no runtime
+change, native matrix, new timings, cleanup or publication. The earlier native
+results and failed Windows gate retain their separate identities.
+
 ## Integration and cleanup completed — 19 November 2026
 
 The [completion report](validation/architecture-separation-integration-completed-2026-11-19.md) records local master
