@@ -1,5 +1,15 @@
 # ARM / Neon strategy reset
 
+## Dependency audit published and cleanup completed — 19 November 2026
+
+The ledger/deduplication change was pushed and verified on `origin/master` at
+`2f9837dcd5fe3d5b94c5abc5af82dedf54c54eb9`. The
+[completion record](validation/dependency-audit-publication-2026-11-19.md) records
+eight removed generated build directories (52.6 MiB), complete evidence coverage
+and unchanged protected bytes, source captures, tools, testbench and branches.
+Earlier native results retain their frozen source identities; no matrix or
+timing was replayed. The M2 TRS-inverse follow-up remains the next runtime task.
+
 ## Dependency revision ledgers and VCL deduplication — 19 November 2026
 
 The maintainer approved separate [x86](../audit_x86_history.md) and

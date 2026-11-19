@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-19",
+  "audit_publication": {
+    "commit": "2f9837dcd5fe3d5b94c5abc5af82dedf54c54eb9",
+    "tree": "b5dc792aa2cff16d08b958b4343c13a15e8148c1",
+    "origin_master_verified": true,
+    "protected_paths": 31,
+    "protected_bytes_and_mtimes_unchanged": true,
+    "native_results_not_replayed": true
+  },
+  "cleanup": {
+    "directories": 8,
+    "files": 284,
+    "logical_bytes": 55106943,
+    "compiled_artifacts_rehashed": 96,
+    "noncompiled_records_covered": 188,
+    "uncovered_records": 0
+  },
+  "protected_31_paths_bytes_and_mtimes_unchanged": true,
+  "all_117_runtime_test_CMake_runner_inputs_unchanged": true,
+  "source_captures_comparison_caches_fixtures_upstream_clone_tools_and_testbench_retained": true,
+  "existing_46_portable_manifests_and_494_entries_verified": true,
+  "worktree_inventory_saved_git_config_and_other_branches_preserved": true,
+  "new_native_tests_or_timings": false,
+  "historical_windows_gate": "failed/incomplete: 5387 passed, 249 failed, 76 not run / 5712; twelve examples",
+  "M2_TRS_inverse_costs": "2.2% / 2.7% unresolved; separate pinned follow-up",
+  "completion_publication": "This is later metadata; its final commit is recorded separately after publication."
+}

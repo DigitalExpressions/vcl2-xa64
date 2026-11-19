@@ -1,5 +1,16 @@
 # Native ARM validation and retained evidence
 
+## Dependency audit published and cleanup completed — 19 November 2026
+
+The [publication/cleanup report](dependency-audit-publication-2026-11-19.md)
+records the verified ledger/deduplication push at
+`2f9837dcd5fe3d5b94c5abc5af82dedf54c54eb9` and removal of 52.6 MiB from eight
+generated control/smoke build directories after complete archive coverage checks.
+Originals, dependency bytes, source captures, fixtures, tools, testbench, history
+and evidence remain preserved. [Portable receipts](dependency-audit-history-2026-11-19/publication/README.md)
+retain actual counts without changing earlier native results or their failed
+Windows full gate. No new native matrix or benchmark was run.
+
 ## Dependency revision ledgers and VCL deduplication — 19 November 2026
 
 The [new layout/provenance record](dependency-audit-history-2026-11-19.md) covers
