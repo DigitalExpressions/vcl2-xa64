@@ -10,8 +10,10 @@ Windows gate failed/incomplete and the bounded preservation result separate.
 The measured 2.2% / 2.7% TRS-inverse elapsed costs are accepted for now.
 The [new M2 handoff](validation/m2-trs-inverse-follow-up-2026-11-19.md) assigns
 native reproduction and an ARM-only optimization, preserving transpose gains,
-all correctness gates and Agner's exact original x86 files. Publication and
-evidence-backed cleanup are authorized; actual completion is recorded separately.
+all correctness gates and Agner's exact original x86 files. The first push was
+verified at `a526fc4bd5ffd21d436893d4522cae469d3a7e5f`; evidence-backed cleanup
+removed about 15.43 GiB and two temporary worktrees. The integration decision's
+completion addendum and portable receipts record actual counts and preserved evidence.
 Earlier planning/validation entries below retain their dated scope.
 
 ## Native Windows four-blend follow-up — 19 November 2026

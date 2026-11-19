@@ -1,0 +1,73 @@
+{
+  "directory_targets": [
+    "c/source/build",
+    "a/source/build",
+    "control01-continuation01-msvc-debug",
+    "probe01-clang-debug-avx2-candidate",
+    "probe01-clang-debug-avx512-candidate",
+    "probe01-clang-debug-sse2-candidate",
+    "probe01-clang-release-avx2-candidate",
+    "probe01-clang-release-avx512-candidate",
+    "probe01-clang-release-sse2-candidate",
+    "probe01-msvc-debug-avx2-candidate",
+    "probe01-msvc-debug-avx512-candidate",
+    "probe01-msvc-debug-sse2-candidate",
+    "probe01-msvc-release-avx2-candidate",
+    "probe01-msvc-release-avx512-candidate",
+    "probe01-msvc-release-sse2-candidate",
+    "probe01-clang-debug-avx2-control",
+    "probe01-clang-debug-avx512-control",
+    "probe01-clang-debug-sse2-control",
+    "probe01-clang-release-avx2-control",
+    "probe01-clang-release-avx512-control",
+    "probe01-clang-release-sse2-control",
+    "probe01-msvc-debug-avx2-control",
+    "probe01-msvc-debug-avx512-control",
+    "probe01-msvc-debug-sse2-control",
+    "probe01-msvc-release-avx2-control",
+    "probe01-msvc-release-avx512-control",
+    "probe01-msvc-release-sse2-control"
+  ],
+  "file_targets": [
+    "cpu-probe.exe",
+    "cpu-probe.obj"
+  ],
+  "directories": 27,
+  "individual_files": 2,
+  "files": 27788,
+  "logical_bytes": 16572438073,
+  "compiled_files": 20671,
+  "noncompiled_files": 7117,
+  "uncovered_before_supplement": 0,
+  "uncovered_after_supplement": 0,
+  "supplement": null,
+  "original_runner_archives_retained": 4,
+  "cleanup_performed": true,
+  "removed_directories": 27,
+  "removed_individual_files": 2,
+  "removed_files": 27788,
+  "removed_logical_bytes": 16572438073,
+  "removed_worktrees": [
+    {
+      "worktree": "p",
+      "commit": "ccde9e43674b77975d1f375d1ecff02aa761aef3",
+      "raw_files_verified": 653,
+      "clean_including_ignored": true,
+      "reachable_from_master": true
+    },
+    {
+      "worktree": "b",
+      "commit": "5e039b01b49abc00548123763be85898932e3ad8",
+      "raw_files_verified": 564,
+      "clean_including_ignored": true,
+      "reachable_from_master": true
+    }
+  ],
+  "protected_remaining_raw_bytes_and_mtimes_unchanged": true,
+  "frozen_source_captures_verified": true,
+  "pinned_testbench_verified": true,
+  "saved_git_configuration_unchanged": true,
+  "unrelated_local_branches_unchanged": true,
+  "retained_evidence_archives_unchanged": true,
+  "original_native_results_unchanged": true
+}

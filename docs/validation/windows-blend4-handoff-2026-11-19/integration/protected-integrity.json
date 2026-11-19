@@ -1,0 +1,21 @@
+{
+  "remaining_roots": [
+    {
+      "root": "primary",
+      "protected_paths": 60,
+      "bytes_and_mtimes_unchanged": true
+    },
+    {
+      "root": "candidate",
+      "protected_paths": 60,
+      "bytes_and_mtimes_unchanged": true
+    },
+    {
+      "root": "control",
+      "protected_paths": 60,
+      "bytes_and_mtimes_unchanged": true
+    }
+  ],
+  "all_60_protected_paths_per_root_exact": true,
+  "removed_temporary_worktrees_verified_before_removal": true
+}

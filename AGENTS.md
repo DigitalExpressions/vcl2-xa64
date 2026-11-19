@@ -34,7 +34,8 @@ on a particular machine; its absence must not prevent a fresh setup.
   Preserve reusable resources, source captures and retained archives.
 - The maintainer subsequently approved retaining/integrating the four-blend
   candidate, publishing the Windows report and evidence-backed local cleanup.
-  See `docs/validation/blend4-integration-2026-11-19.md`; the full Windows gate
+  Integration/publication and verified local cleanup are complete; see
+  `docs/validation/blend4-integration-2026-11-19.md`. The full Windows gate
   remains failed/incomplete. The measured 2.2% / 2.7% TRS-inverse elapsed costs
   are accepted for this integration and remain unresolved.
 - The next M2 return follows

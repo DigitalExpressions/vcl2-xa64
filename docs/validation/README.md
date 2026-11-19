@@ -10,8 +10,11 @@ Agner's original x86 files remain exact. The
 [M2 performance follow-up](m2-trs-inverse-follow-up-2026-11-19.md) starts from
 integrated implementation/report commit `ccde9e43674b77975d1f375d1ecff02aa761aef3`
 to investigate and recover the measured 2.2% / 2.7% TRS-inverse costs while
-preserving transpose gains. Those costs remain unresolved. Actual publication
-and cleanup completion will be recorded separately; earlier entries are historical.
+preserving transpose gains. Those costs remain unresolved. The first push was
+verified at `a526fc4bd5ffd21d436893d4522cae469d3a7e5f`; cleanup removed about
+15.43 GiB and two temporary worktrees after complete coverage checks. See the
+[portable completion receipts](windows-blend4-handoff-2026-11-19/integration/README.md).
+Earlier entries retain their historical scope and source identities.
 
 ## Native Windows four-blend follow-up — 19 November 2026
 

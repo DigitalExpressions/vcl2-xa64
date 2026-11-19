@@ -1,0 +1,100 @@
+{
+  "packets": [
+    {
+      "archive": "windows-blend4-evidence02.zip",
+      "sha256": "6057d1dda2f4b04942295ee9163afb6a555a088e9f55bf467131b0d67b80fd0c",
+      "bytes": 37571567,
+      "recorded_files": 7835,
+      "compiled_artifacts_hashed": 20671,
+      "x64_pe_executables_verified": 5795,
+      "crc_and_all_recorded_entry_hashes_verified": true,
+      "created_utc": "2026-11-19T14:18:45.079090+00:00",
+      "scope": "Complete source captures, native records, initial runner failures and continuations, controls, flags, generated inputs, code/include and causal evidence, compiled hashes, preserved original packaging manifest and closed log. Active package02 log is excluded and will be retained by a final review supplement. No compiled artifact or source/evidence file was removed.",
+      "failed_attempt": {
+        "archive": "windows-blend4-evidence.zip",
+        "sha256": "a131e8d0e6603b70dc84b776b1ad0b137b47ac4cdf56c48792a53b61bb0727bd",
+        "crc_passed": true,
+        "entry_hash_mismatches": [
+          {
+            "path": "package.log",
+            "manifest_sha256": "937782358f91de1457f9b576d0793ca3a82817db5f658522194111f9f4ca64c6",
+            "actual_archived_sha256": "f2bface5681de1404c14e112c8257a73e47b7e45f890d556f25285c47b809529"
+          }
+        ],
+        "cause": "Active packaging stdout log changed after its initial hash and before ZIP entry copy. All other recorded entry hashes match; no native result/source changed.",
+        "original_manifest": "evidence-files.json",
+        "compiled_hashes_preserved": "compiled-artifact-hashes.json",
+        "native_replays": false
+      },
+      "reused_compiled_hash_inventory": "Compiled hashes were completed in attempt01; only the active-log ZIP entry was invalid. No native/build process has run since. Existing recorded hashes are retained, with all files still present and sizes rechecked.",
+      "cleanup_performed": false
+    },
+    {
+      "archive": "final-review-supplement.zip",
+      "sha256": "4edc2c087260dc5007ad8ba957a6b1b4dbda74dd78b0ac362e53b47f597a868b",
+      "bytes": 1710171,
+      "recorded_files": 56,
+      "crc_and_all_entry_hashes_verified": true,
+      "scope": "Late packaging logs/receipt, portable path-review attempts, final validators/proofs and report/bundle draft; original source/native results unchanged."
+    },
+    {
+      "archive": "final-metadata-supplement.zip",
+      "sha256": "c78aef958c3c6349d92b5e698a81b10bfcf9f964f0192d8e37e003a07aef7a72",
+      "entries": 7,
+      "crc_and_all_entry_hashes_verified": true
+    },
+    {
+      "archive": "cleanup-authorization-audit.zip",
+      "sha256": "dbd21bf4b7cb3bb3a179cdb45f8a6f7d617e350d9b02983eb21b3bf4ad51e00e",
+      "recorded_files": 92,
+      "crc_and_all_entry_hashes_verified": true
+    },
+    {
+      "archive": "integration-cleanup-completed-evidence.zip",
+      "sha256": "49ad648c77d64bec7b8d5ad3db97da67ad79c7babfa69936486d87aec02ad373",
+      "bytes": 1931461,
+      "recorded_files": 120,
+      "crc_and_all_entry_hashes_verified": true,
+      "scope": "Integration and cleanup commands/attempts, manifests and complete coverage, verified compiled-hash comparison, tracked worktree raw-byte inventories, original runner archive copies, protected/capture/tool/dependency checks, source comparison and completion summary. Later publication checks remain retained separately."
+    }
+  ],
+  "preserved_failed_packaging_attempt": {
+    "archive": "windows-blend4-evidence.zip",
+    "sha256": "a131e8d0e6603b70dc84b776b1ad0b137b47ac4cdf56c48792a53b61bb0727bd",
+    "crc_passed": true,
+    "entry_hash_mismatches": [
+      {
+        "path": "package.log",
+        "manifest_sha256": "937782358f91de1457f9b576d0793ca3a82817db5f658522194111f9f4ca64c6",
+        "actual_archived_sha256": "f2bface5681de1404c14e112c8257a73e47b7e45f890d556f25285c47b809529"
+      }
+    ],
+    "cause": "Active packaging stdout log changed after its initial hash and before ZIP entry copy. All other recorded entry hashes match; no native result/source changed.",
+    "original_manifest": "evidence-files.json",
+    "compiled_hashes_preserved": "compiled-artifact-hashes.json",
+    "native_replays": false
+  },
+  "original_runner_return_archives": [
+    {
+      "original": "c/source/build/windows-native-clang-debug-20261119T134227110427Z/return-evidence.zip",
+      "retained": "retained-original-archives/c/source/build/windows-native-clang-debug-20261119T134227110427Z/return-evidence.zip",
+      "sha256": "97a2bf7fd15a0e62e5aff7db97989e3e98617ad1bcca8ba0d1b791d9c714cb4f"
+    },
+    {
+      "original": "c/source/build/windows-native-clang-release-20261119T133640695192Z/return-evidence.zip",
+      "retained": "retained-original-archives/c/source/build/windows-native-clang-release-20261119T133640695192Z/return-evidence.zip",
+      "sha256": "31d7460312dc7db2fdbda0eb5a61e4c148dbab2fef2718932fe992ac17695332"
+    },
+    {
+      "original": "c/source/build/windows-native-msvc-debug-20261119T132412691859Z/return-evidence.zip",
+      "retained": "retained-original-archives/c/source/build/windows-native-msvc-debug-20261119T132412691859Z/return-evidence.zip",
+      "sha256": "fafe706a4efa987c7cae17c652ccfdb3112385fc6dbe595bf67274e673d054e3"
+    },
+    {
+      "original": "c/source/build/windows-native-msvc-release-20261119T131639385735Z/return-evidence.zip",
+      "retained": "retained-original-archives/c/source/build/windows-native-msvc-release-20261119T131639385735Z/return-evidence.zip",
+      "sha256": "f827897e48321bd0c45bc900ad22f4f65d605e58f46ec8983a76fbf5f9c0c447"
+    }
+  ],
+  "all_original_archives_preserved": true
+}
