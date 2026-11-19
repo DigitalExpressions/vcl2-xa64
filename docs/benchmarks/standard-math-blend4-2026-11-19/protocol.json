@@ -1,0 +1,237 @@
+{
+  "schedule": [
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "compat",
+      "version": "candidate"
+    },
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 128,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "compat",
+      "version": "candidate"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 1,
+      "count": 4096,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "compat",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 128,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "compat",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 2,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 128,
+      "backend": "compat",
+      "version": "candidate"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "neon",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "neon",
+      "version": "candidate"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "scalar",
+      "version": "candidate"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "compat",
+      "version": "baseline"
+    },
+    {
+      "round": 3,
+      "count": 4096,
+      "backend": "compat",
+      "version": "candidate"
+    }
+  ],
+  "timing_concurrency": 1,
+  "correctness_concurrency": 3,
+  "correctness_timeout_seconds": 60,
+  "timing_invocation_timeout_seconds": 60,
+  "invocations_per_version_backend_count": 3,
+  "trials_per_shape": 9,
+  "planned_processes": 36,
+  "planned_shapes": 2400,
+  "planned_trial_batches": 21600,
+  "report_rows_per_version": 160,
+  "paired_three_way_rows": 160,
+  "retain_all_attempts": true,
+  "broad_fast_math": false,
+  "lto": false,
+  "timing_sanitizers": false,
+  "implicit_contraction": false,
+  "inputs_and_reference_gate_unchanged": true
+}

@@ -1,0 +1,17 @@
+{
+  "native": {
+    "ubsan-positive": 0,
+    "ubsan-negative": -6,
+    "guard-positive": 0,
+    "guard-negative-0": -10,
+    "guard-negative-1": -10,
+    "guard-negative-2": -10,
+    "guard-negative-3": -10,
+    "runtime-run": 0
+  },
+  "page_size": 16384,
+  "timeout_seconds": 60,
+  "concurrency": 3,
+  "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1",
+  "header_integrity_controls_passed": 11
+}

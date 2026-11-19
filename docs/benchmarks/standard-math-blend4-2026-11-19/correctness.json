@@ -1,0 +1,42 @@
+[
+  {
+    "profile": "baseline-release",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0,
+    "example_passed": true,
+    "sanitized": false
+  },
+  {
+    "profile": "baseline-debug",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0,
+    "example_passed": true,
+    "sanitized": true
+  },
+  {
+    "profile": "candidate-release",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0,
+    "example_passed": true,
+    "sanitized": false
+  },
+  {
+    "profile": "candidate-debug",
+    "registered": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "timed_out": 0,
+    "example_passed": true,
+    "sanitized": true
+  }
+]

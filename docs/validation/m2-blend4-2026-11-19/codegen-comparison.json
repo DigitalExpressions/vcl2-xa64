@@ -1,0 +1,8 @@
+{
+  "before_sha256": "270c791591c7805a086c9efab36dfb5c91a1004525657e61dc6ad093d37db907",
+  "after_sha256": "90f5847790b4c0a561341ae6f7fa388615049f2100ef906a118dd1209ffad294",
+  "before_transpose_tbl": 8,
+  "after_transpose_tbl": 0,
+  "after_transpose": "__ZN14standard_bench12_GLOBAL__N_111object_simdILNS_2OpE8EfEEvPKT0_S5_PS3_mm: ; @_ZN14standard_bench12_GLOBAL__N_111object_simdILNS_2OpE8EfEEvPKT0_S5_PS3_mm\n\t.cfi_startproc\n; %bb.0:\n\tcbz\tx3, LBB38_3\n; %bb.1:\n\tadd\tx8, x2, #32\n\tadd\tx9, x0, #32\nLBB38_2:                                ; =>This Inner Loop Header: Depth=1\n\tldp\tq0, q1, [x9, #-32]\n\tldp\tq2, q3, [x9], #64\n\tzip2.2d\tv4, v0, v1\n\tmov.d\tv0[1], v1[0]\n\tmov.16b\tv1, v2\n\tmov.d\tv1[1], v3[0]\n\tzip2.2d\tv2, v2, v3\n\tuzp1.4s\tv3, v0, v1\n\tuzp2.4s\tv0, v0, v1\n\tuzp1.4s\tv1, v4, v2\n\tuzp2.4s\tv2, v4, v2\n\tstp\tq3, q0, [x8, #-32]\n\tstp\tq1, q2, [x8], #64\n\tsubs\tx3, x3, #1\n\tb.ne\tLBB38_2\nLBB38_3:\n\tret",
+  "performance_claim": false
+}

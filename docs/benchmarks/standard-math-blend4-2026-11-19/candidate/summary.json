@@ -1,0 +1,145 @@
+{
+  "rows": 160,
+  "timed_processes": 18,
+  "shapes": 1200,
+  "trial_batches": 10800,
+  "winners": {
+    "Direct Neon": 57,
+    "Within 5%": 103
+  },
+  "max_reference_epsilon": 6,
+  "output_fields_per_validation_pass": 17740800,
+  "output_field_checks_before_and_after_timing": 35481600,
+  "batch_ms_range": [
+    7.808541,
+    32.863292
+  ],
+  "rows_with_disjoint_invocation_median_ranges": 80,
+  "cross_backend": {
+    "scalar_neon_difference": {
+      "different_values": 7913,
+      "max_absolute": 9.5367431640625e-07,
+      "max_ulp": 768
+    },
+    "compat_neon_difference": {
+      "different_values": 21084,
+      "max_absolute": 4.76837158203125e-07,
+      "max_ulp": 4
+    }
+  },
+  "slower_than_scalar": {
+    "compat": [
+      {
+        "operation": "mat4_inverse_trs",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 128,
+        "ratio_to_scalar": 1.0056691295885707
+      },
+      {
+        "operation": "mat4_inverse_trs",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.405150189398009
+      },
+      {
+        "operation": "mat4_transpose",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 128,
+        "ratio_to_scalar": 1.3694097362915953
+      },
+      {
+        "operation": "mat4_transpose",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.4161050376723705
+      },
+      {
+        "operation": "mat4_transpose",
+        "layout": "object_aos",
+        "precision": 64,
+        "bits": 256,
+        "count": 128,
+        "ratio_to_scalar": 1.0707064643887123
+      },
+      {
+        "operation": "mat4_vector",
+        "layout": "batch_soa",
+        "precision": 32,
+        "bits": 128,
+        "count": 128,
+        "ratio_to_scalar": 1.0302782578515326
+      },
+      {
+        "operation": "mat4_vector",
+        "layout": "batch_soa",
+        "precision": 32,
+        "bits": 128,
+        "count": 4096,
+        "ratio_to_scalar": 1.0246567903239778
+      },
+      {
+        "operation": "mat4_vector",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.1520484810325249
+      }
+    ],
+    "neon": [
+      {
+        "operation": "mat4_inverse_trs",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.4181175219557047
+      },
+      {
+        "operation": "mat4_transpose",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 128,
+        "ratio_to_scalar": 1.37011175152615
+      },
+      {
+        "operation": "mat4_transpose",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.4086618557676005
+      },
+      {
+        "operation": "mat4_vector",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio_to_scalar": 1.148089668336722
+      }
+    ]
+  },
+  "leads_with_overlapping_ranges": [
+    {
+      "operation": "mat4_transpose",
+      "layout": "object_aos",
+      "precision": 64,
+      "bits": 256,
+      "count": 128,
+      "winner": "Direct Neon",
+      "compat_over_neon": 1.0773020348756817
+    }
+  ],
+  "all_three_invocations_output_identical": true,
+  "source_and_protected_unchanged": true
+}

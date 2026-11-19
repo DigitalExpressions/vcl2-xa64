@@ -1,0 +1,38 @@
+[
+  {
+    "path": "CMakeLists.txt",
+    "baseline_sha256": "a549d885e2d7aff4608f9dd3558e4803ae55e74f96f340f8f3e96fd6d2e99048",
+    "candidate_sha256": "a549d885e2d7aff4608f9dd3558e4803ae55e74f96f340f8f3e96fd6d2e99048",
+    "identical": true
+  },
+  {
+    "path": "benchmarks/CMakeLists.txt",
+    "baseline_sha256": "54ef3f660338776d35350e92885f87f2622ee23a488a27148f9ffca8be01b71e",
+    "candidate_sha256": "54ef3f660338776d35350e92885f87f2622ee23a488a27148f9ffca8be01b71e",
+    "identical": true
+  },
+  {
+    "path": "benchmarks/standard_math/main.cpp",
+    "baseline_sha256": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c",
+    "candidate_sha256": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c",
+    "identical": true
+  },
+  {
+    "path": "benchmarks/standard_math/kernels.cpp",
+    "baseline_sha256": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2",
+    "candidate_sha256": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2",
+    "identical": true
+  },
+  {
+    "path": "benchmarks/standard_math/common.h",
+    "baseline_sha256": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4",
+    "candidate_sha256": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4",
+    "identical": true
+  },
+  {
+    "path": "benchmarks/standard_math/reference.h",
+    "baseline_sha256": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3",
+    "candidate_sha256": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3",
+    "identical": true
+  }
+]

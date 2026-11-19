@@ -1,0 +1,17 @@
+{
+  "archive": "benchmark-evidence.zip",
+  "sha256": "d95f87bc08fa1b927cef7fea4f4411fc737e2559d6f1ed865fe530e36970aa47",
+  "bytes": 203560534,
+  "verified_entries": 2717,
+  "crc_verified": true,
+  "all_entry_sha256_verified": true,
+  "output_dumps": 2400,
+  "compiled_artifacts_excluded": 54,
+  "compiled_artifacts_retained_on_disk": true,
+  "source_archives_included": [
+    "baseline",
+    "candidate"
+  ],
+  "scope": "Complete measurement/preparation records and portable analysis before report formatting; later report/checksum review retained separately in worktree and session",
+  "cleanup": false
+}

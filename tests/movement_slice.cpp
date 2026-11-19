@@ -87,6 +87,68 @@ template<class V,int... I> V do_blend(V a,V b) {
     if constexpr(V::size()==8) return blend8<I...>(a,b);
     if constexpr(V::size()==16) return blend16<I...>(a,b);
 }
+template<class V,int... I>
+#if defined(_MSC_VER)
+__declspec(noinline)
+#else
+__attribute__((noinline))
+#endif
+void transpose_blend_bits(const uint32_t* first,const uint32_t* second,uint32_t* output) {
+    static_assert(V::size()==4 && sizeof(Scalar<V>)==4);
+    Scalar<V> a[4],b[4],result[4];
+    std::memcpy(a,first,sizeof(a)); std::memcpy(b,second,sizeof(b));
+    do_blend<V,I...>(V().load(a),V().load(b)).store(result);
+    std::memcpy(output,result,sizeof(result));
+}
+#if VCL_ARCH_ARM64 && (defined(__GNUC__) || defined(__clang__))
+uint64_t blend_fpcr() { uint64_t x; __asm__ volatile("mrs %0, fpcr":"=r"(x)::"memory"); return x; }
+uint64_t blend_fpsr() { uint64_t x; __asm__ volatile("mrs %0, fpsr":"=r"(x)::"memory"); return x; }
+void blend_fpcr(uint64_t x) { __asm__ volatile("msr fpcr, %0\n\tisb"::"r"(x):"memory"); }
+void blend_fpsr(uint64_t x) { __asm__ volatile("msr fpsr, %0"::"r"(x):"memory"); }
+#endif
+template<class V,int... I> void transpose_blend_pattern() {
+    constexpr int indexes[]={I...};
+    constexpr uint32_t patterns[]={0,0x80000000u,1,0x80000001u,0x007fffffu,0x807fffffu,
+        0x7f800000u,0xff800000u,0x7fc12345u,0xffc54321u,0x7f800001u,0xff800001u,
+        0x00800000u,0x7f7fffffu,0x12345678u,0x9abcdef0u};
+    for(size_t rotation=0;rotation<16;++rotation) for(int swap=0;swap<2;++swap) {
+        uint32_t a[4],b[4],output[4];
+        for(int lane=0;lane<4;++lane) { a[lane]=patterns[(rotation+lane)%16]; b[lane]=patterns[(rotation+lane+4)%16]; }
+        const auto first=swap?b:a,second=swap?a:b;
+#if VCL_ARCH_ARM64 && (defined(__GNUC__) || defined(__clang__))
+        const auto control=blend_fpcr(),status=blend_fpsr();
+#endif
+        transpose_blend_bits<V,I...>(first,second,output);
+#if VCL_ARCH_ARM64 && (defined(__GNUC__) || defined(__clang__))
+        CHECK(blend_fpcr()==control); CHECK(blend_fpsr()==status);
+#endif
+        for(int lane=0;lane<4;++lane) if(indexes[lane]!=V_DC) {
+            const auto index=indexes[lane];
+            CHECK(output[lane]==(index<0?0u:index<4?first[index]:second[index-4]));
+        }
+    }
+}
+template<class V> void transpose_blends() {
+    transpose_blend_pattern<V,0,1,4,5>(); transpose_blend_pattern<V,2,3,6,7>();
+    transpose_blend_pattern<V,0,2,4,6>(); transpose_blend_pattern<V,1,3,5,7>();
+    transpose_blend_pattern<V,-1,1,4,V_DC>(); transpose_blend_pattern<V,V_DC,5,-1,3>();
+}
+void transpose_blends() {
+#if VCL_ARCH_ARM64 && (defined(__GNUC__) || defined(__clang__))
+    const auto saved_control=blend_fpcr(),saved_status=blend_fpsr();
+    constexpr uint64_t fields=(3ull<<22)|(1ull<<24)|(1ull<<25),traps=(0x1full<<8)|(1ull<<15);
+    for(unsigned mode=0;mode<16;++mode) for(uint64_t sticky: {0ull,0x9full}) {
+        const auto control=(saved_control&~(fields|traps))|(uint64_t(mode&3)<<22)|
+            (uint64_t((mode>>2)&1)<<24)|(uint64_t((mode>>3)&1)<<25);
+        blend_fpcr(control); blend_fpsr(sticky);
+        CHECK((blend_fpcr()&fields)==(control&fields)); CHECK(blend_fpsr()==sticky);
+        transpose_blends<Vec4f>(); transpose_blends<Vec4i>(); transpose_blends<Vec4ui>();
+    }
+    blend_fpcr(saved_control); blend_fpsr(saved_status);
+#else
+    transpose_blends<Vec4f>(); transpose_blends<Vec4i>(); transpose_blends<Vec4ui>();
+#endif
+}
 template<int Mode,class V,size_t... Lane> void permutation_pattern(std::index_sequence<Lane...>) {
     constexpr int n=V::size();
     constexpr int perm[]={lane_index<Mode,int(Lane),n,false>()...},blend[]={lane_index<Mode,int(Lane),n,true>()...};
@@ -329,5 +391,6 @@ int main() {
     static_assert(std::is_same<decltype(lookup4(Vec4ui(),Vec4ui())),Vec4i>::value);
     static_assert(std::is_same<decltype(blend4<0,4,1,5>(Vec4ui(),Vec4i())),Vec4i>::value);
     auto mixed=blend4<0,4,1,5>(Vec4ui(UINT32_MAX),Vec4i(42)); CHECK(mixed[0]==-1 && mixed[1]==42 && mixed[2]==-1 && mixed[3]==42);
+    transpose_blends();
     std::printf("%d movement slice failures\n",failures); return failures!=0;
 }

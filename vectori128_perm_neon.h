@@ -77,14 +77,26 @@ template<int... I,class V> inline V permute(V a) {
 template<int... I,class V> inline V blend(V a,V b) {
     static_assert(sizeof...(I)==V::size(),"Wrong blend index count");
     constexpr auto bytes=permutation_bytes<2,I...>();
+    constexpr int lane_indices[]={I...};
     // Composed vectors use blends even when every result comes from one half.
     // Route those cases through permute so broadcasts retain their lane form.
     if constexpr(((I<V::size())&&...)) {
         return permute<I...>(a);
     } else if constexpr(((I<0 || I>=V::size())&&...)) {
         return permute<(I<0?I:I-V::size())...>(b);
+    } else if constexpr(V::size()==4 && lane_indices[0]==0 && lane_indices[1]==1 && lane_indices[2]==4 && lane_indices[3]==5) {
+        // Transpose blends move integer lane bits without FP arithmetic or
+        // byte-table indexes, preserving NaN payloads and the FP environment.
+        auto first=bit_cast<uint32x4_t>(a.native()),second=bit_cast<uint32x4_t>(b.native());
+        return V(bit_cast<typename V::register_type>(vcombine_u32(vget_low_u32(first),vget_low_u32(second))));
+    } else if constexpr(V::size()==4 && lane_indices[0]==2 && lane_indices[1]==3 && lane_indices[2]==6 && lane_indices[3]==7) {
+        auto first=bit_cast<uint32x4_t>(a.native()),second=bit_cast<uint32x4_t>(b.native());
+        return V(bit_cast<typename V::register_type>(vcombine_u32(vget_high_u32(first),vget_high_u32(second))));
+    } else if constexpr(V::size()==4 && lane_indices[0]==0 && lane_indices[1]==2 && lane_indices[2]==4 && lane_indices[3]==6) {
+        return V(bit_cast<typename V::register_type>(vuzp1q_u32(bit_cast<uint32x4_t>(a.native()),bit_cast<uint32x4_t>(b.native()))));
+    } else if constexpr(V::size()==4 && lane_indices[0]==1 && lane_indices[1]==3 && lane_indices[2]==5 && lane_indices[3]==7) {
+        return V(bit_cast<typename V::register_type>(vuzp2q_u32(bit_cast<uint32x4_t>(a.native()),bit_cast<uint32x4_t>(b.native()))));
     } else if constexpr(V::size()==2) {
-        constexpr int lane_indices[]={I...};
         auto first=bit_cast<uint64x2_t>(a.native()),second=bit_cast<uint64x2_t>(b.native());
         return V(bit_cast<typename V::register_type>(vcombine_u64(
             lane64<lane_indices[0]>(first,second),lane64<lane_indices[1]>(first,second))));

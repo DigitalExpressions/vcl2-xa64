@@ -1,0 +1,58 @@
+[
+  {
+    "profile": "compat512-release",
+    "compile_commands_sha256": "b7818444f7d8c5606fe00830c1016cd5c63e1b0b3fef2291912c26ad3919ba97",
+    "commands": 1358,
+    "strict_ubsan": false,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "compat512-debug",
+    "compile_commands_sha256": "36bd63f6e391fb5a922c97ac1a672343165d95f46f499bcf06a9c7517c4a542e",
+    "commands": 1358,
+    "strict_ubsan": true,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon128-release",
+    "compile_commands_sha256": "524d77734867d86c184d4840b6991da7cfa0b8ca139e9388362a4b7a88784889",
+    "commands": 490,
+    "strict_ubsan": false,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon128-debug",
+    "compile_commands_sha256": "9312d13f3690fd488b25b0413ea92cc79c92b9d66fdbf58946345fadbe673993",
+    "commands": 490,
+    "strict_ubsan": true,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon256-release",
+    "compile_commands_sha256": "810042f32d1cb0acb4b37ce18f9b6daa89cce2ad469a42f81ed33e2122adf680",
+    "commands": 896,
+    "strict_ubsan": false,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon256-debug",
+    "compile_commands_sha256": "ba87137a67c818108ddd0074a8d23e554e206b0d85bdd13f0dd07f84f3cd62cb",
+    "commands": 896,
+    "strict_ubsan": true,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon512-release",
+    "compile_commands_sha256": "27b5f6dc2110cda4785d527ab8ef31c4bcb051c8d32141f103c397b3ce7365fe",
+    "commands": 1300,
+    "strict_ubsan": false,
+    "contraction_disabled": true
+  },
+  {
+    "profile": "neon512-debug",
+    "compile_commands_sha256": "94aec8d865664d4d33ed9d830b52045b80168b99349860861d8f204e547ceb90",
+    "commands": 1300,
+    "strict_ubsan": true,
+    "contraction_disabled": true
+  }
+]

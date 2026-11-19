@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-19",
+  "status": "handoff prepared; Windows not executed",
+  "candidate_files": 571,
+  "candidate_fingerprint": "3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36",
+  "candidate_zip_sha256": "9883e0da75711f61d5bd5ceb3b7e2c86152b2b2975cebb897a95c179679d213c",
+  "baseline_files": 564,
+  "baseline_fingerprint": "fa9efdded211c6cbec2ede4fb0f12f334350c17b5c27c10149829a481a29ac06",
+  "baseline_zip_sha256": "44de4f5d3c3f95918d4ed4b9a23ee0b40f1b65058e22cda5908c34050b5af551",
+  "historical_windows_gate": "failed/incomplete: 5387 passed, 249 failed, 76 not run / 5712; 12 examples",
+  "scope": [
+    "source/dependency/tool integrity",
+    "four-profile candidate full baseline; collect complete failed/unavailable inventory",
+    "CPU/OS-gated AVX2/AVX-512 local profiles",
+    "exact isolated added regression, facade/direct originals, default/isolated namespace",
+    "same-source baseline controls and x86 include/code preservation",
+    "return actual results and M2 tradeoff for maintainer review"
+  ],
+  "native_windows_execution": false,
+  "runtime_or_test_edits": false,
+  "commit_push_merge": false,
+  "transport": "Git validation branch and exact approved full commit, no ZIP transfer required",
+  "validation_branch": "validation/m2-blend4-windows",
+  "publication_status": "prepared; commit and push require task-specific approval",
+  "publication_identity": "record actual Git HEAD/tree/raw inventory; do not relabel original M2 fingerprint"
+}

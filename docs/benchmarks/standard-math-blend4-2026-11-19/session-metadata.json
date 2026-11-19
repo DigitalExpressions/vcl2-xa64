@@ -1,0 +1,60 @@
+{
+  "source_baseline": {
+    "base_commit": "5e039b01b49abc00548123763be85898932e3ad8",
+    "base_tree": "ea90c1b40fc50936db7c3509aaa11ab51c02d890",
+    "fingerprint": "fa9efdded211c6cbec2ede4fb0f12f334350c17b5c27c10149829a481a29ac06",
+    "files": 564,
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "added_paths": [],
+    "deleted_paths": []
+  },
+  "source_candidate": {
+    "base_commit": "5e039b01b49abc00548123763be85898932e3ad8",
+    "base_tree": "ea90c1b40fc50936db7c3509aaa11ab51c02d890",
+    "fingerprint": "3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36",
+    "files": 571,
+    "patch_sha256": "6ef131ac0f37551994e0b9a8ac4756b1f497bf0ca56c1e5e9ed9a403020e2663",
+    "added_paths": [
+      "docs/arm-next-step-proposal-2026-11-19.md",
+      "docs/validation/m2-arm-preflight-2026-11-19.md",
+      "docs/validation/m2-arm-preflight-2026-11-19/README.md",
+      "docs/validation/m2-arm-preflight-2026-11-19/checksums.sha256",
+      "docs/validation/m2-arm-preflight-2026-11-19/historical-bundles.json",
+      "docs/validation/m2-arm-preflight-2026-11-19/runner-plan.json",
+      "docs/validation/m2-arm-preflight-2026-11-19/summary.json"
+    ],
+    "deleted_paths": []
+  },
+  "report_template_sha256": "52ef3e945dbd8d66f9f55ab29b1adac812c104fb87dd01d1db3cd62171952459",
+  "report_date": "2026-11-19",
+  "date_timezone": "Europe/Stockholm",
+  "timing_start_utc": "2026-11-19T10:52:08.142636+00:00",
+  "timing_end_utc": "2026-11-19T10:56:37.694285+00:00",
+  "all_timed_processes": 36,
+  "shapes": 2400,
+  "trial_batches": 21600,
+  "three_way_rows_per_source": 160,
+  "baseline_candidate_rows": 160,
+  "baseline_candidate_backend_comparisons": 480,
+  "correctness_executions_before": 12,
+  "correctness_executions_after": 12,
+  "examples_passed": 4,
+  "all_failed": 0,
+  "all_skipped": 0,
+  "all_timed_out": 0,
+  "process_retries": 0,
+  "source_protected_and_template_unchanged": true,
+  "table_policy": "Template: ns/op 3 decimals, compatibility/Neon ratio 3, scalar/Neon 2; verdict and gain from displayed compatibility/Neon ratio, inclusive 0.95..1.05 band.",
+  "load_before": "11:52  up 7 days,  2:55, 1 user, load averages: 2.94 1.98 2.12",
+  "load_after": "11:56  up 7 days, 3 hrs, 1 user, load averages: 3.39 2.87 2.49",
+  "thermal_before": [
+    "Note: No thermal warning level has been recorded",
+    "Note: No performance warning level has been recorded",
+    "Note: No CPU power status has been recorded"
+  ],
+  "thermal_after": [
+    "Note: No thermal warning level has been recorded",
+    "Note: No performance warning level has been recorded",
+    "Note: No CPU power status has been recorded"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "facade": {
+    "candidate_test_sha256": "7ee48af6fa40cd0b52c5a5be979bdaed0632833ab8500128be69ce1162373f25",
+    "route": "facade",
+    "generated_sha256": "607eeca695e413060505e64d9363af646719b1e5b5a366c8d9d6f18b08627dce",
+    "exact_sections": {
+      "scalar_alias": "d9002fb27cd242cbb081b351a40a9b7bff14eddf81c3f08a681a932275dc22a6",
+      "check_macro": "ba6bcf150aa34dc77cbe8c621b88e2e2d3abac50eab1a3e1c40bd00f68537e80",
+      "do_blend": "8121df868cb15ba66fff231f2dd9a8decfde3431030af313c6a524c7c301ef1b",
+      "added_regression": "a88ca2395263d2bcc53837fcaf8f2def46a68c0a14973fb112924d2e92483cb8"
+    },
+    "added_regression_lines": 62,
+    "behavior": "Only the captured added regression is called; all oracle/pattern bodies copied byte-for-byte",
+    "platform_note": "FPCR/FPSR block remains under its captured ARM/compiler guard; x86 executes integer-bit checks only",
+    "native_execution": false
+  },
+  "originals": {
+    "candidate_test_sha256": "7ee48af6fa40cd0b52c5a5be979bdaed0632833ab8500128be69ce1162373f25",
+    "route": "originals",
+    "generated_sha256": "c2c58f2aaff81cf1ead3c999d31c211ba51a6fa9119702ca0d51a5bd44b55e6c",
+    "exact_sections": {
+      "scalar_alias": "d9002fb27cd242cbb081b351a40a9b7bff14eddf81c3f08a681a932275dc22a6",
+      "check_macro": "ba6bcf150aa34dc77cbe8c621b88e2e2d3abac50eab1a3e1c40bd00f68537e80",
+      "do_blend": "8121df868cb15ba66fff231f2dd9a8decfde3431030af313c6a524c7c301ef1b",
+      "added_regression": "a88ca2395263d2bcc53837fcaf8f2def46a68c0a14973fb112924d2e92483cb8"
+    },
+    "added_regression_lines": 62,
+    "behavior": "Only the captured added regression is called; all oracle/pattern bodies copied byte-for-byte",
+    "platform_note": "FPCR/FPSR block remains under its captured ARM/compiler guard; x86 executes integer-bit checks only",
+    "native_execution": false
+  },
+  "generator_sha256": "cdba99416e40680e9ca3d729dbe79575dc0b53209234d8ea1257a589edd967bc",
+  "cmake_project_sha256": "312a7b948c5fddf7e99da90e11a8e24997481c794ab8fe292b7e330d85403ce1",
+  "preparation": "Python emission and exact body/hash checks only; no Windows or new C++ execution"
+}

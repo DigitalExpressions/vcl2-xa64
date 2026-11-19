@@ -1,0 +1,7 @@
+{
+  "archive": "codegen-review-supplement.zip",
+  "sha256": "21e0e45414a6f874b56a4a3e6531cd9a62fc11118742cd664cbfd3e95c5ea5eb",
+  "verified_entries": 3,
+  "crc_and_entry_hashes_verified": true,
+  "purpose": "Later offline selected-function inspection; no new execution or timing"
+}

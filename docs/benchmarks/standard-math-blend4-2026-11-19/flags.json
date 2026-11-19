@@ -1,0 +1,178 @@
+[
+  {
+    "profile": "baseline-release",
+    "compile_commands_sha256": "1c4ef63140c743de68e2e6a5ec7d0e054d2dbde793b5b74fff5d54caceb3f0eb",
+    "compile_commands": [
+      {
+        "file": "<BASELINE_SOURCE>/instrset_detect_neon.cpp",
+        "command": "clang++ -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <BASELINE_SOURCE>/instrset_detect_neon.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/examples/vector_arithmetic.cpp",
+        "command": "clang++ -I<BASELINE_SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o examples/CMakeFiles/vcl_example.dir/vector_arithmetic.cpp.o -c <BASELINE_SOURCE>/examples/vector_arithmetic.cpp"
+      }
+    ],
+    "link_commands": [
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -o benchmarks/standard_scalar",
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -o benchmarks/standard_compat",
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -o benchmarks/standard_neon"
+    ],
+    "path_policy": "Compiler shown by name; SOURCE/BUILD/SDK path placeholders preserve all actual options. Raw commands retained locally."
+  },
+  {
+    "profile": "baseline-debug",
+    "compile_commands_sha256": "b4e71f783c0405152f4ade2eccacc71d075dba186c0d6ce9531601acf1423d81",
+    "compile_commands": [
+      {
+        "file": "<BASELINE_SOURCE>/instrset_detect_neon.cpp",
+        "command": "clang++ -I<BASELINE_SOURCE> -g -std=gnu++17 -arch arm64 -isysroot <SDK> -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <BASELINE_SOURCE>/instrset_detect_neon.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<BASELINE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<BASELINE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<BASELINE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<BASELINE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -c <BASELINE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<BASELINE_SOURCE>/examples/vector_arithmetic.cpp",
+        "command": "clang++ -I<BASELINE_SOURCE> -g -std=gnu++17 -arch arm64 -isysroot <SDK> -o examples/CMakeFiles/vcl_example.dir/vector_arithmetic.cpp.o -c <BASELINE_SOURCE>/examples/vector_arithmetic.cpp"
+      }
+    ],
+    "link_commands": [
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -o benchmarks/standard_scalar",
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -o benchmarks/standard_compat",
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -o benchmarks/standard_neon"
+    ],
+    "path_policy": "Compiler shown by name; SOURCE/BUILD/SDK path placeholders preserve all actual options. Raw commands retained locally."
+  },
+  {
+    "profile": "candidate-release",
+    "compile_commands_sha256": "a290ece191f7242c1c6736ee4e6db49a53373684783e597125325037ea2d0ddc",
+    "compile_commands": [
+      {
+        "file": "<CANDIDATE_SOURCE>/instrset_detect_neon.cpp",
+        "command": "clang++ -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <CANDIDATE_SOURCE>/instrset_detect_neon.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/examples/vector_arithmetic.cpp",
+        "command": "clang++ -I<CANDIDATE_SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o examples/CMakeFiles/vcl_example.dir/vector_arithmetic.cpp.o -c <CANDIDATE_SOURCE>/examples/vector_arithmetic.cpp"
+      }
+    ],
+    "link_commands": [
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -o benchmarks/standard_scalar",
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -o benchmarks/standard_compat",
+      "clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -o benchmarks/standard_neon"
+    ],
+    "path_policy": "Compiler shown by name; SOURCE/BUILD/SDK path placeholders preserve all actual options. Raw commands retained locally."
+  },
+  {
+    "profile": "candidate-debug",
+    "compile_commands_sha256": "a708f0f6e3f39b7a6112775d8a84bff44e98463e7324ac0b538b1ffb4ffefc1f",
+    "compile_commands": [
+      {
+        "file": "<CANDIDATE_SOURCE>/instrset_detect_neon.cpp",
+        "command": "clang++ -I<CANDIDATE_SOURCE> -g -std=gnu++17 -arch arm64 -isysroot <SDK> -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <CANDIDATE_SOURCE>/instrset_detect_neon.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DSTANDARD_IMPL=0 -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<CANDIDATE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<CANDIDATE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<CANDIDATE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/main.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp",
+        "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<CANDIDATE_SOURCE> -g -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer -o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -c <CANDIDATE_SOURCE>/benchmarks/standard_math/kernels.cpp"
+      },
+      {
+        "file": "<CANDIDATE_SOURCE>/examples/vector_arithmetic.cpp",
+        "command": "clang++ -I<CANDIDATE_SOURCE> -g -std=gnu++17 -arch arm64 -isysroot <SDK> -o examples/CMakeFiles/vcl_example.dir/vector_arithmetic.cpp.o -c <CANDIDATE_SOURCE>/examples/vector_arithmetic.cpp"
+      }
+    ],
+    "link_commands": [
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_scalar.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/standard_math/kernels.cpp.o -o benchmarks/standard_scalar",
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_compat.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/standard_math/kernels.cpp.o -o benchmarks/standard_compat",
+      "clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_neon.dir/standard_math/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/standard_math/kernels.cpp.o -o benchmarks/standard_neon"
+    ],
+    "path_policy": "Compiler shown by name; SOURCE/BUILD/SDK path placeholders preserve all actual options. Raw commands retained locally."
+  }
+]

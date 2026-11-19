@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "base_commit": "5e039b01b49abc00548123763be85898932e3ad8",
+    "base_tree": "ea90c1b40fc50936db7c3509aaa11ab51c02d890",
+    "fingerprint": "fa9efdded211c6cbec2ede4fb0f12f334350c17b5c27c10149829a481a29ac06",
+    "files": 564,
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "added_paths": [],
+    "deleted_paths": []
+  },
+  "candidate": {
+    "base_commit": "5e039b01b49abc00548123763be85898932e3ad8",
+    "base_tree": "ea90c1b40fc50936db7c3509aaa11ab51c02d890",
+    "fingerprint": "3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36",
+    "files": 571,
+    "patch_sha256": "6ef131ac0f37551994e0b9a8ac4756b1f497bf0ca56c1e5e9ed9a403020e2663",
+    "added_paths": [
+      "docs/arm-next-step-proposal-2026-11-19.md",
+      "docs/validation/m2-arm-preflight-2026-11-19.md",
+      "docs/validation/m2-arm-preflight-2026-11-19/README.md",
+      "docs/validation/m2-arm-preflight-2026-11-19/checksums.sha256",
+      "docs/validation/m2-arm-preflight-2026-11-19/historical-bundles.json",
+      "docs/validation/m2-arm-preflight-2026-11-19/runner-plan.json",
+      "docs/validation/m2-arm-preflight-2026-11-19/summary.json"
+    ],
+    "deleted_paths": []
+  }
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "version": "baseline",
+    "mode": "release",
+    "backend": "scalar",
+    "sha256": "f81d8b5f5371ed00c624f4c9f26b6186c966f42bdd88237dfe74d059a49f16ed",
+    "native_arm64": true,
+    "path": "baseline-release/benchmarks/standard_scalar"
+  },
+  {
+    "version": "baseline",
+    "mode": "debug",
+    "backend": "scalar",
+    "sha256": "3468c6ae0629c72f043e36845a57e6597b9c7569b6b2c76d47ef2c3b6ce2f8f3",
+    "native_arm64": true,
+    "path": "baseline-debug/benchmarks/standard_scalar"
+  },
+  {
+    "version": "candidate",
+    "mode": "release",
+    "backend": "scalar",
+    "sha256": "f81d8b5f5371ed00c624f4c9f26b6186c966f42bdd88237dfe74d059a49f16ed",
+    "native_arm64": true,
+    "path": "candidate-release/benchmarks/standard_scalar"
+  },
+  {
+    "version": "candidate",
+    "mode": "debug",
+    "backend": "scalar",
+    "sha256": "4a673e1b1360254d942e407023112559bd59017e142a68c97bcc400d9eb71654",
+    "native_arm64": true,
+    "path": "candidate-debug/benchmarks/standard_scalar"
+  },
+  {
+    "version": "baseline",
+    "mode": "release",
+    "backend": "compat",
+    "sha256": "d3162b2da429e351f0cf08e887b188661f8fb5c85782270fa4af4e81d1f74b07",
+    "native_arm64": true,
+    "path": "baseline-release/benchmarks/standard_compat"
+  },
+  {
+    "version": "baseline",
+    "mode": "debug",
+    "backend": "compat",
+    "sha256": "6526b187ec65273be157df903eeca0f14f3f8d1787b1ea80c608212e9226e819",
+    "native_arm64": true,
+    "path": "baseline-debug/benchmarks/standard_compat"
+  },
+  {
+    "version": "candidate",
+    "mode": "release",
+    "backend": "compat",
+    "sha256": "d3162b2da429e351f0cf08e887b188661f8fb5c85782270fa4af4e81d1f74b07",
+    "native_arm64": true,
+    "path": "candidate-release/benchmarks/standard_compat"
+  },
+  {
+    "version": "candidate",
+    "mode": "debug",
+    "backend": "compat",
+    "sha256": "597f63a5ea6fd4561a80e93b8813d6f5bd0556af185d131a641caa22011e1d5f",
+    "native_arm64": true,
+    "path": "candidate-debug/benchmarks/standard_compat"
+  },
+  {
+    "version": "baseline",
+    "mode": "release",
+    "backend": "neon",
+    "sha256": "baf8ede15a4d0f943c14ff673aca69b1e0fc1a3f0432e33a1543cc749f9e460a",
+    "native_arm64": true,
+    "path": "baseline-release/benchmarks/standard_neon"
+  },
+  {
+    "version": "baseline",
+    "mode": "debug",
+    "backend": "neon",
+    "sha256": "a5f630fdd0b9f2a4f163a0d4f0f2175d645d0a29cd3963685608d62343ecea91",
+    "native_arm64": true,
+    "path": "baseline-debug/benchmarks/standard_neon"
+  },
+  {
+    "version": "candidate",
+    "mode": "release",
+    "backend": "neon",
+    "sha256": "185bf70c481b057ab05392bb673bf6b62c71f28c4e34e5120ec352aed4357798",
+    "native_arm64": true,
+    "path": "candidate-release/benchmarks/standard_neon"
+  },
+  {
+    "version": "candidate",
+    "mode": "debug",
+    "backend": "neon",
+    "sha256": "92d42946c5df7caf1d689423f1695aa905674b274517d313bb7db5eb9565329f",
+    "native_arm64": true,
+    "path": "candidate-debug/benchmarks/standard_neon"
+  }
+]

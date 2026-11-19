@@ -1,0 +1,61 @@
+{
+  "method": "Complete __text byte slices from each named text symbol to next text symbol; includes any padding, no relocation normalization",
+  "functions": [
+    {
+      "symbol": "__ZN14standard_bench12_GLOBAL__N_111object_simdILNS_2OpE8EfEEvPKT0_S5_PS3_mm",
+      "baseline": {
+        "offset": 31508,
+        "bytes": 104,
+        "sha256": "10cda4a2fbdedcabbac35191a4e49e3b72e5d2fc7c9d53fb529d157e068cc659"
+      },
+      "candidate": {
+        "offset": 31508,
+        "bytes": 76,
+        "sha256": "a2ab4718e8f7ad869e083cb1fd7bc8170b01f65f9832f49b4a0dbda38fe7e0ff"
+      },
+      "bytes_identical": false
+    },
+    {
+      "symbol": "__ZN14standard_bench12_GLOBAL__N_15batchILNS_2OpE8Ef5Vec8fEEvPKT0_S6_PS4_mm",
+      "baseline": {
+        "offset": 32952,
+        "bytes": 2568,
+        "sha256": "32511d993bde434c5b3b067f7a75f9182cdfaf60352973d421fc755f75539cfe"
+      },
+      "candidate": {
+        "offset": 32924,
+        "bytes": 2568,
+        "sha256": "32511d993bde434c5b3b067f7a75f9182cdfaf60352973d421fc755f75539cfe"
+      },
+      "bytes_identical": true
+    },
+    {
+      "symbol": "__ZN14standard_bench12_GLOBAL__N_111object_simdILNS_2OpE8EdEEvPKT0_S5_PS3_mm",
+      "baseline": {
+        "offset": 75704,
+        "bytes": 80,
+        "sha256": "263efd4cb55d241d12ff7c9dd70410e04c0a9fc4513946c31acdb39e93c39ec6"
+      },
+      "candidate": {
+        "offset": 75648,
+        "bytes": 80,
+        "sha256": "263efd4cb55d241d12ff7c9dd70410e04c0a9fc4513946c31acdb39e93c39ec6"
+      },
+      "bytes_identical": true
+    },
+    {
+      "symbol": "__ZN14standard_bench12_GLOBAL__N_111object_simdILNS_2OpE9EfEEvPKT0_S5_PS3_mm",
+      "baseline": {
+        "offset": 37576,
+        "bytes": 184,
+        "sha256": "b1ab564306fafb37dfba2d0c4d6e6fd53623f55987016ac61c210a0a350b6d79"
+      },
+      "candidate": {
+        "offset": 37548,
+        "bytes": 156,
+        "sha256": "302768d84f5e6c0cae6114db054a6b4e0310efd49da5a3431fe6c817faeb8ae0"
+      },
+      "bytes_identical": false
+    }
+  ]
+}

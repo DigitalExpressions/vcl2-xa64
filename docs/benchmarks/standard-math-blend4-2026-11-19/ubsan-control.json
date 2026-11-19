@@ -1,0 +1,8 @@
+{
+  "positive_exit": 0,
+  "negative_exit": -6,
+  "expected_diagnostic": true,
+  "no_continuation": true,
+  "binary_sha256": "ed1ee2589c5c4bbeab741208e063aba756a979dd199cf75365b7379105c2b122",
+  "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+}

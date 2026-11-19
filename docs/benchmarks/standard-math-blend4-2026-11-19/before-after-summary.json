@@ -1,0 +1,172 @@
+{
+  "rows": 160,
+  "backend_comparisons": 480,
+  "all_outputs_bit_identical": true,
+  "neon_faster_over_5pct": 3,
+  "neon_within_5pct": 157,
+  "neon_slower_over_5pct": 0,
+  "fp32_aos_transpose": [
+    {
+      "operation": "mat4_transpose",
+      "layout": "object_aos",
+      "precision": 32,
+      "bits": 128,
+      "count": 128,
+      "scalar_baseline_ns": 2.4141425730457398,
+      "scalar_candidate_ns": 2.4095927187509556,
+      "scalar_baseline_over_candidate": 1.0018882254496282,
+      "scalar_throughput_change_pct": 0.18882254496281892,
+      "scalar_elapsed_time_change_pct": -0.18846667738616762,
+      "scalar_invocation_median_ranges_separate": false,
+      "scalar_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "compat_baseline_ns": 1.2259619914324478,
+      "compat_candidate_ns": 1.2774529841691704,
+      "compat_baseline_over_candidate": 0.9596924557108367,
+      "compat_throughput_change_pct": -4.030754428916328,
+      "compat_elapsed_time_change_pct": 4.20004805178007,
+      "compat_invocation_median_ranges_separate": false,
+      "compat_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "neon_baseline_ns": 1.2508255261495091,
+      "neon_candidate_ns": 1.180447376202185,
+      "neon_baseline_over_candidate": 1.0596198961225611,
+      "neon_throughput_change_pct": 5.961989612256113,
+      "neon_elapsed_time_change_pct": -5.626536113631564,
+      "neon_invocation_median_ranges_separate": true,
+      "neon_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      }
+    },
+    {
+      "operation": "mat4_transpose",
+      "layout": "object_aos",
+      "precision": 32,
+      "bits": 128,
+      "count": 4096,
+      "scalar_baseline_ns": 2.7409154563408835,
+      "scalar_candidate_ns": 2.7391579119079315,
+      "scalar_baseline_over_candidate": 1.0006416367692097,
+      "scalar_throughput_change_pct": 0.06416367692096969,
+      "scalar_elapsed_time_change_pct": -0.06412253354571851,
+      "scalar_invocation_median_ranges_separate": false,
+      "scalar_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "compat_baseline_ns": 1.3152134710298637,
+      "compat_candidate_ns": 1.3304369634386692,
+      "compat_baseline_over_candidate": 0.9885575244621446,
+      "compat_throughput_change_pct": -1.1442475537855379,
+      "compat_elapsed_time_change_pct": 1.1574921291586993,
+      "compat_invocation_median_ranges_separate": true,
+      "compat_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "neon_baseline_ns": 1.3225592482825066,
+      "neon_candidate_ns": 1.3162671329504414,
+      "neon_baseline_over_candidate": 1.0047802723129318,
+      "neon_throughput_change_pct": 0.4780272312931766,
+      "neon_elapsed_time_change_pct": -0.4757530023880796,
+      "neon_invocation_median_ranges_separate": false,
+      "neon_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      }
+    }
+  ],
+  "fp32_aos_inverse_trs": [
+    {
+      "operation": "mat4_inverse_trs",
+      "layout": "object_aos",
+      "precision": 32,
+      "bits": 128,
+      "count": 128,
+      "scalar_baseline_ns": 4.180129106735311,
+      "scalar_candidate_ns": 4.196632618877037,
+      "scalar_baseline_over_candidate": 0.996067439387596,
+      "scalar_throughput_change_pct": -0.393256061240399,
+      "scalar_elapsed_time_change_pct": 0.3948086702665332,
+      "scalar_invocation_median_ranges_separate": false,
+      "scalar_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "compat_baseline_ns": 1.9245817154824507,
+      "compat_candidate_ns": 1.9202458123518051,
+      "compat_baseline_over_candidate": 1.002257993795771,
+      "compat_throughput_change_pct": 0.22579937957709628,
+      "compat_elapsed_time_change_pct": -0.22529067463153973,
+      "compat_invocation_median_ranges_separate": false,
+      "compat_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "neon_baseline_ns": 1.928571676734361,
+      "neon_candidate_ns": 1.9716927726626245,
+      "neon_baseline_over_candidate": 0.9781299112487836,
+      "neon_throughput_change_pct": -2.187008875121643,
+      "neon_elapsed_time_change_pct": 2.235908390051655,
+      "neon_invocation_median_ranges_separate": true,
+      "neon_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      }
+    },
+    {
+      "operation": "mat4_inverse_trs",
+      "layout": "object_aos",
+      "precision": 32,
+      "bits": 128,
+      "count": 4096,
+      "scalar_baseline_ns": 4.206591796875,
+      "scalar_candidate_ns": 4.207478632478632,
+      "scalar_baseline_over_candidate": 0.9997892239792292,
+      "scalar_throughput_change_pct": -0.02107760207707976,
+      "scalar_elapsed_time_change_pct": 0.02108204566677596,
+      "scalar_invocation_median_ranges_separate": false,
+      "scalar_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "compat_baseline_ns": 1.9552818974362145,
+      "compat_candidate_ns": 1.9443206787109375,
+      "compat_baseline_over_candidate": 1.0056375570374245,
+      "compat_throughput_change_pct": 0.5637557037424523,
+      "compat_elapsed_time_change_pct": -0.5605953156754273,
+      "compat_invocation_median_ranges_separate": true,
+      "compat_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      },
+      "neon_baseline_ns": 1.95242427967884,
+      "neon_candidate_ns": 2.006068752557283,
+      "neon_baseline_over_candidate": 0.9732589061017681,
+      "neon_throughput_change_pct": -2.674109389823187,
+      "neon_elapsed_time_change_pct": 2.7475827583575807,
+      "neon_invocation_median_ranges_separate": true,
+      "neon_output_difference": {
+        "different_values": 0,
+        "max_absolute": 0.0,
+        "max_ulp": 0
+      }
+    }
+  ]
+}
