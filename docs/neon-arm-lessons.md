@@ -147,7 +147,7 @@ all 28 original root paths must remain byte-exact under the
 copy is retired. Do not edit, format, normalize or regenerate originals to fix a
 port failure.
 The cleanup leaves the pin, compatibility dependency, canonical sources and
-all shipped generated headers unchanged.
+all shipped headers unchanged. Header generation is retired.
 
 Source inventories need raw hashes, exact commits/trees and validator/tool
 versions. Windows/Mac newline differences were reconciled by reproducing the

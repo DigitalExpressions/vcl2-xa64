@@ -6,11 +6,20 @@ than full-range scalar-libm replacements. Use the documented FP environment;
 validation uses nearest rounding and flush-to-zero disabled unless a test
 explicitly exercises another supported mode. Explicit FMA helpers follow the
 selected backend/ISA: Direct Neon and FMA-enabled x86 paths fuse, while legacy
-fallbacks may round the multiply and add separately. Correctness/benchmark
-builds disable implicit contraction with `-ffp-contract=off`.
-Native MSVC regression targets use `/fp:strict` for the same contraction and
-FP-environment requirements. The separate classification stress target uses
-`/fp:fast` on MSVC; no broad fast-math option applies to the ordinary suite.
+fallbacks may round the multiply and add separately. ARM correctness, strict
+comparison and benchmark builds disable implicit contraction with
+`-ffp-contract=off`; strict MSVC comparisons use `/fp:strict`. Routine Windows
+`upstream-optimized` tests instead use MSVC `/O2 /fp:precise /fp:except-` or
+Clang `-O2 -fno-trapping-math -fno-math-errno`. Keep these profiles and their
+results separate, as described in the [x86 guide](x86-build-and-test.md).
+The classification stress target alone uses `/fp:fast` or finite-math flags;
+no broad fast-math option applies to the ordinary suite.
+
+The table records retained regression expectations and ARM behavior. Pristine
+original x86 headers keep their upstream contracts, including documented table
+padding requirements; the suite may demand stronger behavior in selected cases.
+Its [failed/incomplete Windows gate](validation/README.md#windows-gate-and-architecture-preservation)
+preserves those differences without changing originals or weakening tests.
 
 | Surface | Scope |
 | --- | --- |

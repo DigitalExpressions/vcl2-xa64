@@ -17,8 +17,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   That work is complete and integrated; the Mac execution handoff is historical.
   See `docs/validation/architecture-separation-integration-completed-2026-11-19.md`. The
   platform-neutral include name `vcl2_xa64.h` is agreed.
-  Preserve `docs/x86_findings_and_fix_candidates.md`
-  for future x86/upstream research without resuming the retired campaign.
+  The maintainer subsequently approved retiring the local x86 findings index.
+  Its [frozen historical version](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md)
+  remains available for future research without resuming the retired campaign.
 - The x86 correctness/optimization campaign and old execution handoffs are
   retired. Do not automatically resume them or treat their fixes as requirements
   for new ARM work. Existing source remains unchanged until new scope is agreed.
@@ -49,6 +50,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   Obsolete pre-19 November Mac documentation was subsequently retired; see
   `docs/validation/mac-arm-documentation-cleanup-2026-11-20.md` for the retained
   source/comparison records and reasons. Do not restore old execution plans.
+- Obsolete pre-19 November Windows x86 validation documentation was subsequently
+  retired; see the Windows documentation cleanup section in
+  `docs/validation/README.md`.
+  Retain the documented exceptions for cross-host comparisons and archive
+  recovery. The retired 16 November optimization and upstream-comparison
+  reports and their portable packets remain in frozen Git; their local copies
+  were removed with approval.
+  Use the current x86 build/test guide and Windows
+  runner, not frozen historical execution instructions.
 
 ## OS-agnostic
 
@@ -197,7 +207,7 @@ on a particular machine; its absence must not prevent a fresh setup.
 - The maintainer selected Agner-guided optimized compilation on 20 November
   2026: MSVC `/O2 /fp:precise /fp:except-` without RTC, and GNU-driver Clang
   `-O2 -fno-trapping-math -fno-math-errno`. See `docs/x86-build-and-test.md`.
-  The profile-aware harness is integrated in the local master working tree.
+  The profile-aware harness is integrated and published on master at 2237ffb.
   The Windows runner defaults to `upstream-optimized`; select `strict-validation`
   Release or `strict-ubsan` Clang Debug separately. Direct CMake keeps its portable
   strict default. MSVC Debug/RTC is deferred and rejected until noninteractive

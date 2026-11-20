@@ -110,10 +110,11 @@ results as final evidence. Negative-control files remain under ignored `build/`.
 ## Windows execution after the approved freeze
 
 Use an x64 Visual Studio developer shell and the installed native x64 GNU-driver
-Clang path. First run all four pinned upstream profiles with the existing
-[Windows runner](../windows-runner.md); retain their registered inventories,
-fixtures, numerical gates, guard controls, strict UBSan proof and 60-second
-deadlines. These are separate from the additional capture cases below.
+Clang path. First run the agreed optimized Release, strict Release and strict
+Clang UBSan profiles with the [Windows runner](../windows-runner.md); retain their
+registered inventories, fixtures, numerical gates, guard controls, strict UBSan
+proof and 60-second deadlines. These are separate from the additional capture
+cases below.
 
 For each new capture, substitute the newly agreed commit and unique run/attempt IDs:
 
@@ -121,15 +122,21 @@ For each new capture, substitute the newly agreed commit and unique run/attempt 
 python -B tools/run_simd_capture.py --run-id <new-run-id> --attempt-id win-msvc-release-01 --driver msvc --mode Release --isa sse2 --backend 1 --expected-commit <full-frozen-SHA>
 ```
 
-Repeat for MSVC Debug, GNU-driver Clang Release and Clang Debug with `--sanitize`.
+Repeat for GNU-driver Clang Release and Clang Debug with `--sanitize`.
+MSVC Debug/RTC captures are deferred until noninteractive reporting is validated;
+the standalone capture runner has no validated popup handler. Report the
+omitted profile and resulting comparison coverage explicitly. The completed
+historical eight-profile Windows capture and 32 pairings retain their original
+scope; a new reduced inventory does not repeat that checkpoint.
 Use `--compiler` for the actual native Clang executable. Additionally run
 `--isa avx2` and `--isa avx512` Release captures for each compiler when supported.
 A separately compiled baseline runtime detector checks CPU and OS support
 before any higher-ISA capture binary executes. Unsupported profiles fail with
 an explicit gap; they are not silently skipped or counted as passing.
 
-The runner uses strict FP flags without implicit contraction, native PE checks,
-writable/four inaccessible-page controls at the actual page size, and explicit
+The separate corpus runner retains strict FP flags; it does not inherit the
+full-suite runner's optimized profile. It uses no implicit contraction, native
+PE checks, writable/four inaccessible-page controls at the actual page size, and explicit
 UBSan positive/negative controls when requested. Clang UBSan uses static release
 CRT even in Debug. MSVC Debug is not UBSan. Every capture has a 60-second limit;
 build concurrency is three. No original suite deadline is changed.

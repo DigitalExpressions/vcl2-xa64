@@ -58,4 +58,4 @@ Native x86 FP16 in upstream VCL 2.02.04 requires the standard-library
 required standard-library type, and the AMD host lacks AVX-512 FP16. Historical
 instruction-level 12 syntax checks do not establish native FP16 execution. See
 [migration validation](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/migration.md) and the
-[Windows review](validation/windows-amd-2026-11-15-823ca2a.md).
+[Windows review](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/validation/windows-amd-2026-11-15-823ca2a.md).

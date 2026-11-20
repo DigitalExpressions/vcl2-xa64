@@ -10,11 +10,11 @@ unexecuted profile as passing. Keep historical reports unchanged.
 - Date and report status: `<passed / passed after retry / failed / incomplete>`.
 - Host label: `<native Mac ARM64 / native AMD Windows x86-64 / other>`.
 - Repository and branch at execution: `<values>`.
-- Exact tested HEAD: `<full commit>`.
-- Exact tested tree: `<full Git tree>`.
+- Exact tested HEAD: `<full commit for clean-source mode; null for an uncommitted capture>`.
+- Exact tested tree: `<full Git tree for clean-source mode; null for an uncommitted capture>`.
 - Working-tree state before/after: `<clean / changes identified>`.
-- If changes were tested without a commit: `<base commit, patch SHA256,
-  source manifest/fingerprint and added-file inventory>`.
+- If changes were tested without a commit: `<base commit/tree, patch SHA256,
+  complete source manifest/fingerprint, added/deleted inventory and capture archive>`.
 - Source comparison with the other host: `<same exact source / different
   checkpoint and reviewed differences / not compared>`.
 
@@ -49,6 +49,9 @@ State whether timeout counts are included in failed counts; avoid double
 counting. Reconcile actual JUnit results with the registered inventory. Give
 the selected matrix total and total executions including retries separately.
 Record example outputs and any additional consumer checks separately.
+Identify each selected compiler profile explicitly. Keep Windows optimized
+Release, strict Release and strict UBSan totals separate; MSVC RTC remains
+deferred under the [current runner policy](windows-runner.md).
 
 ## Controls, flags and numerical contracts
 
@@ -58,8 +61,10 @@ Record example outputs and any additional consumer checks separately.
 - `<Guard-page size, writable control and all four read/write fault controls>`.
 - `<Partial counts, exact boundaries and canaries retained>`.
 - `<Configuration checks and independent fixture regeneration results>`.
-- `<No implicit contraction, selected rounding flags and classification-only
-  stress options; note MSVC /fp:strict and its separate /fp:fast target>`.
+- `<Selected compiler profile and actual FP/rounding flags: strict comparisons
+  retain no contraction or MSVC /fp:strict; optimized Windows uses the separate
+  precise/except- or no-trapping-math/no-math-errno policy. Classification stress
+  keeps its isolated fast/finite-math options>`.
 - `<Numerical gates, seeds and 60-second deadlines preserved>`.
 - `<Build/test concurrency and commands or evidence journal identifying them>`.
 

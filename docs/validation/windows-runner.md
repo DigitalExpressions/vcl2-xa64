@@ -6,7 +6,7 @@ Routine testing uses optimized native x64 MSVC and GNU-driver Clang, following
 Agner's [compiler guidance](https://github.com/vectorclass/manual/blob/c18341d00171bfe6d816ce7b24800c9d164f15aa/vcl_performance.tex)
 and the [pinned testbench script](https://github.com/vectorclass/testbench/blob/a7293702385e5169a5f58b83177f2a43cd59139b/runtest.sh).
 Clang O2 is the chosen reproducible level; the upstream script uses O3.
-Read the [dated implementation/results report](windows-upstream-optimized-2026-11-20.md)
+Read the [integrated harness/results report](windows-x86-harness-integration-2026-11-20.md)
 for actual outcomes, failures and source identities. The historical full Windows
 gate remains failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712,
 plus twelve passing examples. A profile change does not relabel that evidence.

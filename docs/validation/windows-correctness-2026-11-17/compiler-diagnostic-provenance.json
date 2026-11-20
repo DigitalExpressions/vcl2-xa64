@@ -1,9 +1,0 @@
-{
-  "excluded_mislabeled_attempt": {
-    "actual_toolset": "19.50",
-    "directory": "msvc1944-probe",
-    "reason": "Developer-shell selection failed because a script-scoped installation variable was null; retained but excluded as 19.44 evidence. The verified retry used the explicitly recorded 14.44 installation path."
-  },
-  "note": "Compiler-version probes are standalone diagnostics, not additional full profile passes. See retained commands, source and logs.",
-  "verified_1944_attempt": "msvc1944-verified-probe"
-}

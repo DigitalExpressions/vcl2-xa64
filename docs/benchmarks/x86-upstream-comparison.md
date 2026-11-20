@@ -4,15 +4,17 @@ Compare the fork's x86 backend against a pinned original VCL revision on the
 same native AMD Windows host. This is a performance investigation, separate
 from the native correctness and Windows/Mac numerical-parity matrices.
 
-The [first completed report](x86-upstream-2026-11-16-ade9d9b.md) records localized
+The [first completed report](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-upstream-2026-11-16-ade9d9b.md) records localized
 slowdowns and improvements, a separate edge-value comparison, all attempts and
 checksummed portable results. It does not establish whole-library performance
-equivalence or a single overall slowdown.
+equivalence or a single overall slowdown. The report and its
+[portable packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-upstream-2026-11-16-ade9d9b-final)
+are retired from the current checkout and remain available in frozen Git.
 
-The first run compares fork
+The historical first run compared fork
 `ade9d9baf559ad480289277dd6ad8e6d1c5b15e3` and upstream
-`667577495efaa36a10cbb5d6cb8c942c23913848`. No library changes, numerical-policy
-changes, commits or pushes are authorized for this investigation.
+`667577495efaa36a10cbb5d6cb8c942c23913848`. A new investigation needs its own
+approved source pair and scope; these instructions do not schedule a run.
 
 ## Execution plan and restart point
 
@@ -159,37 +161,36 @@ source manifest. Its source archive contains the actual patched bytes. The
 captured patch and runner/harness hashes make the experiment reproducible even
 before publication.
 
-For this candidate, run two separate experiments with new output destinations:
+For a newly approved experiment, replace the commit and patch placeholders below
+with its reviewed source identities. Keep the patch under ignored `build/`:
 
 ```powershell
 & ([scriptblock]::Create((Get-Content -Raw -Encoding UTF8 -LiteralPath tools/run_x86_upstream_comparison.ps1))) `
-  -ForkCommit 44f974ac31e1448e0beb5157d2bd8d669f5c518e `
-  -UpstreamCommit 44f974ac31e1448e0beb5157d2bd8d669f5c518e `
-  -CandidatePatch docs/validation/x86-optimization-2026-11-16/candidate.patch `
+  -ForkCommit APPROVED-BASE-COMMIT `
+  -UpstreamCommit APPROVED-REFERENCE-COMMIT `
+  -CandidatePatch build/REVIEWED-CANDIDATE.patch `
   -Cpu 2 -Pairs 4 -Trials 7 -SampleMs 6 `
   -Output build/UNIQUE-BEFORE-AFTER `
   -PortableOutput docs/benchmarks/UNIQUE-BEFORE-AFTER
 ```
 
-For the second experiment, replace `-UpstreamCommit` with
-`667577495efaa36a10cbb5d6cb8c942c23913848` and choose another fresh destination.
-The first reference is the unmodified pre-change fork, the second original VCL.
-Legacy result field names still call the reference `upstream`; read its explicit
-recorded source revision/role rather than treating that label as proof of origin.
-Do not pool samples across the two experiments or with historical results.
+The closed 16 November campaign's concrete two-experiment example remains in
+[frozen Git](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-upstream-comparison.md#compare-an-uncommitted-optimization-candidate).
+Its first reference was the pre-change fork; its second was original VCL.
+Legacy result field names call both references `upstream`, so inspect each
+recorded source revision/role. Do not pool source pairs or historical samples.
 
 Run correctness before timing, and execute timing processes sequentially without
 concurrent builds. Afterward the existing edge follow-up accepts the candidate
 manifest and checks the exact retained exports. Keep the Windows native
 correctness matrix separate; benchmark checks are not a replacement for it.
 
-For post-layout candidates, include both canonical `backends/` or `adaptation/`
-edits and their regenerated root products in the reviewed patch. The candidate
-runner checks generation before measurement and rejects stale products. Vendor
-updates are deliberately excluded from optimization patches: approve a new
-clean upstream baseline separately. The source-export tooling follow-up was
-validated separately after the recorded timing runs; their original captured
-runner hashes and compiled C++ harness bytes remain unchanged.
+The former canonical-patch/generated-root workflow is retired. Preserve the
+28 original root files and use the [current ownership rules](../backend-layout.md).
+Any future experiment needs an agreed source/export workflow; reproducing an
+older campaign uses its frozen source and tooling, not current-master passes.
+Dependency updates require separate approval. The historical post-timing
+exporter validation does not transfer to a new source or runner revision.
 
 ## Untimed edge-value follow-up
 

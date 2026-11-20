@@ -37,13 +37,16 @@ and pinned dependencies remain in place.
 
 The [x86 MSVC/Clang build and test guide](x86-build-and-test.md) records the
 20 November optimized compiler policy and standalone recipes. The owned
-profile-aware harness is integrated in the local master working tree, with
+profile-aware harness is integrated and published on master, with
 explicit strict Release/UBSan profiles and RTC rejection. The
 [integration record](validation/windows-x86-harness-integration-2026-11-20.md)
 identifies fresh validation of the integrated capture; earlier results keep
 their source identities. Agner's originals and all runtime source remain unchanged.
-The maintainer approved committing this integration. Push and cleanup require
-separate authorization; neither is part of this publication step.
+The maintainer subsequently approved commit and push; the harness was published
+at 2237ffbdc23b23cda4358acf29cd494b2d63ad8c. The separately requested
+[Windows documentation cleanup](validation/README.md#windows-documentation-cleanup)
+retires obsolete pre-19 November reports while preserving current instructions,
+source proofs and raw evidence. Later publication needs its own authorization.
 Fresh collection is complete: 7,140 registered cases plus fifteen passing
 canonical examples, with every failed/not-run outcome retained. The linked
 integration report separates the optimized, strict Release and UBSan totals

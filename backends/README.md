@@ -9,4 +9,4 @@ root/vendor originals for Neon work.
 research, with no include path from either active architecture. Historical
 patches, tests and findings remain available without resuming that campaign.
 See the [layout guide](../docs/backend-layout.md) and
-[retained x86 findings](../docs/x86_findings_and_fix_candidates.md).
+[retained x86 findings](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md).

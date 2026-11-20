@@ -519,17 +519,20 @@ the portable report. Optional comparisons must say not performed when absent. --
 - Correctness-only builds, profiles and sanitizer coverage: {{CORRECTNESS_PROFILES_AND_RESULTS}}.
 - Registered/passed/failed/skipped/timed-out counts and attempts: {{CORRECTNESS_COUNTS_AND_RETRIES}}.
 - Strict UBSan flags/runtime options and control results, when used: {{UBSAN_FLAGS_CONTROLS_OR_COVERAGE_GAP}}.
-- Generator checks before/after: {{GENERATION_RECORDS_AND_OUTCOME}}.
-- Pristine vendor integrity: {{PINNED_COMMIT_TREE_FILE_COUNT_AND_BEFORE_AFTER_HASH_RESULTS}}.
-- Source edits, generated-product changes and evidence of stability: {{SOURCE_INTEGRITY_FINDINGS}}.
+- Read-only integrity checks before/after: {{INTEGRITY_RECORDS_AND_OUTCOME}}.
+- Protected originals and dependency integrity: {{PINNED_COMMIT_TREE_FILE_COUNT_AND_BEFORE_AFTER_HASH_RESULTS}}.
+- Source edits, inventory changes and evidence of stability: {{SOURCE_INTEGRITY_FINDINGS}}.
 
 Optional kernel/whole-binary comparison: {{CODEGEN_AND_BINARY_HASH_RECORD_PATHS_OR_NOT_PERFORMED}}.
 {{ACTUAL_COMPARISON_FINDINGS_AND_LIMITS}}
 
-Do not edit `vendor/vectorclass/` or its pin/hash inventory to pass validation.
-On an unexplained vendor mismatch, preserve the failed check and stop. Runtime
-fixes belong in canonical adaptation/backend sources, with new source IDs and
-fresh relevant validation.
+Keep the 28 upstream root files and `audit/vectorclass-2.02.04.json` byte-exact,
+along with both sse2neon copies and their pin. On an unexplained integrity
+mismatch, preserve the failed check and stop. Header generation and the old
+adaptation/backend pipeline are retired. Approved ARM changes belong in the
+authoritative root `*_neon.h` sources, with new source IDs and fresh validation;
+follow the [current ownership rules](../backend-layout.md). An upstream update
+requires its own approved scope.
 
 ## Measurement and correctness scope
 

@@ -133,7 +133,7 @@ not every possible API, all compiler flags or application performance.
 
 Compile and runtime diagnostics, complete registered names, actual outputs and
 JUnit status are in the [portable bundle](windows-arch-separation-2026-11-19/README.md).
-Retained original-x86 findings are [separately documented](../x86_findings_and_fix_candidates.md).
+Retained original-x86 findings are [separately documented](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md).
 The wide unsigned-qword complement assertion is a retained test/API expectation
 that does not hold for the original SSE2 composition; it is not evidence of a
 new architecture-selection defect. Clang's signed-minimum constant-division

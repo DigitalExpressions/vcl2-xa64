@@ -23,7 +23,7 @@ Only a separately authorized upstream update may replace these originals.
 The x86 facade path includes only the original vector and supported in-tree
 math headers. It does not include ARM, sse2neon, adapted x86 repairs or compiler
 workarounds. Restoring originals also restores their known limitations; see
-[retained x86 findings](x86_findings_and_fix_candidates.md). Inherited faults
+[retained x86 findings](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md). Inherited faults
 remain failures, not reasons to patch originals or weaken ARM gates.
 
 ## ARM ownership

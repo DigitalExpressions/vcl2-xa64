@@ -21,14 +21,6 @@ adaptation/patches/0003-defined-avx2-i64-conversion.patch whitespace=-blank-at-e
 # Checksummed portable evidence must keep its recorded bytes on every host.
 docs/benchmarks/standard-math-*/** -text
 docs/benchmarks/standard-math-*/*.csv whitespace=cr-at-eol
-docs/benchmarks/x86-upstream-2026-11-16-ade9d9b-final/** -text
-docs/benchmarks/x86-optimization-2026-11-16/** -text
-docs/validation/x86-optimization-2026-11-16/** -text
-# The retained historical index has intentional CRLF bytes.
-docs/validation/x86-optimization-2026-11-16/README.md whitespace=cr-at-eol
-docs/validation/windows-isa-triage-2026-11-17/** -text
-docs/validation/windows-correctness-2026-11-17/** -text
-docs/validation/x86-optimization-2026-11-16/candidate.patch whitespace=-blank-at-eol
 # Unified diff context markers are part of this checksummed evidence file.
 docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol
 

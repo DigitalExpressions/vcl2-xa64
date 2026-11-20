@@ -17,8 +17,8 @@ the manual discusses both. No benchmark selected this policy.
 | Strict UBSan | separate GNU-driver Clang Debug with disabled recovery, frame pointers and verified release CRT |
 | MSVC RTC | optional future diagnostics; deferred until noninteractive reporting is validated |
 
-**Availability:** the profile-aware harness is integrated in the local master
-working tree. The Windows runner defaults to `upstream-optimized`; `--sanitize`
+**Availability:** the profile-aware harness was integrated and published on
+master at 2237ffb. The Windows runner defaults to `upstream-optimized`; `--sanitize`
 selects `strict-ubsan`. Python `--profile`, PowerShell `-Profile` and CMake
 `VCL_TEST_PROFILE` select explicit policies. Direct CMake retains
 `strict-validation` as its portable default, so Release alone does not select

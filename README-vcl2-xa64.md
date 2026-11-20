@@ -20,6 +20,8 @@ record the source relationships and failed/incomplete Windows gate. Use the
 and [validation index](docs/validation/README.md) for new work. Superseded Mac
 reports/plans were removed in the
 [documentation cleanup](docs/validation/mac-arm-documentation-cleanup-2026-11-20.md).
+The [Windows documentation cleanup](docs/validation/README.md#windows-documentation-cleanup)
+records retired x86 campaigns and the older evidence still needed for retained claims.
 
 This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
