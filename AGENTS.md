@@ -139,8 +139,11 @@ on a particular machine; its absence must not prevent a fresh setup.
   is read-only; `--write` always rejects. Historical adaptation patches remain
   inactive research assets and must not enter either active include graph.
   The unused `backends/x86/x86_classification.h` helper was retired with approval;
-  historical reproduction uses frozen Git source. Keep one editable ARM implementation; do not recreate copies in
-  `backends/arm64/` or `adaptation/include/`.
+  historical reproduction uses frozen Git source. The remaining `backends/`
+  research index was subsequently retired; its frozen README is linked from
+  `docs/backend-layout.md`. Keep the include-graph safeguard rejecting
+  `backends/` headers. Keep one editable ARM implementation; do not recreate
+  copies in `backends/arm64/` or `adaptation/include/`.
 - Preserve public VCL type/API names, ABI/namespace/width settings, attribution,
   licenses, independent fixtures, seeds, numerical gates, FP/rounding flags,
   classification-only finite-math stress, strict UBSan and protected-page/canary

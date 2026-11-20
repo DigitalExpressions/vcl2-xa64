@@ -74,6 +74,10 @@ are retired. The ordered historical patches remain inactive research under
 `adaptation/patches/`. The unused former MSVC classification helper was also
 retired; its [frozen source](https://github.com/DigitalExpressions/vcl2-xa64/blob/41d7fbacc45fbb679b08f0074a8f340ced3a3f20/backends/x86/x86_classification.h)
 remains in Git history. Reproducing those patches requires their historical source.
+The remaining `backends/` research index was retired on 20 November; its
+[frozen README](https://github.com/DigitalExpressions/vcl2-xa64/blob/7465b9833968bae97ef9fb1efa645a7ed994f8eb/backends/README.md)
+preserves historical navigation. Include-graph checks continue to reject
+`backends/` headers so inactive implementations cannot reenter the ARM graph.
 No active manifest outputs or patches exist. Their old writers cannot target
 protected originals. Original source and generation workflow remain reachable
 in Git history and earlier dated reports.
