@@ -12,4 +12,4 @@ The schema-2 [manifest](manifest.json) has no patches or output products.
 `tools/regenerate_headers.py --write` is retired and always rejects. Do not apply
 these patches to protected originals. ARM sources now live in root `*_neon.h`;
 the old editable include/backend duplicates are removed. All 28 originals at
-root remain protected. Read the [layout guide](../docs/backend-layout.md).
+root remain protected; the vendor catalog is retired. Read the [layout guide](../docs/backend-layout.md).

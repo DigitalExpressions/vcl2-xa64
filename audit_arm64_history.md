@@ -17,25 +17,30 @@ Current provenance:
 - `git describe --tags --long`: `v1.9.1-27-g2272251`. This is a development
   snapshot after v1.9.1, not the tagged v1.9.1 release.
 - [Upstream/retained byte identities and transformation proof](audit/sse2neon-2272251.json).
-- [Earlier fork-local retention record](vendor/sse2neon.json), preserved unchanged.
+- [Earlier fork-local retention record](https://github.com/DigitalExpressions/vcl2-xa64/blob/7465b9833968bae97ef9fb1efa645a7ed994f8eb/vendor/sse2neon.json), preserved in frozen Git.
   Its `44f974a...` identifier belongs to this fork, not DLTcollab's upstream.
 
-The retained root `sse2neon.h` and `vendor/sse2neon/sse2neon.h` are byte-identical
-to each other, with SHA-256:
+The sole shipped dependency is root [sse2neon.h](sse2neon.h), with SHA-256:
 `cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff`.
 The upstream UTF-8/LF header has SHA-256:
 `932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3`.
 
-The files are not raw-byte identical to upstream. On 19 November 2026, an exact
+The retained header is not raw-byte identical to upstream. On 19 November 2026, an exact
 comparison verified that decoding upstream UTF-8, encoding Windows-1252,
 converting LF to CRLF and removing the final CRLF reproduces every retained
 byte. There are no other source-content changes. Both source identities are
-recorded; neither protected copy was normalized or updated during this audit.
-Read-only integrity checks verify both retained copies against their pin and
-reconstruct the upstream representation in memory to verify its SHA-256/blob.
+recorded; the protected header was not normalized or updated during this audit.
+Read-only integrity checks require the audit above and verify the root header's
+byte count, SHA-256 and Git blob, then reconstruct the upstream representation
+in memory to verify its byte count, SHA-256 and Git blob.
 
-The active sse2neon dependency stays under `vendor/sse2neon/`, separate from the
-VCL history and comparison cache. Preserve its MIT notice and existing bytes.
+On 20 November 2026 the maintainer approved retiring the remaining `vendor/`
+catalog: its README, duplicate header and superseded fork-local pin. The root
+header and its existing MIT notice, Windows-1252 encoding, CRLF line endings
+and absent final newline remain byte-exact. The mandatory audit above is the
+current pin; the earlier record stays available through the frozen Git citation.
+Historical source inventories keep their original paths and hashes. Reproduce
+them with the tools from their frozen source, not the current-layout checker.
 The [layout migration record](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19.md)
 distinguishes this provenance audit from a new dependency update or native run.
 
@@ -44,3 +49,18 @@ row above the current row, mark the old row superseded, and record the exact
 upstream commit/tree, retained header hash, any representation/local changes and
 actual native validation/performance reports. Never label an untagged snapshot
 as a release or infer a pass from a version number.
+
+## Root-only layout verification — 20 November 2026
+
+The uncommitted retirement based on `7465b9833968bae97ef9fb1efa645a7ed994f8eb`
+passed the read-only integrity and repository checks, all 31 isolated integrity
+controls, and native M2 include/standalone-consumer checks for compatibility 512
+and Direct Neon 128/256/512, including six target-rejection controls. All nine
+retained portable checksum inventories verified (169 entries).
+
+All 28 original VCL root files, root `sse2neon.h` and the VCL audit manifest
+retain their exact bytes, modes and modification times. Runtime, numerical
+tests, runners, fixtures and CMake are unchanged. Logs and control outputs are
+under ignored `build/`. This bounded maintenance check does not establish a new
+full correctness matrix, benchmark result or Windows pass; the existing full
+Windows gate remains failed/incomplete.

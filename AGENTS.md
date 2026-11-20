@@ -118,11 +118,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   exact bytes. Never edit, normalize, format or regenerate them for ARM work or
   to make tests pass. Read-only checks verify SHA-256, Git blobs and the upstream
   tree directly; `tools/restore_upstream_vcl.py` reconstructs a comparison copy
-  under ignored build without overwriting existing files. Keep sse2neon root,
-  vendor header and its existing pin exact; its upstream representation audit
-  records differences without normalizing. Verify before/after validation.
+  under ignored build without overwriting existing files. On 20 November the
+  maintainer approved retiring the remaining vendor catalog. Root `sse2neon.h`
+  is the sole shipped copy and must remain byte-exact, including its MIT notice.
+  Its required pin is `audit/sse2neon-2272251.json`; preserve its upstream and
+  retained byte identities and representation proof. Do not recreate `vendor/`.
+  Verify before/after validation without normalizing the header.
   An upstream dependency update requires separate explicit scope. Historical
-  captures retain their old vendor layout and must not be rewritten.
+  captures retain their old vendor layout and must not be rewritten. Check them
+  with their frozen historical tools rather than current-layout fallbacks.
 - Authoritative ARM implementations are root `*_neon.h` files and
   `instrset_detect_neon.cpp`. `vcl_config.h` is neutral selection policy;
   `vcl2_xa64.h` selects the complete supported vector/math family at compile time.

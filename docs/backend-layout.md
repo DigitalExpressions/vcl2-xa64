@@ -37,8 +37,9 @@ bodies originally shared with upstream. Their includes cannot reach root x86
 originals. The [file map](arch-separation-map.json) records all dispositions.
 
 `vcl_config.h` retains default compatibility, explicit experimental Direct Neon,
-logical width and namespace contracts. Third-party sse2neon retains its own
-name/license and pristine dependency; ARM-private helpers use `_neon.h` suffixes.
+logical width and namespace contracts. Root `sse2neon.h` is the sole shipped
+compatibility dependency and retains its exact bytes and MIT notice; ARM-private
+helpers use `_neon.h` suffixes. The vendor catalog is retired.
 The [ARM64 dependency history](../audit_arm64_history.md) records its upstream
 snapshot and exact retained representation without changing the shipped bytes.
 Consumers need only the checked-in headers, without Python or generation.
@@ -64,10 +65,15 @@ python3 -B tools/check_repository.py
 ```
 
 The historical generator name remains for existing automation, but generation
-is retired and `--write` always fails without writing. Exact root/manifest and sse2neon checks,
+is retired and `--write` always fails without writing. The required
+`audit/sse2neon-2272251.json` pins the root dependency and its in-memory upstream
+representation proof. The checker rejects reintroduced `vendor/` paths.
+Exact root/manifest and sse2neon checks,
 ARM include graph checks and inactive-output validation replace reproduction.
 Integrity controls deliberately modify disposable copies under ignored `build/`,
 including a newline-only root mutation. Real originals remain untouched.
+Historical sources use their frozen historical checkers; the current checker
+requires the current root-only dependency layout.
 
 The old canonical duplicates under `backends/arm64/` and `adaptation/include/`
 are retired. The ordered historical patches remain inactive research under

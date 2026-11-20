@@ -14,8 +14,9 @@
   [yuygfgg/vectorclass_arm](https://github.com/yuygfgg/vectorclass_arm). This fork
   carries that compatibility work and the Direct Neon port onto official VCL
   2.02.04 while retaining the original source notices.
-- The bundled [sse2neon.h](../sse2neon.h) retains its existing MIT notice. This
-  preparation does not replace or silently update that dependency. The
+- The sole bundled [sse2neon.h](../sse2neon.h) is at root and retains its existing
+  MIT notice and exact bytes. The vendor catalog is retired; the required
+  [audit pin](../audit/sse2neon-2272251.json) verifies this header directly. The
   [ARM64 dependency history](../audit_arm64_history.md) identifies its upstream
   snapshot and documents representation differences with both raw hashes.
 - The optional upstream testbench is a separate GPL-3.0 checkout at the pinned

@@ -43,8 +43,9 @@ copy resolved setup without source, flag or test changes.
 
 Include `#include "vcl2_xa64.h"`. It forwards to Agner's original x86 headers;
 ARM headers must not enter the compiled x86 include graph. Preserve all 28
-original root files, [audit manifest](../audit/vectorclass-2.02.04.json), both
-sse2neon copies and its pin byte-exact, including their inventory. Do not repair
+original root files, [VCL audit manifest](../audit/vectorclass-2.02.04.json) and
+root `sse2neon.h` byte-exact. The required [sse2neon audit](../audit/sse2neon-2272251.json)
+pins that sole copy; the vendor catalog is retired. Do not repair
 original temporaries or normalize source bytes to address test failures.
 
 Inspect actual HEAD, changes, refs and worktrees. Validate an approved clean

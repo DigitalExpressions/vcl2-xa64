@@ -5,12 +5,11 @@ tools/compare_simd_results.py text eol=lf
 tools/run_simd_capture.py text eol=lf
 tools/check_simd_comparison.py text eol=lf
 
-# Canonical vendor/backend bytes are audited independently of checkout settings.
+# Canonical audit/backend bytes are audited independently of checkout settings.
 audit/** -text whitespace=cr-at-eol
 /audit_x86_history.md text eol=lf
 /audit_arm64_history.md text eol=lf
 docs/validation/dependency-audit-history-*/** -text
-vendor/sse2neon/** -text
 adaptation/include/** -text
 adaptation/patches/*.patch text eol=lf whitespace=-blank-at-eol
 # The audited single-hunk conversion patch ends with a required blank context line.
@@ -66,7 +65,7 @@ examples/** text eol=lf
 benchmarks/**/*.cpp text eol=lf
 benchmarks/**/*.h text eol=lf
 
-# Shipped third-party alias retains exact vendor bytes too.
+# Sole shipped sse2neon dependency retains its exact audited bytes.
 /sse2neon.h -text -whitespace
 
 # Retained upstream-derived ARM bytes: inherited whitespace is intentional.

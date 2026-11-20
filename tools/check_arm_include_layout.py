@@ -57,7 +57,7 @@ def main():
         paths=[Path(m[1]) for line in trace.splitlines() if (m:=re.match(r'^\.+ (.+)$',line))]
         local=[p.relative_to(ROOT).as_posix() for p in paths if p.is_relative_to(ROOT)]
         protected={r['path'] for r in before['root_originals']}
-        if any(p in protected or p.startswith('vendor/vectorclass/') or p.startswith('backends/') for p in local):
+        if any(p in protected or p.startswith('vendor/') or p.startswith('backends/') for p in local):
             raise RuntimeError('ARM include trace reached protected/retired source: '+name)
         if backend==3 and any('compat_neon.h' in p or 'sse2neon' in p for p in local):
             raise RuntimeError('Direct Neon include trace reached compatibility')

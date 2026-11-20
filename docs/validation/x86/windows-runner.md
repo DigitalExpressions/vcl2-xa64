@@ -42,7 +42,8 @@ Read [AGENTS.md](../../../AGENTS.md), [validation status](../README.md) and
 [integration status](../../integration-plan.md). Inspect actual HEAD, status,
 worktrees and remotes. A new validation run uses an approved clean source or a
 complete immutable captured source, not moving edits. Protect all 28 original
-root files, the audit manifest, both sse2neon copies and its pin byte-exactly.
+root files, the VCL audit manifest and root `sse2neon.h` byte-exactly. The required
+`audit/sse2neon-2272251.json` pins the sole dependency copy; `vendor/` is retired.
 Reuse the pristine testbench at `a7293702385e5169a5f58b83177f2a43cd59139b`,
 checking cleanliness and all three pinned source hashes. Never overwrite an
 existing dependency. Run repository/original-integrity checks before and after.

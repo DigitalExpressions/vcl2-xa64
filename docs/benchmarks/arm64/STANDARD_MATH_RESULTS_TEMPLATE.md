@@ -527,7 +527,8 @@ Optional kernel/whole-binary comparison: {{CODEGEN_AND_BINARY_HASH_RECORD_PATHS_
 {{ACTUAL_COMPARISON_FINDINGS_AND_LIMITS}}
 
 Keep the 28 upstream root files and `audit/vectorclass-2.02.04.json` byte-exact,
-along with both sse2neon copies and their pin. On an unexplained integrity
+along with root `sse2neon.h` and its required `audit/sse2neon-2272251.json` pin.
+The vendor catalog is retired. On an unexplained integrity
 mismatch, preserve the failed check and stop. Header generation and the old
 adaptation/backend pipeline are retired. Approved ARM changes belong in the
 authoritative root `*_neon.h` sources, with new source IDs and fresh validation;

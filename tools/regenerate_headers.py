@@ -85,31 +85,34 @@ def pristine(root,manifest,directory,*,exact_inventory=True):
 
 
 def original_manifest(root):
-    # Keep read-only inspection of historical frozen sources possible.
-    return UPSTREAM_MANIFEST if (root/UPSTREAM_MANIFEST).is_file() else 'vendor/vectorclass.json'
+    # Historical checkouts use their frozen checker, not current-layout fallbacks.
+    if not path_in(root,UPSTREAM_MANIFEST).is_file():
+        raise ValueError('Missing required upstream audit: '+UPSTREAM_MANIFEST)
+    return UPSTREAM_MANIFEST
 
 
 def verify_sse2neon(root):
-    pin=json.loads(path_in(root,'vendor/sse2neon.json').read_text(encoding='utf-8'))
-    actual={p.relative_to(root/'vendor/sse2neon').as_posix() for p in (root/'vendor/sse2neon').rglob('*') if p.is_file()}
-    if actual!={r['path'] for r in pin['files']}:
-        raise ValueError('Missing/extra retained sse2neon dependency paths')
-    for row in pin['files']:
-        vendor=path_in(root,'vendor/sse2neon/'+row['path']).read_bytes()
-        alias=path_in(root,row['path']).read_bytes()
-        if digest(vendor)!=row['sha256'] or alias!=vendor:
-            raise ValueError('sse2neon dependency differs from its retained SHA256 pin')
-    audit_path=root/SSE2NEON_AUDIT
-    if audit_path.is_file():
-        audit=json.loads(audit_path.read_text(encoding='utf-8'))
-        data=path_in(root,'sse2neon.h').read_bytes()
-        retained=audit['retained']
-        if digest(data)!=retained['sha256'] or git_object('blob',data)!=retained['git_blob']:
-            raise ValueError('sse2neon retained representation differs from upstream audit')
-        # Analysis only: never write or normalize either protected header.
-        upstream=(data.decode('cp1252').replace('\r\n','\n')+'\n').encode('utf-8')
-        if digest(upstream)!=audit['upstream']['sha256'] or git_object('blob',upstream)!=audit['upstream']['git_blob']:
-            raise ValueError('sse2neon upstream representation proof differs')
+    audit_bytes=path_in(root,SSE2NEON_AUDIT).read_bytes()
+    audit=json.loads(audit_bytes)
+    retained=audit['retained'];upstream=audit['upstream'];proof=audit['representation_proof']
+    if audit['schema']!=1 or audit['source_path']!='sse2neon.h' or retained['paths']!=['sse2neon.h']:
+        raise ValueError('sse2neon audit must pin only the root sse2neon.h')
+    if (retained['encoding']!='Windows-1252' or retained['line_endings']!='CRLF' or retained['final_newline'] is not False
+            or upstream['encoding']!='UTF-8' or upstream['line_endings']!='LF' or upstream['final_newline'] is not True
+            or proof['matches_retained_bytes_exactly'] is not True or proof['semantic_source_edits'] is not False):
+        raise ValueError('sse2neon audit representation contract differs')
+    data=path_in(root,'sse2neon.h').read_bytes()
+    if len(data)!=retained['bytes'] or digest(data)!=retained['sha256'] or git_object('blob',data)!=retained['git_blob']:
+        raise ValueError('sse2neon retained representation differs from upstream audit')
+    bare=data.replace(b'\r\n',b'')
+    if b'\n' in bare or b'\r' in bare or data.endswith((b'\n',b'\r')):
+        raise ValueError('sse2neon retained line endings/final newline differ')
+    # Analysis only: never write or normalize the protected root header.
+    restored=(data.decode('cp1252').replace('\r\n','\n')+'\n').encode('utf-8')
+    if len(restored)!=upstream['bytes'] or digest(restored)!=upstream['sha256'] or git_object('blob',restored)!=upstream['git_blob']:
+        raise ValueError('sse2neon upstream representation proof differs')
+    return dict(path='sse2neon.h',sha256=digest(data),bytes=len(data),
+        audit_sha256=digest(audit_bytes),upstream_commit=audit['commit'],upstream_tree=audit['tree'])
 
 
 
@@ -130,20 +133,17 @@ def check_arm_source(path):
             raise ValueError('x86-only code in ARM source: '+path.name+' -> '+match[0])
 
 def render(root):
+    if (root/'vendor').exists() or (root/'vendor').is_symlink():
+        raise ValueError('Retired vendor catalog must not be reintroduced')
     manifest=original_manifest(root)
     original, upstream = pristine(root, manifest, '.', exact_inventory=False)
-    if manifest==UPSTREAM_MANIFEST:
-        if (root/'vendor/vectorclass').exists() or (root/'vendor/vectorclass.json').exists():
-            raise ValueError('Retired duplicate VCL vendor snapshot/pin must not be reintroduced')
-    else:
-        pristine(root,manifest,'vendor/vectorclass')
     rows = []
     for name, expected in sorted(original.items()):
         actual = path_in(root, name).read_bytes()
         if actual != expected:
             raise ValueError('Changed protected root original (exact bytes required): ' + name)
         rows.append(dict(path=name, sha256=digest(actual), exact_bytes=True))
-    verify_sse2neon(root)
+    sse2neon=verify_sse2neon(root)
     family = sorted(root.glob('*_neon.h'))
     if not family or not (root/'vcl2_xa64.h').is_file():
         raise ValueError('Missing separated ARM family or facade')
@@ -162,7 +162,7 @@ def render(root):
     return {}, dict(upstream_commit=upstream['commit'], upstream_tree=upstream['tree'],
         pristine_upstream_files=len(original), protected_root_files=len(rows),
         root_originals=rows, arm_sources=[dict(path=p.name,sha256=digest(p.read_bytes())) for p in family],
-        generation_retired=True, arm_x86_code_rejected=True)
+        sse2neon=sse2neon, generation_retired=True, arm_x86_code_rejected=True)
 
 
 def verify(root, products, strict=False):
@@ -191,7 +191,7 @@ def main():
             args.json.write_text(json.dumps(record,indent=2,sort_keys=True)+'\n')
         print(json.dumps({k:record[k] for k in ['success','pristine_upstream_files','protected_root_files','generated_products','generation_retired']},indent=2))
         return 0
-    except (OSError,ValueError,KeyError) as error:
+    except (OSError,ValueError,KeyError,TypeError) as error:
         print('Source integrity failed: '+str(error),file=sys.stderr)
         return 1
 

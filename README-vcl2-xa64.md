@@ -31,7 +31,9 @@ Original VCL2 is retained untouched at root. The
 [x86 revision ledger](audit_x86_history.md) records the exact upstream revision
 and hash manifest; the duplicate vendor snapshot is replaced by a verified
 comparison cache under ignored build. The separate
-[ARM64 dependency ledger](audit_arm64_history.md) records the retained sse2neon revision.
+[ARM64 dependency ledger](audit_arm64_history.md) records the retained sse2neon
+revision. Root `sse2neon.h` is its sole shipped copy, verified by the required
+[audit pin](audit/sse2neon-2272251.json); the vendor catalog is retired.
 Separate authoritative ARM headers preserve header-only usage without generation. See the
 [source layout and maintenance workflow](docs/backend-layout.md).
 
