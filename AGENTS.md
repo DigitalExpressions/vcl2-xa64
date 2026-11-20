@@ -126,9 +126,10 @@ on a particular machine; its absence must not prevent a fresh setup.
   the later frozen source. Earlier cleanup/candidate results remain historical;
   they do not transfer to a later publication.
 - The old adapted-root generator is retired. `tools/regenerate_headers.py --check`
-  is read-only; `--write` always rejects. Historical adaptation patches and
-  `backends/x86/` are inactive research assets and must not enter either active
-  include graph. Keep one editable ARM implementation; do not recreate copies in
+  is read-only; `--write` always rejects. Historical adaptation patches remain
+  inactive research assets and must not enter either active include graph.
+  The unused `backends/x86/x86_classification.h` helper was retired with approval;
+  historical reproduction uses frozen Git source. Keep one editable ARM implementation; do not recreate copies in
   `backends/arm64/` or `adaptation/include/`.
 - Preserve public VCL type/API names, ABI/namespace/width settings, attribution,
   licenses, independent fixtures, seeds, numerical gates, FP/rounding flags,

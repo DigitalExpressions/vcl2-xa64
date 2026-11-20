@@ -12,7 +12,6 @@ audit/** -text whitespace=cr-at-eol
 docs/validation/dependency-audit-history-*/** -text
 vendor/sse2neon/** -text
 backends/arm64/** -text
-backends/x86/** -text
 adaptation/include/** -text
 adaptation/patches/*.patch text eol=lf whitespace=-blank-at-eol
 # The audited single-hunk conversion patch ends with a required blank context line.

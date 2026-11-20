@@ -71,7 +71,9 @@ including a newline-only root mutation. Real originals remain untouched.
 
 The old canonical duplicates under `backends/arm64/` and `adaptation/include/`
 are retired. The ordered historical patches remain inactive research under
-`adaptation/patches/`; `backends/x86/` retains the isolated former MSVC helpers.
+`adaptation/patches/`. The unused former MSVC classification helper was also
+retired; its [frozen source](https://github.com/DigitalExpressions/vcl2-xa64/blob/41d7fbacc45fbb679b08f0074a8f340ced3a3f20/backends/x86/x86_classification.h)
+remains in Git history. Reproducing those patches requires their historical source.
 No active manifest outputs or patches exist. Their old writers cannot target
 protected originals. Original source and generation workflow remain reachable
 in Git history and earlier dated reports.
