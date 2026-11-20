@@ -30,6 +30,7 @@ import xml.etree.ElementTree as ET
 
 from validation_evidence import EvidenceRun, FIXTURES, package_evidence, sha
 from capture_source import verify_capture
+from windows_test_profiles import PROFILES, resolve_profile, audit_commands
 
 
 class WindowsRun(EvidenceRun):
@@ -99,10 +100,13 @@ def controls(run, compiler, args, generator):
         'volatile int x=INT_MAX;volatile int y=x+1;std::printf("UB continued %d\\n",int(y));return 0;}\n')
     build = run.output / 'control-build'
     flags = ['-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded'] if args.sanitize else []
+    if getattr(args,'profile','strict-validation') == 'upstream-optimized' and getattr(args,'driver',None) == 'clang':
+        flags.append('-DCMAKE_CXX_FLAGS_RELEASE=-O2 -DNDEBUG')
     run.command('control-configure', ['cmake', '-S', source, '-B', build, '-G', generator,
         '-DVCL_CHECKOUT='+str(run.checkout), '-DCMAKE_CXX_COMPILER='+compiler,
         '-DVCL_REQUIRED_INSTRSET='+('6' if args.testbench_dir else '2'),
         '-DCMAKE_BUILD_TYPE='+args.mode, '-DVCL_SANITIZE='+('ON' if args.sanitize else 'OFF'),
+        '-DVCL_TEST_PROFILE='+getattr(args,'profile','strict-validation'),
         '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', *flags])
     run.command('control-build', ['cmake','--build',build,'--parallel','3','--verbose'])
     binaries = [run.binary('guard',build/'guard.exe'),run.binary('runtime',build/'runtime.exe')]
@@ -116,7 +120,7 @@ def controls(run, compiler, args, generator):
         binaries.append(run.binary('ubsan',build/'ubsan.exe'))
         run.command('ubsan-positive',[build/'ubsan.exe'],timeout=60)
         code, output = run.command('ubsan-negative',[build/'ubsan.exe','trigger'],required=False,timeout=60)
-        if code in (0,124) or 'runtime error: signed integer overflow' not in output or 'UB continued' in output:
+        if code != 1 or 'runtime error: signed integer overflow' not in output or 'UB continued' in output:
             raise RuntimeError('Strict UBSan runtime unavailable or failed its intentional-UB control')
     (run.output/'control-binaries.json').write_text(json.dumps(binaries,indent=2))
 
@@ -129,8 +133,12 @@ def validate(run, compiler, args, generator):
         '-DCMAKE_CXX_COMPILER='+compiler,'-DCMAKE_BUILD_TYPE='+args.mode,'-DVCL_BACKEND=1',
         '-DVCL_BUILD_TESTS=ON','-DVCL_BUILD_EXAMPLES=ON','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
         '-DVCL_SANITIZE='+('ON' if args.sanitize else 'OFF'),
+        '-DVCL_TEST_PROFILE='+args.profile,
         '-DPython3_EXECUTABLE='+sys.executable,
         '-DVCL_TESTBENCH_DIR='+(str(args.testbench_dir.resolve()) if args.testbench_dir else ''),*flags])
+    commands = json.loads((build/'compile_commands.json').read_text())
+    audited = audit_commands(commands,args.driver,args.mode,args.profile)
+    (run.output/'profile-audit.json').write_text(json.dumps(dict(profile=args.profile,entries=audited),indent=2))
     run.command('suite-build',['cmake','--build',build,'--parallel','3','--verbose'])
     _, inventory = run.command('suite-inventory',['ctest','--test-dir',build,'--show-only=json-v1'])
     tests = json.loads(inventory)['tests']
@@ -147,26 +155,11 @@ def validate(run, compiler, args, generator):
     skipped = [c.attrib['name'] for c in cases if c.find('skipped') is not None]
     timeouts = [c.attrib['name'] for c in cases if (c.find('failure') is not None or c.find('error') is not None)
                 and 'timeout' in ET.tostring(c,encoding='unicode').lower()]
-    binaries = [dict(run.binary(test['name'],test['command'][0]),test=test['name']) for test in tests]
+    binaries = [dict(run.binary(test['name'],test['command'][0]),test=test['name'])
+                if test.get('command') and Path(test['command'][0]).is_file()
+                else dict(test=test['name'],missing=True) for test in tests]
     (run.output/'suite-binaries.json').write_text(json.dumps(binaries,indent=2))
-    commands = json.loads((build/'compile_commands.json').read_text())
-    for entry in commands:
-        flags = entry['command']
-        match = re.search(r'CMakeFiles[/\\]([^/\\]+)\.dir[/\\]',flags)
-        if not match:
-            raise RuntimeError('Unrecognized compilation record')
-        target = match[1]
-        if any(flag in flags for flag in ['-ffast-math','-Ofast','-march=native','-mcpu=native','/arch:AVX','-mavx']):
-            raise RuntimeError('Unexpected math or higher-ISA option')
-        if target in {'vcl_detect','vcl_example'}:
-            continue
-        if args.driver=='msvc':
-            if ('/fp:fast' in flags) != (target=='fp_classification') or ('/fp:strict' in flags) == (target=='fp_classification'):
-                raise RuntimeError('Unexpected MSVC floating-point flags')
-        elif '-ffp-contract=off' not in flags or ('-ffinite-math-only' in flags) != (target=='fp_classification'):
-            raise RuntimeError('Unexpected Clang floating-point flags')
-        if args.sanitize and not all(f in flags for f in ['-fsanitize=undefined','-fno-sanitize-recover=undefined','-fno-omit-frame-pointer']):
-            raise RuntimeError('Incomplete strict UBSan instrumentation')
+    audit_commands(commands,args.driver,args.mode,args.profile)
     _, example = run.command('example',[build/'examples/vcl_example.exe'],timeout=60)
     if example.split()!=['2','5','10','17']:
         raise RuntimeError('Unexpected example output')
@@ -187,27 +180,38 @@ def main():
     parser.add_argument('--mode',choices=['Release','Debug'],required=True)
     parser.add_argument('--compiler',help='Explicit native x64 compiler executable')
     parser.add_argument('--sanitize',action='store_true',help='Strict UBSan; requires GNU-driver Clang Debug')
+    parser.add_argument('--profile',choices=PROFILES,help='Default: upstream-optimized; --sanitize selects strict-ubsan')
     parser.add_argument('--testbench-dir',type=Path,help='Existing pristine pinned upstream testbench checkout')
     parser.add_argument('--capture-manifest',type=Path,help='Validate the same complete frozen uncommitted implementation without Git')
     parser.add_argument('--plan',action='store_true')
     args=parser.parse_args()
+    try:
+        args.profile=resolve_profile(args.driver,args.mode,args.sanitize,args.profile)
+    except ValueError as error:
+        parser.error(str(error))
     if args.sanitize and (args.driver!='clang' or args.mode!='Debug'):
         parser.error('Strict UBSan requires GNU-driver Clang Debug')
     if args.plan:
-        print(json.dumps(dict(driver=args.driver,mode=args.mode,sanitize=args.sanitize,
+        print(json.dumps(dict(driver=args.driver,mode=args.mode,sanitize=args.sanitize,profile=args.profile,
             expected_cases=1348 if args.testbench_dir else 40,timeout_seconds=60,concurrency=3),indent=2))
         return 0
     run=None
     try:
         host=native_host()
         root=Path(__file__).resolve().parents[1]
-        output=root/'build'/('windows-native-'+args.driver+'-'+args.mode.lower()+'-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
+        profile_label={'upstream-optimized':'upopt','strict-validation':'strict','strict-ubsan':'ubsan'}[args.profile]
+        output=root/'build'/('windows-native-'+profile_label+'-'+args.driver+'-'+args.mode.lower()+'-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
         output.mkdir(parents=True,exist_ok=False)
         run=WindowsRun(root,output)
+        injected={name:run.env[name] for name in ('CL','_CL_','CXXFLAGS','CPPFLAGS','CFLAGS','LDFLAGS') if run.env.get(name)}
+        if injected:
+            raise RuntimeError('Unrecorded compiler flag injection; use a clean command-scoped environment: '+', '.join(injected))
         print('Evidence directory: '+str(output),flush=True)
         compiler=shutil.which(args.compiler or ('cl' if args.driver=='msvc' else 'clang++'))
         if not compiler:
             raise RuntimeError('Compiler unavailable; initialize an x64 Visual Studio developer environment')
+        if args.driver=='clang' and Path(compiler).name.lower().startswith('clang-cl'):
+            raise RuntimeError('Use native GNU-driver clang++, not clang-cl')
         for tool in ['cmake','ctest','git','ninja']:
             if not shutil.which(tool):
                 raise RuntimeError('Missing required tool: '+tool)
@@ -219,7 +223,9 @@ def main():
         else:
             head=run.git('source-head','rev-parse','HEAD')
             tree=run.git('source-tree','rev-parse','HEAD^{tree}')
-            status=run.git('source-status','status','--porcelain')
+            status=run.git('source-status','status','--porcelain','--untracked-files=all')
+            if status:
+                raise RuntimeError('Use a clean source or an explicit complete immutable capture')
             run.git('ignored-output','check-ignore',str(output))
             run.command('working-patch',['git','diff','--binary','HEAD'])
             added=run.git('added-files','ls-files','--others','--exclude-standard','-z').split('\0')
@@ -229,7 +235,7 @@ def main():
                     raise RuntimeError('Could not capture added source file: '+path)
         fingerprint=source_manifest(run,'source-manifest')
         inventory=dict(host,head=head,tree=tree,captured_source=getattr(run,'captured_source',None),working_tree_status=status,source_fingerprint=fingerprint,
-            compiler=compiler,driver=args.driver,mode=args.mode,sanitize=args.sanitize,
+            compiler=compiler,driver=args.driver,mode=args.mode,sanitize=args.sanitize,profile=args.profile,
             UBSAN_OPTIONS=run.env['UBSAN_OPTIONS'],testbench=str(args.testbench_dir) if args.testbench_dir else None)
         (output/'inventory.json').write_text(json.dumps(inventory,indent=2))
         for label, command in [('host',['powershell','-NoProfile','-NonInteractive','-Command',
@@ -239,7 +245,7 @@ def main():
             run.command(label,command,required=label!='compiler' or args.driver!='msvc')
         if args.testbench_dir:
             directory=args.testbench_dir.resolve()
-            if run.git('testbench-head','rev-parse','HEAD',cwd=directory)!='a7293702385e5169a5f58b83177f2a43cd59139b' or run.git('testbench-status','status','--porcelain',cwd=directory):
+            if run.git('testbench-head','rev-parse','HEAD',cwd=directory)!='a7293702385e5169a5f58b83177f2a43cd59139b' or run.git('testbench-status','status','--porcelain','--untracked-files=all',cwd=directory):
                 raise RuntimeError('Use the pristine pinned upstream testbench checkout')
         run.command('repository-check',[sys.executable,'-B','tools/check_repository.py'])
         result=validate(run,compiler,args,'Ninja')
@@ -248,7 +254,7 @@ def main():
         if final_head!=head or final_fingerprint!=fingerprint:
             raise RuntimeError('Source changed during validation')
         (output/'summary.json').write_text(json.dumps(dict(success=True,head=head,tree=tree,captured_source=getattr(run,'captured_source',None),
-            source_fingerprint=fingerprint,native_windows_x64=True,driver=args.driver,mode=args.mode,
+            source_fingerprint=fingerprint,native_windows_x64=True,driver=args.driver,mode=args.mode,profile=args.profile,
             sanitizer='strict UBSan' if args.sanitize else 'not requested',results=result),indent=2))
         package_evidence(run)
         return 0

@@ -109,3 +109,9 @@ docs/validation/windows-blend4-handoff-2026-11-19/** -text
 docs/validation/mac-arm-2026-11-19-blend4.md -text
 # Nested measured CSV files keep their recorded CRLF bytes.
 docs/benchmarks/standard-math-blend4-2026-11-19/*/results.csv whitespace=cr-at-eol
+
+# Exact 20 November Windows profile results and capture receipts.
+docs/validation/windows-upstream-optimized-2026-11-20/** -text whitespace=cr-at-eol
+
+# Exact integrated Windows x86 evidence from 20 November.
+docs/validation/windows-x86-harness-integration-2026-11-20/** -text whitespace=cr-at-eol

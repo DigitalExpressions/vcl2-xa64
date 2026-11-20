@@ -8,6 +8,7 @@ failed/incomplete. Earlier execution handoffs do not authorize new work.
 
 | Need | Document |
 | --- | --- |
+| x86 compilation with MSVC/Clang and test-profile availability | [x86 build and test instructions](x86-build-and-test.md) |
 | Current validation and coverage gaps | [Validation index](validation/README.md) |
 | Latest retained native M2 correctness | [19 November M2 report](validation/mac-arm-2026-11-19-blend4.md) |
 | Performance tradeoffs and final decision | [TRS decision](validation/trs-inverse-decision-2026-11-20.md) |

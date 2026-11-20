@@ -107,11 +107,16 @@ unexpected exits are failures or gaps. Do not retry the documented ASan hang.
 ## Native AMD Windows and shared corpus
 
 Use an x64 Visual Studio developer shell and native x64 Python/CMake/CTest/Ninja.
-Prioritize MSVC; use native GNU-driver Clang for strict UBSan. Follow the
-[Windows runner](windows-runner.md) for four full Release/Debug profiles and
-CPU-and-OS-gated AVX2/AVX-512 selections. MSVC Debug is unsanitized. Preserve
-`/fp:strict`, Clang no-contraction/rounding settings and the documented static
-release CRT for Clang UBSan. Prove native PE, guard and sanitizer controls.
+Use both MSVC and native GNU-driver Clang. Follow the
+[x86 compiler policy and availability guide](../x86-build-and-test.md) and
+[Windows runner](windows-runner.md). The integrated Windows runner defaults to
+`upstream-optimized` Release. Select `strict-validation` Release explicitly to
+preserve `/fp:strict` or Clang no-contraction/rounding comparisons. Direct CMake
+keeps the strict default; choose `VCL_TEST_PROFILE` explicitly for optimized tests.
+Clang `strict-ubsan` stays separate with the documented static release CRT.
+MSVC Debug/RTC is deferred and rejected until noninteractive reporting is validated.
+Probe CPU and OS before higher-ISA execution. Prove native PE, guard and sanitizer
+controls; retain numerical gates, fixtures, 60-second deadlines and concurrency three.
 
 The current full Windows gate is failed/incomplete: 5,387 passed, 249 failed,
 76 not run of 5,712, plus twelve passing examples. Bounded preservation and

@@ -1,0 +1,59 @@
+{
+  "frozen_source_fingerprint": "e6d83a55d7c8f535b928d4cfc709cad63b383c071b82cacb7d37aeb500877230",
+  "private_validators": [
+    {
+      "path": "analyze.py",
+      "sha256": "19a8c51c4cc63ddd6ddc4e31b7eda5a811f5c88af289fd4345c8daa9ca292826"
+    },
+    {
+      "path": "control_audit.py",
+      "sha256": "9206f9fad9a9936e47bad3f6a8f210c246a18ee7bf3fdb14a614d3c519d2257b"
+    },
+    {
+      "path": "finalize.py",
+      "sha256": "1a1d2845974e369658e0f9c63b307fefb86e2d4c33028fa25408e5a357d54922"
+    },
+    {
+      "path": "graphs-attempt01.py",
+      "sha256": "84c32e32107d74698a4647d17b4bd7385a102a272e623305842bf6ff140548af"
+    },
+    {
+      "path": "graphs.py",
+      "sha256": "0a14c2f8b4a5714c26fb7eb8da723e8987477b1037f6218690890424ed85d03d"
+    },
+    {
+      "path": "postflight.py",
+      "sha256": "6667ce3464486548f88a12c58714216ae3abc38e39a0184c5eb1e53b5858c4c8"
+    },
+    {
+      "path": "render.py",
+      "sha256": "99b5e313d41a743535cdc22c3af126cad74dd8d968124158f7d7f01d0901b8ab"
+    },
+    {
+      "path": "resume.py",
+      "sha256": "0abe2c5b125e13cb097bc5c90146b6a81adb1886331f6e91e35667ba255f6cd5"
+    },
+    {
+      "path": "standalone_smoke.py",
+      "sha256": "54f880b5170bef7245b126afc11ef8de1471cb967802b3b8690ceb4148282a1a"
+    },
+    {
+      "path": "update_usage.py",
+      "sha256": "4a4c250a2883ae5da057c113db4474c10f51d491fa43ca172328a3f8d098a04b"
+    },
+    {
+      "path": "validate-attempt02-original.py",
+      "sha256": "f5719f2c6beda062cbc790412d7e46c864c0d0378f2970d61777997e0088c056"
+    },
+    {
+      "path": "validate.py",
+      "sha256": "ae640e925994f91ea0460afaa19c38a1570fcd1727745410c98b86a32f11cd69"
+    }
+  ],
+  "native_case_replays": 0,
+  "initial_interrupted_capture": {
+    "fingerprint": "869bb26a3cbe5cdbfe0e2867e5a87a92eb4719d8378dd64c6c4b596d7cba532b",
+    "canonical_CTest_cases_executed": 0
+  },
+  "metadata_correction": "First completed MSVC JUnit ingested under the corrected private binary-path validator; no case replay and no source or compiler flag change."
+}

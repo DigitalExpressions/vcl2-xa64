@@ -119,13 +119,17 @@ Define these switches before any VCL header is included. Direct Neon also suppor
 default to enabled.
 
 On x86, the original backend is selected automatically from compiler target
-macros. For example, on an x86 machine targeting AVX2/FMA:
+macros. Use the [x86 MSVC/Clang build and test instructions](docs/x86-build-and-test.md)
+for native Windows setup, complete standalone commands and full-suite workflow
+availability. Optimized Release uses `/O2 /fp:precise /fp:except-` with MSVC,
+without `/RTC1`, and `-O2 -fno-trapping-math -fno-math-errno` with GNU-driver
+Clang. Both use C++17 or newer. The Windows runner defaults to the optimized
+profile; select strict comparisons and Clang UBSan separately. Direct CMake
+retains its portable strict default, so select `VCL_TEST_PROFILE` explicitly for
+optimized tests. MSVC Debug/RTC execution is deferred and rejected.
 
-```sh
-clang++ -std=c++17 -O3 -mavx2 -mfma -I. example.cpp -o example
-```
-
-Use target flags appropriate to the deployment CPU. `INSTRSET` retains its x86
+Choose deployment target flags deliberately and verify CPU **and OS** support
+before higher-ISA validation execution. `INSTRSET` retains its x86
 meaning; direct Neon uses the separate backend switch. On ARM,
 `instrset_detect()` reports zero x86 capability and `has_neon()` reports Neon.
 

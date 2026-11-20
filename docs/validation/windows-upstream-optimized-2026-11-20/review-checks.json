@@ -1,0 +1,26 @@
+[
+  {
+    "check": "final-repository-check",
+    "exit_code": 0,
+    "log_sha256": "c862f8542a28cd7ea8725a1ca4523a7398cb22379c4933b66be382689d662bc9"
+  },
+  {
+    "check": "final-original-integrity",
+    "exit_code": 0,
+    "log_sha256": "6cc4b2dd0f7c971848c97bc16b9f246675ef25af35dc119917b327a0204e2331"
+  },
+  {
+    "check": "final-whitespace",
+    "exit_code": 0,
+    "log_sha256": "1fc9cdc7b1402abea793e4373c844388e7ad904a78fea3cca134fc2cbb6ef414"
+  },
+  {
+    "check": "final-PowerShell-parse",
+    "exit_code": 0,
+    "log_sha256": "930a505101f76aaae6ba2c0915e3d368f29e99973d4e506062bc5ec3f626f22f"
+  },
+  {
+    "check": "new-file-whitespace",
+    "exit_code": 0
+  }
+]

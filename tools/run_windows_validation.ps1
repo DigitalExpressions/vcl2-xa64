@@ -17,6 +17,7 @@ param(
     [Parameter(Mandatory=$true)][ValidateSet('msvc','clang')][string]$Driver,
     [Parameter(Mandatory=$true)][ValidateSet('Release','Debug')][string]$Mode,
     [switch]$Sanitize,
+    [ValidateSet('upstream-optimized','strict-validation','strict-ubsan','rtc-diagnostics')][string]$Profile,
     [switch]$Upstream,
     [switch]$Plan
 )
@@ -45,6 +46,7 @@ if ($Driver -eq 'clang') {
     if (-not $taskCompiler) { throw 'No installed native x64 GNU-driver Clang found' }
 }
 $taskArguments = @('-B','tools/run_windows_validation.py','--driver',$Driver,'--mode',$Mode,'--compiler',$taskCompiler)
+if ($Profile) { $taskArguments += @('--profile',$Profile) }
 if ($Sanitize) { $taskArguments += '--sanitize' }
 if ($Plan) { $taskArguments += '--plan' }
 if ($Upstream) {

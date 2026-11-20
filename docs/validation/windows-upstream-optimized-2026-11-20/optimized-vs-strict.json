@@ -1,0 +1,367 @@
+[
+  {
+    "driver": "msvc",
+    "isa": "baseline",
+    "complete_inventory": 1348,
+    "status_differences": [
+      {
+        "name": "fp_helpers",
+        "optimized": "failed",
+        "strict": "passed"
+      },
+      {
+        "name": "fp_helpers_namespace",
+        "optimized": "failed",
+        "strict": "passed"
+      }
+    ],
+    "captured_stdout_differences": [
+      {
+        "name": "composition512",
+        "optimized_stdout_sha256": "f9e002fb10f01394b121beb5adcdc66fa61521215ba01a93058eb0edbd5066aa",
+        "strict_stdout_sha256": "06c77412d508336eba9cd9f621fe2530150051dab8ea806ee808bf8fafce7f5a"
+      },
+      {
+        "name": "composition512_namespace",
+        "optimized_stdout_sha256": "9a4f985a9ef038622d93175fdf119ad14a61563afb3081ce4284d58bef87575e",
+        "strict_stdout_sha256": "94074ae70585ff4104dc08419ee45c51417b166b4dfdfd4e53185cd0ef043479"
+      },
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "a2c148fb8ff1b7069a390658fed2cb0924e5aac8c9b2592bce22a88797861c13",
+        "strict_stdout_sha256": "50e636a48676274902de726f0ba4ca98226a1cec9b34d7dff777b7a502077d4b"
+      },
+      {
+        "name": "fp_helpers",
+        "optimized_stdout_sha256": "7bdce996cc815f3c249d2e3d56af838078a7fefaa2409311f5e216331bcc8004",
+        "strict_stdout_sha256": "37befe4717373f228a919654cb28d624e31ee2bfc9a6798398a8adf559667102"
+      },
+      {
+        "name": "fp_helpers_namespace",
+        "optimized_stdout_sha256": "7bdce996cc815f3c249d2e3d56af838078a7fefaa2409311f5e216331bcc8004",
+        "strict_stdout_sha256": "37befe4717373f228a919654cb28d624e31ee2bfc9a6798398a8adf559667102"
+      },
+      {
+        "name": "power_roots",
+        "optimized_stdout_sha256": "cdd32caa89761ec6203b99e6c5e803114d523940c6bfb7bdf6e75fbcb43adddf",
+        "strict_stdout_sha256": "eed981de9135fa3807338115ccf9f5668ade5858e80f7a589266ceb3aada6448"
+      },
+      {
+        "name": "power_roots_namespace",
+        "optimized_stdout_sha256": "cdd32caa89761ec6203b99e6c5e803114d523940c6bfb7bdf6e75fbcb43adddf",
+        "strict_stdout_sha256": "eed981de9135fa3807338115ccf9f5668ade5858e80f7a589266ceb3aada6448"
+      },
+      {
+        "name": "powerroots_Vec16f_111",
+        "optimized_stdout_sha256": "5e7c9def4afbc5bfe06d438293ba618d43ecb40b26cda0e8d1fa391e5f7756e2",
+        "strict_stdout_sha256": "f8bf4b7df048f1e2b374369e46fe8ce810d7723ace0e8f027e4e13a37b14628c"
+      },
+      {
+        "name": "powerroots_Vec4d_111",
+        "optimized_stdout_sha256": "61db505b76ed476c484b8f060b33af687e83f788da5f05ab37d5cb22baa0236b",
+        "strict_stdout_sha256": "d615dbe4323790ca79c938e1c34b103a3a799195d136aa56aa79b8efe13fd6e1"
+      },
+      {
+        "name": "powerroots_Vec4f_111",
+        "optimized_stdout_sha256": "d2a6998fc8c3a4e33955581d124ef12d11d0c390eb49163b184f4cb27c7b97e2",
+        "strict_stdout_sha256": "ed5d4183fdacc360e7bd25c5ea0c393c0827256ffdaece5e351bd20aa5626c6a"
+      },
+      {
+        "name": "powerroots_Vec8d_111",
+        "optimized_stdout_sha256": "61db505b76ed476c484b8f060b33af687e83f788da5f05ab37d5cb22baa0236b",
+        "strict_stdout_sha256": "d615dbe4323790ca79c938e1c34b103a3a799195d136aa56aa79b8efe13fd6e1"
+      },
+      {
+        "name": "upstream_Vec8uq_109",
+        "optimized_stdout_sha256": "bd66747f3de9676144cf8a47088def279081c515ef6709d5b51e8ad1b79cd10b",
+        "strict_stdout_sha256": "9239256ab76d19732ea47a2dc2be0beacaf4813540c37a771230556f4663e5cc"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  },
+  {
+    "driver": "clang",
+    "isa": "baseline",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "captured_stdout_differences": [
+      {
+        "name": "composition512",
+        "optimized_stdout_sha256": "16709db1e73fc4444dfedec3d5b24e67aaa26fd9128f47a36c5e12136a21a177",
+        "strict_stdout_sha256": "33dd7383a4c8ca611573a22a0c18e81bd40d318f0cc6a223d6d5f69929e2cac9"
+      },
+      {
+        "name": "composition512_namespace",
+        "optimized_stdout_sha256": "7a27f7fb668954cd2bcdb3bff52d775cd084d82c03aef3c88e43e2686c56c943",
+        "strict_stdout_sha256": "9733f77f281346374871b403d0077489c3de102ca8312c7ce6cb55c8b4df1949"
+      },
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "b0345d53420cc4142b87efe70c36bda782766d6a6d04a584650b9afcf34c3a23",
+        "strict_stdout_sha256": "9779c30f762761e9f4169bc141a8020b761b8a4aa1ac24f8b74648fa8f8f3e3d"
+      },
+      {
+        "name": "edges",
+        "optimized_stdout_sha256": "6511695729782acd679bc2b429b73cca284863be83254ddb4d997e8f6e3f164e",
+        "strict_stdout_sha256": "73f0dadd77c16263dead649315ac554a352471961fa5ad4675545dac7e3c28f2"
+      },
+      {
+        "name": "explog_Vec2d_106",
+        "optimized_stdout_sha256": "7df4f1d5972d54ab0d93aa7e4933c7ec230bffac1b96e5115ac06b0f6fb3fa28",
+        "strict_stdout_sha256": "e0dcdc294e09997953f1aaf2e63318eaf205f4eb3eed43da12034902e9b77312"
+      },
+      {
+        "name": "explog_Vec4d_106",
+        "optimized_stdout_sha256": "7df4f1d5972d54ab0d93aa7e4933c7ec230bffac1b96e5115ac06b0f6fb3fa28",
+        "strict_stdout_sha256": "e0dcdc294e09997953f1aaf2e63318eaf205f4eb3eed43da12034902e9b77312"
+      },
+      {
+        "name": "explog_Vec8d_106",
+        "optimized_stdout_sha256": "7df4f1d5972d54ab0d93aa7e4933c7ec230bffac1b96e5115ac06b0f6fb3fa28",
+        "strict_stdout_sha256": "e0dcdc294e09997953f1aaf2e63318eaf205f4eb3eed43da12034902e9b77312"
+      },
+      {
+        "name": "fp_classification",
+        "optimized_stdout_sha256": "e7ac15370bd571fae457b04fe7f728b0c3c39ea4b3c6cbce2794d5e36333afe2",
+        "strict_stdout_sha256": "ef4294ccd3f4f4f2557dd16d62bdc4d3015625e846e7bf0b30220bdd8055699c"
+      },
+      {
+        "name": "fp_helpers",
+        "optimized_stdout_sha256": "36cbc13af0ab9496aad4082fd63b0a594627d008a08ef30d559093c65fd0a5f7",
+        "strict_stdout_sha256": "7da07b097355f462e6289714b9d3a24ab44ba9671e6f76334c2312077f34664c"
+      },
+      {
+        "name": "fp_helpers_namespace",
+        "optimized_stdout_sha256": "14c29d6e20af643456312accedc7bbb5dbe1b9c1f0195e984403b33277d60f67",
+        "strict_stdout_sha256": "666b3efc2cc4bfbd93e286fee54629a477c62199b11e00e64b40916e5d48d998"
+      },
+      {
+        "name": "fp_helpers_signed_zero",
+        "optimized_stdout_sha256": "547239dc481c9b6391989eaa0c295ce12930e7480d827da8beb15793bebbbb4d",
+        "strict_stdout_sha256": "aac0cb5d6e8ef3fc87aacd1ef9680379878a733f620af46c7db1b8f650043d98"
+      },
+      {
+        "name": "integer_slice",
+        "optimized_stdout_sha256": "c801b98d311f51d40bf3947e8b75e100cef28683c1e3f6ebc8355cc73ab76622",
+        "strict_stdout_sha256": "1ef0701d6011f62c8e0e279e4ff75b6006091572948c4a430f5a271c7c23eaf3"
+      },
+      {
+        "name": "integer_slice_namespace",
+        "optimized_stdout_sha256": "e760d53fa3083bc52566b707bdf62df2f117754197061b42321a0e4b9529bb2e",
+        "strict_stdout_sha256": "aa2e85a4f79f5c719cdf668b0b74169044d8a9ae19addc032dc37214e6c243a4"
+      },
+      {
+        "name": "movement_slice",
+        "optimized_stdout_sha256": "0e9eb9fde7c9f5a7cf8499a2e47b05cfe526e42ac66219f8090de118fd8371cf",
+        "strict_stdout_sha256": "090192df6019b1f058cc509e45db3d236eb5beae79a72bc42ec0cd0ba002c0b6"
+      },
+      {
+        "name": "movement_slice_namespace",
+        "optimized_stdout_sha256": "9aa8582cd46be7b2e7bed5fd1abc3a0f2036a4ed4d231f5c7b1ed5c0355c7e63",
+        "strict_stdout_sha256": "c7048e6f38ec0cf5b8f562e147eeaeb8d1f396f8c82b04e5796a578aa513ce53"
+      },
+      {
+        "name": "powerroots_Vec4d_111",
+        "optimized_stdout_sha256": "61db505b76ed476c484b8f060b33af687e83f788da5f05ab37d5cb22baa0236b",
+        "strict_stdout_sha256": "d615dbe4323790ca79c938e1c34b103a3a799195d136aa56aa79b8efe13fd6e1"
+      },
+      {
+        "name": "upstream_Vec8uq_109",
+        "optimized_stdout_sha256": "170c2ec666d5e14e5a0c8b9c44d17ed0c102945e0983d2cd7cd2878fd34cad41",
+        "strict_stdout_sha256": "ce2edd8d67d9f06699e53a0f136aa4c6062cff92fb9a4caec3cdd3cfffced109"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  },
+  {
+    "driver": "msvc",
+    "isa": "avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "captured_stdout_differences": [
+      {
+        "name": "composition512",
+        "optimized_stdout_sha256": "ac4aaa6af1d4c1b375dfb3c0c1a8eeb50831ae87fa992bbebefd3f73f7eadc43",
+        "strict_stdout_sha256": "6895c59f773c5248daa882a69ec1c247c049dc57174c1323e2ed02953c0b675b"
+      },
+      {
+        "name": "composition512_namespace",
+        "optimized_stdout_sha256": "f64683ac664dd5277a6c1bcf138b2f439e2ccf6c478cafea1c9e0c1582a1e863",
+        "strict_stdout_sha256": "ba0aa351f7430e51295402bd49666f6b2de45ed30fbfad40a1e217a3063f9231"
+      },
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "7b50c31bb5b33e4038de2b9fc32cdb751a9cb263561e05504b548aa84225f2de",
+        "strict_stdout_sha256": "2c7bd8ce8f8d877ff98b416835e5809fe0d077d0d0208f773e387f9ae542d1e9"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  },
+  {
+    "driver": "msvc",
+    "isa": "avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "captured_stdout_differences": [
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "1b8f26359be360ee909e0827ac66f4967697b16c3f2bc5ec310f35098f7d4489",
+        "strict_stdout_sha256": "53841558a0b867d44b5b9dc6ac4ecc929d3f5825a53cb6d1027b648b33377de5"
+      },
+      {
+        "name": "core_512",
+        "optimized_stdout_sha256": "7a8c6dffe0e78b5b42141b51afdebc7a1124bbf578f9ea74ab93e6bc040c56cd",
+        "strict_stdout_sha256": "d7f601c27826f3b5684c7bd72b24f0d6dc3d544c2a690af9899a05e23049db6f"
+      },
+      {
+        "name": "core_namespace",
+        "optimized_stdout_sha256": "7a8c6dffe0e78b5b42141b51afdebc7a1124bbf578f9ea74ab93e6bc040c56cd",
+        "strict_stdout_sha256": "d7f601c27826f3b5684c7bd72b24f0d6dc3d544c2a690af9899a05e23049db6f"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  },
+  {
+    "driver": "clang",
+    "isa": "avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "captured_stdout_differences": [
+      {
+        "name": "composition512",
+        "optimized_stdout_sha256": "34d95d51274893e9a7d31c8c6f751834d9957715d4ee278ea798a65bf3fd91b2",
+        "strict_stdout_sha256": "aba326f75069fd119b2b710604df5c7cafd3b547277cd5c0e1d690868ec1f7de"
+      },
+      {
+        "name": "composition512_namespace",
+        "optimized_stdout_sha256": "a8a3a009690a9b9b3c92ebb6c4b284edf73531ab81e89fdc54ef4a2aab91bccb",
+        "strict_stdout_sha256": "5b00ecafb1ca4d74c3b12d060cb513e62383e742bc0f1e5fc871338f2f038fef"
+      },
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "1d1b81ace1397ce78cc192e41fc5cf3b7a29440d2fa3dc26f748c0791b50770e",
+        "strict_stdout_sha256": "68c71406a394d4495445e450d3933367b74709bce3dfee96a6de67f707032b0b"
+      },
+      {
+        "name": "edges",
+        "optimized_stdout_sha256": "bb8b7c6de0253f13109faa8d33290601bab39edf04f3dc8cffcf96d2e8838e39",
+        "strict_stdout_sha256": "43d897f24a9b4b8010f0320edf5449b8cecac785e37106154d04a1ca0c64dbf7"
+      },
+      {
+        "name": "fp_classification",
+        "optimized_stdout_sha256": "d703e9de616215b1916e5c184aa363d3ac687fdadf71f9d6e22543aa85a1b426",
+        "strict_stdout_sha256": "e94195bbccdecd122d0a74731b813a8af283617acc17ab198ddb8f77becfd082"
+      },
+      {
+        "name": "fp_helpers",
+        "optimized_stdout_sha256": "30d5c0b962811132f35fcd986b2b14319ba343bbd3513eb00e4fbf07c432ccc9",
+        "strict_stdout_sha256": "d875d86824db671edfeff8c48144366c156998920045880e5a909963c7ee467a"
+      },
+      {
+        "name": "fp_helpers_namespace",
+        "optimized_stdout_sha256": "182cb168e30e2a860c41b2fd4d26df14b3746de73bc1a166f0473893dc54399c",
+        "strict_stdout_sha256": "41585322d414a8af3b9a754e1b7b7daf12dc17e364cabf41bb0f49320af2b487"
+      },
+      {
+        "name": "fp_helpers_signed_zero",
+        "optimized_stdout_sha256": "7128547074f3cb66178dde69564edc2f09ea92601ecfea7b2abeeb187ea0ecec",
+        "strict_stdout_sha256": "202bb9db7eeca36189c3fa6c1c1e3872ffd8391cb0d2cf3c984074f0959a4857"
+      },
+      {
+        "name": "integer_slice",
+        "optimized_stdout_sha256": "e91c6ed27d01ffd616f3104c8f27157e0b2c4eeab76dfa352afa292f083e9add",
+        "strict_stdout_sha256": "6ac518a7adbf789f7eb0c6139f573d3ea09a3a140ab59989e5da9ee0c605485b"
+      },
+      {
+        "name": "integer_slice_namespace",
+        "optimized_stdout_sha256": "4e4e5b52d26b17b6e91a9269d6873dd8697919546f923b01da486a54dea1f4c1",
+        "strict_stdout_sha256": "2441b3da0a0bb72d91c1a03af3779a2b254b252313044d9b273274073ebe1f53"
+      },
+      {
+        "name": "movement_slice",
+        "optimized_stdout_sha256": "590eeb737225d3a4e93fed5715e001dd8d58a70a9635379bbe9d6d69cabb835e",
+        "strict_stdout_sha256": "00d1ea367942efdf7dbb84e3c66677993255887645ad158c7265a90e3ccfe9c1"
+      },
+      {
+        "name": "movement_slice_namespace",
+        "optimized_stdout_sha256": "69acaedf99288fe2a0518af1ce6f4e6836a33fb5193179d86b7f5d319355b23c",
+        "strict_stdout_sha256": "f6be6f36d40241d8ef5bf7fcde34b07f368380bc592c32b74d656dc686419817"
+      },
+      {
+        "name": "wide_composition",
+        "optimized_stdout_sha256": "f401b62b38aaed31feea81de09471f16374b3712de660e08808bcfa03b8fafb9",
+        "strict_stdout_sha256": "1242e7ef6c6cf2a202d80c822526923582423cbbafe5ea586a11133ed446ee34"
+      },
+      {
+        "name": "wide_composition_namespace",
+        "optimized_stdout_sha256": "325ad1470ad1303b7f4434bfdbe21a3869c7d9852bc166cf8a7eeda4f040389a",
+        "strict_stdout_sha256": "19e76c6772b489f9fddcf75984a65ad665b2fa1d7f6f05f9778189a51d6e8203"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  },
+  {
+    "driver": "clang",
+    "isa": "avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "captured_stdout_differences": [
+      {
+        "name": "configuration",
+        "optimized_stdout_sha256": "cb191cb0bbc1bbe69b53f929a138579520c0041e3e55093769c7b81b0be252ff",
+        "strict_stdout_sha256": "57bd38ad1dee3b942e3de62cceb59163dc53518c0a43005dee89f692b0b037ed"
+      },
+      {
+        "name": "edges",
+        "optimized_stdout_sha256": "9785304eaf33f102a60fa74ebbd45ee519cf757eac6715ae1744bd463bfaf94e",
+        "strict_stdout_sha256": "68a8d99631cbe01b0611a4f1c9c055b8f5178f8223c52f1784f88188b4b59f53"
+      },
+      {
+        "name": "fp_helpers",
+        "optimized_stdout_sha256": "d727662708acd79bdaeec12ffa40e0a5fd0848b1473b2a0a51c2ae2c494a764b",
+        "strict_stdout_sha256": "5b5f8668aa559078f1aa8d8af570216ba92648d30fed584d3e4108729d5c2a86"
+      },
+      {
+        "name": "fp_helpers_namespace",
+        "optimized_stdout_sha256": "072dfe303440e719166ee6bb7e35c06e2a8951b611184e20891322025252b2ca",
+        "strict_stdout_sha256": "7ce855c4e03d3d241d18790b1442bd3377fe1a01e5434423318f1ed415c41c30"
+      },
+      {
+        "name": "fp_helpers_signed_zero",
+        "optimized_stdout_sha256": "3da15ae5a0334667a8f174131a6789eca654749ec2db7dc3b8b3b836bb352011",
+        "strict_stdout_sha256": "8a16b4b5a4a551934859802b98cab4f29a2da88d38728f76a4c7061e5eeaf729"
+      },
+      {
+        "name": "integer_slice",
+        "optimized_stdout_sha256": "a59338fb9047e24e551cd1f141686d17395e80ec512a8c45fba5e2f8df3dc73e",
+        "strict_stdout_sha256": "2829d190f65bc90d5cdfbdf975110bcead0093e30381deefe0b4cffc414837b2"
+      },
+      {
+        "name": "integer_slice_namespace",
+        "optimized_stdout_sha256": "27f93cce19915c578f32ddff888755e87feefae6a3fe125b8ed04b6bf7579a11",
+        "strict_stdout_sha256": "75800364581716db50cb656a8bc42bfa75f6cd89bdbd4dc4f569db90411c7308"
+      },
+      {
+        "name": "movement_slice",
+        "optimized_stdout_sha256": "da78f2660166c27e63dbff43e5fd219ff87b162aded4316e0d39b398f0d2900a",
+        "strict_stdout_sha256": "37572fffb8fd6cb5bfdc571d0d4375528ee082e189ec62337412e48426512af7"
+      },
+      {
+        "name": "movement_slice_namespace",
+        "optimized_stdout_sha256": "327c18c62d81862dd8d30500ef2345624bbf936e72467030c20f0095ccde7502",
+        "strict_stdout_sha256": "b57a0b6cece5f352cb8df230f6c8ed5d6bd782c800fe621acd43666b1c78b045"
+      },
+      {
+        "name": "wide_composition",
+        "optimized_stdout_sha256": "15d0e32d14093c2a31ca43f5932e7da4770bd9eb0ff89f3f56f6beb5d6f6337a",
+        "strict_stdout_sha256": "3bd9f0dbbefc8274ac81c4881bc76ce73579612e49927c424128cc5b012bfe5d"
+      },
+      {
+        "name": "wide_composition_namespace",
+        "optimized_stdout_sha256": "5396512afa59d48ef19a9cabc2d88ec6e4b60180d4063ca18ff3f33a07549a6c",
+        "strict_stdout_sha256": "d0368cc55f9fbc061dbb624797b836320057abbb7f51a8ef691b5c5fc2796cc8"
+      }
+    ],
+    "stdout_comparison_scope": "Literal captured JUnit stdout, possibly truncated and containing paths/addresses; not a complete bitwise behavior comparison or a substitute numerical gate."
+  }
+]

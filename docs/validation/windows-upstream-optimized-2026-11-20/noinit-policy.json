@@ -1,0 +1,64 @@
+{
+  "name": "NoInitFailures",
+  "routine_RTC_execution": false,
+  "current_RTC_coverage": "not requested; deferred and rejected before execution",
+  "meaning": "Captured MSVC RTC uninitialized-use diagnostic; not a pass, waiver, proof of author intent or category inferred from a case name.",
+  "current_Release_or_UBSan_failures_not_relabelled": true,
+  "historical_gate_unchanged": true,
+  "historical_evidence_publication": "b5a671a72fe59888ce0a661741a2b65c6b02a4b6",
+  "historical_case_identities": 3,
+  "historical_diagnostic_executions": 6,
+  "confirmed_historical_sites": [
+    {
+      "case": "hyperbolic_signed_zero",
+      "variable": "y2",
+      "function": "sinh_f<Vec4f>",
+      "source_header": "vectormath_hyp.h",
+      "source_line": 135,
+      "source_sha256": "746914b25795c6a78fbee86557c5287a30dfe82ff68b5047f2da505053b741db",
+      "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+      "intent_assessment": {
+        "default_construction_contract": "documented uninitialized",
+        "specific_masked_use_intent": "unconfirmed",
+        "performance_rationale": "plausible avoidance of unnecessary initialization/branch computation; not a confirmed author statement about this use",
+        "performance_benefit_measured": false,
+        "alignment_rationale_established": false
+      },
+      "accepted_exception": false
+    },
+    {
+      "case": "inverse_pi",
+      "variable": "rx",
+      "function": "asin_d<Vec2d,0>",
+      "source_header": "vectormath_trig.h",
+      "source_line": 641,
+      "source_sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde",
+      "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+      "intent_assessment": {
+        "default_construction_contract": "documented uninitialized",
+        "specific_masked_use_intent": "unconfirmed",
+        "performance_rationale": "plausible avoidance of unnecessary initialization/branch computation; not a confirmed author statement about this use",
+        "performance_benefit_measured": false,
+        "alignment_rationale_established": false
+      },
+      "accepted_exception": false
+    },
+    {
+      "case": "inverse_pi_namespace",
+      "variable": "rx",
+      "function": "isolated::asin_d<isolated::Vec2d,0>",
+      "source_header": "vectormath_trig.h",
+      "source_line": 641,
+      "source_sha256": "44ef76822cc5db06398fed81d45f859932164f9bb372f9fedac37c0338dccdde",
+      "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+      "intent_assessment": {
+        "default_construction_contract": "documented uninitialized",
+        "specific_masked_use_intent": "unconfirmed",
+        "performance_rationale": "plausible avoidance of unnecessary initialization/branch computation; not a confirmed author statement about this use",
+        "performance_benefit_measured": false,
+        "alignment_rationale_established": false
+      },
+      "accepted_exception": false
+    }
+  ]
+}

@@ -1,101 +1,157 @@
-# Manual native Windows runner
+# Manual native Windows compilation and testing
 
-Run tests manually on the maintainer's AMD Windows x86-64 machine. The Mac M2
-uses the separate [native Mac runner](../../tools/run_native_arm_validation.py)
-and [native workflow](native-workflow.md). Hosted CI is disabled by the
-maintainer's decision; all native validation is run manually. Follow the shared
-[agent instructions](../../AGENTS.md), including the no-pull-request policy.
-Read [validation status](README.md) for actual executed results and the
-[integration status](../integration-plan.md) for completed work and current policy.
+## Current policy - 20 November 2026
 
-| Manual selection | Expected case instances |
-| --- | ---: |
-| Windows MSVC Release and unsanitized Debug, local suite | 80 |
-| Windows GNU-driver Clang Release and strict UBSan Debug, local suite | 80 |
-| Each Windows profile with the separately pinned upstream selection | 1348 |
+Routine testing uses optimized native x64 MSVC and GNU-driver Clang, following
+Agner's [compiler guidance](https://github.com/vectorclass/manual/blob/c18341d00171bfe6d816ce7b24800c9d164f15aa/vcl_performance.tex)
+and the [pinned testbench script](https://github.com/vectorclass/testbench/blob/a7293702385e5169a5f58b83177f2a43cd59139b/runtest.sh).
+Clang O2 is the chosen reproducible level; the upstream script uses O3.
+Read the [dated implementation/results report](windows-upstream-optimized-2026-11-20.md)
+for actual outcomes, failures and source identities. The historical full Windows
+gate remains failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712,
+plus twelve passing examples. A profile change does not relabel that evidence.
 
-Counts are registration checkpoints, not claims of successful execution.
-The four full pinned profiles total 5,392 cases. Higher-ISA matrices remain
-separate native checks requiring CPU/OS support probes. Physical Intel is omitted.
+| Profile | Selection | Ordinary test compiler policy |
+| --- | --- | --- |
+| upstream-optimized | runner default; MSVC/Clang Release | MSVC O2/precise/except-; Clang O2/no-trapping-math/no-math-errno |
+| strict-validation | explicit Release comparison | retained strict FP/no-contraction/rounding controls |
+| strict-ubsan | Clang Debug with --sanitize | nonrecovering UBSan, frame pointers, static release CRT |
+| rtc-diagnostics | deferred and rejected before execution | noninteractive reporting has not been implemented |
 
-## Developer shell and execution
+Ordinary tests do not use fast/finite-math assumptions. The existing
+classification-only stress target retains its separate fast/finite-math flags.
+Numerical expectations, fixtures, seeds and controls are unchanged. The owned
+profile helper exports no compiler options through the public interface target.
+Direct CMake retains strict-validation as its portable default; explicitly select
+upstream-optimized for routine Windows tests.
 
-`tools/run_windows_validation.ps1` locates Visual Studio through its installer, initializes
-the x64 developer environment, and selects a GNU-driver Clang whose reported
-target is Windows x86-64. It delegates to
-[the Windows runner](../../tools/run_windows_validation.py). Missing tools or
-unsupported sanitizer runtimes fail the run; they are not skipped or counted
-as passing. MSVC Debug is not UBSan coverage.
+## Native tools and source preflight
 
-From an x64 Visual Studio developer shell at the repository root:
+Use native AMD x64 Windows, native x64 Python 3.9+, CMake 3.20+, CTest supporting
+JUnit, Ninja and an x64 Visual Studio developer shell. Inspect installed tools
+before setup; do not substitute WSL, emulation or clang-cl. GNU-style clang++
+must report a Windows MSVC-ABI x64 target. Use inspected paths for `$nativeClang`
+and `$verifiedTestbench`; machine paths belong under ignored build.
+
+The [PowerShell wrapper](../../tools/run_windows_validation.ps1) can initialize
+the installed x64 developer environment. Do not change machine-wide execution
+policy. Use the Python entry point from an existing developer shell if needed.
+Both the wrapper and Python runner accept explicit profile selection.
+
+Read [AGENTS.md](../../AGENTS.md), [validation status](README.md) and
+[integration status](../integration-plan.md). Inspect actual HEAD, status,
+worktrees and remotes. A new validation run uses an approved clean source or a
+complete immutable captured source, not moving edits. Protect all 28 original
+root files, the audit manifest, both sse2neon copies and its pin byte-exactly.
+Reuse the pristine testbench at `a7293702385e5169a5f58b83177f2a43cd59139b`,
+checking cleanliness and all three pinned source hashes. Never overwrite an
+existing dependency. Run repository/original-integrity checks before and after.
+
+## Compile a simple facade consumer
+
+The existing example uses `#include "vcl2_xa64.h"`. These standalone templates
+are for an inspected source root and native developer shell; choose a fresh run
+directory and check each command's exit code. Both standalone recipes and the
+CMake examples were verified in the dated report; these are not extra full-suite
+passes. The retained traces also verify facade/original x86 includes and no ARM.
 
 ```powershell
-python -B tools/run_windows_validation.py --driver msvc --mode Release
-python -B tools/run_windows_validation.py --driver msvc --mode Debug
-python -B tools/run_windows_validation.py --driver clang --mode Release --compiler 'C:/path/to/native/x64/clang++.exe'
-python -B tools/run_windows_validation.py --driver clang --mode Debug --sanitize --compiler 'C:/path/to/native/x64/clang++.exe'
+$runRoot = Join-Path (Get-Location) ('build/example-' + [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ'))
+New-Item -ItemType Directory -Path $runRoot -ErrorAction Stop | Out-Null
+$msvcObject = Join-Path $runRoot 'msvc.obj'
+$msvcExample = Join-Path $runRoot 'msvc.exe'
+$clangExample = Join-Path $runRoot 'clang.exe'
+
+cl.exe /nologo /std:c++17 /EHsc /O2 /fp:precise /fp:except- /I. examples/vector_arithmetic.cpp "/Fo$msvcObject" "/Fe$msvcExample"
+if ($LASTEXITCODE -ne 0) { throw 'MSVC example compilation failed' }
+& $msvcExample
+if ($LASTEXITCODE -ne 0) { throw 'MSVC example failed' }
+
+& $nativeClang -m64 -std=c++17 -O2 -fno-trapping-math -fno-math-errno -I. examples/vector_arithmetic.cpp -o $clangExample
+if ($LASTEXITCODE -ne 0) { throw 'Clang example compilation failed' }
+& $clangExample
+if ($LASTEXITCODE -ne 0) { throw 'Clang example failed' }
 ```
 
-Use an installed compiler's actual path. `--plan` prints registration and mode
-settings without launching validation. An existing pristine upstream checkout
-can be supplied with `--testbench-dir build/_deps/testbench`; its revision and
-source hashes remain enforced. The PowerShell wrapper's `-Upstream` option
-restores the pinned checkout if absent and preserves any existing directory.
+Both should print `2 5 10 17` and be native x64 PE executables. For runtime
+capability queries, also link the unchanged instrset_detect.cpp, or use the
+existing `vcl::runtime` CMake target. No global AVX2 deployment assumption is made.
 
-For example, from a shell whose execution policy permits local scripts:
+## Run the complete pinned profiles
+
+From an approved clean checkout in a native x64 developer shell:
+
+```powershell
+python -B tools/run_windows_validation.py --driver msvc --mode Release --plan
+python -B tools/run_windows_validation.py --driver msvc --mode Release --testbench-dir $verifiedTestbench
+python -B tools/run_windows_validation.py --driver clang --mode Release --compiler $nativeClang --testbench-dir $verifiedTestbench
+
+python -B tools/run_windows_validation.py --profile strict-validation --driver msvc --mode Release --testbench-dir $verifiedTestbench
+python -B tools/run_windows_validation.py --profile strict-validation --driver clang --mode Release --compiler $nativeClang --testbench-dir $verifiedTestbench
+python -B tools/run_windows_validation.py --profile strict-ubsan --driver clang --mode Debug --sanitize --compiler $nativeClang --testbench-dir $verifiedTestbench
+```
+
+For an explicitly authorized uncommitted implementation, first freeze it with
+`tools/capture_source.py --output <new-ignored-capture-directory>`. Run the tools
+inside that capture's source directory with `--capture-manifest` pointing to
+its matching capture.json. Preserve the patch, manifest, added files and source
+ZIP; do not edit the captured source or reuse an old manifest for new edits.
+Dirty source without an explicit complete capture is rejected.
+
+PowerShell examples, when local execution policy already permits the wrapper:
 
 ```powershell
 ./tools/run_windows_validation.ps1 -Driver msvc -Mode Release -Upstream
-./tools/run_windows_validation.ps1 -Driver clang -Mode Debug -Sanitize
+./tools/run_windows_validation.ps1 -Driver clang -Mode Release -Profile strict-validation -Upstream
+./tools/run_windows_validation.ps1 -Driver clang -Mode Debug -Sanitize -Profile strict-ubsan -Upstream
 ```
 
-Do not change machine-wide execution policy for this tool; an existing x64
-developer shell can invoke the Python entry point directly.
+Each full pinned profile registers 1,348 cases and one separate example; without
+the testbench it registers the existing 40 local cases. Two optimized baselines
+total 2,696 cases plus two examples. Separately CPU/OS-gated AVX2/AVX-512 local
+profiles add 160 plus four examples when fully supported: routine total 2,856
+plus six. Strict Release has the same separate selection; strict UBSan totals
+1,428 plus three with full higher-ISA support. These are registration counts,
+not predicted passes. Unsupported profiles remain explicit gaps.
 
-The runner verifies native Windows x64 execution through `IsWow64Process2` and
-PE machine types, records the CPU/OS and compiler, and captures HEAD/tree,
-working patches, added-file patches and source fingerprints. It verifies a
-runtime consumer and independent protected-page controls before the suite.
-The consumer requires detected ISA level 2 for the local suite and level 6
-before executing the optional SSE4.2 upstream selection.
-The writable control must pass; read and write accesses at both inaccessible
-boundaries must return `0xc0000005` using the actual Windows page size.
+The runner audits emitted compiler commands before suite build/execution,
+rejects inherited compiler-policy environment variables, and rejects incompatible
+profile selections and MSVC Debug/RTC execution. Keep all numerical gates,
+fixture checks, original 60-second case deadlines and concurrency three.
+Probe CPU and OS/XCR0 before higher-ISA execution; the baseline runner rejects
+blanket AVX overrides. Use fresh explicitly configured local builds for supported
+higher profiles, preserving the actual ISA and FP flags in their evidence.
 
-Clang UBSan uses static release CRT (`MultiThreaded`) even in Debug, with
-`-O0`, debug information, `-fsanitize=undefined`, disabled recovery, frame
-pointers and `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`. An ordinary
-control must pass and intentional signed overflow must stop with its expected
-diagnostic. A link or control failure is an unavailable/failing gate. The
-known local runtime emits LNK4217 import warnings, retained in raw logs.
+## Controls, failures and evidence
 
-The suite retains all six Python configuration/fixture checks, original
-numerical gates, the 60-second per-case timeout, and build/test concurrency
-three. Ordinary MSVC tests use `/fp:strict`; classification alone uses
-`/fp:fast`. Clang retains no contraction, selected rounding-mode options and
-classification-only finite-math stress. No ASan or timing benchmarks run.
+The runner verifies native Windows/x64 process and PE identity, runtime detection,
+actual page size, a passing writable guard control and all four protected
+read/write fault controls returning `0xc0000005`. Strict GNU-driver Clang Debug
+uses the verified MultiThreaded release CRT, -O0, debug information, undefined
+sanitizer, disabled recovery, frame pointers and
+`UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`. Positive control must exit zero;
+intentional signed overflow must exit one with its diagnostic and no continuation.
+MSVC Debug is not UBSan coverage. Missing controls/runtimes are gaps.
 
-Configuration probes retain their original serial execution, positive flag
-controls, negative contracts and 60-second CTest deadline.
+`NoInitFailures` means a captured RTC uninitialized-use diagnostic. The retained
+[policy and sites](windows-upstream-optimized-2026-11-20/noinit-policy.json) do not
+infer author intent or harmlessness from a case name or uninitialized constructor.
+RTC is not executed by the current routine profiles and is not converted to a
+passing count. No callback/private desktop route is installed. A future RTC run
+requires separate noninteractive implementation and validation first.
 
-## Evidence and failed runs
+Every invocation creates a unique ignored `build/windows-native-<profile>-.../`
+directory and retains commands/exits, flags, complete inventories, source proofs,
+compiler/binary hashes, configure/build/test logs, JUnit, controls and example.
+The [shared evidence module](../../tools/validation_evidence.py) packages the
+first runner return packet on success/failure after capture starts. Preserve
+that packet and any build-abort continuation separately. Missing binaries stay
+not run. Do not replay completed cases or weaken gates to improve counts.
+Full process/LastTest logs remain authoritative when JUnit output is truncated.
 
-Both native runners import command logging, fixture inventory, hashing and
-archive packaging from [the shared evidence module](../../tools/validation_evidence.py).
-Use the repository checkout so that module is available alongside the runners.
-Native host checks, binary inspection and profile controls stay in each runner.
-
-Each Windows invocation creates `build/windows-native-<driver>-<mode>-<UTC>/`.
-It retains commands/exits, patches, manifests, configure/build/test logs,
-compile commands, CTest inventories, JUnit, control/binary hashes and results.
-The runner produces `return-evidence.zip` and its SHA256 on success or failure
-after evidence capture starts. Preserve full build directories until the
-retained records and failures have been verified against compact archives.
-With explicit cleanup approval, rebuildable outputs and completed temporary
-worktrees can then be removed according to the [retention policy](native-workflow.md#reports-and-cleanup).
-Keep the pristine testbench, installed tools and original evidence archives.
-
-Transfer evidence packets separately and record their SHA256 in portable
-reports. Keep failed attempts and their original archives. A setup failure
-before the runner starts may have only shell output; record that coverage gap.
-There are no hosted uploads or retention guarantees. The Mac ASan startup hang
-is not retried. Physical Intel testing remains omitted.
+Keep raw records, source captures, generated control/probe inputs and all failed
+attempts under ignored build. Portable metadata excludes machine paths and
+binaries. Follow the [retention policy](native-workflow.md#reports-and-cleanup)
+before any separately authorized cleanup. No hosted CI, ASan, benchmark,
+emulation, external consumer or automatic commit/push/merge belongs to this run.
+Mac M2 uses the [native Mac workflow](native-workflow.md).

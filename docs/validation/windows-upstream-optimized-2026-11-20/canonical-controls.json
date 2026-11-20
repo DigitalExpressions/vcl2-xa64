@@ -1,0 +1,422 @@
+[
+  {
+    "configuration": "base02-msvc-upstream-optimized-ingested",
+    "runtime_level": 11,
+    "required_level": 6,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "7e2010913254b4497c8e57337eb9a6f6ee7aa6181a16401f007ba84ed76e1301",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "5252cd5e72251e66b64058f918f6b19d9ca9a702927bd473ab4c9548136d19fa",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "000fd50974cd1b9a8d3a6409e64e5054097b899191a19c8a8423aea99df0a361",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "base01-msvc-strict-validation",
+    "runtime_level": 11,
+    "required_level": 6,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "f4eaed2bda9ebeda4489fa86b0d14ae8fbd334b64995b25b55015f22c3feaadf",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "11cb83aa811392ea0366546c8720d510e78e2ce1e016ceeeea16fc480fe98b20",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "e0d6d5de7f48da233ecfb2034c3cb07b4eecf9b2e1179a862b6f1b8f66d54efc",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "base01-clang-upstream-optimized",
+    "runtime_level": 11,
+    "required_level": 6,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "e084c57e49af6513462823533ba1b992bd24b4d5efa3ebfc9ff78016440e2ccc",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "7195d7cb49160636da0095f8c41fe060d802c3c63a8ec1e7e05c2243f6aaa1fd",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "eac905bdd34ccd80189eaaffc919a6913b2fbc30b12e2a36b7758a8de76e9210",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "base01-clang-strict-validation",
+    "runtime_level": 11,
+    "required_level": 6,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "066786ecf28bda0eccd7ce4f5854cb37fc0a628eeaec866b36c5701524d0531e",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "52605769ef0e94b006a481e3fb9be435f52de2a00d234903b748dcb20caf5f9e",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "d43293fba859fdcf422373514197af25225cc6839764c2d364d5043a391f5c84",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "base01-clang-strict-ubsan",
+    "runtime_level": 11,
+    "required_level": 6,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "13c02f2dc9ef2713694e87ef03b9fd5588fce03f523835a10e64760a50f03cf2",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "2ed7422e778c156d4b230caa16b2e96695951a9049c367c1aa39640aa8f05e46",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "ec2d721b814ea18aef77100ad22edcb9d0432e9055ba1b78f854839fea388948",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "13f6a4946cb0944614404470366318c978252172fb07374a29030637e6555676",
+    "actual_suite_ISA_flags_verified": true,
+    "ubsan_positive_exit": 0,
+    "ubsan_negative_exit": 1,
+    "expected_diagnostic": true,
+    "no_continuation": true,
+    "suite_CRT": "MultiThreaded",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  {
+    "configuration": "high01-msvc-upstream-optimized-avx2",
+    "runtime_level": 11,
+    "required_level": 8,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "f75417de3e95275f0aa850447ede76fbc2ec66533fc61a2246976f8701e801b0",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "777461b662a6f5e20af078bc0d3cb4c173312292c06835d9df2a6b39c7fa29a0",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "45e78199f5e664e0073629a2e14fe374c1d6f2f941739ca99463fb4299509cd4",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-msvc-upstream-optimized-avx512",
+    "runtime_level": 11,
+    "required_level": 10,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "053bbb4918fc0f4e909ca6bf26fc654da9f062215842e80353016583e3018ca9",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "607cdcba38c335f03c0f35a94e4f54fd2c4878274ac2af099ade27a066e5ec6d",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "ca0b21460a6065b0a31b8ae988c7c97810d27739e9d306020a4eb13e54fc385b",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-msvc-strict-validation-avx2",
+    "runtime_level": 11,
+    "required_level": 8,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "00b210375b6523c733bfeaaf01b0f0f078845dc126d488c63bae37a6aa5e53ad",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "1bdc498e4861c3abd456527e8f1b39aae16ef3d41af4415a36fcda9c391dca34",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "af59b1d0a50eb18b43e04f34c2b2797cf62c77867c854e3573808c6475bec18b",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-msvc-strict-validation-avx512",
+    "runtime_level": 11,
+    "required_level": 10,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "dfba05ec9908d76997b43c11e3fef1608578430687d248daf421e14da9ca1a2f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "d4834798d82ef8e2b50d6a0668b045e9c475a7cbf6bd9ff1750feb007d69ecde",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "31dd6dac84acafbbc05f45fde968238c138b6d95dcce0340ab2cd9e66e8e92e0",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-clang-upstream-optimized-avx2",
+    "runtime_level": 11,
+    "required_level": 8,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "0d30e2cf29a757ebf4ff976534472bc576c6fcb1a4974482a1df27219241630f",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "cf33eac348c8e0fb756890436b45fa5d7b180558a4835c92290109962e1d6259",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "a4a1b70ad7c3b813eeabba8e9a022562400345772b5a0a08d82929efcd00f09f",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-clang-upstream-optimized-avx512",
+    "runtime_level": 11,
+    "required_level": 10,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "cdf8ff1ab833f4bccdd493c3a91de254fa3de201233e8d5fa2a7b6ed54db722d",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "c63197126244f85bf64dbcf1a81ccb6f126fb978be6f81b61265d1e0a4f3b620",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "db046e18070242575d50bea8278f895e5471bab577be99dd8ec3ae649c43aec9",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-clang-strict-validation-avx2",
+    "runtime_level": 11,
+    "required_level": 8,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "d9631aa9de4e648558257a04bc97c587f8f6a5f710f2e4f2fefba0d4de76ff7a",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "a0d4d51939c635a935729aa6d9b8d554d9fc6b08c40932bd9a8d6bc60f000b09",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "1676ba1c90b57e413c46b89b8f6afcc4128295dff3174009f988fcac6c0a5736",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-clang-strict-validation-avx512",
+    "runtime_level": 11,
+    "required_level": 10,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "4a3597eeac1ed19bf65179d2848e46884b6d8b9acd2d6e5eb61ee7aa0c1208cb",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "82ba9ea90c83d10b6f14e72ccb462668b453da601c9b837cc8d1062b7388b914",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "1135b459cf5aee8e28d68493c8db217e9907e55e579b9111a5f035f696802f7b",
+    "actual_suite_ISA_flags_verified": true
+  },
+  {
+    "configuration": "high01-clang-strict-ubsan-avx2",
+    "runtime_level": 11,
+    "required_level": 8,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "995d09371277fd0bc59d46a03636e747c942bf20f4c66f36e9d2b97ebac91c5a",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "65a91ae5d6c2786e935f9bb95f6066ce480cedfcc7863399622bb30e91b0a6f2",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "82dfe50590fa1cf660ae7d2a8a1c400d46822ec53bfe5d651773d21f840be66c",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "a594fc9dc753bd01e2dfd76d174b8409ead6e43acad7d374bf52416f4b98a076",
+    "actual_suite_ISA_flags_verified": true,
+    "ubsan_positive_exit": 0,
+    "ubsan_negative_exit": 1,
+    "expected_diagnostic": true,
+    "no_continuation": true,
+    "suite_CRT": "MultiThreaded",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  },
+  {
+    "configuration": "high01-clang-strict-ubsan-avx512",
+    "runtime_level": 11,
+    "required_level": 10,
+    "guard_page_bytes": 4096,
+    "runtime_exit": 0,
+    "guard_positive_exit": 0,
+    "guard_negative_exits": [
+      3221225477,
+      3221225477,
+      3221225477,
+      3221225477
+    ],
+    "native_control_binaries": [
+      {
+        "sha256": "bed2dcc05a0673f498252f461371701cb3f6a8e71772171633d1357524fd1498",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "8e46d211f4a56d21b1b751a4b7d4034b1650f1780fc1a0b76ec704350cecf03c",
+        "pe_machine": "0x8664"
+      },
+      {
+        "sha256": "2e0bffcd6be2a7c7cf52cfd7de82bc61db1809e413b11df223cd52e64113b117",
+        "pe_machine": "0x8664"
+      }
+    ],
+    "journal_sha256": "17f214ff96bfe7d675058eb3716437880ad88637d1d88975f215de78735c8da6",
+    "actual_suite_ISA_flags_verified": true,
+    "ubsan_positive_exit": 0,
+    "ubsan_negative_exit": 1,
+    "expected_diagnostic": true,
+    "no_continuation": true,
+    "suite_CRT": "MultiThreaded",
+    "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "kind": "unchanged retained historical explanatory catalog; no new RTC execution",
+  "source": "retained prior proposal worktree",
+  "files": [
+    {
+      "path": "checksums.sha256",
+      "sha256": "41341651ecf918e751aa11269e1f4a72b133553fe96337ae8bd4c2e3bec4311d"
+    },
+    {
+      "path": "classification-policy.json",
+      "sha256": "0209d078e2675e9214096c488838104a641207f9f1fcd18ef26899b65c0a9c21"
+    },
+    {
+      "path": "confirmed-cases.json",
+      "sha256": "e44eca483695a3f1080092592098a45f58be823962ff97dff40bb55da737287b"
+    },
+    {
+      "path": "evidence-and-references.json",
+      "sha256": "a00e394eb85a08beab11a07ff04222599b19b9affa3ea114cf947f25d206c541"
+    },
+    {
+      "path": "execution-checklist.json",
+      "sha256": "87b17e5264f25bef45e6747a44c01c07385202d157b88be3bf6bd0b70993716e"
+    },
+    {
+      "path": "historical-family-candidates.json",
+      "sha256": "4b11ce1485fe57864af091969d719c20c9b4b7846ee68953bc040d7662d97452"
+    },
+    {
+      "path": "README.md",
+      "sha256": "973fe0dead460c3bac2e6daf0c81f32ecf7f51190d5f82c9f81a1a3a63c631da"
+    }
+  ]
+}

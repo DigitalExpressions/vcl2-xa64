@@ -26,6 +26,7 @@ Physical Intel testing is omitted for now. Keep raw evidence under ignored
 `build/`.
 
 Use the [developer documentation index](docs/README.md) and
+[x86 MSVC/Clang build instructions](docs/x86-build-and-test.md). Use the
 [Windows runner guide](docs/validation/windows-runner.md) for current instructions.
 The [validation index](docs/validation/README.md) records the exact native sources,
 results and remaining limits on the two physical hosts.

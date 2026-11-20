@@ -1,0 +1,107 @@
+[
+  {
+    "configuration": "base01-msvc-upstream-optimized",
+    "previous": "base02-msvc-upstream-optimized-ingested",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "base01-msvc-strict-validation",
+    "previous": "base01-msvc-strict-validation",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "base01-clang-upstream-optimized",
+    "previous": "base01-clang-upstream-optimized",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "base01-clang-strict-validation",
+    "previous": "base01-clang-strict-validation",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "base01-clang-strict-ubsan",
+    "previous": "base01-clang-strict-ubsan",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-msvc-upstream-optimized-avx2",
+    "previous": "high01-msvc-upstream-optimized-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-msvc-upstream-optimized-avx512",
+    "previous": "high01-msvc-upstream-optimized-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-msvc-strict-validation-avx2",
+    "previous": "high01-msvc-strict-validation-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-msvc-strict-validation-avx512",
+    "previous": "high01-msvc-strict-validation-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-upstream-optimized-avx2",
+    "previous": "high01-clang-upstream-optimized-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-upstream-optimized-avx512",
+    "previous": "high01-clang-upstream-optimized-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-strict-validation-avx2",
+    "previous": "high01-clang-strict-validation-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-strict-validation-avx512",
+    "previous": "high01-clang-strict-validation-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-strict-ubsan-avx2",
+    "previous": "high01-clang-strict-ubsan-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "configuration": "high01-clang-strict-ubsan-avx512",
+    "previous": "high01-clang-strict-ubsan-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  }
+]

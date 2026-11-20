@@ -1,0 +1,306 @@
+{
+  "fingerprint": "d86cf67d40f938082c6887e2095524389d7c8d961277112e77a886e46cbcc184",
+  "groups": [
+    {
+      "profile": "upstream-optimized",
+      "registered": 2856,
+      "counts": {
+        "passed": 2737,
+        "failed": 81,
+        "notrun": 38,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "examples": 6
+    },
+    {
+      "profile": "strict-validation",
+      "registered": 2856,
+      "counts": {
+        "passed": 2739,
+        "failed": 79,
+        "notrun": 38,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "examples": 6
+    },
+    {
+      "profile": "strict-ubsan",
+      "registered": 1428,
+      "counts": {
+        "passed": 1322,
+        "failed": 73,
+        "notrun": 33,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "examples": 3
+    }
+  ],
+  "configurations": [
+    {
+      "label": "base01-msvc-upstream-optimized",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "baseline",
+      "registered": 1348,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 1329,
+        "failed": 16,
+        "notrun": 3,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "base01-msvc-strict-validation",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "baseline",
+      "registered": 1348,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 1331,
+        "failed": 14,
+        "notrun": 3,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "base01-clang-upstream-optimized",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "baseline",
+      "registered": 1348,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 1328,
+        "failed": 9,
+        "notrun": 11,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "base01-clang-strict-validation",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "baseline",
+      "registered": 1348,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 1328,
+        "failed": 9,
+        "notrun": 11,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "base01-clang-strict-ubsan",
+      "driver": "clang",
+      "mode": "Debug",
+      "profile": "strict-ubsan",
+      "isa": "baseline",
+      "registered": 1348,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 1284,
+        "failed": 53,
+        "notrun": 11,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-msvc-upstream-optimized-avx2",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "avx2",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 24,
+        "failed": 14,
+        "notrun": 2,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-msvc-upstream-optimized-avx512",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "avx512",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 13,
+        "failed": 27,
+        "notrun": 0,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-msvc-strict-validation-avx2",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "avx2",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 24,
+        "failed": 14,
+        "notrun": 2,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-msvc-strict-validation-avx512",
+      "driver": "msvc",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "avx512",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 13,
+        "failed": 27,
+        "notrun": 0,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-upstream-optimized-avx2",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "avx2",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 24,
+        "failed": 4,
+        "notrun": 12,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-upstream-optimized-avx512",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "upstream-optimized",
+      "isa": "avx512",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 19,
+        "failed": 11,
+        "notrun": 10,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-strict-validation-avx2",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "avx2",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 24,
+        "failed": 4,
+        "notrun": 12,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-strict-validation-avx512",
+      "driver": "clang",
+      "mode": "Release",
+      "profile": "strict-validation",
+      "isa": "avx512",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 19,
+        "failed": 11,
+        "notrun": 10,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-strict-ubsan-avx2",
+      "driver": "clang",
+      "mode": "Debug",
+      "profile": "strict-ubsan",
+      "isa": "avx2",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 19,
+        "failed": 9,
+        "notrun": 12,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    },
+    {
+      "label": "high01-clang-strict-ubsan-avx512",
+      "driver": "clang",
+      "mode": "Debug",
+      "profile": "strict-ubsan",
+      "isa": "avx512",
+      "registered": 40,
+      "ctest_exit": 8,
+      "counts": {
+        "passed": 19,
+        "failed": 11,
+        "notrun": 10,
+        "skipped": 0
+      },
+      "timeouts": 0,
+      "example_passed": true
+    }
+  ],
+  "historical_gate": {
+    "status": "failed/incomplete; preserved historical result",
+    "passed": 5387,
+    "failed": 249,
+    "notrun": 76,
+    "registered": 5712,
+    "examples": 12
+  }
+}

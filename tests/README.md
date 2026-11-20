@@ -24,7 +24,8 @@ branch synchronization, the in-tree Mac runner, evidence capture and coverage
 labels. Physical Intel testing is omitted for now.
 
 For current native Windows toolchain steps, controls and evidence capture, use
-the [Windows runner guide](../docs/validation/windows-runner.md). Label physical
+the [x86 build and test instructions](../docs/x86-build-and-test.md) and
+[Windows runner guide](../docs/validation/windows-runner.md). Label physical
 CPU coverage accurately.
 The [validation index](../docs/validation/README.md) identifies the completed
 Mac/Windows checkpoint, comparator follow-up, source audit and coverage limits.
@@ -63,29 +64,37 @@ Use an x64 Native Tools developer PowerShell with MSVC, CMake, Ninja and Python
 available. Choose fresh build directories and check each command's exit code:
 
 ```powershell
-cmake -S . -B build/windows-msvc-release -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_BUILD_TYPE=Release -DVCL_BACKEND=1 -DVCL_BUILD_TESTS=ON -DVCL_BUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -S . -B build/windows-msvc-release -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_BUILD_TYPE=Release -DVCL_TEST_PROFILE=upstream-optimized -DVCL_BACKEND=1 -DVCL_BUILD_TESTS=ON -DVCL_BUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/windows-msvc-release --parallel 3 --verbose
 ctest --test-dir build/windows-msvc-release --show-only=json-v1
 ctest --test-dir build/windows-msvc-release --output-on-failure --no-tests=error --timeout 60 --parallel 3 --output-junit results.xml
 ```
 
-Repeat with a separate Debug directory and `-DCMAKE_BUILD_TYPE=Debug`. MSVC uses
-`/fp:strict` for ordinary regression targets: rounding-mode changes, NaNs and
+These commands explicitly select optimized MSVC `/O2 /fp:precise /fp:except-`.
+The Windows runner defaults to `upstream-optimized`; direct CMake retains the
+portable `strict-validation` default, so Release alone is insufficient. GNU-driver
+Clang optimized Release uses `-O2 -fno-trapping-math -fno-math-errno`.
+MSVC Debug/RTC requests are rejected until noninteractive reporting is validated.
+
+Select `strict-validation` explicitly for MSVC `/fp:strict` comparisons:
+rounding-mode changes, NaNs and
 signed zero remain observable, and implicit contraction is disabled. Only
 `fp_classification` uses `/fp:fast`, a broader MSVC stress option than GNU
-`-ffinite-math-only`; it is not an exact flag equivalent. Clang's GNU driver uses
+`-ffinite-math-only`; it is not an exact flag equivalent. Strict Clang uses
 `-ffp-contract=off` and selected tests use `-frounding-math`; clang-cl forwards
 these options with `/clang:`. Its classification target retains precisely
 `-ffinite-math-only`.
 
-Use a native x64 `clang++` or `clang-cl` executable, checking its default target
-before configuring. Syntax probes use temporary source files and each driver's
+Use native x64 GNU-driver `clang++` for the optimized and UBSan profiles, checking
+its default target before configuring. Existing clang-cl strict syntax support
+is separate from the GNU-driver runner. Syntax probes use temporary sources and each driver's
 options, and carry the configured global/ISA flags. Positive controls reject
 unsupported options before a negative contract can be counted as passing.
 
 MSVC does not provide UBSan. For GNU-style native Clang, first verify that an
 intentional-UB probe stops with the expected diagnostic. Then use
-`-DVCL_SANITIZE=ON` and `UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`.
+`-DVCL_TEST_PROFILE=strict-ubsan -DVCL_SANITIZE=ON` in a separate Debug build and
+`UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1`.
 The tested Visual Studio Clang 20.1.8 runtime requires the static release CRT:
 add `-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded` even in Debug. Debug compilation
 still uses `-O0` and debug information; this does not claim Debug CRT coverage.

@@ -38,6 +38,15 @@ records remain; exact deleted binaries/raw trials cannot be inspected locally.
 
 ## Windows gate and architecture preservation
 
+The [20 November integrated x86 harness report](windows-x86-harness-integration-2026-11-20.md)
+records fresh native AMD Windows validation of the 594-file integrated capture:
+upstream-optimized: 2737 passed, 81 failed, 38 not run of 2856; strict-validation: 2739 passed, 79 failed, 38 not run of 2856; strict-ubsan: 1322 passed, 73 failed, 33 not run of 1428. All fifteen canonical examples pass; timeouts remain separately
+reported in the complete results. All 7,140 registered case statuses are compared
+with the earlier 20 November capture. The two optimized MSVC signed-zero failures
+remain failed, and all original runtime files remain byte-exact. These new
+profiles do not replace the historical four-profile gate below. The earlier
+20 November report and portable bundle retain their exact source/checksums.
+
 The full gate stays **failed/incomplete: 5,387 passed, 249 failed, 76 not run
 of 5,712, plus twelve passing examples**. Bounded movement, include/code and RTC
 diagnostics do not convert failures or timeouts into passes.
@@ -51,6 +60,13 @@ diagnostics do not convert failures or timeouts into passes.
 - [Windows preservation return for declined TRS candidate](https://github.com/DigitalExpressions/vcl2-xa64/tree/b5a671a72fe59888ce0a661741a2b65c6b02a4b6/docs/validation/trs-inverse-current-master-2026-11-19).
 
 ## Reusable procedures and contracts
+
+Use the [x86 MSVC/Clang build and test guide](../x86-build-and-test.md) and
+[integrated harness record](windows-x86-harness-integration-2026-11-20.md) for
+current profiles and actual results. The Windows runner defaults to optimized
+Release; strict comparisons and UBSan stay separate, and MSVC RTC is rejected.
+The [earlier 20 November harness results](windows-upstream-optimized-2026-11-20.md)
+retain their original capture and checksums; publication does not transfer passes.
 
 Use [native workflow](native-workflow.md), [test guidance](../../tests/README.md),
 [benchmark correctness contracts](../../benchmarks/README.md#correctness-contracts), [numerical contracts](../numerical-contracts.md),

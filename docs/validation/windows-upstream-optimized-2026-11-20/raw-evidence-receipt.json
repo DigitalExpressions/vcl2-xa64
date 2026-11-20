@@ -1,0 +1,12 @@
+{
+  "archive": "uo20-01-raw-2026-11-20.zip",
+  "sha256": "433a3a7d7038a77510d2952d4a469badbd116e03cc5687ea641058ba860a76be",
+  "bytes": 53896020,
+  "raw_files": 4529,
+  "raw_bytes": 480831438,
+  "compiled_files_retained": 17447,
+  "compiled_bytes_retained": 12284420953,
+  "crc_and_every_entry_sha256_verified": true,
+  "coverage_manifest_sha256": "a8df528734e52f2a97bad8cd4aff6269fcda34fc597f4ed974429d5e01e80b65",
+  "final_portable_metadata": "Prepared separately after raw packet; never modifies this packet."
+}

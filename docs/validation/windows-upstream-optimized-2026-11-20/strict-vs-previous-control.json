@@ -1,0 +1,65 @@
+[
+  {
+    "current": "base01-msvc-strict-validation",
+    "previous": "control-baseline01-msvc-release-continuation01",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "base01-clang-strict-validation",
+    "previous": "control-baseline01-clang-release-continuation01",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "base01-clang-strict-ubsan",
+    "previous": "control-baseline01-clang-debug-continuation01",
+    "complete_inventory": 1348,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-msvc-strict-validation-avx2",
+    "previous": "control-higher01-msvc-release-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-msvc-strict-validation-avx512",
+    "previous": "control-higher01-msvc-release-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-clang-strict-validation-avx2",
+    "previous": "control-higher01-clang-release-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-clang-strict-validation-avx512",
+    "previous": "control-higher01-clang-release-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-clang-strict-ubsan-avx2",
+    "previous": "control-higher01-clang-debug-avx2",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  },
+  {
+    "current": "high01-clang-strict-ubsan-avx512",
+    "previous": "control-higher01-clang-debug-avx512",
+    "complete_inventory": 40,
+    "status_differences": [],
+    "timeout_differences": []
+  }
+]

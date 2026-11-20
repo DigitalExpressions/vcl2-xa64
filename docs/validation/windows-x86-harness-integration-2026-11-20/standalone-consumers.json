@@ -1,0 +1,30 @@
+[
+  {
+    "driver": "msvc",
+    "passed": true,
+    "binary": {
+      "path": "standalone-msvc/example.exe",
+      "sha256": "bae73940fa80e1c4545a31a512ecb5a8b54e9266e6c3d14edb0fd3b2646c5539",
+      "bytes": 138752,
+      "pe_machine": "0x8664"
+    },
+    "stdout": "2 5 10 17\n",
+    "compile_log_sha256": "ba362493d7c9da78c0ab11bca60999068402108dd799b40fc8eb9bd48751154d",
+    "facade_and_original_x86_includes": true,
+    "ARM_includes": false
+  },
+  {
+    "driver": "clang",
+    "passed": true,
+    "binary": {
+      "path": "standalone-clang/example.exe",
+      "sha256": "1cc4b2805e5a0ef7aa96fd18dc076808294c489c638361b5fddbc062f48329e7",
+      "bytes": 138752,
+      "pe_machine": "0x8664"
+    },
+    "stdout": "2 5 10 17\n",
+    "compile_log_sha256": "e26164fa83e826370a041d8f1150070d9cc9ac3b0ac6568e9d73de04d6aa0d68",
+    "facade_and_original_x86_includes": true,
+    "ARM_includes": false
+  }
+]

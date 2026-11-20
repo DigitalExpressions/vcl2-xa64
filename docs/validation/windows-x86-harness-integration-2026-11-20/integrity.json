@@ -1,0 +1,44 @@
+{
+  "fingerprint": "d86cf67d40f938082c6887e2095524389d7c8d961277112e77a886e46cbcc184",
+  "all_98_runtime_sources_exact": true,
+  "all_seven_harness_files_exact": true,
+  "protected_paths": 32,
+  "primary_and_both_capture_protected_bytes_and_mtimes_unchanged": true,
+  "prior_worktree_originals_unchanged": true,
+  "original_deep_and_short_replicas_and_prior_capture_verified": true,
+  "imported_20_November_report_and_bundle_byte_exact": true,
+  "tools_runtimes_and_pristine_testbench_verified": true,
+  "HEAD_tree_local_branches_tags_worktrees_saved_repo_config_unchanged": true,
+  "origin_fetched_without_pruning": true,
+  "post_capture_documentation_differences": [
+    ".gitattributes",
+    "docs/integration-plan.md",
+    "docs/validation/README.md",
+    "docs/validation/windows-x86-harness-integration-2026-11-20.md",
+    "docs/x86-build-and-test.md"
+  ],
+  "first_runner_packets": [
+    {
+      "receipt": "base01-clang-strict-ubsan-initial-receipt.json",
+      "sha256": "0ff0837e6a96d4e1d0a08216162aa12ad1b20c99b1be5d70e128ced467fdc7b8"
+    },
+    {
+      "receipt": "base01-clang-strict-validation-initial-receipt.json",
+      "sha256": "ab5cc5ce77e527d4bed3e63561d684b209c73a6bce748e95bf33cce43cfa83a3"
+    },
+    {
+      "receipt": "base01-clang-upstream-optimized-initial-receipt.json",
+      "sha256": "da8865da47f0e3d1151bf43e6e6a9c246678669d016cb32cf05711e4d170fcb9"
+    },
+    {
+      "receipt": "base01-msvc-strict-validation-initial-receipt.json",
+      "sha256": "e3112a060e9fb56bd0a54bf928c3bfb924ad9c8073eac50b49566b42bb4b8bfa"
+    },
+    {
+      "receipt": "base01-msvc-upstream-optimized-initial-receipt.json",
+      "sha256": "98ab201f0b22d6f85105d577d3a3dcd791747de5e24e1aa020d10a45ef70363f"
+    }
+  ],
+  "no_pre_19_November_record_restored": true,
+  "no_cleanup_commit_push_or_runtime_fix": true
+}

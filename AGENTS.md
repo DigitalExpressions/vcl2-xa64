@@ -194,6 +194,17 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ## Windows
 
+- The maintainer selected Agner-guided optimized compilation on 20 November
+  2026: MSVC `/O2 /fp:precise /fp:except-` without RTC, and GNU-driver Clang
+  `-O2 -fno-trapping-math -fno-math-errno`. See `docs/x86-build-and-test.md`.
+  The profile-aware harness is integrated in the local master working tree.
+  The Windows runner defaults to `upstream-optimized`; select `strict-validation`
+  Release or `strict-ubsan` Clang Debug separately. Direct CMake keeps its portable
+  strict default. MSVC Debug/RTC is deferred and rejected until noninteractive
+  reporting is implemented and validated. Preserve numerical gates and protected
+  original bytes. Exact source/results are recorded in
+  `docs/validation/windows-x86-harness-integration-2026-11-20.md`.
+
 - Use native x64 Windows on the AMD host, an x64 Visual Studio developer shell,
   Python 3.9+, CMake, CTest and Ninja. Prioritize MSVC and also use native x64
   GNU-driver Clang for compiler comparison and strict UBSan. No WSL/emulation.
@@ -201,7 +212,7 @@ on a particular machine; its absence must not prevent a fresh setup.
   `python -B tools/run_windows_validation.py --driver msvc --mode Release --plan`.
   `tools/run_windows_validation.ps1` can initialize the installed developer
   environment. Do not change machine-wide execution policy or tool configuration.
-- Follow `docs/validation/windows-runner.md` for all four Release/Debug profiles
+- Follow `docs/validation/windows-runner.md` for explicitly selected profiles
   and the pinned upstream selection. MSVC Debug is unsanitized, not UBSan proof.
   Probe CPU AND OS ISA support before AVX2/AVX-512 execution. Verify x64 PE files,
   runtime detection and actual-page-size protected-memory controls.
@@ -210,9 +221,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   static release CRT (`MultiThreaded`) even in Debug; inspect installed runtimes.
   Require positive exit zero and intentional signed-overflow exit `1`, with the
   expected diagnostic and no continuation. Missing runtimes/controls are gaps.
-- Retain `/fp:strict` for ordinary MSVC tests and `/fp:fast` only for the separate
-  classification stress target. Keep Clang's no-contraction/rounding flags and
-  classification-only finite-math stress separate from ordinary numerical tests.
+- Retain `/fp:strict` and Clang no-contraction/rounding controls in strict
+  comparison profiles. Optimized tests use the compiler policy above. Keep
+  fast/finite-math flags confined to the separate classification stress target.
 - Preserve original Windows source inventories and line endings. Compare hashes
   using the documented algorithm; do not replace a retained run's manifest with
   a regenerated inventory from a later checkout. Transfer raw archives separately.

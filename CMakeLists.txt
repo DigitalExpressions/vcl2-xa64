@@ -51,6 +51,9 @@ else()
   set(vcl_default_backend 1)
 endif()
 
+# Owned test policy only; protected runtime headers remain exact.
+include(tools/cmake/WindowsTestProfiles.cmake)
+
 add_library(vcl INTERFACE)
 add_library(vcl::vcl ALIAS vcl)
 target_include_directories(vcl INTERFACE "$<BUILD_INTERFACE:${VCL_SOURCE_DIR}>")
