@@ -14,6 +14,8 @@ docs/validation/dependency-audit-history-*/** -text
 # Checksummed portable evidence must keep its recorded bytes on every host.
 docs/benchmarks/arm64/standard-math-*/** -text
 docs/benchmarks/arm64/standard-math-*/*.csv whitespace=cr-at-eol
+docs/benchmarks/arm64/STANDARD_MATH_RESULTS*.md text eol=lf
+docs/benchmarks/arm64/standard_math_reading_guide.md text eol=lf
 # Unified diff context markers are part of this checksummed evidence file.
 docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol
 

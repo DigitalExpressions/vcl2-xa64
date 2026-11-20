@@ -8,9 +8,9 @@ ten operations, FP32/FP64, object and batch layouts, 128/4,096 objects and logic
 
 This is the validated four-blend candidate; the companion [report](STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md) covers the baseline. Both sources were rebuilt and measured in this same session; no historical timing is reused.
 
-Matched Direct Neon FP32 AoS transpose at 128 objects changed from **1.251 to 1.180 ns/op**, **+6.0% throughput** (5.6% less elapsed time), with disjoint invocation median ranges. At 4,096 objects it changed from **1.323 to 1.316 ns/op**, **+0.5% throughput**, with overlapping ranges.
+Matched <span style="color: #6f42c1;">Direct&nbsp;Neon</span> FP32 AoS transpose at 128 objects changed from **1.251 to 1.180 ns/op**, **+6.0% throughput** (5.6% less elapsed time), with disjoint invocation median ranges. At 4,096 objects it changed from **1.323 to 1.316 ns/op**, **+0.5% throughput**, with overlapping ranges.
 
-The tradeoff is FP32 AoS TRS inverse: elapsed time rose **2.2% / 2.7%** at 128/4,096 objects; both median ranges are disjoint, although both changes remain inside the practical 5% band. Across all 160 matched Direct Neon rows, **3** improved by more than 5%, **157** were within 5%, and **0** regressed beyond 5%. Smaller slower rows remain in the data.
+The tradeoff is FP32 AoS TRS inverse: elapsed time rose **2.2% / 2.7%** at 128/4,096 objects; both median ranges are disjoint, although both changes remain inside the practical 5% band. Across all 160 matched <span style="color: #6f42c1;">Direct&nbsp;Neon</span> rows, **3** improved by more than 5%, **157** were within 5%, and **0** regressed beyond 5%. Smaller slower rows remain in the data.
 
 The other greater-than-5% gains, FP32 SoA transpose w256/n128 and FP64 AoS transpose n128, have byte-identical selected kernel bodies at different code addresses. Code placement or host variability may contribute; this is an inference, and no isolated primitive-level speedup is established for those rows. All before/after output dumps are bit-identical. See the [complete matched comparison](standard-math-blend4-2026-11-19/before-after.csv) and [full-precision data](standard-math-blend4-2026-11-19/before-after.json).
 
@@ -24,10 +24,10 @@ suite runs use their own matched controls; do not mix times between runs.
 
 In this run, <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins or is within
 the shared 5% band in **160/160 rows**:
-**57** Direct Neon leads, **103** within 5%,
-and **0** sse2neon leads.
+**57** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads, **103** within 5%,
+and **0** <span style="color: #bc4c00;">sse2neon</span> leads.
 
-80/160 backend comparisons have disjoint invocation median ranges. Backend leads with overlapping ranges: `mat4_transpose` FP64 object_aos w256/n128. 4 Direct Neon rows and 8 compatibility rows are slower than scalar. These are descriptive ranges, not statistical significance.
+80/160 backend comparisons have disjoint invocation median ranges. Backend leads with overlapping ranges: `mat4_transpose` FP64 object_aos w256/n128. 4 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> rows and 8 compatibility rows are slower than scalar. These are descriptive ranges, not statistical significance.
 
 <!-- standard-math-reading-guide -->
 ## How to read the tables
@@ -104,8 +104,8 @@ same layout first; neither layout is automatically faster.
 | FP | 32 means single-precision `float`; 64 means double-precision `double`. |
 | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | SSE operations translated to Neon through <span style="color: #bc4c00;">sse2neon</span>. Competes directly with the adjacent <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing. |
 | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | The native Neon backend. Competes directly with the adjacent <span style="color: #bc4c00;">sse2neon</span> timing. |
-| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. Its continuous color scale shows which backend leads and by how much. |
-| **Winning<br>backend** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span>, <span style="color: #bc4c00;">sse2neon</span>, or Within&nbsp;5% inside the shared band. |
+| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. Its marker and solid color identify the winner outside the shared 5% band. |
+| **Winning<br>backend** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span>, 🟠 <span style="color: #bc4c00;">sse2neon</span>, or 🔵 Within&nbsp;5% inside the shared band. |
 | **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead. An em dash means the result is within the 5% band. |
 | **Scalar<br>(nsec/op)** | Scalar float/double arithmetic with automatic SIMD vectorization disabled. This is a separate reference. |
 | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Non-SIMD scalar reference time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time. For example, 2× means <span style="color: #6f42c1;">Direct&nbsp;Neon</span> delivers twice the scalar throughput. |
@@ -117,47 +117,56 @@ For the displayed throughput ratio `r`, a <span style="color: #6f42c1;">Direct&n
 For example, 1.25× gives Winning backend **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** and Throughput gain **+25.0%**;
 0.8× gives Winning backend **<span style="color: #bc4c00;">sse2neon</span>** and Throughput gain **+25.0%**. Percentages use the
 displayed ratio, rounded to one decimal place. A Within&nbsp;5% verdict shows
-**—** in Throughput gain. The existing ratio column retains its continuous gradient.
+**—** in Throughput gain. Ratio colors use the same 5% band as the winner markers.
 
 **Backend names have fixed identity colors:** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> is purple and
 <span style="color: #bc4c00;">sse2neon</span> is orange. <span style="color: #6f42c1;">Direct&nbsp;Neon</span> and Within&nbsp;5% stay together on one line.
 These label colors identify the implementation; the timing colors show the result.
 
+**Winner markers remain visible on GitHub**, where inline text colors are removed.
+The ratio and Winning backend columns use the same marker and inclusive 5% band:
+
+| Winner marker | Meaning | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> ratio |
+| --- | --- | --- |
+| 🟣 **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins beyond the 5% margin | Above 1.05× |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
+| 🟠 **<span style="color: #bc4c00;">sse2neon</span>** | <span style="color: #bc4c00;">sse2neon</span> wins beyond the 5% margin | Below 0.95× |
+
+The timing and ratio colors remain available in supporting
+Markdown viewers. Markers and colors describe measured throughput, not
+statistical significance.
+
 **Both competing timing columns are colored relative to each other:**
 
-- <span style="color: #1a7f37;">**Green:**</span> the winning backend's time.
-- <span style="color: #cf222e;">**Red:**</span> the losing backend's time.
-- <span style="color: #0969da;">**Blue:**</span> both times when approximately equal.
+| Timing marker | Meaning |
+| --- | --- |
+| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The winning backend's time, beyond the 5% margin |
+| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The losing backend's time, beyond the 5% margin |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Both times when approximately equal |
 
-**The throughput ratio uses a continuous gradient:**
+Each timing cell keeps its marker when viewed on GitHub.
 
-- **1.0× is white:** equal throughput.
-- **Above 1.0×**, the number fades toward <span style="color: #6f42c1;">Direct&nbsp;Neon</span>'s purple, reaching full
-  purple at **1.5×** (<span style="color: #6f42c1;">Direct&nbsp;Neon</span> has a 50% throughput lead).
-- **Below 1.0×**, it fades toward <span style="color: #bc4c00;">sse2neon</span>'s orange using the reciprocal lead,
-  reaching full orange at **2/3× ≈ 0.667×** (<span style="color: #bc4c00;">sse2neon</span> has a 50% throughput lead).
-- Colors saturate beyond those endpoints. Equal winning throughput leads have
-  equal fade strength: 1.25× and 0.8× each represent a 25% lead for the winner.
+**Throughput ratios use solid winner colors:** purple for <span style="color: #6f42c1;">Direct&nbsp;Neon</span> above
+1.05×, orange for <span style="color: #bc4c00;">sse2neon</span> below 0.95×, and blue within 0.95–1.05× inclusive.
 
 | Throughput ratio | Meaning |
 | ---: | --- |
-| <span style="color: #bc4c00;">0.667×</span> | <span style="color: #bc4c00;">sse2neon</span> leads by approximately 50% |
-| <span style="color: #dea680;">0.800×</span> | <span style="color: #bc4c00;">sse2neon</span> leads by 25% |
-| <span style="color: #ffffff;">1.000×</span> | Equal throughput |
-| <span style="color: #b7a0e0;">1.250×</span> | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 25% |
-| <span style="color: #6f42c1;">1.500×</span> | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 50% |
+| 🟠 <span style="color: #bc4c00;">0.667×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by approximately 50% |
+| 🟠 <span style="color: #bc4c00;">0.800×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by 25% |
+| 🔵 <span style="color: #0969da;">1.000×</span> | 🔵 Equal throughput |
+| 🟣 <span style="color: #6f42c1;">1.250×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 25% |
+| 🟣 <span style="color: #6f42c1;">1.500×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 50% |
 
-This gradient starts changing immediately on either side of 1.0×. The timing
-colors and Winning backend column still use the shared 5% band below, so a slight
-purple/orange tint can appear alongside a Within&nbsp;5% verdict.
+Markers, ratio colors and the Winning backend column all use the shared 5%
+band. The timing columns use green/red to identify the winning/losing times.
 
 The shared decision uses **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>**:
 
-| Throughput ratio | Winning backend | <span style="color: #bc4c00;">sse2neon</span> time color | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time color |
+| Throughput ratio | Winning backend | <span style="color: #bc4c00;">sse2neon</span> timing label | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing label |
 | --- | --- | --- | --- |
-| Above 1.05× | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Red | Green |
-| 0.95–1.05× inclusive | Within&nbsp;5% | Blue | Blue |
-| Below 0.95× | <span style="color: #bc4c00;">sse2neon</span> | Green | Red |
+| Above 1.05× | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | 🔴 Losing time | 🟢 Winning time |
+| 0.95–1.05× inclusive | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% |
+| Below 0.95× | 🟠 <span style="color: #bc4c00;">sse2neon</span> | 🟢 Winning time | 🔴 Losing time |
 
 Within&nbsp;5% is a practical throughput band, not a claim that the times
 are identical. A row with blue timing numbers can have separate median ranges: a small
@@ -218,26 +227,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #0969da;">1.920</span>** | **<span style="color: #0969da;">1.972</span>** | **<span style="color: #fbf5f1;">0.974×</span>** | Within&nbsp;5% | — | 4.197 | 2.13× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">3.342</span>** | **<span style="color: #0969da;">3.420</span>** | **<span style="color: #fcf7f3;">0.977×</span>** | Within&nbsp;5% | — | 4.216 | 1.23× | yes |
-| mat4_multiply | 32 | **<span style="color: #0969da;">2.085</span>** | **<span style="color: #0969da;">2.055</span>** | **<span style="color: #fbfafd;">1.014×</span>** | Within&nbsp;5% | — | 9.792 | 4.76× | no |
-| mat4_multiply | 64 | **<span style="color: #0969da;">4.308</span>** | **<span style="color: #0969da;">4.307</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 10.256 | 2.38× | no |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">1.277</span>** | **<span style="color: #1a7f37;">1.180</span>** | **<span style="color: #e7e0f5;">1.082×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +8.2% | 2.410 | 2.04× | yes |
-| mat4_transpose | 64 | **<span style="color: #cf222e;">2.574</span>** | **<span style="color: #1a7f37;">2.389</span>** | **<span style="color: #e9e2f5;">1.077×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.7% | 2.404 | 1.01× | no |
-| mat4_vector | 32 | **<span style="color: #0969da;">0.583</span>** | **<span style="color: #0969da;">0.592</span>** | **<span style="color: #fdfaf7;">0.985×</span>** | Within&nbsp;5% | — | 2.481 | 4.19× | no |
-| mat4_vector | 64 | **<span style="color: #0969da;">1.191</span>** | **<span style="color: #0969da;">1.198</span>** | **<span style="color: #fefdfc;">0.994×</span>** | Within&nbsp;5% | — | 27.719 | 23.14× | yes |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.898</span>** | **<span style="color: #1a7f37;">0.614</span>** | **<span style="color: #7a50c6;">1.463×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.3% | 1.117 | 1.82× | yes |
-| vec3_cross | 64 | **<span style="color: #cf222e;">0.877</span>** | **<span style="color: #1a7f37;">0.835</span>** | **<span style="color: #f0ecf9;">1.051×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.1% | 9.036 | 10.83× | yes |
-| vec4_add | 32 | **<span style="color: #0969da;">0.354</span>** | **<span style="color: #0969da;">0.354</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 0.913 | 2.58× | no |
-| vec4_add | 64 | **<span style="color: #0969da;">0.669</span>** | **<span style="color: #0969da;">0.665</span>** | **<span style="color: #fdfcfe;">1.007×</span>** | Within&nbsp;5% | — | 0.934 | 1.41× | yes |
-| vec4_dot | 32 | **<span style="color: #0969da;">0.392</span>** | **<span style="color: #0969da;">0.392</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 0.686 | 1.75× | no |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.519</span>** | **<span style="color: #0969da;">0.510</span>** | **<span style="color: #faf8fd;">1.018×</span>** | Within&nbsp;5% | — | 0.690 | 1.35× | no |
-| vec4_length | 32 | **<span style="color: #0969da;">0.583</span>** | **<span style="color: #0969da;">0.583</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 0.678 | 1.16× | no |
-| vec4_length | 64 | **<span style="color: #0969da;">0.575</span>** | **<span style="color: #0969da;">0.575</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 0.613 | 1.07× | no |
-| vec4_normalize | 32 | **<span style="color: #0969da;">1.027</span>** | **<span style="color: #0969da;">1.026</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 1.566 | 1.53× | no |
-| vec4_normalize | 64 | **<span style="color: #0969da;">1.205</span>** | **<span style="color: #0969da;">1.207</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 1.627 | 1.35× | no |
-| vec4_scale_add | 32 | **<span style="color: #0969da;">0.358</span>** | **<span style="color: #0969da;">0.357</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 0.950 | 2.66× | no |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">0.590</span>** | **<span style="color: #0969da;">0.590</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 0.956 | 1.62× | no |
+| mat4_inverse_trs | 32 | 🔵 **<span style="color: #0969da;">1.920</span>** | 🔵 **<span style="color: #0969da;">1.972</span>** | 🔵 **<span style="color: #0969da;">0.974×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.197 | 2.13× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">3.342</span>** | 🔵 **<span style="color: #0969da;">3.420</span>** | 🔵 **<span style="color: #0969da;">0.977×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.216 | 1.23× | yes |
+| mat4_multiply | 32 | 🔵 **<span style="color: #0969da;">2.085</span>** | 🔵 **<span style="color: #0969da;">2.055</span>** | 🔵 **<span style="color: #0969da;">1.014×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 9.792 | 4.76× | no |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">4.308</span>** | 🔵 **<span style="color: #0969da;">4.307</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 10.256 | 2.38× | no |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">1.277</span>** | 🟢 **<span style="color: #1a7f37;">1.180</span>** | 🟣 **<span style="color: #6f42c1;">1.082×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +8.2% | 2.410 | 2.04× | yes |
+| mat4_transpose | 64 | 🔴 **<span style="color: #cf222e;">2.574</span>** | 🟢 **<span style="color: #1a7f37;">2.389</span>** | 🟣 **<span style="color: #6f42c1;">1.077×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.7% | 2.404 | 1.01× | no |
+| mat4_vector | 32 | 🔵 **<span style="color: #0969da;">0.583</span>** | 🔵 **<span style="color: #0969da;">0.592</span>** | 🔵 **<span style="color: #0969da;">0.985×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.481 | 4.19× | no |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">1.191</span>** | 🔵 **<span style="color: #0969da;">1.198</span>** | 🔵 **<span style="color: #0969da;">0.994×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 27.719 | 23.14× | yes |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.898</span>** | 🟢 **<span style="color: #1a7f37;">0.614</span>** | 🟣 **<span style="color: #6f42c1;">1.463×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.3% | 1.117 | 1.82× | yes |
+| vec3_cross | 64 | 🔴 **<span style="color: #cf222e;">0.877</span>** | 🟢 **<span style="color: #1a7f37;">0.835</span>** | 🟣 **<span style="color: #6f42c1;">1.051×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.1% | 9.036 | 10.83× | yes |
+| vec4_add | 32 | 🔵 **<span style="color: #0969da;">0.354</span>** | 🔵 **<span style="color: #0969da;">0.354</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.913 | 2.58× | no |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">0.669</span>** | 🔵 **<span style="color: #0969da;">0.665</span>** | 🔵 **<span style="color: #0969da;">1.007×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.934 | 1.41× | yes |
+| vec4_dot | 32 | 🔵 **<span style="color: #0969da;">0.392</span>** | 🔵 **<span style="color: #0969da;">0.392</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.686 | 1.75× | no |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.519</span>** | 🔵 **<span style="color: #0969da;">0.510</span>** | 🔵 **<span style="color: #0969da;">1.018×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.690 | 1.35× | no |
+| vec4_length | 32 | 🔵 **<span style="color: #0969da;">0.583</span>** | 🔵 **<span style="color: #0969da;">0.583</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.678 | 1.16× | no |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.575</span>** | 🔵 **<span style="color: #0969da;">0.575</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.613 | 1.07× | no |
+| vec4_normalize | 32 | 🔵 **<span style="color: #0969da;">1.027</span>** | 🔵 **<span style="color: #0969da;">1.026</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.566 | 1.53× | no |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">1.205</span>** | 🔵 **<span style="color: #0969da;">1.207</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.627 | 1.35× | no |
+| vec4_scale_add | 32 | 🔵 **<span style="color: #0969da;">0.358</span>** | 🔵 **<span style="color: #0969da;">0.357</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.950 | 2.66× | no |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">0.590</span>** | 🔵 **<span style="color: #0969da;">0.590</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.956 | 1.62× | no |
 
 ## 128 objects — Structure of Arrays (SoA): SIMD across objects / logical 128 bits
 
@@ -250,26 +259,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">1.642</span>** | **<span style="color: #1a7f37;">1.417</span>** | **<span style="color: #d1c3eb;">1.159×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +15.9% | 4.631 | 3.27× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">2.696</span>** | **<span style="color: #0969da;">2.741</span>** | **<span style="color: #fdf9f7;">0.984×</span>** | Within&nbsp;5% | — | 4.736 | 1.73× | no |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">7.149</span>** | **<span style="color: #1a7f37;">3.320</span>** | **<span style="color: #6f42c1;">2.154×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +115.4% | 17.885 | 5.39× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">6.768</span>** | **<span style="color: #0969da;">6.811</span>** | **<span style="color: #fefdfc;">0.994×</span>** | Within&nbsp;5% | — | 17.780 | 2.61× | no |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">1.598</span>** | **<span style="color: #1a7f37;">1.498</span>** | **<span style="color: #ece6f7;">1.067×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.7% | 3.321 | 2.22× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">2.574</span>** | **<span style="color: #0969da;">2.576</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 3.305 | 1.28× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">3.080</span>** | **<span style="color: #1a7f37;">0.772</span>** | **<span style="color: #6f42c1;">3.988×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +298.8% | 2.989 | 3.87× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">1.565</span>** | **<span style="color: #0969da;">1.564</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 2.992 | 1.91× | no |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.441</span>** | **<span style="color: #1a7f37;">0.382</span>** | **<span style="color: #d3c5ec;">1.154×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +15.4% | 0.836 | 2.19× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">0.590</span>** | **<span style="color: #0969da;">0.592</span>** | **<span style="color: #fffefd;">0.997×</span>** | Within&nbsp;5% | — | 0.836 | 1.41× | no |
-| vec4_add | 32 | **<span style="color: #cf222e;">0.464</span>** | **<span style="color: #1a7f37;">0.382</span>** | **<span style="color: #c1aee4;">1.214×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +21.4% | 0.921 | 2.41× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">0.718</span>** | **<span style="color: #0969da;">0.714</span>** | **<span style="color: #fdfdfe;">1.006×</span>** | Within&nbsp;5% | — | 0.924 | 1.29× | no |
-| vec4_dot | 32 | **<span style="color: #cf222e;">0.403</span>** | **<span style="color: #1a7f37;">0.269</span>** | **<span style="color: #7043c1;">1.498×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +49.8% | 0.837 | 3.11× | yes |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.549</span>** | **<span style="color: #0969da;">0.547</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 0.863 | 1.58× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.394</span>** | **<span style="color: #1a7f37;">0.237</span>** | **<span style="color: #6f42c1;">1.664×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +66.4% | 0.681 | 2.87× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.477</span>** | **<span style="color: #0969da;">0.475</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 0.637 | 1.34× | no |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.635</span>** | **<span style="color: #1a7f37;">0.372</span>** | **<span style="color: #6f42c1;">1.707×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +70.7% | 1.555 | 4.18× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.789</span>** | **<span style="color: #0969da;">0.790</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 1.619 | 2.05× | no |
-| vec4_scale_add | 32 | **<span style="color: #cf222e;">0.496</span>** | **<span style="color: #1a7f37;">0.383</span>** | **<span style="color: #aa8fda;">1.295×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.5% | 0.947 | 2.47× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">0.589</span>** | **<span style="color: #0969da;">0.601</span>** | **<span style="color: #fcf7f4;">0.979×</span>** | Within&nbsp;5% | — | 0.933 | 1.55× | no |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">1.642</span>** | 🟢 **<span style="color: #1a7f37;">1.417</span>** | 🟣 **<span style="color: #6f42c1;">1.159×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +15.9% | 4.631 | 3.27× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">2.696</span>** | 🔵 **<span style="color: #0969da;">2.741</span>** | 🔵 **<span style="color: #0969da;">0.984×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.736 | 1.73× | no |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">7.149</span>** | 🟢 **<span style="color: #1a7f37;">3.320</span>** | 🟣 **<span style="color: #6f42c1;">2.154×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +115.4% | 17.885 | 5.39× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">6.768</span>** | 🔵 **<span style="color: #0969da;">6.811</span>** | 🔵 **<span style="color: #0969da;">0.994×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 17.780 | 2.61× | no |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">1.598</span>** | 🟢 **<span style="color: #1a7f37;">1.498</span>** | 🟣 **<span style="color: #6f42c1;">1.067×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.7% | 3.321 | 2.22× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">2.574</span>** | 🔵 **<span style="color: #0969da;">2.576</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.305 | 1.28× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">3.080</span>** | 🟢 **<span style="color: #1a7f37;">0.772</span>** | 🟣 **<span style="color: #6f42c1;">3.988×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +298.8% | 2.989 | 3.87× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">1.565</span>** | 🔵 **<span style="color: #0969da;">1.564</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.992 | 1.91× | no |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.441</span>** | 🟢 **<span style="color: #1a7f37;">0.382</span>** | 🟣 **<span style="color: #6f42c1;">1.154×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +15.4% | 0.836 | 2.19× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">0.590</span>** | 🔵 **<span style="color: #0969da;">0.592</span>** | 🔵 **<span style="color: #0969da;">0.997×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.836 | 1.41× | no |
+| vec4_add | 32 | 🔴 **<span style="color: #cf222e;">0.464</span>** | 🟢 **<span style="color: #1a7f37;">0.382</span>** | 🟣 **<span style="color: #6f42c1;">1.214×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +21.4% | 0.921 | 2.41× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">0.718</span>** | 🔵 **<span style="color: #0969da;">0.714</span>** | 🔵 **<span style="color: #0969da;">1.006×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.924 | 1.29× | no |
+| vec4_dot | 32 | 🔴 **<span style="color: #cf222e;">0.403</span>** | 🟢 **<span style="color: #1a7f37;">0.269</span>** | 🟣 **<span style="color: #6f42c1;">1.498×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +49.8% | 0.837 | 3.11× | yes |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.549</span>** | 🔵 **<span style="color: #0969da;">0.547</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.863 | 1.58× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.394</span>** | 🟢 **<span style="color: #1a7f37;">0.237</span>** | 🟣 **<span style="color: #6f42c1;">1.664×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +66.4% | 0.681 | 2.87× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.477</span>** | 🔵 **<span style="color: #0969da;">0.475</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.637 | 1.34× | no |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.635</span>** | 🟢 **<span style="color: #1a7f37;">0.372</span>** | 🟣 **<span style="color: #6f42c1;">1.707×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +70.7% | 1.555 | 4.18× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.789</span>** | 🔵 **<span style="color: #0969da;">0.790</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.619 | 2.05× | no |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.496</span>** | 🟢 **<span style="color: #1a7f37;">0.383</span>** | 🟣 **<span style="color: #6f42c1;">1.295×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.5% | 0.947 | 2.47× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">0.589</span>** | 🔵 **<span style="color: #0969da;">0.601</span>** | 🔵 **<span style="color: #0969da;">0.979×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.933 | 1.55× | no |
 
 ## 128 objects — Structure of Arrays (SoA): SIMD across objects / logical 256 bits
 
@@ -282,26 +291,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">2.196</span>** | **<span style="color: #1a7f37;">1.489</span>** | **<span style="color: #764cc4;">1.474×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +47.4% | 4.631 | 3.11× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">2.989</span>** | **<span style="color: #0969da;">3.010</span>** | **<span style="color: #fefcfb;">0.993×</span>** | Within&nbsp;5% | — | 4.736 | 1.57× | yes |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">4.904</span>** | **<span style="color: #1a7f37;">4.064</span>** | **<span style="color: #c3b1e5;">1.207×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +20.7% | 17.885 | 4.40× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">7.655</span>** | **<span style="color: #0969da;">7.781</span>** | **<span style="color: #fdf9f7;">0.984×</span>** | Within&nbsp;5% | — | 17.780 | 2.29× | yes |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">2.213</span>** | **<span style="color: #1a7f37;">1.346</span>** | **<span style="color: #6f42c1;">1.644×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +64.4% | 3.321 | 2.47× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">2.344</span>** | **<span style="color: #0969da;">2.343</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 3.305 | 1.41× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">1.504</span>** | **<span style="color: #1a7f37;">1.088</span>** | **<span style="color: #916fd0;">1.382×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.2% | 2.989 | 2.75× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">2.039</span>** | **<span style="color: #0969da;">2.035</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 2.992 | 1.47× | no |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.349</span>** | **<span style="color: #1a7f37;">0.331</span>** | **<span style="color: #efeaf8;">1.055×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.5% | 0.836 | 2.53× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">0.573</span>** | **<span style="color: #0969da;">0.586</span>** | **<span style="color: #fcf7f4;">0.978×</span>** | Within&nbsp;5% | — | 0.836 | 1.43× | no |
-| vec4_add | 32 | **<span style="color: #cf222e;">0.377</span>** | **<span style="color: #1a7f37;">0.345</span>** | **<span style="color: #e5ddf4;">1.091×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +9.1% | 0.921 | 2.67× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">0.562</span>** | **<span style="color: #0969da;">0.552</span>** | **<span style="color: #faf9fd;">1.017×</span>** | Within&nbsp;5% | — | 0.924 | 1.67× | no |
-| vec4_dot | 32 | **<span style="color: #cf222e;">0.291</span>** | **<span style="color: #1a7f37;">0.273</span>** | **<span style="color: #ede7f7;">1.064×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.4% | 0.837 | 3.06× | yes |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.502</span>** | **<span style="color: #0969da;">0.503</span>** | **<span style="color: #fffefe;">0.998×</span>** | Within&nbsp;5% | — | 0.863 | 1.72× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.393</span>** | **<span style="color: #1a7f37;">0.220</span>** | **<span style="color: #6f42c1;">1.785×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +78.5% | 0.681 | 3.09× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.406</span>** | **<span style="color: #0969da;">0.406</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 0.637 | 1.57× | no |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.609</span>** | **<span style="color: #1a7f37;">0.403</span>** | **<span style="color: #6f42c1;">1.513×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.3% | 1.555 | 3.86× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.781</span>** | **<span style="color: #0969da;">0.782</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 1.619 | 2.07× | no |
-| vec4_scale_add | 32 | **<span style="color: #cf222e;">0.387</span>** | **<span style="color: #1a7f37;">0.346</span>** | **<span style="color: #ddd2f0;">1.119×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +11.9% | 0.947 | 2.74× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">0.612</span>** | **<span style="color: #0969da;">0.613</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 0.933 | 1.52× | no |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">2.196</span>** | 🟢 **<span style="color: #1a7f37;">1.489</span>** | 🟣 **<span style="color: #6f42c1;">1.474×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +47.4% | 4.631 | 3.11× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">2.989</span>** | 🔵 **<span style="color: #0969da;">3.010</span>** | 🔵 **<span style="color: #0969da;">0.993×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.736 | 1.57× | yes |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">4.904</span>** | 🟢 **<span style="color: #1a7f37;">4.064</span>** | 🟣 **<span style="color: #6f42c1;">1.207×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +20.7% | 17.885 | 4.40× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">7.655</span>** | 🔵 **<span style="color: #0969da;">7.781</span>** | 🔵 **<span style="color: #0969da;">0.984×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 17.780 | 2.29× | yes |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">2.213</span>** | 🟢 **<span style="color: #1a7f37;">1.346</span>** | 🟣 **<span style="color: #6f42c1;">1.644×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +64.4% | 3.321 | 2.47× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">2.344</span>** | 🔵 **<span style="color: #0969da;">2.343</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.305 | 1.41× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">1.504</span>** | 🟢 **<span style="color: #1a7f37;">1.088</span>** | 🟣 **<span style="color: #6f42c1;">1.382×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.2% | 2.989 | 2.75× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">2.039</span>** | 🔵 **<span style="color: #0969da;">2.035</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.992 | 1.47× | no |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.349</span>** | 🟢 **<span style="color: #1a7f37;">0.331</span>** | 🟣 **<span style="color: #6f42c1;">1.055×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.5% | 0.836 | 2.53× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">0.573</span>** | 🔵 **<span style="color: #0969da;">0.586</span>** | 🔵 **<span style="color: #0969da;">0.978×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.836 | 1.43× | no |
+| vec4_add | 32 | 🔴 **<span style="color: #cf222e;">0.377</span>** | 🟢 **<span style="color: #1a7f37;">0.345</span>** | 🟣 **<span style="color: #6f42c1;">1.091×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +9.1% | 0.921 | 2.67× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">0.562</span>** | 🔵 **<span style="color: #0969da;">0.552</span>** | 🔵 **<span style="color: #0969da;">1.017×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.924 | 1.67× | no |
+| vec4_dot | 32 | 🔴 **<span style="color: #cf222e;">0.291</span>** | 🟢 **<span style="color: #1a7f37;">0.273</span>** | 🟣 **<span style="color: #6f42c1;">1.064×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.4% | 0.837 | 3.06× | yes |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.502</span>** | 🔵 **<span style="color: #0969da;">0.503</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.863 | 1.72× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.393</span>** | 🟢 **<span style="color: #1a7f37;">0.220</span>** | 🟣 **<span style="color: #6f42c1;">1.785×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +78.5% | 0.681 | 3.09× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.406</span>** | 🔵 **<span style="color: #0969da;">0.406</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.637 | 1.57× | no |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.609</span>** | 🟢 **<span style="color: #1a7f37;">0.403</span>** | 🟣 **<span style="color: #6f42c1;">1.513×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.3% | 1.555 | 3.86× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.781</span>** | 🔵 **<span style="color: #0969da;">0.782</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.619 | 2.07× | no |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.387</span>** | 🟢 **<span style="color: #1a7f37;">0.346</span>** | 🟣 **<span style="color: #6f42c1;">1.119×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +11.9% | 0.947 | 2.74× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">0.612</span>** | 🔵 **<span style="color: #0969da;">0.613</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.933 | 1.52× | no |
 
 ## 128 objects — Structure of Arrays (SoA): SIMD across objects / logical 512 bits
 
@@ -314,26 +323,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">2.754</span>** | **<span style="color: #1a7f37;">2.165</span>** | **<span style="color: #b198dd;">1.272×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +27.2% | 4.631 | 2.14× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">4.763</span>** | **<span style="color: #0969da;">4.712</span>** | **<span style="color: #fcfbfe;">1.011×</span>** | Within&nbsp;5% | — | 4.736 | 1.00× | yes |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">5.253</span>** | **<span style="color: #1a7f37;">4.247</span>** | **<span style="color: #bba5e2;">1.237×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +23.7% | 17.885 | 4.21× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">10.223</span>** | **<span style="color: #0969da;">10.272</span>** | **<span style="color: #fefdfc;">0.995×</span>** | Within&nbsp;5% | — | 17.780 | 1.73× | no |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">2.476</span>** | **<span style="color: #1a7f37;">1.631</span>** | **<span style="color: #6f42c1;">1.518×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.8% | 3.321 | 2.04× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">4.526</span>** | **<span style="color: #0969da;">4.529</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 3.305 | 0.73× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">1.398</span>** | **<span style="color: #1a7f37;">1.218</span>** | **<span style="color: #d5c7ed;">1.147×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +14.7% | 2.989 | 2.45× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">2.675</span>** | **<span style="color: #0969da;">2.675</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 2.992 | 1.12× | no |
-| vec3_cross | 32 | **<span style="color: #0969da;">0.322</span>** | **<span style="color: #0969da;">0.311</span>** | **<span style="color: #f5f2fb;">1.035×</span>** | Within&nbsp;5% | — | 0.836 | 2.69× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">0.565</span>** | **<span style="color: #0969da;">0.572</span>** | **<span style="color: #fdfbf9;">0.988×</span>** | Within&nbsp;5% | — | 0.836 | 1.46× | yes |
-| vec4_add | 32 | **<span style="color: #0969da;">0.334</span>** | **<span style="color: #0969da;">0.326</span>** | **<span style="color: #f7f5fc;">1.027×</span>** | Within&nbsp;5% | — | 0.921 | 2.83× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">0.550</span>** | **<span style="color: #0969da;">0.549</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 0.924 | 1.68× | no |
-| vec4_dot | 32 | **<span style="color: #0969da;">0.256</span>** | **<span style="color: #0969da;">0.252</span>** | **<span style="color: #faf9fd;">1.016×</span>** | Within&nbsp;5% | — | 0.837 | 3.32× | no |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.486</span>** | **<span style="color: #0969da;">0.490</span>** | **<span style="color: #fefcfb;">0.993×</span>** | Within&nbsp;5% | — | 0.863 | 1.76× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.396</span>** | **<span style="color: #1a7f37;">0.199</span>** | **<span style="color: #6f42c1;">1.992×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +99.2% | 0.681 | 3.42× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.397</span>** | **<span style="color: #0969da;">0.397</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 0.637 | 1.60× | no |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.628</span>** | **<span style="color: #1a7f37;">0.448</span>** | **<span style="color: #8b67cd;">1.402×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +40.2% | 1.555 | 3.47× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.851</span>** | **<span style="color: #0969da;">0.852</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 1.619 | 1.90× | no |
-| vec4_scale_add | 32 | **<span style="color: #cf222e;">0.360</span>** | **<span style="color: #1a7f37;">0.339</span>** | **<span style="color: #ede8f7;">1.062×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.2% | 0.947 | 2.80× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">0.639</span>** | **<span style="color: #0969da;">0.652</span>** | **<span style="color: #fcf8f5;">0.980×</span>** | Within&nbsp;5% | — | 0.933 | 1.43× | no |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">2.754</span>** | 🟢 **<span style="color: #1a7f37;">2.165</span>** | 🟣 **<span style="color: #6f42c1;">1.272×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +27.2% | 4.631 | 2.14× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">4.763</span>** | 🔵 **<span style="color: #0969da;">4.712</span>** | 🔵 **<span style="color: #0969da;">1.011×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.736 | 1.00× | yes |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">5.253</span>** | 🟢 **<span style="color: #1a7f37;">4.247</span>** | 🟣 **<span style="color: #6f42c1;">1.237×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +23.7% | 17.885 | 4.21× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">10.223</span>** | 🔵 **<span style="color: #0969da;">10.272</span>** | 🔵 **<span style="color: #0969da;">0.995×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 17.780 | 1.73× | no |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">2.476</span>** | 🟢 **<span style="color: #1a7f37;">1.631</span>** | 🟣 **<span style="color: #6f42c1;">1.518×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.8% | 3.321 | 2.04× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">4.526</span>** | 🔵 **<span style="color: #0969da;">4.529</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.305 | 0.73× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">1.398</span>** | 🟢 **<span style="color: #1a7f37;">1.218</span>** | 🟣 **<span style="color: #6f42c1;">1.147×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +14.7% | 2.989 | 2.45× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">2.675</span>** | 🔵 **<span style="color: #0969da;">2.675</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.992 | 1.12× | no |
+| vec3_cross | 32 | 🔵 **<span style="color: #0969da;">0.322</span>** | 🔵 **<span style="color: #0969da;">0.311</span>** | 🔵 **<span style="color: #0969da;">1.035×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.836 | 2.69× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">0.565</span>** | 🔵 **<span style="color: #0969da;">0.572</span>** | 🔵 **<span style="color: #0969da;">0.988×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.836 | 1.46× | yes |
+| vec4_add | 32 | 🔵 **<span style="color: #0969da;">0.334</span>** | 🔵 **<span style="color: #0969da;">0.326</span>** | 🔵 **<span style="color: #0969da;">1.027×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.921 | 2.83× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">0.550</span>** | 🔵 **<span style="color: #0969da;">0.549</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.924 | 1.68× | no |
+| vec4_dot | 32 | 🔵 **<span style="color: #0969da;">0.256</span>** | 🔵 **<span style="color: #0969da;">0.252</span>** | 🔵 **<span style="color: #0969da;">1.016×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.837 | 3.32× | no |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.486</span>** | 🔵 **<span style="color: #0969da;">0.490</span>** | 🔵 **<span style="color: #0969da;">0.993×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.863 | 1.76× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.396</span>** | 🟢 **<span style="color: #1a7f37;">0.199</span>** | 🟣 **<span style="color: #6f42c1;">1.992×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +99.2% | 0.681 | 3.42× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.397</span>** | 🔵 **<span style="color: #0969da;">0.397</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.637 | 1.60× | no |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.628</span>** | 🟢 **<span style="color: #1a7f37;">0.448</span>** | 🟣 **<span style="color: #6f42c1;">1.402×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +40.2% | 1.555 | 3.47× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.851</span>** | 🔵 **<span style="color: #0969da;">0.852</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.619 | 1.90× | no |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.360</span>** | 🟢 **<span style="color: #1a7f37;">0.339</span>** | 🟣 **<span style="color: #6f42c1;">1.062×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +6.2% | 0.947 | 2.80× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">0.639</span>** | 🔵 **<span style="color: #0969da;">0.652</span>** | 🔵 **<span style="color: #0969da;">0.980×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.933 | 1.43× | no |
 
 ## 4,096 objects — Array of Structures (AoS): SIMD across one object’s components
 
@@ -346,26 +355,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #0969da;">1.944</span>** | **<span style="color: #0969da;">2.006</span>** | **<span style="color: #fbf4ef;">0.969×</span>** | Within&nbsp;5% | — | 4.207 | 2.10× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">3.392</span>** | **<span style="color: #0969da;">3.424</span>** | **<span style="color: #fefcfa;">0.991×</span>** | Within&nbsp;5% | — | 4.458 | 1.30× | yes |
-| mat4_multiply | 32 | **<span style="color: #0969da;">2.147</span>** | **<span style="color: #0969da;">2.145</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 10.984 | 5.12× | no |
-| mat4_multiply | 64 | **<span style="color: #0969da;">4.354</span>** | **<span style="color: #0969da;">4.349</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 12.282 | 2.82× | no |
-| mat4_transpose | 32 | **<span style="color: #0969da;">1.330</span>** | **<span style="color: #0969da;">1.316</span>** | **<span style="color: #fcfbfe;">1.011×</span>** | Within&nbsp;5% | — | 2.739 | 2.08× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">2.662</span>** | **<span style="color: #0969da;">2.618</span>** | **<span style="color: #faf9fd;">1.017×</span>** | Within&nbsp;5% | — | 3.376 | 1.29× | no |
-| mat4_vector | 32 | **<span style="color: #0969da;">0.930</span>** | **<span style="color: #0969da;">0.936</span>** | **<span style="color: #fefdfc;">0.994×</span>** | Within&nbsp;5% | — | 2.775 | 2.97× | no |
-| mat4_vector | 64 | **<span style="color: #0969da;">1.863</span>** | **<span style="color: #0969da;">1.846</span>** | **<span style="color: #fcfcfe;">1.009×</span>** | Within&nbsp;5% | — | 3.267 | 1.77× | no |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.887</span>** | **<span style="color: #1a7f37;">0.607</span>** | **<span style="color: #7a50c6;">1.462×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.2% | 1.144 | 1.89× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">1.002</span>** | **<span style="color: #0969da;">0.997</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 1.176 | 1.18× | no |
-| vec4_add | 32 | **<span style="color: #0969da;">0.314</span>** | **<span style="color: #0969da;">0.314</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 0.914 | 2.91× | no |
-| vec4_add | 64 | **<span style="color: #0969da;">0.979</span>** | **<span style="color: #0969da;">0.978</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.119 | 1.15× | no |
-| vec4_dot | 32 | **<span style="color: #0969da;">0.363</span>** | **<span style="color: #0969da;">0.363</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 0.689 | 1.90× | no |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.725</span>** | **<span style="color: #0969da;">0.724</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 0.768 | 1.06× | no |
-| vec4_length | 32 | **<span style="color: #0969da;">0.580</span>** | **<span style="color: #0969da;">0.581</span>** | **<span style="color: #fffefe;">0.998×</span>** | Within&nbsp;5% | — | 0.674 | 1.16× | no |
-| vec4_length | 64 | **<span style="color: #0969da;">0.582</span>** | **<span style="color: #0969da;">0.582</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 0.623 | 1.07× | no |
-| vec4_normalize | 32 | **<span style="color: #0969da;">1.010</span>** | **<span style="color: #0969da;">1.008</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 1.552 | 1.54× | no |
-| vec4_normalize | 64 | **<span style="color: #0969da;">1.204</span>** | **<span style="color: #0969da;">1.210</span>** | **<span style="color: #fefdfc;">0.994×</span>** | Within&nbsp;5% | — | 1.640 | 1.35× | no |
-| vec4_scale_add | 32 | **<span style="color: #0969da;">0.316</span>** | **<span style="color: #0969da;">0.316</span>** | **<span style="color: #fffffe;">0.999×</span>** | Within&nbsp;5% | — | 0.944 | 2.98× | no |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">0.981</span>** | **<span style="color: #0969da;">0.978</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 1.135 | 1.16× | no |
+| mat4_inverse_trs | 32 | 🔵 **<span style="color: #0969da;">1.944</span>** | 🔵 **<span style="color: #0969da;">2.006</span>** | 🔵 **<span style="color: #0969da;">0.969×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.207 | 2.10× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">3.392</span>** | 🔵 **<span style="color: #0969da;">3.424</span>** | 🔵 **<span style="color: #0969da;">0.991×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.458 | 1.30× | yes |
+| mat4_multiply | 32 | 🔵 **<span style="color: #0969da;">2.147</span>** | 🔵 **<span style="color: #0969da;">2.145</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 10.984 | 5.12× | no |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">4.354</span>** | 🔵 **<span style="color: #0969da;">4.349</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 12.282 | 2.82× | no |
+| mat4_transpose | 32 | 🔵 **<span style="color: #0969da;">1.330</span>** | 🔵 **<span style="color: #0969da;">1.316</span>** | 🔵 **<span style="color: #0969da;">1.011×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.739 | 2.08× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">2.662</span>** | 🔵 **<span style="color: #0969da;">2.618</span>** | 🔵 **<span style="color: #0969da;">1.017×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.376 | 1.29× | no |
+| mat4_vector | 32 | 🔵 **<span style="color: #0969da;">0.930</span>** | 🔵 **<span style="color: #0969da;">0.936</span>** | 🔵 **<span style="color: #0969da;">0.994×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 2.775 | 2.97× | no |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">1.863</span>** | 🔵 **<span style="color: #0969da;">1.846</span>** | 🔵 **<span style="color: #0969da;">1.009×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.267 | 1.77× | no |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.887</span>** | 🟢 **<span style="color: #1a7f37;">0.607</span>** | 🟣 **<span style="color: #6f42c1;">1.462×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.2% | 1.144 | 1.89× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">1.002</span>** | 🔵 **<span style="color: #0969da;">0.997</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.176 | 1.18× | no |
+| vec4_add | 32 | 🔵 **<span style="color: #0969da;">0.314</span>** | 🔵 **<span style="color: #0969da;">0.314</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.914 | 2.91× | no |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">0.979</span>** | 🔵 **<span style="color: #0969da;">0.978</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.119 | 1.15× | no |
+| vec4_dot | 32 | 🔵 **<span style="color: #0969da;">0.363</span>** | 🔵 **<span style="color: #0969da;">0.363</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.689 | 1.90× | no |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.725</span>** | 🔵 **<span style="color: #0969da;">0.724</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.768 | 1.06× | no |
+| vec4_length | 32 | 🔵 **<span style="color: #0969da;">0.580</span>** | 🔵 **<span style="color: #0969da;">0.581</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.674 | 1.16× | no |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.582</span>** | 🔵 **<span style="color: #0969da;">0.582</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.623 | 1.07× | no |
+| vec4_normalize | 32 | 🔵 **<span style="color: #0969da;">1.010</span>** | 🔵 **<span style="color: #0969da;">1.008</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.552 | 1.54× | no |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">1.204</span>** | 🔵 **<span style="color: #0969da;">1.210</span>** | 🔵 **<span style="color: #0969da;">0.994×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.640 | 1.35× | no |
+| vec4_scale_add | 32 | 🔵 **<span style="color: #0969da;">0.316</span>** | 🔵 **<span style="color: #0969da;">0.316</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.944 | 2.98× | no |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">0.981</span>** | 🔵 **<span style="color: #0969da;">0.978</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.135 | 1.16× | no |
 
 ## 4,096 objects — Structure of Arrays (SoA): SIMD across objects / logical 128 bits
 
@@ -378,26 +387,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">2.467</span>** | **<span style="color: #1a7f37;">2.344</span>** | **<span style="color: #f0ebf9;">1.052×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.2% | 4.618 | 1.97× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">3.756</span>** | **<span style="color: #0969da;">3.751</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 4.780 | 1.27× | no |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">7.151</span>** | **<span style="color: #1a7f37;">3.830</span>** | **<span style="color: #6f42c1;">1.867×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +86.7% | 18.733 | 4.89× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">7.150</span>** | **<span style="color: #0969da;">7.161</span>** | **<span style="color: #fffefe;">0.998×</span>** | Within&nbsp;5% | — | 19.612 | 2.74× | no |
-| mat4_transpose | 32 | **<span style="color: #0969da;">2.582</span>** | **<span style="color: #0969da;">2.483</span>** | **<span style="color: #f3f0fa;">1.040×</span>** | Within&nbsp;5% | — | 4.567 | 1.84× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">4.044</span>** | **<span style="color: #0969da;">4.041</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 4.581 | 1.13× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">3.192</span>** | **<span style="color: #1a7f37;">1.489</span>** | **<span style="color: #6f42c1;">2.144×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +114.4% | 3.116 | 2.09× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">2.249</span>** | **<span style="color: #0969da;">2.247</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 3.180 | 1.42× | no |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.704</span>** | **<span style="color: #1a7f37;">0.613</span>** | **<span style="color: #d4c7ed;">1.149×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +14.9% | 1.145 | 1.87× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">1.385</span>** | **<span style="color: #0969da;">1.383</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.490 | 1.08× | no |
-| vec4_add | 32 | **<span style="color: #cf222e;">0.974</span>** | **<span style="color: #1a7f37;">0.801</span>** | **<span style="color: #c1ade4;">1.216×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +21.6% | 1.367 | 1.71× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">1.683</span>** | **<span style="color: #0969da;">1.687</span>** | **<span style="color: #fffefe;">0.998×</span>** | Within&nbsp;5% | — | 1.819 | 1.08× | no |
-| vec4_dot | 32 | **<span style="color: #cf222e;">0.417</span>** | **<span style="color: #1a7f37;">0.285</span>** | **<span style="color: #7a50c6;">1.463×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.3% | 0.853 | 3.00× | yes |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.774</span>** | **<span style="color: #0969da;">0.773</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.165 | 1.51× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.395</span>** | **<span style="color: #1a7f37;">0.236</span>** | **<span style="color: #6f42c1;">1.673×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +67.3% | 0.665 | 2.82× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.475</span>** | **<span style="color: #0969da;">0.475</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 0.600 | 1.26× | no |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.632</span>** | **<span style="color: #1a7f37;">0.394</span>** | **<span style="color: #6f42c1;">1.603×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +60.3% | 1.535 | 3.90× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.950</span>** | **<span style="color: #0969da;">0.952</span>** | **<span style="color: #fffefe;">0.998×</span>** | Within&nbsp;5% | — | 1.674 | 1.76× | no |
-| vec4_scale_add | 32 | **<span style="color: #cf222e;">0.978</span>** | **<span style="color: #1a7f37;">0.800</span>** | **<span style="color: #bfabe3;">1.223×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +22.3% | 1.369 | 1.71× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">1.690</span>** | **<span style="color: #0969da;">1.683</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 1.822 | 1.08× | yes |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">2.467</span>** | 🟢 **<span style="color: #1a7f37;">2.344</span>** | 🟣 **<span style="color: #6f42c1;">1.052×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.2% | 4.618 | 1.97× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">3.756</span>** | 🔵 **<span style="color: #0969da;">3.751</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.780 | 1.27× | no |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">7.151</span>** | 🟢 **<span style="color: #1a7f37;">3.830</span>** | 🟣 **<span style="color: #6f42c1;">1.867×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +86.7% | 18.733 | 4.89× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">7.150</span>** | 🔵 **<span style="color: #0969da;">7.161</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 19.612 | 2.74× | no |
+| mat4_transpose | 32 | 🔵 **<span style="color: #0969da;">2.582</span>** | 🔵 **<span style="color: #0969da;">2.483</span>** | 🔵 **<span style="color: #0969da;">1.040×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.567 | 1.84× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">4.044</span>** | 🔵 **<span style="color: #0969da;">4.041</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.581 | 1.13× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">3.192</span>** | 🟢 **<span style="color: #1a7f37;">1.489</span>** | 🟣 **<span style="color: #6f42c1;">2.144×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +114.4% | 3.116 | 2.09× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">2.249</span>** | 🔵 **<span style="color: #0969da;">2.247</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.180 | 1.42× | no |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.704</span>** | 🟢 **<span style="color: #1a7f37;">0.613</span>** | 🟣 **<span style="color: #6f42c1;">1.149×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +14.9% | 1.145 | 1.87× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">1.385</span>** | 🔵 **<span style="color: #0969da;">1.383</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.490 | 1.08× | no |
+| vec4_add | 32 | 🔴 **<span style="color: #cf222e;">0.974</span>** | 🟢 **<span style="color: #1a7f37;">0.801</span>** | 🟣 **<span style="color: #6f42c1;">1.216×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +21.6% | 1.367 | 1.71× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">1.683</span>** | 🔵 **<span style="color: #0969da;">1.687</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.819 | 1.08× | no |
+| vec4_dot | 32 | 🔴 **<span style="color: #cf222e;">0.417</span>** | 🟢 **<span style="color: #1a7f37;">0.285</span>** | 🟣 **<span style="color: #6f42c1;">1.463×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +46.3% | 0.853 | 3.00× | yes |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.774</span>** | 🔵 **<span style="color: #0969da;">0.773</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.165 | 1.51× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.395</span>** | 🟢 **<span style="color: #1a7f37;">0.236</span>** | 🟣 **<span style="color: #6f42c1;">1.673×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +67.3% | 0.665 | 2.82× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.475</span>** | 🔵 **<span style="color: #0969da;">0.475</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.600 | 1.26× | no |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.632</span>** | 🟢 **<span style="color: #1a7f37;">0.394</span>** | 🟣 **<span style="color: #6f42c1;">1.603×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +60.3% | 1.535 | 3.90× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.950</span>** | 🔵 **<span style="color: #0969da;">0.952</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.674 | 1.76× | no |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.978</span>** | 🟢 **<span style="color: #1a7f37;">0.800</span>** | 🟣 **<span style="color: #6f42c1;">1.223×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +22.3% | 1.369 | 1.71× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">1.690</span>** | 🔵 **<span style="color: #0969da;">1.683</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.822 | 1.08× | yes |
 
 ## 4,096 objects — Structure of Arrays (SoA): SIMD across objects / logical 256 bits
 
@@ -410,26 +419,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">3.348</span>** | **<span style="color: #1a7f37;">2.198</span>** | **<span style="color: #6f42c1;">1.523×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +52.3% | 4.618 | 2.10× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">3.505</span>** | **<span style="color: #0969da;">3.548</span>** | **<span style="color: #fdfbf9;">0.988×</span>** | Within&nbsp;5% | — | 4.780 | 1.35× | yes |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">7.242</span>** | **<span style="color: #1a7f37;">5.997</span>** | **<span style="color: #c3b0e5;">1.208×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +20.8% | 18.733 | 3.12× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">10.436</span>** | **<span style="color: #0969da;">10.113</span>** | **<span style="color: #f6f3fb;">1.032×</span>** | Within&nbsp;5% | — | 19.612 | 1.94× | no |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">3.327</span>** | **<span style="color: #1a7f37;">2.334</span>** | **<span style="color: #855eca;">1.425×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +42.5% | 4.567 | 1.96× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">3.735</span>** | **<span style="color: #0969da;">3.728</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 4.581 | 1.23× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">2.199</span>** | **<span style="color: #1a7f37;">1.584</span>** | **<span style="color: #8f6ccf;">1.388×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.8% | 3.116 | 1.97× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">2.546</span>** | **<span style="color: #0969da;">2.521</span>** | **<span style="color: #fcfbfe;">1.010×</span>** | Within&nbsp;5% | — | 3.180 | 1.26× | no |
-| vec3_cross | 32 | **<span style="color: #cf222e;">0.641</span>** | **<span style="color: #1a7f37;">0.564</span>** | **<span style="color: #d8ccee;">1.136×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +13.6% | 1.145 | 2.03× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">1.362</span>** | **<span style="color: #0969da;">1.362</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 1.490 | 1.09× | no |
-| vec4_add | 32 | **<span style="color: #cf222e;">0.887</span>** | **<span style="color: #1a7f37;">0.765</span>** | **<span style="color: #d1c3eb;">1.160×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +16.0% | 1.367 | 1.79× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">1.704</span>** | **<span style="color: #0969da;">1.702</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.819 | 1.07× | no |
-| vec4_dot | 32 | **<span style="color: #cf222e;">0.316</span>** | **<span style="color: #1a7f37;">0.286</span>** | **<span style="color: #e1d8f2;">1.104×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +10.4% | 0.853 | 2.99× | yes |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.773</span>** | **<span style="color: #0969da;">0.773</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.165 | 1.51× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.394</span>** | **<span style="color: #1a7f37;">0.219</span>** | **<span style="color: #6f42c1;">1.798×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +79.8% | 0.665 | 3.03× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.407</span>** | **<span style="color: #0969da;">0.409</span>** | **<span style="color: #fefdfc;">0.995×</span>** | Within&nbsp;5% | — | 0.600 | 1.47× | no |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.621</span>** | **<span style="color: #1a7f37;">0.409</span>** | **<span style="color: #6f42c1;">1.518×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.8% | 1.535 | 3.75× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.915</span>** | **<span style="color: #0969da;">0.914</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 1.674 | 1.83× | no |
-| vec4_scale_add | 32 | **<span style="color: #cf222e;">0.888</span>** | **<span style="color: #1a7f37;">0.763</span>** | **<span style="color: #cfc1eb;">1.165×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +16.5% | 1.369 | 1.80× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">1.707</span>** | **<span style="color: #0969da;">1.701</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 1.822 | 1.07× | yes |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">3.348</span>** | 🟢 **<span style="color: #1a7f37;">2.198</span>** | 🟣 **<span style="color: #6f42c1;">1.523×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +52.3% | 4.618 | 2.10× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">3.505</span>** | 🔵 **<span style="color: #0969da;">3.548</span>** | 🔵 **<span style="color: #0969da;">0.988×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.780 | 1.35× | yes |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">7.242</span>** | 🟢 **<span style="color: #1a7f37;">5.997</span>** | 🟣 **<span style="color: #6f42c1;">1.208×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +20.8% | 18.733 | 3.12× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">10.436</span>** | 🔵 **<span style="color: #0969da;">10.113</span>** | 🔵 **<span style="color: #0969da;">1.032×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 19.612 | 1.94× | no |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">3.327</span>** | 🟢 **<span style="color: #1a7f37;">2.334</span>** | 🟣 **<span style="color: #6f42c1;">1.425×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +42.5% | 4.567 | 1.96× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">3.735</span>** | 🔵 **<span style="color: #0969da;">3.728</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.581 | 1.23× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">2.199</span>** | 🟢 **<span style="color: #1a7f37;">1.584</span>** | 🟣 **<span style="color: #6f42c1;">1.388×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.8% | 3.116 | 1.97× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">2.546</span>** | 🔵 **<span style="color: #0969da;">2.521</span>** | 🔵 **<span style="color: #0969da;">1.010×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.180 | 1.26× | no |
+| vec3_cross | 32 | 🔴 **<span style="color: #cf222e;">0.641</span>** | 🟢 **<span style="color: #1a7f37;">0.564</span>** | 🟣 **<span style="color: #6f42c1;">1.136×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +13.6% | 1.145 | 2.03× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">1.362</span>** | 🔵 **<span style="color: #0969da;">1.362</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.490 | 1.09× | no |
+| vec4_add | 32 | 🔴 **<span style="color: #cf222e;">0.887</span>** | 🟢 **<span style="color: #1a7f37;">0.765</span>** | 🟣 **<span style="color: #6f42c1;">1.160×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +16.0% | 1.367 | 1.79× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">1.704</span>** | 🔵 **<span style="color: #0969da;">1.702</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.819 | 1.07× | no |
+| vec4_dot | 32 | 🔴 **<span style="color: #cf222e;">0.316</span>** | 🟢 **<span style="color: #1a7f37;">0.286</span>** | 🟣 **<span style="color: #6f42c1;">1.104×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +10.4% | 0.853 | 2.99× | yes |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.773</span>** | 🔵 **<span style="color: #0969da;">0.773</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.165 | 1.51× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.394</span>** | 🟢 **<span style="color: #1a7f37;">0.219</span>** | 🟣 **<span style="color: #6f42c1;">1.798×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +79.8% | 0.665 | 3.03× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.407</span>** | 🔵 **<span style="color: #0969da;">0.409</span>** | 🔵 **<span style="color: #0969da;">0.995×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.600 | 1.47× | no |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.621</span>** | 🟢 **<span style="color: #1a7f37;">0.409</span>** | 🟣 **<span style="color: #6f42c1;">1.518×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +51.8% | 1.535 | 3.75× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.915</span>** | 🔵 **<span style="color: #0969da;">0.914</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.674 | 1.83× | no |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.888</span>** | 🟢 **<span style="color: #1a7f37;">0.763</span>** | 🟣 **<span style="color: #6f42c1;">1.165×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +16.5% | 1.369 | 1.80× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">1.707</span>** | 🔵 **<span style="color: #0969da;">1.701</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.822 | 1.07× | yes |
 
 ## 4,096 objects — Structure of Arrays (SoA): SIMD across objects / logical 512 bits
 
@@ -442,26 +451,26 @@ gates when repeating the same protocol.
 
 | Operation | FP | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **Winning<br>backend** | **Throughput<br>gain&nbsp;(%)** | **Scalar<br>(nsec/op)** | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Consistent<br>Timing |
 | --- | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| mat4_inverse_trs | 32 | **<span style="color: #cf222e;">4.449</span>** | **<span style="color: #1a7f37;">4.136</span>** | **<span style="color: #e9e2f6;">1.076×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.6% | 4.618 | 1.12× | yes |
-| mat4_inverse_trs | 64 | **<span style="color: #0969da;">6.716</span>** | **<span style="color: #0969da;">6.778</span>** | **<span style="color: #fefcfa;">0.991×</span>** | Within&nbsp;5% | — | 4.780 | 0.71× | no |
-| mat4_multiply | 32 | **<span style="color: #cf222e;">7.285</span>** | **<span style="color: #1a7f37;">6.810</span>** | **<span style="color: #ebe5f6;">1.070×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.0% | 18.733 | 2.75× | yes |
-| mat4_multiply | 64 | **<span style="color: #0969da;">12.349</span>** | **<span style="color: #0969da;">12.340</span>** | **<span style="color: #ffffff;">1.001×</span>** | Within&nbsp;5% | — | 19.612 | 1.59× | no |
-| mat4_transpose | 32 | **<span style="color: #cf222e;">4.061</span>** | **<span style="color: #1a7f37;">3.150</span>** | **<span style="color: #ab91db;">1.290×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.0% | 4.567 | 1.45× | yes |
-| mat4_transpose | 64 | **<span style="color: #0969da;">6.487</span>** | **<span style="color: #0969da;">6.453</span>** | **<span style="color: #fefdfe;">1.005×</span>** | Within&nbsp;5% | — | 4.581 | 0.71× | no |
-| mat4_vector | 32 | **<span style="color: #cf222e;">2.575</span>** | **<span style="color: #1a7f37;">1.994</span>** | **<span style="color: #ab91db;">1.292×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.2% | 3.116 | 1.56× | yes |
-| mat4_vector | 64 | **<span style="color: #0969da;">3.664</span>** | **<span style="color: #0969da;">3.651</span>** | **<span style="color: #fefeff;">1.003×</span>** | Within&nbsp;5% | — | 3.180 | 0.87× | no |
-| vec3_cross | 32 | **<span style="color: #0969da;">0.540</span>** | **<span style="color: #0969da;">0.523</span>** | **<span style="color: #f6f3fb;">1.032×</span>** | Within&nbsp;5% | — | 1.145 | 2.19× | yes |
-| vec3_cross | 64 | **<span style="color: #0969da;">1.318</span>** | **<span style="color: #0969da;">1.324</span>** | **<span style="color: #fefdfc;">0.995×</span>** | Within&nbsp;5% | — | 1.490 | 1.12× | no |
-| vec4_add | 32 | **<span style="color: #0969da;">0.723</span>** | **<span style="color: #0969da;">0.711</span>** | **<span style="color: #faf9fd;">1.016×</span>** | Within&nbsp;5% | — | 1.367 | 1.92× | yes |
-| vec4_add | 64 | **<span style="color: #0969da;">1.654</span>** | **<span style="color: #0969da;">1.648</span>** | **<span style="color: #fefdff;">1.004×</span>** | Within&nbsp;5% | — | 1.819 | 1.10× | no |
-| vec4_dot | 32 | **<span style="color: #0969da;">0.275</span>** | **<span style="color: #0969da;">0.271</span>** | **<span style="color: #fbfafd;">1.013×</span>** | Within&nbsp;5% | — | 0.853 | 3.15× | yes |
-| vec4_dot | 64 | **<span style="color: #0969da;">0.764</span>** | **<span style="color: #0969da;">0.764</span>** | **<span style="color: #ffffff;">1.000×</span>** | Within&nbsp;5% | — | 1.165 | 1.53× | no |
-| vec4_length | 32 | **<span style="color: #cf222e;">0.393</span>** | **<span style="color: #1a7f37;">0.200</span>** | **<span style="color: #6f42c1;">1.966×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +96.6% | 0.665 | 3.33× | yes |
-| vec4_length | 64 | **<span style="color: #0969da;">0.397</span>** | **<span style="color: #0969da;">0.400</span>** | **<span style="color: #fefdfc;">0.994×</span>** | Within&nbsp;5% | — | 0.600 | 1.50× | yes |
-| vec4_normalize | 32 | **<span style="color: #cf222e;">0.624</span>** | **<span style="color: #1a7f37;">0.449</span>** | **<span style="color: #8f6ccf;">1.389×</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.9% | 1.535 | 3.42× | yes |
-| vec4_normalize | 64 | **<span style="color: #0969da;">0.921</span>** | **<span style="color: #0969da;">0.918</span>** | **<span style="color: #fefeff;">1.002×</span>** | Within&nbsp;5% | — | 1.674 | 1.82× | yes |
-| vec4_scale_add | 32 | **<span style="color: #0969da;">0.757</span>** | **<span style="color: #0969da;">0.726</span>** | **<span style="color: #f3effa;">1.043×</span>** | Within&nbsp;5% | — | 1.369 | 1.89× | yes |
-| vec4_scale_add | 64 | **<span style="color: #0969da;">1.661</span>** | **<span style="color: #0969da;">1.681</span>** | **<span style="color: #fdfbf9;">0.988×</span>** | Within&nbsp;5% | — | 1.822 | 1.08× | yes |
+| mat4_inverse_trs | 32 | 🔴 **<span style="color: #cf222e;">4.449</span>** | 🟢 **<span style="color: #1a7f37;">4.136</span>** | 🟣 **<span style="color: #6f42c1;">1.076×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.6% | 4.618 | 1.12× | yes |
+| mat4_inverse_trs | 64 | 🔵 **<span style="color: #0969da;">6.716</span>** | 🔵 **<span style="color: #0969da;">6.778</span>** | 🔵 **<span style="color: #0969da;">0.991×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.780 | 0.71× | no |
+| mat4_multiply | 32 | 🔴 **<span style="color: #cf222e;">7.285</span>** | 🟢 **<span style="color: #1a7f37;">6.810</span>** | 🟣 **<span style="color: #6f42c1;">1.070×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +7.0% | 18.733 | 2.75× | yes |
+| mat4_multiply | 64 | 🔵 **<span style="color: #0969da;">12.349</span>** | 🔵 **<span style="color: #0969da;">12.340</span>** | 🔵 **<span style="color: #0969da;">1.001×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 19.612 | 1.59× | no |
+| mat4_transpose | 32 | 🔴 **<span style="color: #cf222e;">4.061</span>** | 🟢 **<span style="color: #1a7f37;">3.150</span>** | 🟣 **<span style="color: #6f42c1;">1.290×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.0% | 4.567 | 1.45× | yes |
+| mat4_transpose | 64 | 🔵 **<span style="color: #0969da;">6.487</span>** | 🔵 **<span style="color: #0969da;">6.453</span>** | 🔵 **<span style="color: #0969da;">1.005×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 4.581 | 0.71× | no |
+| mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">2.575</span>** | 🟢 **<span style="color: #1a7f37;">1.994</span>** | 🟣 **<span style="color: #6f42c1;">1.292×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +29.2% | 3.116 | 1.56× | yes |
+| mat4_vector | 64 | 🔵 **<span style="color: #0969da;">3.664</span>** | 🔵 **<span style="color: #0969da;">3.651</span>** | 🔵 **<span style="color: #0969da;">1.003×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.180 | 0.87× | no |
+| vec3_cross | 32 | 🔵 **<span style="color: #0969da;">0.540</span>** | 🔵 **<span style="color: #0969da;">0.523</span>** | 🔵 **<span style="color: #0969da;">1.032×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.145 | 2.19× | yes |
+| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">1.318</span>** | 🔵 **<span style="color: #0969da;">1.324</span>** | 🔵 **<span style="color: #0969da;">0.995×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.490 | 1.12× | no |
+| vec4_add | 32 | 🔵 **<span style="color: #0969da;">0.723</span>** | 🔵 **<span style="color: #0969da;">0.711</span>** | 🔵 **<span style="color: #0969da;">1.016×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.367 | 1.92× | yes |
+| vec4_add | 64 | 🔵 **<span style="color: #0969da;">1.654</span>** | 🔵 **<span style="color: #0969da;">1.648</span>** | 🔵 **<span style="color: #0969da;">1.004×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.819 | 1.10× | no |
+| vec4_dot | 32 | 🔵 **<span style="color: #0969da;">0.275</span>** | 🔵 **<span style="color: #0969da;">0.271</span>** | 🔵 **<span style="color: #0969da;">1.013×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.853 | 3.15× | yes |
+| vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.764</span>** | 🔵 **<span style="color: #0969da;">0.764</span>** | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.165 | 1.53× | no |
+| vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.393</span>** | 🟢 **<span style="color: #1a7f37;">0.200</span>** | 🟣 **<span style="color: #6f42c1;">1.966×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +96.6% | 0.665 | 3.33× | yes |
+| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.397</span>** | 🔵 **<span style="color: #0969da;">0.400</span>** | 🔵 **<span style="color: #0969da;">0.994×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.600 | 1.50× | yes |
+| vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.624</span>** | 🟢 **<span style="color: #1a7f37;">0.449</span>** | 🟣 **<span style="color: #6f42c1;">1.389×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +38.9% | 1.535 | 3.42× | yes |
+| vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.921</span>** | 🔵 **<span style="color: #0969da;">0.918</span>** | 🔵 **<span style="color: #0969da;">1.002×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.674 | 1.82× | yes |
+| vec4_scale_add | 32 | 🔵 **<span style="color: #0969da;">0.757</span>** | 🔵 **<span style="color: #0969da;">0.726</span>** | 🔵 **<span style="color: #0969da;">1.043×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.369 | 1.89× | yes |
+| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">1.661</span>** | 🔵 **<span style="color: #0969da;">1.681</span>** | 🔵 **<span style="color: #0969da;">0.988×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.822 | 1.08× | yes |
 
 ## Source, host and controls
 
@@ -487,7 +496,7 @@ gates when repeating the same protocol.
 - Source edits, generated-product changes and evidence of stability: complete 564-file baseline and 571-file candidate manifests verified before/after; no runtime/test/benchmark/runner/build/source edit occurred during measurement, no dependency/tool update; later report files are outside both frozen captures.
 
 Optional kernel/whole-binary comparison: [kernel and whole-binary comparison](standard-math-blend4-2026-11-19/codegen-comparison.json), [binary hashes](standard-math-blend4-2026-11-19/binaries.json), [selected function byte slices](standard-math-blend4-2026-11-19/selected-functions.json).
-Both scalar and compatibility kernel objects, text and whole Release binaries are byte-identical between sources. Direct Neon text changed from 89,192 to 89,136 bytes. Selected FP32 AoS transpose and inverse bodies changed (104→76 and 184→156 bytes); the SoA FP32 w256 transpose and AoS FP64 transpose bodies are byte-identical but moved addresses. These facts do not isolate code placement or prove instruction-count-based speedup.
+Both scalar and compatibility kernel objects, text and whole Release binaries are byte-identical between sources. <span style="color: #6f42c1;">Direct&nbsp;Neon</span> text changed from 89,192 to 89,136 bytes. Selected FP32 AoS transpose and inverse bodies changed (104→76 and 184→156 bytes); the SoA FP32 w256 transpose and AoS FP64 transpose bodies are byte-identical but moved addresses. These facts do not isolate code placement or prove instruction-count-based speedup.
 
 Do not edit `vendor/vectorclass/` or its pin/hash inventory to pass validation.
 On an unexplained vendor mismatch, preserve the failed check and stop. Runtime
@@ -533,7 +542,7 @@ rule, and a passing accuracy gate does not establish universal bitwise identity.
 - Leads with overlapping ranges or other variability: Backend leads with overlapping ranges: `mat4_transpose` FP64 object_aos w256/n128; three invocation ranges describe consistency, not statistical significance. The matched FP64 AoS transpose gain has overlapping ranges; the 4,096-object FP32 target gain also overlaps.
 - Rows slower than scalar, including which backend: compat: 8 rows — `mat4_inverse_trs` FP64 batch_soa w512/n128, `mat4_inverse_trs` FP64 batch_soa w512/n4096, `mat4_transpose` FP64 batch_soa w512/n128, `mat4_transpose` FP64 batch_soa w512/n4096, `mat4_transpose` FP64 object_aos w256/n128, `mat4_vector` FP32 batch_soa w128/n128, `mat4_vector` FP32 batch_soa w128/n4096, `mat4_vector` FP64 batch_soa w512/n4096; neon: 4 rows — `mat4_inverse_trs` FP64 batch_soa w512/n4096, `mat4_transpose` FP64 batch_soa w512/n128, `mat4_transpose` FP64 batch_soa w512/n4096, `mat4_vector` FP64 batch_soa w512/n4096.
 
-These are array-throughput measurements on this M2/toolchain, not isolated latency, all-API performance or application speedup. The matched small FP32 transpose improvement has a measurable TRS-inverse tradeoff and no >5% target gain at 4,096 objects. No Windows or cross-host parity result is added; the existing Windows gate stays failed/incomplete. Direct Neon remains experimental; other hosts/toolchains, physical Intel, FP16/SVML, ASan and external consumers remain outside scope.
+These are array-throughput measurements on this M2/toolchain, not isolated latency, all-API performance or application speedup. The matched small FP32 transpose improvement has a measurable TRS-inverse tradeoff and no >5% target gain at 4,096 objects. No Windows or cross-host parity result is added; the existing Windows gate stays failed/incomplete. <span style="color: #6f42c1;">Direct&nbsp;Neon</span> remains experimental; other hosts/toolchains, physical Intel, FP16/SVML, ASan and external consumers remain outside scope.
 
 ## Evidence and next use
 

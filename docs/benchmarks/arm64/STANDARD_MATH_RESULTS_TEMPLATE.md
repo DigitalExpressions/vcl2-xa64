@@ -124,8 +124,8 @@ same layout first; neither layout is automatically faster.
 | FP | 32 means single-precision `float`; 64 means double-precision `double`. |
 | **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | SSE operations translated to Neon through <span style="color: #bc4c00;">sse2neon</span>. Competes directly with the adjacent <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing. |
 | **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | The native Neon backend. Competes directly with the adjacent <span style="color: #bc4c00;">sse2neon</span> timing. |
-| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. Its continuous color scale shows which backend leads and by how much. |
-| **Winning<br>backend** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span>, <span style="color: #bc4c00;">sse2neon</span>, or Within&nbsp;5% inside the shared band. |
+| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. Its marker and solid color identify the winner outside the shared 5% band. |
+| **Winning<br>backend** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span>, 🟠 <span style="color: #bc4c00;">sse2neon</span>, or 🔵 Within&nbsp;5% inside the shared band. |
 | **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead. An em dash means the result is within the 5% band. |
 | **Scalar<br>(nsec/op)** | Scalar float/double arithmetic with automatic SIMD vectorization disabled. This is a separate reference. |
 | Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Non-SIMD scalar reference time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time. For example, 2× means <span style="color: #6f42c1;">Direct&nbsp;Neon</span> delivers twice the scalar throughput. |
@@ -137,47 +137,56 @@ For the displayed throughput ratio `r`, a <span style="color: #6f42c1;">Direct&n
 For example, 1.25× gives Winning backend **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** and Throughput gain **+25.0%**;
 0.8× gives Winning backend **<span style="color: #bc4c00;">sse2neon</span>** and Throughput gain **+25.0%**. Percentages use the
 displayed ratio, rounded to one decimal place. A Within&nbsp;5% verdict shows
-**—** in Throughput gain. The existing ratio column retains its continuous gradient.
+**—** in Throughput gain. Ratio colors use the same 5% band as the winner markers.
 
 **Backend names have fixed identity colors:** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> is purple and
 <span style="color: #bc4c00;">sse2neon</span> is orange. <span style="color: #6f42c1;">Direct&nbsp;Neon</span> and Within&nbsp;5% stay together on one line.
 These label colors identify the implementation; the timing colors show the result.
 
+**Winner markers remain visible on GitHub**, where inline text colors are removed.
+The ratio and Winning backend columns use the same marker and inclusive 5% band:
+
+| Winner marker | Meaning | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> ratio |
+| --- | --- | --- |
+| 🟣 **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins beyond the 5% margin | Above 1.05× |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
+| 🟠 **<span style="color: #bc4c00;">sse2neon</span>** | <span style="color: #bc4c00;">sse2neon</span> wins beyond the 5% margin | Below 0.95× |
+
+The timing and ratio colors remain available in supporting
+Markdown viewers. Markers and colors describe measured throughput, not
+statistical significance.
+
 **Both competing timing columns are colored relative to each other:**
 
-- <span style="color: #1a7f37;">**Green:**</span> the winning backend's time.
-- <span style="color: #cf222e;">**Red:**</span> the losing backend's time.
-- <span style="color: #0969da;">**Blue:**</span> both times when approximately equal.
+| Timing marker | Meaning |
+| --- | --- |
+| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The winning backend's time, beyond the 5% margin |
+| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The losing backend's time, beyond the 5% margin |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Both times when approximately equal |
 
-**The throughput ratio uses a continuous gradient:**
+Each timing cell keeps its marker when viewed on GitHub.
 
-- **1.0× is white:** equal throughput.
-- **Above 1.0×**, the number fades toward <span style="color: #6f42c1;">Direct&nbsp;Neon</span>'s purple, reaching full
-  purple at **1.5×** (<span style="color: #6f42c1;">Direct&nbsp;Neon</span> has a 50% throughput lead).
-- **Below 1.0×**, it fades toward <span style="color: #bc4c00;">sse2neon</span>'s orange using the reciprocal lead,
-  reaching full orange at **2/3× ≈ 0.667×** (<span style="color: #bc4c00;">sse2neon</span> has a 50% throughput lead).
-- Colors saturate beyond those endpoints. Equal winning throughput leads have
-  equal fade strength: 1.25× and 0.8× each represent a 25% lead for the winner.
+**Throughput ratios use solid winner colors:** purple for <span style="color: #6f42c1;">Direct&nbsp;Neon</span> above
+1.05×, orange for <span style="color: #bc4c00;">sse2neon</span> below 0.95×, and blue within 0.95–1.05× inclusive.
 
 | Throughput ratio | Meaning |
 | ---: | --- |
-| <span style="color: #bc4c00;">0.667×</span> | <span style="color: #bc4c00;">sse2neon</span> leads by approximately 50% |
-| <span style="color: #dea680;">0.800×</span> | <span style="color: #bc4c00;">sse2neon</span> leads by 25% |
-| <span style="color: #ffffff;">1.000×</span> | Equal throughput |
-| <span style="color: #b7a0e0;">1.250×</span> | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 25% |
-| <span style="color: #6f42c1;">1.500×</span> | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 50% |
+| 🟠 <span style="color: #bc4c00;">0.667×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by approximately 50% |
+| 🟠 <span style="color: #bc4c00;">0.800×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by 25% |
+| 🔵 <span style="color: #0969da;">1.000×</span> | 🔵 Equal throughput |
+| 🟣 <span style="color: #6f42c1;">1.250×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 25% |
+| 🟣 <span style="color: #6f42c1;">1.500×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 50% |
 
-This gradient starts changing immediately on either side of 1.0×. The timing
-colors and Winning backend column still use the shared 5% band below, so a slight
-purple/orange tint can appear alongside a Within&nbsp;5% verdict.
+Markers, ratio colors and the Winning backend column all use the shared 5%
+band. The timing columns use green/red to identify the winning/losing times.
 
 The shared decision uses **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>**:
 
-| Throughput ratio | Winning backend | <span style="color: #bc4c00;">sse2neon</span> time color | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time color |
+| Throughput ratio | Winning backend | <span style="color: #bc4c00;">sse2neon</span> timing label | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing label |
 | --- | --- | --- | --- |
-| Above 1.05× | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Red | Green |
-| 0.95–1.05× inclusive | Within&nbsp;5% | Blue | Blue |
-| Below 0.95× | <span style="color: #bc4c00;">sse2neon</span> | Green | Red |
+| Above 1.05× | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | 🔴 Losing time | 🟢 Winning time |
+| 0.95–1.05× inclusive | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% |
+| Below 0.95× | 🟠 <span style="color: #bc4c00;">sse2neon</span> | 🟢 Winning time | 🔴 Losing time |
 
 Within&nbsp;5% is a practical throughput band, not a claim that the times
 are identical. A row with blue timing numbers can have separate median ranges: a small
@@ -230,8 +239,11 @@ gates when repeating the same protocol.
 <!-- UPDATE ALL TABLES: Match rows by object count, AoS/SoA, logical width,
 operation and FP precision. Fill every result cell from this run's data.
 Timing placeholders are intentionally uncolored: after filling them, apply
-the reading guide's green/red/blue timing rule, continuous ratio gradient,
-and fixed purple/orange backend label colors. Recompute both ratios, the
+the reading guide's green/red/blue timing rule, solid winner ratio colors,
+and fixed purple/orange backend label colors. Add 🟢/🔴/🔵 timing markers and
+the matching 🟣/🔵/🟠 winner markers to the ratio and Winning backend columns
+for GitHub readability.
+Recompute both ratios, the
 winning backend, throughput gain and consistency; never retain old colors.
 Default display: three decimals for ns/op and compatibility/Neon ratio, two
 for scalar/Neon, one decimal for percentage gain. Derive ratios from unrounded

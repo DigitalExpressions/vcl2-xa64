@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Color benchmark numbers with inline spans in Markdown comparison tables.
+"""Add winner markers and inline colors to Markdown benchmark tables.
 
 Pass an explicit path to a completed dated report. This updates presentation,
 not measurements. Historical BEFORE comparisons retain their classifications;
@@ -29,7 +29,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BENCHMARKS = ROOT / 'docs/benchmarks/arm64'
 PALETTE = {'green': '#1a7f37', 'red': '#cf222e', 'blue': '#0969da'}
 BACKEND_COLORS = {'Direct Neon': '#6f42c1', 'sse2neon': '#bc4c00'}
-THROUGHPUT_NEUTRAL = '#ffffff'
+WINNER_SYMBOLS = {'green': '🟣', 'blue': '🔵', 'red': '🟠'}
+TIMING_SYMBOLS = {'green': '🟢', 'blue': '🔵', 'red': '🔴'}
 LEGACY = {'🟢': 'green', '🔴': 'red', '🔵': 'blue'}
 LEGEND = '''<!-- benchmark-comparison-colors -->
 **Direct Neon vs sse2neon:** <span style="color: #1a7f37;">faster</span>,
@@ -64,22 +65,13 @@ def marker(ratio):
 
 
 def throughput_color(ratio):
-    """White at parity; saturate at a 1.5x throughput lead for either backend."""
+    """Solid winner colors with an inclusive 5% blue band."""
     ratio = Decimal(ratio)
     if not ratio.is_finite() or ratio <= 0:
         raise ValueError('Throughput ratio must be finite and positive')
-    if ratio >= 1:
-        target = BACKEND_COLORS['Direct Neon']
-        lead = ratio - 1
-    else:
-        target = BACKEND_COLORS['sse2neon']
-        lead = 1 / ratio - 1
-    amount = min(lead / Decimal('.5'), Decimal(1))
-    neutral = THROUGHPUT_NEUTRAL
-    channels = [round(Decimal(int(neutral[i:i+2], 16)) * (1 - amount) +
-                      Decimal(int(target[i:i+2], 16)) * amount)
-                for i in (1, 3, 5)]
-    return '#' + ''.join(f'{value:02x}' for value in channels)
+    decision = marker(ratio)
+    return {'green': BACKEND_COLORS['Direct Neon'],
+            'blue': PALETTE['blue'], 'red': BACKEND_COLORS['sse2neon']}[decision]
 
 
 def annotate_table(lines):
@@ -190,6 +182,7 @@ def annotate_standard_math(text):
 
     def unstyle(cell):
         cell = cell.strip()
+        cell = re.sub(r'^[🟣🔵🟠🟢🔴]\s*', '', cell)
         if cell.startswith('**') and cell.endswith('**'):
             cell = cell[2:-2]
         cell = re.sub(r'<br\s*/?>', ' ', cell, flags=re.I)
@@ -254,14 +247,17 @@ def annotate_standard_math(text):
                     color = marker(number(ratio))
                     compatibility_color = {'green': 'red', 'blue': 'blue', 'red': 'green'}[color]
                     verdict = {'green': 'Direct Neon', 'blue': 'Within&nbsp;5%', 'red': 'sse2neon'}[color]
+                    if color == 'blue':
+                        verdict = '<span style="color: ' + PALETTE['blue'] + ';">' + verdict + '</span>'
+                    verdict = WINNER_SYMBOLS[color] + ' ' + verdict
                     lead_text = '—'
                     if color != 'blue':
                         value = number(ratio)
                         lead = (value - 1) if color == 'green' else (1 / value - 1)
                         lead_text = f'+{lead * 100:.1f}%'
-                    rows.append([operation, fp, '**' + colored(compatibility, compatibility_color) + '**',
-                                 '**' + colored(native, color) + '**',
-                                 '**<span style="color: ' + throughput_color(number(ratio)) + ';">' + ratio + '</span>**', verdict,
+                    rows.append([operation, fp, TIMING_SYMBOLS[compatibility_color] + ' **' + colored(compatibility, compatibility_color) + '**',
+                                 TIMING_SYMBOLS[color] + ' **' + colored(native, color) + '**',
+                                 WINNER_SYMBOLS[color] + ' **<span style="color: ' + throughput_color(number(ratio)) + ';">' + ratio + '</span>**', verdict,
                                  lead_text, scalar, scalar_ratio, separate])
                     counts[color] += 1
                     counts[compatibility_color] += 1
@@ -273,7 +269,7 @@ def annotate_standard_math(text):
         else:
             result.append(lines[index])
             index += 1
-    guide = undecorate_labels((BENCHMARKS / 'standard_math_reading_guide.md').read_text().rstrip())
+    guide = undecorate_labels((BENCHMARKS / 'standard_math_reading_guide.md').read_text(encoding='utf-8').rstrip())
     insertion = guide_start + '\n' + guide + '\n' + guide_end + '\n\n'
     text = ''.join(result)
     position = text.find('Units are **ns/vector')
@@ -300,13 +296,13 @@ def main():
     path = args.report
     if not path.is_file():
         parser.error('Report does not exist: ' + str(path))
-    before = path.read_text()
+    before = path.read_text(encoding='utf-8')
     if re.search(r'\{\{[A-Z0-9_]+\}\}', before):
         parser.error('Report contains unfilled template placeholders; fill them before formatting')
     after, counts = annotate_standard_math(before)
     after = after.rstrip("\n") + "\n"
     if after != before:
-        path.write_text(after)
+        path.write_bytes(after.encode('utf-8'))
     print(dict(counts))
 
 if __name__ == '__main__':
