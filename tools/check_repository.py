@@ -36,6 +36,7 @@ def main():
     for base, directories, names in os.walk(ROOT):
         directories[:] = [name for name in directories
                           if name not in {'.git', '.vscode', 'port-tmp', 'build', '__pycache__'}
+                          and not (Path(base) == ROOT and name == 'work')
                           and not name.startswith('build-')]
         files += [Path(base) / name for name in names
                   if name not in {'.DS_Store', 'CMakeUserPresets.json'}]

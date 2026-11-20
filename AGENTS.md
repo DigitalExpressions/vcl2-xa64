@@ -2,9 +2,40 @@
 
 These instructions apply to this VCL2 XA64 fork on every operating system.
 Keep this file generic and versioned. Machine-specific paths, installed-tool
-inventories and raw execution evidence belong under ignored `build/`.
+inventories and retained execution evidence belong under ignored `build/`.
+Disposable working files belong under ignored `work/` at the repository root.
 An optional `build/local-validation/README.md` can record resources available
 on a particular machine; its absence must not prevent a fresh setup.
+
+## Agent-created files and working directories
+
+- Use root `work/` for temporary scripts, probes, notes, intermediate reports,
+  exports and other scratch files created during validation, benchmarking or
+  investigation. Create the folder as needed; `/work/` and all its contents
+  must remain gitignored.
+- Use `build/` for normal build outputs, dependencies and local validation
+  evidence that needs to be retained. Agents choose between `work/` and `build/`
+  according to each file's purpose, without asking for that placement choice.
+- Always ask for explicit permission before creating any new file or folder
+  anywhere else in the repository. This includes new source files, tests,
+  documentation and utility scripts. Prepare proposed new permanent files in
+  `work/` and request approval for their intended paths before creating them
+  outside `work/` or `build/`.
+- Editing existing files remains subject to the authorized task; this additional
+  permission requirement concerns creating new files and folders.
+- Do not invent additional scratch directories or leave temporary files beside
+  source, tests or documentation. Configure tool output paths accordingly.
+  Exclude the root `work/` folder from repository-content checks, source snapshots
+  and source fingerprints. Temporary working files must not affect the identity
+  of the implementation being validated.
+- Keep `work/` disposable. Anything needed for future builds or evidence must
+  be retained in `build/`, or in an appropriate permanent location approved by
+  the user, before cleanup. No required source, dependency or retained evidence
+  may depend on `work/` remaining available.
+- Never empty `work/` automatically. Empty it only on the user's explicit
+  instruction, keeping the root folder available for later work. A completed
+  commit and push does not itself authorize cleanup. Cleanup of `build/` or
+  other locations still requires its own explicit scope.
 
 ## Current strategy reset
 

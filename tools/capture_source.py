@@ -60,7 +60,7 @@ def verify_capture(root, manifest_path):
     actual = set()
     for path in root.rglob('*'):
         relative = path.relative_to(root)
-        if relative.parts[0] == 'build':
+        if relative.parts[0] in {'build', 'work'}:
             continue
         if path.is_symlink():
             raise ValueError('Captured source contains a symlink: '+relative.as_posix())
