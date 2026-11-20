@@ -9,7 +9,7 @@ failed/incomplete. Current master retains four-blend code; the later TRS-recover
 candidate was declined. The x86 fix campaign and old migration plans are retired.
 Generation is retired; the ownership rules below apply to new agreed work.
 
-Read the [fork usage guide](README-vcl2-xa64.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
+Read the [fork usage guide](README.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
 and [validation index](docs/validation/README.md) before continuing work.
 The ARM port and selected shared validation checkpoint are complete. The default
 branch stays `master`; later work needs its own relevant validation.
@@ -48,9 +48,10 @@ derived files must retain their original attribution too.
 
 Maintain ARM runtime changes in root `*_neon.h` and optional
 `instrset_detect_neon.cpp`. Applications include `vcl2_xa64.h`. All 28 original
-root files must remain exact pinned bytes under the manifest linked from
-`audit_x86_history.md`; the duplicate vendor snapshot is retired. Root README
-is upstream, while fork guidance lives in `README-vcl2-xa64.md`.
+files must remain exact pinned bytes under the manifest linked from
+`audit_x86_history.md`: 27 at root and the original upstream README at
+`audit/vectorclass-README.md`. The duplicate vendor snapshot is retired.
+Root `README.md` is the editable fork usage guide.
 The old adapted-root generation pipeline is retired. Use read-only
 `tools/regenerate_headers.py --check`, integrity controls and the repository
 check, then relevant fresh native validation. Never run an old writer against

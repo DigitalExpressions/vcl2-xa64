@@ -2,7 +2,9 @@
 
 For a native Windows comparison of the fork's x86 backend with original VCL,
 use the separate [upstream comparison protocol](../docs/benchmarks/x86/x86-upstream-comparison.md).
+The Windows harness sources are in [x86/](x86/README.md).
 The ARM three-way benchmark below is a different workload and comparison.
+Its sources are in [arm64/](arm64/README.md).
 
 The standalone C++20 harness compares genuine scalar float/double arithmetic,
 sse2neon and Direct Neon for identical vector/matrix operations. It is independent

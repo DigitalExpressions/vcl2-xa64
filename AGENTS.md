@@ -74,7 +74,7 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Repository and fork protection
 
-- Read `README-vcl2-xa64.md`, protected `README.md`, `CONTRIBUTING.md`, `docs/integration-plan.md` and
+- Read `README.md`, `CONTRIBUTING.md`, `docs/integration-plan.md` and
   `docs/validation/README.md` before making changes or validation claims.
 - Do not create pull requests for this fork or against the original VCL project.
   Preserve the fork relationship, default branch `master` and published history.
@@ -109,13 +109,17 @@ on a particular machine; its absence must not prevent a fresh setup.
 - The separated layout is integrated into local `master`; verified local cleanup
   is complete. See [historical architecture-separation-integration-completed-2026-11-19.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md).
   The original Windows correctness gate stays failed/incomplete.
-  Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
-  report for its actual result/source identity. `README.md` is protected upstream.
+  Read `README.md`, `docs/backend-layout.md` and the dated validation
+  report for its actual result/source identity. On 20 November the maintainer
+  approved replacing root `README.md` with the fork guide and upstream resource
+  links. Root README is now editable fork documentation; its original upstream
+  bytes are retained at `audit/vectorclass-README.md` under the unchanged pin.
 - The maintainer approved replacing the duplicate VCL vendor snapshot with
   `audit_x86_history.md`, `audit_arm64_history.md` and retained audit manifests.
   `vendor/vectorclass/` is retired; its pin moved byte-exact to
-  `audit/vectorclass-2.02.04.json`. All 28 original root paths remain protected
-  exact bytes. Never edit, normalize, format or regenerate them for ARM work or
+  `audit/vectorclass-2.02.04.json`. All 28 original files remain protected
+  exact bytes: 27 at root and the upstream README under `audit/`. Never edit,
+  normalize, format or regenerate these originals for ARM work or
   to make tests pass. Read-only checks verify SHA-256, Git blobs and the upstream
   tree directly; `tools/restore_upstream_vcl.py` reconstructs a comparison copy
   under ignored build without overwriting existing files. On 20 November the
@@ -140,8 +144,11 @@ on a particular machine; its absence must not prevent a fresh setup.
   the later frozen source. Earlier cleanup/candidate results remain historical;
   they do not transfer to a later publication.
 - The old adapted-root generator is retired. `tools/regenerate_headers.py --check`
-  is read-only; `--write` always rejects. Historical adaptation patches remain
-  inactive research assets and must not enter either active include graph.
+  is read-only; `--write` always rejects. On 20 November the maintainer approved
+  retiring the entire `adaptation/` catalog, including its four historical patches
+  and empty manifest. Their frozen Git source is linked from
+  `docs/backend-layout.md`. Integrity checks reject reintroduced `adaptation/`
+  paths directly; candidate checks must not depend on a retired manifest.
   The unused `backends/x86/x86_classification.h` helper was retired with approval;
   historical reproduction uses frozen Git source. The remaining `backends/`
   research index was subsequently retired; its frozen README is linked from
@@ -159,6 +166,12 @@ on a particular machine; its absence must not prevent a fresh setup.
   comparator and runners. Reuse pristine testbench
   `a7293702385e5169a5f58b83177f2a43cd59139b`; verify revision, cleanliness and
   all pinned hashes. Never overwrite an existing dependency checkout.
+- On 20 November the maintainer approved retiring `examples/` while preserving
+  its validation coverage. The arithmetic smoke source and both ARM dispatch
+  sources now live under `tests/`; `vcl_example` is built with `VCL_BUILD_TESTS`
+  and executed separately by both native runners. Keep the README's inline
+  usage examples. The optional GfxMath source and its CMake options are retired;
+  their frozen source is linked from `docs/backend-layout.md`.
 - Clean-source validation remains the default. The explicit captured-source
   mode is only for a complete frozen uncommitted implementation: capture all
   tracked and nonignored added files, exact raw hashes, added/deleted inventory,

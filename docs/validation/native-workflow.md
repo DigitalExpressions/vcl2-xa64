@@ -31,7 +31,8 @@ fetch the testbench into a new path; never overwrite an existing checkout:
 sh tools/fetch_testbench.sh build/_deps/testbench
 ```
 
-All 28 original root files and their audit pin remain exact bytes, as does root
+All 28 original files (27 at root plus the upstream README under `audit/`)
+and their audit pin remain exact bytes, as does root
 `sse2neon.h`, verified directly by required `audit/sse2neon-2272251.json`.
 The vendor catalog is retired. Never regenerate or normalize these headers. Before and after
 validation use the documented read-only maintenance checks:

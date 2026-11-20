@@ -18,10 +18,13 @@ Current provenance:
   moved byte-exact from the former vendor pin. Manifest SHA-256:
   `9c3a9a777426ffac4daf8dce53673629e5b5ff5a16716089a6d2b51cb3b8212e`.
 
-All 28 original files remain byte-exact at repository root, including licenses,
-notices and README. `vendor/vectorclass/` is no longer duplicated in this layout.
+All 28 original files remain byte-exact, including licenses and notices:
+27 at root and the [upstream README](audit/vectorclass-README.md) under `audit/`.
+The maintainer approved replacing root README with the fork guide on 20 November;
+the audited upstream revision and manifest are unchanged.
+`vendor/vectorclass/` is no longer duplicated in this layout.
 `python -B tools/regenerate_headers.py --check` verifies every recorded SHA-256,
-Git blob and the complete upstream Git tree directly from the root originals.
+Git blob and the complete upstream Git tree from the root originals and retained README.
 This check is offline and does not rewrite or normalize any original.
 
 For a separate pristine include directory, use:
@@ -31,8 +34,8 @@ python -B tools/restore_upstream_vcl.py
 ```
 
 Use `python3` on macOS. This reconstructs the verified 28-file snapshot at
-`build/upstream/vectorclass-6675774/`, entirely from the hash-verified root
-originals, without downloading or changing public source. Existing destinations
+`build/upstream/vectorclass-6675774/`, entirely from the hash-verified originals,
+including the retained README, without downloading or changing public source. Existing destinations
 are checked and reused; changed, missing or extra files cause failure and are
 never overwritten. Direct-original probes should use that directory and record
 its manifest/tree proof separately from facade includes.

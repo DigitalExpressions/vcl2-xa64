@@ -81,7 +81,7 @@ def main():
         if code in (0,124) or diagnostic not in text:raise RuntimeError('Target/override rejection failed: '+name)
     _,after=render(ROOT)
     if before!=after:raise RuntimeError('Source integrity changed during include checks')
-    record=dict(success=True,profiles=records,negative_controls=len(negative),root_originals=28,upstream_manifest_files=28,vendor_files=0,integrity_unchanged=True)
+    record=dict(success=True,profiles=records,negative_controls=len(negative),root_originals=len(before['root_originals']),upstream_manifest_files=28,vendor_files=0,integrity_unchanged=True)
     (output/'results.json').write_text(json.dumps(record,indent=2)+'\n')
     print(json.dumps(record,indent=2))
 

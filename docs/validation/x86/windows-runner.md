@@ -42,7 +42,8 @@ Read [AGENTS.md](../../../AGENTS.md), [validation status](../README.md) and
 [integration status](../../integration-plan.md). Inspect actual HEAD, status,
 worktrees and remotes. A new validation run uses an approved clean source or a
 complete immutable captured source, not moving edits. Protect all 28 original
-root files, the VCL audit manifest and root `sse2neon.h` byte-exactly. The required
+files (27 at root and the upstream README under `audit/`), the VCL audit manifest
+and root `sse2neon.h` byte-exactly. The required
 `audit/sse2neon-2272251.json` pins the sole dependency copy; `vendor/` is retired.
 Reuse the pristine testbench at `a7293702385e5169a5f58b83177f2a43cd59139b`,
 checking cleanliness and all three pinned source hashes. Never overwrite an
@@ -63,12 +64,12 @@ $msvcObject = Join-Path $runRoot 'msvc.obj'
 $msvcExample = Join-Path $runRoot 'msvc.exe'
 $clangExample = Join-Path $runRoot 'clang.exe'
 
-cl.exe /nologo /std:c++17 /EHsc /O2 /fp:precise /fp:except- /I. examples/vector_arithmetic.cpp "/Fo$msvcObject" "/Fe$msvcExample"
+cl.exe /nologo /std:c++17 /EHsc /O2 /fp:precise /fp:except- /I. tests/vector_arithmetic.cpp "/Fo$msvcObject" "/Fe$msvcExample"
 if ($LASTEXITCODE -ne 0) { throw 'MSVC example compilation failed' }
 & $msvcExample
 if ($LASTEXITCODE -ne 0) { throw 'MSVC example failed' }
 
-& $nativeClang -m64 -std=c++17 -O2 -fno-trapping-math -fno-math-errno -I. examples/vector_arithmetic.cpp -o $clangExample
+& $nativeClang -m64 -std=c++17 -O2 -fno-trapping-math -fno-math-errno -I. tests/vector_arithmetic.cpp -o $clangExample
 if ($LASTEXITCODE -ne 0) { throw 'Clang example compilation failed' }
 & $clangExample
 if ($LASTEXITCODE -ne 0) { throw 'Clang example failed' }

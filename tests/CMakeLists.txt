@@ -13,6 +13,9 @@
 # limitations under the License.
 
 # Selected API and numerical regression matrix; application independent.
+add_executable(vcl_example vector_arithmetic.cpp)
+target_link_libraries(vcl_example PRIVATE vcl::vcl)
+
 if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC|Clang|GNU")
   message(FATAL_ERROR "The regression harness requires MSVC, Clang or GCC")
 endif()
@@ -209,7 +212,7 @@ add_test(NAME edges COMMAND edges)
 set_tests_properties(edges PROPERTIES TIMEOUT 60)
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64|aarch64" AND NOT VCL_BACKEND STREQUAL "1")
   foreach(example 1 2)
-    add_executable(dispatch_${example} ${VCL_SOURCE_DIR}/examples/dispatch${example}_neon.cpp)
+    add_executable(dispatch_${example} ${CMAKE_CURRENT_SOURCE_DIR}/dispatch${example}_neon.cpp)
     target_link_libraries(dispatch_${example} PRIVATE vcl_test_options vcl_detect)
     add_test(NAME dispatch_${example} COMMAND dispatch_${example})
   endforeach()

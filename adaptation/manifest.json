@@ -1,9 +1,0 @@
-{
-  "schema": 2,
-  "note": "Historical patches retained as research only. No generation or active root outputs. Authoritative ARM sources are root *_neon.h.",
-  "patches": [],
-  "copy_products": [],
-  "upstream_products": [],
-  "upstream_directory": ".",
-  "upstream_manifest": "audit/vectorclass-2.02.04.json"
-}

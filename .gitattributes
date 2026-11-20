@@ -10,10 +10,6 @@ audit/** -text whitespace=cr-at-eol
 /audit_x86_history.md text eol=lf
 /audit_arm64_history.md text eol=lf
 docs/validation/dependency-audit-history-*/** -text
-adaptation/include/** -text
-adaptation/patches/*.patch text eol=lf whitespace=-blank-at-eol
-# The audited single-hunk conversion patch ends with a required blank context line.
-adaptation/patches/0003-defined-avx2-i64-conversion.patch whitespace=-blank-at-eol,-blank-at-eof
 
 # Checksummed portable evidence must keep its recorded bytes on every host.
 docs/benchmarks/arm64/standard-math-*/** -text
@@ -23,7 +19,6 @@ docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02
 
 # Protected root originals: exact pinned raw bytes on every host.
 /LICENSE -text -whitespace
-/README.md -text -whitespace
 /changelog.txt -text -whitespace
 /dispatch_example1.cpp -text -whitespace
 /dispatch_example2.cpp -text -whitespace
@@ -58,10 +53,9 @@ docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02
 /vcl_config.h text eol=lf
 /vcl_runtime.cpp text eol=lf
 /CMakeLists.txt text eol=lf
-/README-vcl2-xa64.md text eol=lf
+/README.md text eol=lf
 tools/** text eol=lf
 tests/** text eol=lf
-examples/** text eol=lf
 benchmarks/**/*.cpp text eol=lf
 benchmarks/**/*.h text eol=lf
 
@@ -69,8 +63,8 @@ benchmarks/**/*.h text eol=lf
 /sse2neon.h -text -whitespace
 
 # Retained upstream-derived ARM bytes: inherited whitespace is intentional.
-/examples/dispatch1_neon.cpp whitespace=-blank-at-eol
-/examples/dispatch2_neon.cpp whitespace=-blank-at-eol
+/tests/dispatch1_neon.cpp whitespace=-blank-at-eol
+/tests/dispatch2_neon.cpp whitespace=-blank-at-eol
 /instrset_compat_neon.h whitespace=-blank-at-eol
 /vectorf128_compat_neon.h whitespace=-blank-at-eol
 /vectorf512e_neon.h whitespace=-blank-at-eol

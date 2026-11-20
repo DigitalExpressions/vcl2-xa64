@@ -7,8 +7,8 @@
     },
     {
       "original": "README.md",
-      "root_disposition": "restore raw pinned bytes",
-      "arm": "README-vcl2-xa64.md"
+      "root_disposition": "editable fork guide; original bytes retained at audit/vectorclass-README.md",
+      "arm": "README.md"
     },
     {
       "original": "changelog.txt",
@@ -18,12 +18,12 @@
     {
       "original": "dispatch_example1.cpp",
       "root_disposition": "restore raw pinned bytes",
-      "arm": "separate examples/"
+      "arm": "tests/dispatch1_neon.cpp"
     },
     {
       "original": "dispatch_example2.cpp",
       "root_disposition": "restore raw pinned bytes",
-      "arm": "separate examples/"
+      "arm": "tests/dispatch2_neon.cpp"
     },
     {
       "original": "instrset.h",

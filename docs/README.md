@@ -1,6 +1,6 @@
 # Developer documentation
 
-Use [the fork guide](../README-vcl2-xa64.md), [backend ownership](backend-layout.md)
+Use [the fork guide](../README.md), [backend ownership](backend-layout.md)
 and [current integration status](integration-plan.md). Architecture separation
 is complete and integrated. Current master keeps the four-blend implementation;
 the later TRS-recovery candidate was declined. The Windows gate remains

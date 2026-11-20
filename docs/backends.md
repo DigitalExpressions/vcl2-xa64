@@ -2,8 +2,9 @@
 
 ## Implementation boundaries
 
-The [source layout](backend-layout.md) protects all 28 original VCL paths at
-root under the audited pin. The duplicate VCL vendor snapshot is retired;
+The [source layout](backend-layout.md) protects all 28 original VCL files under
+the audited pin: 27 at root and the upstream README under `audit/`.
+The duplicate VCL vendor snapshot is retired;
 sse2neon remains a separate protected dependency. The neutral facade `vcl2_xa64.h`
 selects original x86 headers or the separate authoritative ARM `*_neon.h` family.
 No generation is required.

@@ -50,13 +50,13 @@ def main():
     for profile,mode,sanitize in positives:
         assert resolve_profile(args.driver,mode,sanitize,profile)==profile
         build=output/profile
-        cmd=['cmake','-S',root,'-B',build,'-G','Ninja','-DCMAKE_CXX_COMPILER='+args.compiler,'-DCMAKE_BUILD_TYPE='+mode,'-DVCL_TEST_PROFILE='+profile,'-DVCL_BACKEND=1','-DVCL_BUILD_TESTS=ON','-DVCL_BUILD_EXAMPLES=ON','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON','-DVCL_SANITIZE='+('ON' if sanitize else 'OFF')]
+        cmd=['cmake','-S',root,'-B',build,'-G','Ninja','-DCMAKE_CXX_COMPILER='+args.compiler,'-DCMAKE_BUILD_TYPE='+mode,'-DVCL_TEST_PROFILE='+profile,'-DVCL_BACKEND=1','-DVCL_BUILD_TESTS=ON','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON','-DVCL_SANITIZE='+('ON' if sanitize else 'OFF')]
         if sanitize:cmd+=['-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded']
         run(profile+'-configure',cmd)
         entries=json.loads((build/'compile_commands.json').read_text())
         audit_commands(entries,args.driver,mode,profile)
         run(profile+'-smoke-build',['cmake','--build',build,'--parallel','3','--target','vcl_example'])
-        r=run(profile+'-smoke-run',[build/'examples/vcl_example.exe']);assert r.stdout.split()==[b'2',b'5',b'10',b'17']
+        r=run(profile+'-smoke-run',[build/'tests/vcl_example.exe']);assert r.stdout.split()==[b'2',b'5',b'10',b'17']
         # Exercise the actual runner's standalone control subproject too: its
         # add_subdirectory must receive the same profile, especially for UBSan.
         from types import SimpleNamespace

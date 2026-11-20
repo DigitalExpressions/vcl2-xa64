@@ -1,5 +1,11 @@
 # Application-independent regression tests
 
+`VCL_BUILD_TESTS=ON` also builds `vcl_example` from `vector_arithmetic.cpp`.
+Both native runners execute this arithmetic smoke program separately from
+CTest. ARM builds register `dispatch_1` and `dispatch_2` from the local
+`dispatch1_neon.cpp` and `dispatch2_neon.cpp`. These sources moved from the
+retired examples folder without changing their bytes or registered test counts.
+
 The suite detects changes in VCL behavior: arithmetic and masks, integer
 division, conversions, permutations, gather/scatter, protected-page memory
 boundaries, namespace/ABI contracts, 256/512 composition, FP environment and
@@ -64,7 +70,7 @@ Use an x64 Native Tools developer PowerShell with MSVC, CMake, Ninja and Python
 available. Choose fresh build directories and check each command's exit code:
 
 ```powershell
-cmake -S . -B build/windows-msvc-release -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_BUILD_TYPE=Release -DVCL_TEST_PROFILE=upstream-optimized -DVCL_BACKEND=1 -DVCL_BUILD_TESTS=ON -DVCL_BUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake -S . -B build/windows-msvc-release -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_BUILD_TYPE=Release -DVCL_TEST_PROFILE=upstream-optimized -DVCL_BACKEND=1 -DVCL_BUILD_TESTS=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 cmake --build build/windows-msvc-release --parallel 3 --verbose
 ctest --test-dir build/windows-msvc-release --show-only=json-v1
 ctest --test-dir build/windows-msvc-release --output-on-failure --no-tests=error --timeout 60 --parallel 3 --output-junit results.xml

@@ -20,7 +20,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-from regenerate_headers import ROOT, UPSTREAM_MANIFEST, SSE2NEON_AUDIT, digest, git_object, render
+from regenerate_headers import ROOT, UPSTREAM_MANIFEST, UPSTREAM_README, SSE2NEON_AUDIT, digest, git_object, render, verify
+from restore_upstream_vcl import restore
 
 
 def main():
@@ -31,8 +32,6 @@ def main():
     def fresh(name):
         target=output/name;target.mkdir()
         shutil.copytree(ROOT/'audit',target/'audit')
-        (target/'adaptation').mkdir()
-        shutil.copy2(ROOT/'adaptation/manifest.json',target/'adaptation/manifest.json')
         for path in [*(ROOT.glob('*.h')), ROOT/'README.md', ROOT/'LICENSE', ROOT/'changelog.txt', *ROOT.glob('*.cpp')]:
             if path.is_file(): shutil.copy2(path,target/path.name)
         return target
@@ -49,6 +48,26 @@ def main():
     rejected('changed-recorded-sha256',lambda r:manifest_change(r,lambda d:d['files'][0].update(sha256='0'*64)))
     rejected('missing-original-inventory-entry',lambda r:manifest_change(r,lambda d:d['files'].pop()))
     rejected('missing-upstream-audit',lambda r:(r/UPSTREAM_MANIFEST).unlink(),'Missing required upstream audit')
+    rejected('missing-retained-upstream-readme',lambda r:(r/UPSTREAM_README).unlink(),'vectorclass-README.md')
+    rejected('changed-retained-upstream-readme',lambda r:(r/UPSTREAM_README).write_bytes(b'changed\n'),
+             'pristine upstream file: README.md')
+    target=fresh('editable-fork-readme')
+    (target/'README.md').write_text('# Editable fork guide\n')
+    _,proof=render(target)
+    assert proof['protected_root_files']==27 and proof['pristine_upstream_files']==28
+    results.append(dict(control='editable-fork-readme-with-all-upstream-bytes-verified',passed=True))
+    snapshot=target/'build/upstream'
+    receipt=restore(target,snapshot)
+    assert receipt['files']==28 and (snapshot/'README.md').read_bytes()==(target/UPSTREAM_README).read_bytes()
+    assert restore(target,snapshot)['status']=='verified existing snapshot'
+    results.append(dict(control='restore-complete-upstream-tree-with-original-readme',passed=True))
+    (snapshot/'README.md').write_bytes(b'changed\n')
+    try: restore(target,snapshot)
+    except ValueError as error:
+        assert 'pristine upstream file: README.md' in str(error)
+        assert (snapshot/'README.md').read_bytes()==b'changed\n'
+        results.append(dict(control='changed-comparison-readme-rejected-without-overwrite',passed=True))
+    else: raise AssertionError('Changed comparison README was accepted')
     rejected('reintroduced-empty-vendor-directory',lambda r:(r/'vendor').mkdir(),'Retired vendor catalog')
     rejected('reintroduced-vendor-file',lambda r:(r/'vendor').write_bytes(b'extra\n'),'Retired vendor catalog')
     def duplicate_vendor(root):
@@ -92,9 +111,21 @@ def main():
     rejected('inactive-x86-backend-branch',lambda r:append_arm(r,'\n#if VCL_BACKEND == VCL_BACKEND_X86\n#endif\n'))
     rejected('inactive-x86-classification-helper',lambda r:append_arm(r,'\n#if 0\nvcl_detail_x86::nan_mask();\n#endif\n'))
     rejected('inactive-native-AVX-intrinsic',lambda r:append_arm(r,'\n#if 0\n_mm256_add_ps(a,b);\n#endif\n'))
-    def old_writer(root):
-        p=root/'adaptation/manifest.json';spec=json.loads(p.read_text());spec['copy_products']=[dict(output='vectorclass.h',source='vectorclass_neon.h')];p.write_text(json.dumps(spec))
-    rejected('retired-output-list',old_writer)
+    rejected('reintroduced-empty-adaptation-directory',lambda r:(r/'adaptation').mkdir(),'Retired adaptation catalog')
+    rejected('reintroduced-adaptation-file',lambda r:(r/'adaptation').write_bytes(b'extra\n'),'Retired adaptation catalog')
+    def retired_file(root, name, data):
+        path=root/'adaptation'/name;path.parent.mkdir(parents=True);path.write_text(data)
+    rejected('reintroduced-adaptation-manifest',lambda r:retired_file(r,'manifest.json',
+        json.dumps(dict(schema=2,patches=[],copy_products=[],upstream_products=[]))),'Retired adaptation catalog')
+    rejected('reintroduced-adaptation-patch',lambda r:retired_file(r,'patches/old.patch','historical patch\n'),
+             'Retired adaptation catalog')
+    rejected('reintroduced-adaptation-include',lambda r:retired_file(r,'include/vectorclass.h','// duplicate\n'),
+             'Retired adaptation catalog')
+    try: verify(ROOT,{'vectorclass.h':b'forbidden generated output'})
+    except ValueError as error:
+        assert 'Generation is retired' in str(error)
+        results.append(dict(control='retired-output-list',passed=True,diagnostic=str(error)))
+    else: raise AssertionError('Integrity control accepted generated root products')
     before={p.name:p.read_bytes() for p in ROOT.iterdir() if p.is_file()}
     attempt=subprocess.run([sys.executable,'-B',str(ROOT/'tools/regenerate_headers.py'),'--write'],capture_output=True,text=True)
     assert attempt.returncode and 'retired' in attempt.stderr

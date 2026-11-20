@@ -36,13 +36,11 @@ def supported_path(path):
     if name.is_absolute() or '..' in name.parts or '\\' in path or ':' in path or not name.parts:
         return False
     if len(name.parts)==1: return name.suffix in {'.h','.cpp'}
-    allowed={'tests':{'.h','.cpp','.py'},'tools':{'.py','.ps1'},
-             'backends':{'.h'},'adaptation':{'.h','.patch','.json'}}
+    allowed={'tests':{'.h','.cpp','.py'},'tools':{'.py','.ps1'}}
     return name.suffix in allowed.get(name.parts[0],set())
 
 
 def check_generation(dest):
-    if not (dest/'adaptation/manifest.json').exists(): return None
     products,provenance=render_headers(dest)
     rows,stale=verify_headers(dest,products)
     if stale: raise RuntimeError('Candidate has stale generated runtime products: '+', '.join(stale))
@@ -76,8 +74,7 @@ def candidate_provider(patch):
         run.command('candidate-patch-check', ['git','apply','--check','--directory='+prefix,saved])
         run.command('candidate-patch-apply', ['git','apply','--directory='+prefix,saved])
         generation=check_generation(dest)
-        if generation is not None:
-            comparison.write_json(run.output/'candidate-generation-check.json',generation)
+        comparison.write_json(run.output/'candidate-generation-check.json',generation)
         files = [dict(path=p.relative_to(dest).as_posix(),sha256=comparison.sha(p))
                  for p in sorted(dest.rglob('*'),key=lambda p:p.relative_to(dest).as_posix()) if p.is_file()]
         fingerprint = hashlib.sha256(''.join(r['path']+'\0'+r['sha256']+'\n' for r in files).encode()).hexdigest()

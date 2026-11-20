@@ -16,14 +16,13 @@
 """Reconstruct a byte-exact VCL comparison snapshot under ignored build/.
 
 No network, Git configuration or source checkout change is needed. The shipped
-root originals must independently match every recorded SHA256, Git blob and
+root originals and retained upstream README must match every recorded SHA256, Git blob and
 the complete upstream Git tree before copying. Existing snapshots are verified
 and reused without overwriting changed, missing or extra files.
 """
 import argparse
 import json
 from pathlib import Path
-import shutil
 import sys
 from regenerate_headers import ROOT, original_manifest, pristine
 
@@ -48,10 +47,10 @@ def restore(root, output):
         pristine(root,manifest,str(output.relative_to(root)).replace('\\','/'))
         return dict(status='verified existing snapshot',files=len(files),commit=metadata['commit'],tree=metadata['tree'],output=str(output))
     output.mkdir(parents=True,exist_ok=False)
-    for name in files:
+    for name,data in files.items():
         dest=output/name
         dest.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(root/name,dest)
+        dest.write_bytes(data)
     pristine(root,manifest,str(output.relative_to(root)).replace('\\','/'))
     return dict(status='created verified snapshot',files=len(files),commit=metadata['commit'],tree=metadata['tree'],output=str(output))
 

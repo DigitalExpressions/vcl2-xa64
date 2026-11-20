@@ -186,7 +186,8 @@ manifest and checks the exact retained exports. Keep the Windows native
 correctness matrix separate; benchmark checks are not a replacement for it.
 
 The former canonical-patch/generated-root workflow is retired. Preserve the
-28 original root files and use the [current ownership rules](../../backend-layout.md).
+28 original files (27 at root plus the upstream README under `audit/`) and use
+the [current ownership rules](../../backend-layout.md).
 Any future experiment needs an agreed source/export workflow; reproducing an
 older campaign uses its frozen source and tooling, not current-master passes.
 Dependency updates require separate approval. The historical post-timing

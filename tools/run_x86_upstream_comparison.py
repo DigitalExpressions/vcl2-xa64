@@ -40,8 +40,8 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 ISAS = {'sse2': 2, 'sse42': 6, 'avx2': 8, 'avx512': 10}
-HARNESS = ['benchmarks/x86_upstream/common.h', 'benchmarks/x86_upstream/kernels.cpp',
-           'benchmarks/x86_upstream/main.cpp', 'tools/run_x86_upstream_comparison.py',
+HARNESS = ['benchmarks/x86/common.h', 'benchmarks/x86/kernels.cpp',
+           'benchmarks/x86/main.cpp', 'tools/run_x86_upstream_comparison.py',
            'tools/run_x86_upstream_comparison.ps1']
 
 

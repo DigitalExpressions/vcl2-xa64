@@ -143,7 +143,8 @@ The [reading guide](benchmarks/arm64/standard_math_reading_guide.md),
 
 Keep Agner Fog's original attribution/license and third-party notices. The
 current pristine upstream pin is `667577495efaa36a10cbb5d6cb8c942c23913848`;
-all 28 original root paths must remain byte-exact under the
+all 28 original files (27 at root and the upstream README under `audit/`)
+must remain byte-exact under the
 [audited inventory](../audit/vectorclass-2.02.04.json). The duplicate VCL vendor
 copy is retired. Do not edit, format, normalize or regenerate originals to fix a
 port failure.

@@ -26,7 +26,7 @@ NATIVE = ['vcl2_xa64.h', 'vcl_config.h', 'instrset_neon.h', 'instrset_helpers_ne
           'vectorf128_neon.h', 'vectorf128_helpers_neon.h']
 TEST_SYSTEM_HEADERS = {
     'algorithm', 'array', 'cfenv', 'climits', 'cmath', 'cstddef', 'cstdint',
-    'cstdio', 'cstdlib', 'cstring', 'initializer_list', 'limits', 'sys/mman.h',
+    'cstdio', 'cstdlib', 'cstring', 'initializer_list', 'limits', 'stdio.h', 'sys/mman.h',
     'type_traits', 'unistd.h', 'utility', 'vector', 'windows.h',
 }
 

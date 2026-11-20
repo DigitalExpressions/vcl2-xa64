@@ -51,7 +51,7 @@ def main():
     run=Run(ROOT/'build'/('x86-upstream-edges-'+stamp))
     print('Edge evidence:',run.output,flush=True)
     probe=run.output/'edge_probe.cpp'
-    shutil.copyfile(ROOT/'benchmarks/x86_upstream/edge_probe.cpp',probe)
+    shutil.copyfile(ROOT/'benchmarks/x86/edge_probe.cpp',probe)
     shutil.copyfile(Path(__file__),run.output/Path(__file__).name)
     records={}
     for f in (original/'logs').glob('*.json'):
@@ -86,13 +86,13 @@ def main():
         compiler=records[driver+'-sse2-fork-kernels']['command'][0]
         build=run.output/(driver+'-example-build')
         run.command(driver+'-example-configure',['cmake','-S',original/'fork-source','-B',build,'-G','Ninja',
-            '-DVCL_BUILD_EXAMPLES=ON','-DVCL_BACKEND=1','-DCMAKE_BUILD_TYPE=Release',
+            '-DVCL_BUILD_TESTS=ON','-DVCL_BACKEND=1','-DCMAKE_BUILD_TYPE=Release',
             '-DCMAKE_CXX_COMPILER='+compiler,'-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded'])
         run.command(driver+'-example-build',['cmake','--build',build,'--target','vcl_example','--parallel','1'])
-        text=run.command(driver+'-example-run',[build/'examples/vcl_example.exe'])
+        text=run.command(driver+'-example-run',[build/'tests/vcl_example.exe'])
         if text.strip()!='2 5 10 17': raise RuntimeError('Unexpected example output')
         examples.append(dict(driver=driver,source='fork',pass_=True,output=text.strip(),
-            executable_sha256=sha(build/'examples/vcl_example.exe')))
+            executable_sha256=sha(build/'tests/vcl_example.exe')))
     result=dict(original_run_id=original.name,sources=meta['sources'],examples=examples,
         probe_sha256=sha(probe),runner_sha256=sha(run.output/Path(__file__).name),
         shared_evidence_module_sha256=sha(ROOT/'tools/run_x86_upstream_comparison.py'),

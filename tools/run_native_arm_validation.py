@@ -212,7 +212,7 @@ def profile(run, compiler, generator, bench, item):
     try:
         run.command(name + "-configure", ["cmake", "-S", run.checkout, "-B", directory, "-G", generator,
             "-DCMAKE_CXX_COMPILER=" + compiler, "-DCMAKE_OSX_ARCHITECTURES=arm64", "-DCMAKE_BUILD_TYPE=" + item["mode"],
-            "-DVCL_BUILD_TESTS=ON", "-DVCL_BUILD_EXAMPLES=ON", "-DVCL_BACKEND=" + str(item["backend"]),
+            "-DVCL_BUILD_TESTS=ON", "-DVCL_BACKEND=" + str(item["backend"]),
             "-DVCL_ENABLE_EXPERIMENTAL_NEON=ON", "-DVCL_NATIVE_MAX_VECTOR_SIZE=" + str(item["width"]),
             "-DVCL_SANITIZE=" + ("ON" if item["sanitize"] else "OFF"), "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
             "-DVCL_TESTBENCH_DIR=" + (str(bench) if bench else "")])
@@ -255,10 +255,10 @@ def profile(run, compiler, generator, bench, item):
             if item["sanitize"] and any(option not in flags for option in
                     ["-fsanitize=undefined", "-fno-sanitize-recover=undefined"]):
                 raise RuntimeError("Incomplete strict UBSan instrumentation")
-        _, example = run.command(name + "-example", [directory / "examples/vcl_example"], timeout=60)
+        _, example = run.command(name + "-example", [directory / "tests/vcl_example"], timeout=60)
         if example.split() != ["2", "5", "10", "17"]:
             raise RuntimeError("Unexpected example output")
-        artifacts.append(run.binary(name + "-example-binary", directory / "examples/vcl_example"))
+        artifacts.append(run.binary(name + "-example-binary", directory / "tests/vcl_example"))
         (run.output / (name + "-binaries.json")).write_text(json.dumps(artifacts, indent=2))
         test_log = (directory / "Testing/Temporary/LastTest.log").read_text(errors="replace")
         if code or failures or skipped or len(cases) != len(tests) or "runtime error:" in test_log or "UndefinedBehaviorSanitizer:" in test_log:

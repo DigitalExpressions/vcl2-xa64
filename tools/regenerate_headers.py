@@ -27,6 +27,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 UPSTREAM_MANIFEST='audit/vectorclass-2.02.04.json'
+UPSTREAM_README='audit/vectorclass-README.md'
 SSE2NEON_AUDIT='audit/sse2neon-2272251.json'
 
 
@@ -70,7 +71,9 @@ def pristine(root,manifest,directory,*,exact_inventory=True):
     vendor=path_in(root,directory)
     files={};entries=[]
     for row in metadata['files']:
-        name=row['path'];data=path_in(vendor,name).read_bytes()
+        name=row['path']
+        source=UPSTREAM_README if directory=='.' and name=='README.md' else name
+        data=path_in(vendor,source).read_bytes()
         if name in files or digest(data)!=row['sha256']:
             raise ValueError('Changed or duplicated pristine upstream file: '+name)
         blob=git_object('blob',data)
@@ -92,7 +95,10 @@ def original_manifest(root):
 
 
 def verify_sse2neon(root):
-    audit_bytes=path_in(root,SSE2NEON_AUDIT).read_bytes()
+    audit_path=path_in(root,SSE2NEON_AUDIT)
+    if not audit_path.is_file():
+        raise ValueError('Missing required sse2neon audit: '+SSE2NEON_AUDIT)
+    audit_bytes=audit_path.read_bytes()
     audit=json.loads(audit_bytes)
     retained=audit['retained'];upstream=audit['upstream'];proof=audit['representation_proof']
     if audit['schema']!=1 or audit['source_path']!='sse2neon.h' or retained['paths']!=['sse2neon.h']:
@@ -135,10 +141,14 @@ def check_arm_source(path):
 def render(root):
     if (root/'vendor').exists() or (root/'vendor').is_symlink():
         raise ValueError('Retired vendor catalog must not be reintroduced')
+    if (root/'adaptation').exists() or (root/'adaptation').is_symlink():
+        raise ValueError('Retired adaptation catalog must not be reintroduced')
     manifest=original_manifest(root)
     original, upstream = pristine(root, manifest, '.', exact_inventory=False)
     rows = []
     for name, expected in sorted(original.items()):
+        if name=='README.md':
+            continue  # The byte-exact upstream document is retained under audit/.
         actual = path_in(root, name).read_bytes()
         if actual != expected:
             raise ValueError('Changed protected root original (exact bytes required): ' + name)
@@ -156,12 +166,10 @@ def render(root):
             path_in(root, header)
             if not (root/header).is_file():
                 raise ValueError('Missing ARM dependency: '+header)
-    config = json.loads((root/'adaptation/manifest.json').read_text())
-    if config.get('schema') != 2 or config.get('patches') or config.get('copy_products') or config.get('upstream_products'):
-        raise ValueError('Retired adaptation writer must have no active outputs or patches')
     return {}, dict(upstream_commit=upstream['commit'], upstream_tree=upstream['tree'],
         pristine_upstream_files=len(original), protected_root_files=len(rows),
-        root_originals=rows, arm_sources=[dict(path=p.name,sha256=digest(p.read_bytes())) for p in family],
+        root_originals=rows, upstream_readme=dict(path=UPSTREAM_README,sha256=digest(original['README.md'])),
+        arm_sources=[dict(path=p.name,sha256=digest(p.read_bytes())) for p in family],
         sse2neon=sse2neon, generation_retired=True, arm_x86_code_rejected=True)
 
 

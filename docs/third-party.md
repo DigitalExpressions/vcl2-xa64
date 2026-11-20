@@ -2,7 +2,8 @@
 
 - VCL2 originates with Agner Fog. Existing source copyright/license notices and
   the root [LICENSE](../LICENSE) and [changelog](../changelog.txt) are retained.
-  All 28 original files at `6675774` remain exact at root, with a complete
+  All 28 original files at `6675774` remain exact: 27 at root and the
+  [upstream README](../audit/vectorclass-README.md) under `audit/`, with a complete
   [blob/SHA inventory](../audit/vectorclass-2.02.04.json) and
   [x86 revision history](../audit_x86_history.md). The duplicate vendor snapshot
   is retired; an audited comparison copy can be restored under ignored build.
@@ -23,8 +24,8 @@
   revision documented in [tests](../tests/README.md). Its generated copies and
   embedded matching fragments in the adapter/test configuration retain that
   provenance. It is not bundled with the public runtime headers.
-- GfxMath is an optional external consumer used only by the explicitly enabled
-  example. Its sources, tests and license are not copied into this library.
+- GfxMath is an optional external consumer illustrated by the inline examples
+  in the fork README. Its sources, tests and license are not copied into this library.
 
 Upstream repositories: [VCL2](https://github.com/vectorclass/version2),
 [testbench](https://github.com/vectorclass/testbench),

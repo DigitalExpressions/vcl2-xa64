@@ -70,12 +70,12 @@ $msvcObject = Join-Path $runRoot 'msvc.obj'
 $msvcExample = Join-Path $runRoot 'msvc.exe'
 $clangExample = Join-Path $runRoot 'clang.exe'
 
-cl.exe /nologo /std:c++17 /EHsc /O2 /fp:precise /fp:except- /I. examples/vector_arithmetic.cpp "/Fo$msvcObject" "/Fe$msvcExample"
+cl.exe /nologo /std:c++17 /EHsc /O2 /fp:precise /fp:except- /I. tests/vector_arithmetic.cpp "/Fo$msvcObject" "/Fe$msvcExample"
 if ($LASTEXITCODE -ne 0) { throw 'MSVC compilation failed' }
 & $msvcExample
 if ($LASTEXITCODE -ne 0) { throw 'MSVC example failed' }
 
-& $nativeClang -m64 -std=c++17 -O2 -fno-trapping-math -fno-math-errno -I. examples/vector_arithmetic.cpp -o $clangExample
+& $nativeClang -m64 -std=c++17 -O2 -fno-trapping-math -fno-math-errno -I. tests/vector_arithmetic.cpp -o $clangExample
 if ($LASTEXITCODE -ne 0) { throw 'Clang compilation failed' }
 & $clangExample
 if ($LASTEXITCODE -ne 0) { throw 'Clang example failed' }

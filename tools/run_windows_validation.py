@@ -131,7 +131,7 @@ def validate(run, compiler, args, generator):
     flags = ['-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded'] if args.sanitize else []
     run.command('suite-configure',['cmake','-S',run.checkout,'-B',build,'-G',generator,
         '-DCMAKE_CXX_COMPILER='+compiler,'-DCMAKE_BUILD_TYPE='+args.mode,'-DVCL_BACKEND=1',
-        '-DVCL_BUILD_TESTS=ON','-DVCL_BUILD_EXAMPLES=ON','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
+        '-DVCL_BUILD_TESTS=ON','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON',
         '-DVCL_SANITIZE='+('ON' if args.sanitize else 'OFF'),
         '-DVCL_TEST_PROFILE='+args.profile,
         '-DPython3_EXECUTABLE='+sys.executable,
@@ -160,7 +160,7 @@ def validate(run, compiler, args, generator):
                 else dict(test=test['name'],missing=True) for test in tests]
     (run.output/'suite-binaries.json').write_text(json.dumps(binaries,indent=2))
     audit_commands(commands,args.driver,args.mode,args.profile)
-    _, example = run.command('example',[build/'examples/vcl_example.exe'],timeout=60)
+    _, example = run.command('example',[build/'tests/vcl_example.exe'],timeout=60)
     if example.split()!=['2','5','10','17']:
         raise RuntimeError('Unexpected example output')
     logs = (build/'Testing/Temporary/LastTest.log').read_text(errors='replace')

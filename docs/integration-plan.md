@@ -4,8 +4,9 @@ Architecture separation is complete and integrated into master. The retained
 runtime is d796768b30cb375ea62afa72dcab061b1a3e54ca; documentation cleanup does
 not establish a fresh native pass at a later commit.
 
-Applications include `vcl2_xa64.h`. The 28 original VCL root files remain exact
-pinned upstream bytes. ARM implementations live in root `*_neon.h` files and
+Applications include `vcl2_xa64.h`. The 28 original VCL files remain exact
+pinned upstream bytes: 27 at root and the upstream README under `audit/`.
+Root `README.md` is the fork guide. ARM implementations live in root `*_neon.h` files and
 `instrset_detect_neon.cpp`; compatibility stays default and Direct Neon remains
 an explicit experimental opt-in. See [ownership](backend-layout.md), the
 [file map](arch-separation-map.json), [x86 pin](../audit_x86_history.md) and
