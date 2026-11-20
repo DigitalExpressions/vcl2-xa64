@@ -38,7 +38,7 @@ as the final manual snapshot. Its library source and original serial
 configuration probes match the final manual source. The final runner additionally
 checks required ISA level before execution and handles deleted-file manifests.
 
-Comparison with the [Mac report](mac-arm-2026-11-15.md): the Mac tested
+Comparison with the [Mac report](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-2026-11-15.md): the Mac tested
 `465436de204ebdd59e9b5071c353df372148b3df`, tree
 `ff966a90ebfd9a2bc07c76c8418684df3a04ffa8`. New preparation changes include the
 x86-guarded CPUID correction, manual Windows tools, UTF-8 repository checking,

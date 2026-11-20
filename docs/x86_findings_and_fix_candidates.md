@@ -3,7 +3,7 @@
 Prepared 18 November 2026 for future x86 work and possible technical discussion
 with Agner Fog. This is a preservation/review document, not an active repair
 task or a message sent to upstream. The
-[architecture separation plan](arch_separation_plan.md) restores original x86
+[architecture separation plan](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/arch_separation_plan.md) restores original x86
 files at root and keeps Neon adaptations separate. No fix below authorizes
 editing those protected originals.
 

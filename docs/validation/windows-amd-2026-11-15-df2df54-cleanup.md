@@ -30,7 +30,7 @@ this report, the validation index, integration plan, Windows guide and test
 README. Retain the original tested identifiers; this report is not itself a
 tested commit.
 
-The Mac [existing native report](mac-arm-2026-11-15.md) remains at `465436d`.
+The Mac [existing native report](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-2026-11-15.md) remains at `465436d`.
 No new native Mac run was performed. Structural comparison verifies that Mac
 checks and extracted methods retain their original syntax trees; both Mac
 plans and all eight Windows local/upstream plans match the previous runners.

@@ -1,4 +1,3 @@
-b7bf938fe70c5094144beb1b2072a534d73778b8af17fedd22ddc9704b0b86d2  ../windows-amd-2026-11-19-blend4-handoff.md
 524ca3ec26e5b0df3ad3a94f5ddbcc180a3e310b35c018c25de8812d193cce9c  git-source-policy.json
 cdba99416e40680e9ca3d729dbe79575dc0b53209234d8ea1257a589edd967bc  helpers/generate_movement_probe.py
 312a7b948c5fddf7e99da90e11a8e24997481c794ab8fe292b7e330d85403ce1  helpers/probe-project/CMakeLists.txt

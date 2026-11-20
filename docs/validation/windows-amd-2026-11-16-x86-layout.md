@@ -126,7 +126,7 @@ layout. Eight controls passed: clean generation, vendor mutation, extra vendor
 path, patch-context mismatch, output path escape, hand-edited output, changed
 canonical backend and explicit line-ending behavior. Canonical separation does
 not require applications to run generation. Native M2 remains pending; use the
-[handoff](mac-arm-x86-optimization-handoff.md) after a clean source is approved.
+[handoff](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-x86-optimization-handoff.md) after a clean source is approved.
 
 Four further MSVC/Clang consumer builds/runs at SSE2/AVX-512 use only the 35
 shipped root files in an isolated namespace. They pass without canonical vendor,

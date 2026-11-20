@@ -3,8 +3,10 @@
 ## Implementation boundaries
 
 The [source layout](backend-layout.md) protects all 28 original VCL paths at
-root and in vendor. The neutral facade `vcl2_xa64.h` selects original x86 headers
-or the separate authoritative ARM `*_neon.h` family. No generation is required.
+root under the audited pin. The duplicate VCL vendor snapshot is retired;
+sse2neon remains a separate protected dependency. The neutral facade `vcl2_xa64.h`
+selects original x86 headers or the separate authoritative ARM `*_neon.h` family.
+No generation is required.
 
 Keep one public VCL API, numerical contract and independent test suite. Register
 operations, mask representation and compiler workarounds belong to the selected
@@ -13,9 +15,9 @@ NEON. Shared mathematical algorithms may retain narrowly guarded compiler
 inlining decisions, but must keep their coefficients, operation grouping and
 special-value policy consistent.
 
-The [ARM/Neon lessons](neon-arm-lessons.md) and [strategy reset](integration-plan.md)
-are the current planning entry points. The architecture migration preserves the ARM backend behavior below while
-restoring pristine x86 behavior. Prior x86 repair/optimization work is inactive
+The [ARM/Neon lessons](neon-arm-lessons.md) and [current integration status](integration-plan.md)
+are the working entry points. Architecture separation is complete and integrated;
+it preserves the ARM backend behavior below and pristine original x86 behavior. Prior x86 repair/optimization work is inactive
 research and is not part of the x86 include graph.
 
 ## Backend selection and coverage
@@ -55,5 +57,5 @@ Native x86 FP16 in upstream VCL 2.02.04 requires the standard-library
 `<stdfloat>` header. The retained migration and Windows probes lacked the
 required standard-library type, and the AMD host lacks AVX-512 FP16. Historical
 instruction-level 12 syntax checks do not establish native FP16 execution. See
-[migration validation](validation/migration.md) and the
+[migration validation](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/migration.md) and the
 [Windows review](validation/windows-amd-2026-11-15-823ca2a.md).

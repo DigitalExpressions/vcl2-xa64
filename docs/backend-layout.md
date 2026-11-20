@@ -50,11 +50,10 @@ ARM reports Neon separately and no native x86 instruction sets. All modules
 exchanging vector objects must use matching backend/width/namespace settings.
 
 ARM headers also exclude obsolete x86-only code, including inactive branches.
-The [cleanup audit](validation/arm-header-cleanup-audit-2026-11-18.md) and
-[fresh M2 result](validation/mac-arm-2026-11-18-arm-header-cleanup.md) record the
-removal and preserved ARM behavior. SSE-shaped compatibility intrinsics remain
-required through sse2neon. Read-only integrity checks reject native x86 backend,
-AVX and old classification-helper references in ARM-owned source.
+SSE-shaped compatibility intrinsics remain required through sse2neon. Read-only
+integrity checks reject native x86 backend, AVX and old classification-helper
+references in ARM-owned source. Preserve ARM correctness and generic compiler
+portability while maintaining that boundary.
 
 ## Read-only maintenance checks
 
@@ -88,9 +87,8 @@ retains inherited limitations and distinguishes documented contract differences.
 No original file or test gate was changed. Native results remain tied to their
 separate exact captures, and no benchmark or x86 repair is part of integration.
 
-The [18 November M2 result](validation/mac-arm-2026-11-18-arm-header-cleanup.md)
-records the complete frozen candidate and retained failed setup/build attempts.
-The [return handoff](validation/windows-arch-separation-handoff.md) records the
-Windows execution procedure; the dated matrix and triage above record its outcome. No old report
-acquires a new source identity. The [publication comparison](validation/arch-separation-publication-2026-11-18/README.md)
-records metadata differences without transferring a native pass to a later commit.
+The [19 November M2 result](validation/mac-arm-2026-11-19-blend4.md) records the
+later frozen ARM implementation. The [Windows runner guide](validation/windows-runner.md)
+provides the maintained procedure; the dated matrix and triage above record the
+migration outcome. Historical capture/publication proofs remain accessible through
+frozen Git references in the acceptance record. No pass transfers to a later tree.

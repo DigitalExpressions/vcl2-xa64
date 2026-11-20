@@ -27,10 +27,11 @@ is complete; its dated attempts preserve their original preparation status.
 Use a new run ID for later source checkpoints and a new attempt ID for each
 attempt. Do not overwrite failures.
 
-The [Windows prompt](../windows-final-verification-prompt.md) requires approval
-before committing/pushing this shared harness. Only after approval and publication
-can both hosts freeze its exact commit. The final source is not the earlier
-`fb54e3e` documentation checkpoint, which did not contain this harness.
+The initial harness publication and frozen comparison are complete. The old
+Windows verification prompt is retired. Future captures require a newly agreed
+shared frozen source and fresh run/attempt IDs; do not reuse the completed run
+as a new execution. Its tested source remains bd7807e, separate from the earlier
+fb54e3e documentation checkpoint and current master.
 
 Use clean worktrees at the same frozen commit for both hosts. The capture
 runner requires its full SHA via `--expected-commit`. Run everything under
@@ -114,10 +115,10 @@ Clang path. First run all four pinned upstream profiles with the existing
 fixtures, numerical gates, guard controls, strict UBSan proof and 60-second
 deadlines. These are separate from the additional capture cases below.
 
-For each capture, substitute the agreed commit and a unique attempt ID:
+For each new capture, substitute the newly agreed commit and unique run/attempt IDs:
 
 ```powershell
-python -B tools/run_simd_capture.py --run-id simd-parity-20261116 --attempt-id win-msvc-release-01 --driver msvc --mode Release --isa sse2 --backend 1 --expected-commit <full-frozen-SHA>
+python -B tools/run_simd_capture.py --run-id <new-run-id> --attempt-id win-msvc-release-01 --driver msvc --mode Release --isa sse2 --backend 1 --expected-commit <full-frozen-SHA>
 ```
 
 Repeat for MSVC Debug, GNU-driver Clang Release and Clang Debug with `--sanitize`.
@@ -140,13 +141,14 @@ They do not satisfy the final frozen-source run requirement.
 
 ## Mac execution at the same frozen commit
 
-Follow the [Mac prompt](../mac-final-verification-prompt.md). Run the complete
+Follow the [current native workflow](../native-workflow.md) at the newly
+agreed frozen source. Run the complete
 existing native matrix with the pinned testbench first. Then capture Release
 and strict UBSan Debug for compatibility backend 2 at maximum width 512 and
 Direct Neon backend 3 at maxima 128, 256 and 512:
 
 ```sh
-python3 -B tools/run_simd_capture.py --run-id simd-parity-20261116 --attempt-id mac-compat-release-01 --driver apple-clang --compiler "$(xcrun --find clang++)" --mode Release --isa neon --backend 2 --max-width 512 --expected-commit <full-frozen-SHA>
+python3 -B tools/run_simd_capture.py --run-id <new-run-id> --attempt-id mac-compat-release-01 --driver apple-clang --compiler "$(xcrun --find clang++)" --mode Release --isa neon --backend 2 --max-width 512 --expected-commit <full-frozen-SHA>
 ```
 
 Use `--backend 3 --max-width 128`, `256` or `512` for Direct Neon. Use

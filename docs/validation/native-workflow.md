@@ -1,30 +1,65 @@
-# Native validation and branch workflow
+# Native validation workflow
 
-The [integration plan](../integration-plan.md) records the approved merge of
-`neon-port` into the existing default `master` through PR #1. Port review and
-developer documentation cleanup are complete. The completed port and audit
-branches were subsequently retired; they are not required to run tests.
-The default branch remains `master`. Follow the shared [agent instructions](../../AGENTS.md),
-including the no-pull-request and fork-protection rules.
-See the [developer index](../README.md) for current
-instructions and the [Windows runner guide](windows-runner.md) for manual checks.
-The maintainer selected manual test execution on the Mac M2 and AMD Windows
-hosts only; hosted GitHub Actions test workflows are removed.
+Start with the [validation index](README.md), [source ownership](../backend-layout.md)
+and [shared agent instructions](../../AGENTS.md). Architecture separation is
+complete. Its migration plan and old execution prompts are not current tasks.
+Current master retains the accepted four-blend code; the TRS-recovery candidate
+was declined. Choose a newly agreed frozen source before implementation or runs.
 
-For the approved architecture migration, execute the
-[Mac separation handoff](mac-arch-separation-handoff.md). It supersedes the
-existing layout/clean-source assumptions below for that task only, requires a
-complete frozen uncommitted-source capture, and preserves the native controls.
-The maintainer subsequently approved topic-branch publication. The
-[Windows return handoff](windows-arch-separation-handoff.md) describes validation
-from its exact published Git commit; old captured-source IDs remain unchanged.
+Use native Apple M2/macOS ARM64 and native AMD Windows x64. Physical Intel and
+other hosts/toolchains are omitted unless separately tested. Hosted CI, WSL,
+QEMU/Rosetta and ASan retries are outside the documented workflow. Timing is
+separate from correctness. Preserve numerical gates, fixtures, seeds, FP flags,
+classification-only stress, strict UBSan, guard pages and canaries.
 
-## Frozen uncommitted architecture candidates
+## Source and reusable tools
 
-The [current source ownership](../backend-layout.md) uses `vcl2_xa64.h`, protected
-originals at root and separate authoritative ARM headers. Source publication is
-not required to validate the approved migration. From the implementation root,
-choose a fresh ignored capture path and existing pristine `$PINNED_TESTBENCH`:
+Inspect actual branch, HEAD/tree, status, refs and worktrees. Confirm origin is
+DigitalExpressions/vcl2-xa64 and fetch without pruning when starting a new task.
+Do not overwrite local work, change remotes, merge a candidate or recreate retired
+branches. Use a fresh detached worktree when validation needs a clean checkout.
+Commits, pushes, integrations and branch retirement require task-specific approval.
+
+Inspect installed native Python 3.9+, compiler, CMake 3.20+, CTest with JUnit
+and Ninja/make before installing anything. Keep machine paths in ignored local
+notes. Reuse a pristine testbench at
+`a7293702385e5169a5f58b83177f2a43cd59139b` with all three pinned hashes.
+The runners install no tools and download no dependencies. Only if unavailable,
+fetch the testbench into a new path; never overwrite an existing checkout:
+
+```sh
+sh tools/fetch_testbench.sh build/_deps/testbench
+```
+
+All 28 original root files and the audit pin remain exact bytes, as do the
+sse2neon alias/header/pin. Never regenerate or normalize them. Before and after
+validation use the documented read-only maintenance checks:
+
+```sh
+python3 -B tools/regenerate_headers.py --check
+python3 -B tools/check_repository.py
+```
+
+Use `tools/check_header_generation.py` for isolated integrity controls when
+required by the new runtime task. ARM include traces must exclude original x86
+headers. New runtime/test/runner changes require fresh relevant checks and the
+full matrix at the new frozen source. Documentation-only edits need repository,
+link and whitespace checks; they do not require native matrix/timing execution.
+
+## Clean-source and captured-source modes
+
+From a clean checkout, inspect the plan before native execution. Reuse the
+existing testbench via a resolved `$PINNED_TESTBENCH` path:
+
+```sh
+python3 -B tools/run_native_arm_validation.py --plan
+python3 -B tools/run_native_arm_validation.py \
+  --expected-commit "$(git rev-parse HEAD)" --testbench-dir "$PINNED_TESTBENCH"
+```
+
+The default guard requires a clean checkout and records actual HEAD/tree.
+Keep that guard. A complete uncommitted candidate may instead use explicit
+immutable capture mode; a source commit is not required just to satisfy a guard:
 
 ```sh
 python3 -B tools/capture_source.py --output build/UNIQUE-CANDIDATE
@@ -34,191 +69,73 @@ python3 -B build/UNIQUE-CANDIDATE/source/tools/run_native_arm_validation.py \
   --testbench-dir "$PINNED_TESTBENCH"
 ```
 
-Keep the Mac awake, verify all source/archive hashes, and retain the complete
-capture and any failures. The explicit mode sets tested commit/tree to null and
-records the base separately; default clean-checkout behavior remains guarded.
-Never edit the capture, weaken gates or use `--expected-commit` to mislabel it.
-A source change needs a new capture and fresh relevant/full baseline checks.
-See the [actual M2 report](mac-arm-2026-11-18-arm-header-cleanup.md) and
-[Windows return handoff](windows-arch-separation-handoff.md) for exact source IDs.
+Capture all tracked and nonignored added paths, exact raw hashes, additions,
+deletions, base commit/tree and patch. Verify the complete immutable capture
+before and after. Build only that source, never edit it. Captured-source results
+have tested commit/tree null, with the base identified separately. A source edit
+needs a new capture and fresh relevant/full validation. Do not relabel an old
+pass as a later publication's native result.
 
-## Available hardware
-
-The maintainer has two physical validation hosts:
-
-| Host | Native target | Preferred toolchain and coverage |
-| --- | --- | --- |
-| Apple Mac M2, macOS | ARM64 | Apple Clang; sse2neon compatibility and Direct Neon at logical widths 128/256/512; Release and strict UBSan Debug |
-| AMD Ryzen 9 7950X, Windows x64 | AMD x86-64 | MSVC first; native Clang for strict UBSan and compiler comparison; baseline and supported selected x86 ISA profiles |
-
-Use these hosts for future cross-platform validation. Physical Intel hardware
-is omitted for now; AMD results establish AMD coverage. QEMU/WSL results remain
-separately labeled emulation and cannot establish native Mac coverage. Inspect
-the actual OS, CPU, compiler, sanitizer runtime and CPU/OS ISA support each time.
-Hardware availability does not establish that a particular revision has passed.
-Read the [validation status and reports](README.md) when resuming on either
-host. Add new results using the [shared report template](report-template.md),
-then update the index with the exact tested revision and actual outcome.
-
-## Shared branch and integration
-
-`master` is the shared branch to fetch on both hosts after the approved merge
-of PR #1 at `732f3e9`. Start short-lived topic branches from `master` for new
-work when useful and review changes locally. Do not create pull requests, alter
-the fork relationship/remotes or rewrite published history. Commits, pushes,
-integrations, releases and further branch retirement need task-specific approval.
-Preserve the `upstream` remote for original VCL and never push to that repository.
-See the [current restart point](../integration-plan.md#restart-point);
-inspect actual local branches and completed removals on each host.
-
-Both machines should test the same commit when comparing results. Inspect
-divergence before any integration; preserve unrelated work and use a fresh
-worktree when necessary. Record the tested HEAD and tree on each host, rather
-than relying on branch names alone. A merge does not establish a new native pass.
-
-On 2026-11-15 the maintainer approved fast-forwarding `neon-port` through the
-five `windows-native-validation` commits ending at
-`943923a4cce1b3990ee69b37ebdf1c37f0fc67b6`, documenting this workflow, and pushing
-the updated `neon-port` to `origin`. Subsequent native Mac confirmation at
-`465436d` is recorded in the [Mac ARM report](mac-arm-2026-11-15.md), including
-its initial sleep-related timeouts and full-profile replay. The accompanying
-workflow/runner commit changes development assets; it does not change the
-library or regression cases. That earlier approval excluded `master`. The
-maintainer subsequently approved merging PR #1 into `master` while keeping
-branches; the merge completed on 2026-11-15. Future pushes and merges require
-the maintainer's approval; this approval applies to that completed integration.
-
-From a clean existing Mac checkout:
-
-```sh
-git status --short --branch
-git fetch origin
-git switch master
-git pull --ff-only origin master
-git rev-parse HEAD
-git rev-parse 'HEAD^{tree}'
-```
-
-If the checkout contains unrelated changes or has diverged, preserve it and
-create a separate worktree instead of resetting or overwriting it:
-
-```sh
-git fetch origin
-git worktree add --detach build/native-validation origin/master
-```
-
-Choose a fresh path and run subsequent commands from that worktree's root.
-
-## Preserve future validation inputs
-
-The maintained runners, shared evidence module, tests, fixture generators,
-cross-platform corpus/policies and comparator remain in the repository. Old
-branch names are not dependencies. Preserve original raw logs/results, source
-and compiler details, command/flag inventories, checksums, output bits and failed
-attempts in verified compact archives under ignored `build/`. Save any uncovered
-records or generated diagnostic/input sources in a checksummed supplement before
-cleanup. Keep tool installations and pristine testbench checkouts available.
-
-Once a run is complete and evidence coverage is verified, the user can authorize
-removal of rebuildable objects, test executables, debug symbols, generated build
-directories and temporary worktrees. Preserve source commits and original archive
-hashes; remove worktrees through Git. New passes use fresh builds rather than
-reusing retired outputs. See the [retention follow-up](evidence-retention-2026-11-16.md)
-for the approved cleanup of the frozen Mac worktree. Never discard unrelated
-work or evidence as part of broad cleanup, and never overwrite an earlier attempt.
-
-The native runners do not install build tools. Inspect available native Python,
-compiler, CMake/CTest and Ninja/make first, and put the selected installed tools
-on the current process's PATH. Shared corpus capture requires Ninja on both
-hosts. Keep machine-specific locations in local ignored notes, not shared
-instructions. Reuse a pristine pinned testbench with `--testbench-dir`, or fetch
-it explicitly into a new directory using the supplied script.
-
-Before an expensive run, inspect the Mac `--plan` and Windows driver/mode
-`--plan` outputs. These are registration checks, not executed test results.
-Check the shared corpus and comparator controls using the
-[cross-platform instructions](cross-platform/README.md#check-the-harness), which
-also create the ignored control-output directory for a fresh checkout.
-
-## Native Mac ARM run
-
-Use native macOS arm64 Terminal and Python, with Xcode Command Line Tools,
-Python 3.9+, CMake 3.20+, CTest supporting `--output-junit`, and Ninja or make.
-Inspect installed tools first. Run from the repository root after updating:
-
-```sh
-sh tools/fetch_testbench.sh build/_deps/testbench
-python3 -B tools/run_native_arm_validation.py --plan
-python3 -B tools/run_native_arm_validation.py --expected-commit "$(git rev-parse HEAD)"
-```
-
-The fetch script creates a separate pinned upstream checkout and refuses to
-overwrite an existing path. Reuse a clean checkout at the pinned revision if
-it already exists. The runner verifies its Git revision and three source
-hashes; `--testbench-dir` selects another existing checkout. It performs no
-downloads or installations. For offline restoration, use
-`--testbench-bundle /path/to/testbench.bundle` with the previously prepared
-bundle; its branch must be named `pinned-testbench`.
+## Native Mac matrix and controls
 
 | Backend | Logical maximum | Release cases | Strict UBSan Debug cases |
 | --- | --- | --- | --- |
-| ARM sse2neon compatibility | 512 | 1350 | 1350 |
+| sse2neon compatibility | 512 | 1350 | 1350 |
 | Direct Neon | 128 | 486 | 486 |
 | Direct Neon | 256 | 890 | 890 |
 | Direct Neon | 512 | 1292 | 1292 |
 
-The expected full matrix is 8,036 case instances in eight fresh profiles.
-`--local-only` runs 42/40/42/44 cases per mode, 336 total, excluding the
-optional upstream matrix. These counts are registration checks, not results.
-If registration changes later, review the inventory and update the runner's
-checkpoints deliberately; do not omit failing cases to match a count.
+Expected inventory: 8,036 case instances across eight fresh profiles, plus eight
+examples. These are registration counts, not new results. Preserve every named
+case, 60-second deadlines and concurrency three. Review deliberate registration
+changes; never omit a failing case to match a count. Direct Neon stays an
+explicit experimental opt-in; compatibility stays default.
 
-The runner records the current clean HEAD/tree, optionally verifies
-`--expected-commit`, and requires ancestry through `943923a`. It rejects
-Rosetta and non-macOS hosts, verifies arm64 Mach-O executables, probes strict
-nonrecovering UBSan, checks a runtime-query consumer, and exercises protected
-page read/write controls at the actual host page size. It retains numerical
-gates, fixture generators, selected rounding options, no implicit contraction,
-classification-only finite-math stress and all original 60-second deadlines.
-The documented Apple-host ASan startup hang is not retried. Build/test
-concurrency is three; timing benchmarks are outside this validation task.
+Verify native ARM64 Python and Mach-O execution, CPU/OS and Rosetta off. Keep
+the Mac awake for the run. Prove strict nonrecovering UBSan with a passing positive
+control and intentional overflow: require its diagnostic, no continuation and
+actual exit (Apple may exit 1 or abort with -6). Verify writable and all four
+inaccessible-page controls at the actual page size, plus runtime-query consumers,
+partial accesses and canaries. Keep no implicit contraction and selected rounding
+flags; classification-only finite-math stress stays separate.
 
-Every invocation creates an ignored `build/mac-m2-native-<UTC timestamp>/` with
-commands and exit codes, host/tool inventory, source and executable hashes,
-compile commands, raw configure/build/test logs, JUnit and per-profile results.
-Return `return-evidence.zip` and its checksum for review. Keep the full build
-directory until archive coverage has been verified and cleanup authorized as
-described above. An unavailable compiler/runtime or failed control is a
-coverage gap or failure, never a sanitizer pass.
+Every run uses a fresh ignored build directory and retains commands/exits,
+host/tools, source and binary hashes, compile/link flags, logs, JUnit, source
+captures, generated inputs and all failures. Missing controls/runtimes and
+unexpected exits are failures or gaps. Do not retry the documented ASan hang.
 
-The older offline packet is pinned to `943923a`; its bundled runner remains a
-reproduction of that exact checkpoint. Use the in-tree runner above for an
-updated `master` checkout. Do not change the packet's checksums or pretend
-its older source revision is the current HEAD.
+## Native AMD Windows and shared corpus
 
-## Native AMD Windows run and evidence
+Use an x64 Visual Studio developer shell and native x64 Python/CMake/CTest/Ninja.
+Prioritize MSVC; use native GNU-driver Clang for strict UBSan. Follow the
+[Windows runner](windows-runner.md) for four full Release/Debug profiles and
+CPU-and-OS-gated AVX2/AVX-512 selections. MSVC Debug is unsanitized. Preserve
+`/fp:strict`, Clang no-contraction/rounding settings and the documented static
+release CRT for Clang UBSan. Prove native PE, guard and sanitizer controls.
 
-Prioritize MSVC on the AMD host. Follow [the regression instructions](../../tests/README.md)
-and the current platform/toolchain steps in the
-[Windows runner guide](windows-runner.md), labeling execution as physical AMD.
-Run baseline Release/Debug and the pinned upstream selection; probe CPU/OS
-support before selecting AVX2/AVX-512. Use native GNU-driver Clang for strict
-UBSan after an intentional-UB control proves the installed runtime. MSVC Debug
-is useful native coverage and does not provide UBSan. Preserve the documented
-floating-point flags, guard pages, partial counts, canaries and deadlines.
+The current full Windows gate is failed/incomplete: 5,387 passed, 249 failed,
+76 not run of 5,712, plus twelve passing examples. Bounded preservation and
+matching RTC diagnostics do not convert that gate into a pass. Record new and
+inherited failures separately; do not resume x86 repairs.
 
-Keep raw artifacts under ignored `build/` on both hosts. Record source revision,
-compiler, flags, case inventories, failures/skips/timeouts and coverage gaps.
-Compare results from the same source commit, with platform/toolchain differences
-identified. Publish only portable summaries; leave machine paths, application
-data, SDKs and credentials out of public sources. Preserve dated historical
-records and add a fresh record for newly executed native tests.
+For a newly agreed cross-host comparison, use the
+[shared corpus and policies](cross-platform/README.md) at the same approved
+frozen source. Create ignored build first and check its harness. Separate native
+matrix passes are not cross-host parity. Use fresh run/attempt IDs, preserve
+full inventories and compare all selected records under their declared policies.
 
-The [initial AMD record](windows-amd-2026-11-15.md) and
-[AVX-512/ARM POSIX follow-up](windows-avx512-2026-11-15.md) cover earlier executed
-matrices. They remain historical evidence. The
-[native Mac report](mac-arm-2026-11-15.md) records the subsequently executed
-8,036-case matrix at `465436d`. The [status index](README.md) separates that
-result from the earlier Windows checkpoints; a Windows run at the same exact
-revision has not been recorded here. Add a fresh dated report for the next
-Windows execution rather than rewriting either historical Windows record.
+## Reports and cleanup
+
+Use the [report template](report-template.md); publish portable relative paths,
+source/tool identities, actual attempts, failures and coverage gaps without
+credentials, machine paths or binaries. Existing dated passes keep their own
+source identities. Benchmarks require a separate matched Release protocol with
+all slower rows, output checks and variability; correctness runs collect no timing.
+
+During active work retain complete evidence. Later cleanup needs explicit scope;
+normally verify compact coverage before removing outputs. A maintainer request
+to discard obsolete campaign artifacts may instead remove them without new
+archives, as recorded in the [20 November cleanup](mac-arm-documentation-cleanup-2026-11-20.md#completed-local-workspace-cleanup).
+State what is no longer available. Keep tools, dependencies, canonical tests,
+useful findings and unrelated work. Remove worktrees through Git. Future native
+passes use fresh builds and establish their own results.

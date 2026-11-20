@@ -4,7 +4,7 @@ Status: Windows baseline-ISA correctness and targeted performance confirmation
 are complete; paired higher-ISA selections retain failures, and native M2 is
 pending. Read the [Windows report](../windows-amd-2026-11-16-x86-layout.md).
 Read the [execution plan](../../x86-backend-optimization-plan.md) and
-[Mac handoff](../mac-arm-x86-optimization-handoff.md).
+[Mac handoff](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-x86-optimization-handoff.md).
 
 `candidate.patch` is an uncommitted five-file source/test patch against
 `44f974ac31e1448e0beb5157d2bd8d669f5c518e`, with SHA256

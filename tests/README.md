@@ -133,8 +133,9 @@ full-width shifts, composition literals and FP64 conversion boundaries under
 all four rounding modes. These assertions retain the original case inventory,
 deadlines and numerical gates. Compact x86 mask expansion and native AVX-512
 fixed-nearest conversion are checked according to their actual API contracts.
-See the [Windows completion plan](../docs/windows-correctness-plan.md) for the
-new candidate and subsequent native M2/performance gates.
+See the [validation index](../docs/validation/README.md) for recorded native
+results and remaining gaps. Each pass belongs to its exact frozen source;
+retired Windows/Mac plans do not authorize another execution or repair campaign.
 
 `generate_*_reference.py --check` regenerates the committed fixtures and checks
 agreement at two Decimal precisions. The extended x86 fixture generator uses

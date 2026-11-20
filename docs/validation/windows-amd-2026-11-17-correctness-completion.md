@@ -4,7 +4,7 @@ Date: 2026-11-17. **Selected native Windows matrix passed after fixes.**
 Four full baseline profiles pass 5,392/5,392 and all eight higher-ISA local
 profiles pass 320/320: **5,712/5,712 selected CTest instances**, no failures,
 skips, timeouts or suite UBSan diagnostics. Twenty focused post-fix programs pass.
-The [durable plan](../windows-correctness-plan.md) records the restart point.
+The [durable plan](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/windows-correctness-plan.md) records the restart point.
 
 ## Outcome and tested source
 
@@ -30,7 +30,7 @@ in this detached snapshot. Neither the original inventories nor vendor bytes
 were normalized or replaced.
 
 The Mac report published at `3abf7af` tested `a099098`. It does not cover these
-new fixes. A new [M2 handoff](mac-arm-correctness-handoff.md) requires an approved
+new fixes. A new [M2 handoff](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-correctness-handoff.md) requires an approved
 publication checkpoint and explicit source comparison before native execution.
 
 ## Host, tools and dependencies

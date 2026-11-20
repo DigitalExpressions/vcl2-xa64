@@ -24,9 +24,10 @@ docs/benchmarks/standard-math-*/*.csv whitespace=cr-at-eol
 docs/benchmarks/x86-upstream-2026-11-16-ade9d9b-final/** -text
 docs/benchmarks/x86-optimization-2026-11-16/** -text
 docs/validation/x86-optimization-2026-11-16/** -text
+# The retained historical index has intentional CRLF bytes.
+docs/validation/x86-optimization-2026-11-16/README.md whitespace=cr-at-eol
 docs/validation/windows-isa-triage-2026-11-17/** -text
 docs/validation/windows-correctness-2026-11-17/** -text
-docs/validation/mac-arm-correctness-2026-11-17-ab5bb87/** -text
 docs/validation/x86-optimization-2026-11-16/candidate.patch whitespace=-blank-at-eol
 # Unified diff context markers are part of this checksummed evidence file.
 docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/validator.patch whitespace=-blank-at-eol
@@ -75,9 +76,6 @@ examples/** text eol=lf
 benchmarks/**/*.cpp text eol=lf
 benchmarks/**/*.h text eol=lf
 
-# Portable architecture-separation evidence retains exact recorded bytes.
-docs/validation/arch-separation-m2-*/** -text
-
 # Shipped third-party alias retains exact vendor bytes too.
 /sse2neon.h -text -whitespace
 
@@ -94,12 +92,6 @@ docs/validation/arch-separation-m2-*/** -text
 /vectormath_exp_neon.h whitespace=-blank-at-eol
 /vectormath_trig_neon.h whitespace=-blank-at-eol
 
-# Checksummed ARM header cleanup evidence retains its exact portable bytes.
-docs/validation/arm-header-cleanup-m2-*/** -text
-
-# Publication source comparison is checksummed portable metadata.
-docs/validation/arch-separation-publication-*/** -text
-
 # Checksummed Windows reports and portable results preserve their recorded bytes.
 # Their retained CRLF endings are intentional.
 docs/validation/windows-arch-separation-2026-11-19/** -text whitespace=cr-at-eol
@@ -112,12 +104,8 @@ docs/validation/architecture-separation-integration-2026-11-19/** -text
 docs/validation/architecture-separation-integration-completed-2026-11-19.md -text
 
 # Exact portable evidence and Git validation resources for the four-blend candidate.
-docs/validation/m2-arm-preflight-2026-11-19/** -text
 docs/validation/m2-blend4-2026-11-19/** -text
 docs/validation/windows-blend4-handoff-2026-11-19/** -text
-docs/validation/m2-arm-preflight-2026-11-19.md -text
-docs/validation/windows-amd-2026-11-19-blend4-handoff.md -text
 docs/validation/mac-arm-2026-11-19-blend4.md -text
-docs/arm-next-step-proposal-2026-11-19.md -text
 # Nested measured CSV files keep their recorded CRLF bytes.
 docs/benchmarks/standard-math-blend4-2026-11-19/*/results.csv whitespace=cr-at-eol

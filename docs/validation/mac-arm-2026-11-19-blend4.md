@@ -3,7 +3,7 @@
 **8,036/8,036 native CTest cases and 8/8 examples passed** on a new complete
 frozen source capture. Zero failed, skipped or timed-out cases; no profile/test
 retries. The recommended four-pattern task from the
-[proposal](../arm-next-step-proposal-2026-11-19.md) was authorized after its
+[proposal](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/arm-next-step-proposal-2026-11-19.md) was authorized after its
 planning checkpoint. Compatibility remains default; Direct Neon remains
 explicitly experimental.
 

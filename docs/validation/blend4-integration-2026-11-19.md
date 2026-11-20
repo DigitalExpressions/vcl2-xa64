@@ -4,7 +4,7 @@ The maintainer approved retaining the four-blend candidate, integrating the
 reviewed Windows evidence into `master`, publishing to origin and cleaning
 rebuildable local artifacts after evidence verification. The known FP32 AoS
 TRS-inverse elapsed costs, 2.2% / 2.7% at 128 / 4,096 objects, are accepted for
-this integration and assigned to a [separate M2 follow-up](m2-trs-inverse-follow-up-2026-11-19.md).
+this integration and assigned to a [separate M2 follow-up](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/m2-trs-inverse-follow-up-2026-11-19.md).
 They have not been fixed. The approximately 6.0% small-transpose throughput gain
 and the measured costs retain their original [benchmark provenance](../benchmarks/STANDARD_MATH_RESULTS_2026-11-19.md).
 

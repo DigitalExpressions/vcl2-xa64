@@ -35,9 +35,9 @@ Transfer raw archives separately for a full independent audit. No cleanup is
 authorized; final documentation-check records remain under the raw root too.
 
 For repetition, follow the maintained Windows runner and
-[durable completion plan](../../windows-correctness-plan.md). Use a fresh
+[durable completion plan](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/windows-correctness-plan.md). Use a fresh
 attempt/output directory and preserve the same controls, flags, 60-second
 deadlines and concurrency three. Use the
-[new M2 handoff](../mac-arm-correctness-handoff.md) only after the new source is
+[new M2 handoff](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-correctness-handoff.md) only after the new source is
 approved and published. This bundle does not claim a clean-base pass, a new
 cross-host corpus comparison or performance equivalence with original VCL.

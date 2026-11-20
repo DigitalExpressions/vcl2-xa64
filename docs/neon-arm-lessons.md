@@ -1,39 +1,29 @@
 # ARM64 / Neon lessons to carry forward
 
-Strategy reset requested on **18 November 2026**. This is the starting point
-for the next Mac ARM approach. The maintainer approved the
-[architecture separation plan](arch_separation_plan.md) and its
-[Mac implementation/validation handoff](validation/mac-arch-separation-handoff.md),
-with no source migration started in this publication. The cleanup changes
-documentation and removes completed local build
-workspaces; it does not change library, backend, adaptation, test or tool source.
+The architecture separation and native validation are complete and integrated
+into master. Use [current ownership](backend-layout.md),
+[integration status](integration-plan.md) and the [validation index](validation/README.md).
+These lessons remain useful for future ARM work. The old x86 repair campaign
+and Mac migration handoffs are retired; they are not implementation requests.
 
-The old x86 correctness/optimization campaign is retired. Its implementations
-are not requirements for the next ARM design. Existing x86 fixes are neither
-reverted nor extended during this cleanup. Historical reports remain evidence,
-not an instruction to continue that work.
+## What retained native M2 testing established
 
-## What native M2 testing established
+The [19 November correctness report](validation/mac-arm-2026-11-19-blend4.md)
+records **8,036 CTest passes plus eight examples** across compatibility maximum
+512 and Direct Neon maxima 128/256/512, each Release and strict UBSan Debug.
+Its tested implementation is a 571-file uncommitted capture, fingerprint
+3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36;
+tested commit/tree are null, with base 5e039b0 identified separately. This
+result is not a fresh pass at current master's later metadata/layout tree.
+[Portable source/results](validation/m2-blend4-2026-11-19/README.md) remain.
+Obsolete raw Mac sessions/binaries were discarded on 20 November.
 
-The latest native correctness checkpoint is
-`ab5bb8754a33724e05a170fa2867475077efd023`, tree
-`48376a53dfa5f5f2139651e3d44f5e1a9ed841b1`.
-The [M2 report](validation/mac-arm-2026-11-17-ab5bb87-correctness.md) records
-**8,036 CTest passes and eight examples** across compatibility maximum 512 and
-Direct Neon maxima 128/256/512, each Release and strict UBSan Debug. There were
-no failures, skips, timeouts or retries at that checkpoint.
-
-The [portable M2 evidence](validation/mac-arm-correctness-2026-11-17-ab5bb87/README.md)
-retains complete case inventories, flags, controls, source comparison, vendor
-integrity and archive receipts. Original raw Mac evidence resides on the Mac;
-this Windows cleanup does not claim to inspect or remove those Mac archives.
-The earlier [shared checkpoint](validation/mac-arm-2026-11-16-bd7807e-final.md)
-and [validator follow-up](validation/mac-arm-2026-11-16-bd7807e-validator-followup.md)
-record selected cross-host comparisons under explicit policies.
-
-These results apply to the recorded source and selected API surface. They do
-not validate a future redesign, every VCL API, full scalar-libm behavior,
-application integration or universal bitwise equality between architectures.
+The earlier [shared checkpoint](validation/cross-platform/README.md) and
+[source-byte audit](validation/source-byte-audit-2026-11-16-bd7807e.md) retain
+32 selected cross-host comparisons and their exact source identities. These
+claims are separate from later native matrix passes and from current master.
+No checkpoint validates every VCL API, full scalar-libm behavior, application
+integration, a future redesign or universal bitwise equality across architectures.
 
 ## Hardware width and representation
 
@@ -118,12 +108,14 @@ a new source checkpoint is explicitly selected. Old handoffs are historical.
 
 ## What M2 performance evidence says
 
-The [17 November M2 report](benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
-measured source `3abf7af`, with scalar, sse2neon and Direct Neon implementations
-over 160 three-way vector/matrix rows. Direct Neon led 56 rows, 103 were within
-the shared 5% band, and sse2neon led one with overlapping invocation ranges.
-This supports further investigation of Direct Neon for those workloads; it
-does not establish a universal winner or the performance of a future rewrite.
+Use the [19 November master checkpoint](benchmarks/standard-math-master-checkpoint-2026-11-19/README.md)
+and [completed TRS decision](validation/trs-inverse-decision-2026-11-20.md) for
+the retained performance context. Master keeps the approximately 6% small-
+transpose gain and its accepted inverse cost. The proposed inverse recovery
+had material dot-product costs and was declined. Results remain workload- and
+source-specific; no application weighting establishes a universal winner.
+Earlier 13/17 November reports and datasets remain in frozen Git history and
+are no longer local baseline files.
 
 Keep the following measurement practices:
 
@@ -143,15 +135,17 @@ Keep the following measurement practices:
   and microbenchmarks do not validate a scene, renderer or external consumer.
 
 The [reading guide](benchmarks/standard_math_reading_guide.md),
-[older M2 measurements](benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md) and
+[benchmark protocol](../benchmarks/README.md) and
 [report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) remain useful.
 
 ## Source provenance and dependencies
 
 Keep Agner Fog's original attribution/license and third-party notices. The
 current pristine upstream pin is `667577495efaa36a10cbb5d6cb8c942c23913848`;
-all 28 files under `vendor/vectorclass/` must remain byte-exact. Do not edit,
-format, normalize or regenerate into that directory to fix a port failure.
+all 28 original root paths must remain byte-exact under the
+[audited inventory](../audit/vectorclass-2.02.04.json). The duplicate VCL vendor
+copy is retired. Do not edit, format, normalize or regenerate originals to fix a
+port failure.
 The cleanup leaves the pin, compatibility dependency, canonical sources and
 all shipped generated headers unchanged.
 
@@ -168,7 +162,9 @@ cleanup commit does not inherit an earlier native pass.
 3. Implement only the newly agreed scope, then run relevant native M2 correctness
    and separately authorized performance/application checks.
 
-No new source work, x86 fix campaign, benchmark run, commit or push is authorized
-by this cleanup. The [current plan](integration-plan.md) records the reset and
-the [cleanup record](validation/arm-strategy-cleanup-2026-11-18.md) records
-what was removed and where the evidence remains.
+New source work needs an agreed scope and fresh native validation. The
+[TRS decision](validation/trs-inverse-decision-2026-11-20.md)
+keeps master and declines the TRS-recovery candidate; the
+[documentation cleanup](validation/mac-arm-documentation-cleanup-2026-11-20.md)
+explains which older records remain useful. Neither authorizes a new x86 fix,
+benchmark run, commit or push.

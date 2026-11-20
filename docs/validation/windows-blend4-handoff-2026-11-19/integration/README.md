@@ -1,7 +1,7 @@
 # Four-blend integration and cleanup receipts — 19 November 2026
 
 Read the [integration/completion report](../../blend4-integration-2026-11-19.md)
-and [next M2 handoff](../../m2-trs-inverse-follow-up-2026-11-19.md).
+and [next M2 handoff](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/m2-trs-inverse-follow-up-2026-11-19.md).
 The [Windows results](../results/README.md) retain the failed/incomplete full
 gate separately from the passing bounded preservation assessment.
 

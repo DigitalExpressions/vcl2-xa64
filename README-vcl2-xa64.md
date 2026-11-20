@@ -2,22 +2,24 @@
 
 The [four-blend integration](docs/validation/blend4-integration-2026-11-19.md)
 retains the validated ARM specializations and pristine original x86 source.
-Its known 2–3% TRS-inverse cost is assigned to the
-[next native M2 task](docs/validation/m2-trs-inverse-follow-up-2026-11-19.md);
-the Windows full correctness gate remains failed/incomplete.
+Its known 2–3% TRS-inverse cost remains accepted. The
+[completed follow-up review](docs/validation/trs-inverse-decision-2026-11-20.md)
+keeps current master: the proposed recovery had material dot-product costs.
+The Windows full correctness gate remains failed/incomplete.
 
 The `arch-separation-m2` publication implements
 [pristine originals at root and separate ARM headers](docs/backend-layout.md).
 Use `#include "vcl2_xa64.h"` on either platform. All 28 original VCL paths,
 including `README.md`, remain byte-exact upstream; this file is the fork guide.
-The [new native M2 report](docs/validation/mac-arm-2026-11-18-arm-header-cleanup.md)
-records 8,036 native CTest passes and eight examples after removing obsolete
-x86 branches from the ARM headers. The [publication source comparison](docs/validation/arch-separation-publication-2026-11-18/README.md)
-relates the published files to that exact frozen capture. The [Mac handoff](docs/validation/mac-arch-separation-handoff.md)
-and [ARM lessons](docs/neon-arm-lessons.md) define scope. The
-[19 November integration decision](docs/validation/architecture-separation-integration-2026-11-19.md)
-accepts the separation now published on `master`, retaining the failed/incomplete
-Windows gate and the pinned original x86 behavior. No new timings were collected.
+The [19 November M2 report](docs/validation/mac-arm-2026-11-19-blend4.md)
+records 8,036 native CTest passes and eight examples at its exact frozen capture.
+[Architecture integration](docs/validation/architecture-separation-integration-2026-11-19.md)
+and [four-blend acceptance](docs/validation/blend4-integration-2026-11-19.md)
+record the source relationships and failed/incomplete Windows gate. Use the
+[current layout](docs/backend-layout.md), [ARM lessons](docs/neon-arm-lessons.md)
+and [validation index](docs/validation/README.md) for new work. Superseded Mac
+reports/plans were removed in the
+[documentation cleanup](docs/validation/mac-arm-documentation-cleanup-2026-11-20.md).
 
 This is DigitalExpressions’ fork of Agner Fog’s **Vector Class Library 2**,
 with ARM64 support alongside the existing x86 backend. It provides the familiar
@@ -288,22 +290,17 @@ the exact scope, original failures and validator follow-up. See the
 [native workflow](docs/validation/native-workflow.md) to reproduce the checks and
 the [developer index](docs/README.md) for build and contribution instructions.
 
-A later [native M2 check](docs/validation/mac-arm-2026-11-17-a099098-x86-layout.md)
-completed on **17 November 2026** at revision `a099098`: all 8,036 cases and
-eight examples passed, including Debug checks for undefined behavior. The
-original VCL2 vendor files stayed untouched. This validates the new source
-layout checkpoint. The later [Windows correctness completion](docs/validation/windows-amd-2026-11-17-correctness-completion.md)
-records the fixes and its own tested source. A new
-[M2 follow-up](docs/validation/mac-arm-2026-11-17-ab5bb87-correctness.md) records approved
-revision `ab5bb87`: 8,036/8,036 executed cases passed, 0 failed, 0 skipped and 0 timed out; 8/8 examples passed.
-Pristine vendor files stayed untouched. These are selected correctness results,
-not a new cross-host corpus parity or performance comparison.
+The later [19 November M2 checkpoint](docs/validation/mac-arm-2026-11-19-blend4.md)
+passed 8,036 cases and eight examples on its own frozen four-blend capture.
+The [integration record](docs/validation/blend4-integration-2026-11-19.md) identifies
+what master retained. This is selected native correctness evidence, not a new
+shared-corpus comparison or a pass assigned to a later documentation commit.
 
-The [2026-11-17 standard vector/matrix results](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-17.md)
-compare genuine scalar FP32/FP64, sse2neon and Direct Neon on Apple M2.
-The [2026-11-13 historical measurements](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-13.md)
-remain available separately. These workload measurements do not establish
-application-wide speedups. See [benchmark sources and protocol](benchmarks/README.md).
+The [19 November current-master benchmark checkpoint](docs/benchmarks/standard-math-master-checkpoint-2026-11-19/README.md)
+compares scalar FP32/FP64, sse2neon and Direct Neon on Apple M2 at its exact
+recorded source. Earlier 13/17 November reports and datasets are retired from
+the working tree and remain in Git history. Workload measurements do not
+establish application-wide speedups. See [benchmark sources and protocol](benchmarks/README.md).
 
 ## Repository and attribution
 
@@ -314,7 +311,7 @@ development assets. Temporary work, binaries and local evidence are ignored.
 VCL retains its [Apache license](LICENSE), existing source notices and
 [upstream changelog](changelog.txt). The bundled sse2neon header retains its MIT
 notice. See [provenance and third-party notices](docs/third-party.md) and
-[fork changes](docs/changes.md). [Upstream VCL](https://github.com/vectorclass/version2)
+[backend ownership](docs/backend-layout.md). [Upstream VCL](https://github.com/vectorclass/version2)
 and its [manual](https://github.com/vectorclass/manual) remain the API references;
 the ARM64 limits here supplement them.
 

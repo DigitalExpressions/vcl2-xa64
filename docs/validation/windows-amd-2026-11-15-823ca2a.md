@@ -45,7 +45,7 @@ The initial Windows execution used an uncommitted snapshot based on
   `b647db7bbc0398ea16a6d8e4e7da84c900663dfb`, with the same explicit
   line-ending comparison. This does not make `680cf45` the execution HEAD.
 
-Comparison with the [native Mac report](mac-arm-2026-11-15.md): its tested HEAD
+Comparison with the [native Mac report](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-2026-11-15.md): its tested HEAD
 is `465436de204ebdd59e9b5071c353df372148b3df`, tree
 `ff966a90ebfd9a2bc07c76c8418684df3a04ffa8`. From `943923a` to that checkpoint,
 the changed files are `CONTRIBUTING.md`, `README.md`, `tests/README.md`, the

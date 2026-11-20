@@ -1,16 +1,13 @@
 # Contributing
 
-Current planning focuses on [Mac ARM/Neon lessons](docs/neon-arm-lessons.md).
-The [strategy reset](docs/integration-plan.md) retires the x86-fix campaign.
-Do not extend or revert existing x86 fixes, or change other source, as part of
-this cleanup. The maintainer has now approved the
-[architecture separation on Mac M2](docs/validation/mac-arch-separation-handoff.md).
-The migration and native M2 ARM cleanup are complete. The maintainer approved
-committing/pushing the implementation and reports on `arch-separation-m2`;
-local integration into `master` and evidence-backed cleanup were subsequently
-approved on 19 November. The [acceptance decision](docs/validation/architecture-separation-integration-2026-11-19.md)
+Use [ARM / Neon lessons](docs/neon-arm-lessons.md) and
+[current integration status](docs/integration-plan.md). Architecture separation
+and its native validation are complete and integrated into master. The
+[acceptance decision](docs/validation/architecture-separation-integration-2026-11-19.md)
 preserves original x86 bytes and limitations; the Windows correctness gate stays
-failed/incomplete. Generation is retired; the ownership rules below apply.
+failed/incomplete. Current master retains four-blend code; the later TRS-recovery
+candidate was declined. The x86 fix campaign and old migration plans are retired.
+Generation is retired; the ownership rules below apply to new agreed work.
 
 Read the [fork usage guide](README-vcl2-xa64.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)
 and [validation index](docs/validation/README.md) before continuing work.
@@ -30,14 +27,17 @@ Physical Intel testing is omitted for now. Keep raw evidence under ignored
 
 Use the [developer documentation index](docs/README.md) and
 [Windows runner guide](docs/validation/windows-runner.md) for current instructions.
-The [integration review](docs/integration-review.md) records the port review and
-the native evidence from the two physical hosts.
+The [validation index](docs/validation/README.md) records the exact native sources,
+results and remaining limits on the two physical hosts.
 Hosted test workflows are disabled; configuration alone does not prove a pass.
 Preserve historical reports, benchmark results, original evidence archives and
 dependency/tool installations during cleanup. After verifying that compact
 archives cover the raw records and failures, completed generated builds and
 temporary worktrees may be removed with explicit user authorization. Further
 branch retirement requires a specific request; inspect actual local branches first.
+An explicit maintainer request to discard obsolete campaign artifacts overrides
+archive retention for that scope; record current availability and keep useful
+findings, canonical tests, dependencies and tools.
 
 Preserve VCL's public names, lane ordering, supported masks/conversions, root
 include layout and explicit Direct Neon opt-in. Keep x86 changes limited and

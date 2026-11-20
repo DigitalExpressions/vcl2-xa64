@@ -1,0 +1,37 @@
+{
+  "report_date": "2026-11-19",
+  "version": "baseline",
+  "source": {
+    "base_commit": "d796768b30cb375ea62afa72dcab061b1a3e54ca",
+    "base_tree": "0fad402083c42891850639c4c0242b9d2d8ab70f",
+    "fingerprint": "f3829a248be0fb5a60a1614f7cbcd201adcfb9b043a5b2392c8fb84657bf34b5",
+    "files": 653,
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "added_paths": [],
+    "deleted_paths": []
+  },
+  "tested_commit": "d796768b30cb375ea62afa72dcab061b1a3e54ca",
+  "tested_tree": "0fad402083c42891850639c4c0242b9d2d8ab70f",
+  "hardware": "Apple M2",
+  "os": [
+    "ProductName:\t\tmacOS",
+    "ProductVersion:\t\t26.7",
+    "BuildVersion:\t\t25G229"
+  ],
+  "architecture": "arm64",
+  "rosetta": 0,
+  "page_size": 16384,
+  "compiler": "Apple clang version 17.0.0 (clang-1700.4.4.1)",
+  "compiler_target": "Target: arm64-apple-darwin25.6.0",
+  "sdk": "26.1",
+  "python": "3.9.6 native arm64",
+  "cmake": "cmake version 4.4.4",
+  "ctest": "ctest version 4.4.4",
+  "ninja": "1.11.1.git.kitware.jobserver-1",
+  "timing_start_utc": "2026-11-19T19:26:46.115562+00:00",
+  "timing_end_utc": "2026-11-19T19:31:06.151815+00:00",
+  "rounding": "nearest, FTZ disabled; FPCR=0 for every shape",
+  "schedule": "sequential timing; rotate backend order each round; baseline/candidate pair order alternates by round; all 36 invocations retained",
+  "aggregation": "median of three invocation medians; nine calibrated warmed trials per shape; scalar batch controls reused across widths only within this version",
+  "placement": "core placement/frequency unpinned; caffeinate prevents idle sleep"
+}

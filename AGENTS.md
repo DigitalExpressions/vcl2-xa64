@@ -12,9 +12,10 @@ on a particular machine; its absence must not prevent a fresh setup.
   lessons before choosing a new implementation strategy. Start with
   `docs/neon-arm-lessons.md` and `docs/integration-plan.md`.
 - The root/upstream and `_neon.h` separation is documented in
-  `docs/arch_separation_plan.md`. The maintainer approved implementation and
-  native validation on Mac M2 followed by native AMD Windows verification;
-  execute `docs/validation/mac-arch-separation-handoff.md` on the Mac. The
+  `docs/backend-layout.md` and `docs/arch-separation-map.json`. The maintainer approved implementation and
+  native validation on Mac M2 followed by native AMD Windows verification.
+  That work is complete and integrated; the Mac execution handoff is historical.
+  See `docs/validation/architecture-separation-integration-completed-2026-11-19.md`. The
   platform-neutral include name `vcl2_xa64.h` is agreed.
   Preserve `docs/x86_findings_and_fix_candidates.md`
   for future x86/upstream research without resuming the retired campaign.
@@ -38,12 +39,16 @@ on a particular machine; its absence must not prevent a fresh setup.
   `docs/validation/blend4-integration-2026-11-19.md`. The full Windows gate
   remains failed/incomplete. The measured 2.2% / 2.7% TRS-inverse elapsed costs
   are accepted for this integration and remain unresolved.
-- The next M2 return follows
-  `docs/validation/m2-trs-inverse-follow-up-2026-11-19.md`: reproduce and investigate
-  those costs, prepare a narrow ARM optimization, and validate it on new frozen
-  source while preserving transpose gains and exact original x86 bytes. Use its
-  pinned integrated base and retained measurements. Earlier planning/migration
-  handoffs are historical; later publication/cleanup requires separate scope.
+- The TRS-inverse follow-up and Windows return have been reviewed. Keep the
+  current master runtime; the frozen candidate is not selected for integration.
+  See `docs/validation/trs-inverse-decision-2026-11-20.md` for the
+  tradeoffs and current artifact availability. On 20 November the maintainer
+  requested discarding obsolete local Mac experiment material without creating
+  replacement archives. Earlier execution handoffs are historical, not pending
+  tasks. New runtime work and publication require their own agreed scope.
+  Obsolete pre-19 November Mac documentation was subsequently retired; see
+  `docs/validation/mac-arm-documentation-cleanup-2026-11-20.md` for the retained
+  source/comparison records and reasons. Do not restore old execution plans.
 
 ## OS-agnostic
 
@@ -107,8 +112,9 @@ on a particular machine; its absence must not prevent a fresh setup.
   workarounds. Preserve that boundary: read-only integrity checks also reject
   native x86 helpers, ISA macros and wide intrinsics in inactive ARM branches.
   Keep required SSE-shaped sse2neon APIs, ARM correctness fixes and generic
-  compiler portability. Use the dated cleanup report for the latest frozen
-  source; earlier candidate 04 results remain historical and are not transferred.
+  compiler portability. Use the validation index and 19 November M2 report for
+  the later frozen source. Earlier cleanup/candidate results remain historical;
+  they do not transfer to a later publication.
 - The old adapted-root generator is retired. `tools/regenerate_headers.py --check`
   is read-only; `--write` always rejects. Historical adaptation patches and
   `backends/x86/` are inactive research assets and must not enter either active
@@ -131,16 +137,20 @@ on a particular machine; its absence must not prevent a fresh setup.
   base commit/tree and patch. Build only the immutable capture; verify every
   source path and its fingerprint before/after. Never label the clean base as
   the tested implementation or make a source commit just to satisfy a guard.
-- Retain every failed attempt, raw command/exit journal, logs, inventories,
+- During active validation retain every failed attempt, raw command/exit journal, logs, inventories,
   source archive, patch, compiler/flag/binary hashes, generated probe/reference
   inputs, JUnit, checksums and dated reports under ignored `build/`. Portable
   reports contain relative paths and no credentials or binaries. Preserve
   historical identifiers/checksums; publication does not inherit native passes.
+  A later explicit maintainer request may discard closed-campaign artifacts
+  without replacement archives. Record that loss of availability and preserve
+  useful findings; do not claim discarded binaries or raw records remain usable.
 - New runtime/test/runner changes require fresh relevant checks and the full
   baseline matrix at a new frozen source. Documentation-only changes need
   repository/link/whitespace checks. Do not weaken gates after observing failures.
 - Cleanup, commit, push, merge, release and branch retirement need task-specific
-  approval. Before authorized removal, verify compact archive coverage and retain
+  approval. Unless the maintainer explicitly requests discarding obsolete
+  artifacts, before authorized removal verify compact archive coverage and retain
   supplements for uncovered diagnostics/generated inputs. Keep tools/testbench,
   unrelated work and all original failed evidence; remove worktrees through Git.
 - For future shared corpus checks, create ignored `build/` first and follow
@@ -176,7 +186,8 @@ on a particular machine; its absence must not prevent a fresh setup.
   and strict nonrecovering UBSan Debug, preserving the complete registered list.
   Apple UBSan's deliberate overflow may exit 1 or SIGABRT (-6); require its
   diagnostic, no continuation and a passing positive control. Keep actual exits.
-- Follow the architecture handoff for this approved migration. Use a fresh
+- The architecture migration and its native validation are complete. Do not
+  resume the historical migration handoff. For new agreed ARM work use a fresh
   capture after source changes; `tools/capture_source.py --help` and
   `tools/run_native_arm_validation.py --help` document explicit capture mode.
   Keep the default clean-checkout guard. Never retry the documented ASan hang.

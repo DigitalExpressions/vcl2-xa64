@@ -27,10 +27,10 @@ gate. No failing result becomes a pass and no test or numerical policy changes.
   originals and matches failure status for twenty paired runtime cases. The
   unselected runtime failures have qualified family/source attribution, not an
   individual direct replay. No selected facade-specific failure was found.
-- The [M2 cleanup report](mac-arm-2026-11-18-arm-header-cleanup.md) records 8,036
+- The [M2 cleanup report](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/mac-arm-2026-11-18-arm-header-cleanup.md) records 8,036
   CTest passes and eight examples on its separate 474-file capture, fingerprint
   `5a6f9ad8fe448d19e05917ef2eee95f4482eb7136c67488ad3bf2b3d6eef542d`.
-  The [publication comparison](arch-separation-publication-2026-11-18/README.md)
+  The [publication comparison](https://github.com/DigitalExpressions/vcl2-xa64/blob/d796768b30cb375ea62afa72dcab061b1a3e54ca/docs/validation/arch-separation-publication-2026-11-18/README.md)
   preserves both identities and their metadata-only differences.
 
 ## Ownership and remaining limits
