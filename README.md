@@ -51,8 +51,7 @@ and arrays of 128 or 4,096 objects.
 | 🔵 <span style="color: #0969da;">**Within 5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
 | 🟠 <span style="color: #bc4c00;">**sse2neon wins**</span> | Beyond the 5% margin | Below 0.95× |
 
-Winner symbols remain visible on GitHub; supporting Markdown viewers also show
-the colored text. Both describe the measured throughput ratio, not statistical
+Markers and colors describe the measured throughput ratio, not statistical
 significance.
 
 <br>
@@ -80,8 +79,7 @@ changes with the operation and number of objects:
 Ratios above 1 favor Direct Neon; below 1 favor sse2neon. The FP64 transpose
 invocation timing ranges overlap, so those median ratios should be read with care.
 
-[Latest full standard-math results — 19 November 2026](https://github.com/DigitalExpressions/vcl2-xa64/blob/31ab4c4ee5a758ddc7b6f980f235b36848ca5290/docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-19_TRS_CURRENT_RECOVERY_BASELINE.md)
-· [CSV data](docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/results.csv).
+[Latest full standard-math results — 19 November 2026](https://github.com/DigitalExpressions/vcl2-xa64/blob/master/docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md)
 
 FP32 per-object 3D cross products also delivered about **46% higher throughput**.
 Most FP64 and many per-object operations were within 5%; some FP64 transpose

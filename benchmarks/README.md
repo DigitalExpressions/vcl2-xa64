@@ -80,6 +80,10 @@ Start future dated reports from the [standard report template](../docs/benchmark
 It marks the table values, summaries, source/host details and evidence records
 that must be filled from the new run.
 
+Keep baseline/control reports and standalone baseline datasets under ignored
+`build/` during tests. Publish the selected implementation's report and results;
+retired historical controls remain available through frozen Git citations.
+
 Run `python3 -B tools/format_benchmarks.py docs/benchmarks/arm64/STANDARD_MATH_RESULTS_YYYY-MM-DD.md`
 with the new report's actual date to apply the established color/label policy.
 The formatter requires an explicit report path and rejects unfilled template

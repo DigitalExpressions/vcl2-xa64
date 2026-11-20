@@ -66,80 +66,56 @@ same layout first; neither layout is automatically faster.
 
 ### Columns and colors
 
+Each row compares the same operation, precision and input data on the two SIMD
+backends. Compare their **nsec/op** values first: a lower time means more
+operations can be completed per second. The ratio and winner columns summarize
+that comparison using the 5% band defined below.
+
 | Column | Meaning |
 | --- | --- |
-| Operation | The calculation, such as vector dot product or matrix multiplication. |
-| FP | 32 means single-precision `float`; 64 means double-precision `double`. |
-| **sse2neon<br>(nsec/op)** | SSE operations translated to Neon through sse2neon. Competes directly with the adjacent Direct Neon timing. |
-| **Direct Neon<br>(nsec/op)** | The native Neon backend. Competes directly with the adjacent sse2neon timing. |
-| **Direct Neon /<br>sse2neon** | **sse2neon time ÷ Direct Neon time**. Above 1 favors Direct Neon; below 1 favors sse2neon. Its marker and solid color identify the winner outside the shared 5% band. |
-| **Winning<br>backend** | 🟣 Direct Neon, 🟠 sse2neon, or 🔵 Within&nbsp;5% inside the shared band. |
-| **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead. An em dash means the result is within the 5% band. |
-| **Scalar<br>(nsec/op)** | Scalar float/double arithmetic with automatic SIMD vectorization disabled. This is a separate reference. |
-| Scalar /<br>Direct Neon | Non-SIMD scalar reference time ÷ Direct Neon time. For example, 2× means Direct Neon delivers twice the scalar throughput. |
-| Consistent<br>Timing | Consistency of the difference between sse2neon and Direct Neon across runs: **Yes** means their three-run median timing ranges do not overlap; **No** means they overlap. This does not measure each backend's stability alone, identify the winner, or establish statistical significance. |
+| Operation | The complete vector or matrix calculation being measured. |
+| FP | Component precision: 32 for `float`, 64 for `double`. |
+| **sse2neon<br>(nsec/op)** | Time per operation using the SSE-to-Neon compatibility backend. Lower is better. |
+| **Direct Neon<br>(nsec/op)** | Time per operation using the Direct Neon backend. Lower is better. |
+| **Direct Neon /<br>sse2neon** | Direct Neon's throughput relative to sse2neon: **sse2neon time ÷ Direct Neon time**. Above 1 favors Direct Neon; below 1 favors sse2neon. |
+| **Winning<br>backend** | The backend ahead outside the 5% band, or **Within&nbsp;5%** when the ratio falls inside it. |
+| **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead over the other backend. **—** means the comparison is within the 5% band. |
+| **Scalar<br>(nsec/op)** | Reference time using ordinary `float`/`double` code with automatic SIMD vectorization disabled. |
+| Scalar /<br>Direct Neon | Scalar time ÷ Direct Neon time. A value of **2×** means Direct Neon delivers twice the scalar throughput. |
+| Consistent<br>Timing | **Yes:** the ranges of the three invocation medians for the two SIMD backends do not overlap. **No:** those ranges overlap. This describes the observed timing separation, not statistical significance. |
 
-**Throughput percentages describe higher throughput, not reduced elapsed time.**
-For the displayed throughput ratio `r`, a Direct Neon win shows
-`100 × (r − 1)%`; an sse2neon win shows `100 × (1/r − 1)%`.
-For example, 1.25× gives Winning backend **Direct Neon** and Throughput gain **+25.0%**;
-0.8× gives Winning backend **sse2neon** and Throughput gain **+25.0%**. Percentages use the
-displayed ratio, rounded to one decimal place. A Within&nbsp;5% verdict shows
-**—** in Throughput gain. Ratio colors use the same 5% band as the winner markers.
-
-**Backend names have fixed identity colors:** Direct Neon is purple and
-sse2neon is orange. Direct Neon and Within&nbsp;5% stay together on one line.
-These label colors identify the implementation; the timing colors show the result.
-
-**Winner markers remain visible on GitHub**, where inline text colors are removed.
-The ratio and Winning backend columns use the same marker and inclusive 5% band:
-
-| Winner marker | Meaning | Direct Neon / sse2neon ratio |
-| --- | --- | --- |
-| 🟣 **Direct Neon** | Direct Neon wins beyond the 5% margin | Above 1.05× |
-| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
-| 🟠 **sse2neon** | sse2neon wins beyond the 5% margin | Below 0.95× |
-
-The timing and ratio colors remain available in supporting
-Markdown viewers. Markers and colors describe measured throughput, not
-statistical significance.
-
-**Both competing timing columns are colored relative to each other:**
+**Timing markers apply to the sse2neon and Direct Neon nsec/op columns.**
+They identify the lower and higher times when the ratio falls outside the 5%
+band. Both timing cells use 🔵 when the comparison falls within that band.
 
 | Timing marker | Meaning |
 | --- | --- |
-| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The winning backend's time, beyond the 5% margin |
-| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The losing backend's time, beyond the 5% margin |
-| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Both times when approximately equal |
+| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The lower time for the backend classified as the winner |
+| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The higher time for the other backend |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | The comparison is inside the practical 5% band; the displayed times can still differ |
 
-Each timing cell keeps its marker when viewed on GitHub.
+**Throughput markers apply to the Direct Neon / sse2neon ratio and Winning
+backend columns.** Both columns use the same decision:
 
-**Throughput ratios use solid winner colors:** purple for Direct Neon above
-1.05×, orange for sse2neon below 0.95×, and blue within 0.95–1.05× inclusive.
+| Throughput marker | Meaning | Direct Neon / sse2neon ratio |
+| --- | --- | --- |
+| 🟣 **Direct Neon wins** | Direct Neon has higher throughput beyond the margin | Above 1.05× |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Neither backend is declared the winner | 0.95–1.05×, inclusive |
+| 🟠 **sse2neon wins** | sse2neon has higher throughput beyond the margin | Below 0.95× |
 
-| Throughput ratio | Meaning |
-| ---: | --- |
-| 🟠 <span style="color: #bc4c00;">0.667×</span> | 🟠 sse2neon leads by approximately 50% |
-| 🟠 <span style="color: #bc4c00;">0.800×</span> | 🟠 sse2neon leads by 25% |
-| 🔵 <span style="color: #0969da;">1.000×</span> | 🔵 Equal throughput |
-| 🟣 <span style="color: #6f42c1;">1.250×</span> | 🟣 Direct Neon leads by 25% |
-| 🟣 <span style="color: #6f42c1;">1.500×</span> | 🟣 Direct Neon leads by 50% |
+The **5% band** and **Consistent Timing** answer different questions. A row can
+be blue and still say **Yes**: the observed invocation ranges are separated, but
+the throughput difference remains inside the practical band. Winner labels and
+colors compare the two SIMD backends; use **Scalar / Direct Neon** for the scalar
+comparison.
 
-Markers, ratio colors and the Winning backend column all use the shared 5%
-band. The timing columns use green/red to identify the winning/losing times.
-
-The shared decision uses **Direct Neon / sse2neon**:
-
-| Throughput ratio | Winning backend | sse2neon timing label | Direct Neon timing label |
-| --- | --- | --- | --- |
-| Above 1.05× | 🟣 Direct Neon | 🔴 Losing time | 🟢 Winning time |
-| 0.95–1.05× inclusive | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% |
-| Below 0.95× | 🟠 sse2neon | 🟢 Winning time | 🔴 Losing time |
-
-Within&nbsp;5% is a practical throughput band, not a claim that the times
-are identical. A row with blue timing numbers can have separate median ranges: a small
-difference can be consistent while remaining inside that band. Colors compare these two
-backends only; they do not indicate which is faster than scalar.
+**Throughput gain is not the same percentage as elapsed-time reduction.** For
+the displayed ratio `r`, the gain is `100 × (r − 1)%` when Direct Neon wins, or
+`100 × (1/r − 1)%` when sse2neon wins. Thus **1.25×** gives Direct Neon a **25%**
+throughput lead, while **0.80×** gives sse2neon a **25%** throughput lead.
+Reported gains use the displayed ratio and are rounded to one decimal place.
+Ratios come from unrounded measurements, so dividing the displayed timing
+values can give a slightly different result.
 
 The section headings describe the workload:
 
@@ -153,12 +129,11 @@ The section headings describe the workload:
   Wider logical vectors are not automatically faster. Scalar batch results
   are reused across widths because scalar has no SIMD width.
 
-For a worked example, take **sse2neon = 0.318 nsec/op** and
-**Direct Neon = 0.289 nsec/op**, with a throughput ratio of **1.099×**.
-Direct Neon delivers approximately **9.9% more throughput**, or about
-**9% less elapsed time**, than sse2neon. The Direct Neon time is green, the
-sse2neon time is red, Winning backend says **Direct Neon**, and Throughput gain shows **+9.9%**. Ratios use
-unrounded measurements, so dividing the displayed times can differ slightly.
+For an illustrative row with **sse2neon = 1.000 nsec/op** and
+**Direct Neon = 0.800 nsec/op**, the timing cells show 🔴 for sse2neon and
+🟢 for Direct Neon. The ratio cell is 🟣 **1.250×**, Winning backend is
+🟣 **Direct Neon**, and Throughput gain is **+25.0%**. This corresponds to
+**20% less elapsed time** for the same work.
 
 These results include loads/stores and loop/call overhead. They describe array
 throughput on the measured host, not isolated instruction latency or whole-

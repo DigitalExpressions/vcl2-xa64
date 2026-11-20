@@ -22,7 +22,9 @@ not measurements; keep them unless the documented presentation policy changes. -
 
 <!-- UPDATE: Summarize what was measured and why. Report any source or
 code-generation comparison only if it was actually performed for this run.
-Do not retain a previous run's identical-binary or performance-gain claim. -->
+Do not retain a previous run's identical-binary or performance-gain claim.
+Keep baseline/control reports and standalone baseline datasets under ignored
+build/ during tests; publish the selected implementation's report and results. -->
 
 {{PURPOSE_AND_MAIN_FINDINGS}}
 
@@ -118,80 +120,56 @@ same layout first; neither layout is automatically faster.
 
 ### Columns and colors
 
+Each row compares the same operation, precision and input data on the two SIMD
+backends. Compare their **nsec/op** values first: a lower time means more
+operations can be completed per second. The ratio and winner columns summarize
+that comparison using the 5% band defined below.
+
 | Column | Meaning |
 | --- | --- |
-| Operation | The calculation, such as vector dot product or matrix multiplication. |
-| FP | 32 means single-precision `float`; 64 means double-precision `double`. |
-| **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | SSE operations translated to Neon through <span style="color: #bc4c00;">sse2neon</span>. Competes directly with the adjacent <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing. |
-| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | The native Neon backend. Competes directly with the adjacent <span style="color: #bc4c00;">sse2neon</span> timing. |
-| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. Its marker and solid color identify the winner outside the shared 5% band. |
-| **Winning<br>backend** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span>, 🟠 <span style="color: #bc4c00;">sse2neon</span>, or 🔵 Within&nbsp;5% inside the shared band. |
-| **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead. An em dash means the result is within the 5% band. |
-| **Scalar<br>(nsec/op)** | Scalar float/double arithmetic with automatic SIMD vectorization disabled. This is a separate reference. |
-| Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Non-SIMD scalar reference time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time. For example, 2× means <span style="color: #6f42c1;">Direct&nbsp;Neon</span> delivers twice the scalar throughput. |
-| Consistent<br>Timing | Consistency of the difference between <span style="color: #bc4c00;">sse2neon</span> and <span style="color: #6f42c1;">Direct&nbsp;Neon</span> across runs: **Yes** means their three-run median timing ranges do not overlap; **No** means they overlap. This does not measure each backend's stability alone, identify the winner, or establish statistical significance. |
+| Operation | The complete vector or matrix calculation being measured. |
+| FP | Component precision: 32 for `float`, 64 for `double`. |
+| **<span style="color: #bc4c00;">sse2neon</span><br>(nsec/op)** | Time per operation using the SSE-to-Neon compatibility backend. Lower is better. |
+| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span><br>(nsec/op)** | Time per operation using the <span style="color: #6f42c1;">Direct&nbsp;Neon</span> backend. Lower is better. |
+| **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> /<br><span style="color: #bc4c00;">sse2neon</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span>'s throughput relative to <span style="color: #bc4c00;">sse2neon</span>: **<span style="color: #bc4c00;">sse2neon</span> time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time**. Above 1 favors <span style="color: #6f42c1;">Direct&nbsp;Neon</span>; below 1 favors <span style="color: #bc4c00;">sse2neon</span>. |
+| **Winning<br>backend** | The backend ahead outside the 5% band, or **Within&nbsp;5%** when the ratio falls inside it. |
+| **Throughput<br>gain&nbsp;(%)** | The named winner's percentage throughput lead over the other backend. **—** means the comparison is within the 5% band. |
+| **Scalar<br>(nsec/op)** | Reference time using ordinary `float`/`double` code with automatic SIMD vectorization disabled. |
+| Scalar /<br><span style="color: #6f42c1;">Direct&nbsp;Neon</span> | Scalar time ÷ <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time. A value of **2×** means <span style="color: #6f42c1;">Direct&nbsp;Neon</span> delivers twice the scalar throughput. |
+| Consistent<br>Timing | **Yes:** the ranges of the three invocation medians for the two SIMD backends do not overlap. **No:** those ranges overlap. This describes the observed timing separation, not statistical significance. |
 
-**Throughput percentages describe higher throughput, not reduced elapsed time.**
-For the displayed throughput ratio `r`, a <span style="color: #6f42c1;">Direct&nbsp;Neon</span> win shows
-`100 × (r − 1)%`; an <span style="color: #bc4c00;">sse2neon</span> win shows `100 × (1/r − 1)%`.
-For example, 1.25× gives Winning backend **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** and Throughput gain **+25.0%**;
-0.8× gives Winning backend **<span style="color: #bc4c00;">sse2neon</span>** and Throughput gain **+25.0%**. Percentages use the
-displayed ratio, rounded to one decimal place. A Within&nbsp;5% verdict shows
-**—** in Throughput gain. Ratio colors use the same 5% band as the winner markers.
-
-**Backend names have fixed identity colors:** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> is purple and
-<span style="color: #bc4c00;">sse2neon</span> is orange. <span style="color: #6f42c1;">Direct&nbsp;Neon</span> and Within&nbsp;5% stay together on one line.
-These label colors identify the implementation; the timing colors show the result.
-
-**Winner markers remain visible on GitHub**, where inline text colors are removed.
-The ratio and Winning backend columns use the same marker and inclusive 5% band:
-
-| Winner marker | Meaning | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> ratio |
-| --- | --- | --- |
-| 🟣 **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins beyond the 5% margin | Above 1.05× |
-| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
-| 🟠 **<span style="color: #bc4c00;">sse2neon</span>** | <span style="color: #bc4c00;">sse2neon</span> wins beyond the 5% margin | Below 0.95× |
-
-The timing and ratio colors remain available in supporting
-Markdown viewers. Markers and colors describe measured throughput, not
-statistical significance.
-
-**Both competing timing columns are colored relative to each other:**
+**Timing markers apply to the <span style="color: #bc4c00;">sse2neon</span> and <span style="color: #6f42c1;">Direct&nbsp;Neon</span> nsec/op columns.**
+They identify the lower and higher times when the ratio falls outside the 5%
+band. Both timing cells use 🔵 when the comparison falls within that band.
 
 | Timing marker | Meaning |
 | --- | --- |
-| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The winning backend's time, beyond the 5% margin |
-| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The losing backend's time, beyond the 5% margin |
-| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Both times when approximately equal |
+| 🟢 <span style="color: #1a7f37;">**Winning time**</span> | The lower time for the backend classified as the winner |
+| 🔴 <span style="color: #cf222e;">**Losing time**</span> | The higher time for the other backend |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | The comparison is inside the practical 5% band; the displayed times can still differ |
 
-Each timing cell keeps its marker when viewed on GitHub.
+**Throughput markers apply to the <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> ratio and Winning
+backend columns.** Both columns use the same decision:
 
-**Throughput ratios use solid winner colors:** purple for <span style="color: #6f42c1;">Direct&nbsp;Neon</span> above
-1.05×, orange for <span style="color: #bc4c00;">sse2neon</span> below 0.95×, and blue within 0.95–1.05× inclusive.
+| Throughput marker | Meaning | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> ratio |
+| --- | --- | --- |
+| 🟣 **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins** | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> has higher throughput beyond the margin | Above 1.05× |
+| 🔵 <span style="color: #0969da;">**Within&nbsp;5%**</span> | Neither backend is declared the winner | 0.95–1.05×, inclusive |
+| 🟠 **<span style="color: #bc4c00;">sse2neon</span> wins** | <span style="color: #bc4c00;">sse2neon</span> has higher throughput beyond the margin | Below 0.95× |
 
-| Throughput ratio | Meaning |
-| ---: | --- |
-| 🟠 <span style="color: #bc4c00;">0.667×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by approximately 50% |
-| 🟠 <span style="color: #bc4c00;">0.800×</span> | 🟠 <span style="color: #bc4c00;">sse2neon</span> leads by 25% |
-| 🔵 <span style="color: #0969da;">1.000×</span> | 🔵 Equal throughput |
-| 🟣 <span style="color: #6f42c1;">1.250×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 25% |
-| 🟣 <span style="color: #6f42c1;">1.500×</span> | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads by 50% |
+The **5% band** and **Consistent Timing** answer different questions. A row can
+be blue and still say **Yes**: the observed invocation ranges are separated, but
+the throughput difference remains inside the practical band. Winner labels and
+colors compare the two SIMD backends; use **Scalar / <span style="color: #6f42c1;">Direct&nbsp;Neon</span>** for the scalar
+comparison.
 
-Markers, ratio colors and the Winning backend column all use the shared 5%
-band. The timing columns use green/red to identify the winning/losing times.
-
-The shared decision uses **<span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>**:
-
-| Throughput ratio | Winning backend | <span style="color: #bc4c00;">sse2neon</span> timing label | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> timing label |
-| --- | --- | --- | --- |
-| Above 1.05× | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | 🔴 Losing time | 🟢 Winning time |
-| 0.95–1.05× inclusive | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% | 🔵 Within&nbsp;5% |
-| Below 0.95× | 🟠 <span style="color: #bc4c00;">sse2neon</span> | 🟢 Winning time | 🔴 Losing time |
-
-Within&nbsp;5% is a practical throughput band, not a claim that the times
-are identical. A row with blue timing numbers can have separate median ranges: a small
-difference can be consistent while remaining inside that band. Colors compare these two
-backends only; they do not indicate which is faster than scalar.
+**Throughput gain is not the same percentage as elapsed-time reduction.** For
+the displayed ratio `r`, the gain is `100 × (r − 1)%` when <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins, or
+`100 × (1/r − 1)%` when <span style="color: #bc4c00;">sse2neon</span> wins. Thus **1.25×** gives <span style="color: #6f42c1;">Direct&nbsp;Neon</span> a **25%**
+throughput lead, while **0.80×** gives <span style="color: #bc4c00;">sse2neon</span> a **25%** throughput lead.
+Reported gains use the displayed ratio and are rounded to one decimal place.
+Ratios come from unrounded measurements, so dividing the displayed timing
+values can give a slightly different result.
 
 The section headings describe the workload:
 
@@ -205,12 +183,11 @@ The section headings describe the workload:
   Wider logical vectors are not automatically faster. Scalar batch results
   are reused across widths because scalar has no SIMD width.
 
-For a worked example, take **<span style="color: #bc4c00;">sse2neon</span> = 0.318 nsec/op** and
-**<span style="color: #6f42c1;">Direct&nbsp;Neon</span> = 0.289 nsec/op**, with a throughput ratio of **1.099×**.
-<span style="color: #6f42c1;">Direct&nbsp;Neon</span> delivers approximately **9.9% more throughput**, or about
-**9% less elapsed time**, than <span style="color: #bc4c00;">sse2neon</span>. The <span style="color: #6f42c1;">Direct&nbsp;Neon</span> time is green, the
-<span style="color: #bc4c00;">sse2neon</span> time is red, Winning backend says **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>**, and Throughput gain shows **+9.9%**. Ratios use
-unrounded measurements, so dividing the displayed times can differ slightly.
+For an illustrative row with **<span style="color: #bc4c00;">sse2neon</span> = 1.000 nsec/op** and
+**<span style="color: #6f42c1;">Direct&nbsp;Neon</span> = 0.800 nsec/op**, the timing cells show 🔴 for <span style="color: #bc4c00;">sse2neon</span> and
+🟢 for <span style="color: #6f42c1;">Direct&nbsp;Neon</span>. The ratio cell is 🟣 **1.250×**, Winning backend is
+🟣 **<span style="color: #6f42c1;">Direct&nbsp;Neon</span>**, and Throughput gain is **+25.0%**. This corresponds to
+**20% less elapsed time** for the same work.
 
 These results include loads/stores and loop/call overhead. They describe array
 throughput on the measured host, not isolated instruction latency or whole-
