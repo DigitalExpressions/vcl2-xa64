@@ -118,6 +118,13 @@ on a particular machine; its absence must not prevent a fresh setup.
 - Commit, push, merge, release, tag and branch-retirement actions require the
   user's task-specific authorization. Historical approvals apply to the
   completed actions, not future publication or repository administration.
+- If several author identities are available, always ask the maintainer which
+  author to use before committing. Do not choose between them based on global
+  Git settings, previous commits or stored credentials. Confirm the author
+  name/email if unclear, and use the selected identity without changing saved
+  Git settings unless separately authorized. Push authentication is separate
+  from authorship; if several accounts are available for a push, ask which one
+  to use instead of selecting automatically.
 - Inspect the actual branch, HEAD, tree, status and worktrees first. Do not
   discard unrelated work, force-push or rewrite published history. Use a fresh
   worktree when a clean validation checkout is required.
