@@ -45,22 +45,23 @@ from 19 November 2026 show these throughput ratios against sse2neon:
 Each range in the batch table spans logical vector widths of 128/256/512 bits
 and arrays of 128 or 4,096 objects.
 
-| Color | Meaning | Direct Neon / sse2neon ratio |
+| Winner | Meaning | Direct Neon / sse2neon ratio |
 | --- | --- | --- |
-| <span style="color: #6f42c1;">**Purple**</span> | Direct Neon wins beyond the 5% margin | Above 1.05× |
-| <span style="color: #0969da;">**Blue**</span> | Within the 5% margin | 0.95–1.05×, inclusive |
-| <span style="color: #bc4c00;">**Orange**</span> | sse2neon wins beyond the 5% margin | Below 0.95× |
+| <span style="color: #6f42c1;">**Direct Neon wins**</span> | Beyond the 5% margin | Above 1.05× |
+| <span style="color: #0969da;">**Within 5%**</span> | Approximately equal throughput | 0.95–1.05×, inclusive |
+| <span style="color: #bc4c00;">**sse2neon wins**</span> | Beyond the 5% margin | Below 0.95× |
 
-Colors describe the measured throughput ratio, not statistical significance.
+Winner labels and colors describe the measured throughput ratio, not statistical
+significance. Labels remain visible in viewers that omit text colors.
 
 <br>
 
 | FP32 batch operation throughput | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> |
 | --- | ---: |
-| Vector length | **<span style="color: #6f42c1;">1.66×</span>–<span style="color: #6f42c1;">1.99×</span>** |
-| Vector normalization | **<span style="color: #6f42c1;">1.39×</span>–<span style="color: #6f42c1;">1.70×</span>** |
-| 4×4 matrix multiplication | **<span style="color: #6f42c1;">1.07×</span>–<span style="color: #6f42c1;">2.15×</span>** |
-| 4×4 matrix–vector multiplication | **<span style="color: #6f42c1;">1.14×</span>–<span style="color: #6f42c1;">3.99×</span>** |
+| Vector length | **<span style="color: #6f42c1;">1.66×</span>–<span style="color: #6f42c1;">1.99×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> |
+| Vector normalization | **<span style="color: #6f42c1;">1.39×</span>–<span style="color: #6f42c1;">1.70×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> |
+| 4×4 matrix multiplication | **<span style="color: #6f42c1;">1.07×</span>–<span style="color: #6f42c1;">2.15×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> |
+| 4×4 matrix–vector multiplication | **<span style="color: #6f42c1;">1.14×</span>–<span style="color: #6f42c1;">3.99×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> |
 
 **Per-object processing (AoS)** keeps each vector or matrix's components
 together. Selected results from the same M2 checkpoint show how the comparison
@@ -70,10 +71,11 @@ changes with the operation and number of objects:
 
 | Per-object operation | FP | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>, 128 objects | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>, 4,096 objects |
 | --- | ---: | ---: | ---: |
-| 3D cross product | 32 | **<span style="color: #6f42c1;">1.459×</span>** | **<span style="color: #6f42c1;">1.461×</span>** |
-| 4×4 matrix transpose | 32 | **<span style="color: #6f42c1;">1.069×</span>** | **<span style="color: #0969da;">0.971×</span>** |
-| 4×4 matrix transpose | 64 | **<span style="color: #bc4c00;">0.943×</span>** | **<span style="color: #bc4c00;">0.842×</span>** |
-| TRS matrix inverse | 32 | **<span style="color: #0969da;">0.982×</span>** | **<span style="color: #0969da;">0.969×</span>** |
+| 3D cross product | 32 | **<span style="color: #6f42c1;">1.459×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> | **<span style="color: #6f42c1;">1.461×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> |
+| 4×4 matrix transpose | 32 | **<span style="color: #6f42c1;">1.069×</span>**<br><span style="color: #6f42c1;">Direct Neon wins</span> | **<span style="color: #0969da;">0.971×</span>**<br><span style="color: #0969da;">Within 5%</span> |
+| 4×4 matrix transpose | 64 | **<span style="color: #bc4c00;">0.943×</span>**<br><span style="color: #bc4c00;">sse2neon wins</span> | **<span style="color: #bc4c00;">0.842×</span>**<br><span style="color: #bc4c00;">sse2neon wins</span> |
+| TRS matrix inverse | 32 | **<span style="color: #0969da;">0.982×</span>**<br><span style="color: #0969da;">Within 5%</span> | **<span style="color: #0969da;">0.969×</span>**<br><span style="color: #0969da;">Within 5%</span> |
+
 
 Ratios above 1 favor Direct Neon; below 1 favor sse2neon. The FP64 transpose
 invocation timing ranges overlap, so those median ratios should be read with care.
