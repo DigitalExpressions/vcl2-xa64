@@ -1,0 +1,376 @@
+{
+  "date": "2026-11-20",
+  "scope": "Validation documentation relocation; pending benchmark relocation preserved",
+  "published_originals_commit": "e55c54a7fbf4f6c0c1eb5ed30153f6b569650072",
+  "published_originals_url": "https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs",
+  "before_validation_move": "Uncommitted documentation state after the benchmark relocation; not a tested source commit",
+  "moved_files": 185,
+  "moves": [
+    {
+      "old": "docs/validation/arm-strategy-cleanup-2026-11-18.json",
+      "new": "docs/validation/x86/arm-strategy-cleanup-2026-11-18.json",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/arm-strategy-cleanup-2026-11-18.md",
+      "new": "docs/validation/x86/arm-strategy-cleanup-2026-11-18.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/blend4-integration-2026-11-19.md",
+      "new": "docs/validation/arm64/blend4-integration-2026-11-19.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/m2-blend4-2026-11-19",
+      "new": "docs/validation/arm64/m2-blend4-2026-11-19",
+      "files": 13
+    },
+    {
+      "old": "docs/validation/mac-arm-2026-11-16-bd7807e-final.md",
+      "new": "docs/validation/arm64/mac-arm-2026-11-16-bd7807e-final.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/mac-arm-2026-11-16-bd7807e-validator-followup.md",
+      "new": "docs/validation/arm64/mac-arm-2026-11-16-bd7807e-validator-followup.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/mac-arm-2026-11-19-blend4.md",
+      "new": "docs/validation/arm64/mac-arm-2026-11-19-blend4.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/mac-arm-documentation-cleanup-2026-11-20.md",
+      "new": "docs/validation/arm64/mac-arm-documentation-cleanup-2026-11-20.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/trs-inverse-decision-2026-11-20.md",
+      "new": "docs/validation/arm64/trs-inverse-decision-2026-11-20.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-amd-2026-11-16-bd7807e-final.md",
+      "new": "docs/validation/x86/windows-amd-2026-11-16-bd7807e-final.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-amd-2026-11-19-arch-separation-triage.md",
+      "new": "docs/validation/x86/windows-amd-2026-11-19-arch-separation-triage.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-amd-2026-11-19-arch-separation.md",
+      "new": "docs/validation/x86/windows-amd-2026-11-19-arch-separation.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-arch-separation-2026-11-19",
+      "new": "docs/validation/x86/windows-arch-separation-2026-11-19",
+      "files": 38
+    },
+    {
+      "old": "docs/validation/windows-arch-separation-triage-2026-11-19",
+      "new": "docs/validation/x86/windows-arch-separation-triage-2026-11-19",
+      "files": 20
+    },
+    {
+      "old": "docs/validation/windows-blend4-handoff-2026-11-19",
+      "new": "docs/validation/x86/windows-blend4-handoff-2026-11-19",
+      "files": 45
+    },
+    {
+      "old": "docs/validation/windows-correctness-2026-11-17",
+      "new": "docs/validation/x86/windows-correctness-2026-11-17",
+      "files": 0
+    },
+    {
+      "old": "docs/validation/windows-isa-triage-2026-11-17",
+      "new": "docs/validation/x86/windows-isa-triage-2026-11-17",
+      "files": 0
+    },
+    {
+      "old": "docs/validation/windows-runner.md",
+      "new": "docs/validation/x86/windows-runner.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-upstream-optimized-2026-11-20",
+      "new": "docs/validation/x86/windows-upstream-optimized-2026-11-20",
+      "files": 29
+    },
+    {
+      "old": "docs/validation/windows-upstream-optimized-2026-11-20.md",
+      "new": "docs/validation/x86/windows-upstream-optimized-2026-11-20.md",
+      "files": 1
+    },
+    {
+      "old": "docs/validation/windows-x86-harness-integration-2026-11-20",
+      "new": "docs/validation/x86/windows-x86-harness-integration-2026-11-20",
+      "files": 26
+    },
+    {
+      "old": "docs/validation/windows-x86-harness-integration-2026-11-20.md",
+      "new": "docs/validation/x86/windows-x86-harness-integration-2026-11-20.md",
+      "files": 1
+    }
+  ],
+  "affected_checksummed_files": [
+    {
+      "original_path": "docs/benchmarks/arm64/standard-math-blend4-2026-11-19/checksums.sha256",
+      "current_path": "docs/benchmarks/arm64/standard-math-blend4-2026-11-19/checksums.sha256",
+      "before_validation_move_sha256": "88132d269e31252e3e886a705a1b7b214140d19b7bbd214ccb3129927a75899a",
+      "current_sha256": "2985707e4e64257dd712752ded70336b4735558c3b359dcf4d205c95ca16bf0a",
+      "changed_entries": [
+        {
+          "before": "1cfd90be598f25abc475d9857d47ec290c2871d10f267f8c080d3307530a4a05  ../STANDARD_MATH_RESULTS_2026-11-19.md",
+          "after": "af1914f9ebfe7aacea6e23a5e320ec52ebd4c8be43cb7904363e08688ceae903  ../STANDARD_MATH_RESULTS_2026-11-19.md"
+        },
+        {
+          "before": "06a4409017c73a1c143ba023336a324cf233b851a953296cd42a2c71a1b7f6d9  ../STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md",
+          "after": "82edfbaaf682d982c3aa769ec35e706c47654c5e225955048f228ead0be8e475  ../STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md"
+        }
+      ],
+      "published_original_path": "docs/benchmarks/standard-math-blend4-2026-11-19/checksums.sha256",
+      "published_original_sha256": "42cb7eb92d81ed7355a671ec23f71b150f47252764bdbb528d2d07a3566a832a"
+    },
+    {
+      "original_path": "docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/checksums.sha256",
+      "current_path": "docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/checksums.sha256",
+      "before_validation_move_sha256": "180ac885c26ef7ed063fef35a6d73d4fa005b44bbf333db86598f1246d459549",
+      "current_sha256": "0f8d77dbe668e31d5e0678beaa31c4fbab46f9e3afebe81dd70d292e3006f0f6",
+      "changed_entries": [
+        {
+          "before": "2e59e49ac35fea6948196cefb4fe31c0f9be17fb3700e7d5a1916cf12b0d0c57  README.md",
+          "after": "9d01b663363662b3346dd0a0cdef5c56e6bcc6f0d53a7f8d8ef4cc4d15beae89  README.md"
+        }
+      ],
+      "published_original_path": "docs/benchmarks/standard-math-master-checkpoint-2026-11-19/checksums.sha256",
+      "published_original_sha256": "84621a895e3ee10382be5f529d3792ce5fa1883623d80cd764227e2f39fa4b67"
+    },
+    {
+      "original_path": "docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md",
+      "current_path": "docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md",
+      "before_validation_move_sha256": "2e59e49ac35fea6948196cefb4fe31c0f9be17fb3700e7d5a1916cf12b0d0c57",
+      "current_sha256": "9d01b663363662b3346dd0a0cdef5c56e6bcc6f0d53a7f8d8ef4cc4d15beae89",
+      "published_original_path": "docs/benchmarks/standard-math-master-checkpoint-2026-11-19/README.md",
+      "published_original_sha256": "72bfa6f989c90713075d2611ca245ac0275b4c8b39317a67583f5245fb2b449a"
+    },
+    {
+      "original_path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md",
+      "current_path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md",
+      "before_validation_move_sha256": "1cfd90be598f25abc475d9857d47ec290c2871d10f267f8c080d3307530a4a05",
+      "current_sha256": "af1914f9ebfe7aacea6e23a5e320ec52ebd4c8be43cb7904363e08688ceae903",
+      "published_original_path": "docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-19.md",
+      "published_original_sha256": "a82cc922bf0212cefab241531eebc83c1cde7bd89aee9aaf68a4be8fbdd0c90c"
+    },
+    {
+      "original_path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md",
+      "current_path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md",
+      "before_validation_move_sha256": "06a4409017c73a1c143ba023336a324cf233b851a953296cd42a2c71a1b7f6d9",
+      "current_sha256": "82edfbaaf682d982c3aa769ec35e706c47654c5e225955048f228ead0be8e475",
+      "published_original_path": "docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-19_BASELINE.md",
+      "published_original_sha256": "56d46f16eae182e1cd9e37d7365cb3f6d1428af42a5613902b55002145d31dc7"
+    },
+    {
+      "original_path": "docs/validation/architecture-separation-integration-2026-11-19/checksums.sha256",
+      "current_path": "docs/validation/architecture-separation-integration-2026-11-19/checksums.sha256",
+      "before_validation_move_sha256": "47229ac06ea19aee6e52455a4fb3f67e6bc9b8b0c33a944bc7a2337a3fefaf32",
+      "current_sha256": "2c25325fbccecca1bfdb69c444704f6522da8c2c021402ee817e494ea9cced04",
+      "published_original_sha256": "47229ac06ea19aee6e52455a4fb3f67e6bc9b8b0c33a944bc7a2337a3fefaf32",
+      "changed_entries": [
+        {
+          "before": "ed9ac7621176675316f5eb45fcd544a67656b4a230e22ab722edc3ceafcc5dba  ../architecture-separation-integration-completed-2026-11-19.md",
+          "after": "9ee18fb728c7acccc3f8b73417e4b316634b4daee54fe8117491eaa3963a7860  ../architecture-separation-integration-completed-2026-11-19.md"
+        }
+      ],
+      "published_original_path": "docs/validation/architecture-separation-integration-2026-11-19/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/architecture-separation-integration-completed-2026-11-19.md",
+      "current_path": "docs/validation/architecture-separation-integration-completed-2026-11-19.md",
+      "before_validation_move_sha256": "ed9ac7621176675316f5eb45fcd544a67656b4a230e22ab722edc3ceafcc5dba",
+      "current_sha256": "9ee18fb728c7acccc3f8b73417e4b316634b4daee54fe8117491eaa3963a7860",
+      "published_original_sha256": "ed9ac7621176675316f5eb45fcd544a67656b4a230e22ab722edc3ceafcc5dba",
+      "published_original_path": "docs/validation/architecture-separation-integration-completed-2026-11-19.md"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/checksums.sha256",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/checksums.sha256",
+      "before_validation_move_sha256": "2b54b4a170e7b644f0f248dc094288388169d1b30594eccada22f8608ee53918",
+      "current_sha256": "831cc1460ece2584fcc728c12a8ee71d56e972a906471fb7c48507b28cd9aa65",
+      "published_original_sha256": "2b54b4a170e7b644f0f248dc094288388169d1b30594eccada22f8608ee53918",
+      "changed_entries": [
+        {
+          "before": "14acb83406d43488a8751f0646ba05b3613970169f5d5952fc069fac4b3daeb1  README.md",
+          "after": "711ee9ea3ac09f2780ddc3d5c02e7043b87f13b3bdab33d729c7bd404d8c0eb5  README.md"
+        }
+      ],
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md",
+      "before_validation_move_sha256": "14acb83406d43488a8751f0646ba05b3613970169f5d5952fc069fac4b3daeb1",
+      "current_sha256": "711ee9ea3ac09f2780ddc3d5c02e7043b87f13b3bdab33d729c7bd404d8c0eb5",
+      "published_original_sha256": "14acb83406d43488a8751f0646ba05b3613970169f5d5952fc069fac4b3daeb1",
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/checksums.sha256",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/checksums.sha256",
+      "before_validation_move_sha256": "b1e50610cc3597a115fbd4abb1876d520381b913f19042f23eb436d36ae85434",
+      "current_sha256": "c080bf70999f7fe8976c7053c9fc36e0e6f3744866adf161557ceddf353db3fa",
+      "published_original_sha256": "b1e50610cc3597a115fbd4abb1876d520381b913f19042f23eb436d36ae85434",
+      "changed_entries": [
+        {
+          "before": "1d0f0b052baf22aecd0ee22365e033254207cb1d07dab531b920b38706955888  README.md",
+          "after": "3f373c7e6eec862fcf731b62628b55466a15b3d6d0482aaf7c693e3497b39de3  README.md"
+        }
+      ],
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/README.md",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/README.md",
+      "before_validation_move_sha256": "1d0f0b052baf22aecd0ee22365e033254207cb1d07dab531b920b38706955888",
+      "current_sha256": "3f373c7e6eec862fcf731b62628b55466a15b3d6d0482aaf7c693e3497b39de3",
+      "published_original_sha256": "1d0f0b052baf22aecd0ee22365e033254207cb1d07dab531b920b38706955888",
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/mac-m2/README.md"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/checksums.sha256",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/checksums.sha256",
+      "before_validation_move_sha256": "f325d6f284328141b2194443bfe2ef8630d8e7e5d69a23fa1ef6ca5fd625284a",
+      "current_sha256": "61401d40546c19ef1c68b9ae44d157ab3824d9f3b2f31359e6e0214ccf9c24a8",
+      "published_original_sha256": "f325d6f284328141b2194443bfe2ef8630d8e7e5d69a23fa1ef6ca5fd625284a",
+      "changed_entries": [
+        {
+          "before": "2f74122db1063a88556fb6b034923bdc5e73279ff2f33f5a5044e351c67c6417  README.md",
+          "after": "bd3f1a3f1f8f106c8de627b13e5bd46234b7b8a3eeeda6057d38a075c8eac6cb  README.md"
+        }
+      ],
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/README.md",
+      "current_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/README.md",
+      "before_validation_move_sha256": "2f74122db1063a88556fb6b034923bdc5e73279ff2f33f5a5044e351c67c6417",
+      "current_sha256": "bd3f1a3f1f8f106c8de627b13e5bd46234b7b8a3eeeda6057d38a075c8eac6cb",
+      "published_original_sha256": "2f74122db1063a88556fb6b034923bdc5e73279ff2f33f5a5044e351c67c6417",
+      "published_original_path": "docs/validation/cross-platform/simd-parity-20261116/source-manifests/README.md"
+    },
+    {
+      "original_path": "docs/validation/m2-blend4-2026-11-19/checksums.sha256",
+      "current_path": "docs/validation/arm64/m2-blend4-2026-11-19/checksums.sha256",
+      "before_validation_move_sha256": "7daa9579f302d697c8c57caf583cc4361808fa3d0875e4c2e50da80015c2658d",
+      "current_sha256": "4a7c75a525997d3f86cc9c04a90415e226af24f9e4d3b699b59f6a23a2f6921e",
+      "published_original_sha256": "7daa9579f302d697c8c57caf583cc4361808fa3d0875e4c2e50da80015c2658d",
+      "changed_entries": [
+        {
+          "before": "7c41d03dcd0b198db4905354d2f3450b369997ae9b98e0b21f2fbba42afe84df  ../mac-arm-2026-11-19-blend4.md",
+          "after": "47f0a2c7a20239d8a54073e2cd8ebe9deed743c7994704ceb96514324e04d56e  ../mac-arm-2026-11-19-blend4.md"
+        }
+      ],
+      "published_original_path": "docs/validation/m2-blend4-2026-11-19/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/mac-arm-2026-11-19-blend4.md",
+      "current_path": "docs/validation/arm64/mac-arm-2026-11-19-blend4.md",
+      "before_validation_move_sha256": "7c41d03dcd0b198db4905354d2f3450b369997ae9b98e0b21f2fbba42afe84df",
+      "current_sha256": "47f0a2c7a20239d8a54073e2cd8ebe9deed743c7994704ceb96514324e04d56e",
+      "published_original_sha256": "7c41d03dcd0b198db4905354d2f3450b369997ae9b98e0b21f2fbba42afe84df",
+      "published_original_path": "docs/validation/mac-arm-2026-11-19-blend4.md"
+    },
+    {
+      "original_path": "docs/validation/windows-blend4-handoff-2026-11-19/integration/checksums.sha256",
+      "current_path": "docs/validation/x86/windows-blend4-handoff-2026-11-19/integration/checksums.sha256",
+      "before_validation_move_sha256": "8e12f355cb94779ea485ce36309fcba83c1aefeab1492fbccdb78df8ba11773e",
+      "current_sha256": "04872759590b594cdc8a7f7a2e911f8b8772a5855bbeb563a49bf5eadf0248cc",
+      "published_original_sha256": "8e12f355cb94779ea485ce36309fcba83c1aefeab1492fbccdb78df8ba11773e",
+      "changed_entries": [
+        {
+          "before": "8fd5a63ee62501aee99170b681baa32db6dc51f059d3df73de8520fb7207589c  README.md",
+          "after": "8a1261c250525114eac25e53dec1f84ebd1ebf7db1283bf89cc58cd114de574d  README.md"
+        }
+      ],
+      "published_original_path": "docs/validation/windows-blend4-handoff-2026-11-19/integration/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/windows-blend4-handoff-2026-11-19/integration/README.md",
+      "current_path": "docs/validation/x86/windows-blend4-handoff-2026-11-19/integration/README.md",
+      "before_validation_move_sha256": "8fd5a63ee62501aee99170b681baa32db6dc51f059d3df73de8520fb7207589c",
+      "current_sha256": "8a1261c250525114eac25e53dec1f84ebd1ebf7db1283bf89cc58cd114de574d",
+      "published_original_sha256": "8fd5a63ee62501aee99170b681baa32db6dc51f059d3df73de8520fb7207589c",
+      "published_original_path": "docs/validation/windows-blend4-handoff-2026-11-19/integration/README.md"
+    },
+    {
+      "original_path": "docs/validation/windows-blend4-handoff-2026-11-19/results/checksums.sha256",
+      "current_path": "docs/validation/x86/windows-blend4-handoff-2026-11-19/results/checksums.sha256",
+      "before_validation_move_sha256": "d438c689c104f4f4ffde5dad401a4212450812c1b273813dd74903c5304b5193",
+      "current_sha256": "d8db6730a5e22de3a7f664ff369e2c06312782ee4ba7cff6450999eaba75faff",
+      "published_original_sha256": "0e9f9700c5771997d5b11092c6d6ae09e7d85986d034648271a92e8c1f8b50e0",
+      "changed_entries": [
+        {
+          "before": "2c9a10d83d133087cf43d4f113238a669e8510a1995ee0c4a4d17648eb9c7a71  windows-amd-2026-11-19-blend4.md",
+          "after": "6f01627b15556e97bb08422a5a34126380100ba23282157a6e1de741fda266f9  windows-amd-2026-11-19-blend4.md"
+        }
+      ],
+      "published_original_path": "docs/validation/windows-blend4-handoff-2026-11-19/results/checksums.sha256"
+    },
+    {
+      "original_path": "docs/validation/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md",
+      "current_path": "docs/validation/x86/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md",
+      "before_validation_move_sha256": "2c9a10d83d133087cf43d4f113238a669e8510a1995ee0c4a4d17648eb9c7a71",
+      "current_sha256": "6f01627b15556e97bb08422a5a34126380100ba23282157a6e1de741fda266f9",
+      "published_original_sha256": "8615ed76d21886158110b9fbd97c9f58d8b59cc4800e13ed658e8bbca1a5c6a9",
+      "published_original_path": "docs/validation/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md"
+    }
+  ],
+  "unchanged_evidence": "All non-Markdown, non-checksum bundle payloads retain exact bytes; historical paths inside frozen metadata/helpers remain unchanged",
+  "native_tests_executed": false,
+  "status": "Historical record of the intermediate documentation layout before local historical-document retirement; current_path/current_sha256 fields describe that relocation stage, not the present checkout",
+  "subsequent_retirement": {
+    "index": "README.md#historical-document-retirement",
+    "retired_relocated_paths": [
+      "docs/validation/arm64/mac-arm-2026-11-16-bd7807e-final.md",
+      "docs/validation/arm64/mac-arm-2026-11-16-bd7807e-validator-followup.md",
+      "docs/validation/arm64/mac-arm-documentation-cleanup-2026-11-20.md",
+      "docs/validation/x86/arm-strategy-cleanup-2026-11-18.json",
+      "docs/validation/x86/arm-strategy-cleanup-2026-11-18.md",
+      "docs/validation/x86/windows-amd-2026-11-16-bd7807e-final.md",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/binary-inventories.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/canonical-controls.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/capture-archive-receipt.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/cases.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/checksums.sha256",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/compiler-policy.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/graph-audit-attempt01-failure.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/include-graphs.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/integrity.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/interrupted-capture-archive-receipt.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/metadata-collector-failure.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/noinit-policy.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/nonpassing-output.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/offline-source-audit-correction.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/optimized-vs-strict.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/postflight-evidence-receipt.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/protected-source-paths.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/raw-evidence-receipt.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/README.md",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/reused-noinit-receipt.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/review-checks.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/setup-attempts.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/source-manifest.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/source-vs-base.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/standalone-consumers.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/strict-vs-previous-control.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/summary.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/tool-dependency-identities.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20/validator-identities.json",
+      "docs/validation/x86/windows-upstream-optimized-2026-11-20.md"
+    ]
+  }
+}

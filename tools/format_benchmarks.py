@@ -26,7 +26,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-BENCHMARKS = ROOT / 'docs/benchmarks'
+BENCHMARKS = ROOT / 'docs/benchmarks/arm64'
 PALETTE = {'green': '#1a7f37', 'red': '#cf222e', 'blue': '#0969da'}
 BACKEND_COLORS = {'Direct Neon': '#6f42c1', 'sse2neon': '#bc4c00'}
 THROUGHPUT_NEUTRAL = '#ffffff'

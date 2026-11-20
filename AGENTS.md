@@ -15,7 +15,7 @@ on a particular machine; its absence must not prevent a fresh setup.
   `docs/backend-layout.md` and `docs/arch-separation-map.json`. The maintainer approved implementation and
   native validation on Mac M2 followed by native AMD Windows verification.
   That work is complete and integrated; the Mac execution handoff is historical.
-  See `docs/validation/architecture-separation-integration-completed-2026-11-19.md`. The
+  See [historical architecture-separation-integration-completed-2026-11-19.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md). The
   platform-neutral include name `vcl2_xa64.h` is agreed.
   The maintainer subsequently approved retiring the local x86 findings index.
   Its [frozen historical version](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md)
@@ -37,28 +37,38 @@ on a particular machine; its absence must not prevent a fresh setup.
 - The maintainer subsequently approved retaining/integrating the four-blend
   candidate, publishing the Windows report and evidence-backed local cleanup.
   Integration/publication and verified local cleanup are complete; see
-  `docs/validation/blend4-integration-2026-11-19.md`. The full Windows gate
+  `docs/validation/arm64/blend4-integration-2026-11-19.md`. The full Windows gate
   remains failed/incomplete. The measured 2.2% / 2.7% TRS-inverse elapsed costs
   are accepted for this integration and remain unresolved.
 - The TRS-inverse follow-up and Windows return have been reviewed. Keep the
   current master runtime; the frozen candidate is not selected for integration.
-  See `docs/validation/trs-inverse-decision-2026-11-20.md` for the
+  See `docs/validation/arm64/trs-inverse-decision-2026-11-20.md` for the
   tradeoffs and current artifact availability. On 20 November the maintainer
   requested discarding obsolete local Mac experiment material without creating
   replacement archives. Earlier execution handoffs are historical, not pending
   tasks. New runtime work and publication require their own agreed scope.
   Obsolete pre-19 November Mac documentation was subsequently retired; see
-  `docs/validation/mac-arm-documentation-cleanup-2026-11-20.md` for the retained
+  [historical mac-arm-documentation-cleanup-2026-11-20.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md) for the retained
   source/comparison records and reasons. Do not restore old execution plans.
 - Obsolete pre-19 November Windows x86 validation documentation was subsequently
   retired; see the Windows documentation cleanup section in
   `docs/validation/README.md`.
-  Retain the documented exceptions for cross-host comparisons and archive
-  recovery. The retired 16 November optimization and upstream-comparison
+  The former local exceptions for cross-host comparisons and archive
+  recovery were subsequently retired through frozen Git citations. The retired
+  16 November optimization and upstream-comparison
   reports and their portable packets remain in frozen Git; their local copies
   were removed with approval.
   Use the current x86 build/test guide and Windows
   runner, not frozen historical execution instructions.
+
+- On 20 November the maintainer subsequently requested retiring documents whose
+  remaining relevance is historical. The pre-separation comparison packet and
+  source-byte audit, superseded harness records and closed cleanup/publication
+  reports now use frozen Git citations. See
+  `docs/validation/README.md#historical-document-retirement` for scope and retained
+  current evidence. Keep the separated-backend gates, accepted decisions,
+  canonical corpora/runners and raw Windows archives. Do not restore retired
+  local records or infer current parity from the old combined-source checkpoint.
 
 ## OS-agnostic
 
@@ -97,7 +107,7 @@ on a particular machine; its absence must not prevent a fresh setup.
 ### Library and validation contracts
 
 - The separated layout is integrated into local `master`; verified local cleanup
-  is complete. See `docs/validation/architecture-separation-integration-completed-2026-11-19.md`.
+  is complete. See [historical architecture-separation-integration-completed-2026-11-19.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md).
   The original Windows correctness gate stays failed/incomplete.
   Read `README-vcl2-xa64.md`, `docs/backend-layout.md` and the dated validation
   report for its actual result/source identity. `README.md` is protected upstream.
@@ -168,7 +178,7 @@ on a particular machine; its absence must not prevent a fresh setup.
   `docs/validation/cross-platform/README.md`. Do not claim cross-host parity from
   separate native correctness passes or compare only an inventory intersection.
 
-### Completed checkpoint and preserved evidence
+### Historical checkpoint and frozen evidence
 
 - `simd-parity-20261116` used commit
   `bd7807e91f5888bc2ad708ca46c9305d166d6c4b`, tree
@@ -182,7 +192,7 @@ on a particular machine; its absence must not prevent a fresh setup.
 - The validator correction/Mac evidence were published at `99f4a3d`; the source
   audit at `145c7f5` reconciled all 135 paths: 43 identical hashes and 92 verified
   LF-to-CRLF transformations. There is no remaining source-fingerprint gap.
-- Reports, portable data and archive receipts are indexed under
+- The historical reports, portable data and archive receipts are linked through frozen Git under
   `docs/validation/`. Direct Neon is still experimental. Other hosts/toolchains,
   unselected APIs, native FP16 and ASan are outside this checkpoint's coverage.
 
@@ -214,7 +224,7 @@ on a particular machine; its absence must not prevent a fresh setup.
   strict default. MSVC Debug/RTC is deferred and rejected until noninteractive
   reporting is implemented and validated. Preserve numerical gates and protected
   original bytes. Exact source/results are recorded in
-  `docs/validation/windows-x86-harness-integration-2026-11-20.md`.
+  `docs/validation/x86/windows-x86-harness-integration-2026-11-20.md`.
 
 - Use native x64 Windows on the AMD host, an x64 Visual Studio developer shell,
   Python 3.9+, CMake, CTest and Ninja. Prioritize MSVC and also use native x64
@@ -223,7 +233,7 @@ on a particular machine; its absence must not prevent a fresh setup.
   `python -B tools/run_windows_validation.py --driver msvc --mode Release --plan`.
   `tools/run_windows_validation.ps1` can initialize the installed developer
   environment. Do not change machine-wide execution policy or tool configuration.
-- Follow `docs/validation/windows-runner.md` for explicitly selected profiles
+- Follow `docs/validation/x86/windows-runner.md` for explicitly selected profiles
   and the pinned upstream selection. MSVC Debug is unsanitized, not UBSan proof.
   Probe CPU AND OS ISA support before AVX2/AVX-512 execution. Verify x64 PE files,
   runtime detection and actual-page-size protected-memory controls.

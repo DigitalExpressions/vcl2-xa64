@@ -1,55 +1,50 @@
 # Native validation status and procedures
 
-## Current master — 20 November 2026
+| Architecture | Documentation |
+| --- | --- |
+| ARM64 / macOS | [Native M2 reports and decisions](arm64/README.md) |
+| x86 / Windows | [Windows runner, reports and results](x86/README.md) |
+| Shared | [Native workflow](native-workflow.md), [report template](report-template.md), [cross-platform comparison procedure](cross-platform/README.md) |
 
-Keep runtime d796768; the frozen TRS-recovery candidate 3b4af0d is declined
-unchanged. The [completed TRS review](trs-inverse-decision-2026-11-20.md)
-records inverse recovery, material dot-product costs and unresolved variability.
-Master retains the accepted four-blend implementation, its small-transpose gain
-and known inverse cost. Inspect actual refs and worktrees before new work;
-retired validation branches are not prerequisites. No new native pass follows
-from cleanup.
+## Current master - 20 November 2026
 
-The [pre-19 November Mac documentation cleanup](mac-arm-documentation-cleanup-2026-11-20.md)
-removes superseded reports, bundles and execution plans. The few older records
-listed below remain because they support retained source/comparison claims.
-Historical links use frozen Git revisions; they are not pending tasks.
+Master retains runtime d796768 and the accepted four-blend implementation,
+including its small-transpose gain and accepted 2.2% / 2.7% TRS-inverse costs.
+The [completed TRS review](arm64/trs-inverse-decision-2026-11-20.md) declines
+candidate 3b4af0d unchanged. No old handoff is a pending task.
 
-The [Windows x86 documentation cleanup](#windows-documentation-cleanup)
-retires 81 tracked files, with old x86 findings and comparison results retained
-through frozen Git. Current Windows instructions and 19–20 November results
-remain; the older exceptions below retain unique
-comparison, source or evidence-recovery information.
-Historical reports and bundle indexes preserve their original execution-time
-status, including pending notes later closed by follow-ups. Use this index and
-the maintained procedures for today's status; do not resume old handoffs.
+Applications include `vcl2_xa64.h`. Use [backend ownership](../backend-layout.md)
+for the separated include graphs and protected original bytes. Every result
+below belongs to its recorded source; a later documentation commit acquires
+no native pass. Fresh cross-platform validation requires a new frozen source,
+verified architecture-specific include graphs and the declared shared contracts.
 
 ## Latest retained native M2 validation
 
-- [19 November four-blend correctness report](mac-arm-2026-11-19-blend4.md):
+- [19 November four-blend correctness report](arm64/mac-arm-2026-11-19-blend4.md):
   8,036 selected cases plus eight examples passed across compatibility maximum
   512 and Direct Neon maxima 128/256/512, each Release and strict UBSan Debug.
-  The result belongs to its 571-file uncommitted capture, fingerprint
+  The tested implementation is a 571-file uncommitted capture, fingerprint
   3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36;
-  tested commit/tree are null. [Portable results](m2-blend4-2026-11-19/README.md)
-  preserve names, source identities, flags, controls and checksums.
-- [Accepted integration](blend4-integration-2026-11-19.md): relates the reviewed
-  implementation and Windows results to integration; no later commit inherits
-  a native pass merely from publication.
-- [Matched M2 performance report](../benchmarks/STANDARD_MATH_RESULTS_2026-11-19.md)
-  and [current-master reference checkpoint](../benchmarks/standard-math-master-checkpoint-2026-11-19/README.md):
-  retain workload-specific timing, slower rows and variability separately from
-  correctness. New work needs fresh matched timings, not ratios against history.
+  tested commit/tree are null. [Portable results](arm64/m2-blend4-2026-11-19/README.md)
+  retain source identities, names, flags, controls and checksums.
+- [Four-blend acceptance](arm64/blend4-integration-2026-11-19.md) records the
+  retained implementation, performance costs and separate Windows evidence.
+- [Matched M2 performance report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md)
+  and [current-master reference checkpoint](../benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
+  retain workload-specific results, slower rows and variability. Future timing
+  comparisons need fresh matched sessions.
 
-Raw Mac sessions, source copies, test binaries and archives named in historical
-reports were deliberately discarded where listed by the 20 November cleanup.
-Their original receipts describe historical availability. Git-retained portable
-records remain; exact deleted binaries/raw trials cannot be inspected locally.
+Obsolete Mac sessions, source copies, test binaries and archives identified by
+[the closed cleanup record](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md#completed-local-workspace-cleanup)
+were discarded on 20 November. Their original receipts describe historical
+availability; exact discarded binaries/raw trials cannot be reinspected locally.
+The current portable results above remain available.
 
 ## Windows gate and architecture preservation
 
-The [20 November integrated x86 harness report](windows-x86-harness-integration-2026-11-20.md)
-records fresh native AMD Windows validation of the 594-file integrated capture:
+The [20 November integrated x86 harness report](x86/windows-x86-harness-integration-2026-11-20.md)
+records native AMD Windows validation of its 594-file integrated capture:
 
 | Profile | Passed | Failed | Not run | Registered |
 | --- | ---: | ---: | ---: | ---: |
@@ -57,120 +52,98 @@ records fresh native AMD Windows validation of the 594-file integrated capture:
 | strict-validation | 2,739 | 79 | 38 | 2,856 |
 | strict-ubsan | 1,322 | 73 | 33 | 1,428 |
 
-All fifteen canonical examples pass; timeouts remain separately
-reported in the complete results. All 7,140 registered case statuses are compared
-with the earlier 20 November capture. The two optimized MSVC signed-zero failures
-remain failed, and all original runtime files remain byte-exact. These new
-profiles do not replace the historical four-profile gate below. The earlier
-20 November report and portable bundle retain their exact source/checksums.
+All fifteen canonical examples pass. All 7,140 registered case statuses,
+including failures, timeouts and unavailable executables, remain recorded.
+The two optimized MSVC signed-zero failures remain failed. All original runtime
+files remain byte-exact; these profiles do not replace the earlier full gate.
 
-The full gate stays **failed/incomplete: 5,387 passed, 249 failed, 76 not run
-of 5,712, plus twelve passing examples**. Bounded movement, include/code and RTC
-diagnostics do not convert failures or timeouts into passes.
+The retained full gate stays **failed/incomplete: 5,387 passed, 249 failed,
+76 not run of 5,712, plus twelve passing examples**. Bounded preservation,
+include/code checks and RTC diagnostics do not convert failures into passes.
 
-- [Architecture matrix](windows-amd-2026-11-19-arch-separation.md) and
-  [targeted triage](windows-amd-2026-11-19-arch-separation-triage.md).
-- [Four-blend Windows return](windows-blend4-handoff-2026-11-19/results/README.md)
-  and [integration acceptance](architecture-separation-integration-2026-11-19.md).
-- [Architecture integration completion](architecture-separation-integration-completed-2026-11-19.md)
-  and [dependency audit/publication](dependency-audit-publication-2026-11-19.md).
-- [Windows preservation return for declined TRS candidate](https://github.com/DigitalExpressions/vcl2-xa64/tree/b5a671a72fe59888ce0a661741a2b65c6b02a4b6/docs/validation/trs-inverse-current-master-2026-11-19).
+- [Architecture matrix](x86/windows-amd-2026-11-19-arch-separation.md) and
+  [targeted triage](x86/windows-amd-2026-11-19-arch-separation-triage.md).
+- [Four-blend Windows return](x86/windows-blend4-handoff-2026-11-19/results/README.md)
+  and [architecture acceptance](architecture-separation-integration-2026-11-19.md).
+- [Portable integrated harness results](x86/windows-x86-harness-integration-2026-11-20/README.md).
+- [Frozen Windows return for the declined TRS candidate](https://github.com/DigitalExpressions/vcl2-xa64/tree/b5a671a72fe59888ce0a661741a2b65c6b02a4b6/docs/validation/trs-inverse-current-master-2026-11-19).
 
 ## Reusable procedures and contracts
 
-Use the [x86 MSVC/Clang build and test guide](../x86-build-and-test.md) and
-[integrated harness record](windows-x86-harness-integration-2026-11-20.md) for
-current profiles and actual results. The Windows runner defaults to optimized
-Release; strict comparisons and UBSan stay separate, and MSVC RTC is rejected.
-The [earlier 20 November harness results](windows-upstream-optimized-2026-11-20.md)
-retain their original capture and checksums; publication does not transfer passes.
-
-Use [native workflow](native-workflow.md), [test guidance](../../tests/README.md),
-[benchmark correctness contracts](../../benchmarks/README.md#correctness-contracts), [numerical contracts](../numerical-contracts.md),
-[backend ownership](../backend-layout.md), [Windows runner](windows-runner.md)
+Use the [x86 build and test guide](../x86-build-and-test.md),
+[Windows runner](x86/windows-runner.md), [native workflow](native-workflow.md),
+[test guidance](../../tests/README.md), [numerical contracts](../numerical-contracts.md),
+[benchmark correctness contracts](../../benchmarks/README.md#correctness-contracts)
 and [report template](report-template.md) for a newly agreed frozen source.
-Keep independent fixtures, seeds, numerical gates, FP flags, strict nonrecovering
+The Windows runner defaults to optimized Release; strict Release comparisons
+and strict Clang UBSan remain separate, and MSVC RTC is deferred and rejected.
+
+Keep independent fixtures, seeds, numerical/FP gates, strict nonrecovering
 UBSan, actual-page guards/canaries, 60-second deadlines and concurrency three.
-Direct Neon is experimental; compatibility stays default. Physical Intel,
-unselected hosts/toolchains/APIs, native FP16, ARM64EC, ASan and consumer workload
-validation remain outside the documented scope. Do not resume retired handoffs.
+Direct Neon stays experimental. Physical Intel, unselected hosts/toolchains/APIs,
+native FP16, ARM64EC, ASan and external consumer validation remain outside
+recorded coverage. Tests, corpora, comparators and runners remain maintained.
 
-## Older records still needed
+## Historical document retirement
 
-- [Shared Windows/Mac corpus procedures and completed comparison](cross-platform/README.md),
-  [Mac captures](cross-platform/simd-parity-20261116/mac-m2/README.md),
-  [validator follow-up](cross-platform/simd-parity-20261116/comparisons/mac-validator-02/README.md)
-  and [source-byte audit](source-byte-audit-2026-11-16-bd7807e.md): unique evidence
-  for the 32 selected cross-host pairings and reconciled 135-path inventories.
-  These prove only the recorded checkpoint, not cross-host parity at master.
-- [Mixed Windows cleanup record](arm-strategy-cleanup-2026-11-18.md): retains
-  the verified recovery map and checksums for retained Windows raw evidence.
-- [16 November Windows checkpoint](windows-amd-2026-11-16-bd7807e-final.md):
-  identifies the native suite and corpus source behind the selected cross-host
-  comparison. Its original pending notes are historical; use the completed
-  comparison and validator follow-up above for the final outcome.
-- [Retained x86 findings](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md) index earlier
-  Windows investigations through frozen historical links. The retired patched
-  x86 campaign is separate from today's pristine-original path.
-- The retired [16 November optimization report](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-optimization-2026-11-16.md),
-  [benchmark packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-optimization-2026-11-16)
-  and [candidate source packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/validation/x86-optimization-2026-11-16)
-  remain in frozen Git. Their local copies were removed with approval. These
-  records concern the old patched implementation, not current-master performance.
-- The earlier [upstream-comparison report](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-upstream-2026-11-16-ade9d9b.md)
-  and [12-file packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/benchmarks/x86-upstream-2026-11-16-ade9d9b-final)
-  were also retired locally with approval. Their measured checkpoint remains in
-  frozen Git; the reusable comparison guide and tools remain in the checkout.
+On 20 November the maintainer requested retiring local documents whose
+relevance is now historical. **179 files** were retired with citations redirected
+to immutable Git objects at e55c54a. Each retired path was verified in that
+published source; complete associated portable packets were retired together.
+The earlier benchmark and validation folder moves remain in the working tree.
+
+Historical sources:
+
+- [Pre-separation 16 November comparison packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/cross-platform/simd-parity-20261116),
+  [source-byte audit](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/source-byte-audit-2026-11-16-bd7807e.md),
+  [Mac report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-2026-11-16-bd7807e-final.md),
+  [Windows report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-amd-2026-11-16-bd7807e-final.md)
+  and [validator follow-up](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-2026-11-16-bd7807e-validator-followup.md).
+  These establish the old checkpoint's 32 selected comparisons and 135-path
+  provenance only. They provide no validation of today's separated backends.
+- [Completed architecture integration/cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md)
+  and [receipts](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-2026-11-19).
+  The acceptance decision and unresolved gate remain local above.
+- [Dependency audit](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19.md),
+  [publication/cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-publication-2026-11-19.md)
+  and [portable receipts](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19).
+  Current provenance remains in the [x86 ledger](../../audit_x86_history.md),
+  [ARM64 ledger](../../audit_arm64_history.md) and protected audit manifests.
+- [Superseded Windows harness report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20.md)
+  and [complete packet](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20).
+  Their source identities, failures and comparisons remain in frozen Git; the
+  current integrated report and evidence remain local.
+- [Mac cleanup history](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md),
+  [Windows archive-recovery report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/arm-strategy-cleanup-2026-11-18.md)
+  and [archive map](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/arm-strategy-cleanup-2026-11-18.json).
+  These retain original reasons, counts, hashes and recovery locations.
+
+Only local documentation and portable historical packets were retired.
+Raw Windows evidence/archives, reusable tools, canonical tests, source captures,
+installed dependencies and unrelated work were preserved. All retained portable
+payloads keep their original bytes; affected navigation/checksum entries were
+updated. No native matrix, timing, runtime change, commit or push occurred.
+
+Before-retirement SHA-256 identities for retained inventories changed by
+navigation or availability edits (after the earlier folder moves):
+
+| Inventory | Before-retirement SHA-256 |
+| --- | --- |
+| `docs/validation/arm64/m2-blend4-2026-11-19/checksums.sha256` | `4a7c75a525997d3f86cc9c04a90415e226af24f9e4d3b699b59f6a23a2f6921e` |
+| `docs/validation/x86/windows-blend4-handoff-2026-11-19/integration/checksums.sha256` | `04872759590b594cdc8a7f7a2e911f8b8772a5855bbeb563a49bf5eadf0248cc` |
 
 ## Windows documentation cleanup
 
-On 20 November 2026 the maintainer requested removal of obsolete pre-19 November
-Windows x86 validation material, then approved consolidating three further
-documents, retiring the local x86 findings index and removing the closed
-optimization campaign. This retires **81 tracked files**: five 15 November Windows reports,
-the 16 November layout report, two 17 November correctness reports and their
-25-file bundles, the retired optimization-plan stub, two bundle README
-indexes and the x86 findings document, followed by the 31 remaining files in the
-16 November optimization report, benchmark packet and candidate source packet,
-then the 13-file earlier upstream-comparison report/packet.
-The standalone cleanup draft was folded into this section. Original tracked documents remain in
-[frozen Git at 2237ffb](https://github.com/DigitalExpressions/vcl2-xa64/tree/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs).
+The earlier retirement of **81 tracked Windows documentation files** is recorded
+in the [frozen cleanup index](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/README.md#windows-documentation-cleanup).
+Its original findings, packets and checksum identities remain reachable there.
+The later historical retirement above also closes its former local exceptions
+for pre-separation comparisons and archive-recovery documentation. Current
+Windows procedures and the retained separated-backend gates remain local.
 
-The removed campaigns concern the earlier patched x86 implementation and retired
-generated-root layout. Current pristine-original results and maintained build
-instructions supersede them for new work. Useful x86 findings remain indexed
-above through frozen Git; unique cross-host proofs and archive recovery
-receipts remain locally for the stated purposes. All four archives in the 18 November
-cleanup receipt passed renewed SHA-256 and ZIP CRC verification. Raw evidence
-and failures were preserved; old source-manifest path strings still describe
-their original frozen trees.
+## Architecture folders - 20 November 2026
 
-The optimization report and both complete packets, including their checksum
-inventories, are now retired together. Their original measurements, labels,
-patches and source identities remain in frozen Git. Raw archives, reusable
-benchmark tools and current M2 checkpoints were preserved. The earlier Windows
-comparison report and its complete packet were subsequently retired together;
-their original records remain in frozen Git.
-Original navigation identities for the two retired packets:
-
-| Bundle | Original README SHA-256 | Original checksum-inventory SHA-256 |
-| --- | --- | --- |
-| docs/benchmarks/x86-optimization-2026-11-16 | 11ccf7bae073c22c7805baa662d3360f3cc88f0cf3f95c70648f240e24b5b518 | 508f97cf490f49d402713232a6d433077adead17214bb72821e47fb81ae771cf |
-| docs/validation/x86-optimization-2026-11-16 | fe3cb7c4461f88636f61e1fe28b65621fe625b495ab731779d4282ad35c240a5 | 00c2a1c3b7da9c597b1a37a42276497c016869f71114ecee3c7acaf1b70dbd00 |
-
-The 19 November architecture report replaces only its findings link with the
-frozen historical reference; only that report's entry in the companion checksum
-inventory was refreshed. Original report SHA-256:
-86906115517f4618a9c4b269a76788a4713a94f3314ce2f20db8e96308531e32.
-Original checksum-inventory SHA-256:
-9316c53d5c16597e81534fcf9aafc397094a43ee596fa71ff248f4c2ca566c07.
-Both originals remain at 2237ffb. All recorded results, captured source identities
-and other payload/hash entries are unchanged.
-
-Historical citations resolve through frozen Git; current links use maintained
-guides and retained results. Attribute rules exclusive to deleted files were
-retired. Protected originals, runtime code, tests, fixtures, tools, dependencies
-and saved Git configuration are unchanged. Repository/link, whitespace,
-retained-checksum and read-only integrity checks cover this documentation-only
-change. No native matrix or timing was run. The Windows gate stays
-failed/incomplete as recorded above; cleanup establishes no new native pass.
+Current Mac/M2 records use `arm64/`; Windows records use `x86/`; shared
+procedures use this level and `cross-platform/`. The earlier
+[relocation receipt](relocation-2026-11-20.json) describes the intermediate layout
+before historical retirement. Its original hashes retain that stage's meaning.

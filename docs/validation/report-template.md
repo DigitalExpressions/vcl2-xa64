@@ -51,7 +51,7 @@ the selected matrix total and total executions including retries separately.
 Record example outputs and any additional consumer checks separately.
 Identify each selected compiler profile explicitly. Keep Windows optimized
 Release, strict Release and strict UBSan totals separate; MSVC RTC remains
-deferred under the [current runner policy](windows-runner.md).
+deferred under the [current runner policy](x86/windows-runner.md).
 
 ## Controls, flags and numerical contracts
 

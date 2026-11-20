@@ -83,14 +83,14 @@ in Git history and earlier dated reports.
 The migration was published on `arch-separation-m2` and accepted for local
 integration into `master` on 19 November. The [integration decision](validation/architecture-separation-integration-2026-11-19.md)
 defines x86 preservation/equivalence acceptance despite the failed/incomplete
-[Windows matrix](validation/windows-amd-2026-11-19-arch-separation.md). The
-[targeted triage](validation/windows-amd-2026-11-19-arch-separation-triage.md)
+[Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md). The
+[targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
 retains inherited limitations and distinguishes documented contract differences.
 No original file or test gate was changed. Native results remain tied to their
 separate exact captures, and no benchmark or x86 repair is part of integration.
 
-The [19 November M2 result](validation/mac-arm-2026-11-19-blend4.md) records the
-later frozen ARM implementation. The [Windows runner guide](validation/windows-runner.md)
+The [19 November M2 result](validation/arm64/mac-arm-2026-11-19-blend4.md) records the
+later frozen ARM implementation. The [Windows runner guide](validation/x86/windows-runner.md)
 provides the maintained procedure; the dated matrix and triage above record the
 migration outcome. Historical capture/publication proofs remain accessible through
 frozen Git references in the acceptance record. No pass transfers to a later tree.

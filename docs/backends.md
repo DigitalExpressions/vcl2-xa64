@@ -48,7 +48,7 @@ caller's FP environment merely by being included.
 Recorded native validation includes Apple M2/Apple Clang and AMD Ryzen Windows
 MSVC/Clang. Earlier translated x86 and QEMU/Linux ARM results are separate
 evidence. Read the [validation index](validation/README.md) for exact tested
-revisions and coverage limits, and the [manual Windows runner](validation/windows-runner.md) for reproducible
+revisions and coverage limits, and the [manual Windows runner](validation/x86/windows-runner.md) for reproducible
 local checks. Other hosts/toolchains and unselected APIs remain separate
 gates; historical automated results do not imply later native passes. Maintainer physical Intel
 testing is omitted for now.

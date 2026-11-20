@@ -1,9 +1,9 @@
 # VCL2 XA64 — x86 and ARM64 Neon
 
-The [four-blend integration](docs/validation/blend4-integration-2026-11-19.md)
+The [four-blend integration](docs/validation/arm64/blend4-integration-2026-11-19.md)
 retains the validated ARM specializations and pristine original x86 source.
 Its known 2–3% TRS-inverse cost remains accepted. The
-[completed follow-up review](docs/validation/trs-inverse-decision-2026-11-20.md)
+[completed follow-up review](docs/validation/arm64/trs-inverse-decision-2026-11-20.md)
 keeps current master: the proposed recovery had material dot-product costs.
 The Windows full correctness gate remains failed/incomplete.
 
@@ -11,15 +11,15 @@ The `arch-separation-m2` publication implements
 [pristine originals at root and separate ARM headers](docs/backend-layout.md).
 Use `#include "vcl2_xa64.h"` on either platform. All 28 original VCL paths,
 including `README.md`, remain byte-exact upstream; this file is the fork guide.
-The [19 November M2 report](docs/validation/mac-arm-2026-11-19-blend4.md)
+The [19 November M2 report](docs/validation/arm64/mac-arm-2026-11-19-blend4.md)
 records 8,036 native CTest passes and eight examples at its exact frozen capture.
 [Architecture integration](docs/validation/architecture-separation-integration-2026-11-19.md)
-and [four-blend acceptance](docs/validation/blend4-integration-2026-11-19.md)
+and [four-blend acceptance](docs/validation/arm64/blend4-integration-2026-11-19.md)
 record the source relationships and failed/incomplete Windows gate. Use the
 [current layout](docs/backend-layout.md), [ARM lessons](docs/neon-arm-lessons.md)
 and [validation index](docs/validation/README.md) for new work. Superseded Mac
 reports/plans were removed in the
-[documentation cleanup](docs/validation/mac-arm-documentation-cleanup-2026-11-20.md).
+[documentation cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md).
 The [Windows documentation cleanup](docs/validation/README.md#windows-documentation-cleanup)
 records retired x86 campaigns and the older evidence still needed for retained claims.
 
@@ -65,7 +65,7 @@ cd vcl2-xa64
 ```
 
 The separated architecture is published on the default `master` branch;
-[completion and cleanup](docs/validation/architecture-separation-integration-completed-2026-11-19.md)
+[completion and cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md)
 record the retained evidence and remaining limits. See the [integration plan](docs/integration-plan.md)
 for the completion record and current branch policy. Shared development and
 validation instructions for both operating systems are in [AGENTS.md](AGENTS.md).
@@ -269,40 +269,23 @@ For Direct Neon, also select its backend/opt-in and maximum width 512.
 
 ## Validation and performance
 
-The completed shared correctness checkpoint ran on **16 November 2026**, using
-source revision `bd7807e`, on real Mac and Windows hardware:
-
-| Platform and compilers | Regression cases passed | Additional numerical checks passed |
-| --- | ---: | ---: |
-| Apple M2 / macOS, Apple Clang | 8,036 / 8,036 | 3,996 / 3,996 |
-| AMD Ryzen / Windows, MSVC and Clang | 5,392 / 5,392 | 5,376 / 5,376 |
-
-- **Functionality:** selected integer and floating-point arithmetic, masks,
-  conversions, memory operations and math functions across 128/256/512-bit
-  logical vectors. Release and Debug builds covered both ARM implementations;
-  Windows also received additional AVX2/AVX-512 numerical checks.
-- **Runtime checks:** Clang Debug builds passed checks for undefined C++ behavior
-  (UBSan). Tests using protected memory checked buffer boundaries. Independent
-  numerical references, runnable examples and CPU-feature queries also passed.
-- **Cross-platform results:** all 32 selected Windows/ARM build comparisons met
-  the documented accuracy and backend rules, with no unexplained differences.
-  Small floating-point differences are expected. A file-by-file audit confirmed
-  the same source version on both hosts; differing file hashes came from line endings.
-
-These counts span the selected build configurations. Direct Neon remains
-experimental; other CPUs/toolchains, native FP16 and AddressSanitizer are outside
-this checkpoint's coverage. The [full reports](docs/validation/README.md) retain
-the exact scope, original failures and validator follow-up. See the
-[native workflow](docs/validation/native-workflow.md) to reproduce the checks and
-the [developer index](docs/README.md) for build and contribution instructions.
-
-The later [19 November M2 checkpoint](docs/validation/mac-arm-2026-11-19-blend4.md)
+The [19 November M2 checkpoint](docs/validation/arm64/mac-arm-2026-11-19-blend4.md)
 passed 8,036 cases and eight examples on its own frozen four-blend capture.
-The [integration record](docs/validation/blend4-integration-2026-11-19.md) identifies
-what master retained. This is selected native correctness evidence, not a new
-shared-corpus comparison or a pass assigned to a later documentation commit.
+The [integration record](docs/validation/arm64/blend4-integration-2026-11-19.md)
+identifies what master retained. The Windows full correctness gate remains
+failed/incomplete; the [validation index](docs/validation/README.md) records
+its original gate and the later optimized, strict Release and UBSan results.
+Every result retains its exact tested source. Direct Neon remains experimental.
 
-The [19 November current-master benchmark checkpoint](docs/benchmarks/standard-math-master-checkpoint-2026-11-19/README.md)
+The earlier pre-separation 16 November native results and 32 selected Windows/Mac
+comparisons are [historical evidence](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/cross-platform/simd-parity-20261116).
+Their source-byte audit and reports remain in frozen Git. They establish no
+current cross-platform equivalence. Use a new frozen source and verified
+architecture-specific include graphs under the
+[native workflow](docs/validation/native-workflow.md) and
+[cross-platform procedure](docs/validation/cross-platform/README.md) for a new comparison.
+
+The [19 November current-master benchmark checkpoint](docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
 compares scalar FP32/FP64, sse2neon and Direct Neon on Apple M2 at its exact
 recorded source. Earlier 13/17 November reports and datasets are retired from
 the working tree and remain in Git history. Workload measurements do not

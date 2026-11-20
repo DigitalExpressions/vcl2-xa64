@@ -109,7 +109,7 @@ unexpected exits are failures or gaps. Do not retry the documented ASan hang.
 Use an x64 Visual Studio developer shell and native x64 Python/CMake/CTest/Ninja.
 Use both MSVC and native GNU-driver Clang. Follow the
 [x86 compiler policy and availability guide](../x86-build-and-test.md) and
-[Windows runner](windows-runner.md). The integrated Windows runner defaults to
+[Windows runner](x86/windows-runner.md). The integrated Windows runner defaults to
 `upstream-optimized` Release. Select `strict-validation` Release explicitly to
 preserve `/fp:strict` or Clang no-contraction/rounding comparisons. Direct CMake
 keeps the strict default; choose `VCL_TEST_PROFILE` explicitly for optimized tests.
@@ -140,7 +140,7 @@ all slower rows, output checks and variability; correctness runs collect no timi
 During active work retain complete evidence. Later cleanup needs explicit scope;
 normally verify compact coverage before removing outputs. A maintainer request
 to discard obsolete campaign artifacts may instead remove them without new
-archives, as recorded in the [20 November cleanup](mac-arm-documentation-cleanup-2026-11-20.md#completed-local-workspace-cleanup).
+archives, as recorded in the [20 November cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md#completed-local-workspace-cleanup).
 State what is no longer available. Keep tools, dependencies, canonical tests,
 useful findings and unrelated work. Remove worktrees through Git. Future native
 passes use fresh builds and establish their own results.

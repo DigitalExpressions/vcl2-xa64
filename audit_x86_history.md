@@ -7,7 +7,7 @@ new upstream rows. No example or unverified older revision is listed.
 
 | Upstream date | Version | Upstream commit | Status | Project validation and tuning |
 | --- | --- | --- | --- | --- |
-| 9 September 2026 | 2.02.04 | [`6675774`](https://github.com/vectorclass/version2/commit/667577495efaa36a10cbb5d6cb8c942c23913848) | **Current** | [Windows full gate and bounded preservation](docs/validation/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md); [integration](docs/validation/blend4-integration-2026-11-19.md). Full gate remains failed/incomplete; this does not claim an x86 tuning gain. |
+| 9 September 2026 | 2.02.04 | [`6675774`](https://github.com/vectorclass/version2/commit/667577495efaa36a10cbb5d6cb8c942c23913848) | **Current** | [Windows full gate and bounded preservation](docs/validation/x86/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md); [integration](docs/validation/arm64/blend4-integration-2026-11-19.md). Full gate remains failed/incomplete; this does not claim an x86 tuning gain. |
 
 Current provenance:
 
@@ -37,7 +37,7 @@ are checked and reused; changed, missing or extra files cause failure and are
 never overwritten. Direct-original probes should use that directory and record
 its manifest/tree proof separately from facade includes.
 
-The [layout migration record](docs/validation/dependency-audit-history-2026-11-19.md)
+The [layout migration record](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19.md)
 documents the removal and its checks. Historical frozen source captures retain
 their original vendor directory and pin paths; their hashes and results are not
 rewritten. This later layout does not acquire an earlier native pass.

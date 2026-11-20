@@ -25,7 +25,7 @@ labels. Physical Intel testing is omitted for now.
 
 For current native Windows toolchain steps, controls and evidence capture, use
 the [x86 build and test instructions](../docs/x86-build-and-test.md) and
-[Windows runner guide](../docs/validation/windows-runner.md). Label physical
+[Windows runner guide](../docs/validation/x86/windows-runner.md). Label physical
 CPU coverage accurately.
 The [validation index](../docs/validation/README.md) identifies the completed
 Mac/Windows checkpoint, comparator follow-up, source audit and coverage limits.
@@ -57,7 +57,7 @@ ASan is outside the recorded native validation selection.
 
 For automatic evidence capture and independent native/guard-page/UBSan
 controls, prefer `tools/run_windows_validation.py` as described in the
-[Windows runner guide](../docs/validation/windows-runner.md). The manual commands below remain useful
+[Windows runner guide](../docs/validation/x86/windows-runner.md). The manual commands below remain useful
 for individual profiles and investigations.
 
 Use an x64 Native Tools developer PowerShell with MSVC, CMake, Ninja and Python

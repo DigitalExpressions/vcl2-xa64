@@ -7,7 +7,7 @@ implementation has its own source checkpoints in the project reports.
 
 | Upstream date | Version / snapshot | Upstream commit | Status | Project validation and tuning |
 | --- | --- | --- | --- | --- |
-| 18 October 2026 | Post-v1.9.1 snapshot: `v1.9.1-27-g2272251` | [`2272251`](https://github.com/DLTcollab/sse2neon/commit/2272251cc3ad9cba8b8c47c4065811cfb396b802) | **Current; representation differences recorded below** | [Native M2 correctness](docs/validation/mac-arm-2026-11-19-blend4.md); [matched M2 performance](docs/benchmarks/STANDARD_MATH_RESULTS_2026-11-19.md). Timings compare scalar, compatibility and Direct Neon; they are not a dependency-version speedup claim. |
+| 18 October 2026 | Post-v1.9.1 snapshot: `v1.9.1-27-g2272251` | [`2272251`](https://github.com/DLTcollab/sse2neon/commit/2272251cc3ad9cba8b8c47c4065811cfb396b802) | **Current; representation differences recorded below** | [Native M2 correctness](docs/validation/arm64/mac-arm-2026-11-19-blend4.md); [matched M2 performance](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md). Timings compare scalar, compatibility and Direct Neon; they are not a dependency-version speedup claim. |
 
 Current provenance:
 
@@ -36,7 +36,7 @@ reconstruct the upstream representation in memory to verify its SHA-256/blob.
 
 The active sse2neon dependency stays under `vendor/sse2neon/`, separate from the
 VCL history and comparison cache. Preserve its MIT notice and existing bytes.
-The [layout migration record](docs/validation/dependency-audit-history-2026-11-19.md)
+The [layout migration record](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19.md)
 distinguishes this provenance audit from a new dependency update or native run.
 
 For a future update, retain the old audit record and test evidence, add one new

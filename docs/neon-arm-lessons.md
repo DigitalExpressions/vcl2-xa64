@@ -8,20 +8,21 @@ and Mac migration handoffs are retired; they are not implementation requests.
 
 ## What retained native M2 testing established
 
-The [19 November correctness report](validation/mac-arm-2026-11-19-blend4.md)
+The [19 November correctness report](validation/arm64/mac-arm-2026-11-19-blend4.md)
 records **8,036 CTest passes plus eight examples** across compatibility maximum
 512 and Direct Neon maxima 128/256/512, each Release and strict UBSan Debug.
 Its tested implementation is a 571-file uncommitted capture, fingerprint
 3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36;
 tested commit/tree are null, with base 5e039b0 identified separately. This
 result is not a fresh pass at current master's later metadata/layout tree.
-[Portable source/results](validation/m2-blend4-2026-11-19/README.md) remain.
+[Portable source/results](validation/arm64/m2-blend4-2026-11-19/README.md) remain.
 Obsolete raw Mac sessions/binaries were discarded on 20 November.
 
 The earlier [shared checkpoint](validation/cross-platform/README.md) and
-[source-byte audit](validation/source-byte-audit-2026-11-16-bd7807e.md) retain
-32 selected cross-host comparisons and their exact source identities. These
-claims are separate from later native matrix passes and from current master.
+[source-byte audit](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/source-byte-audit-2026-11-16-bd7807e.md) retain
+32 selected pre-separation comparisons and their exact source identities in
+frozen Git. Their local historical records were retired on 20 November. Future
+comparisons require new captures of the separated implementation.
 No checkpoint validates every VCL API, full scalar-libm behavior, application
 integration, a future redesign or universal bitwise equality across architectures.
 
@@ -108,8 +109,8 @@ a new source checkpoint is explicitly selected. Old handoffs are historical.
 
 ## What M2 performance evidence says
 
-Use the [19 November master checkpoint](benchmarks/standard-math-master-checkpoint-2026-11-19/README.md)
-and [completed TRS decision](validation/trs-inverse-decision-2026-11-20.md) for
+Use the [19 November master checkpoint](benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
+and [completed TRS decision](validation/arm64/trs-inverse-decision-2026-11-20.md) for
 the retained performance context. Master keeps the approximately 6% small-
 transpose gain and its accepted inverse cost. The proposed inverse recovery
 had material dot-product costs and was declined. Results remain workload- and
@@ -134,9 +135,9 @@ Keep the following measurement practices:
 - Keep application-level 3D workload validation separate. These library tests
   and microbenchmarks do not validate a scene, renderer or external consumer.
 
-The [reading guide](benchmarks/standard_math_reading_guide.md),
+The [reading guide](benchmarks/arm64/standard_math_reading_guide.md),
 [benchmark protocol](../benchmarks/README.md) and
-[report template](benchmarks/STANDARD_MATH_RESULTS_TEMPLATE.md) remain useful.
+[report template](benchmarks/arm64/STANDARD_MATH_RESULTS_TEMPLATE.md) remain useful.
 
 ## Source provenance and dependencies
 
@@ -163,8 +164,8 @@ cleanup commit does not inherit an earlier native pass.
    and separately authorized performance/application checks.
 
 New source work needs an agreed scope and fresh native validation. The
-[TRS decision](validation/trs-inverse-decision-2026-11-20.md)
+[TRS decision](validation/arm64/trs-inverse-decision-2026-11-20.md)
 keeps master and declines the TRS-recovery candidate; the
-[documentation cleanup](validation/mac-arm-documentation-cleanup-2026-11-20.md)
+[documentation cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md)
 explains which older records remain useful. Neither authorizes a new x86 fix,
 benchmark run, commit or push.

@@ -1,9 +1,0 @@
-{
-  "archive": "dependency-audit-evidence.zip",
-  "sha256": "7bd1fba9d8a2e1c459ac4f09740a40b15daed07dfa486aa69183773495a2a4e5",
-  "recorded_files": 324,
-  "crc_and_all_entry_hashes_verified": true,
-  "compiled_artifacts_hashed": 96,
-  "compiled_files_removed": false,
-  "upstream_inspection_clone_and_full_negative_fixtures_retained_separately": true
-}
