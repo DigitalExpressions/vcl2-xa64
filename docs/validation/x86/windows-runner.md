@@ -2,6 +2,13 @@
 
 ## Current policy - 20 November 2026
 
+At the start of each new x86 validation request, ask the maintainer whether to
+include separate performance tests; an explicit choice in that request already
+answers the question. Record it in the plan and report. Do not infer the answer
+from previous rounds or start timing while the choice is pending. Use the
+[results publication checklist](results-publication-checklist.md) to prepare
+completed correctness results and any requested performance results.
+
 Routine testing uses optimized native x64 MSVC and GNU-driver Clang, following
 Agner's [compiler guidance](https://github.com/vectorclass/manual/blob/c18341d00171bfe6d816ce7b24800c9d164f15aa/vcl_performance.tex)
 and the [pinned testbench script](https://github.com/vectorclass/testbench/blob/a7293702385e5169a5f58b83177f2a43cd59139b/runtest.sh).
@@ -125,6 +132,14 @@ blanket AVX overrides. Use fresh explicitly configured local builds for supporte
 higher profiles, preserving the actual ISA and FP flags in their evidence.
 
 ## Controls, failures and evidence
+
+Every dated Windows validation report must include the compiler/profile/ISA
+results table specified by the [report template](../report-template.md), with
+Registered, Passed, Failed, Not run and Timeouts columns for every selected
+configuration, alongside the profile summary. Reconcile both tables with the
+retained case inventories; count examples separately and state whether timeouts
+are included in failures. The
+[21 November report](windows-x86-validation-2026-11-21.md) shows this format.
 
 The runner verifies native Windows/x64 process and PE identity, runtime detection,
 actual page size, a passing writable guard control and all four protected

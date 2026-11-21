@@ -2,9 +2,17 @@
 
 Use the [shared validation index](../README.md) for current status and limits.
 The full Windows correctness gate remains failed/incomplete.
+Use the [results publication checklist](results-publication-checklist.md) after
+the correctness round and any requested separate performance tests. At the
+start of each new validation request, ask whether to include performance tests
+and record the answer for that round.
 
 - [Windows runner guide](windows-runner.md) and
   [MSVC/Clang build and test guide](../../x86-build-and-test.md).
+- [21 November native Windows validation report](windows-x86-validation-2026-11-21.md):
+  clean commit `dc802e4`; 6,798 passed, 233 failed and 109 not run across 7,140
+  registrations, plus fifteen passing examples. All case statuses match the
+  20 November collection; the correctness gate remains failed/incomplete.
 - [20 November integrated harness report](windows-x86-harness-integration-2026-11-20.md)
   and [portable results](windows-x86-harness-integration-2026-11-20/README.md).
 - Historical [earlier 20 November optimized-profile report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20.md)

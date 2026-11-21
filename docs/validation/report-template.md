@@ -17,6 +17,8 @@ unexecuted profile as passing. Keep historical reports unchanged.
   complete source manifest/fingerprint, added/deleted inventory and capture archive>`.
 - Source comparison with the other host: `<same exact source / different
   checkpoint and reviewed differences / not compared>`.
+- For x86, performance choice for this request: `<included / declined / answer
+  pending; record the maintainer's answer and separate performance report or gap>`.
 
 Use the source captured during execution. A later report/documentation commit
 is not automatically a tested commit. A dirty checkout needs an exact patch
@@ -41,9 +43,23 @@ checks. Physical Intel is omitted under the current workflow.
 
 ## Executed matrix
 
-| Compiler/driver | Backend / ISA / logical width | Build mode / sanitizer / CRT | Registered | Passed | Failed | Skipped | Timed out | Attempt |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| `<value>` | `<value>` | `<value>` | `<count>` | `<count>` | `<count>` | `<count>` | `<count>` | `<initial / replay>` |
+Every native validation report must include a compiler results table with one
+row per selected configuration; profile totals alone are insufficient. Use
+the following detailed matrix for ARM and other hosts:
+
+| Compiler/driver | Profile | Backend / ISA / logical width | Build mode / sanitizer / CRT | Registered | Passed | Failed | Not run | Skipped | Timed out | Attempt |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `<value>` | `<value>` | `<value>` | `<value>` | `<count>` | `<count>` | `<count>` | `<count>` | `<count>` | `<count>` | `<initial / replay>` |
+
+Windows reports must include this standard compiler/profile/ISA table alongside
+the profile summary, following the
+[21 November report](x86/windows-x86-validation-2026-11-21.md). Identify build
+mode, sanitizer and CRT for each profile in the surrounding text; report any
+skipped cases and retries explicitly.
+
+| Compiler | Profile | ISA | Registered | Passed | Failed | Not run | Timeouts |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `<msvc / clang>` | `<profile>` | `<baseline / avx2 / avx512>` | `<count>` | `<count>` | `<count>` | `<count>` | `<count>` |
 
 State whether timeout counts are included in failed counts; avoid double
 counting. Reconcile actual JUnit results with the registered inventory. Give
@@ -100,3 +116,5 @@ State whether source/branches changed and whether anything was committed,
 pushed or merged. Give the next host's concrete comparison or validation
 step, and link the relevant existing report. Follow the maintainer's current
 authorization for any commit, push, merge or publication.
+For x86 report copying, supporting evidence, checksums and index updates, use
+the [x86 results publication checklist](x86/results-publication-checklist.md).

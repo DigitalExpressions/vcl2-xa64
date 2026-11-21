@@ -9,6 +9,10 @@
 After a completed Mac validation and performance round, follow the
 [ARM64 results publication checklist](arm64/results-publication-checklist.md)
 for copy destinations, evidence, checksums and README updates.
+For a completed native Windows round and any requested separate performance
+tests, use the [x86 results publication checklist](x86/results-publication-checklist.md).
+At the start of each new x86 validation request, ask whether to include
+performance tests and record the answer; earlier rounds' choices do not carry over.
 
 ## Current master - 20 November 2026
 
@@ -55,6 +59,15 @@ availability; exact discarded binaries/raw trials cannot be reinspected locally.
 The current portable results above remain available.
 
 ## Windows gate and architecture preservation
+
+The latest [21 November native Windows report](x86/windows-x86-validation-2026-11-21.md)
+records validation of clean commit `dc802e466663d61d9e219bd7c7351aa8ac312204`:
+**6,798 passed, 233 failed and 109 not run out of 7,140 registrations**, plus
+fifteen passing canonical examples, with zero timeouts or skipped cases.
+All 7,140 case statuses match the 20 November collection. Optimized Release,
+strict Release and strict UBSan remain separately reported. The correctness
+gate remains failed/incomplete; raw evidence and archive receipts are identified
+in the dated report. Later documentation commits do not inherit this execution.
 
 The [20 November integrated x86 harness report](x86/windows-x86-harness-integration-2026-11-20.md)
 records native AMD Windows validation of its 594-file integrated capture:

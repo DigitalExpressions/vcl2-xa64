@@ -108,6 +108,13 @@ unexpected exits are failures or gaps. Do not retry the documented ASan hang.
 
 ## Native AMD Windows and shared corpus
 
+At the start of every new x86 validation request, ask whether to include separate
+performance tests and record the answer in the run plan and report. An explicit
+choice in that request is already the answer for that round; do not carry a
+previous round's choice forward. Correctness work can proceed while awaiting
+the answer, but timing requires that choice. A correctness-only round is valid
+within its selected scope; performance is not mandatory.
+
 Use an x64 Visual Studio developer shell and native x64 Python/CMake/CTest/Ninja.
 Use both MSVC and native GNU-driver Clang. Follow the
 [x86 compiler policy and availability guide](../x86-build-and-test.md) and
@@ -144,6 +151,16 @@ all slower rows, output checks and variability; correctness runs collect no timi
 After a completed native ARM64 correctness and separate performance round, use
 the [ARM64 results publication checklist](arm64/results-publication-checklist.md)
 for copy destinations, supporting evidence, checksums and README updates.
+
+## x86 results publication checklist
+
+After a completed native AMD Windows correctness round and any requested
+separate performance tests, use the
+[x86 results publication checklist](x86/results-publication-checklist.md).
+It specifies correctness and performance copy destinations, the required
+compiler/profile/ISA table, Windows controls, portable evidence, checksums and
+index updates. Preserve the recorded performance choice and failed/incomplete
+outcomes. Documentation-only publication does not execute new tests.
 
 ## Evidence retention and cleanup
 
