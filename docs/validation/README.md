@@ -7,7 +7,7 @@
 | Shared | [Native workflow](native-workflow.md), [report template](report-template.md), [cross-platform comparison procedure](cross-platform/README.md) |
 
 After a completed Mac validation and performance round, follow the
-[ARM64 results publication checklist](native-workflow.md#arm64-results-publication-checklist)
+[ARM64 results publication checklist](arm64/results-publication-checklist.md)
 for copy destinations, evidence, checksums and README updates.
 
 ## Current master - 20 November 2026

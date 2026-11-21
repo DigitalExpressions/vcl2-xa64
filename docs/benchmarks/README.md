@@ -12,7 +12,7 @@
 Benchmark source and correctness contracts remain in the
 [benchmark development guide](../../benchmarks/README.md).
 For each completed ARM64 validation/performance round, use the
-[results publication checklist](../validation/native-workflow.md#arm64-results-publication-checklist)
+[results publication checklist](../validation/arm64/results-publication-checklist.md)
 for reports, supporting files, checksums and README updates.
 
 The 21 November report records fresh Apple Clang 21 / SDK 26.5 measurements at

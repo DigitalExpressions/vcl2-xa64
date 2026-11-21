@@ -84,7 +84,7 @@ published metadata does not reconstruct lost trials or executables.
 
 ## New reports
 
-Follow the [ARM64 results publication checklist](../docs/validation/native-workflow.md#arm64-results-publication-checklist)
+Follow the [ARM64 results publication checklist](../docs/validation/arm64/results-publication-checklist.md)
 after the native correctness and separate performance runs. It specifies what
 to copy, what stays under ignored `build/`, and which indexes and README values
 to update.

@@ -2,7 +2,7 @@
 
 Use the [shared validation index](../README.md) for current status and limits,
 and the [native workflow](../native-workflow.md) for newly agreed validation.
-Use the [results publication checklist](../native-workflow.md#arm64-results-publication-checklist)
+Use the [results publication checklist](results-publication-checklist.md)
 after the correctness and performance runs to copy reports and update summaries.
 
 - [21 November current-master M2 correctness report](mac-arm-validation-2026-11-21.md):
