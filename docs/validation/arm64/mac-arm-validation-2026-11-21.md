@@ -53,10 +53,25 @@ This is native M2 coverage at the exact source above. Direct Neon remains experi
 
 The existing full Windows gate remains failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712, plus twelve passing examples. This run does not change that gate.
 
+## Artifact availability after cleanup
+
+On 21 November, after publication, the completed detached native worktree was
+retired through Git after all **26,984 files**, including generated inputs,
+diagnostics, objects and binaries, were verified in
+`cleanup-2026-11-21/retired-native-worktree.zip`. The original source/build paths
+now describe archived files. The [availability receipts](../../benchmarks/arm64/standard-math-master-2026-11-21/retained-archive-receipts.json)
+record the archive SHA-256, entry count, per-file inventory and cleanup receipt.
+
+The exact `source.tar` and original `return-evidence.zip` remain at the run root.
+Performance attempts, their benchmark binaries/output dumps and the separate
+Clang study remain unpacked. Tools, dependencies and raw evidence were preserved.
+The 46 task scratch files were archived before clearing `work/`; that scratch
+folder remains reusable. These availability changes establish no new native pass.
+
 ## Evidence and handoff
 
 - Portable data archive: `portable-results-20261121T030229947697Z.zip`; SHA-256 `dd6c2a60734830f4f154d59d809917d636b218dc4027e06f9cd06af3ff378dde`; [verified receipt](../../benchmarks/arm64/standard-math-master-2026-11-21/archive-receipt.json).
 - Complete raw command/exit journals, registered lists, JUnit, compile/link commands, build/test logs, generated fixtures/adapters, probes, source tar and binary hashes stay under ignored `build/` in this run.
-- The runner archive is separately retained with its checksum; the portable data packet excludes executables, output dumps and raw machine paths. The detached worktree, tools/dependencies and all raw evidence remain available; no cleanup performed.
+- The runner archive is separately retained with its checksum; the portable data packet excludes executables, output dumps and raw machine paths. At execution closeout the detached worktree, tools/dependencies and raw evidence were retained; the later archival cleanup is documented above.
 - Performance followed this passing correctness gate and used fresh Release builds at the same source: [standard-math report](../../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md). Benchmark setup 01 stopped on a task-local flag-audit scope error after three passing Release CTest cases and no timing. Setup 02 used fresh builds; six CTest cases and six actual-workset probes passed before the 18 timing processes. Both attempts are retained in [setup records](../../benchmarks/arm64/standard-math-master-2026-11-21/setup-attempts.json).
 - No runtime/test/runner edits, commits, pushes, merges, PRs or branch retirement. This later documentation copy preserves the tested source identity; raw reports and evidence remain under ignored build/.

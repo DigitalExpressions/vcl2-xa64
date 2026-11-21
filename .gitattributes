@@ -82,9 +82,7 @@ docs/validation/architecture-separation-integration-2026-11-19/** -text
 docs/validation/architecture-separation-integration-completed-2026-11-19.md -text
 
 # Exact portable evidence and Git validation resources for the four-blend candidate.
-docs/validation/arm64/m2-blend4-2026-11-19/** -text
 docs/validation/x86/windows-blend4-handoff-2026-11-19/** -text
-docs/validation/arm64/mac-arm-2026-11-19-blend4.md -text
 # Nested measured CSV files keep their recorded CRLF bytes.
 docs/benchmarks/arm64/standard-math-blend4-2026-11-19/*/results.csv whitespace=cr-at-eol
 # Exact dated report and nested CSV bytes from the current-master M2 session.

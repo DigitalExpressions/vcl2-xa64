@@ -37,62 +37,29 @@ on a particular machine; its absence must not prevent a fresh setup.
   commit and push does not itself authorize cleanup. Cleanup of `build/` or
   other locations still requires its own explicit scope.
 
-## Current strategy reset
+## Current strategy
 
-- On 18 November 2026 the maintainer requested cleanup and retention of ARM/Neon
-  lessons before choosing a new implementation strategy. Start with
-  `docs/neon-arm-lessons.md` and `docs/integration-plan.md`.
-- Current source ownership is documented in `docs/backend-layout.md`.
-  Applications use the platform-neutral `vcl2_xa64.h` facade; the original x86
-  implementation remains pristine and ARM work stays in owned Neon sources.
-- The architecture migration and earlier x86 repair/optimization campaign are
-  closed. Preserve the accepted x86 scope: pinned originals and their known
-  limitations, with the Windows correctness gate failed/incomplete. Use current
-  native procedures for newly agreed work; historical approvals do not authorize
-  new runtime changes, publication or repository administration.
-- The maintainer subsequently approved retaining/integrating the four-blend
-  candidate, publishing the Windows report and evidence-backed local cleanup.
-  Integration/publication and verified local cleanup are complete; see
-  `docs/validation/arm64/blend4-integration-2026-11-19.md`. The full Windows gate
-  remains failed/incomplete. The measured 2.2% / 2.7% TRS-inverse elapsed costs
-  are accepted for this integration and remain unresolved.
-- The TRS-inverse follow-up and Windows return have been reviewed. Keep the
-  current master runtime; the frozen candidate is not selected for integration.
-  See `docs/validation/arm64/trs-inverse-decision-2026-11-20.md` for the
-  tradeoffs and current artifact availability. On 20 November the maintainer
-  requested discarding obsolete local Mac experiment material without creating
-  replacement archives. Earlier execution handoffs are historical, not pending
-  tasks. New runtime work and publication require their own agreed scope.
-  Obsolete pre-19 November Mac documentation was subsequently retired; see
-  [historical mac-arm-documentation-cleanup-2026-11-20.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md) for the retained
-  source/comparison records and reasons. Do not restore old execution plans.
-- Obsolete pre-19 November Windows x86 validation documentation was subsequently
-  retired; see the Windows documentation cleanup section in
-  `docs/validation/README.md`.
-  The former local exceptions for cross-host comparisons and archive
-  recovery were subsequently retired through frozen Git citations. The retired
-  16 November optimization and upstream-comparison
-  reports and their portable packets remain in frozen Git; their local copies
-  were removed with approval.
-  Use the current x86 build/test guide and Windows
-  runner, not frozen historical execution instructions.
-
-- On 20 November the maintainer subsequently requested retiring documents whose
-  remaining relevance is historical. The pre-separation comparison packet and
-  source-byte audit, superseded harness records and closed cleanup/publication
-  reports now use frozen Git citations. See
-  `docs/validation/README.md#historical-document-retirement` for scope and retained
-  current evidence. Preserve gate outcomes and accepted decisions through current
-  summaries and frozen Git citations; keep canonical corpora/runners and raw
-  Windows archives. Do not restore retired
-  local records or infer current parity from the old combined-source checkpoint.
-- On 21 November the maintainer requested retiring the completed x86 separation
-  documentation. The two dated reports and both complete portable evidence
-  bundles now use frozen Git citations; see
-  `docs/validation/README.md#x86-separation-documentation-retirement`.
-  Preserve the original failed/incomplete gate and bounded acceptance in current
-  summaries, the later native Windows reports/procedures and all raw archives.
-  Do not restore the retired local separation records for routine validation.
+- Start with `docs/backend-layout.md`, `docs/integration-plan.md` and
+  `docs/neon-arm-lessons.md`. Applications use the platform-neutral `vcl2_xa64.h`
+  facade; original x86 bytes remain pristine and ARM work stays in owned sources.
+- Keep the accepted four-pattern blend implementation and its measured transpose
+  gain/inverse cost. The completed TRS review declines the later recovery
+  candidate; see `docs/validation/arm64/blend4-integration-2026-11-19.md` and
+  `docs/validation/arm64/trs-inverse-decision-2026-11-20.md`.
+- The architecture migration, x86 repair campaign and earlier execution handoffs
+  are closed. Preserve the accepted x86 scope: pinned originals and known
+  limitations, with the Windows correctness gate failed/incomplete. Historical
+  approvals do not authorize new runtime work or repository administration.
+- Use current native procedures for newly agreed work. Retired reports and
+  cleanup chronology are referenced through frozen Git from `docs/validation/README.md`.
+  Preserve current gate summaries, canonical corpora/runners, raw Windows
+  archives and installed tools/dependencies. Do not restore retired local
+  campaigns or infer current parity from the old combined-source checkpoint.
+- Artifact availability belongs to its dated report and later cleanup receipts.
+  Closed Mac sessions discarded on 20 November are not recoverable from local
+  binaries; the completed 21 November native worktree is preserved in verified
+  archives. Keep useful lessons and original identifiers; new validation uses
+  a fresh frozen source and fresh builds.
 
 ## OS-agnostic
 

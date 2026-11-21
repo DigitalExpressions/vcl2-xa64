@@ -42,8 +42,8 @@ seeds, numerical gates, canaries and protected-page controls.
 
 The benchmark adds independent scalar references, canaries and output comparisons
 across scalar, sse2neon and Direct Neon. These correctness checks are separate
-from timing. The [19 November native report](../docs/validation/arm64/mac-arm-2026-11-19-blend4.md)
-records a later full matrix at its own frozen source; it does not validate every
+from timing. The [21 November native report](../docs/validation/arm64/mac-arm-validation-2026-11-21.md)
+records the full matrix at its own frozen source; it does not validate every
 later benchmark build. See [numerical contracts](../docs/numerical-contracts.md)
 for the supported domains and limits.
 

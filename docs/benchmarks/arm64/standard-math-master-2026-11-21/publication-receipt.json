@@ -26,7 +26,7 @@
     "source-manifest.json": "ecc90d73a046025314e4b948ca20865431e1ad8c150d0e8bc695ff2f85b11f91",
     "installed-tool-identities.json": "770ccec446dc677cc82b50714337b7ea6145bc233c0f3a3052086d48b4fac557"
   },
-  "report_edits": "Relative evidence links adapted to the 19 November report/bundle layout; inline-code path markup repaired; brief separate Clang follow-up context added. All 160 numeric table rows and measured full-suite values remain unchanged.",
+  "report_edits": "Relative evidence links adapted to the 19 November report/bundle layout; inline-code path markup repaired; brief separate Clang follow-up context added. All 160 numeric table rows and measured full-suite values remain unchanged. A subsequent dated artifact-availability update records archival cleanup; full-suite numeric table rows remain unchanged.",
   "unperformed_comparisons": "No new runtime before/after experiment or whole-binary cross-source comparison was measured. No before-after.csv/json, selected-functions.json or codegen-comparison.json is invented. Actual scalar codegen and within-source output comparisons are included.",
   "native_raw_records": "Complete native case inventories, binary hashes, JUnit and commands remain in the separately checksummed native runner archive.",
   "separate_clang_study": "The later focused Clang attribution experiment remains separately retained under build/; it is not substituted for this full standard-math session.",
@@ -579,8 +579,8 @@
   "native_correctness_report": {
     "path": "../../../validation/arm64/mac-arm-validation-2026-11-21.md",
     "source_report_sha256": "b6b53ca5c3802095ffbbbba94958a48bbc238e1912c1a0fd189fa6c426ebce6a",
-    "published_sha256": "2665a685ed0928bda11236f6e1c44aa89253b0e92ce8d1d5533e88397e7927ea",
-    "edits": "Evidence links remapped to the existing publication bundle; named cases located explicitly in retained native runner archive; publication wording updated."
+    "published_sha256": "bcdf9f04c2908cdd08508595862f15d1cb43fcb3ba6aa41bc3ae2d8502824685",
+    "edits": "Evidence links remapped to the existing publication bundle; named cases located explicitly in retained native runner archive; publication wording updated. Later dated availability addendum identifies the verified archival cleanup."
   },
   "supporting_document_review": {
     "comparison_report": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md",
@@ -597,5 +597,16 @@
     "large_native_records": "Complete named-case inventory, executable hashes, JUnit, commands and raw logs remain in the separately checksummed native runner archive; the new correctness report links to its existing published receipt. No second copy of those records or binaries is required.",
     "benchmark_selected_data": "All four selected-source result files copied byte-exact; session/source/flags/protocol/numerical outputs/correctness/integrity/UBSan/tool/binary/archive records are published alongside them.",
     "focused_compiler_evidence": "Separate measurements, variability, all 216 numeric trial samples, binary/function hashes, SDK comparisons, failures and archive identity are in compiler_followup. Full assembly and execution records remain in the independently checksummed study archives."
+  },
+  "post_publication_availability_update": {
+    "date": "2026-11-21",
+    "source_publication": "6458749cd9405025251aae112d962053577cfdc5",
+    "retained_receipts_before_sha256": "4be44918d5a1c19a433c2d859f21278d419d3b68af5e2aa1618643872e92d567",
+    "retained_receipts_after_sha256": "5aa016be187ff267e260dc1695b5f91fb0036afedd4927e6fba457a360c2b628",
+    "native_report_before_sha256": "2665a685ed0928bda11236f6e1c44aa89253b0e92ce8d1d5533e88397e7927ea",
+    "native_report_after_sha256": "bcdf9f04c2908cdd08508595862f15d1cb43fcb3ba6aa41bc3ae2d8502824685",
+    "performance_report_before_sha256": "941703effa52d25037eaea7ad95ab96e53f85569b2b18694c256893ec8b86203",
+    "performance_report_after_sha256": "dbeec0ad8a4c50855b39cd4d1694f6f19541010954b3444ed30c0c51f632eecf",
+    "scope": "Later availability notes and appended cleanup receipts only. Original receipt entries and copied-source hashes above identify the original execution/publication state and are preserved. No timing, numerical gate or Windows status label was changed."
   }
 }

@@ -9,9 +9,7 @@ after the correctness and performance runs to copy reports and update summaries.
   8,036 cases plus eight arithmetic smoke runs passed with Clang 21 / SDK 26.5;
   [full standard-math results](../../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
   followed at the same frozen source.
-- [19 November M2 four-blend report](mac-arm-2026-11-19-blend4.md) and
-  [portable source/results](m2-blend4-2026-11-19/README.md).
-- [Four-blend integration decision](blend4-integration-2026-11-19.md) and
+- [Retained blend contract and decision](blend4-integration-2026-11-19.md) and
   [TRS-inverse follow-up decision](trs-inverse-decision-2026-11-20.md).
 
 Use the [cross-platform procedure](../cross-platform/README.md) for a new

@@ -7,7 +7,7 @@ implementation has its own source checkpoints in the project reports.
 
 | Upstream date | Version / snapshot | Upstream commit | Status | Project validation and tuning |
 | --- | --- | --- | --- | --- |
-| 18 October 2026 | Post-v1.9.1 snapshot: `v1.9.1-27-g2272251` | [`2272251`](https://github.com/DLTcollab/sse2neon/commit/2272251cc3ad9cba8b8c47c4065811cfb396b802) | **Current; representation differences recorded below** | [Native M2 correctness](docs/validation/arm64/mac-arm-2026-11-19-blend4.md); [matched M2 performance](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md). Timings compare scalar, compatibility and Direct Neon; they are not a dependency-version speedup claim. |
+| 18 October 2026 | Post-v1.9.1 snapshot: `v1.9.1-27-g2272251` | [`2272251`](https://github.com/DLTcollab/sse2neon/commit/2272251cc3ad9cba8b8c47c4065811cfb396b802) | **Current; representation differences recorded below** | [Native M2 correctness](docs/validation/arm64/mac-arm-validation-2026-11-21.md); [matched M2 performance](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md). Timings compare scalar, compatibility and Direct Neon; they are not a dependency-version speedup claim. |
 
 Current provenance:
 

@@ -217,7 +217,7 @@ integration: the [matched M2 candidate report](../../../../benchmarks/arm64/STAN
 records **6.0%** FP32 AoS transpose throughput gain at 128 objects, **0.5%** at
 4,096 with overlapping ranges, and **2.2% / 2.7%** TRS-inverse elapsed costs.
 Those workload-specific gains/costs do not establish an overall win or any
-Windows performance change. The [M2 correctness report](../../../arm64/mac-arm-2026-11-19-blend4.md)
+Windows performance change. The [M2 correctness report](https://github.com/DigitalExpressions/vcl2-xa64/blob/6458749cd9405025251aae112d962053577cfdc5/docs/validation/arm64/mac-arm-2026-11-19-blend4.md)
 still applies only to its 571-file capture. Other APIs/toolchains, physical Intel,
 ASan, FP16/SVML, consumer integration, universal correctness and new cross-host
 parity remain outside this evidence. Any source fix/revert or further publication

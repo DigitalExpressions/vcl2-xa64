@@ -547,9 +547,17 @@ Fresh native M2 microbenchmarks only. Historical 19 November timings are context
 - Verified entry count, CRC/hash audit and contents: 23 entries; ZIP CRC and every entry SHA-256 verified. Textual data packet excludes reports to avoid checksum cycles; complete raw logs/builds and binary dumps remain separately retained under build.
 - Portable archive receipt: [archive-receipt.json](standard-math-master-2026-11-21/archive-receipt.json).
 - Portable metadata, results and checksum inventory: [metadata](standard-math-master-2026-11-21/candidate/metadata.json), [raw trials and rows](standard-math-master-2026-11-21/candidate/results.json), [CSV](standard-math-master-2026-11-21/candidate/results.csv), [summary](standard-math-master-2026-11-21/candidate/summary.json), [source manifest](standard-math-master-2026-11-21/source-manifest.json), [checksums](standard-math-master-2026-11-21/checksums.sha256).
-- Separately retained records/supplements and hashes: [retained-archive-receipts.json](standard-math-master-2026-11-21/retained-archive-receipts.json) identifies the local native runner archive and exact source tar. Complete native executable hashes and named case statuses remain in the separately checksummed native runner archive identified in [retained-archive-receipts.json](standard-math-master-2026-11-21/retained-archive-receipts.json); benchmark/probe binary hashes are in [binaries.json](standard-math-master-2026-11-21/binaries.json). Generated inputs, control sources, executables/disassembly and binary output dumps remain in retained builds; the portable packet does not claim to contain them.
+- Separately retained records/supplements and hashes: [retained-archive-receipts.json](standard-math-master-2026-11-21/retained-archive-receipts.json) identifies the local native runner archive and exact source tar. Complete native executable hashes and named case statuses remain in the separately checksummed native runner archive identified in [retained-archive-receipts.json](standard-math-master-2026-11-21/retained-archive-receipts.json); benchmark/probe binary hashes are in [binaries.json](standard-math-master-2026-11-21/binaries.json). Generated inputs and native binaries are preserved in the verified retired-worktree archive; benchmark output dumps and Clang disassembly remain in retained performance builds; the portable packet does not claim to contain them.
 - Retained build/source/worktree resources and any explicitly authorized cleanup:
-  Fresh detached worktree, all native/benchmark builds, tools, dependencies and raw evidence retained. No cleanup authorized or performed.
+  At execution closeout the detached worktree and native/benchmark builds were retained.
+  After publication on 21 November, Git retired the detached native worktree after
+  all 26,984 files, including generated inputs and binaries, were verified in
+  `cleanup-2026-11-21/retired-native-worktree.zip`. The original native source/build
+  paths now identify archived files. Performance builds/output dumps, the Clang
+  study, tools and dependencies remain unpacked; scratch files were archived
+  before clearing `work/`. The updated [availability receipts](standard-math-master-2026-11-21/retained-archive-receipts.json)
+  identify both cleanup archives and their verified inventories. No evidence or
+  numerical result was discarded by this archival cleanup.
 
 Retain source/compiler/flag inventories, binary hashes, complete raw trials,
 output dumps, input hashes, configure/build/test logs, JUnit, failed attempts,

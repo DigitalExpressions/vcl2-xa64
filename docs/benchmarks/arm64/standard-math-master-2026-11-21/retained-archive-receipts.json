@@ -10,5 +10,36 @@
     "sha256": "4926a189b0885db933f16492a4eae411d0015e51d669cbe820e88dcfe354f2ce",
     "bytes": 3405404,
     "scope": "Local runner archive of logs, JSON, JUnit and CMake caches; contains raw host paths. Generated source/header inputs, output dumps and executables remain outside this archive in the retained builds."
+  },
+  {
+    "date": "2026-11-21",
+    "event": "Post-publication cleanup",
+    "filename": "cleanup-2026-11-21/retired-native-worktree.zip",
+    "sha256": "c0da207986b3f76282242c42b88892fae27bb3189f2438453db672bdb3ff2ace",
+    "bytes": 407562614,
+    "entries": 26984,
+    "all_entry_sha256_and_crc_verified": true,
+    "inventory_filename": "cleanup-2026-11-21/retired-native-worktree.zip.inventory.json",
+    "inventory_sha256": "5c58a77de577781e5b7a4fec9f400da333c8bcd5908870c06810938ff5ec5f69",
+    "scope": "Complete retired detached native worktree: source, generated inputs, commands/logs, objects and binaries. These files are archived rather than unpacked; performance attempts and the Clang study remain unpacked separately."
+  },
+  {
+    "date": "2026-11-21",
+    "event": "Post-publication cleanup",
+    "filename": "cleanup-2026-11-21/work-records.zip",
+    "sha256": "0a79b982e5e8c588a2ea519282e7bae7f2fa8dd2f39cfcdcdc1c213f9cf2a539",
+    "bytes": 512672,
+    "entries": 46,
+    "all_entry_sha256_and_crc_verified": true,
+    "inventory_filename": "cleanup-2026-11-21/work-records.zip.inventory.json",
+    "inventory_sha256": "095ae895bc35d4147177bb363c4b4aaa747efbed84d1b499a37ae51516ac2a89",
+    "scope": "All 46 scratch files verified before clearing root work/. The scratch root was retained; subsequent tasks may reuse it."
+  },
+  {
+    "date": "2026-11-21",
+    "filename": "cleanup-2026-11-21/cleanup-receipt.json",
+    "sha256": "498f49c966d850c0123ae57518e67edc03a75f07a9dc6cd7ce94199038f34b38",
+    "bytes": 1659,
+    "scope": "Local cleanup operation receipt. Archive paths are relative to the original run root; the original native return-evidence.zip is now retained at that root. Original receipt entries describe their original execution closeout and retain their hashes unchanged."
   }
 ]
