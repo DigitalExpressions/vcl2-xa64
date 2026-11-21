@@ -1,0 +1,3042 @@
+[
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_inverse_trs",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_multiply",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 2048,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_transpose",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 65536,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "mat4_vector",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec3_cross",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_add",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 49,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 8
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 1625,
+      "max_absolute": 9.5367431640625e-07,
+      "max_ulp": 768
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 51,
+      "max_absolute": 8.881784197001252e-16,
+      "max_ulp": 12
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_dot",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 1632,
+      "max_absolute": 1.7763568394002505e-15,
+      "max_ulp": 256
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 53,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 1621,
+      "max_absolute": 4.76837158203125e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 53,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 1621,
+      "max_absolute": 4.76837158203125e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 53,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 1621,
+      "max_absolute": 4.76837158203125e-07,
+      "max_ulp": 2
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 19,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 1
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 554,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 1
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 19,
+      "max_absolute": 4.440892098500626e-16,
+      "max_ulp": 1
+    },
+    "compat_neon": {
+      "fields_compared": 128,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_length",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 511,
+      "max_absolute": 4.440892098500626e-16,
+      "max_ulp": 1
+    },
+    "compat_neon": {
+      "fields_compared": 4096,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 153,
+      "max_absolute": 1.1920928955078125e-07,
+      "max_ulp": 3
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 5201,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 4
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 153,
+      "max_absolute": 1.1920928955078125e-07,
+      "max_ulp": 3
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 5201,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 4
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 153,
+      "max_absolute": 1.1920928955078125e-07,
+      "max_ulp": 3
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 5201,
+      "max_absolute": 2.384185791015625e-07,
+      "max_ulp": 4
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 49,
+      "max_absolute": 1.1920928955078125e-07,
+      "max_ulp": 3
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 1740,
+      "max_absolute": 1.1920928955078125e-07,
+      "max_ulp": 3
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 67,
+      "max_absolute": 2.220446049250313e-16,
+      "max_ulp": 2
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_normalize",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 1597,
+      "max_absolute": 3.3306690738754696e-16,
+      "max_ulp": 3
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 32,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "batch_soa",
+    "precision": 64,
+    "bits": 512,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "object_aos",
+    "precision": 32,
+    "bits": 128,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 128,
+    "scalar_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 512,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  },
+  {
+    "operation": "vec4_scale_add",
+    "layout": "object_aos",
+    "precision": 64,
+    "bits": 256,
+    "count": 4096,
+    "scalar_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    },
+    "compat_neon": {
+      "fields_compared": 16384,
+      "bit_differing_fields": 0,
+      "max_absolute": 0.0,
+      "max_ulp": 0
+    }
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "runtime": "libclang_rt.ubsan_osx_dynamic.dylib",
+  "sha256": "66e011113530f4c43bad14a61889e32743ba552029121d1d9524759932fd9e68",
+  "bytes": 1790672
+}

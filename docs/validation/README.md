@@ -6,6 +6,10 @@
 | x86 / Windows | [Windows runner, reports and results](x86/README.md) |
 | Shared | [Native workflow](native-workflow.md), [report template](report-template.md), [cross-platform comparison procedure](cross-platform/README.md) |
 
+After a completed Mac validation and performance round, follow the
+[ARM64 results publication checklist](native-workflow.md#arm64-results-publication-checklist)
+for copy destinations, evidence, checksums and README updates.
+
 ## Current master - 20 November 2026
 
 Master retains runtime d796768 and the accepted four-blend implementation,
@@ -21,6 +25,15 @@ verified architecture-specific include graphs and the declared shared contracts.
 
 ## Latest retained native M2 validation
 
+- [21 November current-master correctness report](arm64/mac-arm-validation-2026-11-21.md):
+  8,036 selected cases plus eight arithmetic smoke runs passed at clean commit
+  `dc802e466663d61d9e219bd7c7351aa8ac312204`, tree
+  `7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b`, using Apple Clang 21 / SDK 26.5.
+  Compatibility maximum 512 and Direct Neon maxima 128/256/512 each passed
+  Release and strict nonrecovering UBSan Debug, with zero failures, skips,
+  timeouts or retries. The [full standard-math report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+  followed separately; source, controls, integrity and archive receipts share
+  its [supporting bundle](../benchmarks/arm64/standard-math-master-2026-11-21/checksums.sha256).
 - [19 November four-blend correctness report](arm64/mac-arm-2026-11-19-blend4.md):
   8,036 selected cases plus eight examples passed across compatibility maximum
   512 and Direct Neon maxima 128/256/512, each Release and strict UBSan Debug.

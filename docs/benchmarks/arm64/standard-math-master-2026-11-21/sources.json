@@ -1,0 +1,11 @@
+{
+  "selected_source_directory": "candidate",
+  "layout_note": "candidate/ follows the 19 November selected-result layout; this is clean frozen master, not a proposed runtime candidate.",
+  "mode": "clean committed source",
+  "tested_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "tested_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "complete_source_manifest": "source-manifest.json",
+  "source_manifest_sha256": "ecc90d73a046025314e4b948ca20865431e1ad8c150d0e8bc695ff2f85b11f91",
+  "tracked_paths": 347,
+  "baseline_or_other_runtime_source": null
+}

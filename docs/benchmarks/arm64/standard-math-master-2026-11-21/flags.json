@@ -1,0 +1,223 @@
+{
+  "source_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "source_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "release_compile_commands": [
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -I<SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <SOURCE>/instrset_detect_neon.cpp",
+      "file": "<SOURCE>/instrset_detect_neon.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/release/benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o"
+    }
+  ],
+  "benchmark_flag_audits": [
+    {
+      "benchmark_translation_units": 6,
+      "other_translation_units": [
+        "<SOURCE>/instrset_detect_neon.cpp"
+      ],
+      "scope": "All six benchmark units require the exact benchmark flags. The separately built feature detector is not a timed kernel."
+    },
+    {
+      "benchmark_translation_units": 6,
+      "other_translation_units": [
+        "<SOURCE>/instrset_detect_neon.cpp"
+      ],
+      "scope": "All six benchmark units require the exact benchmark flags. The separately built feature detector is not a timed kernel."
+    }
+  ],
+  "compile_and_link_commands_by_profile": [
+    {
+      "mode": "Release",
+      "backend": "scalar",
+      "original_link_command": ": && clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o -o benchmarks/standard_scalar   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DSTANDARD_IMPL=0",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Release-scalar.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    },
+    {
+      "mode": "Release",
+      "backend": "compat",
+      "original_link_command": ": && clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o -o benchmarks/standard_compat   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=2",
+        "-DVCL_BACKEND=2",
+        "-I<SOURCE>",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Release-compat.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    },
+    {
+      "mode": "Release",
+      "backend": "neon",
+      "original_link_command": ": && clang++ -O3 -DNDEBUG -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o -o benchmarks/standard_neon   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=3",
+        "-DVCL_BACKEND=3",
+        "-DVCL_ENABLE_EXPERIMENTAL_NEON=1",
+        "-I<SOURCE>",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Release-neon.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    },
+    {
+      "mode": "Debug",
+      "backend": "scalar",
+      "original_link_command": ": && clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o -o benchmarks/standard_scalar   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DSTANDARD_IMPL=0",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Debug-scalar.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    },
+    {
+      "mode": "Debug",
+      "backend": "compat",
+      "original_link_command": ": && clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o -o benchmarks/standard_compat   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=2",
+        "-DVCL_BACKEND=2",
+        "-I<SOURCE>",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Debug-compat.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    },
+    {
+      "mode": "Debug",
+      "backend": "neon",
+      "original_link_command": ": && clang++ -g -arch arm64 -isysroot <SDK> -Wl,-search_paths_first -Wl,-headerpad_max_install_names -fsanitize=undefined benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o -o benchmarks/standard_neon   && :",
+      "workset_probe_command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=3",
+        "-DVCL_BACKEND=3",
+        "-DVCL_ENABLE_EXPERIMENTAL_NEON=1",
+        "-I<SOURCE>",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/Debug-neon.o",
+        "-c",
+        "<REPOSITORY>/build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/performance-attempt-02/probes/benchmark-workset-correctness.cpp"
+      ]
+    }
+  ],
+  "note": "Actual commands copied from this run. Benchmark FP requirements cover all six benchmark translation units; the untimed feature detector is identified separately."
+}

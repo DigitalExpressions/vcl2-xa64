@@ -1,0 +1,135 @@
+{
+  "report_rows": 160,
+  "timing_processes": 18,
+  "shapes": 1200,
+  "trial_batches": 10800,
+  "winners": {
+    "Direct Neon": 43,
+    "Within 5%": 117
+  },
+  "separate_ranges": 63,
+  "all_slower_than_scalar_rows": [
+    {
+      "backend": "compat",
+      "operation": "mat4_inverse_trs",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 128,
+      "elapsed_cost_percent": 1.7136767599368108
+    },
+    {
+      "backend": "compat",
+      "operation": "mat4_inverse_trs",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 40.09003537761606
+    },
+    {
+      "backend": "neon",
+      "operation": "mat4_inverse_trs",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 39.64037864058534
+    },
+    {
+      "backend": "compat",
+      "operation": "mat4_transpose",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 128,
+      "elapsed_cost_percent": 40.134249562836665
+    },
+    {
+      "backend": "neon",
+      "operation": "mat4_transpose",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 128,
+      "elapsed_cost_percent": 36.5903299902
+    },
+    {
+      "backend": "compat",
+      "operation": "mat4_transpose",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 37.92447937372576
+    },
+    {
+      "backend": "neon",
+      "operation": "mat4_transpose",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 37.86357286434334
+    },
+    {
+      "backend": "compat",
+      "operation": "mat4_transpose",
+      "layout": "object_aos",
+      "precision": 64,
+      "bits": 256,
+      "count": 128,
+      "elapsed_cost_percent": 7.961838144094258
+    },
+    {
+      "backend": "neon",
+      "operation": "mat4_transpose",
+      "layout": "object_aos",
+      "precision": 64,
+      "bits": 256,
+      "count": 128,
+      "elapsed_cost_percent": 5.027646837820154
+    },
+    {
+      "backend": "compat",
+      "operation": "mat4_vector",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 15.410341507511127
+    },
+    {
+      "backend": "neon",
+      "operation": "mat4_vector",
+      "layout": "batch_soa",
+      "precision": 64,
+      "bits": 512,
+      "count": 4096,
+      "elapsed_cost_percent": 14.91296889379521
+    }
+  ],
+  "max_reference_error_epsilon": 6,
+  "fields_per_combined_before_timing_pass": 17740800,
+  "before_after_field_checks": 35481600,
+  "min_trial_batch_ms": 7.877334,
+  "max_trial_batch_ms": 22.427958,
+  "output_differences": {
+    "scalar_neon": {
+      "fields_compared": 2365440,
+      "bit_differing_fields": 7913,
+      "max_absolute": 9.5367431640625e-07,
+      "max_ulp": 768
+    },
+    "compat_neon": {
+      "fields_compared": 2365440,
+      "bit_differing_fields": 21084,
+      "max_absolute": 4.76837158203125e-07,
+      "max_ulp": 4
+    }
+  },
+  "repeatable_backend_shapes": 400,
+  "source_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "source_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "success": true
+}

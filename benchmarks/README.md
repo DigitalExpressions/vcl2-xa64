@@ -49,6 +49,14 @@ for the supported domains and limits.
 
 ## Source identities and retained results
 
+The [21 November current-master report](../docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+and [selected results](../docs/benchmarks/arm64/standard-math-master-2026-11-21/candidate/results.csv)
+record fresh native M2 measurements with Apple Clang 21 / SDK 26.5 at commit
+`dc802e466663d61d9e219bd7c7351aa8ac312204`. Its supporting bundle retains all
+160 rows, raw trials, source/tool identities, output comparisons and checksums.
+The setup-audit correction is recorded separately from numerical correctness;
+all eighteen timing invocations completed without retries.
+
 The [19 November current-master checkpoint](../docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
 retains all 160 baseline rows, invocation ranges and source/tool metadata.
 Future experiments need a fresh matched baseline and candidate session; do not
@@ -75,6 +83,11 @@ Some raw Mac sessions were discarded in the
 published metadata does not reconstruct lost trials or executables.
 
 ## New reports
+
+Follow the [ARM64 results publication checklist](../docs/validation/native-workflow.md#arm64-results-publication-checklist)
+after the native correctness and separate performance runs. It specifies what
+to copy, what stays under ignored `build/`, and which indexes and README values
+to update.
 
 Start future dated reports from the [standard report template](../docs/benchmarks/arm64/STANDARD_MATH_RESULTS_TEMPLATE.md).
 It marks the table values, summaries, source/host details and evidence records

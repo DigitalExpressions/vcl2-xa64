@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "source.tar",
+    "sha256": "cd6d68e522d87fd3b0e4d0b1c612d7700e14ec3e2f5c723d3b4a8745abec8363",
+    "bytes": 56135680,
+    "scope": "Complete committed source, exact Git archive"
+  },
+  {
+    "filename": "return-evidence.zip",
+    "sha256": "4926a189b0885db933f16492a4eae411d0015e51d669cbe820e88dcfe354f2ce",
+    "bytes": 3405404,
+    "scope": "Local runner archive of logs, JSON, JUnit and CMake caches; contains raw host paths. Generated source/header inputs, output dumps and executables remain outside this archive in the retained builds."
+  }
+]

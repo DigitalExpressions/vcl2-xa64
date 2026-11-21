@@ -1,0 +1,21 @@
+[
+  {
+    "directory": "performance",
+    "status": "stopped-before-timing",
+    "release_ctest_passes": 3,
+    "timing_invocations": 0,
+    "reason": "The task-local audit incorrectly required a benchmark FP flag on the integer-only feature detector. All six benchmark translation units already had the required flags.",
+    "recovery": "Corrected only scratch-controller target selection to audit all six benchmark units; fresh build directories used for attempt 02. Numerical gates and maintained source/runners unchanged.",
+    "failure_record_sha256": "a80c2454ddf83339e725d8c0a8d7375087b7283a70aae42fdfeb25d1c0be817a",
+    "commands_sha256": "e4dd833c207bfa7e7de0251bf0371d08e94b5a46b71543b6e191bd87cb31cd47"
+  },
+  {
+    "directory": "performance-attempt-02",
+    "status": "completed",
+    "release_ctest_passes": 3,
+    "ubsan_ctest_passes": 3,
+    "actual_workset_probes_passed": 6,
+    "timing_invocations": 18,
+    "timing_replays": 0
+  }
+]

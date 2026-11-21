@@ -1,0 +1,6 @@
+{
+  "packed_fp_arithmetic_matches": [],
+  "auto_vectorization_disabled": true,
+  "scope": "fresh scalar binary disassembly; loads/stores and library callees are separate",
+  "binary_sha256": "138c4242deee21c88de4bfb987ffdbe1257ecefaa9a594a5d628a846b407ec40"
+}

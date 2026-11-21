@@ -1,0 +1,43 @@
+{
+  "source_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "source_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "benchmarks": [
+    {
+      "mode": "Release",
+      "backend": "scalar",
+      "binary_sha256": "138c4242deee21c88de4bfb987ffdbe1257ecefaa9a594a5d628a846b407ec40",
+      "workset_probe_sha256": "33c60323931318d52df66e91e983051450fa1d6f524c389a7c0ad49462ac0f33"
+    },
+    {
+      "mode": "Release",
+      "backend": "compat",
+      "binary_sha256": "a731c13b70440bdad51aa1dee049b285c2df6df9a1b25d0655fbaea2eba9e41b",
+      "workset_probe_sha256": "096c25548bbc48b265f23837a214cfff23fabe9c164abe49561056353a50c7db"
+    },
+    {
+      "mode": "Release",
+      "backend": "neon",
+      "binary_sha256": "18bdcbc4f242bf760e963642a398037a806b73104e1de0890d49db5d2ff921f3",
+      "workset_probe_sha256": "be157ddcd613d4df3d87202a54fcee08f942c98cf1566ebda4c8df22d0f6f45d"
+    },
+    {
+      "mode": "Debug",
+      "backend": "scalar",
+      "binary_sha256": "ca5023c006f091dc177971574b4b833ca145554a7fcc9eb66df9ae48edba7140",
+      "workset_probe_sha256": "d6765fba4026ff98a1807544a70e3b04cc6168e165c7180226529b26feb6cd90"
+    },
+    {
+      "mode": "Debug",
+      "backend": "compat",
+      "binary_sha256": "00b873f11cd3723a05f8fce712bc662adbee6efdcd0e77152e20b15e0b2bb22f",
+      "workset_probe_sha256": "fda5f996d8aa5d7674e1fc14786f1302dbae4453b35c070b7c4245343b2ce614"
+    },
+    {
+      "mode": "Debug",
+      "backend": "neon",
+      "binary_sha256": "983aaeb92a2a740f80001e4cadf983fffb776326935e04489d3ab2c9cea40411",
+      "workset_probe_sha256": "e9e0c26fa9136813e35a0447b1a9c541e993a08c1b307ef1af4f50a5778ed0b9"
+    }
+  ],
+  "native_matrix_binary_records": "Retained in the native runner archive identified by retained-archive-receipts.json; no executables are published here."
+}

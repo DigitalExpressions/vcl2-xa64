@@ -1,0 +1,43 @@
+{
+  "scope": "Initial frozen source versus unchanged source after the session; not a baseline/candidate source or performance comparison.",
+  "tested_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "tested_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "initial_sha256": "15617c1039af78df7b03e6dc2585e78c436fc513516c303fb0a6f05600bbfa47",
+      "final_sha256": "15617c1039af78df7b03e6dc2585e78c436fc513516c303fb0a6f05600bbfa47",
+      "identical": true
+    },
+    {
+      "path": "benchmarks/CMakeLists.txt",
+      "initial_sha256": "2324ec257f2bdecd33c73db50573e4933a854f1ed7209759caa8cbb4b5218233",
+      "final_sha256": "2324ec257f2bdecd33c73db50573e4933a854f1ed7209759caa8cbb4b5218233",
+      "identical": true
+    },
+    {
+      "path": "benchmarks/arm64/main.cpp",
+      "initial_sha256": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c",
+      "final_sha256": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c",
+      "identical": true
+    },
+    {
+      "path": "benchmarks/arm64/kernels.cpp",
+      "initial_sha256": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2",
+      "final_sha256": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2",
+      "identical": true
+    },
+    {
+      "path": "benchmarks/arm64/common.h",
+      "initial_sha256": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4",
+      "final_sha256": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4",
+      "identical": true
+    },
+    {
+      "path": "benchmarks/arm64/reference.h",
+      "initial_sha256": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3",
+      "final_sha256": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3",
+      "identical": true
+    }
+  ]
+}

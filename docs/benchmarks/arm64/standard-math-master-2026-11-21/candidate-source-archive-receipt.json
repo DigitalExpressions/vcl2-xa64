@@ -1,0 +1,12 @@
+{
+  "filename": "source.tar",
+  "sha256": "cd6d68e522d87fd3b0e4d0b1c612d7700e14ec3e2f5c723d3b4a8745abec8363",
+  "bytes": 56135680,
+  "scope": "Complete committed source, exact Git archive",
+  "tested_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "tested_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "verified_source_paths": 347,
+  "exact_archive_contents_verified": true,
+  "retained_location": "build/arm64-roundtrip-2026-11-21-20261120T233452093509Z/source.tar",
+  "note": "Clean Git source archive, not an uncommitted candidate capture. The measured source and archive are unchanged by this documentation copy."
+}

@@ -1,0 +1,120 @@
+{
+  "source_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "source_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "profiles": [
+    {
+      "profile": "compat512-release",
+      "backend": 2,
+      "width": 512,
+      "mode": "Release",
+      "sanitize": false,
+      "registered": 1350,
+      "passed": 1350,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "compat512-debug",
+      "backend": 2,
+      "width": 512,
+      "mode": "Debug",
+      "sanitize": true,
+      "registered": 1350,
+      "passed": 1350,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon128-release",
+      "backend": 3,
+      "width": 128,
+      "mode": "Release",
+      "sanitize": false,
+      "registered": 486,
+      "passed": 486,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon128-debug",
+      "backend": 3,
+      "width": 128,
+      "mode": "Debug",
+      "sanitize": true,
+      "registered": 486,
+      "passed": 486,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon256-release",
+      "backend": 3,
+      "width": 256,
+      "mode": "Release",
+      "sanitize": false,
+      "registered": 890,
+      "passed": 890,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon256-debug",
+      "backend": 3,
+      "width": 256,
+      "mode": "Debug",
+      "sanitize": true,
+      "registered": 890,
+      "passed": 890,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon512-release",
+      "backend": 3,
+      "width": 512,
+      "mode": "Release",
+      "sanitize": false,
+      "registered": 1292,
+      "passed": 1292,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    },
+    {
+      "profile": "neon512-debug",
+      "backend": 3,
+      "width": 512,
+      "mode": "Debug",
+      "sanitize": true,
+      "registered": 1292,
+      "passed": 1292,
+      "failed": 0,
+      "skipped": 0,
+      "timed_out": 0
+    }
+  ],
+  "cases": 8036,
+  "smoke_runs": 8,
+  "controls": {
+    "ubsan-compile": 0,
+    "ubsan-binary-file": 0,
+    "ubsan-positive": 0,
+    "ubsan-negative": -6,
+    "guard-compile": 0,
+    "guard-binary-file": 0,
+    "guard-positive": 0,
+    "guard-negative-0": -10,
+    "guard-negative-1": -10,
+    "guard-negative-2": -10,
+    "guard-negative-3": -10,
+    "runtime-run": 0
+  },
+  "page_size": 16384,
+  "passed": true
+}

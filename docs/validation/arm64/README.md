@@ -2,7 +2,13 @@
 
 Use the [shared validation index](../README.md) for current status and limits,
 and the [native workflow](../native-workflow.md) for newly agreed validation.
+Use the [results publication checklist](../native-workflow.md#arm64-results-publication-checklist)
+after the correctness and performance runs to copy reports and update summaries.
 
+- [21 November current-master M2 correctness report](mac-arm-validation-2026-11-21.md):
+  8,036 cases plus eight arithmetic smoke runs passed with Clang 21 / SDK 26.5;
+  [full standard-math results](../../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+  followed at the same frozen source.
 - [19 November M2 four-blend report](mac-arm-2026-11-19-blend4.md) and
   [portable source/results](m2-blend4-2026-11-19/README.md).
 - [Four-blend integration decision](blend4-integration-2026-11-19.md) and

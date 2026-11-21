@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "source_commit": "dc802e466663d61d9e219bd7c7351aa8ac312204",
+  "source_tree": "7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b",
+  "primary_source_bytes_modes_mtimes_unchanged": true,
+  "primary_and_tested_source_bytes_identical": true,
+  "source_tar_complete_and_exact": true,
+  "source_paths": 347,
+  "installed_tool_binaries_and_ubsan_runtime_unchanged": true,
+  "testbench_files_unchanged": 17,
+  "native_binary_hashes_reverified": 7999,
+  "benchmark_and_probe_binaries_reverified": 12,
+  "initial_setup_binaries_preserved": 3,
+  "archives": [
+    {
+      "filename": "return-evidence.zip",
+      "entries": 8138,
+      "sha256": "4926a189b0885db933f16492a4eae411d0015e51d669cbe820e88dcfe354f2ce",
+      "crc_and_hashes_verified": true
+    },
+    {
+      "filename": "portable-results-20261121T030229947697Z.zip",
+      "entries": 23,
+      "sha256": "dd6c2a60734830f4f154d59d809917d636b218dc4027e06f9cd06af3ff378dde",
+      "crc_and_hashes_verified": true
+    }
+  ],
+  "retained_historic_checksum_manifests": [
+    {
+      "manifest": "docs/benchmarks/arm64/standard-math-blend4-2026-11-19/checksums.sha256",
+      "entries": 22
+    },
+    {
+      "manifest": "docs/benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/checksums.sha256",
+      "entries": 3
+    },
+    {
+      "manifest": "docs/validation/arm64/m2-blend4-2026-11-19/checksums.sha256",
+      "entries": 13
+    },
+    {
+      "manifest": "docs/validation/x86/windows-arch-separation-2026-11-19/checksums.sha256",
+      "entries": 38
+    },
+    {
+      "manifest": "docs/validation/x86/windows-arch-separation-triage-2026-11-19/checksums.sha256",
+      "entries": 20
+    },
+    {
+      "manifest": "docs/validation/x86/windows-blend4-handoff-2026-11-19/checksums.sha256",
+      "entries": 8
+    },
+    {
+      "manifest": "docs/validation/x86/windows-blend4-handoff-2026-11-19/integration/checksums.sha256",
+      "entries": 7
+    },
+    {
+      "manifest": "docs/validation/x86/windows-blend4-handoff-2026-11-19/results/checksums.sha256",
+      "entries": 27
+    },
+    {
+      "manifest": "docs/validation/x86/windows-x86-harness-integration-2026-11-20/checksums.sha256",
+      "entries": 25
+    }
+  ],
+  "report_links_whitespace_privacy_and_checksums_verified": true,
+  "library_test_maintained_runner_changes": false,
+  "publication_or_cleanup_performed": false,
+  "native_case_and_smoke_binary_hashes_reverified": 7996,
+  "native_control_binary_hashes_reverified": 3
+}
