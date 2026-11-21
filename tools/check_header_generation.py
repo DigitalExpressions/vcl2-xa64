@@ -77,8 +77,8 @@ def main():
     rejected('missing-root-sse2neon',lambda r:(r/'sse2neon.h').unlink(),'sse2neon.h')
     rejected('changed-root-sse2neon',lambda r:(r/'sse2neon.h').write_bytes(b'changed\n'),'retained representation differs')
     def sse_newlines(root):
-        path=root/'sse2neon.h';data=path.read_bytes();assert b'\r\n' in data
-        path.write_bytes(data.replace(b'\r\n',b'\n'))
+        path=root/'sse2neon.h';data=path.read_bytes();assert b'\r' not in data and data.endswith(b'\n')
+        path.write_bytes(data.replace(b'\n',b'\r\n'))
     rejected('newline-only-sse2neon-change',sse_newlines,'retained representation differs')
     rejected('missing-sse2neon-audit',lambda r:(r/SSE2NEON_AUDIT).unlink(),SSE2NEON_AUDIT)
     def audit_change(root,change):
@@ -89,12 +89,12 @@ def main():
     for field,value in [('sha256','0'*64),('git_blob','0'*40),('bytes',0)]:
         rejected('changed-sse2neon-audit-'+field,lambda r,f=field,v=value:audit_change(r,lambda d:d['retained'].update({f:v})),
                  'retained representation differs')
-    rejected('changed-sse2neon-audit-encoding',lambda r:audit_change(r,lambda d:d['retained'].update(encoding='UTF-8')),
+    rejected('changed-sse2neon-audit-encoding',lambda r:audit_change(r,lambda d:d['retained'].update(encoding='Windows-1252')),
              'representation contract differs')
     rejected('changed-sse2neon-audit-proof',lambda r:audit_change(r,lambda d:d['representation_proof'].update(semantic_source_edits=True)),
              'representation contract differs')
     def coherent_sse_change(root):
-        path=root/'sse2neon.h';data=path.read_bytes()+b' changed';path.write_bytes(data)
+        path=root/'sse2neon.h';data=path.read_bytes()+b' changed\n';path.write_bytes(data)
         audit_change(root,lambda d:d['retained'].update(bytes=len(data),sha256=digest(data),git_blob=git_object('blob',data)))
     rejected('changed-sse2neon-with-matching-retained-pin',coherent_sse_change,'upstream representation proof differs')
     for field,value in [('sha256','0'*64),('git_blob','0'*40),('bytes',0)]:

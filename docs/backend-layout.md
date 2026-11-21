@@ -70,8 +70,10 @@ python3 -B tools/check_repository.py
 
 The historical generator name remains for existing automation, but generation
 is retired and `--write` always fails without writing. The required
-`audit/sse2neon-2272251.json` pins the root dependency and its in-memory upstream
-representation proof. The checker rejects reintroduced `vendor/` and
+`audit/sse2neon-2272251.json` pins the root dependency to the exact upstream
+UTF-8/LF file, including its final newline. The checker requires direct raw-byte,
+SHA-256 and Git-blob equality; earlier representations remain in audit history.
+The checker rejects reintroduced `vendor/` and
 `adaptation/` paths.
 Exact root/manifest and sse2neon checks,
 ARM include graph checks and rejection of generation outputs replace reproduction.

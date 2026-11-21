@@ -42,7 +42,7 @@
 //   Sebastian Pop <spop@amazon.com>
 //   Developer Ecosystem Engineering <DeveloperEcosystemEngineering@apple.com>
 //   Danila Kutenin <danilak@google.com>
-//   François Turban (JishinMaster) <francois.turban@gmail.com>
+//   FranÃ§ois Turban (JishinMaster) <francois.turban@gmail.com>
 //   Pei-Hsuan Hung <afcidk@gmail.com>
 //   Yang-Hao Yuan <yuanyanghau@gmail.com>
 //   Syoyo Fujita <syoyo@lighttransport.com>

@@ -19,23 +19,48 @@
     "paths": [
       "sse2neon.h"
     ],
-    "git_blob": "6e8b1fb79bc948de9775f800f5084ed8219683ac",
-    "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
-    "bytes": 518891,
-    "encoding": "Windows-1252",
-    "line_endings": "CRLF",
-    "final_newline": false
+    "git_blob": "fbfc9da84fe249f5f1d7be559e87c6a94640a6c2",
+    "sha256": "932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3",
+    "bytes": 507039,
+    "encoding": "UTF-8",
+    "line_endings": "LF",
+    "final_newline": true
   },
   "representation_proof": {
-    "verified_date": "2026-11-19",
-    "forward_transform": [
-      "Decode upstream UTF-8 and encode Windows-1252",
-      "Replace LF with CRLF",
-      "Remove the single final CRLF"
-    ],
+    "verified_date": "2026-11-21",
+    "forward_transform": [],
     "matches_retained_bytes_exactly": true,
     "semantic_source_edits": false
   },
   "legacy_fork_provenance": "https://github.com/DigitalExpressions/vcl2-xa64/blob/7465b9833968bae97ef9fb1efa645a7ed994f8eb/vendor/sse2neon.json",
-  "note": "Development snapshot after v1.9.1, not a tagged v1.9.1 release. Existing retained header bytes are unchanged; this audit identifies provenance without updating the dependency."
+  "note": "Development snapshot after v1.9.1, not a tagged release. On 21 November 2026 the maintainer approved using the exact upstream UTF-8/LF header with its final newline at this same commit. Earlier Windows-1252/CRLF bytes and their proof remain in representation_history and frozen Git. No intrinsic or semantic source change.",
+  "representation_history": [
+    {
+      "verified_date": "2026-11-19",
+      "retained": {
+        "paths": [
+          "sse2neon.h"
+        ],
+        "git_blob": "6e8b1fb79bc948de9775f800f5084ed8219683ac",
+        "sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+        "bytes": 518891,
+        "encoding": "Windows-1252",
+        "line_endings": "CRLF",
+        "final_newline": false
+      },
+      "representation_proof": {
+        "verified_date": "2026-11-19",
+        "forward_transform": [
+          "Decode upstream UTF-8 and encode Windows-1252",
+          "Replace LF with CRLF",
+          "Remove the single final CRLF"
+        ],
+        "matches_retained_bytes_exactly": true,
+        "semantic_source_edits": false
+      },
+      "audit_sha256": "477aba3afded6899325c7d8b214b786e9e73a5424750efe6eb0cf54c49c95779",
+      "frozen_audit": "https://github.com/DigitalExpressions/vcl2-xa64/blob/569d3aac7308dfe865057abbbc3a119ce3e28999/audit/sse2neon-2272251.json",
+      "status": "Historical representation; source content identical to the current pinned upstream header."
+    }
+  ]
 }

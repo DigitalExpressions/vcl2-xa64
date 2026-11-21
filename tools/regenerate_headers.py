@@ -103,19 +103,19 @@ def verify_sse2neon(root):
     retained=audit['retained'];upstream=audit['upstream'];proof=audit['representation_proof']
     if audit['schema']!=1 or audit['source_path']!='sse2neon.h' or retained['paths']!=['sse2neon.h']:
         raise ValueError('sse2neon audit must pin only the root sse2neon.h')
-    if (retained['encoding']!='Windows-1252' or retained['line_endings']!='CRLF' or retained['final_newline'] is not False
+    if (retained['encoding']!='UTF-8' or retained['line_endings']!='LF' or retained['final_newline'] is not True
             or upstream['encoding']!='UTF-8' or upstream['line_endings']!='LF' or upstream['final_newline'] is not True
-            or proof['matches_retained_bytes_exactly'] is not True or proof['semantic_source_edits'] is not False):
+            or proof['matches_retained_bytes_exactly'] is not True or proof['semantic_source_edits'] is not False
+            or proof['forward_transform']!=[]):
         raise ValueError('sse2neon audit representation contract differs')
     data=path_in(root,'sse2neon.h').read_bytes()
     if len(data)!=retained['bytes'] or digest(data)!=retained['sha256'] or git_object('blob',data)!=retained['git_blob']:
         raise ValueError('sse2neon retained representation differs from upstream audit')
-    bare=data.replace(b'\r\n',b'')
-    if b'\n' in bare or b'\r' in bare or data.endswith((b'\n',b'\r')):
+    if b'\r' in data or not data.endswith(b'\n'):
         raise ValueError('sse2neon retained line endings/final newline differ')
-    # Analysis only: never write or normalize the protected root header.
-    restored=(data.decode('cp1252').replace('\r\n','\n')+'\n').encode('utf-8')
-    if len(restored)!=upstream['bytes'] or digest(restored)!=upstream['sha256'] or git_object('blob',restored)!=upstream['git_blob']:
+    # Read-only: the shipped header must match the pinned upstream raw bytes.
+    data.decode('utf-8')
+    if len(data)!=upstream['bytes'] or digest(data)!=upstream['sha256'] or git_object('blob',data)!=upstream['git_blob']:
         raise ValueError('sse2neon upstream representation proof differs')
     return dict(path='sse2neon.h',sha256=digest(data),bytes=len(data),
         audit_sha256=digest(audit_bytes),upstream_commit=audit['commit'],upstream_tree=audit['tree'])
