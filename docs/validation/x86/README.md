@@ -17,8 +17,6 @@ and record the answer for that round.
   and [portable results](windows-x86-harness-integration-2026-11-20/README.md).
 - Historical [earlier 20 November optimized-profile report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20.md)
   and [frozen portable results](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20/README.md).
-- [19 November architecture matrix](windows-amd-2026-11-19-arch-separation.md) and
-  [targeted triage](windows-amd-2026-11-19-arch-separation-triage.md).
 - [Four-blend Windows return](windows-blend4-handoff-2026-11-19/results/README.md)
   and [integration receipt](windows-blend4-handoff-2026-11-19/integration/README.md).
 - [16 November Windows checkpoint](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-amd-2026-11-16-bd7807e-final.md) and
@@ -26,10 +24,23 @@ and record the answer for that round.
 
 The frozen cleanup receipt records Windows archive recovery despite its ARM
 strategy title. Shared [cross-platform procedures](../cross-platform/README.md)
-and the architecture acceptance decision stay at the validation root. Closed
-comparison, dependency-audit and publication records are cited through frozen Git.
+stay at the validation root. Current [backend acceptance rules](../../backend-layout.md#validation-and-source-identity)
+retain the original x86 scope and limits. Closed comparison, separation,
+dependency-audit and publication records are cited through frozen Git.
 
 Frozen helper scripts and source inventories inside result bundles retain
 their historical checkout-relative paths and accepted hashes. Use them with
 their original frozen source, as documented; relocation does not adapt them
 for current-master validation or establish a new native pass.
+
+## Historical separation records
+
+The completed job's [19 November matrix](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation.md),
+[targeted triage](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
+and complete [matrix](https://github.com/DigitalExpressions/vcl2-xa64/tree/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-arch-separation-2026-11-19)
+and [triage](https://github.com/DigitalExpressions/vcl2-xa64/tree/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-arch-separation-triage-2026-11-19)
+portable bundles were retired locally on 21 November. The historical gate stays
+failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712, plus twelve
+passing examples. Selected original/facade comparisons do not establish universal
+correctness or parity. See the [retirement record](../README.md#x86-separation-documentation-retirement)
+for preservation scope. Raw Windows evidence remains under ignored `build/`.

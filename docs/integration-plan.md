@@ -22,8 +22,8 @@ The full Windows gate remains **failed/incomplete: 5,387 passed, 249 failed,
 and matching diagnostics do not convert that gate into a pass. Retained records:
 
 - [Current backend ownership and acceptance rules](backend-layout.md#validation-and-source-identity).
-- [Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md) and
-  [targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md).
+- [21 November Windows validation](validation/x86/windows-x86-validation-2026-11-21.md),
+  with the earlier [separation records retained in frozen Git](validation/README.md#x86-separation-documentation-retirement).
 - [21 November M2 correctness](validation/arm64/mac-arm-validation-2026-11-21.md) and
   [current-master performance results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md).
 - [Dependency audit/publication](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-publication-2026-11-19.md).

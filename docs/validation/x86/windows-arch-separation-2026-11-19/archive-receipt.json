@@ -1,9 +1,0 @@
-{
-  "archive": "windows-arch-separation-evidence.zip",
-  "sha256": "e7999de002dd09191fd3c2a3d12b6a3f819a3a71bfb89cc660f9ad041f572876",
-  "bytes": 25492607,
-  "files": 6216,
-  "crc_and_every_entry_sha256_verified": true,
-  "coverage": "All source capture, controller scripts/journals, logs, manifests, JUnit, failure records, compiler flags, binary hashes and generated probe/reference/configuration sources. Portable review documents are separately checksummed after this receipt. Compiled artifacts stay in original directories; none deleted.",
-  "created_utc": "2026-11-18T23:44:15.418918+00:00"
-}

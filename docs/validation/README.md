@@ -83,12 +83,11 @@ including failures, timeouts and unavailable executables, remain recorded.
 The two optimized MSVC signed-zero failures remain failed. All original runtime
 files remain byte-exact; these profiles do not replace the earlier full gate.
 
-The retained full gate stays **failed/incomplete: 5,387 passed, 249 failed,
+The historical full gate stays **failed/incomplete: 5,387 passed, 249 failed,
 76 not run of 5,712, plus twelve passing examples**. Bounded preservation,
 include/code checks and RTC diagnostics do not convert failures into passes.
 
-- [Architecture matrix](x86/windows-amd-2026-11-19-arch-separation.md) and
-  [targeted triage](x86/windows-amd-2026-11-19-arch-separation-triage.md).
+- [Frozen separation matrix, triage and evidence](#x86-separation-documentation-retirement).
 - [Four-blend Windows return](x86/windows-blend4-handoff-2026-11-19/results/README.md)
   and [current backend acceptance rules](../backend-layout.md#validation-and-source-identity).
 - [Portable integrated harness results](x86/windows-x86-harness-integration-2026-11-20/README.md).
@@ -129,7 +128,8 @@ Historical sources:
   provenance only. They provide no validation of today's separated backends.
 - [Completed architecture integration/cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md)
   and [receipts](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-2026-11-19).
-  The acceptance decision and unresolved gate remain local above.
+  Current acceptance rules and the unresolved gate remain summarized above;
+  the completed job's decision is retained through frozen Git citations.
 - [Dependency audit](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19.md),
   [publication/cleanup](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-publication-2026-11-19.md)
   and [portable receipts](https://github.com/DigitalExpressions/vcl2-xa64/tree/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-history-2026-11-19).
@@ -165,7 +165,45 @@ in the [frozen cleanup index](https://github.com/DigitalExpressions/vcl2-xa64/bl
 Its original findings, packets and checksum identities remain reachable there.
 The later historical retirement above also closes its former local exceptions
 for pre-separation comparisons and archive-recovery documentation. Current
-Windows procedures and the retained separated-backend gates remain local.
+Windows procedures and later native reports remain local; historical gate
+outcomes remain documented. The completed separation records are retired below.
+
+## x86 separation documentation retirement
+
+On 21 November the maintainer requested removing the completed job's remaining
+x86 documentation from the current checkout. **60 tracked files** were retired:
+two dated reports and both complete portable evidence bundles. Their exact bytes
+and Git blobs were verified at published commit
+`7df464937b38260f29bca1dd7e1096c7853ca812` before removal:
+
+- [19 November Windows matrix](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation.md)
+  and [complete portable results](https://github.com/DigitalExpressions/vcl2-xa64/tree/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-arch-separation-2026-11-19).
+- [19 November targeted triage](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
+  and [complete portable results](https://github.com/DigitalExpressions/vcl2-xa64/tree/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-arch-separation-triage-2026-11-19).
+
+The original gate remains failed/incomplete: **5,387 passed, 249 failed and
+76 not run of 5,712, plus twelve passing examples**. The
+[current acceptance rules](../backend-layout.md#validation-and-source-identity)
+preserve the pinned original implementation and its known limitations; bounded
+original/facade comparisons do not establish a universal correctness pass.
+The [20 November harness report](x86/windows-x86-harness-integration-2026-11-20.md)
+and [21 November native report](x86/windows-x86-validation-2026-11-21.md) retain
+their separate source identities and outcomes. Current runners, compiler-table
+requirements, publication checklists and the separate four-blend records remain.
+
+All ten pre-retirement portable checksum inventories passed. The two original
+raw Windows separation archives and both review supplements were reverified
+against their recorded SHA-256 and ZIP CRC; every manifest-listed entry hash
+was checked. An additional ignored archive retains all 60 removed files and
+the originals of edited navigation/policy files, with every entry verified.
+Raw logs, source captures, generated inputs, binaries, reusable tools, testbench
+and existing archives were preserved under `build/`; no runtime, test, runner,
+fixture or numerical gate changed. Remaining portable bundles keep their exact
+bytes and original checksum inventories. Historical source inventories keep
+their original paths. Four empty folders under `docs/validation/x86/` were
+subsequently removed without removing any additional files. The local retirement
+ran no new native matrix or timing and removed no build artifacts. Commit and
+push were subsequently authorized separately.
 
 ## Architecture folders - 20 November 2026
 

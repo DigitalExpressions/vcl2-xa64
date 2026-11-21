@@ -82,9 +82,17 @@ on a particular machine; its absence must not prevent a fresh setup.
   source-byte audit, superseded harness records and closed cleanup/publication
   reports now use frozen Git citations. See
   `docs/validation/README.md#historical-document-retirement` for scope and retained
-  current evidence. Keep the separated-backend gates, accepted decisions,
-  canonical corpora/runners and raw Windows archives. Do not restore retired
+  current evidence. Preserve gate outcomes and accepted decisions through current
+  summaries and frozen Git citations; keep canonical corpora/runners and raw
+  Windows archives. Do not restore retired
   local records or infer current parity from the old combined-source checkpoint.
+- On 21 November the maintainer requested retiring the completed x86 separation
+  documentation. The two dated reports and both complete portable evidence
+  bundles now use frozen Git citations; see
+  `docs/validation/README.md#x86-separation-documentation-retirement`.
+  Preserve the original failed/incomplete gate and bounded acceptance in current
+  summaries, the later native Windows reports/procedures and all raw archives.
+  Do not restore the retired local separation records for routine validation.
 
 ## OS-agnostic
 

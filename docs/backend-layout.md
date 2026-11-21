@@ -106,9 +106,9 @@ unchanged; they describe the tested source at their original checkpoints.
 
 The accepted x86 scope preserves the pinned original implementation and its
 known limitations behind the facade. It is not a universal correctness pass.
-The [Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md)
+The [frozen Windows matrix](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation.md)
 retains **5,387 passed, 249 failed and 76 not run of 5,712**, plus twelve passing
-examples. The [targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
+examples. The [frozen targeted triage](https://github.com/DigitalExpressions/vcl2-xa64/blob/7df464937b38260f29bca1dd7e1096c7853ca812/docs/validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
 records bounded original/facade comparisons and inherited issues; selected
 matches do not convert other failures into passes or establish universal parity.
 The upstream lookup contract permits read-ahead beyond a logical table;
@@ -123,6 +123,8 @@ tested source, tools and coverage; a later documentation commit inherits no pass
 Use the [native workflow](validation/native-workflow.md),
 [ARM64 publication checklist](validation/arm64/results-publication-checklist.md)
 and [Windows runner](validation/x86/windows-runner.md) for new work.
+The [21 November Windows report](validation/x86/windows-x86-validation-2026-11-21.md)
+records the later 7,140-case collection and its separate failed/incomplete result.
 
 The [four-blend decision](validation/arm64/blend4-integration-2026-11-19.md)
 retains the accepted ARM specializations and measured inverse cost. The

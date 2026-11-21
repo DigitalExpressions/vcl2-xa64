@@ -1,9 +1,0 @@
-{
-  "archive": "windows-arch-separation-triage-evidence.zip",
-  "sha256": "68c1cf4a62bf133dc0e2a846312b5dfa2ce45bbfa630319490a9e332d96f9e6a",
-  "bytes": 2077503,
-  "recorded_files": 384,
-  "crc_and_all_recorded_hashes_verified": true,
-  "scope": "New triage only: unchanged-library provenance, direct consumer copies/changes, original compiler flags, command/exits, missing-target compile failures and corrective attempts, paired CTest/JUnit, debugger stacks, upstream-only probe sources/outputs, manual snapshot, source and binary hashes. Compiled artifacts and all directories retained separately.",
-  "created_utc": "2026-11-19T07:32:22.382984+00:00"
-}
