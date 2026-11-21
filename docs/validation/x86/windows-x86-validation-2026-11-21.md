@@ -61,3 +61,27 @@ Raw archive: `build/x86v21-01-raw.zip`; SHA-256 `43fdc930c57e13534d7a8d9c5ef9f10
 Exact source archive: `build/x86v21-01/source.zip`; SHA-256 `c8a2d2fc4f7166a0ee1d61b7d8b78697fca109871dff7a89aaf7d4adb3aaa346`.
 
 This round covers native AMD Windows correctness and build integration only. No runtime repairs, gate relaxation, MSVC Debug/RTC, ASan, performance measurement, physical Intel or ARM validation was performed. Separate native results do not establish cross-host parity.
+
+## Artifact availability after cleanup
+
+On 21 November the maintainer requested cleanup of `work/` and `build/`, with no
+archiving or compaction unless absolutely necessary. Reproducible executable,
+object, library and debug outputs were removed after their hashes and original
+records were verified. The earlier statement that compiled payloads remain on
+disk describes execution closeout; those removed payloads are no longer retained
+as a separate compiled copy. Their hashes identify the historical files but do
+not recover their bytes. No replacement binary archive is retained.
+
+The original raw archive and source ZIP above remain byte-exact, as do retained
+journals, diagnostics, JUnit, compiler flags, binary inventories, source captures
+and dependencies. Raw archives keep their original documented contents; no new
+binary coverage is implied. Duplicate integrity-fixture copies were removed
+where identical data remained; unique control records were kept. Necessary
+unique scratch records were preserved directly under ignored `build/`, and the
+root `work/` folder was left empty and reusable.
+
+The local cleanup inventory, duplicate-recovery map and verification records
+are under `build/local-validation/work-build-cleanup-20261121/`. An initial
+overbroad compaction attempt was stopped; all newly created compaction ZIPs were
+removed. No source, numerical result, gate or tested identity changed, and no
+native tests or performance measurements were rerun by this cleanup.

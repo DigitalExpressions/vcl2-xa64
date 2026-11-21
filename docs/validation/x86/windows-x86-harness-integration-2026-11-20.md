@@ -150,3 +150,22 @@ with exhaustive hashes; portable results contain no machine paths or binaries.
 Commit approval is pending. No cleanup, commit, push, PR, benchmark, ASan,
 emulation, hosted CI, ARM execution or external consumer change was performed.
 Physical Intel, other toolchains/APIs and performance remain outside this run.
+
+## Artifact availability after cleanup - 21 November 2026
+
+The execution-closeout statements above retain their historical meaning.
+During separately requested local cleanup, reproducible compiled outputs were
+removed from `build/ui20-01/` after verification. Their original hashes and
+compile/link records remain; removed binaries and objects are no longer retained
+as a separate compiled payload. Hashes alone cannot recover them, and no
+replacement binary archive is retained.
+
+The original raw archive, frozen source replicas, logs, diagnostics, generated
+inputs and earlier failed attempts remain unchanged. Existing archives retain
+their original documented scope. Duplicate disposable fixture copies were
+removed only with retained identical data or necessary unique records kept
+directly. The local inventory, recovery map and verification records are under
+`build/local-validation/work-build-cleanup-20261121/`. All newly created ZIPs
+from an initial overbroad compaction attempt were removed in accordance with
+the maintainer's instruction to avoid unnecessary archiving. This cleanup
+establishes no new correctness, parity or performance result.

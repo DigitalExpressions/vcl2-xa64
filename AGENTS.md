@@ -181,10 +181,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   baseline matrix at a new frozen source. Documentation-only changes need
   repository/link/whitespace checks. Do not weaken gates after observing failures.
 - Cleanup, commit, push, merge, release and branch retirement need task-specific
-  approval. Unless the maintainer explicitly requests discarding obsolete
-  artifacts, before authorized removal verify compact archive coverage and retain
-  supplements for uncovered diagnostics/generated inputs. Keep tools/testbench,
-  unrelated work and all original failed evidence; remove worktrees through Git.
+  approval. Do not archive or compact information under `build/` unless absolutely
+  necessary to preserve required unique evidence. Reuse existing archives and
+  retain needed records directly; reproducible compiled outputs and exact
+  duplicates do not require replacement archives. Before deleting unique needed
+  diagnostics or generated inputs, verify existing coverage or preserve only the
+  necessary missing records. Record when removed binaries are no longer available;
+  hashes alone do not recover their bytes. An explicit request to discard obsolete
+  artifacts overrides retention for that scope. Keep tools/testbench, unrelated
+  work and original failed evidence; remove worktrees through Git.
 - For future shared corpus checks, create ignored `build/` first and follow
   `docs/validation/cross-platform/README.md`. Do not claim cross-host parity from
   separate native correctness passes or compare only an inventory intersection.
