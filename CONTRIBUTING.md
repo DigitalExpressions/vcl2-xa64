@@ -1,12 +1,11 @@
 # Contributing
 
 Use [ARM / Neon lessons](docs/neon-arm-lessons.md) and
-[current integration status](docs/integration-plan.md). Architecture separation
-and its native validation are complete and integrated into master. The
-[acceptance decision](docs/validation/architecture-separation-integration-2026-11-19.md)
-preserves original x86 bytes and limitations; the Windows correctness gate stays
+[current integration status](docs/integration-plan.md). The
+[backend ownership and acceptance rules](docs/backend-layout.md)
+preserve original x86 bytes and limitations; the Windows correctness gate stays
 failed/incomplete. Current master retains four-blend code; the later TRS-recovery
-candidate was declined. The x86 fix campaign and old migration plans are retired.
+candidate was declined. The x86 fix campaign is retired.
 Generation is retired; the ownership rules below apply to new agreed work.
 
 Read the [fork usage guide](README.md), the shared [agent instructions](AGENTS.md), [integration status](docs/integration-plan.md)

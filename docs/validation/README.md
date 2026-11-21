@@ -90,7 +90,7 @@ include/code checks and RTC diagnostics do not convert failures into passes.
 - [Architecture matrix](x86/windows-amd-2026-11-19-arch-separation.md) and
   [targeted triage](x86/windows-amd-2026-11-19-arch-separation-triage.md).
 - [Four-blend Windows return](x86/windows-blend4-handoff-2026-11-19/results/README.md)
-  and [architecture acceptance](architecture-separation-integration-2026-11-19.md).
+  and [current backend acceptance rules](../backend-layout.md#validation-and-source-identity).
 - [Portable integrated harness results](x86/windows-x86-harness-integration-2026-11-20/README.md).
 - [Frozen Windows return for the declined TRS candidate](https://github.com/DigitalExpressions/vcl2-xa64/tree/b5a671a72fe59888ce0a661741a2b65c6b02a4b6/docs/validation/trs-inverse-current-master-2026-11-19).
 

@@ -42,29 +42,14 @@ on a particular machine; its absence must not prevent a fresh setup.
 - On 18 November 2026 the maintainer requested cleanup and retention of ARM/Neon
   lessons before choosing a new implementation strategy. Start with
   `docs/neon-arm-lessons.md` and `docs/integration-plan.md`.
-- The root/upstream and `_neon.h` separation is documented in
-  `docs/backend-layout.md` and `docs/arch-separation-map.json`. The maintainer approved implementation and
-  native validation on Mac M2 followed by native AMD Windows verification.
-  That work is complete and integrated; the Mac execution handoff is historical.
-  See [historical architecture-separation-integration-completed-2026-11-19.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md). The
-  platform-neutral include name `vcl2_xa64.h` is agreed.
-  The maintainer subsequently approved retiring the local x86 findings index.
-  Its [frozen historical version](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md)
-  remains available for future research without resuming the retired campaign.
-- The x86 correctness/optimization campaign and old execution handoffs are
-  retired. Do not automatically resume them or treat their fixes as requirements
-  for new ARM work. Existing source remains unchanged until new scope is agreed.
-- The maintainer subsequently approved committing and pushing the completed
-  architecture implementation, ARM cleanup and M2 reports on `arch-separation-m2`.
-  Native AMD Windows validation and targeted triage are complete with their
-  original failed/incomplete correctness gate retained. On 19 November the
-  maintainer approved local integration into `master` and evidence-backed cleanup;
-  see `docs/validation/architecture-separation-integration-2026-11-19.md` for the
-  explicit x86 preservation/equivalence acceptance and remaining limits. The
-  maintainer then separately approved pushing `master`; origin was verified at
-  `5e039b01b49abc00548123763be85898932e3ad8`. That completed approval does not
-  authorize later publication, PRs, branch retirement or runtime changes.
-  Preserve reusable resources, source captures and retained archives.
+- Current source ownership is documented in `docs/backend-layout.md`.
+  Applications use the platform-neutral `vcl2_xa64.h` facade; the original x86
+  implementation remains pristine and ARM work stays in owned Neon sources.
+- The architecture migration and earlier x86 repair/optimization campaign are
+  closed. Preserve the accepted x86 scope: pinned originals and their known
+  limitations, with the Windows correctness gate failed/incomplete. Use current
+  native procedures for newly agreed work; historical approvals do not authorize
+  new runtime changes, publication or repository administration.
 - The maintainer subsequently approved retaining/integrating the four-blend
   candidate, publishing the Windows report and evidence-backed local cleanup.
   Integration/publication and verified local cleanup are complete; see
@@ -144,8 +129,7 @@ on a particular machine; its absence must not prevent a fresh setup.
 
 ### Library and validation contracts
 
-- The separated layout is integrated into local `master`; verified local cleanup
-  is complete. See [historical architecture-separation-integration-completed-2026-11-19.md](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md).
+- The active backend layout is integrated into `master`.
   The original Windows correctness gate stays failed/incomplete.
   Read `README.md`, `docs/backend-layout.md` and the dated validation
   report for its actual result/source identity. On 20 November the maintainer
@@ -178,21 +162,15 @@ on a particular machine; its absence must not prevent a fresh setup.
   workarounds. Preserve that boundary: read-only integrity checks also reject
   native x86 helpers, ISA macros and wide intrinsics in inactive ARM branches.
   Keep required SSE-shaped sse2neon APIs, ARM correctness fixes and generic
-  compiler portability. Use the validation index and 19 November M2 report for
-  the later frozen source. Earlier cleanup/candidate results remain historical;
-  they do not transfer to a later publication.
+  compiler portability. Use the validation index and dated M2 reports for exact
+  tested sources. Earlier results remain historical; they do not transfer to a
+  later publication.
 - The old adapted-root generator is retired. `tools/regenerate_headers.py --check`
-  is read-only; `--write` always rejects. On 20 November the maintainer approved
-  retiring the entire `adaptation/` catalog, including its four historical patches
-  and empty manifest. Their frozen Git source is linked from
-  `docs/backend-layout.md`. Integrity checks reject reintroduced `adaptation/`
-  paths directly; candidate checks must not depend on a retired manifest.
-  The unused `backends/x86/x86_classification.h` helper was retired with approval;
-  historical reproduction uses frozen Git source. The remaining `backends/`
-  research index was subsequently retired; its frozen README is linked from
-  `docs/backend-layout.md`. Keep the include-graph safeguard rejecting
-  `backends/` headers. Keep one editable ARM implementation; do not recreate
-  copies in `backends/arm64/` or `adaptation/include/`.
+  is read-only; `--write` always rejects. Integrity and include-graph checks reject
+  reintroduced `vendor/`, `adaptation/` and `backends/` paths. Candidate checks must
+  not depend on retired manifests or classification helpers. Keep one editable
+  ARM implementation; do not recreate copies in `backends/arm64/` or
+  `adaptation/include/`. Historical reproduction uses frozen source and tools.
 - Preserve public VCL type/API names, ABI/namespace/width settings, attribution,
   licenses, independent fixtures, seeds, numerical gates, FP/rounding flags,
   classification-only finite-math stress, strict UBSan and protected-page/canary
@@ -265,9 +243,8 @@ on a particular machine; its absence must not prevent a fresh setup.
   and strict nonrecovering UBSan Debug, preserving the complete registered list.
   Apple UBSan's deliberate overflow may exit 1 or SIGABRT (-6); require its
   diagnostic, no continuation and a passing positive control. Keep actual exits.
-- The architecture migration and its native validation are complete. Do not
-  resume the historical migration handoff. For new agreed ARM work use a fresh
-  capture after source changes; `tools/capture_source.py --help` and
+- For new agreed ARM work use a fresh capture after source changes;
+  `tools/capture_source.py --help` and
   `tools/run_native_arm_validation.py --help` document explicit capture mode.
   Keep the default clean-checkout guard. Never retry the documented ASan hang.
 

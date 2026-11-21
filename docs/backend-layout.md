@@ -38,7 +38,7 @@ Distinct `vectori128_compat_neon.h`, `vectorf128_compat_neon.h` and
 `instrset_compat_neon.h` retain compatibility behavior. Common conversion,
 logical-wide composition and math have their own ARM headers/guards, including
 bodies originally shared with upstream. Their includes cannot reach root x86
-originals. The [file map](arch-separation-map.json) records all dispositions.
+originals. The upstream inventory remains in the protected audit manifest.
 
 `vcl_config.h` retains default compatibility, explicit experimental Direct Neon,
 logical width and namespace contracts. Root `sse2neon.h` is the sole shipped
@@ -80,28 +80,11 @@ including a newline-only root mutation. Real originals remain untouched.
 Historical sources use their frozen historical checkers; the current checker
 requires the current root-only dependency layout.
 
-The old canonical duplicates under `backends/arm64/` and `adaptation/include/`
-are retired. On 20 November the maintainer approved retiring the entire
-`adaptation/` catalog, including its empty manifest and four inactive patches:
-portability/correctness, MSVC x86 performance, defined AVX2 double-to-int64
-conversion and x86 correctness. The
-[frozen research index](https://github.com/DigitalExpressions/vcl2-xa64/blob/0ed548100f983688091bb80fd5c47438581190e7/adaptation/README.md)
-and [complete patch set and manifest](https://github.com/DigitalExpressions/vcl2-xa64/tree/0ed548100f983688091bb80fd5c47438581190e7/adaptation)
-preserve their provenance. Neither current backend applies them; ARM changes
-are maintained directly in root `*_neon.h`, while x86 originals remain pristine.
-The unused former MSVC classification helper was also
-retired; its [frozen source](https://github.com/DigitalExpressions/vcl2-xa64/blob/41d7fbacc45fbb679b08f0074a8f340ced3a3f20/backends/x86/x86_classification.h)
-remains in Git history. Reproducing those patches requires their historical source.
-The remaining `backends/` research index was retired on 20 November; its
-[frozen README](https://github.com/DigitalExpressions/vcl2-xa64/blob/7465b9833968bae97ef9fb1efa645a7ed994f8eb/backends/README.md)
-preserves historical navigation. Include-graph checks continue to reject
-`backends/` headers so inactive implementations cannot reenter the ARM graph.
-The checker no longer needs an adaptation manifest. Candidate comparison checks
-always verify the current separated layout, and candidate patches cannot add
-retired adaptation/backend paths. Generation outputs and `--write` remain
-rejected. Historical reproduction uses the frozen source and tools; original
-source and generation workflow remain reachable in Git history and earlier
-dated reports.
+The `backends/` and `adaptation/` catalogs are retired. Current integrity and
+include-graph checks reject their reintroduction; neither active backend applies
+historical adaptation patches. Maintain one ARM implementation in root
+`*_neon.h` and keep x86 originals pristine. Generation outputs and `--write`
+remain rejected. Historical reproduction uses its own frozen source and tools.
 
 ## Validation programs and retired examples
 
@@ -121,29 +104,36 @@ unchanged; they describe the tested source at their original checkpoints.
 
 ## Validation and source identity
 
-The migration was published on `arch-separation-m2` and accepted for local
-integration into `master` on 19 November. The [integration decision](validation/architecture-separation-integration-2026-11-19.md)
-defines x86 preservation/equivalence acceptance despite the failed/incomplete
-[Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md). The
-[targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
-retains inherited limitations and distinguishes documented contract differences.
-No original file or test gate was changed. Native results remain tied to their
-separate exact captures, and no benchmark or x86 repair is part of integration.
+The accepted x86 scope preserves the pinned original implementation and its
+known limitations behind the facade. It is not a universal correctness pass.
+The [Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md)
+retains **5,387 passed, 249 failed and 76 not run of 5,712**, plus twelve passing
+examples. The [targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md)
+records bounded original/facade comparisons and inherited issues; selected
+matches do not convert other failures into passes or establish universal parity.
+The upstream lookup contract permits read-ahead beyond a logical table;
+stronger ARM page-boundary expectations, numerical gates and sanitizer/guard
+controls remain in force. Preserve independent fixtures, seeds, FP flags,
+60-second deadlines and concurrency three. Do not reapply retired x86 repairs.
 
-The [19 November M2 result](validation/arm64/mac-arm-2026-11-19-blend4.md) records the
-later frozen ARM implementation. The [Windows runner guide](validation/x86/windows-runner.md)
-provides the maintained procedure; the dated matrix and triage above record the
-migration outcome. Historical capture/publication proofs remain accessible through
-frozen Git references in the acceptance record. No pass transfers to a later tree.
+The [21 November M2 correctness report](validation/arm64/mac-arm-validation-2026-11-21.md)
+and [standard-math results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+record the latest retained ARM64 checkpoint. Every native result keeps its exact
+tested source, tools and coverage; a later documentation commit inherits no pass.
+Use the [native workflow](validation/native-workflow.md),
+[ARM64 publication checklist](validation/arm64/results-publication-checklist.md)
+and [Windows runner](validation/x86/windows-runner.md) for new work.
 
-The fork README's former opening status block is maintained here and in the
-[integration status](integration-plan.md) and [validation index](validation/README.md).
-The [four-blend integration](validation/arm64/blend4-integration-2026-11-19.md)
-retains the accepted ARM specializations and unresolved 2-3% TRS-inverse cost.
-The [completed TRS follow-up](validation/arm64/trs-inverse-decision-2026-11-20.md)
-keeps the current runtime. The Windows full gate remains failed/incomplete.
-Superseded Mac plans remain available through the
-[frozen cleanup record](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md);
-the [Windows cleanup index](validation/README.md#windows-documentation-cleanup)
-records its historical evidence. These records retain their original source
-identities and are not new validation of the README consolidation.
+The [four-blend decision](validation/arm64/blend4-integration-2026-11-19.md)
+retains the accepted ARM specializations and measured inverse cost. The
+[TRS follow-up decision](validation/arm64/trs-inverse-decision-2026-11-20.md)
+keeps that runtime. Separate native passes do not establish cross-host numerical
+parity, application coverage or an x86 correctness pass.
+
+The completed separation job's rename/guard map and integration decision are
+historical records, available at their published source:
+[frozen map](https://github.com/DigitalExpressions/vcl2-xa64/blob/5dace327bd7206f6e2bb87d8d1c81e2858161738/docs/arch-separation-map.json)
+and [frozen decision](https://github.com/DigitalExpressions/vcl2-xa64/blob/5dace327bd7206f6e2bb87d8d1c81e2858161738/docs/validation/architecture-separation-integration-2026-11-19.md).
+Current ownership and the accepted limits above supersede their execution and
+cleanup instructions. No original runtime, test, numerical policy or evidence
+record was changed by retiring those local documents.

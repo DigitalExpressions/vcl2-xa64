@@ -1,6 +1,6 @@
-# Current integration status — 20 November 2026
+# Current integration status — 21 November 2026
 
-Architecture separation is complete and integrated into master. The retained
+The current backend layout is integrated into master. The retained
 runtime is d796768b30cb375ea62afa72dcab061b1a3e54ca; documentation cleanup does
 not establish a fresh native pass at a later commit.
 
@@ -9,7 +9,7 @@ pinned upstream bytes: 27 at root and the upstream README under `audit/`.
 Root `README.md` is the fork guide. ARM implementations live in root `*_neon.h` files and
 `instrset_detect_neon.cpp`; compatibility stays default and Direct Neon remains
 an explicit experimental opt-in. See [ownership](backend-layout.md), the
-[file map](arch-separation-map.json), [x86 pin](../audit_x86_history.md) and
+[x86 pin](../audit_x86_history.md) and
 [ARM64 dependency history](../audit_arm64_history.md).
 
 Master retains the [accepted four-blend implementation](validation/arm64/blend4-integration-2026-11-19.md),
@@ -21,12 +21,11 @@ The full Windows gate remains **failed/incomplete: 5,387 passed, 249 failed,
 76 not run of 5,712, plus twelve passing examples**. Bounded x86 preservation
 and matching diagnostics do not convert that gate into a pass. Retained records:
 
-- [Architecture integration acceptance](validation/architecture-separation-integration-2026-11-19.md)
-  and [completion](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/architecture-separation-integration-completed-2026-11-19.md).
+- [Current backend ownership and acceptance rules](backend-layout.md#validation-and-source-identity).
 - [Windows matrix](validation/x86/windows-amd-2026-11-19-arch-separation.md) and
   [targeted triage](validation/x86/windows-amd-2026-11-19-arch-separation-triage.md).
-- [19 November M2 correctness](validation/arm64/mac-arm-2026-11-19-blend4.md) and
-  [current-master timing checkpoint](benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md).
+- [21 November M2 correctness](validation/arm64/mac-arm-validation-2026-11-21.md) and
+  [current-master performance results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md).
 - [Dependency audit/publication](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-publication-2026-11-19.md).
 
 Each result keeps its exact tested source; separate native passes do not prove

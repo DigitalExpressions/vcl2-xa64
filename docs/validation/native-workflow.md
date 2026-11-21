@@ -1,8 +1,7 @@
 # Native validation workflow
 
 Start with the [validation index](README.md), [source ownership](../backend-layout.md)
-and [shared agent instructions](../../AGENTS.md). Architecture separation is
-complete. Its migration plan and old execution prompts are not current tasks.
+and [shared agent instructions](../../AGENTS.md).
 Current master retains the accepted four-blend code; the TRS-recovery candidate
 was declined. Choose a newly agreed frozen source before implementation or runs.
 

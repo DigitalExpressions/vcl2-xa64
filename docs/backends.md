@@ -17,8 +17,8 @@ inlining decisions, but must keep their coefficients, operation grouping and
 special-value policy consistent.
 
 The [ARM/Neon lessons](neon-arm-lessons.md) and [current integration status](integration-plan.md)
-are the working entry points. Architecture separation is complete and integrated;
-it preserves the ARM backend behavior below and pristine original x86 behavior. Prior x86 repair/optimization work is inactive
+are the working entry points. The active layout preserves the ARM backend behavior
+below and pristine original x86 behavior. Prior x86 repair/optimization work is inactive
 research and is not part of the x86 include graph.
 
 ## Backend selection and coverage

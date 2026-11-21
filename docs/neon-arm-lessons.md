@@ -1,30 +1,24 @@
 # ARM64 / Neon lessons to carry forward
 
-The architecture separation and native validation are complete and integrated
-into master. Use [current ownership](backend-layout.md),
+Use [current ownership](backend-layout.md),
 [integration status](integration-plan.md) and the [validation index](validation/README.md).
-These lessons remain useful for future ARM work. The old x86 repair campaign
-and Mac migration handoffs are retired; they are not implementation requests.
+These numerical, memory and measurement lessons guide new ARM work. The x86
+repair campaign is retired.
 
 ## What retained native M2 testing established
 
-The [19 November correctness report](validation/arm64/mac-arm-2026-11-19-blend4.md)
-records **8,036 CTest passes plus eight examples** across compatibility maximum
-512 and Direct Neon maxima 128/256/512, each Release and strict UBSan Debug.
-Its tested implementation is a 571-file uncommitted capture, fingerprint
-3ae63872ad69d4fb7310f7ff07abbe40068a2ff29c93a34f666be0b4602c0e36;
-tested commit/tree are null, with base 5e039b0 identified separately. This
-result is not a fresh pass at current master's later metadata/layout tree.
-[Portable source/results](validation/arm64/m2-blend4-2026-11-19/README.md) remain.
-Obsolete raw Mac sessions/binaries were discarded on 20 November.
+The [21 November correctness report](validation/arm64/mac-arm-validation-2026-11-21.md)
+records **8,036 CTest passes plus eight arithmetic smoke runs** across compatibility
+maximum 512 and Direct Neon maxima 128/256/512, each Release and strict UBSan
+Debug. It tested clean commit `dc802e466663d61d9e219bd7c7351aa8ac312204`, tree
+`7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b`, with Apple Clang 21 / SDK 26.5.
+The report links to source identities, controls, integrity and archive receipts.
+A pass belongs to that tested checkpoint, not a later publication.
 
-The earlier [shared checkpoint](validation/cross-platform/README.md) and
-[source-byte audit](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/source-byte-audit-2026-11-16-bd7807e.md) retain
-32 selected pre-separation comparisons and their exact source identities in
-frozen Git. Their local historical records were retired on 20 November. Future
-comparisons require new captures of the separated implementation.
-No checkpoint validates every VCL API, full scalar-libm behavior, application
-integration, a future redesign or universal bitwise equality across architectures.
+Separate native passes do not establish cross-host numerical parity. Future
+comparisons use the [shared corpus and policies](validation/cross-platform/README.md)
+at newly agreed frozen sources. No checkpoint validates every VCL API, full
+scalar-libm behavior, external consumers or universal bitwise equality.
 
 ## Hardware width and representation
 
@@ -109,7 +103,7 @@ a new source checkpoint is explicitly selected. Old handoffs are historical.
 
 ## What M2 performance evidence says
 
-Use the [19 November master checkpoint](benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
+Use the [21 November standard-math results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
 and [completed TRS decision](validation/arm64/trs-inverse-decision-2026-11-20.md) for
 the retained performance context. Master keeps the approximately 6% small-
 transpose gain and its accepted inverse cost. The proposed inverse recovery
@@ -129,9 +123,9 @@ Keep the following measurement practices:
   explicit and do not pool different experiments.
 - Inspect full called helper bodies, inlining, conversions and spills. Wrapper
   instruction counts alone can conceal costs.
-- The tested source-layout separation produced byte-identical M2 benchmark
-  binaries versus its pre-layout source. Directory layout alone does not prove
-  a performance change. Recheck the actual code produced by the next design.
+- Source layout and compiler/SDK versions can change code placement and code
+  generation. Attribute a performance change only through matched measurements;
+  inspect actual callers and preserve all measurements and uncertainty.
 - Keep application-level 3D workload validation separate. These library tests
   and microbenchmarks do not validate a scene, renderer or external consumer.
 
