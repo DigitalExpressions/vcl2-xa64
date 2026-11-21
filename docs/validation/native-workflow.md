@@ -126,10 +126,13 @@ MSVC Debug/RTC is deferred and rejected until noninteractive reporting is valida
 Probe CPU and OS before higher-ISA execution. Prove native PE, guard and sanitizer
 controls; retain numerical gates, fixtures, 60-second deadlines and concurrency three.
 
-The current full Windows gate is failed/incomplete: 5,387 passed, 249 failed,
-76 not run of 5,712, plus twelve passing examples. Bounded preservation and
-matching RTC diagnostics do not convert that gate into a pass. Record new and
-inherited failures separately; do not resume x86 repairs.
+The latest [21 November Windows collection](x86/windows-x86-validation-2026-11-21.md)
+is failed/incomplete: 6,798 passed, 233 failed and 109 not run of 7,140, plus
+fifteen passing examples. The historical 19 November gate remains separately
+failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712, plus twelve
+passing examples. Bounded preservation and matching RTC diagnostics do not
+convert either gate into a pass. Record new and inherited failures separately;
+do not resume x86 repairs.
 
 For a newly agreed cross-host comparison, use the
 [shared corpus and policies](cross-platform/README.md) at the same approved

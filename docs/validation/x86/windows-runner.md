@@ -1,6 +1,6 @@
 # Manual native Windows compilation and testing
 
-## Current policy - 20 November 2026
+## Current policy - 21 November 2026
 
 At the start of each new x86 validation request, ask the maintainer whether to
 include separate performance tests; an explicit choice in that request already
@@ -14,7 +14,10 @@ Agner's [compiler guidance](https://github.com/vectorclass/manual/blob/c18341d00
 and the [pinned testbench script](https://github.com/vectorclass/testbench/blob/a7293702385e5169a5f58b83177f2a43cd59139b/runtest.sh).
 Clang O2 is the chosen reproducible level; the upstream script uses O3.
 Read the [integrated harness/results report](windows-x86-harness-integration-2026-11-20.md)
-for actual outcomes, failures and source identities. The historical full Windows
+for its 20 November outcomes and source identity. The latest
+[21 November native collection](windows-x86-validation-2026-11-21.md) records
+6,798 passed, 233 failed and 109 not run of 7,140, plus fifteen passing examples;
+it remains failed/incomplete. The historical full Windows
 gate remains failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712,
 plus twelve passing examples. A profile change does not relabel that evidence.
 

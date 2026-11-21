@@ -15,6 +15,11 @@ The historical first run compared fork
 `ade9d9baf559ad480289277dd6ad8e6d1c5b15e3` and upstream
 `667577495efaa36a10cbb5d6cb8c942c23913848`. A new investigation needs its own
 approved source pair and scope; these instructions do not schedule a run.
+For each new x86 validation request, ask whether performance tests are included,
+as specified by the [x86 publication checklist](../../validation/x86/results-publication-checklist.md).
+Stage portable benchmark output under ignored `build/`; copy reviewed results
+to approved documentation destinations afterward. A completed correctness round
+does not by itself authorize timing or new permanent report paths.
 
 ## Execution plan and restart point
 
@@ -55,13 +60,16 @@ git fetch --no-tags upstream master
 git rev-parse HEAD
 git rev-parse upstream/master
 & ([scriptblock]::Create((Get-Content -Raw -Encoding UTF8 -LiteralPath tools/run_x86_upstream_comparison.ps1))) `
-  -ForkCommit ade9d9baf559ad480289277dd6ad8e6d1c5b15e3 `
+  -ForkCommit APPROVED-FORK-COMMIT `
   -UpstreamCommit 667577495efaa36a10cbb5d6cb8c942c23913848 `
   -Cpu 2 -Pairs 4 -Trials 7 -SampleMs 6 `
-  -PortableOutput docs/benchmarks/x86/x86-upstream-YYYY-MM-DD-UNIQUE-RUN
+  -PortableOutput build/x86-portable-YYYY-MM-DD-UNIQUE-RUN
 ```
 
-Use a new portable destination on every run; existing output is never
+Replace `APPROVED-FORK-COMMIT` with the full frozen source selected in the run
+plan; keep the upstream reference pinned unless another reference is explicitly
+selected. The historical first run's fork commit is not a new run's default.
+Use a new portable staging destination on every run; existing output is never
 overwritten. `-Output build/UNIQUE-RUN` optionally selects the raw destination.
 The wrapper initializes the installed x64 developer environment. The scriptblock
 invocation also works on this host without changing its PowerShell execution
@@ -171,7 +179,7 @@ with its reviewed source identities. Keep the patch under ignored `build/`:
   -CandidatePatch build/REVIEWED-CANDIDATE.patch `
   -Cpu 2 -Pairs 4 -Trials 7 -SampleMs 6 `
   -Output build/UNIQUE-BEFORE-AFTER `
-  -PortableOutput docs/benchmarks/x86/UNIQUE-BEFORE-AFTER
+  -PortableOutput build/UNIQUE-BEFORE-AFTER-portable
 ```
 
 The closed 16 November campaign's concrete two-experiment example remains in
@@ -207,7 +215,7 @@ Import-Module (Join-Path $comparisonVs 'Common7/Tools/Microsoft.VisualStudio.Dev
 Enter-VsDevShell -VsInstallPath $comparisonVs -SkipAutomaticLocation -DevCmdArguments '-arch=x64 -host_arch=x64'
 python -B tools/check_x86_upstream_edges.py `
   --run build/x86-upstream-REPLACE-WITH-COMPLETED-RUN `
-  --portable-output docs/benchmarks/x86/REPLACE-WITH-RESULT-DIRECTORY/edge-controls
+  --portable-output build/REPLACE-WITH-PORTABLE-DIRECTORY/edge-controls
 ```
 
 The probe checks five IEEE classifications across zero, signed zero, infinity,

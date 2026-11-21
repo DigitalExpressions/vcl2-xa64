@@ -88,8 +88,11 @@ Follow the [ARM64 results publication checklist](../docs/validation/arm64/result
 after the native correctness and separate performance runs. It specifies what
 to copy, what stays under ignored `build/`, and which indexes and README values
 to update.
+For requested native Windows performance tests, use the
+[x86 publication checklist](../docs/validation/x86/results-publication-checklist.md)
+and the [x86 comparison protocol](../docs/benchmarks/x86/x86-upstream-comparison.md).
 
-Start future dated reports from the [standard report template](../docs/benchmarks/arm64/STANDARD_MATH_RESULTS_TEMPLATE.md).
+Start future ARM64 dated reports from the [standard report template](../docs/benchmarks/arm64/STANDARD_MATH_RESULTS_TEMPLATE.md).
 It marks the table values, summaries, source/host details and evidence records
 that must be filled from the new run.
 

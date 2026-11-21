@@ -17,9 +17,16 @@ its small-transpose gain and known inverse cost. The later frozen TRS-recovery
 candidate 3b4af0d is declined unchanged; the [completed decision](validation/arm64/trs-inverse-decision-2026-11-20.md)
 records its measured costs and remaining uncertainty.
 
-The full Windows gate remains **failed/incomplete: 5,387 passed, 249 failed,
-76 not run of 5,712, plus twelve passing examples**. Bounded x86 preservation
-and matching diagnostics do not convert that gate into a pass. Retained records:
+The latest [21 November Windows collection](validation/x86/windows-x86-validation-2026-11-21.md)
+at clean commit `dc802e466663d61d9e219bd7c7351aa8ac312204` remains
+**failed/incomplete: 6,798 passed, 233 failed and 109 not run of 7,140,
+plus fifteen passing examples**. Its complete case statuses match the separately
+identified 20 November collection, with zero timeouts or skipped cases.
+
+The historical 19 November Windows gate remains **failed/incomplete: 5,387
+passed, 249 failed, 76 not run of 5,712, plus twelve passing examples**.
+Bounded x86 preservation and matching diagnostics do not convert that gate
+into a pass. Retained records:
 
 - [Current backend ownership and acceptance rules](backend-layout.md#validation-and-source-identity).
 - [21 November Windows validation](validation/x86/windows-x86-validation-2026-11-21.md),
@@ -40,23 +47,27 @@ The [x86 MSVC/Clang build and test guide](x86-build-and-test.md) records the
 profile-aware harness is integrated and published on master, with
 explicit strict Release/UBSan profiles and RTC rejection. The
 [integration record](validation/x86/windows-x86-harness-integration-2026-11-20.md)
-identifies fresh validation of the integrated capture; earlier results keep
+identifies validation of its 20 November integrated capture; earlier results keep
 their source identities. Agner's originals and all runtime source remain unchanged.
 The maintainer subsequently approved commit and push; the harness was published
 at 2237ffbdc23b23cda4358acf29cd494b2d63ad8c. The separately requested
 [Windows documentation cleanup](validation/README.md#windows-documentation-cleanup)
 retires obsolete pre-19 November reports while preserving current instructions,
 source proofs and raw evidence. Later publication needs its own authorization.
-Fresh collection is complete: 7,140 registered cases plus fifteen passing
-canonical examples, with every failed/not-run outcome retained. The linked
-integration report separates the optimized, strict Release and UBSan totals
-and preserves both tested source identities. This remains a nonpassing collection.
+The latest clean-source collection is recorded in the
+[21 November report](validation/x86/windows-x86-validation-2026-11-21.md), with
+every failed/not-run outcome retained and optimized Release, strict Release and
+UBSan totals separated. Both dated reports keep their own tested source
+identities and remain nonpassing collections.
 
 New runtime work needs an agreed bounded scope, frozen source and fresh relevant
 native validation under the [maintained workflow](validation/native-workflow.md).
 Use the [validation index](validation/README.md) and [ARM lessons](neon-arm-lessons.md).
-Obsolete local Mac artifacts and completed planning/publication paperwork were
-retired without replacement archives; the [cleanup report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md)
-records current availability. History remains in Git. No old handoff is a pending
-task. Commits, pushes, integrations and branch retirement require task-specific
-authorization; this cleanup performs none.
+The [20 November cleanup report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md)
+records earlier discarded Mac campaigns. The completed 21 November native
+worktree was later preserved in verified archives; its
+[dated availability note](validation/arm64/mac-arm-validation-2026-11-21.md#artifact-availability-after-cleanup)
+identifies recovery records, while performance builds and the Clang study remain
+unpacked on the Mac. Completed planning/publication paperwork remains in frozen
+Git. No old handoff is a pending task. Commits, pushes, integrations and branch
+retirement require task-specific authorization; this cleanup performs none.

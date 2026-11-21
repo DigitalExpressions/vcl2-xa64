@@ -40,8 +40,8 @@ verified architecture-specific include graphs and the declared shared contracts.
   its [supporting bundle](../benchmarks/arm64/standard-math-master-2026-11-21/checksums.sha256).
 - [Four-blend acceptance](arm64/blend4-integration-2026-11-19.md) records the
   retained implementation, performance costs and separate Windows evidence.
-- [Matched M2 performance report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md)
-  and [current-master reference checkpoint](../benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
+- [19 November matched M2 performance report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-19.md)
+  and [historical reference checkpoint](../benchmarks/arm64/standard-math-master-checkpoint-2026-11-19/README.md)
   retain workload-specific results, slower rows and variability. Future timing
   comparisons need fresh matched sessions.
 

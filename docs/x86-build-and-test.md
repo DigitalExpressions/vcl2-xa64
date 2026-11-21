@@ -27,6 +27,9 @@ overrides. MSVC Debug/RTC requests are rejected before test execution.
 See the [integration/validation record](validation/x86/windows-x86-harness-integration-2026-11-20.md)
 for the exact integrated capture and actual results, and the
 [Windows runner guide](validation/x86/windows-runner.md) for controls and evidence.
+The latest [21 November native report](validation/x86/windows-x86-validation-2026-11-21.md)
+records the subsequent clean-source collection and compiler/profile/ISA table;
+its correctness gate remains failed/incomplete.
 The [earlier harness validation](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20.md)
 retains its own frozen source identity; it is not a new pass assigned to master.
 

@@ -6,7 +6,7 @@
   [selected result bundle](arm64/standard-math-master-2026-11-21/checksums.sha256),
   [19 November optimized report](arm64/STANDARD_MATH_RESULTS_2026-11-19.md),
   [matched result bundle](arm64/standard-math-blend4-2026-11-19/checksums.sha256) and
-  [current-master M2 checkpoint](arm64/standard-math-master-checkpoint-2026-11-19/README.md).
+  [historical 19 November M2 checkpoint](arm64/standard-math-master-checkpoint-2026-11-19/README.md).
 - **x86 / Windows:** [upstream comparison guide](x86/x86-upstream-comparison.md).
 
 Benchmark source and correctness contracts remain in the
@@ -14,6 +14,8 @@ Benchmark source and correctness contracts remain in the
 For each completed ARM64 validation/performance round, use the
 [results publication checklist](../validation/arm64/results-publication-checklist.md)
 for reports, supporting files, checksums and README updates.
+For completed requested x86 performance tests, use the
+[x86 results publication checklist](../validation/x86/results-publication-checklist.md).
 
 The 21 November report records fresh Apple Clang 21 / SDK 26.5 measurements at
 commit `dc802e466663d61d9e219bd7c7351aa8ac312204`. Its `candidate/` result files
