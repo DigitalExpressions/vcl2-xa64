@@ -1,11 +1,11 @@
 # VCL2 XA64 release convention
 
-Decided 22 November 2026. The first fork release targets **VCL2 XA64 1.0.0**,
-with **`xa64-v1.0.0-rc.1`** available as the first release candidate and
-**`xa64-v1.0.0`** as the final release. This document records the agreed naming,
-release description and treatment of known limitations. Select candidate or
-final status and the exact commit when authorizing publication. Recording this
-convention does not create a tag or authorize publishing a release.
+Decided 22 November 2026. The first fork publication is **VCL2 XA64
+1.0.0-rc.1**, tagged **`xa64-v1.0.0-rc.1`** and marked as a **prerelease**.
+The tag targets the documentation commit containing this finalized convention
+and the approved release description below. The maintainer authorized updating
+and pushing this convention before creating the candidate. Final
+**`xa64-v1.0.0`** remains a separate future publication.
 
 ## Names and versions
 
@@ -36,10 +36,10 @@ notes. Do not edit protected upstream version definitions to match a fork tag.
 
 ## First-release decision and future candidates
 
-The first release may be **candidate 1.0.0-rc.1** or **final 1.0.0**, with the
-documented API and support scope defined by [backend coverage](backends.md) and
-[numerical contracts](numerical-contracts.md). Use `xa64-v1.0.0-rc.1` for candidate
-publication and mark it as a prerelease; use `xa64-v1.0.0` for final publication.
+The first publication is **candidate 1.0.0-rc.1**, with the documented API and
+support scope defined by [backend coverage](backends.md) and
+[numerical contracts](numerical-contracts.md). Publish `xa64-v1.0.0-rc.1` as a
+prerelease. Use `xa64-v1.0.0` for a separately authorized final publication.
 The known limitations below are accepted within that declared release scope;
 the Windows correctness gate retains its actual failed/incomplete status.
 
@@ -99,63 +99,70 @@ their gate counts separate; do not transfer their passes to a release commit.
 
 ## First-release description
 
-Release title: **VCL2 XA64 1.0.0 — Unchanged x86 VCL and native ARM64 support**.
-For the first candidate, use **VCL2 XA64 1.0.0-rc.1 — Unchanged x86 VCL and native ARM64 support**
-and identify it as a release candidate.
-The following release description uses the 22 November evidence. Verify that
-it applies to the selected release commit before publication.
+- **Tag:** `xa64-v1.0.0-rc.1`
+- **Title:** **VCL2 XA64 1.0.0-rc.1 — Unchanged x86 VCL and native ARM64 support**
+- **Status:** Prerelease
 
-VCL2 XA64 combines Agner Fog's original VCL 2.02.04 x86 implementation with
-native ARM64 support through the shared `vcl2_xa64.h` interface. The protected
-x86 implementation remains byte-for-byte unchanged from the pinned upstream
-source.
+The following release description is approved for the first candidate.
 
-ARM64 offers sse2neon compatibility by default and an explicitly enabled,
-experimental Direct Neon backend. The supported common surface includes portable
-integer, FP32 and FP64 operations with logical 128/256/512-bit vectors. Neon
-hardware registers remain 128 bits. Native FP16, SVML and ARM64EC are outside
-the supported common surface.
+<!-- release-notes:start -->
+This first release candidate of **VCL2 XA64** brings native ARM64 support to Agner Fog’s Vector Class Library through the shared `vcl2_xa64.h` interface.
 
-Native Apple M2 validation passed **8,036 cases plus eight arithmetic smoke
-runs**, covering compatibility maximum 512 and Direct Neon maxima 128/256/512
-in Release and strict nonrecovering UBSan Debug. The published performance session
-contains **160 comparisons: 65 Direct Neon leads, 94 within the documented 5%
-band and one sse2neon lead**. Results depend on operation, layout, logical width
-and working-set size; the comparison band is separate from statistical significance.
-[M2 correctness](validation/arm64/mac-arm-validation-2026-11-22.md) ·
-[M2 performance](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md).
+The **x86 implementation remains byte-for-byte identical to upstream VCL 2.02.04**. ARM64 implementations are maintained separately, preserving the original x86 sources and attribution.
 
-Native AMD Windows comparisons against pristine upstream produced matching
-outputs across the selected finite benchmark workloads, with no consistent
-performance regression under the recorded protocol. Targeted rounding limitations
-also reproduced in both sources. The broader Windows suite exercises numerical
-edge cases, strict floating-point contracts and undefined-behavior checks,
-recording limitations of the unchanged implementation under the tested compiler
-profiles alongside unavailable build targets. The gate remains failed/incomplete:
-**6,796 passed, 235 failed and 109 not run, plus fifteen passing examples**.
-These findings document the validated scope and remaining limits; they do not
-establish that the library as a whole is nonfunctional.
-[Windows correctness](validation/x86/windows-x86-validation-2026-11-22.md) ·
-[Upstream/fork comparison](benchmarks/x86/x86-upstream-2026-11-22.md).
+**Included**
 
-Validation reports identify the exact tested source commits: M2 correctness and
-performance at `c120ded4321a087339a952ef0671fb89c456ca14`, and the Windows
-collections above at `08f2d2903d9bfdfdb22aa187329e99ce0f44d177`. Later reporting
-corrections and release publication do not establish a new native pass or
-cross-host parity at a release tag.
+- Shared VCL types and supported APIs across x86 and ARM64.
+- Default ARM64 compatibility backend using **sse2neon**.
+- Explicitly enabled, experimental **Direct Neon** backend.
+- Portable integer, FP32 and FP64 operations with logical 128/256/512-bit vectors.
+- Documented numerical contracts, source-integrity checks and native validation procedures.
 
-All credit for the original Vector Class Library belongs to **Agner Fog**.
-ARM64 compatibility also builds on earlier compatibility work and the
-**sse2neon contributors**. Original licenses and attribution are preserved;
-see [provenance and third-party notices](third-party.md).
+**Native Apple M2 validation**
+
+The recorded matrix passed **8,036 cases plus eight arithmetic smoke runs**, covering compatibility and Direct Neon in Release and strict nonrecovering UBSan Debug.
+
+The performance collection contains **160 comparisons: 65 Direct Neon leads, 94 within the documented 5% band, and one sse2neon lead**. Gains depend on operation, layout, logical width and working-set size; these classifications are separate from statistical significance.
+
+**x86 preservation and known limitations**
+
+Native AMD Windows comparisons against pristine upstream completed **1,632 independent finite-workload benchmark checks with zero output-hash disagreements**, across 816 comparison rows. No row showed a consistent performance regression under the recorded protocol. Targeted SSE2 rounding failures reproduced in both sources.
+
+The broader Windows correctness gate remains **failed/incomplete: 6,796 passed, 235 failed and 109 not run of 7,140 cases**, plus fifteen passing examples.
+
+**Note:** Findings include numerical **edge cases**, UBSan diagnostics in original headers and unavailable build targets. Counts repeat across configurations and do not represent 235 distinct defects. Not every failure has been individually compared against pristine upstream.
+
+**Release scope**
+
+Direct Neon remains experimental. Native FP16, SVML and ARM64EC are outside the supported common surface. Validation results belong to the exact source checkpoints identified in their reports; this release publication does not establish a new native pass.
+
+This candidate invites feedback on integration, the shared interface and the documented backend behavior before final 1.0.
+
+All credit for the original Vector Class Library belongs to **Agner Fog**. Original licenses, earlier compatibility-work attribution and **sse2neon contributor** notices are preserved.
+<!-- release-notes:end -->
+
+## Validation source identities
+
+The release description refers to the
+[M2 correctness report](validation/arm64/mac-arm-validation-2026-11-22.md) and
+[M2 performance report](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
+at `c120ded4321a087339a952ef0671fb89c456ca14`, and the
+[Windows correctness report](validation/x86/windows-x86-validation-2026-11-22.md)
+and [upstream/fork comparison](benchmarks/x86/x86-upstream-2026-11-22.md)
+at `08f2d2903d9bfdfdb22aa187329e99ce0f44d177`. Reporting corrections and
+publication do not establish a new native pass or cross-host parity at the tag.
+See [provenance and third-party notices](third-party.md) for retained attribution.
 
 ## Publication scope
 
-Before publishing `xa64-v1.0.0-rc.1` or `xa64-v1.0.0`, select the exact release commit and review its
-documented evidence and remaining gaps against the agreed support scope.
-The naming convention and target version are decided; candidate versus final
-status is selected explicitly for publication. Follow the
+The maintainer selected the first candidate, its title, the release description
+above and the documentation update commit as its tag target on 22 November 2026.
+Push that commit to the fork's `origin/master` before publishing the candidate.
+Verify the tag target and exact release body, mark the release as a prerelease,
+and preserve the original source and evidence identities.
+
+Future candidates and the final release require their own explicit version,
+commit and publication authorization. Follow the
 [root README standards](validation/arm64/results-publication-checklist.md#root-readme-performance-table-standard)
-when updating its summaries. Tagging, creating or publishing a release, committing
-and pushing require task-specific maintainer authorization. Preparing this
-document performs none of those actions.
+when updating its summaries. Recording a convention alone does not authorize
+tagging, releases, commits or pushes; use the maintainer's task-specific request.
