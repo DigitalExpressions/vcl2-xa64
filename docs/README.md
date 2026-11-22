@@ -16,6 +16,7 @@ failed/incomplete. Earlier execution handoffs do not authorize new work.
 | Why older Windows x86 documentation was removed or kept | [Windows documentation cleanup](validation/README.md#windows-documentation-cleanup) |
 | Architecture boundaries and protected originals | [Backend layout](backend-layout.md) |
 | Shared working rules and protected source | [Agent instructions](../AGENTS.md) |
+| Release decision, naming, scope and description | [Release convention](release_convention.md) |
 | ARM numerical, memory and measurement lessons | [ARM / Neon lessons](neon-arm-lessons.md) |
 | Backend selection and supported API | [Backend reference](backends.md) |
 | Floating-point, conversion and memory contracts | [Numerical contracts](numerical-contracts.md) |
