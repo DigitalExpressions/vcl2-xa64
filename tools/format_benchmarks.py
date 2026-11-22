@@ -22,6 +22,7 @@ import argparse
 from collections import Counter
 from decimal import Decimal
 from html import unescape
+import json
 from pathlib import Path
 import re
 
@@ -158,15 +159,70 @@ def annotate(text):
     return ''.join(result), counts
 
 
-def annotate_standard_math(text):
+def transform_markdown_prose(text, transform):
+    """Leave code, link destinations, URLs and filenames byte-for-byte intact."""
+    protected = re.compile(
+        r'(?P<ticks>`+)(?!`)[\s\S]*?(?P=ticks)(?!`)'
+        r'|(?m:^(?: {4}|\t)[^\r\n]*(?:\r?\n|$))'
+        r'|https?://[^\s<>`]+'
+        r'|(?<=\]\()[^)\r\n]+'
+        r'|(?:[\w.-]+[/\\])+[\w./\\-]+'
+        r'|[\w.-]+\.[A-Za-z0-9][\w.-]*'
+    )
+
+    def prose(value):
+        result, start = [], 0
+        for match in protected.finditer(value):
+            result.extend((transform(value[start:match.start()]), match.group()))
+            start = match.end()
+        result.append(transform(value[start:]))
+        return ''.join(result)
+
+    result, pending, fence = [], [], None
+    for line in text.splitlines(keepends=True):
+        if fence is not None:
+            result.append(line)
+            character, length = fence
+            if re.fullmatch(r' {0,3}' + re.escape(character) + r'{' + str(length)
+                            + r',}[ \t]*(?:\r?\n)?', line):
+                fence = None
+        else:
+            opening = re.match(r' {0,3}(`{3,}|~{3,})', line)
+            if opening:
+                result.extend((prose(''.join(pending)), line))
+                pending = []
+                fence = (opening[1][0], len(opening[1]))
+            else:
+                pending.append(line)
+    result.append(prose(''.join(pending)))
+    return ''.join(result)
+
+
+def annotate_standard_math(text, result_rows=None):
     """Pair the two SIMD competitors explicitly; keep scalar as a reference."""
+    precise = {}
+    for row in result_rows or []:
+        bits = row['bits'] if row['layout'] == 'batch_soa' else None
+        key = (row['operation'], row['layout'], row['precision'], row['count'], bits)
+        if key in precise:
+            raise ValueError('Duplicate full-precision result: ' + repr(key))
+        compatibility = Decimal(str(row['compat_ns']))
+        native = Decimal(str(row['neon_ns']))
+        if any(not value.is_finite() or value <= 0 for value in (compatibility, native)):
+            raise ValueError('Invalid full-precision timing: ' + repr(key))
+        value = compatibility / native
+        winner = {'green': 'Direct Neon', 'blue': 'Within 5%', 'red': 'sse2neon'}[marker(value)]
+        if 'winner' in row and row['winner'] != winner:
+            raise ValueError('Derived winner differs from unrounded timings: ' + repr(key))
+        precise[key] = (value, compatibility, native)
+
     def undecorate_labels(value):
         for name, color in BACKEND_COLORS.items():
             label = r'Direct(?:&nbsp;|\s)+Neon' if name == 'Direct Neon' else name
             value = re.sub(r'<span style="color: ' + color + r';">(' + label + r')</span>', r'\1', value)
         return value.replace('Direct&nbsp;Neon', 'Direct Neon')
 
-    text = undecorate_labels(text)
+    text = transform_markdown_prose(text, undecorate_labels)
     guide_start = '<!-- standard-math-reading-guide -->'
     guide_end = '<!-- /standard-math-reading-guide -->'
     text = re.sub(re.escape(guide_start) + r'\n.*?' + re.escape(guide_end) + r'\n\n', '', text, flags=re.S)
@@ -205,7 +261,15 @@ def annotate_standard_math(text):
     lines = text.splitlines(keepends=True)
     result = []
     index = 0
+    shape = None
     while index < len(lines):
+        heading = re.match(r'^## ([\d,]+) objects — (.+)', lines[index])
+        if heading:
+            count = int(heading[1].replace(',', ''))
+            batch = 'batch_soa' in heading[2] or 'Structure of Arrays (SoA)' in heading[2]
+            width = re.search(r'logical (\d+) bits', heading[2])
+            shape = ('batch_soa' if batch else 'object_aos', count,
+                     int(width[1]) if width else None)
         if lines[index].startswith('|'):
             end = index
             while end < len(lines) and lines[end].startswith('|'):
@@ -244,7 +308,23 @@ def annotate_standard_math(text):
                         operation, fp, compatibility, native, ratio, _, _, scalar, scalar_ratio, separate = row
                     else:
                         operation, fp, compatibility, native, ratio, _, scalar, scalar_ratio, separate = row
-                    color = marker(number(ratio))
+                    value = number(ratio)
+                    if result_rows is not None:
+                        if shape is None:
+                            raise ValueError('Missing workload heading for full-precision result')
+                        layout, count, bits = shape
+                        key = (operation, layout, int(fp), count, bits)
+                        if key not in precise:
+                            raise ValueError('Missing full-precision result: ' + repr(key))
+                        value, exact_compatibility, exact_native = precise[key]
+                        expected = (Decimal(f'{float(value):.3f}'),
+                                    Decimal(f'{float(exact_compatibility):.3f}'),
+                                    Decimal(f'{float(exact_native):.3f}'))
+                        if (number(ratio), number(compatibility), number(native)) != expected:
+                            raise ValueError('Report timings/ratio differ from result data: ' + repr(key))
+                    elif value in (Decimal('.95'), Decimal('1.05')):
+                        raise ValueError('A rounded boundary ratio requires full-precision results')
+                    color = marker(value)
                     compatibility_color = {'green': 'red', 'blue': 'blue', 'red': 'green'}[color]
                     verdict = {'green': 'Direct Neon', 'blue': 'Within&nbsp;5%', 'red': 'sse2neon'}[color]
                     if color == 'blue':
@@ -252,12 +332,11 @@ def annotate_standard_math(text):
                     verdict = WINNER_SYMBOLS[color] + ' ' + verdict
                     lead_text = '—'
                     if color != 'blue':
-                        value = number(ratio)
                         lead = (value - 1) if color == 'green' else (1 / value - 1)
                         lead_text = f'+{lead * 100:.1f}%'
                     rows.append([operation, fp, TIMING_SYMBOLS[compatibility_color] + ' **' + colored(compatibility, compatibility_color) + '**',
                                  TIMING_SYMBOLS[color] + ' **' + colored(native, color) + '**',
-                                 WINNER_SYMBOLS[color] + ' **<span style="color: ' + throughput_color(number(ratio)) + ';">' + ratio + '</span>**', verdict,
+                                 WINNER_SYMBOLS[color] + ' **<span style="color: ' + throughput_color(value) + ';">' + ratio + '</span>**', verdict,
                                  lead_text, scalar, scalar_ratio, separate])
                     counts[color] += 1
                     counts[compatibility_color] += 1
@@ -282,16 +361,21 @@ def annotate_standard_math(text):
                   r'\1Array of Structures (AoS): SIMD across one object’s components', text, flags=re.M)
     text = re.sub(r'^(## [\d,]+ objects — )batch_soa( / logical \d+ bits)$',
                   r'\1Structure of Arrays (SoA): SIMD across objects\2', text, flags=re.M)
-    text = re.sub(r'\bsse2neon\b',
-                  lambda _: '<span style="color: ' + BACKEND_COLORS['sse2neon'] + ';">sse2neon</span>', text, flags=re.I)
-    text = re.sub(r'\bdirect\s+neon\b',
-                  lambda _: '<span style="color: ' + BACKEND_COLORS['Direct Neon'] + ';">Direct&nbsp;Neon</span>', text, flags=re.I)
+    def decorate_labels(value):
+        value = re.sub(r'\bsse2neon\b',
+                       lambda _: '<span style="color: ' + BACKEND_COLORS['sse2neon'] + ';">sse2neon</span>', value, flags=re.I)
+        return re.sub(r'\bdirect\s+neon\b',
+                      lambda _: '<span style="color: ' + BACKEND_COLORS['Direct Neon'] + ';">Direct&nbsp;Neon</span>', value, flags=re.I)
+
+    text = transform_markdown_prose(text, decorate_labels)
     return text, counts
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('report', type=Path, help='Explicit path to the dated Markdown report to format')
+    parser.add_argument('--results-json', type=Path,
+                        help='Full-precision results; defaults to the report-linked candidate/results.json')
     args = parser.parse_args()
     path = args.report
     if not path.is_file():
@@ -299,7 +383,19 @@ def main():
     before = path.read_text(encoding='utf-8')
     if re.search(r'\{\{[A-Z0-9_]+\}\}', before):
         parser.error('Report contains unfilled template placeholders; fill them before formatting')
-    after, counts = annotate_standard_math(before)
+    results_path = args.results_json
+    if results_path is None:
+        links = set(re.findall(r'\]\(([^)\r\n]*candidate/results[.]json)\)', before))
+        if len(links) != 1:
+            parser.error('Provide --results-json or one link to candidate/results.json')
+        results_path = path.parent / links.pop()
+    if not results_path.is_file():
+        parser.error('Full-precision results do not exist: ' + str(results_path))
+    data = json.loads(results_path.read_text(encoding='utf-8'))
+    result_rows = data.get('three_way_rows', data.get('rows'))
+    if not isinstance(result_rows, list) or not result_rows:
+        parser.error('Results JSON must contain a nonempty three_way_rows or rows list')
+    after, counts = annotate_standard_math(before, result_rows)
     after = after.rstrip("\n") + "\n"
     if after != before:
         path.write_bytes(after.encode('utf-8'))

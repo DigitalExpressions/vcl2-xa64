@@ -6,7 +6,7 @@ ten standard vector/matrix operations, FP32/FP64, 128/4,096 objects, AoS and SoA
 
 **Run status:** Full native correctness and benchmark correctness passed, followed by all 18 timing invocations and 160 report rows. Two SDK environment setup failures are retained in setup-attempts.json..
 
-Fresh baseline after the authorized local build reset. 61 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads, 98 within the inclusive 5% band, and 1 compatibility leads. Each result belongs to this frozen source and installed toolchain.
+Fresh baseline after the authorized local build reset. 65 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads, 94 within the inclusive 5% band, and 1 compatibility leads. Each result belongs to this frozen source and installed toolchain.
 
 All slower and variable rows are retained. Before/after comparisons and full
 suite runs use their own matched controls; do not mix times between runs.
@@ -18,10 +18,19 @@ suite runs use their own matched controls; do not mix times between runs.
 
 In this run, <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins or is within
 the shared 5% band in **159/160 rows**:
-**61** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads, **98** within 5%,
+**65** <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads, **94** within 5%,
 and **1** <span style="color: #bc4c00;">sse2neon</span> leads.
 
-52/160 rows have disjoint invocation-median ranges. 16 leads outside the 5% band still have overlapping ranges. All 160 rows are retained, including 5 Neon and 5 compatibility row/backend instances slower than scalar; the complete inventory is in summary.json.
+52/160 rows have disjoint invocation-median ranges. 20 leads outside the 5% band still have overlapping ranges. All 160 rows are retained, including 5 Neon and 5 compatibility row/backend instances slower than scalar; the complete inventory is in summary.json.
+
+**Reporting correction — 22 November 2026:** Four SoA rows at 4,096 objects
+exceed 1.05 at full precision but were previously classified within 5% after
+rounding to 1.050. They are now <span style="color: #6f42c1;">Direct&nbsp;Neon</span> leads: FP64 cross product and vector
+length at logical 512 bits, and scale-add at FP32/512 bits and FP64/256 bits.
+All four have overlapping invocation ranges. Raw samples, measured times,
+source identities and correctness outcomes are unchanged; the
+[publication receipt](STANDARD_MATH_RESULTS_2026-11-22/publication-receipt.json)
+preserves original hashes and records the derived-field corrections.
 
 <!-- standard-math-reading-guide -->
 ## How to read the tables
@@ -136,12 +145,14 @@ colors compare the two SIMD backends; use **Scalar / <span style="color: #6f42c1
 comparison.
 
 **Throughput gain is not the same percentage as elapsed-time reduction.** For
-the displayed ratio `r`, the gain is `100 × (r − 1)%` when <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins, or
+the unrounded ratio `r`, the gain is `100 × (r − 1)%` when <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins, or
 `100 × (1/r − 1)%` when <span style="color: #bc4c00;">sse2neon</span> wins. Thus **1.25×** gives <span style="color: #6f42c1;">Direct&nbsp;Neon</span> a **25%**
 throughput lead, while **0.80×** gives <span style="color: #bc4c00;">sse2neon</span> a **25%** throughput lead.
-Reported gains use the displayed ratio and are rounded to one decimal place.
-Ratios come from unrounded measurements, so dividing the displayed timing
-values can give a slightly different result.
+Classifications, colors and gains use the unrounded measurements; rounding is
+only for display. A ratio displayed as **1.050×** can therefore be a <span style="color: #6f42c1;">Direct&nbsp;Neon</span>
+win when its full-precision value exceeds 1.05. Reported gains are rounded to
+one decimal place. Dividing the displayed timing values can give a slightly
+different result.
 
 The section headings describe the workload:
 
@@ -422,7 +433,7 @@ in JSON. Use an explicit unavailable status for unmeasured values, never zero. -
 | vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.651</span>** | 🟢 **<span style="color: #1a7f37;">0.408</span>** | 🟣 **<span style="color: #6f42c1;">1.597×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +59.7% | 1.526 | 3.74× | Yes |
 | vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.957</span>** | 🔵 **<span style="color: #0969da;">0.957</span>** | 🔵 **<span style="color: #0969da;">0.999×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.640 | 1.71× | No |
 | vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.930</span>** | 🟢 **<span style="color: #1a7f37;">0.762</span>** | 🟣 **<span style="color: #6f42c1;">1.220×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +22.0% | 1.431 | 1.88× | Yes |
-| vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">1.783</span>** | 🔵 **<span style="color: #0969da;">1.698</span>** | 🔵 **<span style="color: #0969da;">1.050×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.814 | 1.07× | No |
+| vec4_scale_add | 64 | 🔴 **<span style="color: #cf222e;">1.783</span>** | 🟢 **<span style="color: #1a7f37;">1.698</span>** | 🟣 **<span style="color: #6f42c1;">1.050×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.0% | 1.814 | 1.07× | No |
 
 ## 4,096 objects — Structure of Arrays (SoA): SIMD across objects / logical 512 bits
 
@@ -444,16 +455,16 @@ in JSON. Use an explicit unavailable status for unmeasured values, never zero. -
 | mat4_vector | 32 | 🔴 **<span style="color: #cf222e;">2.649</span>** | 🟢 **<span style="color: #1a7f37;">2.028</span>** | 🟣 **<span style="color: #6f42c1;">1.306×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +30.6% | 3.182 | 1.57× | Yes |
 | mat4_vector | 64 | 🔵 **<span style="color: #0969da;">3.829</span>** | 🔵 **<span style="color: #0969da;">3.757</span>** | 🔵 **<span style="color: #0969da;">1.019×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 3.251 | 0.87× | No |
 | vec3_cross | 32 | 🔵 **<span style="color: #0969da;">0.550</span>** | 🔵 **<span style="color: #0969da;">0.535</span>** | 🔵 **<span style="color: #0969da;">1.029×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.170 | 2.19× | No |
-| vec3_cross | 64 | 🔵 **<span style="color: #0969da;">1.376</span>** | 🔵 **<span style="color: #0969da;">1.310</span>** | 🔵 **<span style="color: #0969da;">1.050×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.529 | 1.17× | No |
+| vec3_cross | 64 | 🔴 **<span style="color: #cf222e;">1.376</span>** | 🟢 **<span style="color: #1a7f37;">1.310</span>** | 🟣 **<span style="color: #6f42c1;">1.050×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.0% | 1.529 | 1.17× | No |
 | vec4_add | 32 | 🔵 **<span style="color: #0969da;">0.745</span>** | 🔵 **<span style="color: #0969da;">0.746</span>** | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.423 | 1.91× | No |
 | vec4_add | 64 | 🔴 **<span style="color: #cf222e;">1.733</span>** | 🟢 **<span style="color: #1a7f37;">1.645</span>** | 🟣 **<span style="color: #6f42c1;">1.054×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.4% | 1.856 | 1.13× | No |
 | vec4_dot | 32 | 🔵 **<span style="color: #0969da;">0.288</span>** | 🔵 **<span style="color: #0969da;">0.277</span>** | 🔵 **<span style="color: #0969da;">1.041×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.890 | 3.21× | No |
 | vec4_dot | 64 | 🔵 **<span style="color: #0969da;">0.799</span>** | 🔵 **<span style="color: #0969da;">0.761</span>** | 🔵 **<span style="color: #0969da;">1.049×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.189 | 1.56× | No |
 | vec4_length | 32 | 🔴 **<span style="color: #cf222e;">0.416</span>** | 🟢 **<span style="color: #1a7f37;">0.207</span>** | 🟣 **<span style="color: #6f42c1;">2.008×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +100.8% | 0.677 | 3.27× | Yes |
-| vec4_length | 64 | 🔵 **<span style="color: #0969da;">0.417</span>** | 🔵 **<span style="color: #0969da;">0.397</span>** | 🔵 **<span style="color: #0969da;">1.050×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 0.612 | 1.54× | No |
+| vec4_length | 64 | 🔴 **<span style="color: #cf222e;">0.417</span>** | 🟢 **<span style="color: #1a7f37;">0.397</span>** | 🟣 **<span style="color: #6f42c1;">1.050×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.0% | 0.612 | 1.54× | No |
 | vec4_normalize | 32 | 🔴 **<span style="color: #cf222e;">0.643</span>** | 🟢 **<span style="color: #1a7f37;">0.432</span>** | 🟣 **<span style="color: #6f42c1;">1.487×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +48.7% | 1.526 | 3.53× | Yes |
 | vec4_normalize | 64 | 🔵 **<span style="color: #0969da;">0.954</span>** | 🔵 **<span style="color: #0969da;">0.917</span>** | 🔵 **<span style="color: #0969da;">1.040×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.640 | 1.79× | No |
-| vec4_scale_add | 32 | 🔵 **<span style="color: #0969da;">0.761</span>** | 🔵 **<span style="color: #0969da;">0.724</span>** | 🔵 **<span style="color: #0969da;">1.050×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.431 | 1.98× | No |
+| vec4_scale_add | 32 | 🔴 **<span style="color: #cf222e;">0.761</span>** | 🟢 **<span style="color: #1a7f37;">0.724</span>** | 🟣 **<span style="color: #6f42c1;">1.050×</span>** | 🟣 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> | +5.0% | 1.431 | 1.98× | No |
 | vec4_scale_add | 64 | 🔵 **<span style="color: #0969da;">1.735</span>** | 🔵 **<span style="color: #0969da;">1.680</span>** | 🔵 **<span style="color: #0969da;">1.033×</span>** | 🔵 <span style="color: #0969da;">Within&nbsp;5%</span> | — | 1.814 | 1.08× | No |
 
 ## Source, host and controls
@@ -476,14 +487,14 @@ in JSON. Use an explicit unavailable status for unmeasured values, never zero. -
 - Registered/passed/failed/skipped/timed-out counts and attempts: 8,036 native cases and eight arithmetic smokes passed, plus six benchmark CTest cases and six actual-workset correctness probes. The native matrix and timings ran once. One failed standalone include attempt was repeated after correcting its SDK environment..
 - Strict UBSan flags/runtime options and control results, when used: -fsanitize=undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer; UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1. Positive exit 0; intentional overflow exit -6, required diagnostic present and no continuation.
 - Read-only integrity checks before/after: Maintenance integrity, repository/link checks, 41 isolated integrity controls, four native standalone consumers and six target-rejection controls passed. Full raw-source verification before/after passed.
-- Protected originals and dependency integrity: VCL 667577495efaa36a10cbb5d6cb8c942c23913848, tree 36aee120c28c9c64e62903bfc81139003e37cedd: all 28 originals exact (27 root plus audit/vectorclass-README.md). Root <span style="color: #bc4c00;">sse2neon</span>.h retained SHA-256 932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3; both audit pins preserved.
+- Protected originals and dependency integrity: VCL 667577495efaa36a10cbb5d6cb8c942c23913848, tree 36aee120c28c9c64e62903bfc81139003e37cedd: all 28 originals exact (27 root plus audit/vectorclass-README.md). Root `sse2neon.h` retained SHA-256 932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3; both audit pins preserved.
 - Source edits, inventory changes and evidence of stability: No runtime/test/runner/build-policy/source edits or inventory changes. The auxiliary correctness driver renames the unchanged benchmark entry point and calls its existing check-only functions at 128/4096; it is separately identified probe evidence, not a modified implementation.
 
 Optional kernel/whole-binary comparison: scalar-codegen.json and benchmark-correctness.json; raw scalar disassembly retained locally.
 No cross-source or cross-session executable-equivalence comparison was performed. Scalar disassembly and all new executable hashes belong only to this run
 
 Keep the 28 upstream originals (27 root files plus audit/vectorclass-README.md) and `audit/vectorclass-2.02.04.json` byte-exact,
-along with root `<span style="color: #bc4c00;">sse2neon</span>.h` and its required `audit/<span style="color: #bc4c00;">sse2neon</span>-2272251.json` pin.
+along with root `sse2neon.h` and its required `audit/sse2neon-2272251.json` pin.
 The vendor catalog is retired. On an unexplained integrity
 mismatch, preserve the failed check and stop. Header generation and the old
 adaptation/backend pipeline are retired. Approved ARM changes belong in the
@@ -527,7 +538,7 @@ rule, and a passing accuracy gate does not establish universal bitwise identity.
 - Raw trial-batch duration range: 7.527875–992508.992458 ms.
 - Host load and thermal/performance observations: Per-invocation uptime/load, thermal and power-source observations retained in metadata.json; no fixed-frequency measurement or claim about the cause of timing variability.
 - Rows with disjoint invocation median ranges: 52/160.
-- Leads with overlapping ranges or other variability: 16 leads outside the practical band have overlapping invocation ranges. Three invocations describe this session, not statistical significance or a universal application benefit.
+- Leads with overlapping ranges or other variability: 20 leads outside the practical band have overlapping invocation ranges. Three invocations describe this session, not statistical significance or a universal application benefit.
 - Rows slower than scalar, including which backend: 5 <span style="color: #6f42c1;">Direct&nbsp;Neon</span> and 5 compatibility row/backend instances; complete named inventory and elapsed costs in summary.json.
 
 Native M2 measurements at this frozen source. Windows remains failed/incomplete at its 22 November source with 6,796 passed, 235 failed and 109 not run of 7,140, plus fifteen examples. Its historical 19 November gate remains 5,387 passed, 249 failed and 76 not run of 5,712, plus twelve examples.
@@ -538,7 +549,7 @@ Native M2 measurements at this frozen source. Windows remains failed/incomplete 
 - Attempt identifiers and failed/replayed attempts: One complete native matrix and one 18-invocation timing session. Two preceding SDK setup failures are retained with the successful include retry in setup-attempts.json..
 - Portable data directory: `STANDARD_MATH_RESULTS_2026-11-22/`.
 - Original run data checksum-inventory SHA256: `49f7423237c6cece6fb988b4995b060282c98eeec7ce7f3b064086a704b3b120`.
-- Verified entry count, CRC/hash audit and contents: 23 unpacked data records covered by checksums.sha256. Final report-checksums.sha256 covers reports and data together..
+- Verified entry count, CRC/hash audit and contents: The original run inventory covered 23 unpacked data records; its identity remains in archive-receipt.json. The published [checksums.sha256](STANDARD_MATH_RESULTS_2026-11-22/checksums.sha256) verifies 27 entries: 25 supporting files and the two published reports. No report-checksums.sha256 is shipped in this bundle.
 - Portable data receipt: `archive-receipt.json`.
 - Portable metadata, results and checksum inventory: [metadata](STANDARD_MATH_RESULTS_2026-11-22/candidate/metadata.json), [raw trials and rows](STANDARD_MATH_RESULTS_2026-11-22/candidate/results.json), [CSV](STANDARD_MATH_RESULTS_2026-11-22/candidate/results.csv), [summary](STANDARD_MATH_RESULTS_2026-11-22/candidate/summary.json), [source manifest](STANDARD_MATH_RESULTS_2026-11-22/source-manifest.json), [checksums](STANDARD_MATH_RESULTS_2026-11-22/checksums.sha256).
 - Separately retained records/supplements and hashes: Fresh raw runner logs, generated inputs, binaries, benchmark dumps and an expanded source snapshot remain under build. reset-receipt.json records the discarded historical payloads..

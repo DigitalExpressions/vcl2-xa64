@@ -21,7 +21,7 @@ tests, use the [x86 results publication checklist](x86/results-publication-check
 At the start of each new x86 validation request, ask whether to include
 performance tests and record the answer; earlier rounds' choices do not carry over.
 
-## Current master - 21 November 2026
+## Current master - 22 November 2026
 
 Master retains runtime d796768 and the accepted four-blend implementation,
 including its small-transpose gain and accepted 2.2% / 2.7% TRS-inverse costs.

@@ -99,8 +99,13 @@ according to the [root README x86 source-identity standard](../../backend-layout
    of its payload. Retain every failed setup, run, timeout and unavailable control.
 3. Copy the approved reports and selected data to the destinations above.
    Rewrite evidence links to relative published paths, sharing the bundle between
-   correctness and performance reports. Keep raw result files byte-exact and
-   verify every measured table row against its source. Do not change fixtures,
+   correctness and performance reports. Keep raw measurements byte-exact and
+   verify every measured table row against its source. Independently recompute
+   winner classifications from unrounded timing ratios using the inclusive
+   0.95–1.05 band, then verify CSV/JSON labels, gains, summary totals and report
+   colors; matching stored labels alone is insufficient. If correcting derived
+   reporting fields, retain original file hashes in the publication receipt and
+   verify all raw samples and measured fields are unchanged. Do not change fixtures,
    seeds, flags, tolerances, numerical contracts, output comparisons, timing
    samples or slower rows while preparing documentation. Keep focused repeats
    separate from the full-suite results; compiler/SDK changes do not establish

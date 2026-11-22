@@ -110,12 +110,14 @@ colors compare the two SIMD backends; use **Scalar / Direct Neon** for the scala
 comparison.
 
 **Throughput gain is not the same percentage as elapsed-time reduction.** For
-the displayed ratio `r`, the gain is `100 × (r − 1)%` when Direct Neon wins, or
+the unrounded ratio `r`, the gain is `100 × (r − 1)%` when Direct Neon wins, or
 `100 × (1/r − 1)%` when sse2neon wins. Thus **1.25×** gives Direct Neon a **25%**
 throughput lead, while **0.80×** gives sse2neon a **25%** throughput lead.
-Reported gains use the displayed ratio and are rounded to one decimal place.
-Ratios come from unrounded measurements, so dividing the displayed timing
-values can give a slightly different result.
+Classifications, colors and gains use the unrounded measurements; rounding is
+only for display. A ratio displayed as **1.050×** can therefore be a Direct Neon
+win when its full-precision value exceeds 1.05. Reported gains are rounded to
+one decimal place. Dividing the displayed timing values can give a slightly
+different result.
 
 The section headings describe the workload:
 

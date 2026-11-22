@@ -51944,7 +51944,7 @@
       "compat_over_neon": 0.9088822802791584,
       "scalar_over_neon": 2.346734124326607,
       "winner": "sse2neon",
-      "throughput_gain_pct": 10.011001100110011,
+      "throughput_gain_pct": 10.0,
       "compat_neon_invocation_ranges_separate": true,
       "scalar": {
         "median": 3.4732899767287235,
@@ -53788,8 +53788,8 @@
       "neon_ns": 1.3103918127111487,
       "compat_over_neon": 1.0502645702464426,
       "scalar_over_neon": 1.166827620810022,
-      "winner": "Within 5%",
-      "throughput_gain_pct": null,
+      "winner": "Direct Neon",
+      "throughput_gain_pct": 5.0,
       "compat_neon_invocation_ranges_separate": false,
       "scalar": {
         "median": 1.5290013611546815,
@@ -55948,8 +55948,8 @@
       "neon_ns": 0.3974473786425424,
       "compat_over_neon": 1.0500050703310646,
       "scalar_over_neon": 1.5404349403589144,
-      "winner": "Within 5%",
-      "throughput_gain_pct": null,
+      "winner": "Direct Neon",
+      "throughput_gain_pct": 5.0,
       "compat_neon_invocation_ranges_separate": false,
       "scalar": {
         "median": 0.6122418290150317,
@@ -57118,8 +57118,8 @@
       "neon_ns": 0.724330614197929,
       "compat_over_neon": 1.0502952164294117,
       "scalar_over_neon": 1.9750703020674512,
-      "winner": "Within 5%",
-      "throughput_gain_pct": null,
+      "winner": "Direct Neon",
+      "throughput_gain_pct": 5.0,
       "compat_neon_invocation_ranges_separate": false,
       "scalar": {
         "median": 1.430603884980606,
@@ -57298,8 +57298,8 @@
       "neon_ns": 1.698246259338082,
       "compat_over_neon": 1.050015216395806,
       "scalar_over_neon": 1.0682170337793466,
-      "winner": "Within 5%",
-      "throughput_gain_pct": null,
+      "winner": "Direct Neon",
+      "throughput_gain_pct": 5.0,
       "compat_neon_invocation_ranges_separate": false,
       "scalar": {
         "median": 1.814095581776997,

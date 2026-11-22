@@ -110,7 +110,7 @@ The [21 November report](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.
 retains the separate Clang 17 versus 21 compiler investigation.
 
 FP32 per-object 3D cross products delivered **46.6%–49.4% higher throughput**.
-Across all 160 rows, Direct Neon led in **61**, **98** were within 5%, and
+Across all 160 rows, Direct Neon led in **65**, **94** were within 5%, and
 sse2neon led in **1**. Some FP64 SIMD rows were slower than scalar; the full
 report retains those costs. Gains depend on layout, logical vector width and
 working-set size; these measurements describe kernels rather than whole applications.

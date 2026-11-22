@@ -103,7 +103,11 @@ retired historical controls remain available through frozen Git citations.
 Run `python3 -B tools/format_benchmarks.py docs/benchmarks/arm64/STANDARD_MATH_RESULTS_YYYY-MM-DD.md`
 with the new report's actual date to apply the established color/label policy.
 The formatter requires an explicit report path and rejects unfilled template
-placeholders. It does not perform a measurement or reconstruct lost raw trials.
+placeholders. It reads the report-linked `candidate/results.json` for unrounded
+timings; use `--results-json PATH` when the data is elsewhere. Classifications,
+colors and percentage gains use those unrounded timings, with rounding only
+for display. Missing data or a mismatch with the report stops formatting.
+It does not perform a measurement or reconstruct lost raw trials.
 Raw evidence from a new run must be retained separately.
 
 ## Native x86 comparison after reset — 2026-11-22

@@ -13,7 +13,8 @@
     {
       "original_name": "summary.json",
       "destination": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/summary.json",
-      "sha256": "0561fb5b9beab872c177c2bebe4c61a692338fdb0d81f611b13ffc029260922c"
+      "sha256": "9b7d44a40a871053588e49f2bd308f77598a1ff86cc8098d8d76aa6a7f18e9c2",
+      "original_sha256": "0561fb5b9beab872c177c2bebe4c61a692338fdb0d81f611b13ffc029260922c"
     },
     {
       "original_name": "benchmark-correctness.json",
@@ -33,7 +34,8 @@
     {
       "original_name": "results.json",
       "destination": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/results.json",
-      "sha256": "2461f6d9886a829fa08735da67df02d488f7859be90bd81cfb0fc4c92e65601f"
+      "sha256": "b2412f2e2de2cdbcc3b79df449c55c58747163cd51c15c720ea46f30b53900a7",
+      "original_sha256": "2461f6d9886a829fa08735da67df02d488f7859be90bd81cfb0fc4c92e65601f"
     },
     {
       "original_name": "metadata.json",
@@ -103,7 +105,8 @@
     {
       "original_name": "results.csv",
       "destination": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/results.csv",
-      "sha256": "6b4f069b23cd63a1f92f08d7960a6efc70c612cadf8b668528bfa865ef5abdd5"
+      "sha256": "5c283fc39690e514b65e373ad7e470d5290b91a4166f3d0f1483ae947c54b583",
+      "original_sha256": "6b4f069b23cd63a1f92f08d7960a6efc70c612cadf8b668528bfa865ef5abdd5"
     },
     {
       "original_name": "include-controls.json",
@@ -131,7 +134,116 @@
     "docs/validation/arm64/mac-arm-validation-2026-11-21.md": "bcdf9f04c2908cdd08508595862f15d1cb43fcb3ba6aa41bc3ae2d8502824685",
     "docs/benchmarks/arm64/standard-math-master-2026-11-21/checksums.sha256": "0edb5f652e6389b8537bc459595858a2c25efe523b28ab37168194d8023243b0"
   },
-  "adaptation": "Relative links and dated artifact availability notes. Raw measured files and historical numerical tables preserved.",
+  "adaptation": "Relative links and dated artifact availability notes. Raw timing samples, measured values and historical numerical tables preserved; derived reporting corrections are separately recorded below.",
   "old_local_build_files_discarded": 40072,
-  "old_local_build_bytes_discarded": 4649286799
+  "old_local_build_bytes_discarded": 4649286799,
+  "data_mapping_sha256_scope": "sha256 identifies the current published file; original_sha256 preserves the copied run-file hash where derived reporting fields were corrected.",
+  "reporting_correction": {
+    "date": "2026-11-22",
+    "prior_publication_commit": "03a30a74fc50ac4a5b075347934e7d3efecbd3d9",
+    "rule": "Classify compatibility/Direct Neon elapsed-time ratios before rounding, with inclusive 0.95\u20131.05 within-band limits. Derive displayed gains from unrounded ratios.",
+    "previous_winners": {
+      "Direct Neon": 61,
+      "Within 5%": 98,
+      "sse2neon": 1
+    },
+    "corrected_winners": {
+      "Direct Neon": 65,
+      "Within 5%": 94,
+      "sse2neon": 1
+    },
+    "previous_overlapping_range_leads": 16,
+    "corrected_overlapping_range_leads": 20,
+    "affected_derived_rows": [
+      {
+        "operation": "mat4_transpose",
+        "layout": "batch_soa",
+        "precision": 32,
+        "bits": 256,
+        "count": 128,
+        "ratio": 0.9088822802791584,
+        "before_winner": "sse2neon",
+        "after_winner": "sse2neon",
+        "before_gain": 10.011001100110011,
+        "after_gain": 10.0
+      },
+      {
+        "operation": "vec3_cross",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio": 1.0502645702464426,
+        "before_winner": "Within 5%",
+        "after_winner": "Direct Neon",
+        "before_gain": null,
+        "after_gain": 5.0
+      },
+      {
+        "operation": "vec4_length",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 512,
+        "count": 4096,
+        "ratio": 1.0500050703310646,
+        "before_winner": "Within 5%",
+        "after_winner": "Direct Neon",
+        "before_gain": null,
+        "after_gain": 5.0
+      },
+      {
+        "operation": "vec4_scale_add",
+        "layout": "batch_soa",
+        "precision": 32,
+        "bits": 512,
+        "count": 4096,
+        "ratio": 1.0502952164294117,
+        "before_winner": "Within 5%",
+        "after_winner": "Direct Neon",
+        "before_gain": null,
+        "after_gain": 5.0
+      },
+      {
+        "operation": "vec4_scale_add",
+        "layout": "batch_soa",
+        "precision": 64,
+        "bits": 256,
+        "count": 4096,
+        "ratio": 1.050015216395806,
+        "before_winner": "Within 5%",
+        "after_winner": "Direct Neon",
+        "before_gain": null,
+        "after_gain": 5.0
+      }
+    ],
+    "corrected_files": [
+      {
+        "path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/summary.json",
+        "original_sha256": "0561fb5b9beab872c177c2bebe4c61a692338fdb0d81f611b13ffc029260922c",
+        "corrected_sha256": "9b7d44a40a871053588e49f2bd308f77598a1ff86cc8098d8d76aa6a7f18e9c2"
+      },
+      {
+        "path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/results.json",
+        "original_sha256": "2461f6d9886a829fa08735da67df02d488f7859be90bd81cfb0fc4c92e65601f",
+        "corrected_sha256": "b2412f2e2de2cdbcc3b79df449c55c58747163cd51c15c720ea46f30b53900a7"
+      },
+      {
+        "path": "docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/candidate/results.csv",
+        "original_sha256": "6b4f069b23cd63a1f92f08d7960a6efc70c612cadf8b668528bfa865ef5abdd5",
+        "corrected_sha256": "5c283fc39690e514b65e373ad7e470d5290b91a4166f3d0f1483ae947c54b583"
+      }
+    ],
+    "measured_fields_and_all_1200_raw_invocations_unchanged": true,
+    "gain_field_note": "The four reclassified rows gain 5.0% at display precision. The transpose compatibility lead is normalized to the same one-decimal derived-gain policy; its displayed +10.0% is unchanged.",
+    "previous_published_report_sha256": "d19e2bfb11a8ecbf6135cde0579428d5315270ee1295f9b99a71a5d6843eda51",
+    "original_run_inventory_entries": 23,
+    "published_inventory_entries": 27,
+    "published_supporting_files": 25,
+    "published_reports": 2,
+    "original_archive_receipt_unchanged": true,
+    "benchmark_rerun": false,
+    "original_run_records_local": "build/arm-report-correction-2026-11-22-20261122T105211Z/original-reports",
+    "original_data_inventory_sha256": "49f7423237c6cece6fb988b4995b060282c98eeec7ce7f3b064086a704b3b120",
+    "original_report_inventory_sha256": "44cb88fc9e99de0c98a50b9cd99ab32f71bfe20c914e1c9ecfbab5a28ba1f7d8"
+  }
 }

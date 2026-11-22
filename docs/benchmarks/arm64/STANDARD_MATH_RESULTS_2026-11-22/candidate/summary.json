@@ -4,8 +4,8 @@
   "shapes": 1200,
   "trial_batches": 10800,
   "winners": {
-    "Direct Neon": 61,
-    "Within 5%": 98,
+    "Direct Neon": 65,
+    "Within 5%": 94,
     "sse2neon": 1
   },
   "separate_ranges": 52,
@@ -123,5 +123,6 @@
   "repeatable_backend_shapes": 400,
   "source_commit": "c120ded4321a087339a952ef0671fb89c456ca14",
   "source_tree": "b02601fc5a04dbdc41e224c1e04d2b987955150a",
-  "success": true
+  "success": true,
+  "leads_with_overlapping_ranges": 20
 }

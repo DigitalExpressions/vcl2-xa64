@@ -164,12 +164,14 @@ colors compare the two SIMD backends; use **Scalar / <span style="color: #6f42c1
 comparison.
 
 **Throughput gain is not the same percentage as elapsed-time reduction.** For
-the displayed ratio `r`, the gain is `100 × (r − 1)%` when <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins, or
+the unrounded ratio `r`, the gain is `100 × (r − 1)%` when <span style="color: #6f42c1;">Direct&nbsp;Neon</span> wins, or
 `100 × (1/r − 1)%` when <span style="color: #bc4c00;">sse2neon</span> wins. Thus **1.25×** gives <span style="color: #6f42c1;">Direct&nbsp;Neon</span> a **25%**
 throughput lead, while **0.80×** gives <span style="color: #bc4c00;">sse2neon</span> a **25%** throughput lead.
-Reported gains use the displayed ratio and are rounded to one decimal place.
-Ratios come from unrounded measurements, so dividing the displayed timing
-values can give a slightly different result.
+Classifications, colors and gains use the unrounded measurements; rounding is
+only for display. A ratio displayed as **1.050×** can therefore be a Direct Neon
+win when its full-precision value exceeds 1.05. Reported gains are rounded to
+one decimal place. Dividing the displayed timing values can give a slightly
+different result.
 
 The section headings describe the workload:
 
@@ -224,8 +226,8 @@ Recompute both ratios, the
 winning backend, throughput gain and consistency; never retain old colors.
 Default display: three decimals for ns/op and compatibility/Neon ratio, two
 for scalar/Neon, one decimal for percentage gain. Derive ratios from unrounded
-measurements; use the displayed comparison ratio for the verdict/gain colors
-as documented in the reading guide. Keep full precision and every raw trial
+measurements; use the unrounded comparison ratio for the verdict, gain and
+colors as documented in the reading guide. Keep full precision and every raw trial
 in JSON. Use an explicit unavailable status for unmeasured values, never zero. -->
 
 ## 128 objects — Array of Structures (AoS): SIMD across one object’s components
