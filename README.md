@@ -33,14 +33,24 @@ ARM Neon instructions in the default compatibility backend. Direct Neon implemen
 the supported VCL API directly with ARM Neon intrinsics, enabling ARM-specific
 optimizations that can improve performance over the sse2neon compatibility backend.
 
+## VCL2 x86 implementation
+
+**The x86 backend uses Agner Fog's unchanged VCL 2.02.04 implementation**,
+byte-for-byte identical to the [pinned upstream source](audit/vectorclass-2.02.04.json).
+Upstream: [Agner Fog's Vector Class Library](https://github.com/vectorclass/version2),
+revision [`667577495efaa36a10cbb5d6cb8c942c23913848`](https://github.com/vectorclass/version2/commit/667577495efaa36a10cbb5d6cb8c942c23913848).
+ARM64 implementations are maintained separately and do not modify the original
+x86 code. Repository integrity checks verify all 28 protected original files;
+see [backend ownership](docs/backend-layout.md#protected-originals).
+
 ## Direct Neon vs sse2neon
 
 ### Performance
 
 Direct Neon shows its strongest gains in **FP32 batch processing**, with matching
 components stored in separate arrays (SoA). The
-[Apple M2 / Clang 21 / SDK 26.5 measurements](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
-from 21 November 2026 show these throughput ratios against sse2neon:
+[Apple M2 / Clang 21 / SDK 26.5 measurements](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
+from 22 November 2026 show these throughput ratios against sse2neon:
 
 Each range in the batch table spans logical vector widths of 128/256/512 bits
 and arrays of 128 or 4,096 objects.
@@ -58,40 +68,50 @@ significance.
 
 | FP32 batch operation throughput | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span> |
 | --- | ---: |
-| Vector length | 🟣 **<span style="color: #6f42c1;">1.62×</span>–<span style="color: #6f42c1;">2.00×</span>** |
-| Vector normalization | 🟣 **<span style="color: #6f42c1;">1.40×</span>–<span style="color: #6f42c1;">1.66×</span>** |
-| 4×4 matrix multiplication | 🔵 **<span style="color: #0969da;">1.04×</span>**–🟣 **<span style="color: #6f42c1;">1.21×</span>** |
-| 4×4 matrix–vector multiplication | 🔵 **<span style="color: #0969da;">1.02×</span>**–🟣 **<span style="color: #6f42c1;">1.62×</span>** |
+| 4D dot product | 🔵 **<span style="color: #0969da;">1.01×</span>**–🟣 **<span style="color: #6f42c1;">1.51×</span>** |
+| 3D cross product | 🔵 **<span style="color: #0969da;">1.03×</span>**–🟣 **<span style="color: #6f42c1;">1.19×</span>** |
+| Vector length | 🟣 **<span style="color: #6f42c1;">1.66×</span>**–🟣 **<span style="color: #6f42c1;">2.01×</span>** |
+| Vector normalization | 🟣 **<span style="color: #6f42c1;">1.40×</span>**–🟣 **<span style="color: #6f42c1;">1.70×</span>** |
+| 4×4 matrix multiplication | 🟣 **<span style="color: #6f42c1;">1.07×</span>**–🟣 **<span style="color: #6f42c1;">1.24×</span>** |
+| 4×4 matrix–vector multiplication | 🔵 **<span style="color: #0969da;">1.03×</span>**–🟣 **<span style="color: #6f42c1;">1.66×</span>** |
+| 4×4 matrix transpose | 🟠 **<span style="color: #bc4c00;">0.91×</span>**–🟣 **<span style="color: #6f42c1;">1.43×</span>** |
+| TRS matrix inverse | 🔵 **<span style="color: #0969da;">1.04×</span>**–🟣 **<span style="color: #6f42c1;">1.18×</span>** |
 
-Matrix-operation ranges include shapes within the 5% band; endpoint colors
-show their respective classifications.
+Endpoint colors show their respective classifications; intermediate shapes
+can fall within the 5% band. For batch transpose at 128 objects, sse2neon leads
+by **10.0%** at logical 256 bits, while Direct Neon leads by **42.7%** at logical
+512 bits.
 
 **Per-object processing (AoS)** keeps each vector or matrix's components
-together. Selected results from the same M2 checkpoint show how the comparison
-changes with the operation and number of objects:
+together. The same FP32 operations from the same M2 checkpoint show how the
+comparison changes with the layout and number of objects:
 
 <br>
 
 | Per-object operation | FP | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>, 128 objects | <span style="color: #6f42c1;">Direct&nbsp;Neon</span> / <span style="color: #bc4c00;">sse2neon</span>, 4,096 objects |
 | --- | ---: | ---: | ---: |
-| 3D cross product | 32 | 🟣 **<span style="color: #6f42c1;">1.429×</span>** | 🟣 **<span style="color: #6f42c1;">1.425×</span>** |
-| 4×4 matrix transpose | 32 | 🔵 **<span style="color: #0969da;">1.015×</span>** | 🔵 **<span style="color: #0969da;">0.961×</span>** |
-| 4×4 matrix transpose | 64 | 🔵 **<span style="color: #0969da;">1.028×</span>** | 🔵 **<span style="color: #0969da;">1.018×</span>** |
-| TRS matrix inverse | 32 | 🔵 **<span style="color: #0969da;">0.961×</span>** | 🔵 **<span style="color: #0969da;">0.973×</span>** |
+| 4D dot product | 32 | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 **<span style="color: #0969da;">1.017×</span>** |
+| 3D cross product | 32 | 🟣 **<span style="color: #6f42c1;">1.466×</span>** | 🟣 **<span style="color: #6f42c1;">1.494×</span>** |
+| Vector length | 32 | 🔵 **<span style="color: #0969da;">0.998×</span>** | 🔵 **<span style="color: #0969da;">1.044×</span>** |
+| Vector normalization | 32 | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🟣 **<span style="color: #6f42c1;">1.052×</span>** |
+| 4×4 matrix multiplication | 32 | 🔵 **<span style="color: #0969da;">1.028×</span>** | 🔵 **<span style="color: #0969da;">1.021×</span>** |
+| 4×4 matrix–vector multiplication | 32 | 🔵 **<span style="color: #0969da;">1.000×</span>** | 🔵 **<span style="color: #0969da;">1.007×</span>** |
+| 4×4 matrix transpose | 32 | 🔵 **<span style="color: #0969da;">0.981×</span>** | 🔵 **<span style="color: #0969da;">1.042×</span>** |
+| TRS matrix inverse | 32 | 🔵 **<span style="color: #0969da;">0.959×</span>** | 🔵 **<span style="color: #0969da;">1.019×</span>** |
 
-Ratios above 1 favor Direct Neon; below 1 favor sse2neon. Both transpose
-precisions have overlapping invocation timing ranges. All selected transpose
-and inverse rows remain within the practical 5% band.
+**FP64 per-object transpose:** 🔵 **<span style="color: #0969da;">1.041×</span>** at 128 objects and
+🔵 **<span style="color: #0969da;">0.983×</span>** at 4,096 objects; both are within the 5% band.
 
-[Latest full standard-math results — 21 November 2026](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+Ratios above 1 favor Direct Neon; below 1 favor sse2neon. The full report records the invocation ranges and complete measured inventory.
 
-The narrower matrix-vector lead compared with Clang 17 mainly reflects faster
-compiler-generated sse2neon code in the investigated FP32 SoA 128-bit case.
-The full report explains that focused comparison and its limits.
+[Latest full standard-math results — 22 November 2026](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
 
-FP32 per-object 3D cross products delivered about **43% higher throughput**.
-Across all 160 rows, Direct Neon led in **43**, **117** were within 5%, and
-sse2neon led in **0**. Some FP64 SIMD rows were slower than scalar; the full
+The [21 November report](docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+retains the separate Clang 17 versus 21 compiler investigation.
+
+FP32 per-object 3D cross products delivered **46.6%–49.4% higher throughput**.
+Across all 160 rows, Direct Neon led in **61**, **98** were within 5%, and
+sse2neon led in **1**. Some FP64 SIMD rows were slower than scalar; the full
 report retains those costs. Gains depend on layout, logical vector width and
 working-set size; these measurements describe kernels rather than whole applications.
 
@@ -99,7 +119,7 @@ working-set size; these measurements describe kernels rather than whole applicat
 
 Both backends support the portable integer/FP32/FP64 core, masks, memory operations,
 conversions and supported vector math, with logical 128/256/512-bit vectors.
-[Latest native M2 correctness run](docs/validation/arm64/mac-arm-validation-2026-11-21.md)
+[Latest native M2 correctness run](docs/validation/arm64/mac-arm-validation-2026-11-22.md)
 covers compatibility maximum 512 and Direct Neon maxima 128/256/512, each in
 Release and strict UBSan Debug. Native FP16 and SVML are outside this shared ARM
 surface; see [backend coverage](docs/backends.md) for API and interoperability limits.

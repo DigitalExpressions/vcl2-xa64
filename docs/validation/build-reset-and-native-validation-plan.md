@@ -11,8 +11,9 @@ Example request:
 > Execute docs/validation/build-reset-and-native-validation-plan.md on this host.
 
 An explicit request to execute this reset plan authorizes discarding the
-inventoried local `build/` contents, including historical evidence and downloaded
-dependencies, subject to every gate below. If the request only asks for review,
+inventoried local `build/` contents outside the agreed preservation selection,
+including historical evidence and downloaded dependencies, subject to every gate
+below. If the request only asks for review,
 planning or validation without deletion, do not infer authorization to wipe.
 Resolve ambiguous deletion scope before proceeding.
 
@@ -24,6 +25,19 @@ instead of requesting it again. No answer is not authorization for performance.
 Read-only consistency checks may proceed while awaiting the answer; do not wipe
 or start validation until it is recorded. A negative answer selects correctness
 only, including on ARM64.
+
+At every invocation, also ask: **"Should we preserve the previous validation
+and performance binaries and the data needed to investigate differences against
+this new round trip: yes or no?"** Record a fresh answer for this session on
+either host, even if the new round will run correctness only. An earlier reset
+or cleanup approval does not answer this question. If the current invocation
+already explicitly answers it, acknowledge and record that answer instead of
+asking again. No answer is not permission to discard the previous round.
+Read-only preflight checks may proceed, but do not delete build contents or
+start validation until both the preservation and performance answers are
+recorded. A yes answer requires the verified preservation step below before
+any deletion; a no answer requires an explicit record of the forensic data
+that will become unavailable.
 
 Before creating or editing any file outside repository-root `work/`, `build/`
 or `out/`, ask for explicit authorization for the intended paths and changes.
@@ -103,6 +117,8 @@ execution dates, including UTC timestamps and the host's local date.
    another agent or user operation; if exclusive use is uncertain, ask.
 6. Inspect installed native tools and sanitizer runtimes. Confirm disk space,
    required filesystem permissions and a workable short output path on Windows.
+   If preservation was selected, account for the previous-round forensic copy
+   as well as the fresh builds; stop if space is insufficient to retain both.
    Prove the pinned testbench can be restored before deleting its local copy:
    if necessary fetch a fresh copy into a new ignored `work/` preflight directory,
    then verify the exact revision, cleanliness and all three pinned hashes.
@@ -115,22 +131,66 @@ execution dates, including UTC timestamps and the host's local date.
    contradictory instruction; do not weaken controls to proceed.
 8. Record a pre-reset receipt: resolved target, inventory, deletion scope,
    source commit/tree and raw source fingerprint, host/tools, dependency pin,
-   performance answer, processes/worktrees check and known evidence losses.
+   performance and preservation answers, processes/worktrees check and known
+   evidence losses. If preserving the previous round, include its exact source
+   and session identities, selected-file inventory, verified hashes and safe
+   storage location, plus any missing forensic material.
    Show the maintainer a concise scope and loss summary. If explicit reset
    authorization already covers that inventory, continue without asking again.
    If shared, unrelated or unexpectedly required material falls outside that
    authorization, stop and obtain a scoped decision first.
 
 The pre-reset receipt must survive deletion: start it in ignored `work/`, then
-copy it into the newly created `build/` before validation. Do not create a
-replacement archive of the old build. A full reset knowingly discards local
-historical payloads; published summaries and hashes cannot recover their bytes.
+copy it into the newly created `build/` before validation. Preserve the selected
+previous-round files as described below; do not create a replacement archive of
+the entire old build. Unselected historical payloads are discarded; published
+summaries and hashes cannot recover their bytes.
+
+### Previous-round forensic preservation
+
+When preservation is selected, identify the most recent validation and
+performance sessions separately; they may have different dates or source
+identities. Preserve enough evidence to compare their test outcomes, generated
+code and timings with the upcoming round. Keep actual artifact bytes, including:
+
+- Validation executables for the recorded profiles, benchmark executables,
+  relevant object files, debug symbols and existing assembly/link maps needed
+  to inspect callers, instructions and code placement. Retain required local
+  runtime/dependency files needed to inspect or rerun those binaries.
+- Exact immutable source captures, manifests, commit/tree identities and any
+  implementation patch, including added/deleted inventory for captured sources.
+- Actual compile/link commands and flags, compiler/linker/SDK/tool and dependency
+  identities, executable/object hashes, environment and FP/sanitizer controls.
+- Named test inventories and outcomes, JUnit, raw command/exit journals and logs,
+  including failures, timeouts and incomplete attempts; fixtures, seeds and
+  generated probe/reference inputs needed to reproduce or explain differences.
+- Benchmark inputs and output dumps, correctness checks, raw timing samples,
+  calibration/repeat counts, run order, host/power observations and protocols,
+  retaining slower rows and variability alongside reports and summaries.
+
+Inventory and checksum the selection, then copy it into the ignored `work/`
+session directory outside the resolved `build/` deletion target. Record original
+paths and source/session mappings. Verify inventory completeness and every copied
+file's raw hash before deletion; a source checksum or summary alone does not
+preserve a binary. Identify unavailable items as gaps rather than claiming full
+forensic coverage. If required files cannot be copied or verified, stop before
+deletion and resolve the preservation scope with the maintainer.
+
+After resetting `build/`, restore the verified selection to a distinct
+previous-round-forensics directory under ignored `build/` before validation.
+Verify its hashes again and record its location in the new session receipt.
+Keep previous and fresh evidence separately identified; do not overwrite either
+or relabel old results as the new run. Required forensic evidence must no longer
+depend on disposable `work/` when the round closes. This procedure does not
+authorize cleaning the staging copy or any other `work/` contents.
 
 ## Phase 2: reset only the approved local build
 
 Immediately before deletion, repeat the clean-state, HEAD/tree/fingerprint,
 worktree, active-process and resolved-path checks. Any change invalidates the
 previous sweep; stop and reconcile it before continuing.
+Confirm the recorded preservation decision still covers the final inventory and,
+when selected, the verified forensic copy is safely outside the deletion target.
 
 Delete only the enumerated approved files inside `build/`, then remove empty
 directories without following links. On Windows use a single native filesystem
@@ -275,7 +335,9 @@ results. If performance was declined, explicitly record that it was not run.
    Record source/host/profile gaps and all failed or aborted attempts. If source
    or tool identities drifted, stop and report the affected coverage honestly.
 2. Retain fresh evidence under ignored `build/` and copy the pre-reset receipt
-   there. Keep required source/provenance packages produced by the native runner;
+   there. If preservation was selected, verify that the previous-round forensic
+   selection is retained separately under `build/` with its inventory and hashes.
+   Keep required source/provenance packages produced by the native runner;
    do not create additional compaction/backup archives without a demonstrated
    need. Do not delete fresh failed evidence or perform a second cleanup.
 3. Prepare the report and portable evidence under `work/` using the applicable
@@ -297,7 +359,9 @@ results. If performance was declined, explicitly record that it was not run.
 
 Final report: state which host/scope ran, the frozen identity, what was deleted,
 what was reconstructed, correctness totals, performance authorization/outcome,
-remaining gaps, retained evidence paths and any pending publication approval.
+the preservation decision and previous-round source/session identities, preserved
+forensic files and their verified location or explicit losses, remaining gaps,
+retained evidence paths and any pending publication approval.
 If a gate stopped execution, say where it stopped and whether deletion occurred.
 
 ## Additional safety measures included
@@ -311,4 +375,5 @@ If a gate stopped execution, say where it stopped and whether deletion occurred.
 - Keep the source immutable through collection. Perform approved report edits
   only after the validation identity and results are closed out.
 - Leave active/failed evidence intact after the new run. Any future reset is a
-  new invocation with a fresh consistency sweep and performance decision.
+  new invocation with a fresh consistency sweep, performance decision and
+  previous-round forensic preservation decision.

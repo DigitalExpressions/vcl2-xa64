@@ -570,3 +570,9 @@ Record this task's actual Git/publication actions: During execution: no commits,
 Follow the maintainer's task-specific authorization for publication or cleanup.
 Future source changes require new recorded measurements and matched controls;
 preserve completed dated reports and all original numerical data.
+
+## Native M2 collection and local artifact availability — 22 November 2026
+
+On 22 November 2026 the authorized local Mac build reset discarded 40,072 files totaling 4,649,286,799 bytes, including historical M2 archives, source captures, raw logs, binaries, benchmark output dumps and the Clang study outputs. Earlier identifiers, hashes and numerical results describe their original checkpoints. Their old local payloads are no longer available. The fresh collection used clean commit `c120ded4321a087339a952ef0671fb89c456ca14`, with 8,036 cases and eight smokes passed, followed by 18 timing invocations and all 160 report rows.
+
+[Fresh correctness report](../../validation/arm64/mac-arm-validation-2026-11-22.md) · [Fresh performance report](STANDARD_MATH_RESULTS_2026-11-22.md)

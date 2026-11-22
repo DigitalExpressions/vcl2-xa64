@@ -56,9 +56,11 @@ on a particular machine; its absence must not prevent a fresh setup.
   archives and installed tools/dependencies. Do not restore retired local
   campaigns or infer current parity from the old combined-source checkpoint.
 - Artifact availability belongs to its dated report and later cleanup receipts.
-  Closed Mac sessions discarded on 20 November are not recoverable from local
-  binaries; the completed 21 November native worktree is preserved in verified
-  archives. Keep useful lessons and original identifiers; new validation uses
+  The 22 November 2026 full local Mac build reset discarded all earlier
+  local build payloads, including the previously retained 21 November archives,
+  binaries and Clang study outputs. Historical published hashes retain their
+  original identities. Fresh 22 November native correctness and performance
+  records identify their own source and availability. Keep useful lessons and original identifiers; new validation uses
   a fresh frozen source and fresh builds.
 
 ## OS-agnostic
@@ -186,6 +188,17 @@ on a particular machine; its absence must not prevent a fresh setup.
   date. Keep reset procedures, session IDs, timestamps and attempt counters inside
   reports and metadata, or in ignored build paths. Preserve historical published
   names unless the maintainer explicitly requests a rename.
+- Root `README.md` must retain the `VCL2 x86 implementation` section immediately
+  before `Direct Neon vs sse2neon`, stating unchanged pinned upstream source,
+  its VCL version, Agner's repository, the full linked upstream revision and
+  the local audit/integrity links. Follow the
+  [x86 source-identity standard](docs/backend-layout.md#root-readme-x86-source-identity)
+  when refreshing this section; a documentation update does not change the pin.
+- Root `README.md` ARM performance summaries use separate batch (SoA) and
+  per-object (AoS) FP32 tables with matching operation rows in the same order.
+  Preserve the format, columns, colors and data rules in the
+  [ARM64 publication checklist](docs/validation/arm64/results-publication-checklist.md#root-readme-performance-table-standard)
+  when updating results; change this standard only at the maintainer's request.
 - Cleanup, commit, push, merge, release and branch retirement need task-specific
   approval. Do not archive or compact information under `build/` unless absolutely
   necessary to preserve required unique evidence. Reuse existing archives and

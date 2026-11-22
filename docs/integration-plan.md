@@ -1,4 +1,4 @@
-# Current integration status — 21 November 2026
+# Current integration status — 22 November 2026
 
 The current backend layout is integrated into master. The retained
 runtime is d796768b30cb375ea62afa72dcab061b1a3e54ca; documentation cleanup does
@@ -36,8 +36,10 @@ into a pass. Retained records:
 - [Current backend ownership and acceptance rules](backend-layout.md#validation-and-source-identity).
 - [21 November Windows validation](validation/x86/windows-x86-validation-2026-11-21.md),
   with the earlier [separation records retained in frozen Git](validation/README.md#x86-separation-documentation-retirement).
-- [21 November M2 correctness](validation/arm64/mac-arm-validation-2026-11-21.md) and
-  [current-master performance results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md).
+- [22 November M2 correctness](validation/arm64/mac-arm-validation-2026-11-22.md) and
+  [current-master performance results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md),
+  with the [earlier 21 November checkpoint](validation/arm64/mac-arm-validation-2026-11-21.md)
+  retained at its own tested source.
 - [Dependency audit/publication](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/dependency-audit-publication-2026-11-19.md).
 
 Each result keeps its exact tested source; separate native passes do not prove
@@ -69,11 +71,12 @@ New runtime work needs an agreed bounded scope, frozen source and fresh relevant
 native validation under the [maintained workflow](validation/native-workflow.md).
 Use the [validation index](validation/README.md) and [ARM lessons](neon-arm-lessons.md).
 The [20 November cleanup report](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/mac-arm-documentation-cleanup-2026-11-20.md)
-records earlier discarded Mac campaigns. The completed 21 November native
-worktree was later preserved in verified archives; its
-[dated availability note](validation/arm64/mac-arm-validation-2026-11-21.md#artifact-availability-after-cleanup)
-identifies recovery records, while performance builds and the Clang study remain
-unpacked on the Mac. Completed planning/publication paperwork remains in frozen
+records earlier discarded Mac campaigns. The 21 November native worktree was
+initially archived, but those archives, performance builds and the Clang study
+were discarded in the authorized 22 November reset. Its
+[dated availability update](validation/arm64/mac-arm-validation-2026-11-21.md#native-m2-collection-and-local-artifact-availability--22-november-2026)
+records that loss; fresh 22 November results retain their own evidence.
+Completed planning/publication paperwork remains in frozen
 Git. No old handoff is a pending task. Commits, pushes, integrations and branch
 retirement require task-specific authorization; this cleanup performs none.
 
@@ -81,3 +84,9 @@ retirement require task-specific authorization; this cleanup performs none.
 
 Fresh native AMD Windows collection at clean 08f2d2903d9bfdfdb22aa187329e99ce0f44d177: 6,796 passed, 235 failed and 109 not run of 7,140, plus fifteen passing examples. The gate remains failed/incomplete.
 The [new report](validation/x86/windows-x86-validation-2026-11-22.md) identifies this source separately from dc802e4 and records the authorized loss of all old local build payloads. Historical result values remain unchanged; their hashes cannot reconstruct discarded local evidence.
+
+## Native M2 collection and local artifact availability — 22 November 2026
+
+On 22 November 2026 the authorized local Mac build reset discarded 40,072 files totaling 4,649,286,799 bytes, including historical M2 archives, source captures, raw logs, binaries, benchmark output dumps and the Clang study outputs. Earlier identifiers, hashes and numerical results describe their original checkpoints. Their old local payloads are no longer available. The fresh collection used clean commit `c120ded4321a087339a952ef0671fb89c456ca14`, with 8,036 cases and eight smokes passed, followed by 18 timing invocations and all 160 report rows.
+
+[Fresh correctness report](validation/arm64/mac-arm-validation-2026-11-22.md) · [Fresh performance report](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)

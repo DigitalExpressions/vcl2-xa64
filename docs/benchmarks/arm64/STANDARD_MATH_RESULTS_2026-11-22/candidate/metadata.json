@@ -1,0 +1,1365 @@
+{
+  "source_commit": "c120ded4321a087339a952ef0671fb89c456ca14",
+  "source_tree": "b02601fc5a04dbdc41e224c1e04d2b987955150a",
+  "report_date": "2026-11-22",
+  "timezone": "Europe/Stockholm",
+  "cpu": "Apple M2",
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.7\nBuildVersion:\t\t25G229",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix",
+  "sdk_version": "26.5",
+  "cmake": "cmake version 4.5.1",
+  "ctest": "ctest version 4.5.1",
+  "build_tool": "1.13.2",
+  "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "machine": "arm64",
+  "page_size": 16384,
+  "benchmark_flag_audits": [
+    {
+      "benchmark_translation_units": 6,
+      "other_translation_units": [
+        "<SOURCE>/instrset_detect_neon.cpp"
+      ],
+      "scope": "All six benchmark units require the exact benchmark flags. The separately built feature detector is not a timed kernel."
+    },
+    {
+      "benchmark_translation_units": 6,
+      "other_translation_units": [
+        "<SOURCE>/instrset_detect_neon.cpp"
+      ],
+      "scope": "All six benchmark units require the exact benchmark flags. The separately built feature detector is not a timed kernel."
+    }
+  ],
+  "setup_attempts": [
+    {
+      "attempt": "pre-reset controller 1",
+      "exit_code": 1,
+      "deletion": false,
+      "reason": "SDKROOT validation rejected the inherited default SDK path before deletion."
+    },
+    {
+      "attempt": "post-reset include controls 1",
+      "exit_code": 1,
+      "deletion": true,
+      "reason": "Controller removed SDKROOT; standalone Clang then failed to find stdlib.h. Preserve initial include-controls directory and log."
+    },
+    {
+      "attempt": "post-reset continuation",
+      "reason": "Explicit command-scoped SDKROOT from xcrun. Reuse passed repository/integrity/41-control checks and retry only failed include controls in a fresh output directory."
+    }
+  ],
+  "translated_query": {
+    "exit_code": 0,
+    "stdout": "0\n",
+    "stderr": ""
+  },
+  "compile_commands": [
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -I<SOURCE> -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot <SDK> -o CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o -c <SOURCE>/instrset_detect_neon.cpp",
+      "file": "<SOURCE>/instrset_detect_neon.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/CMakeFiles/vcl_detect.dir/instrset_detect_neon.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_scalar.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DSTANDARD_IMPL=0 -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -fno-vectorize -fno-slp-vectorize -o benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_compat.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=2 -DVCL_BACKEND=2 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o -c <SOURCE>/benchmarks/arm64/main.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/main.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_neon.dir/arm64/main.cpp.o"
+    },
+    {
+      "directory": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "command": "clang++ -DMAX_VECTOR_SIZE=512 -DSTANDARD_IMPL=3 -DVCL_BACKEND=3 -DVCL_ENABLE_EXPERIMENTAL_NEON=1 -I<SOURCE> -O3 -DNDEBUG -std=gnu++20 -arch arm64 -isysroot <SDK> -ffp-contract=off -mcpu=apple-m1 -o benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o -c <SOURCE>/benchmarks/arm64/kernels.cpp",
+      "file": "<SOURCE>/benchmarks/arm64/kernels.cpp",
+      "output": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o"
+    }
+  ],
+  "benchmark_source_hashes": {
+    "CMakeLists.txt": "15617c1039af78df7b03e6dc2585e78c436fc513516c303fb0a6f05600bbfa47",
+    "benchmarks/CMakeLists.txt": "2324ec257f2bdecd33c73db50573e4933a854f1ed7209759caa8cbb4b5218233",
+    "benchmarks/README.md": "fc3cebfb04af35cb93ca750930b835565f70a5e8c189c4a4826bf5e5fc36911d",
+    "benchmarks/arm64/README.md": "7b726f67a7b19e03f89b0d9c4a65843309b8c98c3c95aa2e2f903522269df56e",
+    "benchmarks/arm64/common.h": "5b26b6ddb24ebdad3d86fe89779d0cf3e5cfd88bb7e0623747ca402c7e2c3fa4",
+    "benchmarks/arm64/kernels.cpp": "4ac6f9226a3bcf4c79d8d66d976b4052dc8cd6fd0756f27b15f62250b1f039c2",
+    "benchmarks/arm64/main.cpp": "dfec4190f223087f042df38dbb022a8e885cf617cceefab97070e1b6e7e1142c",
+    "benchmarks/arm64/reference.h": "43b8fc2694ecf1c2019295844ee4edfc1a721f2279fb5dac29394eca311e5be3",
+    "benchmarks/x86/README.md": "987800829f42f0fa6f709655265643558469724994336cd8cb920166e53357ee",
+    "benchmarks/x86/common.h": "f0ad752cd8ff0c49ff9587844fff21e1d54193208129af231f34448081e48bfe",
+    "benchmarks/x86/edge_probe.cpp": "fe1f0ff2210cd26b3db17dfe7d44385f5bb9b184f199185abe6fb785b475ef25",
+    "benchmarks/x86/kernels.cpp": "b3ef5bcf375b5d66101d3561a87cadef259f85795b7a71d760178923f95f0d5f",
+    "benchmarks/x86/main.cpp": "42ee27a4d7b4b751ed3bd73347ce10fb6987992043b29bc2b349c46791d654a9"
+  },
+  "performance_journal": [
+    {
+      "label": "Release-configure",
+      "command": [
+        "cmake",
+        "-S",
+        "<SOURCE>",
+        "-B",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "-G",
+        "Ninja",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DVCL_BUILD_TESTS=OFF",
+        "-DVCL_BUILD_BENCHMARKS=ON",
+        "-DVCL_SANITIZE=OFF",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:40.943263+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-configure.log",
+      "end_utc": "2026-11-22T01:38:41.225889+00:00"
+    },
+    {
+      "label": "Release-build",
+      "command": [
+        "cmake",
+        "--build",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "--parallel",
+        "3",
+        "--verbose"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:41.226365+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-build.log",
+      "end_utc": "2026-11-22T01:38:43.875519+00:00"
+    },
+    {
+      "label": "Release-inventory",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "--show-only=json-v1"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:43.875898+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-inventory.log",
+      "end_utc": "2026-11-22T01:38:43.886461+00:00"
+    },
+    {
+      "label": "Release-ctest",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--timeout",
+        "60",
+        "--parallel",
+        "3",
+        "--output-junit",
+        "results.xml"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:43.886852+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-ctest.log",
+      "end_utc": "2026-11-22T01:38:44.607249+00:00"
+    },
+    {
+      "label": "Release-scalar-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:44.607902+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-scalar-file.log",
+      "end_utc": "2026-11-22T01:38:44.614285+00:00"
+    },
+    {
+      "label": "Release-scalar-probe-compile",
+      "command": [
+        "clang++",
+        "-DSTANDARD_IMPL=0",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-scalar.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:44.614975+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-scalar-probe-compile.log",
+      "end_utc": "2026-11-22T01:38:45.361103+00:00"
+    },
+    {
+      "label": "Release-scalar-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "-t",
+        "commands",
+        "standard_scalar"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:45.361625+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-scalar-original-commands.log",
+      "end_utc": "2026-11-22T01:38:45.367985+00:00"
+    },
+    {
+      "label": "Release-scalar-probe-link",
+      "command": [
+        "clang++",
+        "-O3",
+        "-DNDEBUG",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-scalar.o",
+        "benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-scalar-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:45.368611+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-scalar-probe-link.log",
+      "end_utc": "2026-11-22T01:38:45.406653+00:00"
+    },
+    {
+      "label": "Release-scalar-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-scalar-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-scalar-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:45.407155+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-scalar-workset-check.log",
+      "end_utc": "2026-11-22T01:38:45.797224+00:00"
+    },
+    {
+      "label": "Release-compat-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:45.800037+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-compat-file.log",
+      "end_utc": "2026-11-22T01:38:45.806518+00:00"
+    },
+    {
+      "label": "Release-compat-probe-compile",
+      "command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=2",
+        "-DVCL_BACKEND=2",
+        "-I<SOURCE>",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-compat.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:45.807261+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-compat-probe-compile.log",
+      "end_utc": "2026-11-22T01:38:46.605539+00:00"
+    },
+    {
+      "label": "Release-compat-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "-t",
+        "commands",
+        "standard_compat"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:46.606078+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-compat-original-commands.log",
+      "end_utc": "2026-11-22T01:38:46.612575+00:00"
+    },
+    {
+      "label": "Release-compat-probe-link",
+      "command": [
+        "clang++",
+        "-O3",
+        "-DNDEBUG",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-compat.o",
+        "benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-compat-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:46.613260+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-compat-probe-link.log",
+      "end_utc": "2026-11-22T01:38:46.662016+00:00"
+    },
+    {
+      "label": "Release-compat-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-compat-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-compat-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:46.662536+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-compat-workset-check.log",
+      "end_utc": "2026-11-22T01:38:47.088651+00:00"
+    },
+    {
+      "label": "Release-neon-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:47.092673+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-neon-file.log",
+      "end_utc": "2026-11-22T01:38:47.099041+00:00"
+    },
+    {
+      "label": "Release-neon-probe-compile",
+      "command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=3",
+        "-DVCL_BACKEND=3",
+        "-DVCL_ENABLE_EXPERIMENTAL_NEON=1",
+        "-I<SOURCE>",
+        "-O3",
+        "-DNDEBUG",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-neon.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:47.099793+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-neon-probe-compile.log",
+      "end_utc": "2026-11-22T01:38:47.899158+00:00"
+    },
+    {
+      "label": "Release-neon-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+        "-t",
+        "commands",
+        "standard_neon"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:47.899601+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-neon-original-commands.log",
+      "end_utc": "2026-11-22T01:38:47.905981+00:00"
+    },
+    {
+      "label": "Release-neon-probe-link",
+      "command": [
+        "clang++",
+        "-O3",
+        "-DNDEBUG",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-neon.o",
+        "benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-neon-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release",
+      "start_utc": "2026-11-22T01:38:47.906707+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-neon-probe-link.log",
+      "end_utc": "2026-11-22T01:38:47.955236+00:00"
+    },
+    {
+      "label": "Release-neon-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-neon-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Release-neon-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:38:47.955819+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Release-neon-workset-check.log",
+      "end_utc": "2026-11-22T01:55:00.810436+00:00"
+    },
+    {
+      "label": "Debug-configure",
+      "command": [
+        "cmake",
+        "-S",
+        "<SOURCE>",
+        "-B",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "-G",
+        "Ninja",
+        "-DCMAKE_CXX_COMPILER=clang++",
+        "-DCMAKE_OSX_ARCHITECTURES=arm64",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-DVCL_BUILD_TESTS=OFF",
+        "-DVCL_BUILD_BENCHMARKS=ON",
+        "-DVCL_SANITIZE=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:00.814742+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-configure.log",
+      "end_utc": "2026-11-22T01:55:01.092615+00:00"
+    },
+    {
+      "label": "Debug-build",
+      "command": [
+        "cmake",
+        "--build",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "--parallel",
+        "3",
+        "--verbose"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:01.093037+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-build.log",
+      "end_utc": "2026-11-22T01:55:02.973965+00:00"
+    },
+    {
+      "label": "Debug-inventory",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "--show-only=json-v1"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:02.975171+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-inventory.log",
+      "end_utc": "2026-11-22T01:55:02.985477+00:00"
+    },
+    {
+      "label": "Debug-ctest",
+      "command": [
+        "ctest",
+        "--test-dir",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--timeout",
+        "60",
+        "--parallel",
+        "3",
+        "--output-junit",
+        "results.xml"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:02.985896+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-ctest.log",
+      "end_utc": "2026-11-22T01:55:04.965508+00:00"
+    },
+    {
+      "label": "Debug-scalar-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug/benchmarks/standard_scalar"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:04.966269+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-scalar-file.log",
+      "end_utc": "2026-11-22T01:55:04.972746+00:00"
+    },
+    {
+      "label": "Debug-scalar-probe-compile",
+      "command": [
+        "clang++",
+        "-DSTANDARD_IMPL=0",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fno-vectorize",
+        "-fno-slp-vectorize",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-scalar.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:04.973456+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-scalar-probe-compile.log",
+      "end_utc": "2026-11-22T01:55:05.599091+00:00"
+    },
+    {
+      "label": "Debug-scalar-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "-t",
+        "commands",
+        "standard_scalar"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:05.599583+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-scalar-original-commands.log",
+      "end_utc": "2026-11-22T01:55:05.605980+00:00"
+    },
+    {
+      "label": "Debug-scalar-probe-link",
+      "command": [
+        "clang++",
+        "-g",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "-fsanitize=undefined",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-scalar.o",
+        "benchmarks/CMakeFiles/standard_scalar.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-scalar-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:05.606679+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-scalar-probe-link.log",
+      "end_utc": "2026-11-22T01:55:05.655173+00:00"
+    },
+    {
+      "label": "Debug-scalar-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-scalar-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-scalar-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:05.655596+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-scalar-workset-check.log",
+      "end_utc": "2026-11-22T01:55:06.569821+00:00"
+    },
+    {
+      "label": "Debug-compat-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug/benchmarks/standard_compat"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:06.572573+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-compat-file.log",
+      "end_utc": "2026-11-22T01:55:06.578975+00:00"
+    },
+    {
+      "label": "Debug-compat-probe-compile",
+      "command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=2",
+        "-DVCL_BACKEND=2",
+        "-I<SOURCE>",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-compat.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:06.579767+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-compat-probe-compile.log",
+      "end_utc": "2026-11-22T01:55:07.259848+00:00"
+    },
+    {
+      "label": "Debug-compat-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "-t",
+        "commands",
+        "standard_compat"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:07.260305+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-compat-original-commands.log",
+      "end_utc": "2026-11-22T01:55:07.266800+00:00"
+    },
+    {
+      "label": "Debug-compat-probe-link",
+      "command": [
+        "clang++",
+        "-g",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "-fsanitize=undefined",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-compat.o",
+        "benchmarks/CMakeFiles/standard_compat.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-compat-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:07.267458+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-compat-probe-link.log",
+      "end_utc": "2026-11-22T01:55:07.316646+00:00"
+    },
+    {
+      "label": "Debug-compat-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-compat-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-compat-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:07.317069+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-compat-workset-check.log",
+      "end_utc": "2026-11-22T01:55:09.007920+00:00"
+    },
+    {
+      "label": "Debug-neon-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug/benchmarks/standard_neon"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:09.012569+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-neon-file.log",
+      "end_utc": "2026-11-22T01:55:09.018964+00:00"
+    },
+    {
+      "label": "Debug-neon-probe-compile",
+      "command": [
+        "clang++",
+        "-DMAX_VECTOR_SIZE=512",
+        "-DSTANDARD_IMPL=3",
+        "-DVCL_BACKEND=3",
+        "-DVCL_ENABLE_EXPERIMENTAL_NEON=1",
+        "-I<SOURCE>",
+        "-g",
+        "-std=gnu++20",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-ffp-contract=off",
+        "-mcpu=apple-m1",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-neon.o",
+        "-c",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/benchmark-workset-correctness.cpp"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:09.019761+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-neon-probe-compile.log",
+      "end_utc": "2026-11-22T01:55:09.644949+00:00"
+    },
+    {
+      "label": "Debug-neon-original-commands",
+      "command": [
+        "ninja",
+        "-C",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+        "-t",
+        "commands",
+        "standard_neon"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:09.645410+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-neon-original-commands.log",
+      "end_utc": "2026-11-22T01:55:09.652045+00:00"
+    },
+    {
+      "label": "Debug-neon-probe-link",
+      "command": [
+        "clang++",
+        "-g",
+        "-arch",
+        "arm64",
+        "-isysroot",
+        "<SDK>",
+        "-Wl,-search_paths_first",
+        "-Wl,-headerpad_max_install_names",
+        "-fsanitize=undefined",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-neon.o",
+        "benchmarks/CMakeFiles/standard_neon.dir/arm64/kernels.cpp.o",
+        "-o",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-neon-correctness"
+      ],
+      "cwd": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/debug",
+      "start_utc": "2026-11-22T01:55:09.652746+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-neon-probe-link.log",
+      "end_utc": "2026-11-22T01:55:09.702929+00:00"
+    },
+    {
+      "label": "Debug-neon-workset-check",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-neon-correctness",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/probes/Debug-neon-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:09.703407+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/Debug-neon-workset-check.log",
+      "end_utc": "2026-11-22T01:55:11.391373+00:00"
+    },
+    {
+      "label": "scalar-disassembly",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--demangle",
+        "--no-show-raw-insn",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:11.396325+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/scalar-disassembly.log",
+      "end_utc": "2026-11-22T01:55:11.480367+00:00"
+    },
+    {
+      "label": "timing-r1-scalar-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:11.490144+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-128-host.log",
+      "end_utc": "2026-11-22T01:55:11.531324+00:00"
+    },
+    {
+      "label": "timing-r1-scalar-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:11.531794+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-128.log",
+      "end_utc": "2026-11-22T01:55:15.878103+00:00"
+    },
+    {
+      "label": "timing-r1-compat-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:15.880486+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-128-host.log",
+      "end_utc": "2026-11-22T01:55:15.924189+00:00"
+    },
+    {
+      "label": "timing-r1-compat-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:15.924715+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-128.log",
+      "end_utc": "2026-11-22T01:55:24.609859+00:00"
+    },
+    {
+      "label": "timing-r1-neon-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:24.612873+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-128-host.log",
+      "end_utc": "2026-11-22T01:55:24.661512+00:00"
+    },
+    {
+      "label": "timing-r1-neon-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:24.662019+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-128.log",
+      "end_utc": "2026-11-22T01:55:33.448304+00:00"
+    },
+    {
+      "label": "timing-r1-scalar-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:33.450749+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-4096-host.log",
+      "end_utc": "2026-11-22T01:55:33.493421+00:00"
+    },
+    {
+      "label": "timing-r1-scalar-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:33.493896+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-scalar-4096.log",
+      "end_utc": "2026-11-22T01:55:37.977965+00:00"
+    },
+    {
+      "label": "timing-r1-compat-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:37.980424+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-4096-host.log",
+      "end_utc": "2026-11-22T01:55:38.027764+00:00"
+    },
+    {
+      "label": "timing-r1-compat-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:38.028269+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-compat-4096.log",
+      "end_utc": "2026-11-22T01:55:47.024703+00:00"
+    },
+    {
+      "label": "timing-r1-neon-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:47.027329+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-4096-host.log",
+      "end_utc": "2026-11-22T01:55:47.076004+00:00"
+    },
+    {
+      "label": "timing-r1-neon-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T01:55:47.076553+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r1-neon-4096.log",
+      "end_utc": "2026-11-22T02:12:28.641967+00:00"
+    },
+    {
+      "label": "timing-r2-compat-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:28.644530+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-128-host.log",
+      "end_utc": "2026-11-22T02:12:28.691847+00:00"
+    },
+    {
+      "label": "timing-r2-compat-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:28.692332+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-128.log",
+      "end_utc": "2026-11-22T02:12:37.476572+00:00"
+    },
+    {
+      "label": "timing-r2-neon-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:37.479364+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-128-host.log",
+      "end_utc": "2026-11-22T02:12:37.527937+00:00"
+    },
+    {
+      "label": "timing-r2-neon-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:37.528459+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-128.log",
+      "end_utc": "2026-11-22T02:12:46.285440+00:00"
+    },
+    {
+      "label": "timing-r2-scalar-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:46.287607+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-128-host.log",
+      "end_utc": "2026-11-22T02:12:46.334560+00:00"
+    },
+    {
+      "label": "timing-r2-scalar-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:46.334899+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-128.log",
+      "end_utc": "2026-11-22T02:12:50.719071+00:00"
+    },
+    {
+      "label": "timing-r2-compat-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:50.720989+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-4096-host.log",
+      "end_utc": "2026-11-22T02:12:50.768915+00:00"
+    },
+    {
+      "label": "timing-r2-compat-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:50.769385+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-compat-4096.log",
+      "end_utc": "2026-11-22T02:12:59.717060+00:00"
+    },
+    {
+      "label": "timing-r2-neon-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:59.719163+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-4096-host.log",
+      "end_utc": "2026-11-22T02:12:59.743410+00:00"
+    },
+    {
+      "label": "timing-r2-neon-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:12:59.743739+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-neon-4096.log",
+      "end_utc": "2026-11-22T02:13:08.711721+00:00"
+    },
+    {
+      "label": "timing-r2-scalar-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:08.713847+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-4096-host.log",
+      "end_utc": "2026-11-22T02:13:08.762091+00:00"
+    },
+    {
+      "label": "timing-r2-scalar-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:08.762402+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r2-scalar-4096.log",
+      "end_utc": "2026-11-22T02:13:13.249887+00:00"
+    },
+    {
+      "label": "timing-r3-neon-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:13.252005+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-128-host.log",
+      "end_utc": "2026-11-22T02:13:13.300432+00:00"
+    },
+    {
+      "label": "timing-r3-neon-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:13.300801+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-128.log",
+      "end_utc": "2026-11-22T02:13:22.061910+00:00"
+    },
+    {
+      "label": "timing-r3-scalar-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:22.064622+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-128-host.log",
+      "end_utc": "2026-11-22T02:13:22.089896+00:00"
+    },
+    {
+      "label": "timing-r3-scalar-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:22.090233+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-128.log",
+      "end_utc": "2026-11-22T02:13:26.478523+00:00"
+    },
+    {
+      "label": "timing-r3-compat-128-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:26.480139+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-128-host.log",
+      "end_utc": "2026-11-22T02:13:26.504751+00:00"
+    },
+    {
+      "label": "timing-r3-compat-128",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "128",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-128-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:26.505095+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-128.log",
+      "end_utc": "2026-11-22T02:13:35.290649+00:00"
+    },
+    {
+      "label": "timing-r3-neon-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:35.293084+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-4096-host.log",
+      "end_utc": "2026-11-22T02:13:35.341529+00:00"
+    },
+    {
+      "label": "timing-r3-neon-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_neon",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:35.341902+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-neon-4096.log",
+      "end_utc": "2026-11-22T02:13:44.362438+00:00"
+    },
+    {
+      "label": "timing-r3-scalar-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:44.364863+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-4096-host.log",
+      "end_utc": "2026-11-22T02:13:44.389203+00:00"
+    },
+    {
+      "label": "timing-r3-scalar-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_scalar",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:44.389550+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-scalar-4096.log",
+      "end_utc": "2026-11-22T02:13:48.906441+00:00"
+    },
+    {
+      "label": "timing-r3-compat-4096-host",
+      "command": [
+        "sh",
+        "-c",
+        "date -u; uptime; pmset -g therm; pmset -g batt"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:48.908142+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-4096-host.log",
+      "end_utc": "2026-11-22T02:13:48.956610+00:00"
+    },
+    {
+      "label": "timing-r3-compat-4096",
+      "command": [
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/release/benchmarks/standard_compat",
+        "--count",
+        "4096",
+        "--dump",
+        "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-4096-outputs"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T02:13:48.957054+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/arm64-reset-2026-11-22-20261122T002523Z/performance/timing-r3-compat-4096.log",
+      "end_utc": "2026-11-22T02:13:57.965928+00:00"
+    }
+  ],
+  "host_observations": [
+    "Sun Nov 22 01:55:11 UTC 2026\n 2:55  up 9 days, 17:58, 1 user, load averages: 5.97 4.22 4.24\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 01:55:15 UTC 2026\n 2:55  up 9 days, 17:59, 1 user, load averages: 5.73 4.19 4.24\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 01:55:24 UTC 2026\n 2:55  up 9 days, 17:59, 1 user, load averages: 5.44 4.16 4.22\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 01:55:33 UTC 2026\n 2:55  up 9 days, 17:59, 1 user, load averages: 5.06 4.12 4.21\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 01:55:37 UTC 2026\n 2:55  up 9 days, 17:59, 1 user, load averages: 4.81 4.08 4.20\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 01:55:47 UTC 2026\n 2:55  up 9 days, 17:59, 1 user, load averages: 5.41 4.24 4.25\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:12:28 UTC 2026\n 3:12  up 9 days, 18:16, 1 user, load averages: 4.97 4.19 4.23\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:12:37 UTC 2026\n 3:12  up 9 days, 18:16, 1 user, load averages: 4.89 4.18 4.23\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:12:46 UTC 2026\n 3:12  up 9 days, 18:16, 1 user, load averages: 4.92 4.21 4.24\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:12:50 UTC 2026\n 3:12  up 9 days, 18:16, 1 user, load averages: 5.01 4.24 4.25\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:12:59 UTC 2026\n 3:12  up 9 days, 18:16, 1 user, load averages: 4.70 4.20 4.23\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:08 UTC 2026\n 3:13  up 9 days, 18:16, 1 user, load averages: 4.28 4.12 4.21\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:13 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 4.18 4.10 4.20\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:22 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 4.00 4.07 4.19\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:26 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 3.84 4.04 4.17\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:35 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 3.56 3.97 4.15\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:44 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 3.32 3.90 4.12\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n",
+    "Sun Nov 22 02:13:48 UTC 2026\n 3:13  up 9 days, 18:17, 1 user, load averages: 3.21 3.87 4.11\nNote: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\nNow drawing from 'AC Power'\n"
+  ],
+  "retention": "Full raw logs, builds, executables, output dumps, probes, expanded source snapshot and failed-attempt records remain under the fresh build tree."
+}

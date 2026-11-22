@@ -1,9 +1,17 @@
 # Benchmark documentation
 
+## Native M2 collection and local artifact availability — 22 November 2026
+
+On 22 November 2026 the authorized local Mac build reset discarded 40,072 files totaling 4,649,286,799 bytes, including historical M2 archives, source captures, raw logs, binaries, benchmark output dumps and the Clang study outputs. Earlier identifiers, hashes and numerical results describe their original checkpoints. Their old local payloads are no longer available. The fresh collection used clean commit `c120ded4321a087339a952ef0671fb89c456ca14`, with 8,036 cases and eight smokes passed, followed by 18 timing invocations and all 160 report rows.
+
+[Fresh correctness report](../validation/arm64/mac-arm-validation-2026-11-22.md) · [Fresh performance report](arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
+
+
 - **ARM64 / macOS:** [table reading guide](arm64/standard_math_reading_guide.md),
   [report template](arm64/STANDARD_MATH_RESULTS_TEMPLATE.md),
-  [21 November current-master report](arm64/STANDARD_MATH_RESULTS_2026-11-21.md) and
-  [selected result bundle](arm64/standard-math-master-2026-11-21/checksums.sha256),
+  [22 November current-master report](arm64/STANDARD_MATH_RESULTS_2026-11-22.md) and
+  [selected result bundle](arm64/STANDARD_MATH_RESULTS_2026-11-22/checksums.sha256),
+  [earlier 21 November report](arm64/STANDARD_MATH_RESULTS_2026-11-21.md),
   [19 November optimized report](arm64/STANDARD_MATH_RESULTS_2026-11-19.md),
   [matched result bundle](arm64/standard-math-blend4-2026-11-19/checksums.sha256) and
   [historical 19 November M2 checkpoint](arm64/standard-math-master-checkpoint-2026-11-19/README.md).

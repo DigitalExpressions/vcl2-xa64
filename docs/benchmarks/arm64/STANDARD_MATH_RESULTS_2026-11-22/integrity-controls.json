@@ -1,0 +1,208 @@
+{
+  "passed": 41,
+  "failed": 0,
+  "upstream_commit": "667577495efaa36a10cbb5d6cb8c942c23913848",
+  "controls": [
+    {
+      "control": "clean audited originals, sse2neon and ARM graph",
+      "passed": true
+    },
+    {
+      "control": "changed-recorded-sha256",
+      "passed": true,
+      "diagnostic": "Changed or duplicated pristine upstream file: LICENSE"
+    },
+    {
+      "control": "missing-original-inventory-entry",
+      "passed": true,
+      "diagnostic": "Pinned upstream Git tree mismatch"
+    },
+    {
+      "control": "missing-upstream-audit",
+      "passed": true,
+      "diagnostic": "Missing required upstream audit: audit/vectorclass-2.02.04.json"
+    },
+    {
+      "control": "missing-retained-upstream-readme",
+      "passed": true,
+      "diagnostic": "[Errno 2] No such file or directory: '<SOURCE>/build/header-generation-check-20261122T003001347603Z/missing-retained-upstream-readme/audit/vectorclass-README.md'"
+    },
+    {
+      "control": "changed-retained-upstream-readme",
+      "passed": true,
+      "diagnostic": "Changed or duplicated pristine upstream file: README.md"
+    },
+    {
+      "control": "editable-fork-readme-with-all-upstream-bytes-verified",
+      "passed": true
+    },
+    {
+      "control": "restore-complete-upstream-tree-with-original-readme",
+      "passed": true
+    },
+    {
+      "control": "changed-comparison-readme-rejected-without-overwrite",
+      "passed": true
+    },
+    {
+      "control": "reintroduced-empty-vendor-directory",
+      "passed": true,
+      "diagnostic": "Retired vendor catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-vendor-file",
+      "passed": true,
+      "diagnostic": "Retired vendor catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-vendor-header",
+      "passed": true,
+      "diagnostic": "Retired vendor catalog must not be reintroduced"
+    },
+    {
+      "control": "missing-root-sse2neon",
+      "passed": true,
+      "diagnostic": "[Errno 2] No such file or directory: '<SOURCE>/build/header-generation-check-20261122T003001347603Z/missing-root-sse2neon/sse2neon.h'"
+    },
+    {
+      "control": "changed-root-sse2neon",
+      "passed": true,
+      "diagnostic": "sse2neon retained representation differs from upstream audit"
+    },
+    {
+      "control": "newline-only-sse2neon-change",
+      "passed": true,
+      "diagnostic": "sse2neon retained representation differs from upstream audit"
+    },
+    {
+      "control": "missing-sse2neon-audit",
+      "passed": true,
+      "diagnostic": "Missing required sse2neon audit: audit/sse2neon-2272251.json"
+    },
+    {
+      "control": "missing-sse2neon-audit-root-path",
+      "passed": true,
+      "diagnostic": "sse2neon audit must pin only the root sse2neon.h"
+    },
+    {
+      "control": "extra-sse2neon-audit-path",
+      "passed": true,
+      "diagnostic": "sse2neon audit must pin only the root sse2neon.h"
+    },
+    {
+      "control": "changed-sse2neon-audit-schema",
+      "passed": true,
+      "diagnostic": "sse2neon audit must pin only the root sse2neon.h"
+    },
+    {
+      "control": "changed-sse2neon-audit-sha256",
+      "passed": true,
+      "diagnostic": "sse2neon retained representation differs from upstream audit"
+    },
+    {
+      "control": "changed-sse2neon-audit-git_blob",
+      "passed": true,
+      "diagnostic": "sse2neon retained representation differs from upstream audit"
+    },
+    {
+      "control": "changed-sse2neon-audit-bytes",
+      "passed": true,
+      "diagnostic": "sse2neon retained representation differs from upstream audit"
+    },
+    {
+      "control": "changed-sse2neon-audit-encoding",
+      "passed": true,
+      "diagnostic": "sse2neon audit representation contract differs"
+    },
+    {
+      "control": "changed-sse2neon-audit-proof",
+      "passed": true,
+      "diagnostic": "sse2neon audit representation contract differs"
+    },
+    {
+      "control": "changed-sse2neon-with-matching-retained-pin",
+      "passed": true,
+      "diagnostic": "sse2neon upstream representation proof differs"
+    },
+    {
+      "control": "changed-sse2neon-upstream-sha256",
+      "passed": true,
+      "diagnostic": "sse2neon upstream representation proof differs"
+    },
+    {
+      "control": "changed-sse2neon-upstream-git_blob",
+      "passed": true,
+      "diagnostic": "sse2neon upstream representation proof differs"
+    },
+    {
+      "control": "changed-sse2neon-upstream-bytes",
+      "passed": true,
+      "diagnostic": "sse2neon upstream representation proof differs"
+    },
+    {
+      "control": "changed-protected-root",
+      "passed": true,
+      "diagnostic": "Changed or duplicated pristine upstream file: vectorclass.h"
+    },
+    {
+      "control": "newline-only-root-change",
+      "passed": true,
+      "diagnostic": "Changed or duplicated pristine upstream file: vectorclass.h"
+    },
+    {
+      "control": "ARM-include-leaks-to-original",
+      "passed": true,
+      "diagnostic": "ARM include reaches protected x86 original: vectorclass_neon.h -> vectorclass.h"
+    },
+    {
+      "control": "inactive-x86-backend-branch",
+      "passed": true,
+      "diagnostic": "x86-only code in ARM source: vectorclass_neon.h -> VCL_BACKEND_X86"
+    },
+    {
+      "control": "inactive-x86-classification-helper",
+      "passed": true,
+      "diagnostic": "x86-only code in ARM source: vectorclass_neon.h -> vcl_detail_x86"
+    },
+    {
+      "control": "inactive-native-AVX-intrinsic",
+      "passed": true,
+      "diagnostic": "x86-only code in ARM source: vectorclass_neon.h -> _mm256_add_ps"
+    },
+    {
+      "control": "reintroduced-empty-adaptation-directory",
+      "passed": true,
+      "diagnostic": "Retired adaptation catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-adaptation-file",
+      "passed": true,
+      "diagnostic": "Retired adaptation catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-adaptation-manifest",
+      "passed": true,
+      "diagnostic": "Retired adaptation catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-adaptation-patch",
+      "passed": true,
+      "diagnostic": "Retired adaptation catalog must not be reintroduced"
+    },
+    {
+      "control": "reintroduced-adaptation-include",
+      "passed": true,
+      "diagnostic": "Retired adaptation catalog must not be reintroduced"
+    },
+    {
+      "control": "retired-output-list",
+      "passed": true,
+      "diagnostic": "Generation is retired; no root write products are allowed"
+    },
+    {
+      "control": "write-mode-rejected-with-no-root-writes",
+      "passed": true,
+      "exit_code": 2
+    }
+  ]
+}

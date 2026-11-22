@@ -1,0 +1,8 @@
+[
+  {
+    "filename": "return-evidence.zip",
+    "sha256": "74f5f974621f94766cf1b6f9d0ac4939667e0122b07ac86ad36418c4518d388a",
+    "bytes": 3359677,
+    "scope": "Fresh native runner evidence. Expanded source snapshot and raw builds remain under build."
+  }
+]

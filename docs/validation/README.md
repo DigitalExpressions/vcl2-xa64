@@ -1,5 +1,12 @@
 # Native validation status and procedures
 
+## Native M2 collection and local artifact availability — 22 November 2026
+
+On 22 November 2026 the authorized local Mac build reset discarded 40,072 files totaling 4,649,286,799 bytes, including historical M2 archives, source captures, raw logs, binaries, benchmark output dumps and the Clang study outputs. Earlier identifiers, hashes and numerical results describe their original checkpoints. Their old local payloads are no longer available. The fresh collection used clean commit `c120ded4321a087339a952ef0671fb89c456ca14`, with 8,036 cases and eight smokes passed, followed by 18 timing invocations and all 160 report rows.
+
+[Fresh correctness report](arm64/mac-arm-validation-2026-11-22.md) · [Fresh performance report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
+
+
 | Architecture | Documentation |
 | --- | --- |
 | ARM64 / macOS | [Native M2 reports and decisions](arm64/README.md) |
@@ -29,7 +36,16 @@ verified architecture-specific include graphs and the declared shared contracts.
 
 ## Latest retained native M2 validation
 
-- [21 November current-master correctness report](arm64/mac-arm-validation-2026-11-21.md):
+- [22 November current-master correctness report](arm64/mac-arm-validation-2026-11-22.md):
+  8,036 cases plus eight arithmetic smoke runs passed at clean commit
+  `c120ded4321a087339a952ef0671fb89c456ca14`, tree
+  `b02601fc5a04dbdc41e224c1e04d2b987955150a`, using Apple Clang 21 / SDK 26.5.
+  Compatibility maximum 512 and Direct Neon maxima 128/256/512 each passed
+  Release and strict nonrecovering UBSan Debug. The separate
+  [full standard-math report](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
+  and [supporting bundle](../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/checksums.sha256)
+  retain all 160 rows, controls and exact source identities.
+- [Earlier 21 November correctness report](arm64/mac-arm-validation-2026-11-21.md):
   8,036 selected cases plus eight arithmetic smoke runs passed at clean commit
   `dc802e466663d61d9e219bd7c7351aa8ac312204`, tree
   `7eaae08ad9b0a813ace5c74aff9be6ff2fc7630b`, using Apple Clang 21 / SDK 26.5.
@@ -45,11 +61,12 @@ verified architecture-specific include graphs and the declared shared contracts.
   retain workload-specific results, slower rows and variability. Future timing
   comparisons need fresh matched sessions.
 
-The completed 21 November native worktree was archived after publication;
-benchmark builds and the focused Clang study remain unpacked. The
-[dated availability note](arm64/mac-arm-validation-2026-11-21.md#artifact-availability-after-cleanup)
-and its archive receipts describe recovery. Earlier retired campaigns keep their
-own availability limits in frozen Git.
+The 21 November native archives, benchmark builds and focused Clang study were
+discarded in the authorized 22 November reset. Its
+[dated availability update](arm64/mac-arm-validation-2026-11-21.md#native-m2-collection-and-local-artifact-availability--22-november-2026)
+supersedes the earlier recovery receipts. Fresh 22 November artifacts have their
+own source and availability records. Earlier retired campaigns keep their own
+availability limits in frozen Git.
 
 ## Windows gate and architecture preservation
 

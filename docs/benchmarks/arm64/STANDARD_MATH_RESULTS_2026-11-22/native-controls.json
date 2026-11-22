@@ -1,0 +1,167 @@
+{
+  "commands": [
+    {
+      "label": "ubsan-compile",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-arch",
+        "arm64",
+        "-g",
+        "-fsanitize=undefined",
+        "-fno-sanitize-recover=undefined",
+        "-fno-omit-frame-pointer",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan.cpp",
+        "-o",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:36.781823+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/ubsan-compile.log",
+      "end_utc": "2026-11-22T00:31:36.843593+00:00"
+    },
+    {
+      "label": "ubsan-binary-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:36.843959+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/ubsan-binary-file.log",
+      "end_utc": "2026-11-22T00:31:36.847672+00:00"
+    },
+    {
+      "label": "ubsan-positive",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:36.848021+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/ubsan-positive.log",
+      "end_utc": "2026-11-22T00:31:37.139875+00:00"
+    },
+    {
+      "label": "ubsan-negative",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan",
+        "trigger"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.140381+00:00",
+      "exit_code": -6,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/ubsan-negative.log",
+      "end_utc": "2026-11-22T00:31:37.327446+00:00"
+    },
+    {
+      "label": "guard-compile",
+      "command": [
+        "clang++",
+        "-std=c++17",
+        "-arch",
+        "arm64",
+        "-I<SOURCE>/tests",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard.cpp",
+        "-o",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.328054+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-compile.log",
+      "end_utc": "2026-11-22T00:31:37.389151+00:00"
+    },
+    {
+      "label": "guard-binary-file",
+      "command": [
+        "file",
+        "-b",
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.389560+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-binary-file.log",
+      "end_utc": "2026-11-22T00:31:37.393225+00:00"
+    },
+    {
+      "label": "guard-positive",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.393579+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-positive.log",
+      "end_utc": "2026-11-22T00:31:37.678539+00:00"
+    },
+    {
+      "label": "guard-negative-0",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard",
+        "0"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.678964+00:00",
+      "exit_code": -10,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-negative-0.log",
+      "end_utc": "2026-11-22T00:31:37.699577+00:00"
+    },
+    {
+      "label": "guard-negative-1",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard",
+        "1"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.699999+00:00",
+      "exit_code": -10,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-negative-1.log",
+      "end_utc": "2026-11-22T00:31:37.720571+00:00"
+    },
+    {
+      "label": "guard-negative-2",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard",
+        "2"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.720967+00:00",
+      "exit_code": -10,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-negative-2.log",
+      "end_utc": "2026-11-22T00:31:37.741423+00:00"
+    },
+    {
+      "label": "guard-negative-3",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/guard",
+        "3"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:37.741822+00:00",
+      "exit_code": -10,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/guard-negative-3.log",
+      "end_utc": "2026-11-22T00:31:37.762023+00:00"
+    },
+    {
+      "label": "runtime-run",
+      "command": [
+        "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/runtime-build/runtime_check"
+      ],
+      "cwd": "<SOURCE>",
+      "start_utc": "2026-11-22T00:31:38.693762+00:00",
+      "exit_code": 0,
+      "log": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/runtime-run.log",
+      "end_utc": "2026-11-22T00:31:38.983776+00:00"
+    }
+  ],
+  "page_size": 16384,
+  "ubsan_positive_output": "positive control\n",
+  "ubsan_negative_output": "<SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan.cpp:5:41: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'\n    #0 0x0001024dc6a8 in main ubsan.cpp:5\n    #1 0x00018faa44e0 in start+0x1b4c (dyld:arm64e+0x204e0)\n\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior <SOURCE>/build/mac-m2-native-20261122T003135959654Z/probes/ubsan.cpp:5:41 \n",
+  "guard_positive_output": "page_size=16384\n",
+  "runtime_output": "arm64=1 neon=1 instrset_detect=0 pointer_bits=64 long_bits=64\n"
+}

@@ -86,3 +86,8 @@ docs/benchmarks/arm64/standard-math-master-2026-11-21/*/results.csv whitespace=c
 /docs/validation/x86/windows-x86-validation-2026-11-22/** -text whitespace=cr-at-eol
 /docs/benchmarks/x86/x86-upstream-2026-11-22.md -text whitespace=cr-at-eol
 /docs/benchmarks/x86/x86-upstream-2026-11-22/** -text whitespace=cr-at-eol
+
+# Exact fresh ARM64 reports and checksummed portable evidence.
+/docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md -text
+/docs/validation/arm64/mac-arm-validation-2026-11-22.md -text
+/docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22/** -text whitespace=cr-at-eol

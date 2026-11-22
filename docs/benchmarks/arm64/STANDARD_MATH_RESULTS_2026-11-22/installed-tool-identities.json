@@ -1,0 +1,22 @@
+{
+  "cmake": {
+    "sha256": "83f47cca34bb97f6ddd4d5e07296c750b60e1382093963ab73326f14ab2e9524",
+    "bytes": 14898280
+  },
+  "ctest": {
+    "sha256": "007a451a5935feff9bc15a1cedfb41bd4422a3476ac3e6e717ba705c0d7acf19",
+    "bytes": 16089368
+  },
+  "ninja": {
+    "sha256": "2c9fb8385bf9e8b780fb2bdcd03353c28ee8c197508807514941a421cd80bd84",
+    "bytes": 357800
+  },
+  "python3": {
+    "sha256": "5b1ddb7e9c11b87a034fc88b212e8ac243cfe2b4db696d767aa44c79595fc09a",
+    "bytes": 118640
+  },
+  "clang++": {
+    "sha256": "f30550eab15fdf5ab8c0dc54c52679711241e5d4b636b027e18c09fef531775d",
+    "bytes": 290664032
+  }
+}

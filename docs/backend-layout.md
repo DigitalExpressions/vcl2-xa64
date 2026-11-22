@@ -30,6 +30,25 @@ workarounds. Restoring originals also restores their known limitations; see
 [retained x86 findings](https://github.com/DigitalExpressions/vcl2-xa64/blob/2237ffbdc23b23cda4358acf29cd494b2d63ad8c/docs/x86_findings_and_fix_candidates.md). Inherited faults
 remain failures, not reasons to patch originals or weaken ARM gates.
 
+## Root README x86 source identity
+
+The maintainer selected this root README standard on 22 November 2026.
+Keep a `VCL2 x86 implementation` section immediately before `Direct Neon vs
+sse2neon` in the [root README](../README.md#vcl2-x86-implementation), unless the
+maintainer requests a different presentation. The section must:
+
+- State that the x86 implementation is Agner Fog's unchanged VCL code,
+  byte-for-byte identical to the pinned upstream source, and identify its
+  VCL version.
+- Link to Agner Fog's original repository, display the full pinned commit SHA
+  with a link to that exact upstream commit, and link to the local audit manifest.
+  Derive repository/revision details from the audit record and verify the version
+  against the pinned source. A documentation refresh does not update the pin.
+- Explain that ARM64 implementations are maintained separately and do not
+  modify the original x86 implementation, and that repository integrity checks
+  verify all 28 protected originals. Retain the link to the ownership/integrity
+  documentation.
+
 ## ARM ownership
 
 Root `*_neon.h` files are authoritative editable ARM sources. The existing
@@ -118,8 +137,8 @@ stronger ARM page-boundary expectations, numerical gates and sanitizer/guard
 controls remain in force. Preserve independent fixtures, seeds, FP flags,
 60-second deadlines and concurrency three. Do not reapply retired x86 repairs.
 
-The [21 November M2 correctness report](validation/arm64/mac-arm-validation-2026-11-21.md)
-and [standard-math results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
+The [22 November M2 correctness report](validation/arm64/mac-arm-validation-2026-11-22.md)
+and [standard-math results](benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-22.md)
 record the latest retained ARM64 checkpoint. Every native result keeps its exact
 tested source, tools and coverage; a later documentation commit inherits no pass.
 Use the [native workflow](validation/native-workflow.md),

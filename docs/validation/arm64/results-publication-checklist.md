@@ -46,6 +46,44 @@ actual contents and explain any renamed source records. Copy the records that
 exist and apply; identify missing evidence as a gap. Do not fabricate a runtime
 baseline/candidate comparison for a single-source checkpoint.
 
+## Root README performance-table standard
+
+The maintainer selected this format on 22 November 2026 for the root
+[`README.md`](../../../README.md#direct-neon-vs-sse2neon) performance overview.
+Preserve it when refreshing results unless the maintainer requests a change.
+Also preserve the preceding x86 implementation section and its source links
+according to the [root README x86 source-identity standard](../../backend-layout.md#root-readme-x86-source-identity).
+
+- Keep **two separate tables**, batch processing (SoA) followed by per-object
+  processing (AoS). Both tables use FP32 and the same eight operation rows in
+  this order: 4D dot product, 3D cross product, vector length, vector
+  normalization, 4×4 matrix multiplication, 4×4 matrix–vector multiplication,
+  4×4 matrix transpose and TRS matrix inverse.
+- The batch table has an operation column and a throughput-ratio range column.
+  Each range spans all logical widths 128/256/512 and both counts 128/4,096
+  from the same full benchmark session. State that scope above the table.
+- The per-object table has operation, FP precision (`32`), ratio at 128 objects
+  and ratio at 4,096 objects columns. Keep any selected FP64 figures in a
+  separate, explicitly labeled note below it so the table rows remain matched.
+- Every ratio is **Direct Neon throughput divided by sse2neon throughput**,
+  calculated as compatibility elapsed time divided by Direct Neon elapsed
+  time. These ratios describe the backend comparison within each layout;
+  actual AoS-versus-SoA speed comparisons require the full report's ns/op data.
+- Use two decimal places for batch range endpoints and three for per-object
+  ratios. Calculate endpoints and classifications from unrounded data. Keep
+  the shared legend, bold ratios, colored spans and markers: purple `#6f42c1`
+  / 🟣 above 1.05, blue `#0969da` / 🔵 within inclusive 0.95–1.05, and orange
+  `#bc4c00` / 🟠 below 0.95. Classify each range endpoint separately.
+- Retain brief context for material mixed outcomes, identifying precision,
+  layout, width and object count when explaining a result such as transpose.
+  Colors express the 5% comparison band; invocation-range overlap and
+  statistical significance remain separate considerations.
+- Refresh both tables, context, date/toolchain, winner totals and links from
+  the same selected full-suite session. Verify identical row labels/order and
+  every displayed value against its published data. Focused repeats and
+  compiler experiments retain their separate identities and do not replace
+  individual full-suite cells.
+
 ## Publication steps
 
 1. Inspect local changes and read applicable `AGENTS.md`. Record the tested
@@ -74,7 +112,8 @@ baseline/candidate comparison for a single-source checkpoint.
    overview from this same session. Derive ratios and range endpoints from
    unrounded data across every advertised width/count, then round for display.
    Refresh winner counts, cross-product percentages, colors and variability/cost
-   commentary together. Use the existing inclusive 0.95–1.05 ratio band; range
+   commentary together. Follow the [root README performance-table standard](#root-readme-performance-table-standard).
+   Use the existing inclusive 0.95–1.05 ratio band; range
    endpoints inside that band must not be colored as backend wins. Identify the
    new date, compiler and SDK. Earlier dated reports and datasets keep their own
    values and source identities.

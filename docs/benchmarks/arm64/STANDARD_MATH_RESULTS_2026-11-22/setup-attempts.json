@@ -1,0 +1,18 @@
+[
+  {
+    "attempt": "pre-reset controller 1",
+    "exit_code": 1,
+    "deletion": false,
+    "reason": "SDKROOT validation rejected the inherited default SDK path before deletion."
+  },
+  {
+    "attempt": "post-reset include controls 1",
+    "exit_code": 1,
+    "deletion": true,
+    "reason": "Controller removed SDKROOT; standalone Clang then failed to find stdlib.h. Preserve initial include-controls directory and log."
+  },
+  {
+    "attempt": "post-reset continuation",
+    "reason": "Explicit command-scoped SDKROOT from xcrun. Reuse passed repository/integrity/41-control checks and retry only failed include controls in a fresh output directory."
+  }
+]
