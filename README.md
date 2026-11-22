@@ -340,3 +340,8 @@ Existing ARM consumers must migrate unsuffixed original VCL includes to
 - [VCL manual (PDF)](https://github.com/vectorclass/manual/raw/master/vcl_manual.pdf)
 - [Upstream add-on packages](https://github.com/vectorclass/add-on)
 - [Getting-started video](https://www.youtube.com/watch?v=TKjYdLIMTrI), by Christopher Rose
+
+## Latest Windows reset validation — 2026-11-22
+
+Fresh native AMD Windows collection at clean 08f2d2903d9bfdfdb22aa187329e99ce0f44d177: 6,796 passed, 235 failed and 109 not run of 7,140, plus fifteen passing examples. The gate remains failed/incomplete.
+The [report](docs/validation/x86/windows-x86-validation-2026-11-22.md) records the complete compiler/profile/ISA table, controls and intentionally discarded historical local evidence. [Separate original-VCL performance validation](docs/benchmarks/x86/x86-upstream-2026-11-22.md) retains its own source, flags, checks and actual outcome. ARM results above keep their original checkpoints.

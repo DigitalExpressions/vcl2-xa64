@@ -1,9 +1,0 @@
-{
-  "capture_complete": true,
-  "verified_files": 594,
-  "fingerprint": "d86cf67d40f938082c6887e2095524389d7c8d961277112e77a886e46cbcc184",
-  "archive_sha256": "0873865d5b4ad4adc9c1cf5304f1f094ef7a7617548912a290700a00c23223f9",
-  "all_source_and_archive_entry_hashes_verified": true,
-  "shell_observation": "PowerShell redirected native stderr produced NativeCommandError records and shell exit 1 for Git EOL warnings. The complete capture, receipt, CRC and all exact source/archive hashes independently verify successfully. Original shell log retained.",
-  "native_cases_executed_before_verification": 0
-}

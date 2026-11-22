@@ -1,0 +1,10 @@
+{
+  "vendor": "AuthenticAMD",
+  "sse2": true,
+  "sse42": true,
+  "avx2": true,
+  "avx512": true,
+  "xcr0": "0xe7",
+  "cpuid1_ecx": 4275581451,
+  "cpuid7_ebx": 4055865257
+}

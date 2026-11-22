@@ -17,7 +17,12 @@ For future requests, refer to this document with:
 
 ## Copy destinations
 
-Use the actual report date and a descriptive source/session label. The
+Use purpose and the actual ISO report date in published filenames, with a
+matching primary evidence-folder stem. Add a descriptive suffix only for
+multiple collections with the same purpose and date. Keep procedures and
+session/attempt IDs inside reports or metadata, and retain raw build names.
+Follow the [report naming rules](../report-template.md#published-report-names).
+The existing
 [21 November correctness report](mac-arm-validation-2026-11-21.md),
 [standard-math report](../../benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md)
 and [supporting bundle](../../benchmarks/arm64/standard-math-master-2026-11-21/checksums.sha256)
@@ -27,7 +32,7 @@ are an example of the layout, not a source of timings for another run.
 | --- | --- |
 | `docs/validation/arm64/mac-arm-validation-YYYY-MM-DD.md` | Correctness report using the [native report template](../report-template.md): exact source, host/tools, complete profile totals, smoke runs, controls, failures/retries and limits. |
 | `docs/benchmarks/arm64/STANDARD_MATH_RESULTS_YYYY-MM-DD.md` | Selected implementation's performance report using the [standard-math template](../../benchmarks/arm64/STANDARD_MATH_RESULTS_TEMPLATE.md), with all measured rows, slower rows, variability and numerical/output checks. |
-| `docs/benchmarks/arm64/standard-math-LABEL-YYYY-MM-DD/candidate/` | Byte-exact `results.csv`, `results.json`, `summary.json` and `metadata.json` from the selected implementation's measured session. The inherited `candidate/` name also applies to a clean-master checkpoint; explain that identity in `sources.json`. |
+| `docs/benchmarks/arm64/STANDARD_MATH_RESULTS_YYYY-MM-DD/candidate/` | Byte-exact `results.csv`, `results.json`, `summary.json` and `metadata.json` from the selected implementation's measured session. The inherited `candidate/` name also applies to a clean-master checkpoint; explain that identity in `sources.json`. |
 | The same supporting bundle | Source manifest/identity, actual compile/link flags, compiler/SDK/tool identities, benchmark executable hashes, native and benchmark correctness summaries, sanitizer/guard controls, integrity, protocol, attempts and archive receipts. Reuse records between the two reports through relative links. |
 | The same supporting bundle, when measured | Output comparisons, code-generation records and matched before/after comparisons, with their own source and session identities. Include a separate compiler investigation's findings, measurements, limitations and retained evidence identity when cited. |
 | The same supporting bundle | A publication receipt describing copied data hashes, original and adapted report identities, link/presentation changes, intentionally local evidence and inapplicable comparison files; `checksums.sha256` covering the final reports and bundle payloads. |

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "build/windows-native-strict-clang-release-20261121T224146302884Z/return-evidence.zip",
+    "sha256": "d0b6532328b22e3d42bf16b9530e7389cdf13c79238fbb8f3a36e6cff24e30bd",
+    "crc_verified": true,
+    "original_first_packet_unchanged": true
+  },
+  {
+    "path": "build/windows-native-strict-msvc-release-20261121T223320455200Z/return-evidence.zip",
+    "sha256": "52e0a645be71ad299c81489338bf70901d34b5fdf325b3eef6938cfacc1f71bd",
+    "crc_verified": true,
+    "original_first_packet_unchanged": true
+  },
+  {
+    "path": "build/windows-native-ubsan-clang-debug-20261121T224812207808Z/return-evidence.zip",
+    "sha256": "7a906761008546aa729a810a440ba4e3270dd7dcafc57268aa24f9935eb383e0",
+    "crc_verified": true,
+    "original_first_packet_unchanged": true
+  },
+  {
+    "path": "build/windows-native-upopt-clang-release-20261121T222657198181Z/return-evidence.zip",
+    "sha256": "0cf262f8ad3e0f823a823288cab4d51b1a7ae764b0e0a7bc62a21f0f0e6e5efa",
+    "crc_verified": true,
+    "original_first_packet_unchanged": true
+  },
+  {
+    "path": "build/windows-native-upopt-msvc-release-20261121T221837245920Z/return-evidence.zip",
+    "sha256": "219f2db21fb5afc823beede82a22e80e3b151ba8f19afe38ef569451ffc523bb",
+    "crc_verified": true,
+    "original_first_packet_unchanged": true
+  }
+]

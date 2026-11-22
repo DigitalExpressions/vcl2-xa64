@@ -1,0 +1,20 @@
+{
+  "utc": "2026-11-21T22:15:28.7374845Z",
+  "local": "2026-11-21T23:15:28.7404844+01:00",
+  "resolvedTarget": "<checkout>\\build",
+  "sourceCommit": "08f2d2903d9bfdfdb22aa187329e99ce0f44d177",
+  "sourceTree": "c712c242205e19e233af93b5c565fa601643749f",
+  "sourceFingerprint": "15989d633301114dd66508b631cc9d82e516010833d707e96689d41b4c88d346",
+  "performanceAuthorized": true,
+  "authorization": "Explicit request to execute reset plan; separate performance yes",
+  "files": 34909,
+  "bytes": 2979775880,
+  "inventory": "final-sweep02/build-inventory.json",
+  "loss": "All inventoried old build payloads, including historical raw archives/source captures/logs/dependencies, discarded without replacement archive. Published results and hashes remain historical and cannot recover payload bytes.",
+  "tools": "resources02/tools.json",
+  "dependencyProof": "resources02/fresh-dependency-hashes.json",
+  "activeBuildProcesses": 0,
+  "buildServices": 0,
+  "registeredWorktreeInsideBuild": false,
+  "processAssessment": "Only this session and idle interactive shells observed; no active writers, test or build jobs. Source/build inventory repeated immediately before deletion."
+}

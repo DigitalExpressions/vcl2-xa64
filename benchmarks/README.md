@@ -105,3 +105,7 @@ with the new report's actual date to apply the established color/label policy.
 The formatter requires an explicit report path and rejects unfilled template
 placeholders. It does not perform a measurement or reconstruct lost raw trials.
 Raw evidence from a new run must be retained separately.
+
+## Native x86 comparison after reset — 2026-11-22
+
+See the [new comparison report](../docs/benchmarks/x86/x86-upstream-2026-11-22.md) for the explicit source pair, workload, separate correctness checks and actual performance outcome. It does not replace the full failed/incomplete Windows correctness gate.

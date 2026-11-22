@@ -1,0 +1,23 @@
+{
+  "performance_authorized": true,
+  "source": "08f2d2903d9bfdfdb22aa187329e99ce0f44d177",
+  "reference": "667577495efaa36a10cbb5d6cb8c942c23913848",
+  "workloads": 102,
+  "isa": [
+    "sse2",
+    "sse42",
+    "avx2",
+    "avx512"
+  ],
+  "compilers": [
+    "msvc",
+    "clang"
+  ],
+  "pairs": 4,
+  "trials": 7,
+  "sample_ms": 6,
+  "cpu": 2,
+  "fp": "MSVC /fp:strict; Clang strict FP/no contraction; optimized O2 static release CRT unsanitized",
+  "ordering": "All builds and independent checks before timings; sequential alternating paired order",
+  "utc": "2026-11-21T22:57:04.044716+00:00"
+}

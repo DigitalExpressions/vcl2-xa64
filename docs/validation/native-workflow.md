@@ -126,9 +126,9 @@ MSVC Debug/RTC is deferred and rejected until noninteractive reporting is valida
 Probe CPU and OS before higher-ISA execution. Prove native PE, guard and sanitizer
 controls; retain numerical gates, fixtures, 60-second deadlines and concurrency three.
 
-The latest [21 November Windows collection](x86/windows-x86-validation-2026-11-21.md)
-is failed/incomplete: 6,798 passed, 233 failed and 109 not run of 7,140, plus
-fifteen passing examples. The historical 19 November gate remains separately
+The latest [22 November Windows collection](x86/windows-x86-validation-2026-11-22.md)
+at clean `08f2d29` is failed/incomplete: 6,796 passed, 235 failed and 109 not run
+of 7,140, plus fifteen passing examples. The historical 19 November gate remains separately
 failed/incomplete: 5,387 passed, 249 failed, 76 not run of 5,712, plus twelve
 passing examples. Bounded preservation and matching RTC diagnostics do not
 convert either gate into a pass. Record new and inherited failures separately;
@@ -141,6 +141,13 @@ matrix passes are not cross-host parity. Use fresh run/attempt IDs, preserve
 full inventories and compare all selected records under their declared policies.
 
 ## Reports and cleanup
+
+Name published reports by purpose and ISO report date, with a matching primary
+evidence-folder stem. Use a descriptive suffix only for multiple collections
+with the same purpose and date. Keep procedures and session/attempt IDs inside
+the report and metadata; raw build paths retain their original IDs. Follow the
+[report naming rules](report-template.md#published-report-names) and preserve
+existing published paths unless a rename is explicitly requested.
 
 Use the [report template](report-template.md); publish portable relative paths,
 source/tool identities, actual attempts, failures and coverage gaps without

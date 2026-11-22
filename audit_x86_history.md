@@ -7,7 +7,7 @@ new upstream rows. No example or unverified older revision is listed.
 
 | Upstream date | Version | Upstream commit | Status | Project validation and tuning |
 | --- | --- | --- | --- | --- |
-| 9 September 2026 | 2.02.04 | [`6675774`](https://github.com/vectorclass/version2/commit/667577495efaa36a10cbb5d6cb8c942c23913848) | **Current** | [Windows full gate and bounded preservation](docs/validation/x86/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md); [integration](docs/validation/arm64/blend4-integration-2026-11-19.md). Full gate remains failed/incomplete; this does not claim an x86 tuning gain. |
+| 9 September 2026 | 2.02.04 | [`6675774`](https://github.com/vectorclass/version2/commit/667577495efaa36a10cbb5d6cb8c942c23913848) | **Current** | [Latest Windows native validation](docs/validation/x86/windows-x86-validation-2026-11-22.md); [integration](docs/validation/arm64/blend4-integration-2026-11-19.md). Full gate remains failed/incomplete; this does not claim an x86 tuning gain. |
 
 Current provenance:
 

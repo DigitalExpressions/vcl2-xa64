@@ -34,8 +34,8 @@ The [21 November M2 report](mac-arm-validation-2026-11-21.md) supplies the later
 full native checkpoint at clean commit `dc802e466663d61d9e219bd7c7351aa8ac312204`.
 These are separate tested identities; documentation publication inherits no pass.
 
-The [Windows return](../x86/windows-blend4-handoff-2026-11-19/results/windows-amd-2026-11-19-blend4.md)
-retains **5,387 passed, 249 failed, 76 not run of 5,712, plus twelve passing
+The 19 November Windows collection recorded **5,387 passed, 249 failed,
+76 not run of 5,712, plus twelve passing
 examples; failed/incomplete**. Its 96 isolated regression instances and 96
 selected code comparisons are bounded preservation evidence, not universal
 correctness or cross-host parity. Later Windows collections remain separately

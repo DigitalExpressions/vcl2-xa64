@@ -1,0 +1,302 @@
+[
+  {
+    "path": "CMakeLists.txt",
+    "sha256": "15617c1039af78df7b03e6dc2585e78c436fc513516c303fb0a6f05600bbfa47"
+  },
+  {
+    "path": "tests/CMakeLists.txt",
+    "sha256": "85ccce5592d766cceb95501cae02752feae149766edf5a345c245c435c592579"
+  },
+  {
+    "path": "tests/README.md",
+    "sha256": "fc2ceb7d8f7364cebe0593cea723cec84cab926faa6dfc37dadcb47e70dba7dc"
+  },
+  {
+    "path": "tests/adapt_upstream_oracles.py",
+    "sha256": "a6ad82da6dbf82575cecf881c2def6747bb25f798cb7d73e56b0a77f2f27f065"
+  },
+  {
+    "path": "tests/boundary_regression.h",
+    "sha256": "a887a711408fc4425149602b082e696c826e1a18b0874738da997d9046a26b43"
+  },
+  {
+    "path": "tests/class_contracts.cpp",
+    "sha256": "6a34022005522eabd540c0668a26877776f96c862f1c27c3213b231cd7e7e83b"
+  },
+  {
+    "path": "tests/class_contracts_abi.cpp",
+    "sha256": "b53ecf8aff578d81d733ee231c2a58edf63de741f06acbef87b0bbfa913d1778"
+  },
+  {
+    "path": "tests/configuration.py",
+    "sha256": "ec97feb315b7fdb163c709c8e6ea264c5b5399d5a9298a7413f962e9a6f01c13"
+  },
+  {
+    "path": "tests/core.cpp",
+    "sha256": "814426c33e290a4ffcea5966235783da929f5ad31378f7b8c9440783a28c6ff4"
+  },
+  {
+    "path": "tests/cross_platform/CMakeLists.txt",
+    "sha256": "d5557e3051b736aeaac590c7eb9e6ad171ca45510022a704fcc6140378ee68aa"
+  },
+  {
+    "path": "tests/cross_platform/capture.cpp",
+    "sha256": "1134e3f2eb6d73a1b3b9e584e64cbb0446723344545a5c18fea25525b4374352"
+  },
+  {
+    "path": "tests/cross_platform/corpus.jsonl",
+    "sha256": "0e18a9aecb2b15b31b1ff0aeaa61e1d8f91867df675900114c6ecbf3e385946c"
+  },
+  {
+    "path": "tests/cross_platform/policies.json",
+    "sha256": "610be76973950ba9eea1c3779ccdb4397e4c82fe4bf2e73f3226039edf152fd3"
+  },
+  {
+    "path": "tests/dispatch1_neon.cpp",
+    "sha256": "41658e4505793b99ffa23ddb33355a9ae387070ab3024154fa3a95d006808012"
+  },
+  {
+    "path": "tests/dispatch2_neon.cpp",
+    "sha256": "3cc19068a1c756b75ae2b2d63ebbf1f6d984a025c79d42eb3af8086f9ec4eb19"
+  },
+  {
+    "path": "tests/edges.cpp",
+    "sha256": "28d65148962c6130eaa3253d2657e3d412bc55e612160e383817ec59e47481e0"
+  },
+  {
+    "path": "tests/exp_log.cpp",
+    "sha256": "394dd41eb1d9d05c0efd6f6bb6d1269ac1609916a46faf2c3054ce81ff9a7bd8"
+  },
+  {
+    "path": "tests/exp_log_reference.h",
+    "sha256": "fc5eec6a8423915f693e3be925a9a73ecddf8464dbfc37984b6ef4eb914b6b06"
+  },
+  {
+    "path": "tests/fp_classification.cpp",
+    "sha256": "2a12b122f9dc000dec9286d3380a64929c6f1d12362037c7303ffb0d34a18910"
+  },
+  {
+    "path": "tests/fp_helpers.cpp",
+    "sha256": "97d4ca5daaa113ed2cf9dee5c76dc878b3b2ac49c4d106f4a9e52a4dc968b3cc"
+  },
+  {
+    "path": "tests/fp_helpers_abi.cpp",
+    "sha256": "32943773d285bc59c4c059b713649abddfe54d3ab9ba17914fc1a5de795ed2bb"
+  },
+  {
+    "path": "tests/fp_partial.cpp",
+    "sha256": "f9c493f572120215dd6731c97c645f04be52e8b5d00e339c7ff3fef49a9c4cdd"
+  },
+  {
+    "path": "tests/fp_reduction.cpp",
+    "sha256": "f5377e004de20cc6b3ff939af77caa76a09f7dd2d5cfd7c795ab84f30d64a15b"
+  },
+  {
+    "path": "tests/generate_exp_log_reference.py",
+    "sha256": "f21381e867c56404e9906ad1482ced533a5d950dc6f3a194759e89afe6c2ded8"
+  },
+  {
+    "path": "tests/generate_hyperbolic_reference.py",
+    "sha256": "fffe434e9f825616be0319e88397d0764074e58597a35af30a828bbd6dd52011"
+  },
+  {
+    "path": "tests/generate_inverse_pi_reference.py",
+    "sha256": "ae03f0df1ef648777fa041538d11507eff47297bf043c0c8b4ec2e366cf849d8"
+  },
+  {
+    "path": "tests/generate_power_roots_reference.py",
+    "sha256": "bfd013d4662aef0f76a8296725ea88897cc6daa848df4ab368e7f6504d26cd83"
+  },
+  {
+    "path": "tests/generate_trig_reference.py",
+    "sha256": "9c3cb66f3813235ad73303787f10f00ba8fcaa5f0ed578a6404d3276991108ed"
+  },
+  {
+    "path": "tests/generate_upstream_x86_reference.py",
+    "sha256": "ee957c68be6ece90a74ed6f2c935665a101903b3e485edc473754c8924647a7f"
+  },
+  {
+    "path": "tests/hyperbolic.cpp",
+    "sha256": "05caf43b9cff48a2d455b96442126367d72d354c5a32fbd58b08c67df7c2d0bb"
+  },
+  {
+    "path": "tests/hyperbolic_reference.h",
+    "sha256": "1e636d8f3e72c460ffe7926b12f7f5449d54e34027bb7a6b5b6c5a8b1580c0e1"
+  },
+  {
+    "path": "tests/integer_slice.cpp",
+    "sha256": "4676096e2239c9d54debc948c674c7116490a0c15e74b2217003a78902c35034"
+  },
+  {
+    "path": "tests/integer_slice_abi.cpp",
+    "sha256": "fc6067fb708b31936fafe8507e647161eb8c968669e985539a7e75c7e25e620d"
+  },
+  {
+    "path": "tests/inverse_pi.cpp",
+    "sha256": "6d78d4e42cb4469350dc0acb08804f2b4aacbf9a26dbe895f048a8f9a06c66cc"
+  },
+  {
+    "path": "tests/inverse_pi_reference.h",
+    "sha256": "e65f3e6a919d3c78a8e9cddfeed95989c97146245132b8906cccf06b52401954"
+  },
+  {
+    "path": "tests/movement_slice.cpp",
+    "sha256": "7ee48af6fa40cd0b52c5a5be979bdaed0632833ab8500128be69ce1162373f25"
+  },
+  {
+    "path": "tests/power_roots.cpp",
+    "sha256": "8713dfaf6cfbad26675c31b77d29d193b833c438104f0b7dca75e516e43bdf82"
+  },
+  {
+    "path": "tests/power_roots_reference.h",
+    "sha256": "2717e907603e536a23a133cb8ca7f3c4b874f78bfa7ad038ea2f5861677579c3"
+  },
+  {
+    "path": "tests/protected_memory.h",
+    "sha256": "7675a08368457a76b4b199f084ec85ce0eb9d2dbd2f57bdabc6fa64484e2512a"
+  },
+  {
+    "path": "tests/scalar_bits.h",
+    "sha256": "3345d979fe7bf5d752d0270c69fb8f924d2fc2c432af933056965cc992cc1ad5"
+  },
+  {
+    "path": "tests/trig.cpp",
+    "sha256": "7175d60c9b3b08cbbb605a20c881ca5119be053a2392ff05bc48be815249e7b5"
+  },
+  {
+    "path": "tests/trig_reference.h",
+    "sha256": "05f9a22557d0256a147f3c7540b9f43fac23f5d12ff3951ba4fbe0d6b5c030e0"
+  },
+  {
+    "path": "tests/truncate_i64_regression.h",
+    "sha256": "a21a7ced4554c0433a5c89f4a83626136e76c78f1fd55cd91b24fdac098455b5"
+  },
+  {
+    "path": "tests/upstream_scalar_oracle.h",
+    "sha256": "ce093b9eaa894f5e7bfe57bb27a8efea55e9d6a4efe4a5535b9ca50298157df1"
+  },
+  {
+    "path": "tests/upstream_x86_reference.h",
+    "sha256": "91f4f72be3c1511fa476f878802de990ea7d3edf3ba8b50ab34dc63575deb432"
+  },
+  {
+    "path": "tests/upstream_x86_reference_data.h",
+    "sha256": "7121747abc9fcf1011862e0888d5cf749ba767c735403b7fb309c801c9bfb9bb"
+  },
+  {
+    "path": "tests/vector_arithmetic.cpp",
+    "sha256": "fcd4b0bb8e3ef6aaa96e0d8015b40049523168114e5d9260a9c7f79b12e1ad82"
+  },
+  {
+    "path": "tests/wide_composition.cpp",
+    "sha256": "492e54752d9fcc3dd4e41d0c678b854da31a0c4e1a4166a127905339e086a023"
+  },
+  {
+    "path": "tests/wide_composition_abi.cpp",
+    "sha256": "162abbb8b49a5645dd04e41f413ddfa9b373136eea851d0283486ff5e731e221"
+  },
+  {
+    "path": "tests/wide_types.h",
+    "sha256": "ef04b071b5fdb9554988d3a5bc1641a4f9d2616cf98c2fc72767ba7caedcb946"
+  },
+  {
+    "path": "tools/capture_source.py",
+    "sha256": "74ebde5613c34654ff76618bcbc4d5d92aa62117eacc44003fbe40d904891cdc"
+  },
+  {
+    "path": "tools/check_arm_include_layout.py",
+    "sha256": "638963f7c06d60cac02e6f41f0267c3eba48aa7543239910aff88441a7eb5eda"
+  },
+  {
+    "path": "tools/check_header_generation.py",
+    "sha256": "e1db5ca3859143fbdaef0c9785eee1df3557063733042b41bc33dc7eaeb0be39"
+  },
+  {
+    "path": "tools/check_repository.py",
+    "sha256": "c8d61f5a03184241b88b380f48b7a38712d4e1108610459259937df7a21eedac"
+  },
+  {
+    "path": "tools/check_simd_comparison.py",
+    "sha256": "e97ee5c79ee8981524f5b2270314d7e8c8b5d09ef491a92b6aac9905a54085d2"
+  },
+  {
+    "path": "tools/check_source_capture.py",
+    "sha256": "132e3428bb119ffd7121e634d190e10e84d68fb5d520bfdc4cfaaad2f4924a94"
+  },
+  {
+    "path": "tools/check_upstream_vcl_restore.py",
+    "sha256": "e562dace85158249aa21ef3aaf3fd44144fbbee74d1ec63888540e1128774c7f"
+  },
+  {
+    "path": "tools/check_windows_test_profiles.py",
+    "sha256": "9969457acc6135dc6e7d6dfafe370200b91b6e5cd4c639d6ae4ad3c1f3fd8dac"
+  },
+  {
+    "path": "tools/check_x86_upstream_edges.py",
+    "sha256": "1fe4cc1e8f30bd506cd34d2011a1bc6adbb65b59115c4369a8838b68bfda3e7d"
+  },
+  {
+    "path": "tools/cmake/WindowsTestProfiles.cmake",
+    "sha256": "b4682214197fb82324d07a1c4dedb62840e100b0db9f4f24b4216f5acb814118"
+  },
+  {
+    "path": "tools/compare_simd_results.py",
+    "sha256": "d1cb37b63bf56c49e75143ce192de3289381e219b4fc7a5505bde32cb719d119"
+  },
+  {
+    "path": "tools/fetch_testbench.sh",
+    "sha256": "ae7fcae1f8663000fba42c10c2e858d96618c40e0da28cfa77ad47168a9f94a2"
+  },
+  {
+    "path": "tools/format_benchmarks.py",
+    "sha256": "2ef84f132c3353043832be11032f6acc03eb95b22145b471d2d88550789bf3e1"
+  },
+  {
+    "path": "tools/regenerate_headers.py",
+    "sha256": "fadd9fc28bf51e414824bcd985033ec0952ffa010a68a73e75d37cbb303fe06f"
+  },
+  {
+    "path": "tools/restore_upstream_vcl.py",
+    "sha256": "fc71b62ff1775e3ac805854084c1a51fe98bc5c1a7194ba574ff2ccba56f92f9"
+  },
+  {
+    "path": "tools/run_native_arm_validation.py",
+    "sha256": "41268373eda2393f467b1279f9a5674b0a15bd857cceca14933befb91cd4231f"
+  },
+  {
+    "path": "tools/run_simd_capture.py",
+    "sha256": "dbc15abdc1df14ddd0c2d8783942f9cc7de0f2486908bffaf71a26c1f2ec97ad"
+  },
+  {
+    "path": "tools/run_windows_validation.ps1",
+    "sha256": "b150ee1442d1323f90077f255496c8166693c5097150f8b087aa2fa96693303f"
+  },
+  {
+    "path": "tools/run_windows_validation.py",
+    "sha256": "3fbe278cb493417015a8ca4ddaeafc5e5f976eab23ac35a235d8538cac77bf0e"
+  },
+  {
+    "path": "tools/run_x86_candidate_comparison.py",
+    "sha256": "88b3132a91bba7a63a66522ac99cbbea0bfab6ee042f2b207c66e0b7004d99b5"
+  },
+  {
+    "path": "tools/run_x86_upstream_comparison.ps1",
+    "sha256": "1dfd763e556d1aa5e27d4ca9c427b2c954c0dc115c2d3ea1096a0ae01b4de3ec"
+  },
+  {
+    "path": "tools/run_x86_upstream_comparison.py",
+    "sha256": "1b55592646172ce0f3aba72f6adcf5c22b9904f86b0605c635fe852336d2feb3"
+  },
+  {
+    "path": "tools/simd_corpus.py",
+    "sha256": "09bde39d96f1621b4f65e80489506ba4743d9f35e35514a72317e2af27005263"
+  },
+  {
+    "path": "tools/validation_evidence.py",
+    "sha256": "0d0fc8b8f70a42da3d2f038513dfbe2b35c9dd52c1fbbe2aa23797fd5181df30"
+  },
+  {
+    "path": "tools/windows_test_profiles.py",
+    "sha256": "2e3d5e697408e04524fd5703227c5f8c4e7d214686b418d8225b45de7c6468de"
+  }
+]

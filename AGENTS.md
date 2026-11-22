@@ -180,6 +180,12 @@ on a particular machine; its absence must not prevent a fresh setup.
 - New runtime/test/runner changes require fresh relevant checks and the full
   baseline matrix at a new frozen source. Documentation-only changes need
   repository/link/whitespace checks. Do not weaken gates after observing failures.
+- Name published validation and benchmark reports by purpose and ISO report date.
+  Give each evidence bundle the same stem as the report it primarily supports.
+  Add a descriptive suffix only to distinguish multiple collections on the same
+  date. Keep reset procedures, session IDs, timestamps and attempt counters inside
+  reports and metadata, or in ignored build paths. Preserve historical published
+  names unless the maintainer explicitly requests a rename.
 - Cleanup, commit, push, merge, release and branch retirement need task-specific
   approval. Do not archive or compact information under `build/` unless absolutely
   necessary to preserve required unique evidence. Reuse existing archives and
@@ -238,8 +244,8 @@ on a particular machine; its absence must not prevent a fresh setup.
   Release or `strict-ubsan` Clang Debug separately. Direct CMake keeps its portable
   strict default. MSVC Debug/RTC is deferred and rejected until noninteractive
   reporting is implemented and validated. Preserve numerical gates and protected
-  original bytes. Exact source/results are recorded in
-  `docs/validation/x86/windows-x86-harness-integration-2026-11-20.md`.
+  original bytes. Current native Windows source/results are recorded in
+  `docs/validation/x86/windows-x86-validation-2026-11-22.md`.
 
 - Use native x64 Windows on the AMD host, an x64 Visual Studio developer shell,
   Python 3.9+, CMake, CTest and Ninja. Prioritize MSVC and also use native x64

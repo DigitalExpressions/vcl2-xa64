@@ -5,6 +5,19 @@ observed value. Use the [workflow](native-workflow.md) for execution and update
 the [status index](README.md) after reviewing the result. Do not label an
 unexecuted profile as passing. Keep historical reports unchanged.
 
+## Published report names
+
+Use the report's purpose and ISO date in its filename, for example
+`windows-x86-validation-YYYY-MM-DD.md`. Give its primary evidence folder the same
+stem: `windows-x86-validation-YYYY-MM-DD/`. Link to shared evidence from other
+reports rather than duplicating it.
+
+Add a descriptive suffix only when multiple collections have the same purpose
+and date. Keep reset details, session IDs, timestamps and attempt counters inside
+the report or its metadata, and retain original raw artifact names under ignored
+`build/`. Never overwrite an earlier collection. Existing published report paths
+remain stable unless the maintainer explicitly requests a rename.
+
 ## Outcome and tested source
 
 - Date and report status: `<passed / passed after retry / failed / incomplete>`.

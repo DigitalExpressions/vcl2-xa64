@@ -1,0 +1,78 @@
+{
+  "status": "Applied to working tree with explicit maintainer authorization; uncommitted",
+  "source_commit": "08f2d2903d9bfdfdb22aa187329e99ce0f44d177",
+  "source_fingerprint": "15989d633301114dd66508b631cc9d82e516010833d707e96689d41b4c88d346",
+  "raw_report_root": "build/xr21-2211",
+  "report_draft_sha256": "8f8fcbffb1eaf8756e4fbb627bdd917abf7c833df8a4dfe0a4ab2756ef8ae75f",
+  "portable_redactions": "Checkout prefixes and absolute Windows paths replaced in portable copies only; raw originals retained unchanged",
+  "prior_document_identities": [
+    {
+      "path": "docs/validation/x86/windows-x86-validation-2026-11-21.md",
+      "original_sha256": "aa233503315737b2d0712a90605d1d89cddf8e8c11f8654ed0ad2cdd2340cfe7",
+      "draft_sha256": "a2454295b424de8f2c4712be728d4f197e8e25ab8c1e625671e0274cbbff8a75"
+    },
+    {
+      "path": "docs/validation/x86/windows-x86-harness-integration-2026-11-20.md",
+      "original_sha256": "70ae238ca496dd5fd48b911002965e0a2578ea489aee8b26756ab45e458d011b",
+      "draft_sha256": "1391a26757952021caa5692ac7d3868dfd63e17dd5d71bcb3a0bd9fee3b543f3"
+    },
+    {
+      "path": "docs/validation/x86/README.md",
+      "original_sha256": "34da39b82ced725425c25250c48dfabe88d14ca3821f5f3a67c5924218727f8f",
+      "draft_sha256": "1f038e21d00fd5e8f224df00533218eb3f43833643494637a3ef06fa28b65353"
+    },
+    {
+      "path": "docs/validation/README.md",
+      "original_sha256": "a2eb45b0b8407b863ff2afdde7c90c825c39cd47e7c8c9fbd4a7b91a0e96e255",
+      "draft_sha256": "77ca2162b09fe052aa5a26a1c9d3c182139a42fd724f833ed9d65bcaeeda7855"
+    },
+    {
+      "path": "docs/integration-plan.md",
+      "original_sha256": "29f9ac633b7f353337b5b9497cd67ddae505599f76335d2cc18ba934644f4153",
+      "draft_sha256": "b2ea6e40d800090a677108f76f8ed0f2690a292476ce567377e3fbc8523038bd"
+    },
+    {
+      "path": "README.md",
+      "original_sha256": "3e5f45e37390c1c03f347bb89426bdd9e007ec1438f7c795546710b019e1d1c8",
+      "draft_sha256": "c0aedf369c63dde92bad00eb791a0d9c0c6693ce6ea78c24f07df24df4cdb06a"
+    },
+    {
+      "path": "docs/benchmarks/README.md",
+      "original_sha256": "ef3d0be78e1be1793ec0180076da916361f15d45d4d3219e94b137c70643163f",
+      "draft_sha256": "c9555d3eba9d93475d9496689ac6394968f24643191ec517bb883d4a959fa287"
+    },
+    {
+      "path": "benchmarks/README.md",
+      "original_sha256": "a05819e0d0b652a72a6d06f1ad76255fac43f8e982c5beaea87540d79a78718a",
+      "draft_sha256": "449eebb27deb9b8e85c360c8e39d6a5a69ff599c8c27e271ec1de562ce03ea10"
+    },
+    {
+      "path": ".gitattributes",
+      "original_sha256": "4c3ea4b70c0a7a203719ca086745370265ca54012814123051f63dca47d1f98b",
+      "draft_sha256": "d36fdce21a9f8e20e8bd89f35d80323d398ca467e3534b11ace6b09f04775604"
+    }
+  ],
+  "raw_evidence": "Retained directly without new compaction archive; original runner packets and benchmark runner archive are separately identified",
+  "historical_payloads": "Discarded by explicit reset authorization; published hashes are identities, not recoverable payloads",
+  "publication_base_commit": "88c48689f1ec4d6fa665df6a9c6b41a3d064bb0a",
+  "publication_base_tree": "9386da28864fb87bedd46e51d41c043a3b81ab64",
+  "publication_base_working_fingerprint": "ad9701668903831c8217c8fa0e9fc808a3701d32fa82d2586be15d5021048d2b",
+  "source_reconciliation": "docs/validation/x86/windows-x86-validation-2026-11-22/source-reconciliation.json",
+  "reconciliation_sha256": "d002b8adbc81d4927fcb25b934bfa0286d706331162f1af07b736dffc5953b8c",
+  "native_execution_rerun": false,
+  "tested_source_relabelled": false,
+  "authorization": "Approve the listed documentation changes",
+  "applied_utc": "2026-11-21T23:19:17.922956+00:00",
+  "applied_report_sha256": "8f8fcbffb1eaf8756e4fbb627bdd917abf7c833df8a4dfe0a4ab2756ef8ae75f",
+  "approved_manifest_sha256": "f6a1331e8dcbcfa9136e03905d663cdca35643c0dd54b9842e96ef067a925c19",
+  "commit": false,
+  "push": false,
+  "documentation_update": {
+    "reason": "Use purpose and report date in published filenames, with matching evidence-folder stems",
+    "report_path": "docs/benchmarks/x86/x86-upstream-2026-11-22.md",
+    "report_sha256": "5498dc2b95b25826230114a0c4d2ff417dad1ddb1a3cecd58c8d0b0f74a5c777",
+    "tested_source_and_results_unchanged": true,
+    "raw_artifact_paths_and_session_ids_unchanged": true,
+    "updated_utc": "2026-11-21T23:51:51.840298+00:00"
+  }
+}

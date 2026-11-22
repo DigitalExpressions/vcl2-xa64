@@ -40,3 +40,7 @@ compiler session does not refresh those timings.
 For new tests, keep baseline/control reports and standalone baseline datasets
 under ignored `build/`; publish the selected implementation's report and results
 using the architecture publication checklist. Keep all slower rows and variability.
+
+## Fresh native x86 comparison — 2026-11-22
+
+The [reset-session report](x86/x86-upstream-2026-11-22.md) records the selected current fork against pinned original VCL, separate from the failed/incomplete correctness matrix. Use its actual completion status and retained gaps; historical timings are not substituted.

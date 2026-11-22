@@ -24,11 +24,10 @@ selects `strict-ubsan`. Python `--profile`, PowerShell `-Profile` and CMake
 `strict-validation` as its portable default, so Release alone does not select
 the optimized test policy. Use the profile option rather than global flag
 overrides. MSVC Debug/RTC requests are rejected before test execution.
-See the [integration/validation record](validation/x86/windows-x86-harness-integration-2026-11-20.md)
-for the exact integrated capture and actual results, and the
-[Windows runner guide](validation/x86/windows-runner.md) for controls and evidence.
-The latest [21 November native report](validation/x86/windows-x86-validation-2026-11-21.md)
-records the subsequent clean-source collection and compiler/profile/ISA table;
+Use the [Windows runner guide](validation/x86/windows-runner.md)
+for current profiles, controls and evidence.
+The latest [22 November native report](validation/x86/windows-x86-validation-2026-11-22.md)
+records the clean-source reset collection at `08f2d29` and its compiler/profile/ISA table;
 its correctness gate remains failed/incomplete.
 The [earlier harness validation](https://github.com/DigitalExpressions/vcl2-xa64/blob/e55c54a7fbf4f6c0c1eb5ed30153f6b569650072/docs/validation/windows-upstream-optimized-2026-11-20.md)
 retains its own frozen source identity; it is not a new pass assigned to master.
@@ -40,9 +39,10 @@ Python 3.9+, CMake 3.20+, CTest with JUnit and Ninja. Inspect installed tools
 before installing anything. Set `$nativeClang` to an inspected GNU-style
 `clang++` executable reporting a Windows MSVC-ABI x64 target. Do not substitute
 clang-cl, WSL or emulation. Machine-specific paths belong under ignored build.
-Keep Windows source/build paths short. The integration record retains an ABI
-probe failure caused by a deeply nested path; a shorter byte-identical frozen
-copy resolved setup without source, flag or test changes.
+Keep Windows source/build paths short. During the 20 November integration, a
+deeply nested path caused a CMake ABI probe failure; a shorter byte-identical
+frozen copy resolved setup without source, flag or test changes. That historical
+setup record remains in Git history with the retired integration report.
 
 Include `#include "vcl2_xa64.h"`. It forwards to Agner's original x86 headers;
 ARM headers must not enter the compiled x86 include graph. Preserve all 28

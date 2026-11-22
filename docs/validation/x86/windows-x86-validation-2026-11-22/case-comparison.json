@@ -1,0 +1,80 @@
+{
+  "previous": "20 November separately identified collection; 21 November report records matching statuses",
+  "current": "08f2d2903d9bfdfdb22aa187329e99ce0f44d177",
+  "compared": 7140,
+  "inventory_differences": [],
+  "status_changes": [
+    {
+      "configuration": [
+        "msvc",
+        "upstream-optimized",
+        "avx2"
+      ],
+      "name": "fp_helpers_signed_zero",
+      "previous": "failed",
+      "current": "passed",
+      "previous_timeout": false,
+      "current_timeout": false
+    },
+    {
+      "configuration": [
+        "msvc",
+        "upstream-optimized",
+        "avx2"
+      ],
+      "name": "fp_helpers_namespace",
+      "previous": "passed",
+      "current": "failed",
+      "previous_timeout": false,
+      "current_timeout": false
+    },
+    {
+      "configuration": [
+        "msvc",
+        "upstream-optimized",
+        "avx2"
+      ],
+      "name": "fp_helpers",
+      "previous": "passed",
+      "current": "failed",
+      "previous_timeout": false,
+      "current_timeout": false
+    },
+    {
+      "configuration": [
+        "msvc",
+        "strict-validation",
+        "avx2"
+      ],
+      "name": "fp_helpers_signed_zero",
+      "previous": "failed",
+      "current": "passed",
+      "previous_timeout": false,
+      "current_timeout": false
+    },
+    {
+      "configuration": [
+        "msvc",
+        "strict-validation",
+        "avx2"
+      ],
+      "name": "fp_helpers_namespace",
+      "previous": "passed",
+      "current": "failed",
+      "previous_timeout": false,
+      "current_timeout": false
+    },
+    {
+      "configuration": [
+        "msvc",
+        "strict-validation",
+        "avx2"
+      ],
+      "name": "fp_helpers",
+      "previous": "passed",
+      "current": "failed",
+      "previous_timeout": false,
+      "current_timeout": false
+    }
+  ]
+}

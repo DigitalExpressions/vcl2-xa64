@@ -74,8 +74,6 @@ benchmarks/**/*.h text eol=lf
 /vectormath_exp_neon.h whitespace=-blank-at-eol
 /vectormath_trig_neon.h whitespace=-blank-at-eol
 
-# Exact portable evidence and Git validation resources for the four-blend candidate.
-docs/validation/x86/windows-blend4-handoff-2026-11-19/** -text
 # Nested measured CSV files keep their recorded CRLF bytes.
 docs/benchmarks/arm64/standard-math-blend4-2026-11-19/*/results.csv whitespace=cr-at-eol
 # Exact dated report and nested CSV bytes from the current-master M2 session.
@@ -83,5 +81,8 @@ docs/benchmarks/arm64/STANDARD_MATH_RESULTS_2026-11-21.md -text
 docs/validation/arm64/mac-arm-validation-2026-11-21.md -text
 docs/benchmarks/arm64/standard-math-master-2026-11-21/*/results.csv whitespace=cr-at-eol
 
-# Exact integrated Windows x86 evidence from 20 November.
-docs/validation/x86/windows-x86-harness-integration-2026-11-20/** -text whitespace=cr-at-eol
+# Exact dated Windows reports and portable evidence.
+/docs/validation/x86/windows-x86-validation-2026-11-22.md -text whitespace=cr-at-eol
+/docs/validation/x86/windows-x86-validation-2026-11-22/** -text whitespace=cr-at-eol
+/docs/benchmarks/x86/x86-upstream-2026-11-22.md -text whitespace=cr-at-eol
+/docs/benchmarks/x86/x86-upstream-2026-11-22/** -text whitespace=cr-at-eol

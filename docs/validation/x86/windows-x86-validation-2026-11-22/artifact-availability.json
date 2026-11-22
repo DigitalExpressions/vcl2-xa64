@@ -1,0 +1,15 @@
+{
+  "deleted_files": 34909,
+  "deleted_bytes": 2979775880,
+  "old_payloads": "All inventoried prior local build payloads discarded. No replacement old-build archive created.",
+  "historical_sources": [
+    "build/x86v21-01-raw.zip",
+    "build/x86v21-01/source.zip",
+    "build/ui20-01-raw-2026-11-20.zip",
+    "build/uo20-01-raw-2026-11-20.zip",
+    "build/b4w19-01/",
+    "build/b4i19-01/"
+  ],
+  "fresh_evidence": "build/xr21-2211 plus its associated native-runner and profile-control directories",
+  "other_hosts": "Not contacted or modified"
+}

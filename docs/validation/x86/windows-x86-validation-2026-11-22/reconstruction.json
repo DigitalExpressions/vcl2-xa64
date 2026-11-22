@@ -1,0 +1,16 @@
+{
+  "utc": "2026-11-21T22:17:39.519778+00:00",
+  "source_count": 303,
+  "source_fingerprint": "15989d633301114dd66508b631cc9d82e516010833d707e96689d41b4c88d346",
+  "source_archive_sha256": "31ac410a27dc45c6ed86fb1d99fbb26ef857f7b07c75af644ab7082633621003",
+  "source_archive_crc_and_entries_verified": true,
+  "post_reset_source_unchanged": true,
+  "dependency": "build/_deps/testbench",
+  "dependency_revision": "a7293702385e5169a5f58b83177f2a43cd59139b",
+  "hashes": {
+    "testbench1.cpp": "7411fc27af1055744c7e8b8b4fe64b52859b561dab0f48b9b0278413c71aea27",
+    "testbench2.cpp": "6a23124de4495368bb1e343569f7c1c8cbf7c29f5ab0c0c729e9c068fb8c2a5b",
+    "testbench3.cpp": "51964802a6789e230ce2fc2ed23e6adbc9ef5153815246b4cbc09a735d2ffc49"
+  },
+  "pre_reset_receipt": "pre-reset/pre-reset-receipt.json"
+}

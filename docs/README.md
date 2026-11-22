@@ -11,7 +11,7 @@ failed/incomplete. Earlier execution handoffs do not authorize new work.
 | x86 compilation with MSVC/Clang and test-profile availability | [x86 build and test instructions](x86-build-and-test.md) |
 | Current validation and coverage gaps | [Validation index](validation/README.md) |
 | Latest retained native M2 correctness | [21 November M2 report](validation/arm64/mac-arm-validation-2026-11-21.md) |
-| Latest retained native AMD Windows correctness | [21 November Windows report](validation/x86/windows-x86-validation-2026-11-21.md) |
+| Latest retained native AMD Windows correctness | [22 November Windows report](validation/x86/windows-x86-validation-2026-11-22.md) |
 | Performance tradeoffs and final decision | [TRS decision](validation/arm64/trs-inverse-decision-2026-11-20.md) |
 | Why older Windows x86 documentation was removed or kept | [Windows documentation cleanup](validation/README.md#windows-documentation-cleanup) |
 | Architecture boundaries and protected originals | [Backend layout](backend-layout.md) |

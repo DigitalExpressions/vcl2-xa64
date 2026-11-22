@@ -1,0 +1,124 @@
+{
+  "native_host": {
+    "native_machine": "0x8664",
+    "process_machine": "0x0",
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
+  },
+  "physical_host": {
+    "Manufacturer": "ASUS",
+    "Model": "System Product Name",
+    "SystemType": "x64-based PC",
+    "HypervisorPresent": true
+  },
+  "host_details": {
+    "cpu": {
+      "Name": "AMD Ryzen 9 7950X 16-Core Processor            ",
+      "Manufacturer": "AuthenticAMD",
+      "Architecture": 9,
+      "NumberOfCores": 16,
+      "NumberOfLogicalProcessors": 32
+    },
+    "disk": [
+      {
+        "Name": "C",
+        "Used": 344381448192,
+        "Free": 1654856617984
+      },
+      {
+        "Name": "D",
+        "Used": 1104036204544,
+        "Free": 2896733167616
+      },
+      {
+        "Name": "F",
+        "Used": 2048,
+        "Free": 2048
+      },
+      {
+        "Name": "G",
+        "Used": 0,
+        "Free": null
+      },
+      {
+        "Name": "T",
+        "Used": 1104036204544,
+        "Free": 2896733167616
+      }
+    ],
+    "os": {
+      "Caption": "Microsoft Windows 11 Pro",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200",
+      "OSArchitecture": "64-bit",
+      "LocalDateTime": "/Date(1795299219527)/"
+    }
+  },
+  "tools": {
+    "python": {
+      "path": "<local-path>",
+      "sha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec"
+    },
+    "cmake": {
+      "path": "<local-path> Files\\CMake\\bin\\cmake.EXE",
+      "sha256": "083a412e9a21430da453bcd9713ffa5589ea1c677cc4d5f58f9a0b55fab1f546"
+    },
+    "ctest": {
+      "path": "<local-path> Files\\CMake\\bin\\ctest.EXE",
+      "sha256": "0c629f6e2753a63eb84ceaae6fc4b887d3181e706c36a6ca7b872d9c90716be3"
+    },
+    "ninja": {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.EXE",
+      "sha256": "5020138b3757035df9dca9a2243624d5810ffa6ae24444bd95f752cbd1b89123"
+    },
+    "cl": {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.EXE",
+      "sha256": "a560c2e6d5c3c30bf563ba5285576e9423f18d44165e1398539d912866a4daab"
+    },
+    "git": {
+      "path": "<local-path> Files\\Git\\cmd\\git.EXE",
+      "sha256": "3cbd024d9d11ef08bd6a0cb5a973613c50825b4952bc6006f3f4222f436091e5"
+    },
+    "clang": {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe",
+      "sha256": "5bf118f86bd5e8489f48496f9b18e4c30fc612b2b381545aa17a6473f02bc776"
+    },
+    "objdump": {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\bin\\llvm-objdump.exe",
+      "sha256": "f3eb0943b7027b489546c0f71313f9fe02b16d88c080dc4f59cfcd463bc0717a"
+    },
+    "developer_environment": {
+      "VSCMD_ARG_HOST_ARCH": "x64",
+      "VSCMD_ARG_TGT_ARCH": "x64",
+      "VCToolsVersion": "14.50.35717",
+      "WindowsSDKVersion": "10.0.26100.0\\",
+      "WindowsSdkDir": "<local-path> Files (x86)\\Windows Kits\\10\\",
+      "VCToolsInstallDir": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\"
+    }
+  },
+  "sanitizer_runtimes": [
+    {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\lib\\clang\\20\\lib\\windows\\clang_rt.ubsan_standalone-x86_64.lib",
+      "sha256": "771289da28212d000a14e8924fa261c814d0fcdd1339ec32e2f7799a7e21387a"
+    },
+    {
+      "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\lib\\clang\\20\\lib\\windows\\clang_rt.ubsan_standalone_cxx-x86_64.lib",
+      "sha256": "2ff420657f36bdc4fcb285ca94af3c9da4b2c9e0589385e9c3df9050388c2e57"
+    }
+  ],
+  "dependency": {
+    "utc": "2026-11-21T22:17:39.519778+00:00",
+    "source_count": 303,
+    "source_fingerprint": "15989d633301114dd66508b631cc9d82e516010833d707e96689d41b4c88d346",
+    "source_archive_sha256": "31ac410a27dc45c6ed86fb1d99fbb26ef857f7b07c75af644ab7082633621003",
+    "source_archive_crc_and_entries_verified": true,
+    "post_reset_source_unchanged": true,
+    "dependency": "build/_deps/testbench",
+    "dependency_revision": "a7293702385e5169a5f58b83177f2a43cd59139b",
+    "hashes": {
+      "testbench1.cpp": "7411fc27af1055744c7e8b8b4fe64b52859b561dab0f48b9b0278413c71aea27",
+      "testbench2.cpp": "6a23124de4495368bb1e343569f7c1c8cbf7c29f5ab0c0c729e9c068fb8c2a5b",
+      "testbench3.cpp": "51964802a6789e230ce2fc2ed23e6adbc9ef5153815246b4cbc09a735d2ffc49"
+    },
+    "pre_reset_receipt": "pre-reset/pre-reset-receipt.json"
+  }
+}

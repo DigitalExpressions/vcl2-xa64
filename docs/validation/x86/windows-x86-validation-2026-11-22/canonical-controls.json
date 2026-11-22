@@ -1,0 +1,465 @@
+[
+  {
+    "configuration": "windows-native-strict-clang-release-20261121T224146302884Z",
+    "controls": [
+      {
+        "label": "runtime-control",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\runtime.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.901510+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\runtime-control.log",
+        "end_utc": "2026-11-21T22:41:49.935018+00:00"
+      },
+      {
+        "label": "guard-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.938020+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\guard-positive.log",
+        "end_utc": "2026-11-21T22:41:49.969021+00:00"
+      },
+      {
+        "label": "guard-negative-0",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe",
+          "0"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.972518+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\guard-negative-0.log",
+        "end_utc": "2026-11-21T22:41:49.987518+00:00"
+      },
+      {
+        "label": "guard-negative-1",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe",
+          "1"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.988018+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\guard-negative-1.log",
+        "end_utc": "2026-11-21T22:41:49.993019+00:00"
+      },
+      {
+        "label": "guard-negative-2",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe",
+          "2"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.993019+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\guard-negative-2.log",
+        "end_utc": "2026-11-21T22:41:49.997518+00:00"
+      },
+      {
+        "label": "guard-negative-3",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe",
+          "3"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:41:49.997518+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\guard-negative-3.log",
+        "end_utc": "2026-11-21T22:41:50.002021+00:00"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\guard.exe",
+        "sha256": "935f7809cf8f58a24ac9078f8ac3fbef043553742fff0f2259143c5f780afe35",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-strict-clang-release-20261121T224146302884Z\\control-build\\runtime.exe",
+        "sha256": "93b41a84888ff31ae8943b5cb13f9281c35f634226f6883678383749308ff6d3",
+        "pe_machine": "0x8664"
+      }
+    ]
+  },
+  {
+    "configuration": "windows-native-strict-msvc-release-20261121T223320455200Z",
+    "controls": [
+      {
+        "label": "runtime-control",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\runtime.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.017948+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\runtime-control.log",
+        "end_utc": "2026-11-21T22:33:24.036238+00:00"
+      },
+      {
+        "label": "guard-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.039299+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\guard-positive.log",
+        "end_utc": "2026-11-21T22:33:24.059623+00:00"
+      },
+      {
+        "label": "guard-negative-0",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe",
+          "0"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.059623+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\guard-negative-0.log",
+        "end_utc": "2026-11-21T22:33:24.064707+00:00"
+      },
+      {
+        "label": "guard-negative-1",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe",
+          "1"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.064707+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\guard-negative-1.log",
+        "end_utc": "2026-11-21T22:33:24.069805+00:00"
+      },
+      {
+        "label": "guard-negative-2",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe",
+          "2"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.069805+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\guard-negative-2.log",
+        "end_utc": "2026-11-21T22:33:24.074884+00:00"
+      },
+      {
+        "label": "guard-negative-3",
+        "command": [
+          "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe",
+          "3"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:33:24.074884+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\guard-negative-3.log",
+        "end_utc": "2026-11-21T22:33:24.079978+00:00"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\guard.exe",
+        "sha256": "5105664c216f44142f0da862d04b28dc1882fb5be952e0ff0f93a33aac566caf",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-strict-msvc-release-20261121T223320455200Z\\control-build\\runtime.exe",
+        "sha256": "58fa9702acf3e12203447ef761e651afb60cdd903915597a38070dae95c68e57",
+        "pe_machine": "0x8664"
+      }
+    ]
+  },
+  {
+    "configuration": "windows-native-ubsan-clang-debug-20261121T224812207808Z",
+    "controls": [
+      {
+        "label": "runtime-control",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\runtime.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.188207+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\runtime-control.log",
+        "end_utc": "2026-11-21T22:48:16.245723+00:00"
+      },
+      {
+        "label": "guard-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.249722+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\guard-positive.log",
+        "end_utc": "2026-11-21T22:48:16.280224+00:00"
+      },
+      {
+        "label": "guard-negative-0",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe",
+          "0"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.284221+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\guard-negative-0.log",
+        "end_utc": "2026-11-21T22:48:16.288721+00:00"
+      },
+      {
+        "label": "guard-negative-1",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe",
+          "1"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.288721+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\guard-negative-1.log",
+        "end_utc": "2026-11-21T22:48:16.293224+00:00"
+      },
+      {
+        "label": "guard-negative-2",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe",
+          "2"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.293721+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\guard-negative-2.log",
+        "end_utc": "2026-11-21T22:48:16.297721+00:00"
+      },
+      {
+        "label": "guard-negative-3",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe",
+          "3"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.298221+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\guard-negative-3.log",
+        "end_utc": "2026-11-21T22:48:16.302224+00:00"
+      },
+      {
+        "label": "ubsan-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\ubsan.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.327724+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\ubsan-positive.log",
+        "end_utc": "2026-11-21T22:48:16.362874+00:00"
+      },
+      {
+        "label": "ubsan-negative",
+        "command": [
+          "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\ubsan.exe",
+          "trigger"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:48:16.367877+00:00",
+        "exit_code": 1,
+        "log": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\ubsan-negative.log",
+        "end_utc": "2026-11-21T22:48:16.402765+00:00"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\guard.exe",
+        "sha256": "46c93860ca5c337cadd6ddce2d58a2bbb0db30dce1add7a113ffb54517efb386",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\runtime.exe",
+        "sha256": "9191c19b21dfd9980d598421b3513164afcd41d894f43df1b201744ed1c5d3ef",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-ubsan-clang-debug-20261121T224812207808Z\\control-build\\ubsan.exe",
+        "sha256": "e4c4bc04aef68431efca61a6d1648e697421d4f07a8c2e1dcbd7bfb3bbb99002",
+        "pe_machine": "0x8664"
+      }
+    ]
+  },
+  {
+    "configuration": "windows-native-upopt-clang-release-20261121T222657198181Z",
+    "controls": [
+      {
+        "label": "runtime-control",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\runtime.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.788883+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\runtime-control.log",
+        "end_utc": "2026-11-21T22:27:00.823440+00:00"
+      },
+      {
+        "label": "guard-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.824457+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\guard-positive.log",
+        "end_utc": "2026-11-21T22:27:00.855066+00:00"
+      },
+      {
+        "label": "guard-negative-0",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe",
+          "0"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.856087+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\guard-negative-0.log",
+        "end_utc": "2026-11-21T22:27:00.871332+00:00"
+      },
+      {
+        "label": "guard-negative-1",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe",
+          "1"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.872351+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\guard-negative-1.log",
+        "end_utc": "2026-11-21T22:27:00.876432+00:00"
+      },
+      {
+        "label": "guard-negative-2",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe",
+          "2"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.876432+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\guard-negative-2.log",
+        "end_utc": "2026-11-21T22:27:00.881519+00:00"
+      },
+      {
+        "label": "guard-negative-3",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe",
+          "3"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:27:00.881519+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\guard-negative-3.log",
+        "end_utc": "2026-11-21T22:27:00.886618+00:00"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\guard.exe",
+        "sha256": "f189ce075f9c7e0ef1901f532a6c868db7902cb9dc4ebbde6d87504661c4b5ea",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-upopt-clang-release-20261121T222657198181Z\\control-build\\runtime.exe",
+        "sha256": "18001d4df1a41dd35e94d822ce27a8e0902f4dadcaa79bc6ea8489031085740f",
+        "pe_machine": "0x8664"
+      }
+    ]
+  },
+  {
+    "configuration": "windows-native-upopt-msvc-release-20261121T221837245920Z",
+    "controls": [
+      {
+        "label": "runtime-control",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\runtime.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.745427+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\runtime-control.log",
+        "end_utc": "2026-11-21T22:18:40.763712+00:00"
+      },
+      {
+        "label": "guard-positive",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.767771+00:00",
+        "exit_code": 0,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\guard-positive.log",
+        "end_utc": "2026-11-21T22:18:40.786047+00:00"
+      },
+      {
+        "label": "guard-negative-0",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe",
+          "0"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.787238+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\guard-negative-0.log",
+        "end_utc": "2026-11-21T22:18:40.792340+00:00"
+      },
+      {
+        "label": "guard-negative-1",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe",
+          "1"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.793361+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\guard-negative-1.log",
+        "end_utc": "2026-11-21T22:18:40.797421+00:00"
+      },
+      {
+        "label": "guard-negative-2",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe",
+          "2"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.798438+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\guard-negative-2.log",
+        "end_utc": "2026-11-21T22:18:40.803543+00:00"
+      },
+      {
+        "label": "guard-negative-3",
+        "command": [
+          "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe",
+          "3"
+        ],
+        "cwd": "<checkout>",
+        "start_utc": "2026-11-21T22:18:40.803543+00:00",
+        "exit_code": 3221225477,
+        "log": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\guard-negative-3.log",
+        "end_utc": "2026-11-21T22:18:40.808612+00:00"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\guard.exe",
+        "sha256": "14175c4d692040358c33a2efd888b76f2780ece789be7507efbe5450add04180",
+        "pe_machine": "0x8664"
+      },
+      {
+        "path": "<checkout>\\build\\windows-native-upopt-msvc-release-20261121T221837245920Z\\control-build\\runtime.exe",
+        "sha256": "0378f2e651b42424e50b803aad110dcefa94b966d2f8062f9e967c91f2e7d788",
+        "pe_machine": "0x8664"
+      }
+    ]
+  }
+]

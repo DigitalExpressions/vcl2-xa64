@@ -1,7 +1,0 @@
-{
-  "archive": "ui20-01-postflight-2026-11-20.zip",
-  "sha256": "6fe9ce0ec78f48d14784e1d3c756c672fabcc1eec427c1e80df7ec4b62d3e5f6",
-  "bytes": 27619,
-  "all_entries_verified": true,
-  "scope": "Post-raw-packet metadata/integrity/check logs and exact final tracked patch. Contains host paths; keep under ignored build."
-}

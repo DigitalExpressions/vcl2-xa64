@@ -53,17 +53,22 @@ own availability limits in frozen Git.
 
 ## Windows gate and architecture preservation
 
-The latest [21 November native Windows report](x86/windows-x86-validation-2026-11-21.md)
-records validation of clean commit `dc802e466663d61d9e219bd7c7351aa8ac312204`:
-**6,798 passed, 233 failed and 109 not run out of 7,140 registrations**, plus
+The latest [22 November native Windows report](x86/windows-x86-validation-2026-11-22.md)
+records validation of clean commit `08f2d2903d9bfdfdb22aa187329e99ce0f44d177`:
+**6,796 passed, 235 failed and 109 not run out of 7,140 registrations**, plus
 fifteen passing canonical examples, with zero timeouts or skipped cases.
-All 7,140 case statuses match the 20 November collection. Optimized Release,
+All 7,140 named registrations reconciled with the 20 November collection;
+six FP-helper statuses changed in the two MSVC AVX2 rows. Optimized Release,
 strict Release and strict UBSan remain separately reported. The correctness
 gate remains failed/incomplete; raw evidence and archive receipts are identified
 in the dated report. Later documentation commits do not inherit this execution.
 
-The [20 November integrated x86 harness report](x86/windows-x86-harness-integration-2026-11-20.md)
-records native AMD Windows validation of its 594-file integrated capture:
+The earlier [21 November report](x86/windows-x86-validation-2026-11-21.md)
+retains its own tested source `dc802e4`, 6,798 passed, 233 failed and 109 not run,
+with all 7,140 case statuses matching the 20 November collection.
+
+The historical 20 November Windows test-profile collection recorded native AMD
+validation of its 594-file integrated capture:
 
 | Profile | Passed | Failed | Not run | Registered |
 | --- | ---: | ---: | ---: | ---: |
@@ -71,19 +76,20 @@ records native AMD Windows validation of its 594-file integrated capture:
 | strict-validation | 2,739 | 79 | 38 | 2,856 |
 | strict-ubsan | 1,322 | 73 | 33 | 1,428 |
 
-All fifteen canonical examples pass. All 7,140 registered case statuses,
-including failures, timeouts and unavailable executables, remain recorded.
-The two optimized MSVC signed-zero failures remain failed. All original runtime
-files remain byte-exact; these profiles do not replace the earlier full gate.
+All fifteen canonical examples passed. All 7,140 registered case statuses,
+including failures, timeouts and unavailable executables, were recorded.
+The two optimized MSVC signed-zero failures remain failed. The completed
+integration report and its portable bundle are retired from the current checkout;
+their original records remain in Git history. All original runtime files remain
+byte-exact; these profiles do not replace the earlier full gate.
 
 The historical full gate stays **failed/incomplete: 5,387 passed, 249 failed,
 76 not run of 5,712, plus twelve passing examples**. Bounded preservation,
 include/code checks and RTC diagnostics do not convert failures into passes.
 
 - [Frozen separation matrix, triage and evidence](#x86-separation-documentation-retirement).
-- [Four-blend Windows return](x86/windows-blend4-handoff-2026-11-19/results/README.md)
-  and [current backend acceptance rules](../backend-layout.md#validation-and-source-identity).
-- [Portable integrated harness results](x86/windows-x86-harness-integration-2026-11-20/README.md).
+- [Current backend acceptance rules](../backend-layout.md#validation-and-source-identity).
+- [Latest portable Windows results](x86/windows-x86-validation-2026-11-22/README.md).
 - [Frozen Windows return for the declined TRS candidate](https://github.com/DigitalExpressions/vcl2-xa64/tree/b5a671a72fe59888ce0a661741a2b65c6b02a4b6/docs/validation/trs-inverse-current-master-2026-11-19).
 
 ## Reusable procedures and contracts
@@ -146,3 +152,8 @@ Current Mac/M2 records use `arm64/`; Windows records use `x86/`; shared
 procedures use this level and `cross-platform/`. Raw host evidence remains
 under ignored `build/`; Git contains the documented portable records and
 relative links. Use the architecture publication checklists for new results.
+
+## Build reset and fresh Windows collection — 2026-11-22
+
+Fresh native AMD Windows collection at clean 08f2d2903d9bfdfdb22aa187329e99ce0f44d177: 6,796 passed, 235 failed and 109 not run of 7,140, plus fifteen passing examples. The gate remains failed/incomplete.
+The [reset report](x86/windows-x86-validation-2026-11-22.md) records the deliberately discarded prior local Windows payloads and freshly reconstructed resources. Earlier archive-retention statements in historical Windows records no longer establish local availability on this host. Other hosts were not changed. [Separate performance](../benchmarks/x86/x86-upstream-2026-11-22.md) followed its own checks.

@@ -46,7 +46,7 @@ Optimized Release uses the maintained MSVC `/O2 /fp:precise /fp:except-` and Cla
 
 Initial suite builds stopped on existing compile errors, including the wide-composition type assertions and Clang constant-expression errors in protected upstream code. Their first return packets are preserved unchanged. Separately logged Ninja `-k 0` continuations collected independent build outcomes before one complete CTest collection per configuration. Missing binaries remain not run. No completed canonical case was replayed.
 
-Comparison with the [20 November integrated harness collection](windows-x86-harness-integration-2026-11-20.md) found **0 per-case status changes across all 7,140 matched registrations**. Sources are separately identified; matching statuses do not make failing tests pass or establish complete correctness.
+Comparison with the 20 November integrated test-profile collection found **0 per-case status changes across all 7,140 matched registrations**. Sources are separately identified; matching statuses do not make failing tests pass or establish complete correctness.
 All 87 of 87 compared root runtime and in-tree C++ test-source paths were byte-identical to that retained source after accounting for the approved example-source moves. CMake, runner and repository-layout differences remain part of the current tested commit.
 
 ## Controls and retained evidence
@@ -85,3 +85,16 @@ are under `build/local-validation/work-build-cleanup-20261121/`. An initial
 overbroad compaction attempt was stopped; all newly created compaction ZIPs were
 removed. No source, numerical result, gate or tested identity changed, and no
 native tests or performance measurements were rerun by this cleanup.
+
+## Local artifact availability after full build reset — 2026-11-22
+
+The maintainer explicitly executed the build-reset plan in a later session.
+All inventoried prior local build contents were discarded, including historical
+raw archives, source captures, diagnostics, dependencies and earlier cleanup
+receipts. Earlier availability statements above describe their dated closeout
+and cleanup; they no longer establish local availability after this reset.
+Published source identifiers, hashes and numerical outcomes are unchanged.
+Hashes cannot recover the discarded payload bytes. Fresh collection does not
+reconstruct the older evidence or replace its failed/incomplete historical gate.
+See the [reset report](windows-x86-validation-2026-11-22.md) for the exact inventory,
+surviving receipt, reconstructed resources and separately identified fresh results.

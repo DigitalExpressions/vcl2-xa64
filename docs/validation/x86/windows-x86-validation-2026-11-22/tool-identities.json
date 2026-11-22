@@ -1,0 +1,42 @@
+{
+  "python": {
+    "path": "<local-path>",
+    "sha256": "5f7b89a612c9b8af1d6456cdfcd1dbe5ca630849e79aebced9bee9a6694952ec"
+  },
+  "cmake": {
+    "path": "<local-path> Files\\CMake\\bin\\cmake.EXE",
+    "sha256": "083a412e9a21430da453bcd9713ffa5589ea1c677cc4d5f58f9a0b55fab1f546"
+  },
+  "ctest": {
+    "path": "<local-path> Files\\CMake\\bin\\ctest.EXE",
+    "sha256": "0c629f6e2753a63eb84ceaae6fc4b887d3181e706c36a6ca7b872d9c90716be3"
+  },
+  "ninja": {
+    "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.EXE",
+    "sha256": "5020138b3757035df9dca9a2243624d5810ffa6ae24444bd95f752cbd1b89123"
+  },
+  "cl": {
+    "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\cl.EXE",
+    "sha256": "a560c2e6d5c3c30bf563ba5285576e9423f18d44165e1398539d912866a4daab"
+  },
+  "git": {
+    "path": "<local-path> Files\\Git\\cmd\\git.EXE",
+    "sha256": "3cbd024d9d11ef08bd6a0cb5a973613c50825b4952bc6006f3f4222f436091e5"
+  },
+  "clang": {
+    "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe",
+    "sha256": "5bf118f86bd5e8489f48496f9b18e4c30fc612b2b381545aa17a6473f02bc776"
+  },
+  "objdump": {
+    "path": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\Llvm\\x64\\bin\\llvm-objdump.exe",
+    "sha256": "f3eb0943b7027b489546c0f71313f9fe02b16d88c080dc4f59cfcd463bc0717a"
+  },
+  "developer_environment": {
+    "VSCMD_ARG_HOST_ARCH": "x64",
+    "VSCMD_ARG_TGT_ARCH": "x64",
+    "VCToolsVersion": "14.50.35717",
+    "WindowsSDKVersion": "10.0.26100.0\\",
+    "WindowsSdkDir": "<local-path> Files (x86)\\Windows Kits\\10\\",
+    "VCToolsInstallDir": "<local-path> Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\"
+  }
+}

@@ -54,22 +54,26 @@ No sanitizer timings or historical-time ratios replace a fresh matched run.
 
 ## Copy destinations
 
-Use the actual execution/report dates and a descriptive source/session label.
-The [21 November correctness report](windows-x86-validation-2026-11-21.md) shows
-the compiler table and clean-source identity; the
-[20 November portable results](windows-x86-harness-integration-2026-11-20/README.md)
+Use the actual execution/report dates. Published filenames use purpose and ISO
+report date, with matching primary evidence-folder stems; see the
+[report naming rules](../report-template.md#published-report-names).
+The [22 November correctness report](windows-x86-validation-2026-11-22.md) shows
+the compiler table and clean-source identity; its
+[portable results](windows-x86-validation-2026-11-22/README.md)
 show supporting evidence. Their results belong to their own sources.
 
 | Destination | Copy or prepare from the completed run |
 | --- | --- |
 | `docs/validation/x86/windows-x86-validation-YYYY-MM-DD.md` | Correctness report using the [native report template](../report-template.md): exact source, host/tools, performance choice, complete profile totals, compiler/profile/ISA table, examples, controls, failures, unavailable binaries and limits. |
 | `docs/validation/x86/windows-x86-validation-YYYY-MM-DD/` | Applicable portable evidence: source/validator identities, complete named-case statuses, profile summaries, nonpassing diagnostics, compiler policies, include/control/integrity proofs, binary hashes and archive receipts. |
-| `docs/benchmarks/x86/x86-upstream-YYYY-MM-DD-LABEL.md`, when performance was requested | Dated selected-source performance report: exact fork/reference and harness identities, compiler/ISA/flags, correctness checks, protocol, all measured rows, ratios, variability, slower rows and coverage gaps. Explain which source each reference role identifies. |
-| `docs/benchmarks/x86/x86-upstream-YYYY-MM-DD-LABEL/`, when measured | Selected-source CSV/JSON, summary, metadata, applicable matched comparison/edge-check/code-generation summaries and archive receipts. Share evidence through relative links rather than duplicating it. |
+| `docs/benchmarks/x86/x86-upstream-YYYY-MM-DD.md`, when performance was requested | Dated selected-source performance report: exact fork/reference and harness identities, compiler/ISA/flags, correctness checks, protocol, all measured rows, ratios, variability, slower rows and coverage gaps. Explain which source each reference role identifies. |
+| `docs/benchmarks/x86/x86-upstream-YYYY-MM-DD/`, when measured | Selected-source CSV/JSON, summary, metadata, applicable matched comparison/edge-check/code-generation summaries and archive receipts. Share evidence through relative links rather than duplicating it. |
 | Each published supporting bundle | A publication receipt recording original/adapted report identities, copied hashes, source filenames and any renames, link/redaction changes, intentionally local evidence and gaps; `checksums.sha256` covering final reports and bundle payloads, excluding itself. |
 
-Use an additional session label for multiple rounds on the same date; do not
-overwrite a prior report or bundle. Supporting records can follow the existing
+Add a descriptive suffix only for multiple collections with the same purpose
+and date; do not overwrite a prior report or bundle. Keep reset details and
+opaque session/attempt IDs inside reports or metadata, and retain raw artifact
+names under ignored `build/`. Supporting records can follow the existing
 Windows names: `summary.json`, `cases.json`, `nonpassing-output.json`,
 `source-manifest.json`, `compiler-policy.json`, `canonical-controls.json`,
 `include-graphs.json`, `integrity.json`, `host-tools-dependencies.json`,

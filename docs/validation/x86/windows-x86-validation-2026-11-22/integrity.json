@@ -1,0 +1,45 @@
+{
+  "pre_reset_repository": {
+    "status": "passed",
+    "public_files": 303,
+    "pristine_upstream_files": 28,
+    "generated_runtime_products": 0,
+    "protected_root_originals": 27,
+    "local_documentation_links": 407,
+    "native_headers_with_complete_notices": 9
+  },
+  "pre_reset_protected": {
+    "success": true,
+    "pristine_upstream_files": 28,
+    "protected_root_files": 27,
+    "generated_products": 0,
+    "generation_retired": true
+  },
+  "isolated_controls_log_sha256": "b711d184aec76c9f4b13a1a48146cf9ef06dc757307791c8e129fbb9c61f3ca2",
+  "isolated_controls_log": "{\n  \"passed\": 41,\n  \"failed\": 0,\n  \"upstream_commit\": \"667577495efaa36a10cbb5d6cb8c942c23913848\",\n  \"controls\": [\n    {\n      \"control\": \"clean audited originals, sse2neon and ARM graph\",\n      \"passed\": true\n    },\n    {\n      \"control\": \"changed-recorded-sha256\",\n      \"passed\": true,\n      \"diagnostic\": \"Changed or duplicated pristine upstream file: LICENSE\"\n    },\n    {\n      \"control\": \"missing-original-inventory-entry\",\n      \"passed\": true,\n      \"diagnostic\": \"Pinned upstream Git tree mismatch\"\n    },\n    {\n      \"control\": \"missing-upstream-audit\",\n      \"passed\": true,\n      \"diagnostic\": \"Missing required upstream audit: audit/vectorclass-2.02.04.json\"\n    },\n    {\n      \"control\": \"missing-retained-upstream-readme\",\n      \"passed\": true,\n      \"diagnostic\": \"[Errno 2] No such file or directory: '<local-path>\"\n    },\n    {\n      \"control\": \"changed-retained-upstream-readme\",\n      \"passed\": true,\n      \"diagnostic\": \"Changed or duplicated pristine upstream file: README.md\"\n    },\n    {\n      \"control\": \"editable-fork-readme-with-all-upstream-bytes-verified\",\n      \"passed\": true\n    },\n    {\n      \"control\": \"restore-complete-upstream-tree-with-original-readme\",\n      \"passed\": true\n    },\n    {\n      \"control\": \"changed-comparison-readme-rejected-without-overwrite\",\n      \"passed\": true\n    },\n    {\n      \"control\": \"reintroduced-empty-vendor-directory\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired vendor catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-vendor-file\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired vendor catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-vendor-header\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired vendor catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"missing-root-sse2neon\",\n      \"passed\": true,\n      \"diagnostic\": \"[Errno 2] No such file or directory: '<local-path>\"\n    },\n    {\n      \"control\": \"changed-root-sse2neon\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon retained representation differs from upstream audit\"\n    },\n    {\n      \"control\": \"newline-only-sse2neon-change\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon retained representation differs from upstream audit\"\n    },\n    {\n      \"control\": \"missing-sse2neon-audit\",\n      \"passed\": true,\n      \"diagnostic\": \"Missing required sse2neon audit: audit/sse2neon-2272251.json\"\n    },\n    {\n      \"control\": \"missing-sse2neon-audit-root-path\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon audit must pin only the root sse2neon.h\"\n    },\n    {\n      \"control\": \"extra-sse2neon-audit-path\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon audit must pin only the root sse2neon.h\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-schema\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon audit must pin only the root sse2neon.h\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-sha256\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon retained representation differs from upstream audit\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-git_blob\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon retained representation differs from upstream audit\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-bytes\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon retained representation differs from upstream audit\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-encoding\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon audit representation contract differs\"\n    },\n    {\n      \"control\": \"changed-sse2neon-audit-proof\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon audit representation contract differs\"\n    },\n    {\n      \"control\": \"changed-sse2neon-with-matching-retained-pin\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon upstream representation proof differs\"\n    },\n    {\n      \"control\": \"changed-sse2neon-upstream-sha256\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon upstream representation proof differs\"\n    },\n    {\n      \"control\": \"changed-sse2neon-upstream-git_blob\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon upstream representation proof differs\"\n    },\n    {\n      \"control\": \"changed-sse2neon-upstream-bytes\",\n      \"passed\": true,\n      \"diagnostic\": \"sse2neon upstream representation proof differs\"\n    },\n    {\n      \"control\": \"changed-protected-root\",\n      \"passed\": true,\n      \"diagnostic\": \"Changed or duplicated pristine upstream file: vectorclass.h\"\n    },\n    {\n      \"control\": \"newline-only-root-change\",\n      \"passed\": true,\n      \"diagnostic\": \"Changed or duplicated pristine upstream file: vectorclass.h\"\n    },\n    {\n      \"control\": \"ARM-include-leaks-to-original\",\n      \"passed\": true,\n      \"diagnostic\": \"ARM include reaches protected x86 original: vectorclass_neon.h -> vectorclass.h\"\n    },\n    {\n      \"control\": \"inactive-x86-backend-branch\",\n      \"passed\": true,\n      \"diagnostic\": \"x86-only code in ARM source: vectorclass_neon.h -> VCL_BACKEND_X86\"\n    },\n    {\n      \"control\": \"inactive-x86-classification-helper\",\n      \"passed\": true,\n      \"diagnostic\": \"x86-only code in ARM source: vectorclass_neon.h -> vcl_detail_x86\"\n    },\n    {\n      \"control\": \"inactive-native-AVX-intrinsic\",\n      \"passed\": true,\n      \"diagnostic\": \"x86-only code in ARM source: vectorclass_neon.h -> _mm256_add_ps\"\n    },\n    {\n      \"control\": \"reintroduced-empty-adaptation-directory\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired adaptation catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-adaptation-file\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired adaptation catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-adaptation-manifest\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired adaptation catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-adaptation-patch\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired adaptation catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"reintroduced-adaptation-include\",\n      \"passed\": true,\n      \"diagnostic\": \"Retired adaptation catalog must not be reintroduced\"\n    },\n    {\n      \"control\": \"retired-output-list\",\n      \"passed\": true,\n      \"diagnostic\": \"Generation is retired; no root write products are allowed\"\n    },\n    {\n      \"control\": \"write-mode-rejected-with-no-root-writes\",\n      \"passed\": true,\n      \"exit_code\": 2\n    }\n  ]\n}\nRetained controls: <checkout>\\build\\header-generation-check-20261121T221333217228Z\n",
+  "post_reset_repository": {
+    "status": "passed",
+    "public_files": 303,
+    "pristine_upstream_files": 28,
+    "generated_runtime_products": 0,
+    "protected_root_originals": 27,
+    "local_documentation_links": 407,
+    "native_headers_with_complete_notices": 9
+  },
+  "closeout_repository": {
+    "status": "passed",
+    "public_files": 303,
+    "pristine_upstream_files": 28,
+    "generated_runtime_products": 0,
+    "protected_root_originals": 27,
+    "local_documentation_links": 407,
+    "native_headers_with_complete_notices": 9
+  },
+  "closeout_protected": {
+    "success": true,
+    "pristine_upstream_files": 28,
+    "protected_root_files": 27,
+    "generated_products": 0,
+    "generation_retired": true
+  }
+}

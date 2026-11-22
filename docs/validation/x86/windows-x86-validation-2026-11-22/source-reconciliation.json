@@ -1,0 +1,66 @@
+{
+  "status": "Source-change publication stop reconciled; permanent-path approval remains",
+  "tested_commit": "08f2d2903d9bfdfdb22aa187329e99ce0f44d177",
+  "tested_tree": "c712c242205e19e233af93b5c565fa601643749f",
+  "tested_working_fingerprint": "15989d633301114dd66508b631cc9d82e516010833d707e96689d41b4c88d346",
+  "publication_base_commit": "88c48689f1ec4d6fa665df6a9c6b41a3d064bb0a",
+  "publication_base_tree": "9386da28864fb87bedd46e51d41c043a3b81ab64",
+  "publication_base_working_fingerprint": "ad9701668903831c8217c8fa0e9fc808a3701d32fa82d2586be15d5021048d2b",
+  "changed_paths": [
+    {
+      "path": "audit/sse2neon-2272251.json",
+      "tested_sha256": "477aba3afded6899325c7d8b214b786e9e73a5424750efe6eb0cf54c49c95779",
+      "publication_sha256": "610db44937aa5aa18cfa7c7e936e0ab1658f2db397d7cb69fe46131bb232e5dd"
+    },
+    {
+      "path": "audit_arm64_history.md",
+      "tested_sha256": "98d415d5b4415ea3c4c0094e827d9ff8bb40c070f1ad30e5c8daf1d047900c53",
+      "publication_sha256": "09a147dbe6bcb24b4b44e60f3034177ab5625049b6547389baa9386efabf5e69"
+    },
+    {
+      "path": "docs/backend-layout.md",
+      "tested_sha256": "c6e23b0114aff3db0c8332c2c13873a20a028d6e73565d72204631302bbcf051",
+      "publication_sha256": "9c8cc325c3d966e1ab4be74d5629ac4b38367a5a0535493fd408fbdf9fed71b3"
+    },
+    {
+      "path": "docs/third-party.md",
+      "tested_sha256": "59fffd7d5d212e3be254443669b09df4b78d7709bfc64e3130088b9e5c687419",
+      "publication_sha256": "2038a8ff355a8276eef526ac0c04a2b9c9e5944db6944fa42ba0b665dc14263c"
+    },
+    {
+      "path": "sse2neon.h",
+      "tested_sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+      "publication_sha256": "932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3"
+    },
+    {
+      "path": "tools/check_header_generation.py",
+      "tested_sha256": "e1db5ca3859143fbdaef0c9785eee1df3557063733042b41bc33dc7eaeb0be39",
+      "publication_sha256": "c49a8859083dbb4424d39cd912ae9d9ad06fc9bd3b134a59a94c793bc17566e7"
+    },
+    {
+      "path": "tools/regenerate_headers.py",
+      "tested_sha256": "fadd9fc28bf51e414824bcd985033ec0952ffa010a68a73e75d37cbb303fe06f",
+      "publication_sha256": "a02eecd904de3abba61111c6a38484d08008b4f579b518f60190eb6f555ccf84"
+    }
+  ],
+  "unchanged_paths": 296,
+  "agents_md_unchanged": true,
+  "x86_runtime_tests_runners_benchmarks_cmake_unchanged": true,
+  "header_representation": {
+    "upstream_commit": "2272251cc3ad9cba8b8c47c4065811cfb396b802",
+    "previous_sha256": "cd875ec9ec508a41d408424a5bb6fc4b6eecb6b9baee46e255cb7b53b7b1c3ff",
+    "current_sha256": "932e41317cc325846256695d2aa83812ff6b6d065c8994b73a461efaf1f10bc3",
+    "exact_in_memory_conversion": true,
+    "conversion": "Windows-1252 to UTF-8; CRLF to LF; add final newline",
+    "semantic_intrinsic_change": false
+  },
+  "checks": {
+    "tested_frozen_integrity": "passed with frozen checker and audit",
+    "current_repository": "passed",
+    "current_integrity": "passed",
+    "current_isolated_integrity_controls": "passed"
+  },
+  "decision": "Publish the completed historical Windows collection at its original frozen source on the current documentation base. Do not relabel the collection as a new-HEAD validation or infer ARM native coverage. No native matrix or timings were rerun.",
+  "user_authorization": "User requested resolving the publication stop and continuing publication preparation.",
+  "utc": "2026-11-21T23:15:10.776120+00:00"
+}

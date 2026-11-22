@@ -1,0 +1,6 @@
+{
+  "stage": "scratch-ISA-probe",
+  "initial_exit": 2,
+  "cause": "Scratch extraction omitted cstring needed for std::memcpy. Original failed source and command log retained. Added include in new isa-probe02.cpp; no library/test/runner changes. Profile controls completed successfully and are reused without replay.",
+  "canonical_cases_started_before_correction": 0
+}
